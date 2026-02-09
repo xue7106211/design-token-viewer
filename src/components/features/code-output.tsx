@@ -1,0 +1,76 @@
+"use client";
+
+import { useState, useCallback } from "react";
+import { Copy, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTokenStore } from "@/stores/token-store";
+import type { CodeFormat } from "@/types/token";
+import { cn } from "@/lib/utils";
+
+interface CodeOutputProps {
+  code: string;
+  className?: string;
+}
+
+export function CodeOutput({ code, className }: CodeOutputProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [code]);
+
+  return (
+    <div className={cn("relative rounded-lg border bg-muted/30 overflow-hidden", className)}>
+      <div className="flex items-center justify-between border-b px-3 py-1.5">
+        <CodeFormatTabs />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-6 w-6 cursor-pointer"
+          onClick={handleCopy}
+        >
+          {copied ? (
+            <Check className="h-3 w-3 text-green-500" />
+          ) : (
+            <Copy className="h-3 w-3 text-muted-foreground" />
+          )}
+        </Button>
+      </div>
+      <pre className="overflow-x-auto p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
+        <code>{code}</code>
+      </pre>
+    </div>
+  );
+}
+
+function CodeFormatTabs() {
+  const codeFormat = useTokenStore((s) => s.codeFormat);
+  const setCodeFormat = useTokenStore((s) => s.setCodeFormat);
+
+  const formats: { value: CodeFormat; label: string }[] = [
+    { value: "css", label: "CSS" },
+    { value: "android", label: "Android" },
+  ];
+
+  return (
+    <div className="flex items-center gap-1">
+      {formats.map(({ value, label }) => (
+        <button
+          key={value}
+          onClick={() => setCodeFormat(value)}
+          className={cn(
+            "rounded px-2 py-0.5 text-[10px] font-medium cursor-pointer",
+            "transition-colors duration-200 ease",
+            codeFormat === value
+              ? "bg-background text-foreground shadow-sm"
+              : "text-muted-foreground hover:text-foreground"
+          )}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  );
+}

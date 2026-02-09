@@ -1,0 +1,271 @@
+"use client";
+
+import { useTokenStore } from "@/stores/token-store";
+import { getAliasChain } from "@/lib/token-resolver";
+import { generateTokenCode } from "@/lib/code-generators";
+import { colorToHex, colorToRGB, colorToHSL, contrastRatio, getWCAGLevel } from "@/lib/contrast";
+import { ColorSwatch } from "./color-swatch";
+import { NumberPreview } from "./number-preview";
+import { CodeOutput } from "./code-output";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { X, ArrowRight, Link2, Eye } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import type { ColorValue } from "@/types/token";
+
+const WHITE: ColorValue = { r: 1, g: 1, b: 1, a: 1 };
+const BLACK: ColorValue = { r: 0, g: 0, b: 0, a: 1 };
+
+export function TokenInspector() {
+  const selectedTokenId = useTokenStore((s) => s.selectedTokenId);
+  const tokens = useTokenStore((s) => s.tokens);
+  const activeCollection = useTokenStore((s) => s.activeCollection);
+  const activeModeId = useTokenStore((s) => s.activeModeId);
+  const selectToken = useTokenStore((s) => s.selectToken);
+  const inspectorOpen = useTokenStore((s) => s.inspectorOpen);
+  const setInspectorOpen = useTokenStore((s) => s.setInspectorOpen);
+  const codeFormat = useTokenStore((s) => s.codeFormat);
+
+  if (!inspectorOpen || !selectedTokenId) return null;
+
+  const token = tokens[selectedTokenId];
+  if (!token) return null;
+
+  const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
+  const resolved = token.resolvedValues[modeId];
+  const code = generateTokenCode(token, codeFormat, modeId);
+
+  // Alias chain
+  const aliasChain = getAliasChain(token.id, modeId, tokens);
+
+  // Reverse references
+  const referencedBy = token.referencedBy
+    .map((id) => tokens[id])
+    .filter(Boolean);
+
+  return (
+    <div className="flex h-full w-80 flex-col border-l bg-background">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b px-4 py-3">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm font-semibold truncate">{token.path[token.path.length - 1]}</h3>
+          <p className="text-[10px] font-mono text-muted-foreground truncate">{token.name}</p>
+        </div>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-7 w-7 shrink-0 cursor-pointer"
+          onClick={() => {
+            setInspectorOpen(false);
+            selectToken(null);
+          }}
+        >
+          <X className="h-4 w-4" />
+        </Button>
+      </div>
+
+      <ScrollArea className="flex-1">
+        <div className="space-y-5 p-4">
+          {/* Current Value Preview */}
+          <Section title="当前值">
+            {resolved?.type === "COLOR" && (
+              <div className="space-y-3">
+                <ColorSwatch color={resolved.value} size="lg" />
+                <div className="space-y-1.5 text-xs font-mono">
+                  <Row label="HEX" value={colorToHex(resolved.value).toUpperCase()} />
+                  <Row label="RGB" value={colorToRGB(resolved.value)} />
+                  <Row label="HSL" value={colorToHSL(resolved.value)} />
+                </div>
+                {/* Contrast info */}
+                <div className="space-y-1.5 mt-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">对比度</p>
+                  <ContrastInfo color={resolved.value} against={WHITE} label="白色背景" />
+                  <ContrastInfo color={resolved.value} against={BLACK} label="黑色背景" />
+                </div>
+              </div>
+            )}
+            {resolved?.type === "NUMBER" && (
+              <NumberPreview value={resolved.value} name={token.name} />
+            )}
+            {resolved?.type === "STRING" && (
+              <p className="text-sm font-mono">{resolved.value}</p>
+            )}
+            {resolved?.type === "BOOLEAN" && (
+              <Badge variant={resolved.value ? "default" : "secondary"}>
+                {resolved.value ? "true" : "false"}
+              </Badge>
+            )}
+          </Section>
+
+          <Separator />
+
+          {/* Multi-mode comparison */}
+          {activeCollection && activeCollection.modes.length > 1 && (
+            <>
+              <Section title="模式对比">
+                <div className="space-y-2">
+                  {activeCollection.modes.map((mode) => {
+                    const modeResolved = token.resolvedValues[mode.modeId];
+                    if (!modeResolved) return null;
+                    return (
+                      <div
+                        key={mode.modeId}
+                        className={cn(
+                          "flex items-center justify-between rounded-lg border p-2.5",
+                          mode.modeId === activeModeId && "border-primary/30 bg-primary/5"
+                        )}
+                      >
+                        <span className="text-xs font-medium">{mode.name}</span>
+                        {modeResolved.type === "COLOR" && (
+                          <ColorSwatch color={modeResolved.value} size="sm" showLabel />
+                        )}
+                        {modeResolved.type === "NUMBER" && (
+                          <span className="text-xs font-mono">{modeResolved.value}px</span>
+                        )}
+                        {modeResolved.type === "STRING" && (
+                          <span className="text-xs font-mono truncate max-w-[120px]">{modeResolved.value}</span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </Section>
+              <Separator />
+            </>
+          )}
+
+          {/* Alias Chain */}
+          {aliasChain.length > 1 && (
+            <>
+              <Section title="引用链路">
+                <div className="flex flex-col gap-1">
+                  {aliasChain.map((item, idx) => (
+                    <div key={item.id} className="flex items-center gap-2">
+                      {idx > 0 && <ArrowRight className="h-3 w-3 text-muted-foreground shrink-0" />}
+                      <button
+                        onClick={() => selectToken(item.id)}
+                        className={cn(
+                          "text-xs font-mono cursor-pointer hover:text-primary transition-colors",
+                          item.id === token.id
+                            ? "text-foreground font-medium"
+                            : "text-muted-foreground"
+                        )}
+                      >
+                        {item.name}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+              <Separator />
+            </>
+          )}
+
+          {/* Referenced By */}
+          {referencedBy.length > 0 && (
+            <>
+              <Section title={`被引用 (${referencedBy.length})`} icon={<Link2 className="h-3 w-3" />}>
+                <div className="space-y-1">
+                  {referencedBy.map((ref) => (
+                    <button
+                      key={ref.id}
+                      onClick={() => selectToken(ref.id)}
+                      className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-accent transition-colors"
+                    >
+                      <Eye className="h-3 w-3 text-muted-foreground shrink-0" />
+                      <span className="truncate">{ref.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </Section>
+              <Separator />
+            </>
+          )}
+
+          {/* Code Output */}
+          <Section title="代码">
+            <CodeOutput code={code} />
+          </Section>
+        </div>
+      </ScrollArea>
+    </div>
+  );
+}
+
+function Section({
+  title,
+  icon,
+  children,
+}: {
+  title: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-2.5">
+      <div className="flex items-center gap-1.5">
+        {icon}
+        <h4 className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          {title}
+        </h4>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function Row({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-center justify-between">
+      <span className="text-muted-foreground">{label}</span>
+      <span className="text-foreground">{value}</span>
+    </div>
+  );
+}
+
+function ContrastInfo({
+  color,
+  against,
+  label,
+}: {
+  color: ColorValue;
+  against: ColorValue;
+  label: string;
+}) {
+  const ratio = contrastRatio(color, against);
+  const levels = getWCAGLevel(ratio);
+  const bgHex = colorToHex(against);
+
+  return (
+    <div className="flex items-center justify-between rounded-md border px-2.5 py-1.5">
+      <div className="flex items-center gap-2">
+        <div
+          className="h-5 w-5 rounded border"
+          style={{ backgroundColor: bgHex }}
+        >
+          <div
+            className="flex h-full w-full items-center justify-center text-[8px] font-bold"
+            style={{ color: colorToHex(color) }}
+          >
+            A
+          </div>
+        </div>
+        <span className="text-[10px] text-muted-foreground">{label}</span>
+      </div>
+      <div className="flex items-center gap-1.5">
+        <span className="text-[10px] font-mono font-medium">{ratio.toFixed(1)}:1</span>
+        <Badge
+          variant={levels.aa ? "default" : "secondary"}
+          className={cn(
+            "h-4 px-1 text-[8px]",
+            levels.aa ? "bg-green-500/15 text-green-700 dark:text-green-400" : "bg-muted text-muted-foreground"
+          )}
+        >
+          {levels.aaa ? "AAA" : levels.aa ? "AA" : "Fail"}
+        </Badge>
+      </div>
+    </div>
+  );
+}
