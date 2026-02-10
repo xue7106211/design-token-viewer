@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type {
-  ParsedTokenData,
   DesignToken,
   TokenCollection,
   TokenTreeNode,
@@ -28,6 +27,7 @@ interface TokenState {
   viewMode: ViewMode;
   codeFormat: CodeFormat;
   inspectorOpen: boolean;
+  inspectorWidth: number;
 
   // Computed
   activeCollection: TokenCollection | null;
@@ -44,6 +44,7 @@ interface TokenState {
   setViewMode: (mode: ViewMode) => void;
   setCodeFormat: (format: CodeFormat) => void;
   setInspectorOpen: (open: boolean) => void;
+  setInspectorWidth: (width: number) => void;
   getTokensByGroup: (group: string) => DesignToken[];
   getVisibleTokens: () => DesignToken[];
 }
@@ -66,6 +67,7 @@ export const useTokenStore = create<TokenState>()(
       viewMode: "grid" as ViewMode,
       codeFormat: "css" as CodeFormat,
       inspectorOpen: false,
+      inspectorWidth: 320,
 
       // Computed
       activeCollection: null,
@@ -189,6 +191,8 @@ export const useTokenStore = create<TokenState>()(
       setViewMode: (mode: ViewMode) => set({ viewMode: mode }),
       setCodeFormat: (format: CodeFormat) => set({ codeFormat: format }),
       setInspectorOpen: (open: boolean) => set({ inspectorOpen: open }),
+      setInspectorWidth: (width: number) =>
+        set({ inspectorWidth: Math.min(560, Math.max(280, width)) }),
 
       getTokensByGroup: (group: string) => {
         const { filteredTokenIds, tokens } = get();
@@ -210,6 +214,7 @@ export const useTokenStore = create<TokenState>()(
         rawJSON: state.rawJSON,
         viewMode: state.viewMode,
         codeFormat: state.codeFormat,
+        inspectorWidth: state.inspectorWidth,
       }),
       onRehydrateStorage: () => (state) => {
         // Re-parse stored JSON on hydration

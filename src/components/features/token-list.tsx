@@ -66,7 +66,7 @@ export function TokenList() {
 }
 
 function TokenListRow({
-  tokenId,
+  tokenId: _tokenId,
   tokenName,
   resolved,
   code,

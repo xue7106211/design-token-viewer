@@ -21,7 +21,7 @@ export function Sidebar() {
       <div className="flex items-center justify-between border-b px-3 py-2.5">
         <div className="flex items-center gap-2">
           <Database className="h-4 w-4 text-muted-foreground" />
-          <span className="text-xs font-semibold">Collections</span>
+          <span className="text-xs font-semibold">HyperOS Token Lib</span>
         </div>
         <Button
           variant="ghost"
@@ -65,8 +65,8 @@ export function Sidebar() {
 
       <Separator />
 
-      {/* Tree */}
-      <ScrollArea className="flex-1">
+      {/* Tree: min-h-0 让 flex 子项可收缩，内部才能滚动 */}
+      <ScrollArea className="min-h-0 flex-1">
         <div className="py-1">
           <TokenTree />
         </div>

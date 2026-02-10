@@ -41,8 +41,8 @@ export function MainView() {
         </div>
       </div>
 
-      {/* Content */}
-      <ScrollArea className="flex-1">
+      {/* Content: min-h-0 让 flex 子项可收缩，ScrollArea 才能获得固定高度并出现滚动 */}
+      <ScrollArea className="min-h-0 flex-1">
         {viewMode === "grid" ? <TokenGrid /> : <TokenList />}
       </ScrollArea>
     </div>

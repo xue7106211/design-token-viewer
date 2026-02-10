@@ -22,13 +22,18 @@ export function CodeOutput({ code, className }: CodeOutputProps) {
   }, [code]);
 
   return (
-    <div className={cn("relative rounded-lg border bg-muted/30 overflow-hidden", className)}>
-      <div className="flex items-center justify-between border-b px-3 py-1.5">
+    <div
+      className={cn(
+        "relative min-w-0 w-full rounded-lg border bg-muted/30 overflow-hidden",
+        className
+      )}
+    >
+      <div className="flex min-w-0 items-center justify-between gap-2 border-b px-3 py-1.5">
         <CodeFormatTabs />
         <Button
           variant="ghost"
           size="icon"
-          className="h-6 w-6 cursor-pointer"
+          className="h-6 w-6 shrink-0 cursor-pointer"
           onClick={handleCopy}
         >
           {copied ? (
@@ -38,7 +43,7 @@ export function CodeOutput({ code, className }: CodeOutputProps) {
           )}
         </Button>
       </div>
-      <pre className="overflow-x-auto p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
+      <pre className="min-w-0 overflow-x-auto overflow-y-hidden whitespace-pre-wrap break-words p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
         <code>{code}</code>
       </pre>
     </div>
@@ -50,8 +55,8 @@ function CodeFormatTabs() {
   const setCodeFormat = useTokenStore((s) => s.setCodeFormat);
 
   const formats: { value: CodeFormat; label: string }[] = [
-    { value: "css", label: "CSS" },
     { value: "android", label: "Android" },
+    { value: "css", label: "CSS" },
   ];
 
   return (

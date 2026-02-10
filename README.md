@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Design Token Viewer
+
+设计令牌查看器，支持 Figma Variables 原生导出与 Variables2CSS 格式的 JSON 文件可视化浏览和代码导出。
+
+## 项目结构
+
+目录与职责说明见 [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)。
 
 ## Getting Started
 
@@ -16,7 +22,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
+
+```bash
+# 单元测试
+npm run test
+
+# 覆盖率
+npm run test:coverage
+
+# E2E 测试（首次需安装浏览器：npx playwright install）
+npm run test:e2e
+```
+
+完整验收清单见 [docs/ACCEPTANCE_CHECKLIST.md](./docs/ACCEPTANCE_CHECKLIST.md)。
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

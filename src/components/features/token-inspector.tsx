@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useCallback, useEffect, useState } from "react";
 import { useTokenStore } from "@/stores/token-store";
 import { getAliasChain } from "@/lib/token-resolver";
 import { generateTokenCode } from "@/lib/code-generators";
@@ -10,10 +11,13 @@ import { CodeOutput } from "./code-output";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { X, ArrowRight, Link2, Eye } from "lucide-react";
+import { X, ArrowRight, Link2, Eye, GripVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { ColorValue } from "@/types/token";
+
+const INSPECTOR_WIDTH_MIN = 280;
+const INSPECTOR_WIDTH_MAX = 560;
 
 const WHITE: ColorValue = { r: 1, g: 1, b: 1, a: 1 };
 const BLACK: ColorValue = { r: 0, g: 0, b: 0, a: 1 };
@@ -27,6 +31,41 @@ export function TokenInspector() {
   const inspectorOpen = useTokenStore((s) => s.inspectorOpen);
   const setInspectorOpen = useTokenStore((s) => s.setInspectorOpen);
   const codeFormat = useTokenStore((s) => s.codeFormat);
+  const inspectorWidth = useTokenStore((s) => s.inspectorWidth);
+  const setInspectorWidth = useTokenStore((s) => s.setInspectorWidth);
+
+  const [isResizing, setIsResizing] = useState(false);
+  const resizeStartRef = useRef({ x: 0, width: 0 });
+
+  const handleResizeStart = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      resizeStartRef.current = { x: e.clientX, width: inspectorWidth };
+      setIsResizing(true);
+    },
+    [inspectorWidth]
+  );
+
+  useEffect(() => {
+    if (!isResizing) return;
+    const onMove = (e: MouseEvent) => {
+      const { x, width } = resizeStartRef.current;
+      const delta = x - e.clientX;
+      const next = Math.min(INSPECTOR_WIDTH_MAX, Math.max(INSPECTOR_WIDTH_MIN, width + delta));
+      setInspectorWidth(next);
+    };
+    const onEnd = () => setIsResizing(false);
+    document.body.classList.add("select-none");
+    document.body.style.cursor = "col-resize";
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onEnd);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onEnd);
+      document.body.classList.remove("select-none");
+      document.body.style.cursor = "";
+    };
+  }, [isResizing, setInspectorWidth]);
 
   if (!inspectorOpen || !selectedTokenId) return null;
 
@@ -46,7 +85,27 @@ export function TokenInspector() {
     .filter(Boolean);
 
   return (
-    <div className="flex h-full w-80 flex-col border-l bg-background">
+    <div
+      className="relative flex h-full flex-col border-l bg-background shrink-0"
+      style={{ width: inspectorWidth }}
+    >
+      {/* 左侧拖拽条：向左拖变宽，向右拖变窄 */}
+      <div
+        role="separator"
+        aria-label="调整 Inspector 宽度"
+        onMouseDown={handleResizeStart}
+        className={cn(
+          "absolute left-0 top-0 z-10 h-full w-1.5 -translate-x-1/2 cursor-col-resize",
+          "flex items-center justify-center select-none",
+          "transition-[background] duration-150 ease-out",
+          "hover:bg-primary/20 active:bg-primary/30",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        )}
+        style={{ touchAction: "none" }}
+      >
+        <GripVertical className="h-3 w-3 text-muted-foreground/50 pointer-events-none" />
+      </div>
+
       {/* Header */}
       <div className="flex items-center justify-between border-b px-4 py-3">
         <div className="flex-1 min-w-0">
@@ -66,8 +125,8 @@ export function TokenInspector() {
         </Button>
       </div>
 
-      <ScrollArea className="flex-1">
-        <div className="space-y-5 p-4">
+      <ScrollArea className="min-h-0 flex-1">
+        <div className="min-w-0 space-y-5 p-4">
           {/* Current Value Preview */}
           <Section title="当前值">
             {resolved?.type === "COLOR" && (
@@ -204,7 +263,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-2.5">
+    <div className="min-w-0 space-y-2.5">
       <div className="flex items-center gap-1.5">
         {icon}
         <h4 className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">

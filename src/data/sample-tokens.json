@@ -1,178 +1,1643 @@
 {
   "collections": [
     {
-      "id": "col_primitives",
-      "name": "Primitives",
+      "id": "col_hyperos4",
+      "name": "Xiaomi Hyper OS4 UI Kit",
       "modes": [
-        { "modeId": "mode_default", "name": "Default" }
+        {
+          "modeId": "mode_default",
+          "name": "Default"
+        }
       ],
       "variableIds": [
-        "var_blue_50", "var_blue_100", "var_blue_200", "var_blue_300",
-        "var_blue_400", "var_blue_500", "var_blue_600", "var_blue_700",
-        "var_blue_800", "var_blue_900",
-        "var_green_50", "var_green_100", "var_green_200", "var_green_300",
-        "var_green_400", "var_green_500", "var_green_600", "var_green_700",
-        "var_red_50", "var_red_100", "var_red_200", "var_red_300",
-        "var_red_400", "var_red_500", "var_red_600", "var_red_700",
-        "var_neutral_0", "var_neutral_50", "var_neutral_100", "var_neutral_200",
-        "var_neutral_300", "var_neutral_400", "var_neutral_500", "var_neutral_600",
-        "var_neutral_700", "var_neutral_800", "var_neutral_900", "var_neutral_950",
-        "var_spacing_0", "var_spacing_1", "var_spacing_2", "var_spacing_3",
-        "var_spacing_4", "var_spacing_6", "var_spacing_8", "var_spacing_10",
-        "var_spacing_12", "var_spacing_16",
-        "var_radius_none", "var_radius_sm", "var_radius_md", "var_radius_lg",
-        "var_radius_xl", "var_radius_full",
-        "var_font_size_xs", "var_font_size_sm", "var_font_size_base",
-        "var_font_size_lg", "var_font_size_xl", "var_font_size_2xl",
-        "var_font_size_3xl", "var_font_size_4xl"
-      ]
-    },
-    {
-      "id": "col_semantic",
-      "name": "Semantic",
-      "modes": [
-        { "modeId": "mode_light", "name": "Light" },
-        { "modeId": "mode_dark", "name": "Dark" }
-      ],
-      "variableIds": [
-        "var_bg_primary", "var_bg_secondary", "var_bg_tertiary",
-        "var_bg_inverse", "var_bg_brand", "var_bg_danger", "var_bg_success",
-        "var_text_primary", "var_text_secondary", "var_text_tertiary",
-        "var_text_inverse", "var_text_brand", "var_text_danger", "var_text_success",
-        "var_border_default", "var_border_strong", "var_border_brand",
-        "var_icon_primary", "var_icon_secondary", "var_icon_brand",
-        "var_spacing_component_xs", "var_spacing_component_sm",
-        "var_spacing_component_md", "var_spacing_component_lg",
-        "var_spacing_component_xl"
-      ]
-    },
-    {
-      "id": "col_component",
-      "name": "Component",
-      "modes": [
-        { "modeId": "mode_default_comp", "name": "Default" }
-      ],
-      "variableIds": [
-        "var_button_bg", "var_button_text", "var_button_radius",
-        "var_button_padding_x", "var_button_padding_y",
-        "var_input_bg", "var_input_text", "var_input_border",
-        "var_input_radius", "var_input_padding_x", "var_input_padding_y",
-        "var_card_bg", "var_card_border", "var_card_radius", "var_card_padding",
-        "var_badge_bg", "var_badge_text", "var_badge_radius"
+        "var_0",
+        "var_1",
+        "var_2",
+        "var_3",
+        "var_4",
+        "var_5",
+        "var_6",
+        "var_7",
+        "var_8",
+        "var_9",
+        "var_10",
+        "var_11",
+        "var_12",
+        "var_13",
+        "var_14",
+        "var_15",
+        "var_16",
+        "var_17",
+        "var_18",
+        "var_19",
+        "var_20",
+        "var_21",
+        "var_22",
+        "var_23",
+        "var_24",
+        "var_25",
+        "var_26",
+        "var_27",
+        "var_28",
+        "var_29",
+        "var_30",
+        "var_31",
+        "var_32",
+        "var_33",
+        "var_34",
+        "var_35",
+        "var_36",
+        "var_37",
+        "var_38",
+        "var_39",
+        "var_40",
+        "var_41",
+        "var_42",
+        "var_43",
+        "var_44",
+        "var_45",
+        "var_46",
+        "var_47",
+        "var_48",
+        "var_49",
+        "var_50",
+        "var_51",
+        "var_52",
+        "var_53",
+        "var_54",
+        "var_55",
+        "var_56",
+        "var_57",
+        "var_58",
+        "var_59",
+        "var_60",
+        "var_61",
+        "var_62",
+        "var_63",
+        "var_64",
+        "var_65",
+        "var_66",
+        "var_67",
+        "var_68",
+        "var_69",
+        "var_70",
+        "var_71",
+        "var_72",
+        "var_73",
+        "var_74",
+        "var_75",
+        "var_76",
+        "var_77",
+        "var_78",
+        "var_79",
+        "var_80",
+        "var_81",
+        "var_82",
+        "var_83",
+        "var_84",
+        "var_85",
+        "var_86",
+        "var_87",
+        "var_88",
+        "var_89",
+        "var_90",
+        "var_91",
+        "var_92",
+        "var_93",
+        "var_94",
+        "var_95",
+        "var_96",
+        "var_97",
+        "var_98",
+        "var_99",
+        "var_100",
+        "var_101",
+        "var_102",
+        "var_103",
+        "var_104",
+        "var_105",
+        "var_106",
+        "var_107",
+        "var_108",
+        "var_109",
+        "var_110",
+        "var_111",
+        "var_112",
+        "var_113",
+        "var_114",
+        "var_115",
+        "var_116",
+        "var_117",
+        "var_118",
+        "var_119"
       ]
     }
   ],
   "variables": {
-    "var_blue_50":  { "id": "var_blue_50",  "name": "color/blue/50",  "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.937, "g": 0.961, "b": 1.0, "a": 1 } } } },
-    "var_blue_100": { "id": "var_blue_100", "name": "color/blue/100", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.859, "g": 0.914, "b": 0.996, "a": 1 } } } },
-    "var_blue_200": { "id": "var_blue_200", "name": "color/blue/200", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.749, "g": 0.855, "b": 0.992, "a": 1 } } } },
-    "var_blue_300": { "id": "var_blue_300", "name": "color/blue/300", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.576, "g": 0.773, "b": 0.988, "a": 1 } } } },
-    "var_blue_400": { "id": "var_blue_400", "name": "color/blue/400", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.376, "g": 0.647, "b": 0.976, "a": 1 } } } },
-    "var_blue_500": { "id": "var_blue_500", "name": "color/blue/500", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.231, "g": 0.510, "b": 0.965, "a": 1 } } } },
-    "var_blue_600": { "id": "var_blue_600", "name": "color/blue/600", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.145, "g": 0.388, "b": 0.922, "a": 1 } } } },
-    "var_blue_700": { "id": "var_blue_700", "name": "color/blue/700", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.114, "g": 0.306, "b": 0.847, "a": 1 } } } },
-    "var_blue_800": { "id": "var_blue_800", "name": "color/blue/800", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.118, "g": 0.251, "b": 0.686, "a": 1 } } } },
-    "var_blue_900": { "id": "var_blue_900", "name": "color/blue/900", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.114, "g": 0.208, "b": 0.541, "a": 1 } } } },
-    "var_green_50":  { "id": "var_green_50",  "name": "color/green/50",  "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.941, "g": 0.992, "b": 0.957, "a": 1 } } } },
-    "var_green_100": { "id": "var_green_100", "name": "color/green/100", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.863, "g": 0.976, "b": 0.898, "a": 1 } } } },
-    "var_green_200": { "id": "var_green_200", "name": "color/green/200", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.733, "g": 0.945, "b": 0.804, "a": 1 } } } },
-    "var_green_300": { "id": "var_green_300", "name": "color/green/300", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.525, "g": 0.886, "b": 0.651, "a": 1 } } } },
-    "var_green_400": { "id": "var_green_400", "name": "color/green/400", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.290, "g": 0.796, "b": 0.475, "a": 1 } } } },
-    "var_green_500": { "id": "var_green_500", "name": "color/green/500", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.133, "g": 0.694, "b": 0.365, "a": 1 } } } },
-    "var_green_600": { "id": "var_green_600", "name": "color/green/600", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.086, "g": 0.561, "b": 0.290, "a": 1 } } } },
-    "var_green_700": { "id": "var_green_700", "name": "color/green/700", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.082, "g": 0.443, "b": 0.239, "a": 1 } } } },
-    "var_red_50":  { "id": "var_red_50",  "name": "color/red/50",  "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 1.0, "g": 0.949, "b": 0.949, "a": 1 } } } },
-    "var_red_100": { "id": "var_red_100", "name": "color/red/100", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.996, "g": 0.886, "b": 0.886, "a": 1 } } } },
-    "var_red_200": { "id": "var_red_200", "name": "color/red/200", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.996, "g": 0.792, "b": 0.792, "a": 1 } } } },
-    "var_red_300": { "id": "var_red_300", "name": "color/red/300", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.988, "g": 0.647, "b": 0.647, "a": 1 } } } },
-    "var_red_400": { "id": "var_red_400", "name": "color/red/400", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.973, "g": 0.443, "b": 0.443, "a": 1 } } } },
-    "var_red_500": { "id": "var_red_500", "name": "color/red/500", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.937, "g": 0.267, "b": 0.267, "a": 1 } } } },
-    "var_red_600": { "id": "var_red_600", "name": "color/red/600", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.863, "g": 0.149, "b": 0.149, "a": 1 } } } },
-    "var_red_700": { "id": "var_red_700", "name": "color/red/700", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.725, "g": 0.114, "b": 0.114, "a": 1 } } } },
-    "var_neutral_0":   { "id": "var_neutral_0",   "name": "color/neutral/0",   "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 1.0, "g": 1.0, "b": 1.0, "a": 1 } } } },
-    "var_neutral_50":  { "id": "var_neutral_50",  "name": "color/neutral/50",  "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.980, "g": 0.980, "b": 0.980, "a": 1 } } } },
-    "var_neutral_100": { "id": "var_neutral_100", "name": "color/neutral/100", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.961, "g": 0.961, "b": 0.961, "a": 1 } } } },
-    "var_neutral_200": { "id": "var_neutral_200", "name": "color/neutral/200", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.898, "g": 0.898, "b": 0.898, "a": 1 } } } },
-    "var_neutral_300": { "id": "var_neutral_300", "name": "color/neutral/300", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.831, "g": 0.831, "b": 0.831, "a": 1 } } } },
-    "var_neutral_400": { "id": "var_neutral_400", "name": "color/neutral/400", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.639, "g": 0.639, "b": 0.639, "a": 1 } } } },
-    "var_neutral_500": { "id": "var_neutral_500", "name": "color/neutral/500", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.451, "g": 0.451, "b": 0.451, "a": 1 } } } },
-    "var_neutral_600": { "id": "var_neutral_600", "name": "color/neutral/600", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.322, "g": 0.322, "b": 0.322, "a": 1 } } } },
-    "var_neutral_700": { "id": "var_neutral_700", "name": "color/neutral/700", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.247, "g": 0.247, "b": 0.247, "a": 1 } } } },
-    "var_neutral_800": { "id": "var_neutral_800", "name": "color/neutral/800", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.161, "g": 0.161, "b": 0.161, "a": 1 } } } },
-    "var_neutral_900": { "id": "var_neutral_900", "name": "color/neutral/900", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.090, "g": 0.090, "b": 0.090, "a": 1 } } } },
-    "var_neutral_950": { "id": "var_neutral_950", "name": "color/neutral/950", "type": "COLOR", "valuesByMode": { "mode_default": { "type": "COLOR", "value": { "r": 0.039, "g": 0.039, "b": 0.039, "a": 1 } } } },
-    "var_spacing_0":  { "id": "var_spacing_0",  "name": "spacing/0",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 0 } } },
-    "var_spacing_1":  { "id": "var_spacing_1",  "name": "spacing/1",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 4 } } },
-    "var_spacing_2":  { "id": "var_spacing_2",  "name": "spacing/2",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 8 } } },
-    "var_spacing_3":  { "id": "var_spacing_3",  "name": "spacing/3",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 12 } } },
-    "var_spacing_4":  { "id": "var_spacing_4",  "name": "spacing/4",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } } },
-    "var_spacing_6":  { "id": "var_spacing_6",  "name": "spacing/6",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 24 } } },
-    "var_spacing_8":  { "id": "var_spacing_8",  "name": "spacing/8",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 32 } } },
-    "var_spacing_10": { "id": "var_spacing_10", "name": "spacing/10", "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 40 } } },
-    "var_spacing_12": { "id": "var_spacing_12", "name": "spacing/12", "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 48 } } },
-    "var_spacing_16": { "id": "var_spacing_16", "name": "spacing/16", "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 64 } } },
-    "var_radius_none": { "id": "var_radius_none", "name": "radius/none", "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 0 } } },
-    "var_radius_sm":   { "id": "var_radius_sm",   "name": "radius/sm",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 4 } } },
-    "var_radius_md":   { "id": "var_radius_md",   "name": "radius/md",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 8 } } },
-    "var_radius_lg":   { "id": "var_radius_lg",   "name": "radius/lg",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 12 } } },
-    "var_radius_xl":   { "id": "var_radius_xl",   "name": "radius/xl",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } } },
-    "var_radius_full": { "id": "var_radius_full", "name": "radius/full", "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 9999 } } },
-    "var_font_size_xs":   { "id": "var_font_size_xs",   "name": "fontSize/xs",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 12 } } },
-    "var_font_size_sm":   { "id": "var_font_size_sm",   "name": "fontSize/sm",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } } },
-    "var_font_size_base": { "id": "var_font_size_base", "name": "fontSize/base", "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } } },
-    "var_font_size_lg":   { "id": "var_font_size_lg",   "name": "fontSize/lg",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 18 } } },
-    "var_font_size_xl":   { "id": "var_font_size_xl",   "name": "fontSize/xl",   "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 20 } } },
-    "var_font_size_2xl":  { "id": "var_font_size_2xl",  "name": "fontSize/2xl",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 24 } } },
-    "var_font_size_3xl":  { "id": "var_font_size_3xl",  "name": "fontSize/3xl",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 30 } } },
-    "var_font_size_4xl":  { "id": "var_font_size_4xl",  "name": "fontSize/4xl",  "type": "NUMBER", "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 36 } } },
-
-    "var_bg_primary":   { "id": "var_bg_primary",   "name": "bg/primary",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_0" },   "mode_dark": { "type": "ALIAS", "id": "var_neutral_950" } } },
-    "var_bg_secondary": { "id": "var_bg_secondary", "name": "bg/secondary", "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_50" },  "mode_dark": { "type": "ALIAS", "id": "var_neutral_900" } } },
-    "var_bg_tertiary":  { "id": "var_bg_tertiary",  "name": "bg/tertiary",  "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_100" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_800" } } },
-    "var_bg_inverse":   { "id": "var_bg_inverse",   "name": "bg/inverse",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_900" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_0" } } },
-    "var_bg_brand":     { "id": "var_bg_brand",     "name": "bg/brand",     "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_blue_500" },    "mode_dark": { "type": "ALIAS", "id": "var_blue_600" } } },
-    "var_bg_danger":    { "id": "var_bg_danger",    "name": "bg/danger",    "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_red_50" },      "mode_dark": { "type": "ALIAS", "id": "var_red_700" } } },
-    "var_bg_success":   { "id": "var_bg_success",   "name": "bg/success",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_green_50" },    "mode_dark": { "type": "ALIAS", "id": "var_green_700" } } },
-
-    "var_text_primary":   { "id": "var_text_primary",   "name": "text/primary",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_900" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_50" } } },
-    "var_text_secondary": { "id": "var_text_secondary", "name": "text/secondary", "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_600" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_400" } } },
-    "var_text_tertiary":  { "id": "var_text_tertiary",  "name": "text/tertiary",  "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_400" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_500" } } },
-    "var_text_inverse":   { "id": "var_text_inverse",   "name": "text/inverse",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_0" },   "mode_dark": { "type": "ALIAS", "id": "var_neutral_900" } } },
-    "var_text_brand":     { "id": "var_text_brand",     "name": "text/brand",     "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_blue_600" },    "mode_dark": { "type": "ALIAS", "id": "var_blue_400" } } },
-    "var_text_danger":    { "id": "var_text_danger",    "name": "text/danger",    "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_red_600" },     "mode_dark": { "type": "ALIAS", "id": "var_red_400" } } },
-    "var_text_success":   { "id": "var_text_success",   "name": "text/success",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_green_600" },   "mode_dark": { "type": "ALIAS", "id": "var_green_400" } } },
-
-    "var_border_default": { "id": "var_border_default", "name": "border/default", "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_200" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_700" } } },
-    "var_border_strong":  { "id": "var_border_strong",  "name": "border/strong",  "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_400" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_500" } } },
-    "var_border_brand":   { "id": "var_border_brand",   "name": "border/brand",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_blue_500" },    "mode_dark": { "type": "ALIAS", "id": "var_blue_400" } } },
-
-    "var_icon_primary":   { "id": "var_icon_primary",   "name": "icon/primary",   "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_700" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_200" } } },
-    "var_icon_secondary": { "id": "var_icon_secondary", "name": "icon/secondary", "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_neutral_400" }, "mode_dark": { "type": "ALIAS", "id": "var_neutral_500" } } },
-    "var_icon_brand":     { "id": "var_icon_brand",     "name": "icon/brand",     "type": "COLOR", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_blue_500" },    "mode_dark": { "type": "ALIAS", "id": "var_blue_400" } } },
-
-    "var_spacing_component_xs": { "id": "var_spacing_component_xs", "name": "spacing/component/xs", "type": "NUMBER", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_spacing_1" }, "mode_dark": { "type": "ALIAS", "id": "var_spacing_1" } } },
-    "var_spacing_component_sm": { "id": "var_spacing_component_sm", "name": "spacing/component/sm", "type": "NUMBER", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_spacing_2" }, "mode_dark": { "type": "ALIAS", "id": "var_spacing_2" } } },
-    "var_spacing_component_md": { "id": "var_spacing_component_md", "name": "spacing/component/md", "type": "NUMBER", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_spacing_3" }, "mode_dark": { "type": "ALIAS", "id": "var_spacing_3" } } },
-    "var_spacing_component_lg": { "id": "var_spacing_component_lg", "name": "spacing/component/lg", "type": "NUMBER", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_spacing_4" }, "mode_dark": { "type": "ALIAS", "id": "var_spacing_4" } } },
-    "var_spacing_component_xl": { "id": "var_spacing_component_xl", "name": "spacing/component/xl", "type": "NUMBER", "valuesByMode": { "mode_light": { "type": "ALIAS", "id": "var_spacing_8" }, "mode_dark": { "type": "ALIAS", "id": "var_spacing_8" } } },
-
-    "var_button_bg":        { "id": "var_button_bg",        "name": "button/bg",        "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_bg_brand" } } },
-    "var_button_text":      { "id": "var_button_text",      "name": "button/text",      "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_text_inverse" } } },
-    "var_button_radius":    { "id": "var_button_radius",    "name": "button/radius",    "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_radius_md" } } },
-    "var_button_padding_x": { "id": "var_button_padding_x", "name": "button/padding-x", "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_spacing_4" } } },
-    "var_button_padding_y": { "id": "var_button_padding_y", "name": "button/padding-y", "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_spacing_2" } } },
-    "var_input_bg":         { "id": "var_input_bg",         "name": "input/bg",         "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_bg_primary" } } },
-    "var_input_text":       { "id": "var_input_text",       "name": "input/text",       "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_text_primary" } } },
-    "var_input_border":     { "id": "var_input_border",     "name": "input/border",     "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_border_default" } } },
-    "var_input_radius":     { "id": "var_input_radius",     "name": "input/radius",     "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_radius_md" } } },
-    "var_input_padding_x":  { "id": "var_input_padding_x",  "name": "input/padding-x",  "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_spacing_3" } } },
-    "var_input_padding_y":  { "id": "var_input_padding_y",  "name": "input/padding-y",  "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_spacing_2" } } },
-    "var_card_bg":          { "id": "var_card_bg",          "name": "card/bg",          "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_bg_primary" } } },
-    "var_card_border":      { "id": "var_card_border",      "name": "card/border",      "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_border_default" } } },
-    "var_card_radius":      { "id": "var_card_radius",      "name": "card/radius",      "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_radius_lg" } } },
-    "var_card_padding":     { "id": "var_card_padding",     "name": "card/padding",     "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_spacing_4" } } },
-    "var_badge_bg":         { "id": "var_badge_bg",         "name": "badge/bg",         "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_bg_brand" } } },
-    "var_badge_text":       { "id": "var_badge_text",       "name": "badge/text",       "type": "COLOR",  "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_text_inverse" } } },
-    "var_badge_radius":     { "id": "var_badge_radius",     "name": "badge/radius",     "type": "NUMBER", "valuesByMode": { "mode_default_comp": { "type": "ALIAS", "id": "var_radius_full" } } }
+    "var_0": {
+      "id": "var_0",
+      "name": "文字图标色/on_surface",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_1": {
+      "id": "var_1",
+      "name": "背景色/surface",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_2": {
+      "id": "var_2",
+      "name": "灰底图标",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#747474,#D1D1D1"
+        }
+      }
+    },
+    "var_3": {
+      "id": "var_3",
+      "name": "新增色彩变量/container_nav",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.050980392156862744
+          }
+        }
+      }
+    },
+    "var_4": {
+      "id": "var_4",
+      "name": "padding/padding_sm",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      }
+    },
+    "var_5": {
+      "id": "var_5",
+      "name": "Size/Title 1",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 32
+        }
+      }
+    },
+    "var_6": {
+      "id": "var_6",
+      "name": "Weight/Title 1",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 330
+        }
+      }
+    },
+    "var_7": {
+      "id": "var_7",
+      "name": "padding/padding_lg",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 28
+        }
+      }
+    },
+    "var_8": {
+      "id": "var_8",
+      "name": "模糊数值/Default",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: BACKGROUND_BLUR, radius: 66)"
+        }
+      }
+    },
+    "var_9": {
+      "id": "var_9",
+      "name": "背景色/surface_low",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9529411764705882,
+            "g": 0.9529411764705882,
+            "b": 0.9529411764705882,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_10": {
+      "id": "var_10",
+      "name": "Size/Body 1",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 16
+        }
+      }
+    },
+    "var_11": {
+      "id": "var_11",
+      "name": "Weight/Body 1",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 330
+        }
+      }
+    },
+    "var_12": {
+      "id": "var_12",
+      "name": "Body/Body 1",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Regular, size: Size/Body 1, weight: Weight/Body 1, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_13": {
+      "id": "var_13",
+      "name": "背景色/surface_highest",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_14": {
+      "id": "var_14",
+      "name": "系统主色/primary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.20392156862745098,
+            "g": 0.5098039215686274,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_15": {
+      "id": "var_15",
+      "name": "元素色/surface_container_high",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.10196078431372549
+          }
+        }
+      }
+    },
+    "var_16": {
+      "id": "var_16",
+      "name": "文字图标色/on_surface_quaternary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.4
+          }
+        }
+      }
+    },
+    "var_17": {
+      "id": "var_17",
+      "name": "common",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 16
+        }
+      }
+    },
+    "var_18": {
+      "id": "var_18",
+      "name": "demi_big",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 24
+        }
+      }
+    },
+    "var_19": {
+      "id": "var_19",
+      "name": "Pured/Pured_Regular_Glass_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#000000,#FFFFFF,#FFFFFF"
+        }
+      }
+    },
+    "var_20": {
+      "id": "var_20",
+      "name": "Stroke/Glass_Stroke_Small_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": ""
+        }
+      }
+    },
+    "var_21": {
+      "id": "var_21",
+      "name": "FrostShadow/FrostEffect_Regular_ShadowOn",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #00000014, offset: (0, 24), radius: 60, spread: 0); Effect(type: DROP_SHADOW, color: #0000000F, offset: (0, 0), radius: 40, spread: 0); Effect(type: INNER_SHADOW, color: #9D9D9D, offset: (0, 2), radius: 2, spread: 0); Effect(type: BACKGROUND_BLUR, radius: 60)"
+        }
+      }
+    },
+    "var_22": {
+      "id": "var_22",
+      "name": "全系统色板/Gray",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_23": {
+      "id": "var_23",
+      "name": "Size/Headline 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 16
+        }
+      }
+    },
+    "var_24": {
+      "id": "var_24",
+      "name": "Weight/Headline 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
+      }
+    },
+    "var_25": {
+      "id": "var_25",
+      "name": "Headline/Headline 2",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Medium, size: Size/Headline 2, weight: Weight/Headline 2, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_26": {
+      "id": "var_26",
+      "name": "系统色-light/primary- default/blue-light-primary-default",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.20392156862745098,
+            "g": 0.5098039215686274,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_27": {
+      "id": "var_27",
+      "name": "Shadow/Shadow_Low",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 12), radius: 40, spread: 0); Effect(type: DROP_SHADOW, color: #00000005, offset: (0, 0), radius: 20, spread: 0)"
+        }
+      }
+    },
+    "var_28": {
+      "id": "var_28",
+      "name": "文字图标色/on_surface_secondary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.8
+          }
+        }
+      }
+    },
+    "var_29": {
+      "id": "var_29",
+      "name": "Title/Title 1",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Regular, size: Size/Title 1, weight: Weight/Title 1, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_30": {
+      "id": "var_30",
+      "name": "Pured/Pured_Thin_Glass_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#000000,#FFFFFF,#FFFFFF"
+        }
+      }
+    },
+    "var_31": {
+      "id": "var_31",
+      "name": "FrostShadow/FrostEffect_Thin_ShadowOn",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #00000014, offset: (0, 24), radius: 60, spread: 0); Effect(type: DROP_SHADOW, color: #0000000F, offset: (0, 0), radius: 40, spread: 0); Effect(type: INNER_SHADOW, color: #9D9D9D, offset: (0, 2), radius: 2, spread: 0); Effect(type: BACKGROUND_BLUR, radius: 20)"
+        }
+      }
+    },
+    "var_32": {
+      "id": "var_32",
+      "name": "Size/Title 4",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 18
+        }
+      }
+    },
+    "var_33": {
+      "id": "var_33",
+      "name": "Weight/Title 4",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
+      }
+    },
+    "var_34": {
+      "id": "var_34",
+      "name": "Title/Title 4",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Medium, size: Size/Title 4, weight: Weight/Title 4, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_35": {
+      "id": "var_35",
+      "name": "Weight/Title 3",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
+      }
+    },
+    "var_36": {
+      "id": "var_36",
+      "name": "Stroke/Glass_Stroke_Middle_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": ""
+        }
+      }
+    },
+    "var_37": {
+      "id": "var_37",
+      "name": "Size/Footnote 3",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 11
+        }
+      }
+    },
+    "var_38": {
+      "id": "var_38",
+      "name": "big",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 36
+        }
+      }
+    },
+    "var_39": {
+      "id": "var_39",
+      "name": "元素色/surface_container_medium",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.0784313725490196
+          }
+        }
+      }
+    },
+    "var_40": {
+      "id": "var_40",
+      "name": "Size/Footnote 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 11
+        }
+      }
+    },
+    "var_41": {
+      "id": "var_41",
+      "name": "Weight/Footnote 3",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 450
+        }
+      }
+    },
+    "var_42": {
+      "id": "var_42",
+      "name": "Footnote/Footnote 3",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Demibold, size: Size/Footnote 3, weight: Weight/Footnote 3, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_43": {
+      "id": "var_43",
+      "name": "Weight/Footnote 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 330
+        }
+      }
+    },
+    "var_44": {
+      "id": "var_44",
+      "name": "Footnote/Footnote 2",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Regular, size: Size/Footnote 2, weight: Weight/Footnote 2, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_45": {
+      "id": "var_45",
+      "name": "Blur-L",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 70
+        }
+      }
+    },
+    "var_46": {
+      "id": "var_46",
+      "name": "Frosted 混色/light/pured-regular",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#F9F9F9,#F7F7F7"
+        }
+      }
+    },
+    "var_47": {
+      "id": "var_47",
+      "name": "Blur 模糊半径/Blur-L",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: BACKGROUND_BLUR, radius: Blur-L)"
+        }
+      }
+    },
+    "var_48": {
+      "id": "var_48",
+      "name": "Glass Color/Light/绿色",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": ""
+        }
+      }
+    },
+    "var_49": {
+      "id": "var_49",
+      "name": "文字图标色/on_Surface_button_disable",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_50": {
+      "id": "var_50",
+      "name": "文字图标色/on_surface_octonary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30196078431372547
+          }
+        }
+      }
+    },
+    "var_51": {
+      "id": "var_51",
+      "name": "Glass-Stroke  描边/light/small",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": ""
+        }
+      }
+    },
+    "var_52": {
+      "id": "var_52",
+      "name": "Glass 内阴影+模糊/Glass-regular-effect",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: BACKGROUND_BLUR, radius: 70); Effect(type: INNER_SHADOW, color: #FFFFFF99, offset: (1, 1.5), radius: 1, spread: 0)"
+        }
+      }
+    },
+    "var_53": {
+      "id": "var_53",
+      "name": "元素色/surface_container_low",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.058823529411764705
+          }
+        }
+      }
+    },
+    "var_54": {
+      "id": "var_54",
+      "name": "Colored/Colored_Regular_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#A6A6A6,#FFFFFF"
+        }
+      }
+    },
+    "var_55": {
+      "id": "var_55",
+      "name": "circle",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 999
+        }
+      }
+    },
+    "var_56": {
+      "id": "var_56",
+      "name": "元素色/container_list",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_57": {
+      "id": "var_57",
+      "name": "Miscellaneous/Floating Tab - Pill Shadow",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.0784313725490196
+          }
+        }
+      }
+    },
+    "var_58": {
+      "id": "var_58",
+      "name": "系统主色/on_secondary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.20392156862745098,
+            "g": 0.5098039215686274,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_59": {
+      "id": "var_59",
+      "name": "Size/Headline 1",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 17
+        }
+      }
+    },
+    "var_60": {
+      "id": "var_60",
+      "name": "Weight/Headline 1",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
+      }
+    },
+    "var_61": {
+      "id": "var_61",
+      "name": "Headline/Headline 1",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Medium, size: Size/Headline 1, weight: Weight/Headline 1, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_62": {
+      "id": "var_62",
+      "name": "Size/Subtitle 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      }
+    },
+    "var_63": {
+      "id": "var_63",
+      "name": "Weight/Subtitle 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 450
+        }
+      }
+    },
+    "var_64": {
+      "id": "var_64",
+      "name": "Subtitle/Subtitle 2",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Demibold, size: Size/Subtitle 2, weight: Weight/Subtitle 2, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_65": {
+      "id": "var_65",
+      "name": "medium",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 20
+        }
+      }
+    },
+    "var_66": {
+      "id": "var_66",
+      "name": "文字图标色/on_surface_tertiary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.6
+          }
+        }
+      }
+    },
+    "var_67": {
+      "id": "var_67",
+      "name": "Size/Subtitle 3",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      }
+    },
+    "var_68": {
+      "id": "var_68",
+      "name": "Weight/Subtitle 3",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 330
+        }
+      }
+    },
+    "var_69": {
+      "id": "var_69",
+      "name": "Subtitle/Subtitle 3",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Regular, size: Size/Subtitle 3, weight: Weight/Subtitle 3, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_70": {
+      "id": "var_70",
+      "name": "margin/base_horizontal",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      }
+    },
+    "var_71": {
+      "id": "var_71",
+      "name": "Pured/Pured_Extra_Thick_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#FFFFFF,#F5F5F5"
+        }
+      }
+    },
+    "var_72": {
+      "id": "var_72",
+      "name": "small",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      }
+    },
+    "var_73": {
+      "id": "var_73",
+      "name": "背景色/surface_medium",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_74": {
+      "id": "var_74",
+      "name": "Size/Subtitle",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      }
+    },
+    "var_75": {
+      "id": "var_75",
+      "name": "Weight/Subtitle",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
+      }
+    },
+    "var_76": {
+      "id": "var_76",
+      "name": "Subtitle/Subtitle",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Medium, size: Size/Subtitle, weight: Weight/Subtitle, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_77": {
+      "id": "var_77",
+      "name": "tiny",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 8
+        }
+      }
+    },
+    "var_78": {
+      "id": "var_78",
+      "name": "底栏选中材质",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #CBCBCB1A, offset: (0, 0), radius: 20, spread: 0)"
+        }
+      }
+    },
+    "var_79": {
+      "id": "var_79",
+      "name": "Info  轻混色/light/extra-thin",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.6941176470588235,
+            "g": 0.6941176470588235,
+            "b": 0.6941176470588235,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_80": {
+      "id": "var_80",
+      "name": "Size/Body 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      }
+    },
+    "var_81": {
+      "id": "var_81",
+      "name": "Weight/Body 2",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 330
+        }
+      }
+    },
+    "var_82": {
+      "id": "var_82",
+      "name": "Body/Body 2",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Regular, size: Size/Body 2, weight: Weight/Body 2, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_83": {
+      "id": "var_83",
+      "name": "系统主色/on_primary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_84": {
+      "id": "var_84",
+      "name": "Pured/Pured_Thick_Glass_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#000000,#FFFFFF,#FFFFFF"
+        }
+      }
+    },
+    "var_85": {
+      "id": "var_85",
+      "name": "Stroke/Glass_Stroke_Big_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": ""
+        }
+      }
+    },
+    "var_86": {
+      "id": "var_86",
+      "name": "FrostShadow/FrostEffect_Thick_ShadowOn",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #00000014, offset: (0, 36), radius: 80, spread: 0); Effect(type: DROP_SHADOW, color: #0000000F, offset: (0, 0), radius: 60, spread: 0); Effect(type: BACKGROUND_BLUR, radius: 60)"
+        }
+      }
+    },
+    "var_87": {
+      "id": "var_87",
+      "name": "文字色/主要文字100%",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_88": {
+      "id": "var_88",
+      "name": "radius/radius_demi_big",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 24
+        }
+      }
+    },
+    "var_89": {
+      "id": "var_89",
+      "name": "Shadow/Shadow_Thick",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #00000014, offset: (0, 36), radius: 80, spread: 0); Effect(type: DROP_SHADOW, color: #0000000F, offset: (0, 0), radius: 60, spread: 0)"
+        }
+      }
+    },
+    "var_90": {
+      "id": "var_90",
+      "name": "镂空效果 Dark/Heavy",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#232323,#000000"
+        }
+      }
+    },
+    "var_91": {
+      "id": "var_91",
+      "name": "FrostShadow/FrostEffect_Thick_ShadowOff",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: INNER_SHADOW, color: #9D9D9D, offset: (0, 2), radius: 2, spread: 0); Effect(type: BACKGROUND_BLUR, radius: 60)"
+        }
+      }
+    },
+    "var_92": {
+      "id": "var_92",
+      "name": "新增色彩变量/hy_color_nav_container",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.058823529411764705
+          }
+        }
+      }
+    },
+    "var_93": {
+      "id": "var_93",
+      "name": "全系统色板/Blue",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.20392156862745098,
+            "g": 0.5098039215686274,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_94": {
+      "id": "var_94",
+      "name": "全系统色板/Orange",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 0.4117647058823529,
+            "b": 0,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_95": {
+      "id": "var_95",
+      "name": "black/color-black-level7",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.10196078431372549
+          }
+        }
+      }
+    },
+    "var_96": {
+      "id": "var_96",
+      "name": "遮罩色/mask",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.2
+          }
+        }
+      }
+    },
+    "var_97": {
+      "id": "var_97",
+      "name": "GlassShadow (OS4禁用）/GlassEffect_Thick_ShadowOff",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: INNER_SHADOW, color: #9D9D9D, offset: (0, 2), radius: 2, spread: 0); Effect(type: GLASS, radius: 70)"
+        }
+      }
+    },
+    "var_98": {
+      "id": "var_98",
+      "name": "分割线色/outline",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.10196078431372549
+          }
+        }
+      }
+    },
+    "var_99": {
+      "id": "var_99",
+      "name": "系统主色/tertiary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.058823529411764705
+          }
+        }
+      }
+    },
+    "var_100": {
+      "id": "var_100",
+      "name": "系统主色/on_tertiary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.8
+          }
+        }
+      }
+    },
+    "var_101": {
+      "id": "var_101",
+      "name": "Size/Button",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 17
+        }
+      }
+    },
+    "var_102": {
+      "id": "var_102",
+      "name": "Weight/Button",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
+      }
+    },
+    "var_103": {
+      "id": "var_103",
+      "name": "Button/Button",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Medium, size: Size/Button, weight: Weight/Button, lineHeight: 100, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_104": {
+      "id": "var_104",
+      "name": "背景色/surface_high",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_105": {
+      "id": "var_105",
+      "name": "Stroke/Stroke_Regular_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": ""
+        }
+      }
+    },
+    "var_106": {
+      "id": "var_106",
+      "name": "GlassShadow/GlassEffect_Regular_ShadowOn",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #00000014, offset: (0, 24), radius: 60, spread: 0); Effect(type: DROP_SHADOW, color: #0000000F, offset: (0, 0), radius: 40, spread: 0); Effect(type: INNER_SHADOW, color: #9D9D9D, offset: (0, 2), radius: 2, spread: 0); Effect(type: GLASS, radius: 40)"
+        }
+      }
+    },
+    "var_107": {
+      "id": "var_107",
+      "name": "镂空效果 Dark/Default",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#2D2D2D,#000000"
+        }
+      }
+    },
+    "var_108": {
+      "id": "var_108",
+      "name": "Color 1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_109": {
+      "id": "var_109",
+      "name": "Row Height/body 1 - window",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 22.399999618530273
+        }
+      }
+    },
+    "var_110": {
+      "id": "var_110",
+      "name": "Body/Body 1 - window",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Font(family: \"MiSans\", style: Regular, size: Size/Body 1, weight: Weight/Body 1, lineHeight: Row Height/body 1 - window, letterSpacing: 0)"
+        }
+      }
+    },
+    "var_111": {
+      "id": "var_111",
+      "name": "系统功能色/error",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9803921568627451,
+            "g": 0.2196078431372549,
+            "b": 0.1803921568627451,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_112": {
+      "id": "var_112",
+      "name": "radius/radius_big",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 36
+        }
+      }
+    },
+    "var_113": {
+      "id": "var_113",
+      "name": "FrostShadow/FrostEffect_Regular_ShadowOff",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: INNER_SHADOW, color: #9D9D9D, offset: (0, 2), radius: 2, spread: 0); Effect(type: BACKGROUND_BLUR, radius: 60)"
+        }
+      }
+    },
+    "var_114": {
+      "id": "var_114",
+      "name": "Size/Title 3",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 20
+        }
+      }
+    },
+    "var_115": {
+      "id": "var_115",
+      "name": "文字图标色/on_Surface_right_button_bg",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.050980392156862744
+          }
+        }
+      }
+    },
+    "var_116": {
+      "id": "var_116",
+      "name": "系统主色/secondary",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.20392156862745098,
+            "g": 0.5098039215686274,
+            "b": 1,
+            "a": 0.0784313725490196
+          }
+        }
+      }
+    },
+    "var_117": {
+      "id": "var_117",
+      "name": "black/color-black-level6",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30196078431372547
+          }
+        }
+      }
+    },
+    "var_118": {
+      "id": "var_118",
+      "name": "Glass/Fill_Thick_TintGary_Base_Light",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "#000000,#FFFFFF,#FFFFFF"
+        }
+      }
+    },
+    "var_119": {
+      "id": "var_119",
+      "name": "GlassShadow/GlassEffect_Thick_ShadowOn",
+      "type": "STRING",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Effect(type: DROP_SHADOW, color: #0000001F, offset: (0, 14), radius: 45, spread: 0); Effect(type: DROP_SHADOW, color: #0000000A, offset: (0, 10), radius: 16, spread: 0); Effect(type: INNER_SHADOW, color: #B9B9B9, offset: (0, 2), radius: 2, spread: 0); Effect(type: GLASS, radius: 70)"
+        }
+      }
+    }
   }
 }
