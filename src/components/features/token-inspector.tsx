@@ -107,7 +107,7 @@ export function TokenInspector() {
       </div>
 
       {/* Header */}
-      <div className="flex items-center justify-between border-b px-4 py-3">
+      <div className="flex h-14 shrink-0 items-center justify-between border-b px-4 py-2.5">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold truncate">{token.path[token.path.length - 1]}</h3>
           <p className="text-[10px] font-mono text-muted-foreground truncate">{token.name}</p>

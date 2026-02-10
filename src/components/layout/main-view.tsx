@@ -19,7 +19,7 @@ export function MainView() {
   return (
     <div className="flex flex-1 flex-col min-w-0">
       {/* Toolbar */}
-      <div className="flex items-center justify-between border-b px-4 py-2.5">
+      <div className="flex h-14 shrink-0 items-center justify-between border-b px-4 py-2.5">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
             <FileJson className="h-4 w-4 text-muted-foreground" />
@@ -41,10 +41,14 @@ export function MainView() {
         </div>
       </div>
 
-      {/* Content: min-h-0 让 flex 子项可收缩，ScrollArea 才能获得固定高度并出现滚动 */}
-      <ScrollArea className="min-h-0 flex-1">
-        {viewMode === "grid" ? <TokenGrid /> : <TokenList />}
-      </ScrollArea>
+      {/* Content: min-h-0 让 flex 子项可收缩；列表模式不用 ScrollArea（其 Viewport inline style 会 clip 横向），由 TokenList 自身 overflow:auto 处理双轴滚动 */}
+      {viewMode === "grid" ? (
+        <ScrollArea className="min-h-0 flex-1">
+          <TokenGrid />
+        </ScrollArea>
+      ) : (
+        <TokenList />
+      )}
     </div>
   );
 }

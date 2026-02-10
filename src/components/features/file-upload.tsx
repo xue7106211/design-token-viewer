@@ -132,7 +132,7 @@ export function FileUpload() {
           onClick={handleLoadSample}
         >
           <Sparkles className="h-4 w-4" />
-          加载示例数据（Xiaomi Hyper OS4 UI Kit）
+          加载示例数据（Feature Token）
         </Button>
       </div>
     </div>

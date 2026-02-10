@@ -24,6 +24,13 @@ export interface FigmaAliasValue {
 
 export type FigmaValue = FigmaConcreteValue | FigmaAliasValue;
 
+/** Figma Plugin API: code syntax per platform (WEB, ANDROID, iOS) */
+export interface FigmaCodeSyntax {
+  WEB?: string;
+  ANDROID?: string;
+  iOS?: string;
+}
+
 /** Figma native export: a single variable */
 export interface FigmaVariable {
   id: string;
@@ -31,6 +38,14 @@ export interface FigmaVariable {
   type: "COLOR" | "NUMBER" | "STRING" | "BOOLEAN";
   description?: string;
   valuesByMode: Record<string, FigmaValue>;
+  /** Import key (Figma Plugin API); optional in JSON export */
+  key?: string;
+  /** Collection this variable belongs to (Figma Plugin API) */
+  variableCollectionId?: string;
+  /** Resolved type (Figma Plugin API) */
+  resolvedType?: "COLOR" | "NUMBER" | "STRING" | "BOOLEAN";
+  /** Code syntax per platform (Figma Plugin API) */
+  codeSyntax?: FigmaCodeSyntax;
 }
 
 /** Figma native export: a mode */
@@ -45,6 +60,10 @@ export interface FigmaCollection {
   name: string;
   modes: FigmaMode[];
   variableIds: string[];
+  /** Default mode (Figma Plugin API); optional in JSON export */
+  defaultModeId?: string;
+  /** Library key (Figma Plugin API); optional in JSON export */
+  key?: string;
 }
 
 /** Figma native export: top-level JSON structure */

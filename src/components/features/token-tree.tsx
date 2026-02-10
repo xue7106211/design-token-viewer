@@ -31,6 +31,7 @@ function TreeNode({
   const expandedPaths = useTokenStore((s) => s.expandedPaths);
   const togglePath = useTokenStore((s) => s.togglePath);
   const selectToken = useTokenStore((s) => s.selectToken);
+  const scrollToGroup = useTokenStore((s) => s.scrollToGroup);
   const selectedTokenId = useTokenStore((s) => s.selectedTokenId);
 
   const isExpanded = expandedPaths.has(node.path);
@@ -42,6 +43,7 @@ function TreeNode({
       selectToken(node.tokenId);
     } else {
       togglePath(node.path);
+      scrollToGroup(node.path);
     }
   };
 

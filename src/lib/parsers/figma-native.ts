@@ -54,6 +54,7 @@ export function parseFigmaNative(json: FigmaNativeJSON): ParsedTokenData {
       aliasOf,
       referencedBy: [],
       description: variable.description,
+      codeSyntax: variable.codeSyntax,
     };
   }
 

@@ -16,18 +16,24 @@ import type { CodeFormat, DesignToken } from "@/types/token";
 import { cn } from "@/lib/utils";
 import { saveAs } from "file-saver";
 
+export type ExportFormat = CodeFormat | "json";
+
 export function ExportDialog() {
   const tokens = useTokenStore((s) => s.tokens);
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);
   const activeModeId = useTokenStore((s) => s.activeModeId);
-  const [format, setFormat] = useState<CodeFormat>("css");
+  const exportRawJSON = useTokenStore((s) => s.exportRawJSON);
+  const [format, setFormat] = useState<ExportFormat>("css");
   const [copied, setCopied] = useState(false);
 
   const visibleTokens: DesignToken[] = filteredTokenIds
     .map((id) => tokens[id])
     .filter((t): t is DesignToken => t !== undefined);
 
-  const code = generateTokenBlock(visibleTokens, format, activeModeId ?? undefined);
+  const code =
+    format === "json"
+      ? exportRawJSON()
+      : generateTokenBlock(visibleTokens, format, activeModeId ?? undefined);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(code);
@@ -36,7 +42,7 @@ export function ExportDialog() {
   }, [code]);
 
   const handleDownload = useCallback(() => {
-    const ext = format === "css" ? "css" : "xml";
+    const ext = format === "json" ? "json" : format === "css" ? "css" : "xml";
     const filename = `design-tokens.${ext}`;
     const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
     saveAs(blob, filename);
@@ -60,7 +66,7 @@ export function ExportDialog() {
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">格式：</span>
             <div className="flex items-center gap-1 rounded-lg border bg-muted/50 p-0.5">
-              {(["css", "android"] as const).map((f) => (
+              {(["css", "android", "json"] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => setFormat(f)}
@@ -71,7 +77,7 @@ export function ExportDialog() {
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {f === "css" ? "CSS" : "Android XML"}
+                  {f === "css" ? "CSS" : f === "android" ? "Android XML" : "JSON (原始数据)"}
                 </button>
               ))}
             </div>

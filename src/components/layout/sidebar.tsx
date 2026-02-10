@@ -18,7 +18,7 @@ export function Sidebar() {
   return (
     <div className="flex h-full w-64 flex-col border-r bg-sidebar">
       {/* Header */}
-      <div className="flex items-center justify-between border-b px-3 py-2.5">
+      <div className="flex h-14 shrink-0 items-center justify-between border-b px-3 py-2.5">
         <div className="flex items-center gap-2">
           <Database className="h-4 w-4 text-muted-foreground" />
           <span className="text-xs font-semibold">HyperOS Token Lib</span>

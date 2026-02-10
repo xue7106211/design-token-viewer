@@ -4,7 +4,7 @@
 
 ## 项目结构
 
-目录与职责说明见 [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)。
+目录与职责说明见 [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)。Figma 预设变量文件格式及 MCP 数据来源限制见 [docs/FIGMA_PRESET_VARIABLES.md](./docs/FIGMA_PRESET_VARIABLES.md)。
 
 ## Getting Started
 

@@ -5,8 +5,44 @@ import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Copy, Check } from "lucide-react";
-import { useState, useCallback } from "react";
+import { ArrowRight, Copy, Check, Pencil, Palette, Code, Trash2 } from "lucide-react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
+import { TokenEditPopover } from "./token-edit-popover";
+import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
+
+const DEFAULT_COLUMN_WIDTHS = [200, 120, 320, 180];
+const MIN_COLUMN_WIDTH = 60;
+const STORAGE_KEY = "token-list-column-widths";
+
+function loadColumnWidths(): number[] {
+  if (typeof window === "undefined") return [...DEFAULT_COLUMN_WIDTHS];
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [...DEFAULT_COLUMN_WIDTHS];
+    const parsed = JSON.parse(raw) as number[];
+    if (Array.isArray(parsed) && parsed.length === 4 && parsed.every((w) => typeof w === "number" && w >= MIN_COLUMN_WIDTH)) {
+      return parsed;
+    }
+  } catch {
+    // ignore
+  }
+  return [...DEFAULT_COLUMN_WIDTHS];
+}
+
+function saveColumnWidths(widths: number[]) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(widths));
+  } catch {
+    // ignore
+  }
+}
 
 export function TokenList() {
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);
@@ -14,7 +50,79 @@ export function TokenList() {
   const activeModeId = useTokenStore((s) => s.activeModeId);
   const selectToken = useTokenStore((s) => s.selectToken);
   const selectedTokenId = useTokenStore((s) => s.selectedTokenId);
+  const scrollToTokenId = useTokenStore((s) => s.scrollToTokenId);
+  const clearScrollTarget = useTokenStore((s) => s.clearScrollTarget);
   const codeFormat = useTokenStore((s) => s.codeFormat);
+
+  const [columnWidths, setColumnWidths] = useState<number[]>(() => loadColumnWidths());
+  const [resizingIndex, setResizingIndex] = useState<number | null>(null);
+  const resizeStartRef = useRef({ x: 0, widths: [] as number[] });
+
+  const tableMinWidth = columnWidths.reduce((a, b) => a + b, 0);
+
+  const handleResizeStart = useCallback((index: number, clientX: number) => {
+    resizeStartRef.current = { x: clientX, widths: [...columnWidths] };
+    setResizingIndex(index);
+  }, [columnWidths]);
+
+  useEffect(() => {
+    if (resizingIndex === null) return;
+    const handleMove = (e: MouseEvent) => {
+      const { x, widths } = resizeStartRef.current;
+      const delta = e.clientX - x;
+      setColumnWidths((prev) => {
+        const next = [...(widths.length ? widths : prev)];
+        const w = next[resizingIndex] + delta;
+        next[resizingIndex] = Math.max(MIN_COLUMN_WIDTH, w);
+        return next;
+      });
+    };
+    const handleUp = () => {
+      setResizingIndex(null);
+      setColumnWidths((w) => {
+        saveColumnWidths(w);
+        return w;
+      });
+    };
+    document.addEventListener("mousemove", handleMove);
+    document.addEventListener("mouseup", handleUp);
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+    return () => {
+      document.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("mouseup", handleUp);
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+    };
+  }, [resizingIndex]);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const contextMenuPositionRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [stickyShadow, setStickyShadow] = useState(false);
+
+  const onScroll = useCallback(() => {
+    const el = scrollRef.current;
+    setStickyShadow((el?.scrollLeft ?? 0) > 0);
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    onScroll();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [onScroll, filteredTokenIds.length]);
+
+  useEffect(() => {
+    if (!scrollToTokenId) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const row = container.querySelector(`[data-token-id="${scrollToTokenId}"]`);
+    if (row) {
+      row.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    clearScrollTarget();
+  }, [scrollToTokenId, clearScrollTarget]);
 
   if (filteredTokenIds.length === 0) {
     return (
@@ -24,56 +132,117 @@ export function TokenList() {
     );
   }
 
+  const stickyShadowClass = stickyShadow
+    ? "shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)]"
+    : "shadow-[2px_0_4px_-1px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_4px_-1px_rgba(0,0,0,0.12)]";
+
+  const stickyHeaderClass = cn(
+    "sticky left-0 z-30 border-r border-border bg-muted",
+    stickyShadowClass
+  );
+
   return (
-    <div className="p-4">
-      {/* Header */}
-      <div className="grid grid-cols-[2fr_1fr_2fr_1fr] gap-4 border-b pb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-        <span>Token Name</span>
-        <span>Value</span>
-        <span>Code Syntax</span>
-        <span>Reference</span>
-      </div>
+    <div
+      ref={scrollRef}
+      className="min-h-0 min-w-0 flex-1 overflow-auto p-4"
+    >
+      <table
+        className="table-fixed w-full border-collapse border border-border text-left"
+        style={{ minWidth: tableMinWidth }}
+      >
+        <colgroup>
+          {columnWidths.map((w, i) => (
+            <col key={i} style={{ width: w }} />
+          ))}
+        </colgroup>
+        <thead>
+          <tr className="border-b border-border bg-muted/30">
+            <th className={cn("h-10 relative px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground", stickyHeaderClass)}>
+              Token Name
+              <ResizeHandle onResizeStart={(e) => handleResizeStart(0, e.clientX)} />
+            </th>
+            <th className="h-10 relative border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Value
+              <ResizeHandle onResizeStart={(e) => handleResizeStart(1, e.clientX)} />
+            </th>
+            <th className="h-10 relative border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Code Syntax
+              <ResizeHandle onResizeStart={(e) => handleResizeStart(2, e.clientX)} />
+            </th>
+            <th className="h-10 relative px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Reference
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredTokenIds.map((id) => {
+            const token = tokens[id];
+            if (!token) return null;
+            const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
+            const resolved = token.resolvedValues[modeId];
+            if (!resolved) return null;
 
-      {/* Rows */}
-      <div className="divide-y">
-        {filteredTokenIds.map((id) => {
-          const token = tokens[id];
-          if (!token) return null;
-          const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
-          const resolved = token.resolvedValues[modeId];
-          if (!resolved) return null;
+            const code = generateTokenCode(token, codeFormat, modeId);
+            const isSelected = selectedTokenId === id;
 
-          const code = generateTokenCode(token, codeFormat, modeId);
-          const isSelected = selectedTokenId === id;
-
-          return (
-            <TokenListRow
-              key={id}
-              tokenId={id}
-              tokenName={token.name}
-              resolved={resolved}
-              code={code}
-              isAlias={token.isAlias}
-              aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
-              isSelected={isSelected}
-              onClick={() => selectToken(id)}
-            />
-          );
-        })}
-      </div>
+            return (
+              <TokenListRow
+                key={id}
+                tokenId={id}
+                tokenName={token.name}
+                resolved={resolved}
+                code={code}
+                isAlias={token.isAlias}
+                aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
+                isSelected={isSelected}
+                stickyShadow={stickyShadow}
+                onClick={() => selectToken(id)}
+                contextMenuPositionRef={contextMenuPositionRef}
+              />
+            );
+          })}
+        </tbody>
+      </table>
+      <TokenEditPopover />
     </div>
   );
 }
 
+function ResizeHandle({ onResizeStart }: { onResizeStart: (e: React.MouseEvent) => void }) {
+  return (
+    <span
+      role="separator"
+      aria-orientation="vertical"
+      aria-label="调整列宽"
+      onMouseDown={(e) => {
+        e.preventDefault();
+        onResizeStart(e);
+      }}
+      className="absolute right-0 top-0 z-10 h-full w-2 cursor-col-resize select-none touch-none [-webkit-user-select:none] after:absolute after:inset-y-0 after:right-0 after:w-px after:bg-transparent after:transition-colors hover:after:bg-primary/30"
+    />
+  );
+}
+
+function getValueCopyText(resolved: { type: string; value: unknown }): string {
+  if (resolved.type === "COLOR") {
+    const color = resolved.value as { r: number; g: number; b: number; a: number };
+    return colorToHex(color).toUpperCase();
+  }
+  if (resolved.type === "NUMBER") return String(resolved.value);
+  return String(resolved.value);
+}
+
 function TokenListRow({
-  tokenId: _tokenId,
+  tokenId,
   tokenName,
   resolved,
   code,
   isAlias,
   aliasName,
   isSelected,
+  stickyShadow,
   onClick,
+  contextMenuPositionRef,
 }: {
   tokenId: string;
   tokenName: string;
@@ -82,9 +251,22 @@ function TokenListRow({
   isAlias: boolean;
   aliasName?: string;
   isSelected: boolean;
+  stickyShadow: boolean;
   onClick: () => void;
+  contextMenuPositionRef: React.MutableRefObject<{ x: number; y: number }>;
 }) {
   const [copied, setCopied] = useState(false);
+  const setEditingToken = useTokenStore((s) => s.setEditingToken);
+  const deleteToken = useTokenStore((s) => s.deleteToken);
+  const valueCopyText = getValueCopyText(resolved);
+
+  const handleRowDoubleClick = useCallback(
+    (e: React.MouseEvent<HTMLTableRowElement>) => {
+      const pos = { x: e.clientX, y: e.clientY };
+      setEditingToken(tokenId, pos);
+    },
+    [setEditingToken, tokenId]
+  );
 
   const handleCopy = useCallback(
     (e: React.MouseEvent) => {
@@ -100,9 +282,9 @@ function TokenListRow({
     if (resolved.type === "COLOR") {
       const color = resolved.value as { r: number; g: number; b: number; a: number };
       return (
-        <div className="flex items-center gap-2">
-          <ColorSwatch color={color} size="sm" />
-          <span className="font-mono text-xs">{colorToHex(color).toUpperCase()}</span>
+        <div className="flex items-center gap-2 min-w-0">
+          <ColorSwatch color={color} size="sm" className="shrink-0" />
+          <span className="font-mono text-xs truncate">{colorToHex(color).toUpperCase()}</span>
         </div>
       );
     }
@@ -112,39 +294,124 @@ function TokenListRow({
     return <span className="font-mono text-xs truncate">{String(resolved.value)}</span>;
   };
 
+  const cellClass = cn(
+    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0 cursor-pointer",
+    "hover:bg-accent/50 transition-colors duration-200 ease-out",
+    isSelected && "bg-accent"
+  );
+
+  const stickyCellClass = cn(
+    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0 cursor-pointer",
+    "transition-colors duration-200 ease-out",
+    "sticky left-0 z-20 text-xs font-mono truncate max-w-0",
+    isSelected ? "bg-accent" : "bg-background",
+    "hover:bg-accent group-hover:bg-accent",
+    stickyShadow
+      ? "shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)]"
+      : "shadow-[2px_0_4px_-1px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_4px_-1px_rgba(0,0,0,0.12)]"
+  );
+
   return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "grid w-full grid-cols-[2fr_1fr_2fr_1fr] gap-4 items-center px-3 py-2.5 text-left cursor-pointer",
-        "transition-colors duration-200 ease",
-        "hover:bg-accent/50",
-        isSelected && "bg-accent"
-      )}
-    >
-      <span className="text-xs font-mono truncate">{tokenName}</span>
-      <div>{valueDisplay()}</div>
-      <div className="flex items-center gap-1.5 group/code">
-        <code className="text-[11px] font-mono text-muted-foreground truncate flex-1">{code}</code>
-        <button
-          onClick={handleCopy}
-          className="opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-0.5"
+    <ContextMenu>
+      <ContextMenuTrigger asChild>
+        <tr
+          data-token-id={tokenId}
+          className={cn("group", isSelected && "bg-accent")}
+          onDoubleClick={handleRowDoubleClick}
+          onContextMenu={(e) => {
+            contextMenuPositionRef.current = { x: e.clientX, y: e.clientY };
+          }}
         >
-          {copied ? (
-            <Check className="h-3 w-3 text-green-500" />
-          ) : (
-            <Copy className="h-3 w-3 text-muted-foreground" />
-          )}
-        </button>
-      </div>
-      <div className="text-xs text-muted-foreground truncate">
-        {isAlias && aliasName && (
-          <span className="flex items-center gap-1">
-            <ArrowRight className="h-3 w-3 shrink-0" />
-            <span className="truncate">{aliasName}</span>
-          </span>
-        )}
-      </div>
-    </button>
+          <td
+            role="button"
+            tabIndex={0}
+            onClick={onClick}
+            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onClick()}
+            className={stickyCellClass}
+          >
+            {tokenName}
+          </td>
+          <td onClick={onClick} className={cellClass}>
+            {valueDisplay()}
+          </td>
+          <td
+            onClick={onClick}
+            className={cn(cellClass, "flex items-center gap-1.5 group/code")}
+          >
+            <code className="text-[11px] font-mono text-muted-foreground truncate min-w-0 flex-1">
+              {code}
+            </code>
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="shrink-0 opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-0.5"
+              aria-label="复制代码"
+            >
+              {copied ? (
+                <Check className="h-3 w-3 text-green-500" />
+              ) : (
+                <Copy className="h-3 w-3 text-muted-foreground" />
+              )}
+            </button>
+          </td>
+          <td
+            onClick={onClick}
+            className={cn(cellClass, "text-xs text-muted-foreground truncate border-r-0")}
+          >
+            {isAlias && aliasName && (
+              <span className="flex items-center gap-1 min-w-0">
+                <ArrowRight className="h-3 w-3 shrink-0" />
+                <span className="truncate">{aliasName}</span>
+              </span>
+            )}
+          </td>
+        </tr>
+      </ContextMenuTrigger>
+      <ContextMenuContent className="min-w-[160px]">
+        <ContextMenuItem
+          className="cursor-pointer"
+          onSelect={() => {
+            const pos = contextMenuPositionRef.current;
+            setEditingToken(tokenId, pos);
+          }}
+        >
+          <Pencil className="h-3.5 w-3.5" />
+          编辑详情
+        </ContextMenuItem>
+        <ContextMenuItem
+          className="cursor-pointer"
+          onSelect={() => navigator.clipboard.writeText(tokenName)}
+        >
+          <Copy className="h-3.5 w-3.5" />
+          复制名称
+        </ContextMenuItem>
+        <ContextMenuItem
+          className="cursor-pointer"
+          onSelect={() => navigator.clipboard.writeText(valueCopyText)}
+        >
+          <Palette className="h-3.5 w-3.5" />
+          复制值
+        </ContextMenuItem>
+        <ContextMenuItem
+          className="cursor-pointer"
+          onSelect={() => navigator.clipboard.writeText(code)}
+        >
+          <Code className="h-3.5 w-3.5" />
+          复制代码
+        </ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem
+          variant="destructive"
+          className="cursor-pointer"
+          onSelect={() => {
+            deleteToken(tokenId);
+            syncSampleTokensToFile();
+          }}
+        >
+          <Trash2 className="h-3.5 w-3.5" />
+          删除 Token
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
   );
 }

@@ -59,6 +59,8 @@ export interface DesignToken {
   referencedBy: string[];
   /** Human-readable description */
   description?: string;
+  /** Code syntax per platform (Figma: WEB, ANDROID, iOS) */
+  codeSyntax?: { WEB?: string; ANDROID?: string; iOS?: string };
 }
 
 /** A mode within a collection (e.g. "Light", "Dark") */
