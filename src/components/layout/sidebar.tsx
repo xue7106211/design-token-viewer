@@ -6,7 +6,7 @@ import { TokenTree } from "@/components/features/token-tree";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { Database, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Sidebar() {
@@ -19,9 +19,12 @@ export function Sidebar() {
     <div className="flex h-full w-64 flex-col border-r bg-sidebar">
       {/* Header */}
       <div className="flex h-14 shrink-0 items-center justify-between border-b px-3 py-2.5">
-        <div className="flex items-center gap-2">
-          <Database className="h-4 w-4 text-muted-foreground" />
-          <span className="text-xs font-semibold">HyperOS Token Lib</span>
+        <div className="flex items-center h-4 w-[132px] min-w-0 shrink-0 overflow-hidden">
+          <img
+            src="/hyperos-logo.png"
+            alt="HyperOS Token Lib"
+            className="h-4 w-auto max-w-full object-contain object-left block"
+          />
         </div>
         <Button
           variant="ghost"
