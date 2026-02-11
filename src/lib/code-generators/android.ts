@@ -23,14 +23,15 @@ function formatAndroidColor(color: { r: number; g: number; b: number; a: number 
 }
 
 /**
- * Generate a single Android XML resource line
+ * Generate a single Android XML resource line.
+ * Uses token.codeSyntax.ANDROID when present (e.g. from Figma), otherwise derives from token name.
  */
 export function generateAndroidToken(token: DesignToken, modeId?: string): string {
   const resolvedModeId = modeId ?? Object.keys(token.resolvedValues)[0];
   const value = token.resolvedValues[resolvedModeId];
   if (!value) return "";
 
-  const name = toAndroidName(token.name);
+  const name = token.codeSyntax?.ANDROID ?? toAndroidName(token.name);
   return formatAndroidXML(name, value);
 }
 

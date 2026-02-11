@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTokenStore } from "@/stores/token-store";
 import { colorToHex } from "@/lib/contrast";
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,8 @@ import type { TokenValue, ColorValue, DesignToken } from "@/types/token";
 import { X, GripVertical } from "lucide-react";
 
 import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
+
+const POPOVER_TRANSITION = { duration: 0.25, ease: [0.165, 0.84, 0.44, 1] as const };
 
 const POPOVER_WIDTH = 360;
 const PADDING = 12;
@@ -48,8 +51,10 @@ export function TokenEditPopover() {
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const didDragRef = useRef(false);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (editingTokenId && editingPosition) {
@@ -57,14 +62,27 @@ export function TokenEditPopover() {
     }
   }, [editingTokenId, editingPosition]);
 
+  const startClose = useCallback(() => {
+    if (reduceMotion) {
+      setEditingToken(null);
+      return;
+    }
+    setIsExiting(true);
+  }, [reduceMotion, setEditingToken]);
+
+  const handleCloseComplete = useCallback(() => {
+    setIsExiting(false);
+    setEditingToken(null);
+  }, [setEditingToken]);
+
   useEffect(() => {
     if (!editingTokenId) return;
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setEditingToken(null);
+      if (e.key === "Escape") startClose();
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [editingTokenId, setEditingToken]);
+  }, [editingTokenId, startClose]);
 
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent) => {
@@ -73,10 +91,10 @@ export function TokenEditPopover() {
         return;
       }
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setEditingToken(null);
+        startClose();
       }
     },
-    [setEditingToken]
+    [startClose]
   );
 
   const handleHeaderMouseDown = useCallback(
@@ -123,6 +141,7 @@ export function TokenEditPopover() {
     ? activeCollection.tokenIds.filter((id) => id !== token.id).map((id) => ({ id, name: tokens[id]?.name ?? id }))
     : [];
 
+  const duration = reduceMotion ? 0 : POPOVER_TRANSITION.duration;
   const content = (
     <div
       className="fixed inset-0 z-50"
@@ -130,7 +149,7 @@ export function TokenEditPopover() {
       onClick={handleBackdropClick}
       onContextMenu={(e) => e.preventDefault()}
     >
-      <div
+      <motion.div
         ref={containerRef}
         className="rounded-lg border bg-popover text-popover-foreground shadow-lg overflow-hidden min-w-0"
         style={{
@@ -138,8 +157,19 @@ export function TokenEditPopover() {
           left: position.x,
           top: position.y,
           width: POPOVER_WIDTH,
+          transformOrigin: "0 0",
         }}
         onClick={(e) => e.stopPropagation()}
+        initial={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
+        animate={
+          reduceMotion
+            ? { opacity: 1, scale: 1 }
+            : isExiting
+              ? { opacity: 0, scale: 0.96 }
+              : { opacity: 1, scale: 1 }
+        }
+        transition={{ duration, ease: POPOVER_TRANSITION.ease }}
+        onAnimationComplete={isExiting ? handleCloseComplete : undefined}
       >
         <div
           className={cn(
@@ -157,7 +187,7 @@ export function TokenEditPopover() {
             variant="ghost"
             size="icon"
             className="h-7 w-7 shrink-0 cursor-pointer pointer-events-auto"
-            onClick={() => setEditingToken(null)}
+            onClick={startClose}
             aria-label="关闭"
           >
             <X className="h-3.5 w-3.5" />
@@ -208,10 +238,10 @@ export function TokenEditPopover() {
                 raw={raw}
                 onSave={(value) => {
                   updateTokenValue(token.id, modeId, value);
-                  setEditingToken(null);
                   syncSampleTokensToFile();
+                  startClose();
                 }}
-                onCancel={() => setEditingToken(null)}
+                onCancel={startClose}
               />
             </>
           )}
@@ -222,12 +252,12 @@ export function TokenEditPopover() {
           )}
 
           <div className="flex gap-2 justify-end pt-1 border-t pt-3">
-            <Button variant="outline" size="sm" className="cursor-pointer" onClick={() => setEditingToken(null)}>
+            <Button variant="outline" size="sm" className="cursor-pointer" onClick={startClose}>
               关闭
             </Button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 

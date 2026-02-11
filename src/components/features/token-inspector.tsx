@@ -11,7 +11,7 @@ import { CodeOutput } from "./code-output";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { X, ArrowRight, Link2, Eye, GripVertical } from "lucide-react";
+import { X, ArrowRight, Link2, Eye, GripVertical, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { ColorValue } from "@/types/token";
@@ -196,26 +196,64 @@ export function TokenInspector() {
           )}
 
           {/* Alias Chain */}
-          {aliasChain.length > 1 && (
+          {aliasChain.length > 1 && resolved && (
             <>
               <Section title="引用链路">
                 <div className="flex flex-col gap-1">
-                  {aliasChain.map((item, idx) => (
-                    <div key={item.id} className="flex items-center gap-2">
-                      {idx > 0 && <ArrowRight className="h-3 w-3 text-muted-foreground shrink-0" />}
-                      <button
-                        onClick={() => selectToken(item.id)}
-                        className={cn(
-                          "text-xs font-mono cursor-pointer hover:text-primary transition-colors",
-                          item.id === token.id
-                            ? "text-foreground font-medium"
-                            : "text-muted-foreground"
+                  {aliasChain.map((item, idx) => {
+                    const chainToken = tokens[item.id];
+                    const chainResolved = chainToken?.resolvedValues[modeId];
+                    const isColor = chainResolved?.type === "COLOR";
+                    return (
+                      <div key={item.id}>
+                        {idx > 0 && (
+                          <div className="flex justify-center py-0.5">
+                            <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+                          </div>
                         )}
-                      >
-                        {item.name}
-                      </button>
-                    </div>
-                  ))}
+                        <button
+                          type="button"
+                          onClick={() => selectToken(item.id)}
+                          className={cn(
+                            "flex items-center gap-2 min-w-0 w-full text-left rounded-md px-1 py-0.5 -mx-1 hover:bg-accent/50 transition-colors",
+                            item.id === token.id && "bg-accent/30"
+                          )}
+                        >
+                          {isColor && chainResolved && (
+                            <ColorSwatch
+                              color={(chainResolved as { type: "COLOR"; value: ColorValue }).value}
+                              size="sm"
+                              className="shrink-0"
+                            />
+                          )}
+                          <span
+                            className={cn(
+                              "text-xs font-mono truncate text-foreground",
+                              item.id === token.id && "font-medium"
+                            )}
+                            title={item.name}
+                          >
+                            {item.name.length > 28 ? item.name.slice(0, 25) + "…" : item.name}
+                          </span>
+                        </button>
+                      </div>
+                    );
+                  })}
+                  <div className="flex justify-center py-0.5">
+                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+                  </div>
+                  <div className="flex items-center gap-2 min-w-0">
+                    {resolved.type === "COLOR" && (
+                      <ColorSwatch color={resolved.value} size="sm" className="shrink-0" />
+                    )}
+                    <span className="text-xs font-mono text-foreground">
+                      {resolved.type === "COLOR"
+                        ? colorToHex(resolved.value).toUpperCase()
+                        : resolved.type === "NUMBER"
+                          ? `${resolved.value}px`
+                          : String(resolved.value)}
+                    </span>
+                  </div>
                 </div>
               </Section>
               <Separator />

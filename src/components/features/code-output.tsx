@@ -24,7 +24,7 @@ export function CodeOutput({ code, className }: CodeOutputProps) {
   return (
     <div
       className={cn(
-        "relative min-w-0 w-full rounded-lg border bg-muted/30 overflow-hidden",
+        "relative min-w-0 max-w-full w-full rounded-lg border bg-muted/30 overflow-hidden",
         className
       )}
     >
@@ -43,7 +43,7 @@ export function CodeOutput({ code, className }: CodeOutputProps) {
           )}
         </Button>
       </div>
-      <pre className="min-w-0 overflow-x-auto overflow-y-hidden whitespace-pre-wrap break-words p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
+      <pre className="min-w-0 max-w-full overflow-x-auto overflow-y-hidden whitespace-pre-wrap break-all p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
         <code>{code}</code>
       </pre>
     </div>
