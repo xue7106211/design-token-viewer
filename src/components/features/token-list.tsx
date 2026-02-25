@@ -5,8 +5,8 @@ import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Copy, Check, Pencil, Palette, Code, Trash2 } from "lucide-react";
-import { useState, useCallback, useEffect, useRef } from "react";
+import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2 } from "lucide-react";
+import { useState, useCallback, useEffect, useRef, Fragment } from "react";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -53,6 +53,15 @@ export function TokenList() {
   const scrollToTokenId = useTokenStore((s) => s.scrollToTokenId);
   const clearScrollTarget = useTokenStore((s) => s.clearScrollTarget);
   const codeFormat = useTokenStore((s) => s.codeFormat);
+  const searchQuery = useTokenStore((s) => s.searchQuery);
+  const reorderFilteredTokens = useTokenStore((s) => s.reorderFilteredTokens);
+  const updateTokenName = useTokenStore((s) => s.updateTokenName);
+
+  const isDragEnabled = !searchQuery.trim();
+  const [dragSourceId, setDragSourceId] = useState<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
+  const [dropPosition, setDropPosition] = useState<"before" | "after">("after");
+  const [dragOverGroup, setDragOverGroup] = useState<string | null>(null);
 
   const [columnWidths, setColumnWidths] = useState<number[]>(() => loadColumnWidths());
   const [resizingIndex, setResizingIndex] = useState<number | null>(null);
@@ -122,6 +131,88 @@ export function TokenList() {
     clearScrollTarget();
   }, [scrollToTokenId, clearScrollTarget]);
 
+  const handleDragStart = useCallback((tokenId: string) => {
+    setDragSourceId(tokenId);
+  }, []);
+
+  const handleDragOver = useCallback((e: React.DragEvent, tokenId: string) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const midY = rect.top + rect.height / 2;
+    setDragOverId(tokenId);
+    setDropPosition(e.clientY < midY ? "before" : "after");
+    setDragOverGroup(null);
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    setDragSourceId(null);
+    setDragOverId(null);
+    setDragOverGroup(null);
+  }, []);
+
+  const handleDrop = useCallback(() => {
+    if (!dragSourceId || !dragOverId || dragSourceId === dragOverId) {
+      setDragSourceId(null);
+      setDragOverId(null);
+      setDragOverGroup(null);
+      return;
+    }
+    const newIds = filteredTokenIds.filter((id) => id !== dragSourceId);
+    const targetIndex = newIds.indexOf(dragOverId);
+    const insertIndex = dropPosition === "before" ? targetIndex : targetIndex + 1;
+    newIds.splice(insertIndex, 0, dragSourceId);
+    reorderFilteredTokens(newIds);
+    syncSampleTokensToFile();
+    setDragSourceId(null);
+    setDragOverId(null);
+    setDragOverGroup(null);
+  }, [dragSourceId, dragOverId, dropPosition, filteredTokenIds, reorderFilteredTokens]);
+
+  const handleGroupDragOver = useCallback((e: React.DragEvent, groupName: string) => {
+    if (!isDragEnabled) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    setDragOverId(null);
+    setDragOverGroup(groupName);
+  }, [isDragEnabled]);
+
+  const handleGroupDragLeave = useCallback((e: React.DragEvent, groupName: string) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setDragOverGroup((prev) => (prev === groupName ? null : prev));
+    }
+  }, []);
+
+  const handleGroupDrop = useCallback((groupName: string) => {
+    if (!dragSourceId) return;
+    const token = tokens[dragSourceId];
+    if (!token) return;
+
+    const targetGroup = groupName === "(root)" ? "" : groupName;
+    const leaf = token.path[token.path.length - 1] ?? token.name.split("/").filter(Boolean).pop() ?? token.name;
+    const nextName = targetGroup ? `${targetGroup}/${leaf}` : leaf;
+
+    if (nextName !== token.name) {
+      updateTokenName(dragSourceId, nextName);
+    }
+
+    const newIds = filteredTokenIds.filter((id) => id !== dragSourceId);
+    let insertIndex = newIds.length;
+    for (let i = newIds.length - 1; i >= 0; i -= 1) {
+      const t = tokens[newIds[i]];
+      if (t && t.group === targetGroup) {
+        insertIndex = i + 1;
+        break;
+      }
+    }
+    newIds.splice(insertIndex, 0, dragSourceId);
+    reorderFilteredTokens(newIds);
+    syncSampleTokensToFile();
+    setDragSourceId(null);
+    setDragOverId(null);
+    setDragOverGroup(null);
+  }, [dragSourceId, tokens, filteredTokenIds, updateTokenName, reorderFilteredTokens]);
+
   if (filteredTokenIds.length === 0) {
     return (
       <div className="flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center p-4 text-center">
@@ -173,33 +264,74 @@ export function TokenList() {
               </th>
             </tr>
           </thead>
-          <tbody className="[&>tr:last-child>td]:border-b-0">
-            {filteredTokenIds.map((id) => {
-              const token = tokens[id];
-              if (!token) return null;
-              const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
-              const resolved = token.resolvedValues[modeId];
-              if (!resolved) return null;
+          <tbody
+            className="[&>tr:last-child>td]:border-b-0"
+            onDragLeave={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                setDragOverId(null);
+              }
+            }}
+          >
+            {Array.from(
+              (() => {
+                const groups = new Map<string, string[]>();
+                for (const id of filteredTokenIds) {
+                  const token = tokens[id];
+                  if (!token) continue;
+                  const group = token.group || "(root)";
+                  if (!groups.has(group)) groups.set(group, []);
+                  groups.get(group)!.push(id);
+                }
+                return groups;
+              })()
+            ).map(([groupName, tokenIds]) => (
+              <Fragment key={groupName}>
+                <tr className={cn("bg-muted/60", dragOverGroup === groupName && "bg-primary/10")}>
+                  <td
+                    colSpan={4}
+                    className="h-8 px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground border-b border-border"
+                    onDragOver={(e) => handleGroupDragOver(e, groupName)}
+                    onDragLeave={(e) => handleGroupDragLeave(e, groupName)}
+                    onDrop={(e) => { e.preventDefault(); handleGroupDrop(groupName); }}
+                  >
+                    {groupName}
+                  </td>
+                </tr>
+                {tokenIds.map((id) => {
+                  const token = tokens[id];
+                  if (!token) return null;
+                  const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
+                  const resolved = token.resolvedValues[modeId];
+                  if (!resolved) return null;
 
-              const code = generateTokenCode(token, codeFormat, modeId);
-              const isSelected = selectedTokenId === id;
+                  const code = generateTokenCode(token, codeFormat, modeId);
+                  const isSelected = selectedTokenId === id;
 
-              return (
-                <TokenListRow
-                  key={id}
-                  tokenId={id}
-                  tokenName={token.name}
-                  resolved={resolved}
-                  code={code}
-                  isAlias={token.isAlias}
-                  aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
-                  isSelected={isSelected}
-                  stickyShadow={stickyShadow}
-                  onClick={() => selectToken(id)}
-                  contextMenuPositionRef={contextMenuPositionRef}
-                />
-              );
-            })}
+                  return (
+                    <TokenListRow
+                      key={id}
+                      tokenId={id}
+                      tokenName={token.name}
+                      resolved={resolved}
+                      code={code}
+                      isAlias={token.isAlias}
+                      aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
+                      isSelected={isSelected}
+                      stickyShadow={stickyShadow}
+                      onClick={() => selectToken(id)}
+                      contextMenuPositionRef={contextMenuPositionRef}
+                      isDragEnabled={isDragEnabled}
+                      isDragSource={dragSourceId === id}
+                      dropIndicator={dragOverId === id && dragSourceId !== id ? dropPosition : null}
+                      onDragStart={handleDragStart}
+                      onDragOver={handleDragOver}
+                      onDragEnd={handleDragEnd}
+                      onDrop={handleDrop}
+                    />
+                  );
+                })}
+              </Fragment>
+            ))}
           </tbody>
         </table>
       </div>
@@ -243,6 +375,13 @@ function TokenListRow({
   stickyShadow,
   onClick,
   contextMenuPositionRef,
+  isDragEnabled,
+  isDragSource,
+  dropIndicator,
+  onDragStart,
+  onDragOver,
+  onDragEnd,
+  onDrop,
 }: {
   tokenId: string;
   tokenName: string;
@@ -254,11 +393,20 @@ function TokenListRow({
   stickyShadow: boolean;
   onClick: () => void;
   contextMenuPositionRef: React.MutableRefObject<{ x: number; y: number }>;
+  isDragEnabled: boolean;
+  isDragSource: boolean;
+  dropIndicator: "before" | "after" | null;
+  onDragStart: (tokenId: string) => void;
+  onDragOver: (e: React.DragEvent, tokenId: string) => void;
+  onDragEnd: () => void;
+  onDrop: () => void;
 }) {
   const [copied, setCopied] = useState(false);
   const setEditingToken = useTokenStore((s) => s.setEditingToken);
   const deleteToken = useTokenStore((s) => s.deleteToken);
   const valueCopyText = getValueCopyText(resolved);
+  const dragActivatedRef = useRef(false);
+  const displayName = tokenName.split("/").filter(Boolean).pop() ?? tokenName;
 
   const handleRowDoubleClick = useCallback(
     (e: React.MouseEvent<HTMLTableRowElement>) => {
@@ -297,7 +445,9 @@ function TokenListRow({
   const cellClass = cn(
     "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0",
     "group-hover:bg-accent/50 transition-colors duration-200 ease",
-    isSelected && "bg-accent"
+    isSelected && "bg-accent",
+    dropIndicator === "before" && "border-t-2 border-t-primary",
+    dropIndicator === "after" && "border-b-2 border-b-primary"
   );
 
   const stickyCellClass = cn(
@@ -317,7 +467,8 @@ function TokenListRow({
         <tr
           data-token-id={tokenId}
           tabIndex={0}
-          className={cn("group cursor-pointer", isSelected && "bg-accent")}
+          draggable={isDragEnabled}
+          className={cn("group cursor-pointer", isSelected && "bg-accent", isDragSource && "opacity-40")}
           onClick={onClick}
           onDoubleClick={handleRowDoubleClick}
           onKeyDown={(e) => {
@@ -329,11 +480,44 @@ function TokenListRow({
           onContextMenu={(e) => {
             contextMenuPositionRef.current = { x: e.clientX, y: e.clientY };
           }}
+          onDragStart={(e) => {
+            if (!dragActivatedRef.current) {
+              e.preventDefault();
+              return;
+            }
+            dragActivatedRef.current = false;
+            e.dataTransfer.effectAllowed = "move";
+            e.dataTransfer.setData("text/plain", tokenId);
+            onDragStart(tokenId);
+          }}
+          onDragOver={(e) => onDragOver(e, tokenId)}
+          onDrop={(e) => { e.preventDefault(); onDrop(); }}
+          onDragEnd={onDragEnd}
         >
           <td
-            className={stickyCellClass}
+            className={cn(
+              stickyCellClass,
+              dropIndicator === "before" && "border-t-2 border-t-primary",
+              dropIndicator === "after" && "border-b-2 border-b-primary"
+            )}
           >
-            {tokenName}
+            <div className="flex items-center min-w-0">
+              {isDragEnabled && (
+                <span
+                  onPointerDown={() => { dragActivatedRef.current = true; }}
+                  onPointerUp={() => { dragActivatedRef.current = false; }}
+                  className={cn(
+                    "inline-flex items-center justify-center shrink-0 cursor-grab",
+                    "w-4 h-4 -ml-1 mr-0.5 text-muted-foreground",
+                    "opacity-0 group-hover:opacity-60 transition-opacity duration-200 ease",
+                    isDragSource && "opacity-60"
+                  )}
+                >
+                  <GripVertical className="h-3 w-3" />
+                </span>
+              )}
+              <span className="truncate">{displayName}</span>
+            </div>
           </td>
           <td className={cellClass}>
             {valueDisplay()}

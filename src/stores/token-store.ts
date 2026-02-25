@@ -59,6 +59,7 @@ interface TokenState {
   updateTokenCodeSyntax: (tokenId: string, codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string }) => void;
   setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => void;
   deleteToken: (tokenId: string) => void;
+  reorderFilteredTokens: (newOrder: string[]) => void;
   exportRawJSON: () => string;
   getTokensByGroup: (group: string) => DesignToken[];
   getVisibleTokens: () => DesignToken[];
@@ -375,6 +376,22 @@ export const useTokenStore = create<TokenState>()(
           inspectorOpen: selectedTokenId === tokenId ? false : get().inspectorOpen,
           editingTokenId: get().editingTokenId === tokenId ? null : get().editingTokenId,
           editingPosition: get().editingTokenId === tokenId ? null : get().editingPosition,
+        });
+      },
+
+      reorderFilteredTokens: (newOrder: string[]) => {
+        const { collections, activeCollectionId, tokens, searchQuery } = get();
+        if (searchQuery.trim()) return;
+        const nextCollections = collections.map((col) =>
+          col.id === activeCollectionId ? { ...col, tokenIds: newOrder } : col
+        );
+        const activeCol = nextCollections.find((c) => c.id === activeCollectionId) ?? null;
+        const rawJSON = rebuildRawJSON(nextCollections, tokens);
+        set({
+          filteredTokenIds: newOrder,
+          collections: nextCollections,
+          activeCollection: activeCol,
+          rawJSON,
         });
       },
 

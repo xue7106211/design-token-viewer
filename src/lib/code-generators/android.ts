@@ -1,4 +1,5 @@
 import type { DesignToken, TokenValue } from "@/types/token";
+import { stripCodeSyntaxPrefix } from "./utils";
 
 /**
  * Generate Android resource name from token name
@@ -31,7 +32,8 @@ export function generateAndroidToken(token: DesignToken, modeId?: string): strin
   const value = token.resolvedValues[resolvedModeId];
   if (!value) return "";
 
-  const name = token.codeSyntax?.ANDROID ?? toAndroidName(token.name);
+  const rawName = token.codeSyntax?.ANDROID ?? toAndroidName(token.name);
+  const name = stripCodeSyntaxPrefix(rawName);
   return formatAndroidXML(name, value);
 }
 

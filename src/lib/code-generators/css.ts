@@ -1,5 +1,6 @@
 import type { DesignToken, TokenValue } from "@/types/token";
 import { colorToHex } from "@/lib/contrast";
+import { stripCodeSyntaxPrefix } from "./utils";
 
 /**
  * Generate CSS custom property name from token name
@@ -33,7 +34,8 @@ export function generateCSSToken(token: DesignToken, modeId?: string): string {
   const value = token.resolvedValues[resolvedModeId];
   if (!value) return "";
 
-  const varName = toCSSVarName(token.name);
+  const nameWithoutPrefix = stripCodeSyntaxPrefix(token.name);
+  const varName = toCSSVarName(nameWithoutPrefix);
   return `${varName}: ${formatCSSValue(value)};`;
 }
 
