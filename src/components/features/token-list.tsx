@@ -57,6 +57,8 @@ export function TokenList() {
   const [columnWidths, setColumnWidths] = useState<number[]>(() => loadColumnWidths());
   const [resizingIndex, setResizingIndex] = useState<number | null>(null);
   const resizeStartRef = useRef({ x: 0, widths: [] as number[] });
+  const columnWidthsRef = useRef(columnWidths);
+  columnWidthsRef.current = columnWidths;
 
   const tableMinWidth = columnWidths.reduce((a, b) => a + b, 0);
 
@@ -70,19 +72,15 @@ export function TokenList() {
     const handleMove = (e: MouseEvent) => {
       const { x, widths } = resizeStartRef.current;
       const delta = e.clientX - x;
-      setColumnWidths((prev) => {
-        const next = [...(widths.length ? widths : prev)];
-        const w = next[resizingIndex] + delta;
-        next[resizingIndex] = Math.max(MIN_COLUMN_WIDTH, w);
-        return next;
-      });
+      const base = widths.length ? widths : columnWidthsRef.current;
+      const next = [...base];
+      next[resizingIndex] = Math.max(MIN_COLUMN_WIDTH, next[resizingIndex] + delta);
+      columnWidthsRef.current = next;
+      setColumnWidths(next);
     };
     const handleUp = () => {
       setResizingIndex(null);
-      setColumnWidths((w) => {
-        saveColumnWidths(w);
-        return w;
-      });
+      saveColumnWidths(columnWidthsRef.current);
     };
     document.addEventListener("mousemove", handleMove);
     document.addEventListener("mouseup", handleUp);
@@ -126,7 +124,7 @@ export function TokenList() {
 
   if (filteredTokenIds.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-center">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center p-4 text-center">
         <p className="text-sm text-muted-foreground">没有匹配的令牌</p>
       </div>
     );
@@ -137,72 +135,74 @@ export function TokenList() {
     : "shadow-[2px_0_4px_-1px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_4px_-1px_rgba(0,0,0,0.12)]";
 
   const stickyHeaderClass = cn(
-    "sticky left-0 z-30 border-r border-border bg-muted",
+    "sticky left-0 z-50 border-b border-r border-border bg-muted",
     stickyShadowClass
   );
 
   return (
-    <div
-      ref={scrollRef}
-      className="min-h-0 min-w-0 flex-1 overflow-auto p-4"
-    >
-      <table
-        className="table-fixed w-full border-collapse border border-border text-left"
-        style={{ minWidth: tableMinWidth }}
+    <div className="min-h-0 min-w-0 flex-1 p-4">
+      <div
+        ref={scrollRef}
+        className="relative h-full overflow-auto rounded-md border border-border"
       >
-        <colgroup>
-          {columnWidths.map((w, i) => (
-            <col key={i} style={{ width: w }} />
-          ))}
-        </colgroup>
-        <thead>
-          <tr className="border-b border-border bg-muted/30">
-            <th className={cn("h-10 relative px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground", stickyHeaderClass)}>
-              Token Name
-              <ResizeHandle onResizeStart={(e) => handleResizeStart(0, e.clientX)} />
-            </th>
-            <th className="h-10 relative border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Value
-              <ResizeHandle onResizeStart={(e) => handleResizeStart(1, e.clientX)} />
-            </th>
-            <th className="h-10 relative border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Code Syntax
-              <ResizeHandle onResizeStart={(e) => handleResizeStart(2, e.clientX)} />
-            </th>
-            <th className="h-10 relative px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Reference
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredTokenIds.map((id) => {
-            const token = tokens[id];
-            if (!token) return null;
-            const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
-            const resolved = token.resolvedValues[modeId];
-            if (!resolved) return null;
+        <table
+          className="table-fixed w-full border-separate border-spacing-0 text-left"
+          style={{ minWidth: tableMinWidth }}
+        >
+          <colgroup>
+            {columnWidths.map((w, i) => (
+              <col key={i} style={{ width: w }} />
+            ))}
+          </colgroup>
+          <thead className="sticky top-0 z-40">
+            <tr>
+              <th className={cn("h-10 relative px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground", stickyHeaderClass)}>
+                Token Name
+                <ResizeHandle onResizeStart={(e) => handleResizeStart(0, e.clientX)} />
+              </th>
+              <th className="h-10 relative border-b border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted">
+                Value
+                <ResizeHandle onResizeStart={(e) => handleResizeStart(1, e.clientX)} />
+              </th>
+              <th className="h-10 relative border-b border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted">
+                Code Syntax
+                <ResizeHandle onResizeStart={(e) => handleResizeStart(2, e.clientX)} />
+              </th>
+              <th className="h-10 relative border-b border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted">
+                Reference
+              </th>
+            </tr>
+          </thead>
+          <tbody className="[&>tr:last-child>td]:border-b-0">
+            {filteredTokenIds.map((id) => {
+              const token = tokens[id];
+              if (!token) return null;
+              const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
+              const resolved = token.resolvedValues[modeId];
+              if (!resolved) return null;
 
-            const code = generateTokenCode(token, codeFormat, modeId);
-            const isSelected = selectedTokenId === id;
+              const code = generateTokenCode(token, codeFormat, modeId);
+              const isSelected = selectedTokenId === id;
 
-            return (
-              <TokenListRow
-                key={id}
-                tokenId={id}
-                tokenName={token.name}
-                resolved={resolved}
-                code={code}
-                isAlias={token.isAlias}
-                aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
-                isSelected={isSelected}
-                stickyShadow={stickyShadow}
-                onClick={() => selectToken(id)}
-                contextMenuPositionRef={contextMenuPositionRef}
-              />
-            );
-          })}
-        </tbody>
-      </table>
+              return (
+                <TokenListRow
+                  key={id}
+                  tokenId={id}
+                  tokenName={token.name}
+                  resolved={resolved}
+                  code={code}
+                  isAlias={token.isAlias}
+                  aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
+                  isSelected={isSelected}
+                  stickyShadow={stickyShadow}
+                  onClick={() => selectToken(id)}
+                  contextMenuPositionRef={contextMenuPositionRef}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
       <TokenEditPopover />
     </div>
   );
@@ -289,23 +289,23 @@ function TokenListRow({
       );
     }
     if (resolved.type === "NUMBER") {
-      return <span className="font-mono text-xs">{String(resolved.value)}px</span>;
+      return <span className="font-mono text-xs">{String(resolved.value)}</span>;
     }
     return <span className="font-mono text-xs truncate">{String(resolved.value)}</span>;
   };
 
   const cellClass = cn(
-    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0 cursor-pointer",
-    "hover:bg-accent/50 transition-colors duration-200 ease-out",
+    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0",
+    "group-hover:bg-accent/50 transition-colors duration-200 ease",
     isSelected && "bg-accent"
   );
 
   const stickyCellClass = cn(
-    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0 cursor-pointer",
-    "transition-colors duration-200 ease-out",
+    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0",
+    "transition-colors duration-200 ease",
     "sticky left-0 z-20 text-xs font-mono truncate max-w-0",
     isSelected ? "bg-accent" : "bg-background",
-    "hover:bg-accent group-hover:bg-accent",
+    "group-hover:bg-accent",
     stickyShadow
       ? "shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)]"
       : "shadow-[2px_0_4px_-1px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_4px_-1px_rgba(0,0,0,0.12)]"
@@ -316,46 +316,50 @@ function TokenListRow({
       <ContextMenuTrigger asChild>
         <tr
           data-token-id={tokenId}
-          className={cn("group", isSelected && "bg-accent")}
+          tabIndex={0}
+          className={cn("group cursor-pointer", isSelected && "bg-accent")}
+          onClick={onClick}
           onDoubleClick={handleRowDoubleClick}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onClick();
+            }
+          }}
           onContextMenu={(e) => {
             contextMenuPositionRef.current = { x: e.clientX, y: e.clientY };
           }}
         >
           <td
-            role="button"
-            tabIndex={0}
-            onClick={onClick}
-            onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onClick()}
             className={stickyCellClass}
           >
             {tokenName}
           </td>
-          <td onClick={onClick} className={cellClass}>
+          <td className={cellClass}>
             {valueDisplay()}
           </td>
           <td
-            onClick={onClick}
-            className={cn(cellClass, "flex items-center gap-1.5 group/code")}
+            className={cn(cellClass, "group/code")}
           >
-            <code className="text-[11px] font-mono text-muted-foreground truncate min-w-0 flex-1">
-              {code}
-            </code>
-            <button
-              type="button"
-              onClick={handleCopy}
-              className="shrink-0 opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-0.5"
-              aria-label="复制代码"
-            >
-              {copied ? (
-                <Check className="h-3 w-3 text-green-500" />
-              ) : (
-                <Copy className="h-3 w-3 text-muted-foreground" />
-              )}
-            </button>
+            <div className="flex items-center gap-1.5">
+              <code className="text-[11px] font-mono text-muted-foreground truncate min-w-0 flex-1">
+                {code}
+              </code>
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="shrink-0 opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-0.5"
+                aria-label="复制代码"
+              >
+                {copied ? (
+                  <Check className="h-3 w-3 text-green-500" />
+                ) : (
+                  <Copy className="h-3 w-3 text-muted-foreground" />
+                )}
+              </button>
+            </div>
           </td>
           <td
-            onClick={onClick}
             className={cn(cellClass, "text-xs text-muted-foreground truncate border-r-0")}
           >
             {isAlias && aliasName && (
