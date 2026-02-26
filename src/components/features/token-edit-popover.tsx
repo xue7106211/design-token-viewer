@@ -137,9 +137,14 @@ export function TokenEditPopover() {
   const isAliasMode = raw?.type === "ALIAS";
   const modes = activeCollection?.modes ?? [];
   const hasMultipleModes = modes.length > 1;
-  const referenceOptions = activeCollection
-    ? activeCollection.tokenIds.filter((id) => id !== token.id).map((id) => ({ id, name: tokens[id]?.name ?? id }))
-    : [];
+  const referenceOptions = Object.values(tokens)
+    .filter((t) => t.id !== token.id)
+    .map((t) => ({
+      id: t.id,
+      name: t.name,
+      group: t.group || "(root)",
+      collection: t.collection,
+    }));
 
   const duration = reduceMotion ? 0 : POPOVER_TRANSITION.duration;
   const content = (
@@ -273,7 +278,7 @@ function TokenMetaForm({
 }: {
   token: DesignToken;
   modeId: string;
-  referenceOptions: { id: string; name: string }[];
+  referenceOptions: { id: string; name: string; group: string; collection: string }[];
   isAliasMode: boolean;
   onSaveMeta: (
     name: string,
@@ -291,6 +296,8 @@ function TokenMetaForm({
   const [android, setAndroid] = useState(token.codeSyntax?.ANDROID ?? "");
   const [ios, setIos] = useState(token.codeSyntax?.iOS ?? "");
   const [referenceId, setReferenceId] = useState<string | null>(currentReferenceId);
+  const [referenceQuery, setReferenceQuery] = useState("");
+  const [referenceFocused, setReferenceFocused] = useState(false);
 
   // Sync local state when token updates from store (e.g. after saving name)
   useEffect(() => {
@@ -300,7 +307,33 @@ function TokenMetaForm({
     setAndroid(token.codeSyntax?.ANDROID ?? "");
     setIos(token.codeSyntax?.iOS ?? "");
     setReferenceId(currentReferenceId);
-  }, [token.name, token.description, token.codeSyntax, currentReferenceId]);
+    const current = referenceOptions.find((opt) => opt.id === currentReferenceId);
+    setReferenceQuery(current?.name ?? "");
+    setReferenceFocused(false);
+  }, [token.name, token.description, token.codeSyntax, currentReferenceId, referenceOptions]);
+
+  const filteredReferences = referenceOptions.filter((opt) => {
+    const q = referenceQuery.trim().toLowerCase();
+    if (!q) return true;
+    return (
+      opt.name.toLowerCase().includes(q) ||
+      opt.group.toLowerCase().includes(q) ||
+      opt.collection.toLowerCase().includes(q)
+    );
+  });
+
+  const groupedReferences = (() => {
+    const groups = new Map<string, typeof filteredReferences>();
+    for (const opt of filteredReferences) {
+      const groupKey = `${opt.collection} / ${opt.group || "(root)"}`;
+      if (!groups.has(groupKey)) groups.set(groupKey, []);
+      groups.get(groupKey)!.push(opt);
+    }
+    for (const opts of groups.values()) {
+      opts.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+    }
+    return Array.from(groups.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+  })();
 
   const handleSave = () => {
     onSaveMeta(name, description, { WEB: web || undefined, ANDROID: android || undefined, iOS: ios || undefined }, referenceId);
@@ -352,18 +385,72 @@ function TokenMetaForm({
       </div>
       <div className="space-y-1.5">
         <SectionLabel>引用 (Reference)</SectionLabel>
-        <select
-          className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-xs font-mono focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          value={referenceId ?? ""}
-          onChange={(e) => setReferenceId(e.target.value === "" ? null : e.target.value)}
-        >
-          <option value="">无</option>
-          {referenceOptions.map((opt) => (
-            <option key={opt.id} value={opt.id} title={opt.name}>
-              {opt.name.length > 36 ? opt.name.slice(0, 33) + "…" : opt.name}
-            </option>
-          ))}
-        </select>
+        <Input
+          className="text-xs"
+          value={referenceFocused ? referenceQuery : (referenceOptions.find((opt) => opt.id === referenceId)?.name ?? "")}
+          onChange={(e) => setReferenceQuery(e.target.value)}
+          onFocus={() => {
+            setReferenceFocused(true);
+            if (!referenceQuery && referenceId) {
+              const current = referenceOptions.find((opt) => opt.id === referenceId);
+              setReferenceQuery(current?.name ?? "");
+            }
+          }}
+          onBlur={() => {
+            setReferenceFocused(false);
+            if (referenceId == null && referenceQuery.trim() === "") {
+              setReferenceQuery("");
+            }
+          }}
+          placeholder="搜索 Token（名称/分组/Collection）"
+        />
+        {referenceFocused && (
+          <div className="max-h-56 overflow-auto rounded-md border border-input bg-transparent">
+            <button
+              type="button"
+              className={cn(
+                "w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent",
+                referenceId == null && "bg-accent"
+              )}
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => {
+                setReferenceId(null);
+                setReferenceQuery("");
+              }}
+            >
+              无
+            </button>
+            {groupedReferences.length === 0 ? (
+              <div className="px-3 py-2 text-xs text-muted-foreground">没有匹配的 Token</div>
+            ) : (
+              groupedReferences.map(([groupName, opts]) => (
+                <div key={groupName} className="border-t border-border/60 first:border-t-0">
+                  <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/40">
+                    {groupName}
+                  </div>
+                  {opts.map((opt) => (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      className={cn(
+                        "w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent",
+                        referenceId === opt.id && "bg-accent"
+                      )}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => {
+                        setReferenceId(opt.id);
+                        setReferenceQuery(opt.name);
+                      }}
+                      title={opt.name}
+                    >
+                      {opt.name.length > 40 ? opt.name.slice(0, 37) + "…" : opt.name}
+                    </button>
+                  ))}
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
       <Button size="sm" className="w-full cursor-pointer" onClick={handleSave}>
         保存元数据

@@ -15,22 +15,22 @@
       ],
       "variableIds": [
         "var_31",
-        "var_33",
         "var_34",
         "var_35",
+        "var_33",
         "var_32",
         "var_30",
         "var_29",
         "var_27",
         "var_28",
-        "var_0",
-        "var_1",
-        "var_2",
-        "var_3",
         "var_4",
-        "var_5",
         "var_6",
         "var_7",
+        "var_5",
+        "var_1",
+        "var_0",
+        "var_2",
+        "var_3",
         "var_8",
         "var_9",
         "var_10",
@@ -228,17 +228,12 @@
   "variables": {
     "var_0": {
       "id": "var_0",
-      "name": "container_input",
+      "name": "元素色/container_input",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
+          "type": "ALIAS",
+          "id": "var_137"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -249,21 +244,17 @@
             "a": 0.1411764705882353
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_1": {
       "id": "var_1",
-      "name": "container_list",
+      "name": "元素色/container_list",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
+          "type": "ALIAS",
+          "id": "var_137"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -274,21 +265,17 @@
             "a": 0.1411764705882353
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_2": {
       "id": "var_2",
-      "name": "container_list_solid",
+      "name": "元素色/container_list_solid",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
+          "type": "ALIAS",
+          "id": "var_137"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -299,16 +286,17 @@
             "a": 1
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_3": {
       "id": "var_3",
-      "name": "container_notice_bar",
+      "name": "元素色/container_notice_bar",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_25"
+          "id": "var_178"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -326,17 +314,12 @@
     },
     "var_4": {
       "id": "var_4",
-      "name": "surface_container",
+      "name": "元素色/surface_container",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.0392156862745098
-          }
+          "type": "ALIAS",
+          "id": "var_178"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -347,21 +330,17 @@
             "a": 0.0784313725490196
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_5": {
       "id": "var_5",
-      "name": "surface_container_high",
+      "name": "元素色/surface_container_high",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.10196078431372547
-          }
+          "type": "ALIAS",
+          "id": "var_174"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -372,21 +351,17 @@
             "a": 0.2
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_6": {
       "id": "var_6",
-      "name": "surface_container_low",
+      "name": "元素色/surface_container_low",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.058823529411764705
-          }
+          "type": "ALIAS",
+          "id": "var_176"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -397,21 +372,17 @@
             "a": 0.1411764705882353
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_7": {
       "id": "var_7",
-      "name": "surface_container_medium",
+      "name": "元素色/surface_container_medium",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.0784313725490196
-          }
+          "type": "ALIAS",
+          "id": "var_175"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -422,11 +393,12 @@
             "a": 0.1411764705882353
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_8": {
       "id": "var_8",
-      "name": "apricot_orange",
+      "name": "全系统色板/apricot_orange",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -451,7 +423,7 @@
     },
     "var_9": {
       "id": "var_9",
-      "name": "black",
+      "name": "全系统色板/black",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -476,7 +448,7 @@
     },
     "var_10": {
       "id": "var_10",
-      "name": "blue",
+      "name": "全系统色板/blue",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -526,7 +498,7 @@
     },
     "var_12": {
       "id": "var_12",
-      "name": "cyan",
+      "name": "全系统色板/cyan",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -576,7 +548,7 @@
     },
     "var_14": {
       "id": "var_14",
-      "name": "gray",
+      "name": "全系统色板/gray",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -601,7 +573,7 @@
     },
     "var_15": {
       "id": "var_15",
-      "name": "green",
+      "name": "全系统色板/green",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -626,7 +598,7 @@
     },
     "var_16": {
       "id": "var_16",
-      "name": "lemon_yellow",
+      "name": "全系统色板/lemon_yellow",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -651,7 +623,7 @@
     },
     "var_17": {
       "id": "var_17",
-      "name": "magenta",
+      "name": "全系统色板/magenta",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -676,7 +648,7 @@
     },
     "var_18": {
       "id": "var_18",
-      "name": "orange",
+      "name": "全系统色板/orange",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -701,7 +673,7 @@
     },
     "var_19": {
       "id": "var_19",
-      "name": "purple",
+      "name": "全系统色板/purple",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -726,7 +698,7 @@
     },
     "var_20": {
       "id": "var_20",
-      "name": "red",
+      "name": "全系统色板/red",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -751,7 +723,7 @@
     },
     "var_21": {
       "id": "var_21",
-      "name": "sky_blue",
+      "name": "全系统色板/sky_blue",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -776,7 +748,7 @@
     },
     "var_22": {
       "id": "var_22",
-      "name": "turquoise",
+      "name": "全系统色板/turquoise",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -801,7 +773,7 @@
     },
     "var_23": {
       "id": "var_23",
-      "name": "violet",
+      "name": "全系统色板/violet",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -826,7 +798,7 @@
     },
     "var_24": {
       "id": "var_24",
-      "name": "white",
+      "name": "全系统色板/white",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -851,7 +823,7 @@
     },
     "var_25": {
       "id": "var_25",
-      "name": "yellow",
+      "name": "全系统色板/yellow",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -876,7 +848,7 @@
     },
     "var_26": {
       "id": "var_26",
-      "name": "outline",
+      "name": "全系统色板/outline",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -905,13 +877,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
+          "type": "ALIAS",
+          "id": "var_137"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -922,7 +889,8 @@
             "a": 0.30196078431372547
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_28": {
       "id": "var_28",
@@ -930,13 +898,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.2
-          }
+          "type": "ALIAS",
+          "id": "var_172"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -947,7 +910,8 @@
             "a": 0.2
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_29": {
       "id": "var_29",
@@ -955,13 +919,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.050980392156862744
-          }
+          "type": "ALIAS",
+          "id": "var_177"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -972,7 +931,8 @@
             "a": 0.2
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_30": {
       "id": "var_30",
@@ -980,13 +940,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.30196078431372547
-          }
+          "type": "ALIAS",
+          "id": "var_171"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -997,7 +952,8 @@
             "a": 0.4
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_31": {
       "id": "var_31",
@@ -1005,13 +961,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 1
-          }
+          "type": "ALIAS",
+          "id": "var_163"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -1031,13 +982,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.30196078431372547
-          }
+          "type": "ALIAS",
+          "id": "var_171"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -1048,7 +994,8 @@
             "a": 0.30196078431372547
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_33": {
       "id": "var_33",
@@ -1056,13 +1003,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.4
-          }
+          "type": "ALIAS",
+          "id": "var_170"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -1073,7 +1015,8 @@
             "a": 0.5019607843137255
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_34": {
       "id": "var_34",
@@ -1081,13 +1024,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.8
-          }
+          "type": "ALIAS",
+          "id": "var_166"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -1098,7 +1036,8 @@
             "a": 0.8
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_35": {
       "id": "var_35",
@@ -1106,13 +1045,8 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.6
-          }
+          "type": "ALIAS",
+          "id": "var_168"
         },
         "mode_dark": {
           "type": "COLOR",
@@ -1123,11 +1057,12 @@
             "a": 0.5019607843137255
           }
         }
-      }
+      },
+      "codeSyntax": {}
     },
     "var_36": {
       "id": "var_36",
-      "name": "container_list_hover",
+      "name": "元素色/container_list_hover",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1152,7 +1087,7 @@
     },
     "var_37": {
       "id": "var_37",
-      "name": "container_list_touch",
+      "name": "元素色/container_list_touch",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1203,7 +1138,7 @@
     },
     "var_39": {
       "id": "var_39",
-      "name": "on_primary",
+      "name": "系统主色/on_primary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1228,7 +1163,7 @@
     },
     "var_40": {
       "id": "var_40",
-      "name": "on_secondary",
+      "name": "系统主色/on_secondary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1253,7 +1188,7 @@
     },
     "var_41": {
       "id": "var_41",
-      "name": "on_tertiary",
+      "name": "系统主色/on_tertiary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1278,7 +1213,7 @@
     },
     "var_42": {
       "id": "var_42",
-      "name": "primary",
+      "name": "系统主色/primary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1303,7 +1238,7 @@
     },
     "var_43": {
       "id": "var_43",
-      "name": "secondary",
+      "name": "全系统色板/secondary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1328,7 +1263,7 @@
     },
     "var_44": {
       "id": "var_44",
-      "name": "tertiary",
+      "name": "全系统色板/tertiary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1478,7 +1413,7 @@
     },
     "var_50": {
       "id": "var_50",
-      "name": "container_illustration_primary",
+      "name": "线框插图色/container_illustration_primary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1503,7 +1438,7 @@
     },
     "var_51": {
       "id": "var_51",
-      "name": "container_illustration_quaternary",
+      "name": "线框插图色/container_illustration_quaternary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1528,7 +1463,7 @@
     },
     "var_52": {
       "id": "var_52",
-      "name": "container_illustration_secondary",
+      "name": "线框插图色/container_illustration_secondary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1553,7 +1488,7 @@
     },
     "var_53": {
       "id": "var_53",
-      "name": "container_illustration_tertiary",
+      "name": "线框插图色/container_illustration_tertiary",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1578,7 +1513,7 @@
     },
     "var_54": {
       "id": "var_54",
-      "name": "surface",
+      "name": "背景色/surface",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1603,7 +1538,7 @@
     },
     "var_55": {
       "id": "var_55",
-      "name": "surface_high",
+      "name": "背景色/surface_high",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1628,7 +1563,7 @@
     },
     "var_56": {
       "id": "var_56",
-      "name": "surface_highest",
+      "name": "背景色/surface_highest",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1653,7 +1588,7 @@
     },
     "var_57": {
       "id": "var_57",
-      "name": "surface_low",
+      "name": "背景色/surface_low",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1678,7 +1613,7 @@
     },
     "var_58": {
       "id": "var_58",
-      "name": "surface_medium",
+      "name": "背景色/surface_medium",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1703,7 +1638,7 @@
     },
     "var_59": {
       "id": "var_59",
-      "name": "surface_menubar",
+      "name": "背景色/surface_menubar",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1728,7 +1663,7 @@
     },
     "var_60": {
       "id": "var_60",
-      "name": "surface_pop_window",
+      "name": "背景色/surface_pop_window",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1753,7 +1688,7 @@
     },
     "var_61": {
       "id": "var_61",
-      "name": "mask",
+      "name": "遮罩色/mask",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1778,7 +1713,7 @@
     },
     "var_62": {
       "id": "var_62",
-      "name": "mask_menu",
+      "name": "遮罩色/mask_menu",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {

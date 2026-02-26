@@ -364,9 +364,8 @@ export function TokenList() {
   // ---- 分组计算 ----
 
   /**
-   * 将筛选后的 Token 按分组（group）归类，并在组内按名称自然排序。
-   * 返回 [groupName, tokenIds[]][] 的数组，用于渲染分组表格。
-   * 没有分组的 Token 归入 "(root)" 虚拟分组。
+   * 将筛选后的 Token 按分组（group）归类。
+   * 当允许拖拽排序时保持原顺序；搜索模式下再做组内排序。
    */
   const groupedEntries = useMemo(() => {
     const groups = new Map<string, string[]>();
@@ -377,14 +376,16 @@ export function TokenList() {
       if (!groups.has(group)) groups.set(group, []);
       groups.get(group)!.push(id);
     }
-    // 组内按名称自然排序（numeric: true 使 "color-2" 排在 "color-10" 前面）
-    for (const ids of groups.values()) {
-      ids.sort((a, b) =>
-        (tokens[a]?.name ?? "").localeCompare(tokens[b]?.name ?? "", undefined, { numeric: true })
-      );
+    if (!isDragEnabled) {
+      // 搜索模式：组内按名称自然排序（numeric: true 使 "color-2" 排在 "color-10" 前面）
+      for (const ids of groups.values()) {
+        ids.sort((a, b) =>
+          (tokens[a]?.name ?? "").localeCompare(tokens[b]?.name ?? "", undefined, { numeric: true })
+        );
+      }
     }
     return Array.from(groups.entries());
-  }, [filteredTokenIds, tokens]);
+  }, [filteredTokenIds, tokens, isDragEnabled]);
 
   /** 扁平化的可见 Token ID 列表，用于 Shift 多选时计算范围 */
   const visibleIds = useMemo(
