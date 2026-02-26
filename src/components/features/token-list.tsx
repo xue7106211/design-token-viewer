@@ -14,6 +14,16 @@ import {
   ContextMenuSeparator,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { TokenEditPopover } from "./token-edit-popover";
 import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
 
@@ -68,6 +78,15 @@ export function TokenList() {
   const resizeStartRef = useRef({ x: 0, widths: [] as number[] });
   const columnWidthsRef = useRef(columnWidths);
   columnWidthsRef.current = columnWidths;
+
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(
+    () => new Set(selectedTokenId ? [selectedTokenId] : [])
+  );
+  const selectionAnchorRef = useRef<string | null>(selectedTokenId);
+  const [editGroupOpen, setEditGroupOpen] = useState(false);
+  const [editGroupValue, setEditGroupValue] = useState("");
+  const [editGroupTargetIds, setEditGroupTargetIds] = useState<string[]>([]);
+  const [editGroupCurrentGroup, setEditGroupCurrentGroup] = useState("");
 
   const tableMinWidth = columnWidths.reduce((a, b) => a + b, 0);
 
@@ -213,6 +232,99 @@ export function TokenList() {
     setDragOverGroup(null);
   }, [dragSourceId, tokens, filteredTokenIds, updateTokenName, reorderFilteredTokens]);
 
+  useEffect(() => {
+    if (selectedTokenId == null) {
+      if (selectedIds.size) setSelectedIds(new Set());
+      return;
+    }
+    if (selectedIds.size === 0 || !selectedIds.has(selectedTokenId)) {
+      setSelectedIds(new Set([selectedTokenId]));
+      selectionAnchorRef.current = selectedTokenId;
+    }
+  }, [selectedTokenId, selectedIds]);
+
+  useEffect(() => {
+    if (!selectedIds.size) return;
+    const visible = new Set(filteredTokenIds);
+    let changed = false;
+    const next = new Set<string>();
+    for (const id of selectedIds) {
+      if (visible.has(id)) next.add(id);
+      else changed = true;
+    }
+    if (changed) setSelectedIds(next);
+  }, [filteredTokenIds, selectedIds]);
+
+  const handleRowSelect = useCallback(
+    (tokenId: string, e: React.MouseEvent | React.KeyboardEvent) => {
+      if (e.shiftKey && selectionAnchorRef.current) {
+        const ids = filteredTokenIds;
+        const start = ids.indexOf(selectionAnchorRef.current);
+        const end = ids.indexOf(tokenId);
+        if (start !== -1 && end !== -1) {
+          const [from, to] = start < end ? [start, end] : [end, start];
+          setSelectedIds(new Set(ids.slice(from, to + 1)));
+          selectionAnchorRef.current = tokenId;
+          selectToken(tokenId);
+          return;
+        }
+      }
+      setSelectedIds(new Set([tokenId]));
+      selectionAnchorRef.current = tokenId;
+      selectToken(tokenId);
+    },
+    [filteredTokenIds, selectToken]
+  );
+
+  const handleRowContextMenu = useCallback(
+    (tokenId: string) => {
+      if (!selectedIds.has(tokenId)) {
+        setSelectedIds(new Set([tokenId]));
+        selectionAnchorRef.current = tokenId;
+        selectToken(tokenId);
+      }
+    },
+    [selectedIds, selectToken]
+  );
+
+  const handleEditGroup = useCallback(
+    (tokenId: string) => {
+      const targetIds = selectedIds.has(tokenId) ? Array.from(selectedIds) : [tokenId];
+      const base = tokens[tokenId];
+      if (!base) return;
+      const currentGroup = base.group || "(root)";
+      setEditGroupTargetIds(targetIds);
+      setEditGroupCurrentGroup(currentGroup);
+      setEditGroupValue(currentGroup);
+      setEditGroupOpen(true);
+    },
+    [selectedIds, tokens]
+  );
+
+  const handleEditGroupConfirm = useCallback(() => {
+    if (!editGroupTargetIds.length) {
+      setEditGroupOpen(false);
+      return;
+    }
+    const trimmed = editGroupValue.trim();
+    const nextGroup = trimmed === "" || trimmed === "(root)" ? "" : trimmed;
+    const currentGroup = editGroupCurrentGroup === "(root)" ? "" : editGroupCurrentGroup;
+    if (nextGroup === currentGroup) {
+      setEditGroupOpen(false);
+      return;
+    }
+
+    for (const id of editGroupTargetIds) {
+      const t = tokens[id];
+      if (!t) continue;
+      const leaf = t.path[t.path.length - 1] ?? t.name.split("/").filter(Boolean).pop() ?? t.name;
+      const nextName = nextGroup ? `${nextGroup}/${leaf}` : leaf;
+      if (nextName !== t.name) updateTokenName(id, nextName);
+    }
+    syncSampleTokensToFile();
+    setEditGroupOpen(false);
+  }, [editGroupTargetIds, editGroupValue, editGroupCurrentGroup, tokens, updateTokenName]);
+
   if (filteredTokenIds.length === 0) {
     return (
       <div className="flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center p-4 text-center">
@@ -282,6 +394,12 @@ export function TokenList() {
                   if (!groups.has(group)) groups.set(group, []);
                   groups.get(group)!.push(id);
                 }
+                // 每组内按 token 名称自然升序排序（如 90 在 100 前）
+                for (const ids of groups.values()) {
+                  ids.sort((a, b) =>
+                    (tokens[a]?.name ?? "").localeCompare(tokens[b]?.name ?? "", undefined, { numeric: true })
+                  );
+                }
                 return groups;
               })()
             ).map(([groupName, tokenIds]) => (
@@ -305,7 +423,6 @@ export function TokenList() {
                   if (!resolved) return null;
 
                   const code = generateTokenCode(token, codeFormat, modeId);
-                  const isSelected = selectedTokenId === id;
 
                   return (
                     <TokenListRow
@@ -316,9 +433,11 @@ export function TokenList() {
                       code={code}
                       isAlias={token.isAlias}
                       aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
-                      isSelected={isSelected}
+                      isSelected={selectedIds.has(id)}
                       stickyShadow={stickyShadow}
-                      onClick={() => selectToken(id)}
+                      onSelect={(e) => handleRowSelect(id, e)}
+                      onContextMenuSelect={() => handleRowContextMenu(id)}
+                      onEditGroup={() => handleEditGroup(id)}
                       contextMenuPositionRef={contextMenuPositionRef}
                       isDragEnabled={isDragEnabled}
                       isDragSource={dragSourceId === id}
@@ -336,6 +455,57 @@ export function TokenList() {
         </table>
       </div>
       <TokenEditPopover />
+      <Dialog
+        open={editGroupOpen}
+        onOpenChange={(open) => {
+          setEditGroupOpen(open);
+          if (!open) {
+            setEditGroupTargetIds([]);
+            setEditGroupCurrentGroup("");
+            setEditGroupValue("");
+          }
+        }}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>编辑分组</DialogTitle>
+            <DialogDescription>
+              {editGroupTargetIds.length > 1
+                ? `将 ${editGroupTargetIds.length} 个 Token 移动到新的分组`
+                : "更新当前 Token 的分组路径"}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-2">
+            <label className="text-xs font-medium text-muted-foreground">
+              分组路径（使用 / 分隔，留空表示根分组）
+            </label>
+            <Input
+              value={editGroupValue}
+              onChange={(e) => setEditGroupValue(e.target.value)}
+              placeholder="例如：color/blue"
+              autoFocus
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleEditGroupConfirm();
+                }
+              }}
+            />
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => setEditGroupOpen(false)}
+            >
+              取消
+            </Button>
+            <Button type="button" onClick={handleEditGroupConfirm}>
+              保存
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
@@ -373,7 +543,9 @@ function TokenListRow({
   aliasName,
   isSelected,
   stickyShadow,
-  onClick,
+  onSelect,
+  onContextMenuSelect,
+  onEditGroup,
   contextMenuPositionRef,
   isDragEnabled,
   isDragSource,
@@ -391,7 +563,9 @@ function TokenListRow({
   aliasName?: string;
   isSelected: boolean;
   stickyShadow: boolean;
-  onClick: () => void;
+  onSelect: (e: React.MouseEvent | React.KeyboardEvent) => void;
+  onContextMenuSelect: () => void;
+  onEditGroup: () => void;
   contextMenuPositionRef: React.MutableRefObject<{ x: number; y: number }>;
   isDragEnabled: boolean;
   isDragSource: boolean;
@@ -469,16 +643,17 @@ function TokenListRow({
           tabIndex={0}
           draggable={isDragEnabled}
           className={cn("group cursor-pointer", isSelected && "bg-accent", isDragSource && "opacity-40")}
-          onClick={onClick}
+          onClick={onSelect}
           onDoubleClick={handleRowDoubleClick}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
-              onClick();
+              onSelect(e);
             }
           }}
           onContextMenu={(e) => {
             contextMenuPositionRef.current = { x: e.clientX, y: e.clientY };
+            onContextMenuSelect();
           }}
           onDragStart={(e) => {
             if (!dragActivatedRef.current) {
@@ -565,6 +740,13 @@ function TokenListRow({
         >
           <Pencil className="h-3.5 w-3.5" />
           编辑详情
+        </ContextMenuItem>
+        <ContextMenuItem
+          className="cursor-pointer"
+          onSelect={onEditGroup}
+        >
+          <Pencil className="h-3.5 w-3.5" />
+          编辑分组
         </ContextMenuItem>
         <ContextMenuItem
           className="cursor-pointer"

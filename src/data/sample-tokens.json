@@ -136,7 +136,92 @@
         "var_103",
         "var_104",
         "var_105",
-        "var_106"
+        "var_106",
+        "var_107",
+        "var_108",
+        "var_109",
+        "var_110",
+        "var_111",
+        "var_112",
+        "var_113",
+        "var_114",
+        "var_115",
+        "var_116",
+        "var_117",
+        "var_118",
+        "var_119",
+        "var_120",
+        "var_121",
+        "var_122",
+        "var_123",
+        "var_124",
+        "var_125",
+        "var_126",
+        "var_127",
+        "var_128",
+        "var_129",
+        "var_130",
+        "var_131",
+        "var_132",
+        "var_133",
+        "var_134",
+        "var_135",
+        "var_136",
+        "var_137",
+        "var_138",
+        "var_139",
+        "var_140",
+        "var_141",
+        "var_142",
+        "var_143",
+        "var_144",
+        "var_145",
+        "var_146",
+        "var_147",
+        "var_148",
+        "var_149",
+        "var_150",
+        "var_151",
+        "var_152",
+        "var_153",
+        "var_154",
+        "var_155",
+        "var_156",
+        "var_157",
+        "var_158",
+        "var_159",
+        "var_160",
+        "var_161",
+        "var_162",
+        "var_163",
+        "var_164",
+        "var_165",
+        "var_166",
+        "var_167",
+        "var_168",
+        "var_169",
+        "var_170",
+        "var_171",
+        "var_172",
+        "var_173",
+        "var_174",
+        "var_175",
+        "var_176",
+        "var_177",
+        "var_178",
+        "var_179",
+        "var_180",
+        "var_181",
+        "var_182",
+        "var_183",
+        "var_184",
+        "var_185",
+        "var_186",
+        "var_187",
+        "var_188",
+        "var_189",
+        "var_190",
+        "var_191"
       ]
     }
   ],
@@ -1718,13 +1803,13 @@
     },
     "var_63": {
       "id": "var_63",
-      "name": "color-blue-light-level1",
+      "name": "blue/color-blue-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.20392156862745098,
+            "r": 0.20392156862745095,
             "g": 0.5098039215686274,
             "b": 1,
             "a": 1
@@ -1733,7 +1818,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.20392156862745098,
+            "r": 0.20392156862745095,
             "g": 0.5098039215686274,
             "b": 1,
             "a": 1
@@ -1743,13 +1828,13 @@
     },
     "var_64": {
       "id": "var_64",
-      "name": "color-blue-light-level2",
+      "name": "blue/color-blue-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.20392156862745098,
+            "r": 0.20392156862745095,
             "g": 0.5098039215686274,
             "b": 1,
             "a": 0.3
@@ -1758,7 +1843,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.20392156862745098,
+            "r": 0.20392156862745095,
             "g": 0.5098039215686274,
             "b": 1,
             "a": 0.3
@@ -1768,13 +1853,13 @@
     },
     "var_65": {
       "id": "var_65",
-      "name": "color-blue-light-level3",
+      "name": "blue/color-blue-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.20392156862745098,
+            "r": 0.20392156862745095,
             "g": 0.5098039215686274,
             "b": 1,
             "a": 0.08
@@ -1783,7 +1868,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.20392156862745098,
+            "r": 0.20392156862745095,
             "g": 0.5098039215686274,
             "b": 1,
             "a": 0.08
@@ -1793,7 +1878,7 @@
     },
     "var_66": {
       "id": "var_66",
-      "name": "color-blue-dark-level1",
+      "name": "blue/color-blue-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1818,7 +1903,7 @@
     },
     "var_67": {
       "id": "var_67",
-      "name": "color-blue-dark-level2",
+      "name": "blue/color-blue-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1843,7 +1928,7 @@
     },
     "var_68": {
       "id": "var_68",
-      "name": "color-blue-dark-level3",
+      "name": "blue/color-blue-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1868,13 +1953,13 @@
     },
     "var_69": {
       "id": "var_69",
-      "name": "color-red-light-level1",
+      "name": "red/color-red-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.2196078431372549,
             "b": 0.1803921568627451,
             "a": 1
@@ -1883,7 +1968,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.2196078431372549,
             "b": 0.1803921568627451,
             "a": 1
@@ -1893,13 +1978,13 @@
     },
     "var_70": {
       "id": "var_70",
-      "name": "color-red-light-level2",
+      "name": "red/color-red-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.2196078431372549,
             "b": 0.1803921568627451,
             "a": 0.3
@@ -1908,7 +1993,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.2196078431372549,
             "b": 0.1803921568627451,
             "a": 0.3
@@ -1918,13 +2003,13 @@
     },
     "var_71": {
       "id": "var_71",
-      "name": "color-red-light-level3",
+      "name": "red/color-red-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.2196078431372549,
             "b": 0.1803921568627451,
             "a": 0.08
@@ -1933,7 +2018,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.2196078431372549,
             "b": 0.1803921568627451,
             "a": 0.08
@@ -1943,13 +2028,13 @@
     },
     "var_72": {
       "id": "var_72",
-      "name": "color-red-dark-level1",
+      "name": "red/color-red-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.25882352941176473,
             "b": 0.2196078431372549,
             "a": 1
@@ -1958,7 +2043,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.25882352941176473,
             "b": 0.2196078431372549,
             "a": 1
@@ -1968,13 +2053,13 @@
     },
     "var_73": {
       "id": "var_73",
-      "name": "color-red-dark-level2",
+      "name": "red/color-red-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.25882352941176473,
             "b": 0.2196078431372549,
             "a": 0.3
@@ -1983,7 +2068,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.25882352941176473,
             "b": 0.2196078431372549,
             "a": 0.3
@@ -1993,13 +2078,13 @@
     },
     "var_74": {
       "id": "var_74",
-      "name": "color-red-dark-level3",
+      "name": "red/color-red-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.25882352941176473,
             "b": 0.2196078431372549,
             "a": 0.22
@@ -2008,7 +2093,7 @@
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9803921568627451,
+            "r": 0.9803921568627452,
             "g": 0.25882352941176473,
             "b": 0.2196078431372549,
             "a": 0.22
@@ -2249,18 +2334,18 @@
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9764705882352941,
-            "g": 0.47843137254901963,
-            "b": 0.12156862745098039,
+            "r": 0.976470588235294,
+            "g": 0.4784313725490196,
+            "b": 0.1215686274509804,
             "a": 1
           }
         },
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9764705882352941,
-            "g": 0.47843137254901963,
-            "b": 0.12156862745098039,
+            "r": 0.976470588235294,
+            "g": 0.4784313725490196,
+            "b": 0.1215686274509804,
             "a": 1
           }
         }
@@ -2274,18 +2359,18 @@
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9764705882352941,
-            "g": 0.47843137254901963,
-            "b": 0.12156862745098039,
+            "r": 0.976470588235294,
+            "g": 0.4784313725490196,
+            "b": 0.1215686274509804,
             "a": 0.3
           }
         },
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9764705882352941,
-            "g": 0.47843137254901963,
-            "b": 0.12156862745098039,
+            "r": 0.976470588235294,
+            "g": 0.4784313725490196,
+            "b": 0.1215686274509804,
             "a": 0.3
           }
         }
@@ -2299,18 +2384,18 @@
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.9764705882352941,
-            "g": 0.47843137254901963,
-            "b": 0.12156862745098039,
+            "r": 0.976470588235294,
+            "g": 0.4784313725490196,
+            "b": 0.1215686274509804,
             "a": 0.2
           }
         },
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.9764705882352941,
-            "g": 0.47843137254901963,
-            "b": 0.12156862745098039,
+            "r": 0.976470588235294,
+            "g": 0.4784313725490196,
+            "b": 0.1215686274509804,
             "a": 0.2
           }
         }
@@ -2626,7 +2711,7 @@
           "value": {
             "r": 0.5803921568627451,
             "g": 0.8862745098039215,
-            "b": 0.011764705882352941,
+            "b": 0.01176470588235294,
             "a": 1
           }
         },
@@ -2635,7 +2720,7 @@
           "value": {
             "r": 0.5803921568627451,
             "g": 0.8862745098039215,
-            "b": 0.011764705882352941,
+            "b": 0.01176470588235294,
             "a": 1
           }
         }
@@ -2674,18 +2759,18 @@
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.11372549019607843,
+            "r": 0.11372549019607844,
             "g": 0.803921568627451,
-            "b": 0.22745098039215686,
+            "b": 0.2274509803921569,
             "a": 1
           }
         },
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.11372549019607843,
+            "r": 0.11372549019607844,
             "g": 0.803921568627451,
-            "b": 0.22745098039215686,
+            "b": 0.2274509803921569,
             "a": 1
           }
         }
@@ -2699,18 +2784,18 @@
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.11372549019607843,
+            "r": 0.11372549019607844,
             "g": 0.803921568627451,
-            "b": 0.22745098039215686,
+            "b": 0.2274509803921569,
             "a": 0.3
           }
         },
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.11372549019607843,
+            "r": 0.11372549019607844,
             "g": 0.803921568627451,
-            "b": 0.22745098039215686,
+            "b": 0.2274509803921569,
             "a": 0.3
           }
         }
@@ -2724,18 +2809,18 @@
         "mode_light": {
           "type": "COLOR",
           "value": {
-            "r": 0.11372549019607843,
+            "r": 0.11372549019607844,
             "g": 0.803921568627451,
-            "b": 0.22745098039215686,
+            "b": 0.2274509803921569,
             "a": 0.1
           }
         },
         "mode_dark": {
           "type": "COLOR",
           "value": {
-            "r": 0.11372549019607843,
+            "r": 0.11372549019607844,
             "g": 0.803921568627451,
-            "b": 0.22745098039215686,
+            "b": 0.2274509803921569,
             "a": 0.1
           }
         }
@@ -2812,6 +2897,2131 @@
             "g": 0.7725490196078432,
             "b": 0.3137254901960784,
             "a": 0.2
+          }
+        }
+      }
+    },
+    "var_107": {
+      "id": "var_107",
+      "name": "color-turquoise-light",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.04705882352941176,
+            "g": 0.807843137254902,
+            "b": 0.5803921568627451,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.04705882352941176,
+            "g": 0.807843137254902,
+            "b": 0.5803921568627451,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_108": {
+      "id": "var_108",
+      "name": "color-turquoise-dark",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.06666666666666667,
+            "g": 0.8156862745098039,
+            "b": 0.592156862745098,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.06666666666666667,
+            "g": 0.8156862745098039,
+            "b": 0.592156862745098,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_109": {
+      "id": "var_109",
+      "name": "color-cyan-light",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.058823529411764705,
+            "g": 0.792156862745098,
+            "b": 0.792156862745098,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.058823529411764705,
+            "g": 0.792156862745098,
+            "b": 0.792156862745098,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_110": {
+      "id": "var_110",
+      "name": "color-cyan-dark",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.07450980392156863,
+            "g": 0.803921568627451,
+            "b": 0.803921568627451,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.07450980392156863,
+            "g": 0.803921568627451,
+            "b": 0.803921568627451,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_111": {
+      "id": "var_111",
+      "name": "color-skyblue-light",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.1607843137254902,
+            "g": 0.6627450980392157,
+            "b": 1,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.1607843137254902,
+            "g": 0.6627450980392157,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_112": {
+      "id": "var_112",
+      "name": "color-skyblue-dark",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.21176470588235297,
+            "g": 0.6745098039215687,
+            "b": 0.9882352941176472,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.21176470588235297,
+            "g": 0.6745098039215687,
+            "b": 0.9882352941176472,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_113": {
+      "id": "var_113",
+      "name": "color-purple-light-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4666666666666667,
+            "g": 0.403921568627451,
+            "b": 0.976470588235294,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4666666666666667,
+            "g": 0.403921568627451,
+            "b": 0.976470588235294,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_114": {
+      "id": "var_114",
+      "name": "color-purple-light-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4666666666666667,
+            "g": 0.403921568627451,
+            "b": 0.976470588235294,
+            "a": 0.3
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4666666666666667,
+            "g": 0.403921568627451,
+            "b": 0.976470588235294,
+            "a": 0.3
+          }
+        }
+      }
+    },
+    "var_115": {
+      "id": "var_115",
+      "name": "color-purple-light-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4666666666666667,
+            "g": 0.403921568627451,
+            "b": 0.976470588235294,
+            "a": 0.1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4666666666666667,
+            "g": 0.403921568627451,
+            "b": 0.976470588235294,
+            "a": 0.1
+          }
+        }
+      }
+    },
+    "var_116": {
+      "id": "var_116",
+      "name": "color-purple-dark-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5137254901960784,
+            "g": 0.4392156862745098,
+            "b": 1,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5137254901960784,
+            "g": 0.4392156862745098,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_117": {
+      "id": "var_117",
+      "name": "color-purple-dark-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5137254901960784,
+            "g": 0.4392156862745098,
+            "b": 1,
+            "a": 0.3
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5137254901960784,
+            "g": 0.4392156862745098,
+            "b": 1,
+            "a": 0.3
+          }
+        }
+      }
+    },
+    "var_118": {
+      "id": "var_118",
+      "name": "color-purple-dark-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4078431372549019,
+            "g": 0.4,
+            "b": 0.9333333333333332,
+            "a": 0.2
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4078431372549019,
+            "g": 0.4,
+            "b": 0.9333333333333332,
+            "a": 0.2
+          }
+        }
+      }
+    },
+    "var_119": {
+      "id": "var_119",
+      "name": "color-violet-light",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7176470588235294,
+            "g": 0.2901960784313726,
+            "b": 0.9686274509803922,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7176470588235294,
+            "g": 0.2901960784313726,
+            "b": 0.9686274509803922,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_120": {
+      "id": "var_120",
+      "name": "color-violet-dark",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7411764705882353,
+            "g": 0.3411764705882353,
+            "b": 0.9803921568627452,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7411764705882353,
+            "g": 0.3411764705882353,
+            "b": 0.9803921568627452,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_121": {
+      "id": "var_121",
+      "name": "color-magenta-light",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9058823529411764,
+            "g": 0.25098039215686274,
+            "b": 0.5843137254901961,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9058823529411764,
+            "g": 0.25098039215686274,
+            "b": 0.5843137254901961,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_122": {
+      "id": "var_122",
+      "name": "color-magenta-dark",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9333333333333332,
+            "g": 0.30980392156862746,
+            "b": 0.6235294117647059,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9333333333333332,
+            "g": 0.30980392156862746,
+            "b": 0.6235294117647059,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_123": {
+      "id": "var_123",
+      "name": "grey/color-grey-light-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_124": {
+      "id": "var_124",
+      "name": "grey/color-grey-dark-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5725490196078431,
+            "g": 0.6313725490196078,
+            "b": 0.7058823529411765,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5725490196078431,
+            "g": 0.6313725490196078,
+            "b": 0.7058823529411765,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_125": {
+      "id": "var_125",
+      "name": "grey/color-grey-light-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 0.3
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 0.3
+          }
+        }
+      }
+    },
+    "var_126": {
+      "id": "var_126",
+      "name": "grey/color-grey-light-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 0.1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5490196078431373,
+            "g": 0.615686274509804,
+            "b": 0.6901960784313725,
+            "a": 0.1
+          }
+        }
+      }
+    },
+    "var_127": {
+      "id": "var_127",
+      "name": "grey/color-grey-dark-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5725490196078431,
+            "g": 0.6313725490196078,
+            "b": 0.7058823529411765,
+            "a": 0.3
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5725490196078431,
+            "g": 0.6313725490196078,
+            "b": 0.7058823529411765,
+            "a": 0.3
+          }
+        }
+      }
+    },
+    "var_128": {
+      "id": "var_128",
+      "name": "grey/color-grey-dark-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5725490196078431,
+            "g": 0.6313725490196078,
+            "b": 0.7058823529411765,
+            "a": 0.2
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5725490196078431,
+            "g": 0.6313725490196078,
+            "b": 0.7058823529411765,
+            "a": 0.2
+          }
+        }
+      }
+    },
+    "var_129": {
+      "id": "var_129",
+      "name": "grey/color-grey-illustration-light-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7490196078431373,
+            "g": 0.7647058823529411,
+            "b": 0.8470588235294118,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7490196078431373,
+            "g": 0.7647058823529411,
+            "b": 0.8470588235294118,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_130": {
+      "id": "var_130",
+      "name": "grey/color-grey-illustration-light-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.807843137254902,
+            "g": 0.8235294117647058,
+            "b": 0.8784313725490196,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.807843137254902,
+            "g": 0.8235294117647058,
+            "b": 0.8784313725490196,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_131": {
+      "id": "var_131",
+      "name": "grey/color-grey-illustration-light-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8745098039215686,
+            "g": 0.8823529411764706,
+            "b": 0.9215686274509804,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8745098039215686,
+            "g": 0.8823529411764706,
+            "b": 0.9215686274509804,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_132": {
+      "id": "var_132",
+      "name": "grey/color-grey-illustration-light-level4",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9137254901960784,
+            "g": 0.9176470588235294,
+            "b": 0.9411764705882352,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9137254901960784,
+            "g": 0.9176470588235294,
+            "b": 0.9411764705882352,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_133": {
+      "id": "var_133",
+      "name": "grey/color-grey-illustration-dark-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4,
+            "g": 0.4,
+            "b": 0.4,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4,
+            "g": 0.4,
+            "b": 0.4,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_134": {
+      "id": "var_134",
+      "name": "grey/color-grey-illustration-dark-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.33725490196078434,
+            "g": 0.33725490196078434,
+            "b": 0.33725490196078434,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.33725490196078434,
+            "g": 0.33725490196078434,
+            "b": 0.33725490196078434,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_135": {
+      "id": "var_135",
+      "name": "grey/color-grey-illustration-dark-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.25882352941176473,
+            "g": 0.25882352941176473,
+            "b": 0.25882352941176473,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.25882352941176473,
+            "g": 0.25882352941176473,
+            "b": 0.25882352941176473,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_136": {
+      "id": "var_136",
+      "name": "grey/color-grey-illustration-dark-level4",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.2,
+            "g": 0.2,
+            "b": 0.2,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.2,
+            "g": 0.2,
+            "b": 0.2,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_137": {
+      "id": "var_137",
+      "name": "white/color-white-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_138": {
+      "id": "var_138",
+      "name": "white/color-white-level1-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.95
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.95
+          }
+        }
+      }
+    },
+    "var_139": {
+      "id": "var_139",
+      "name": "white/color-white-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.9
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.9
+          }
+        }
+      }
+    },
+    "var_140": {
+      "id": "var_140",
+      "name": "white/color-white-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.8
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.8
+          }
+        }
+      }
+    },
+    "var_141": {
+      "id": "var_141",
+      "name": "white/color-white-level3-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.7
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.7
+          }
+        }
+      }
+    },
+    "var_142": {
+      "id": "var_142",
+      "name": "white/color-white-level3-2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.6
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.6
+          }
+        }
+      }
+    },
+    "var_143": {
+      "id": "var_143",
+      "name": "white/color-white-level4",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.5
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.5
+          }
+        }
+      }
+    },
+    "var_144": {
+      "id": "var_144",
+      "name": "white/color-white-level5",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.4
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.4
+          }
+        }
+      }
+    },
+    "var_145": {
+      "id": "var_145",
+      "name": "white/color-white-level6",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.3
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.3
+          }
+        }
+      }
+    },
+    "var_146": {
+      "id": "var_146",
+      "name": "white/color-white-level7",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.2
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.2
+          }
+        }
+      }
+    },
+    "var_147": {
+      "id": "var_147",
+      "name": "white/color-white-level8",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.14
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.14
+          }
+        }
+      }
+    },
+    "var_148": {
+      "id": "var_148",
+      "name": "white/color-white-level9",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.12
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.12
+          }
+        }
+      }
+    },
+    "var_149": {
+      "id": "var_149",
+      "name": "white/color-white-level9-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.1
+          }
+        }
+      }
+    },
+    "var_150": {
+      "id": "var_150",
+      "name": "white/color-white-level10",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.08
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.08
+          }
+        }
+      }
+    },
+    "var_151": {
+      "id": "var_151",
+      "name": "white/color-white-solid-100",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_152": {
+      "id": "var_152",
+      "name": "white/color-white-solid-90",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8980392156862745,
+            "g": 0.8980392156862745,
+            "b": 0.8980392156862745,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8980392156862745,
+            "g": 0.8980392156862745,
+            "b": 0.8980392156862745,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_153": {
+      "id": "var_153",
+      "name": "white/color-white-solid-80",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_154": {
+      "id": "var_154",
+      "name": "white/color-white-solid-70",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5019607843137255,
+            "g": 0.5019607843137255,
+            "b": 0.5019607843137255,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5019607843137255,
+            "g": 0.5019607843137255,
+            "b": 0.5019607843137255,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_155": {
+      "id": "var_155",
+      "name": "white/color-white-solid-60",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4,
+            "g": 0.4,
+            "b": 0.4,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4,
+            "g": 0.4,
+            "b": 0.4,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_156": {
+      "id": "var_156",
+      "name": "white/color-white-solid-50",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.2980392156862745,
+            "g": 0.2980392156862745,
+            "b": 0.2980392156862745,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.2980392156862745,
+            "g": 0.2980392156862745,
+            "b": 0.2980392156862745,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_157": {
+      "id": "var_157",
+      "name": "white/color-white-solid-40",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.1725490196078431,
+            "g": 0.1725490196078431,
+            "b": 0.1725490196078431,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.1725490196078431,
+            "g": 0.1725490196078431,
+            "b": 0.1725490196078431,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_158": {
+      "id": "var_158",
+      "name": "white/color-white-solid-30",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.1411764705882353,
+            "g": 0.1411764705882353,
+            "b": 0.1411764705882353,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.1411764705882353,
+            "g": 0.1411764705882353,
+            "b": 0.1411764705882353,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_159": {
+      "id": "var_159",
+      "name": "white/color-white-solid-25",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.10196078431372547,
+            "g": 0.10196078431372547,
+            "b": 0.10196078431372547,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.10196078431372547,
+            "g": 0.10196078431372547,
+            "b": 0.10196078431372547,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_160": {
+      "id": "var_160",
+      "name": "white/color-white-solid-20",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.09411764705882351,
+            "g": 0.09411764705882351,
+            "b": 0.09411764705882351,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.09411764705882351,
+            "g": 0.09411764705882351,
+            "b": 0.09411764705882351,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_161": {
+      "id": "var_161",
+      "name": "white/color-white-solid-10",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.06274509803921569,
+            "g": 0.06274509803921569,
+            "b": 0.06274509803921569,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.06274509803921569,
+            "g": 0.06274509803921569,
+            "b": 0.06274509803921569,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_162": {
+      "id": "var_162",
+      "name": "white/color-white-solid-00",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_163": {
+      "id": "var_163",
+      "name": "black/color-black-level1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_164": {
+      "id": "var_164",
+      "name": "black/color-black-level1-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.95
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.95
+          }
+        }
+      }
+    },
+    "var_165": {
+      "id": "var_165",
+      "name": "black/color-black-level2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.9
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.9
+          }
+        }
+      }
+    },
+    "var_166": {
+      "id": "var_166",
+      "name": "black/color-black-level3",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.8
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.8
+          }
+        }
+      }
+    },
+    "var_167": {
+      "id": "var_167",
+      "name": "black/color-black-level3-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.7
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.7
+          }
+        }
+      }
+    },
+    "var_168": {
+      "id": "var_168",
+      "name": "black/color-black-level4",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.6
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.6
+          }
+        }
+      }
+    },
+    "var_169": {
+      "id": "var_169",
+      "name": "black/color-black-level4-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.5
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.5
+          }
+        }
+      }
+    },
+    "var_170": {
+      "id": "var_170",
+      "name": "black/color-black-level5",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.4
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.4
+          }
+        }
+      }
+    },
+    "var_171": {
+      "id": "var_171",
+      "name": "black/color-black-level6",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.3
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.3
+          }
+        }
+      }
+    },
+    "var_172": {
+      "id": "var_172",
+      "name": "black/color-black-level6-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.2
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.2
+          }
+        }
+      }
+    },
+    "var_173": {
+      "id": "var_173",
+      "name": "black/color-black-level6-2",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.14
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.14
+          }
+        }
+      }
+    },
+    "var_174": {
+      "id": "var_174",
+      "name": "black/color-black-level7",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.1
+          }
+        }
+      }
+    },
+    "var_175": {
+      "id": "var_175",
+      "name": "black/color-black-level8",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          }
+        }
+      }
+    },
+    "var_176": {
+      "id": "var_176",
+      "name": "black/color-black-level9",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.06
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.06
+          }
+        }
+      }
+    },
+    "var_177": {
+      "id": "var_177",
+      "name": "black/color-black-level9-1",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.05
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.05
+          }
+        }
+      }
+    },
+    "var_178": {
+      "id": "var_178",
+      "name": "black/color-black-level10",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.04
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.04
+          }
+        }
+      }
+    },
+    "var_179": {
+      "id": "var_179",
+      "name": "black/color-black-solid-100",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_180": {
+      "id": "var_180",
+      "name": "black/color-black-solid-90",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.10196078431372547,
+            "g": 0.10196078431372547,
+            "b": 0.10196078431372547,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.10196078431372547,
+            "g": 0.10196078431372547,
+            "b": 0.10196078431372547,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_181": {
+      "id": "var_181",
+      "name": "black/color-black-solid-80",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.2,
+            "g": 0.2,
+            "b": 0.2,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.2,
+            "g": 0.2,
+            "b": 0.2,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_182": {
+      "id": "var_182",
+      "name": "black/color-black-solid-75",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.30196078431372547,
+            "g": 0.30196078431372547,
+            "b": 0.30196078431372547,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.30196078431372547,
+            "g": 0.30196078431372547,
+            "b": 0.30196078431372547,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_183": {
+      "id": "var_183",
+      "name": "black/color-black-solid-70",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4,
+            "g": 0.4,
+            "b": 0.4,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.4,
+            "g": 0.4,
+            "b": 0.4,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_184": {
+      "id": "var_184",
+      "name": "black/color-black-solid-65",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5019607843137255,
+            "g": 0.5019607843137255,
+            "b": 0.5019607843137255,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5019607843137255,
+            "g": 0.5019607843137255,
+            "b": 0.5019607843137255,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_185": {
+      "id": "var_185",
+      "name": "black/color-black-solid-60",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.6,
+            "g": 0.6,
+            "b": 0.6,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.6,
+            "g": 0.6,
+            "b": 0.6,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_186": {
+      "id": "var_186",
+      "name": "black/color-black-solid-50",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7019607843137254,
+            "g": 0.7019607843137254,
+            "b": 0.7019607843137254,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.7019607843137254,
+            "g": 0.7019607843137254,
+            "b": 0.7019607843137254,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_187": {
+      "id": "var_187",
+      "name": "black/color-black-solid-45",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_188": {
+      "id": "var_188",
+      "name": "black/color-black-solid-40",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9019607843137256,
+            "g": 0.9019607843137256,
+            "b": 0.9019607843137256,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9019607843137256,
+            "g": 0.9019607843137256,
+            "b": 0.9019607843137256,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_189": {
+      "id": "var_189",
+      "name": "black/color-black-solid-30",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9215686274509804,
+            "g": 0.9215686274509804,
+            "b": 0.9215686274509804,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9215686274509804,
+            "g": 0.9215686274509804,
+            "b": 0.9215686274509804,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_190": {
+      "id": "var_190",
+      "name": "black/color-black-solid-20",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9411764705882352,
+            "g": 0.9411764705882352,
+            "b": 0.9411764705882352,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9411764705882352,
+            "g": 0.9411764705882352,
+            "b": 0.9411764705882352,
+            "a": 1
+          }
+        }
+      }
+    },
+    "var_191": {
+      "id": "var_191",
+      "name": "black/color-black-solid-10",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9529411764705882,
+            "g": 0.9529411764705882,
+            "b": 0.9529411764705882,
+            "a": 1
+          }
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.9686274509803922,
+            "g": 0.9686274509803922,
+            "b": 0.9686274509803922,
+            "a": 1
           }
         }
       }

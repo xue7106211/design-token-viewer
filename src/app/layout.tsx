@@ -25,6 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
+      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      <head><script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
