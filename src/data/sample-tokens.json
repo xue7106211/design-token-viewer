@@ -2103,7 +2103,7 @@
     },
     "var_75": {
       "id": "var_75",
-      "name": "color-deeporange-light-level1",
+      "name": "deeporange/color-deeporange-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2128,7 +2128,7 @@
     },
     "var_76": {
       "id": "var_76",
-      "name": "color-deeporange-light-level2",
+      "name": "deeporange/color-deeporange-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2153,7 +2153,7 @@
     },
     "var_77": {
       "id": "var_77",
-      "name": "color-deeporange-light-level3",
+      "name": "deeporange/color-deeporange-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2178,7 +2178,7 @@
     },
     "var_78": {
       "id": "var_78",
-      "name": "color-deeporange-dark-level1",
+      "name": "deeporange/color-deeporange-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2203,7 +2203,7 @@
     },
     "var_79": {
       "id": "var_79",
-      "name": "color-deeporange-dark-level2",
+      "name": "deeporange/color-deeporange-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2228,7 +2228,7 @@
     },
     "var_80": {
       "id": "var_80",
-      "name": "color-deeporange-dark-level3",
+      "name": "deeporange/color-deeporange-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2253,7 +2253,7 @@
     },
     "var_81": {
       "id": "var_81",
-      "name": "color-orange-light-level1",
+      "name": "orange/color-orange-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2278,7 +2278,7 @@
     },
     "var_82": {
       "id": "var_82",
-      "name": "color-orange-light-level2",
+      "name": "orange/color-orange-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2303,7 +2303,7 @@
     },
     "var_83": {
       "id": "var_83",
-      "name": "color-orange-light-level3",
+      "name": "orange/color-orange-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2328,7 +2328,7 @@
     },
     "var_84": {
       "id": "var_84",
-      "name": "color-orange-dark-level1",
+      "name": "orange/color-orange-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2353,7 +2353,7 @@
     },
     "var_85": {
       "id": "var_85",
-      "name": "color-orange-dark-level2",
+      "name": "orange/color-orange-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2378,7 +2378,7 @@
     },
     "var_86": {
       "id": "var_86",
-      "name": "color-orange-dark-level3",
+      "name": "orange/color-orange-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2403,7 +2403,7 @@
     },
     "var_87": {
       "id": "var_87",
-      "name": "color-apricotorange-light-level1",
+      "name": "apricotorange/color-apricotorange-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2428,7 +2428,7 @@
     },
     "var_88": {
       "id": "var_88",
-      "name": "color-apricotorange-dark-level1",
+      "name": "apricotorange/color-apricotorange-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2453,7 +2453,7 @@
     },
     "var_89": {
       "id": "var_89",
-      "name": "color-apricotorange-light-level2",
+      "name": "apricotorange/color-apricotorange-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2478,7 +2478,7 @@
     },
     "var_90": {
       "id": "var_90",
-      "name": "color-apricotorange-dark-level2",
+      "name": "apricotorange/color-apricotorange-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2503,7 +2503,7 @@
     },
     "var_91": {
       "id": "var_91",
-      "name": "color-yellow-light-level1",
+      "name": "yellow/color-yellow-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2528,7 +2528,7 @@
     },
     "var_92": {
       "id": "var_92",
-      "name": "color-yellow-light-level2",
+      "name": "yellow/color-yellow-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2553,7 +2553,7 @@
     },
     "var_93": {
       "id": "var_93",
-      "name": "color-yellow-light-level3",
+      "name": "yellow/color-yellow-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2578,7 +2578,7 @@
     },
     "var_94": {
       "id": "var_94",
-      "name": "color-yellow-dark-level1",
+      "name": "yellow/color-yellow-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2603,7 +2603,7 @@
     },
     "var_95": {
       "id": "var_95",
-      "name": "color-yellow-dark-level2",
+      "name": "yellow/color-yellow-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2628,7 +2628,7 @@
     },
     "var_96": {
       "id": "var_96",
-      "name": "color-yellow-dark-level3",
+      "name": "yellow/color-yellow-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2653,7 +2653,7 @@
     },
     "var_97": {
       "id": "var_97",
-      "name": "color-lemonyellow-light",
+      "name": "lemonyellow/color-lemonyellow-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2678,7 +2678,7 @@
     },
     "var_98": {
       "id": "var_98",
-      "name": "color-lemonyellow-dark",
+      "name": "lemonyellow/color-lemonyellow-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2703,7 +2703,7 @@
     },
     "var_99": {
       "id": "var_99",
-      "name": "color-chartreuse-light",
+      "name": "chartreuse/color-chartreuse-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2728,7 +2728,7 @@
     },
     "var_100": {
       "id": "var_100",
-      "name": "color-chartreuse-dark",
+      "name": "chartreuse/color-chartreuse-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2753,7 +2753,7 @@
     },
     "var_101": {
       "id": "var_101",
-      "name": "color-green-light-level1",
+      "name": "green/color-green-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2778,7 +2778,7 @@
     },
     "var_102": {
       "id": "var_102",
-      "name": "color-green-light-level2",
+      "name": "green/color-green-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2803,7 +2803,7 @@
     },
     "var_103": {
       "id": "var_103",
-      "name": "color-green-light-level3",
+      "name": "green/color-green-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2828,7 +2828,7 @@
     },
     "var_104": {
       "id": "var_104",
-      "name": "color-green-dark-level1",
+      "name": "green/color-green-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2853,7 +2853,7 @@
     },
     "var_105": {
       "id": "var_105",
-      "name": "color-green-dark-level2",
+      "name": "green/color-green-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2878,7 +2878,7 @@
     },
     "var_106": {
       "id": "var_106",
-      "name": "color-green-dark-level3",
+      "name": "green/color-green-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2903,7 +2903,7 @@
     },
     "var_107": {
       "id": "var_107",
-      "name": "color-turquoise-light",
+      "name": "turquoise/color-turquoise-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2928,7 +2928,7 @@
     },
     "var_108": {
       "id": "var_108",
-      "name": "color-turquoise-dark",
+      "name": "turquoise/color-turquoise-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2953,7 +2953,7 @@
     },
     "var_109": {
       "id": "var_109",
-      "name": "color-cyan-light",
+      "name": "cyan/color-cyan-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2978,7 +2978,7 @@
     },
     "var_110": {
       "id": "var_110",
-      "name": "color-cyan-dark",
+      "name": "cyan/color-cyan-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3003,7 +3003,7 @@
     },
     "var_111": {
       "id": "var_111",
-      "name": "color-skyblue-light",
+      "name": "skyblue/color-skyblue-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3028,7 +3028,7 @@
     },
     "var_112": {
       "id": "var_112",
-      "name": "color-skyblue-dark",
+      "name": "skyblue/color-skyblue-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3053,7 +3053,7 @@
     },
     "var_113": {
       "id": "var_113",
-      "name": "color-purple-light-level1",
+      "name": "purple/color-purple-light-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3078,7 +3078,7 @@
     },
     "var_114": {
       "id": "var_114",
-      "name": "color-purple-light-level2",
+      "name": "purple/color-purple-light-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3103,7 +3103,7 @@
     },
     "var_115": {
       "id": "var_115",
-      "name": "color-purple-light-level3",
+      "name": "purple/color-purple-light-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3128,7 +3128,7 @@
     },
     "var_116": {
       "id": "var_116",
-      "name": "color-purple-dark-level1",
+      "name": "purple/color-purple-dark-level1",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3153,7 +3153,7 @@
     },
     "var_117": {
       "id": "var_117",
-      "name": "color-purple-dark-level2",
+      "name": "purple/color-purple-dark-level2",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3178,7 +3178,7 @@
     },
     "var_118": {
       "id": "var_118",
-      "name": "color-purple-dark-level3",
+      "name": "purple/color-purple-dark-level3",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3203,7 +3203,7 @@
     },
     "var_119": {
       "id": "var_119",
-      "name": "color-violet-light",
+      "name": "violet/color-violet-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3228,7 +3228,7 @@
     },
     "var_120": {
       "id": "var_120",
-      "name": "color-violet-dark",
+      "name": "violet/color-violet-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3253,7 +3253,7 @@
     },
     "var_121": {
       "id": "var_121",
-      "name": "color-magenta-light",
+      "name": "magenta/color-magenta-light",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3278,7 +3278,7 @@
     },
     "var_122": {
       "id": "var_122",
-      "name": "color-magenta-dark",
+      "name": "magenta/color-magenta-dark",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
