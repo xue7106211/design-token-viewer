@@ -60,6 +60,7 @@ interface TokenState {
   setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => void;
   deleteToken: (tokenId: string) => void;
   reorderFilteredTokens: (newOrder: string[]) => void;
+  renameGroup: (oldPath: string, newPath: string) => void;
   exportRawJSON: () => string;
   getTokensByGroup: (group: string) => DesignToken[];
   getVisibleTokens: () => DesignToken[];
@@ -392,6 +393,47 @@ export const useTokenStore = create<TokenState>()(
           collections: nextCollections,
           activeCollection: activeCol,
           rawJSON,
+        });
+      },
+
+      renameGroup: (oldPath: string, newPath: string) => {
+        const { tokens, collections, activeCollectionId } = get();
+        const trimmed = newPath.trim();
+        if (!trimmed || trimmed === oldPath) return;
+        const newSegments = trimmed.split("/").filter(Boolean);
+        if (newSegments.length === 0) return;
+
+        const nextTokens = { ...tokens };
+        const prefix = oldPath + "/";
+        for (const token of Object.values(tokens)) {
+          if (token.name === oldPath || token.name.startsWith(prefix)) {
+            const newName =
+              token.name === oldPath ? trimmed : trimmed + token.name.slice(oldPath.length);
+            const pathSegments = newName.split("/").filter(Boolean);
+            const group = pathSegments.length > 1 ? pathSegments.slice(0, -1).join("/") : "";
+            nextTokens[token.id] = {
+              ...token,
+              name: newName,
+              path: pathSegments,
+              group,
+            };
+          }
+        }
+        const resolved = resolveTokens({ collections, tokens: nextTokens });
+        const tree = buildTokenTree(
+          Object.values(resolved.tokens),
+          collections.find((c) => c.id === activeCollectionId)?.name
+        );
+        const rawJSON = rebuildRawJSON(resolved.collections, resolved.tokens);
+        set({
+          tokens: resolved.tokens,
+          tree,
+          rawJSON,
+          filteredTokenIds:
+            resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ??
+            get().filteredTokenIds,
+          activeCollection:
+            resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
         });
       },
 
