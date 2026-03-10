@@ -82,7 +82,7 @@ export const useTokenStore = create<TokenState>()(
       scrollToTokenId: null,
       expandedPaths: new Set<string>(),
       searchQuery: "",
-      viewMode: "grid" as ViewMode,
+      viewMode: "list" as ViewMode,
       codeFormat: "css" as CodeFormat,
       inspectorOpen: false,
       inspectorWidth: 320,
