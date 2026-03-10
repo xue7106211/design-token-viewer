@@ -90,14 +90,14 @@ export function ExportDialog() {
           </div>
 
           {/* Code preview */}
-          <div className="relative rounded-lg border bg-muted/30">
+          <div className="relative min-w-0 w-full rounded-lg border bg-muted/30 overflow-hidden">
             {html ? (
               <div
-                className="shiki-wrapper overflow-auto p-4 text-[11px] font-mono leading-relaxed max-h-80 [&_pre]:!bg-transparent [&_code]:!bg-transparent"
+                className="shiki-wrapper min-w-0 w-full overflow-x-auto overflow-y-auto p-4 text-[11px] font-mono leading-relaxed max-h-80 [&_pre]:!bg-transparent [&_pre]:min-w-0 [&_code]:!bg-transparent [&_code]:break-all [&_code]:whitespace-pre-wrap"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             ) : (
-              <pre className="overflow-auto p-4 text-[11px] font-mono leading-relaxed text-foreground/90 max-h-80">
+              <pre className="min-w-0 w-full overflow-x-auto overflow-y-auto whitespace-pre-wrap break-all p-4 text-[11px] font-mono leading-relaxed text-foreground/90 max-h-80">
                 <code>{code}</code>
               </pre>
             )}

@@ -86,8 +86,8 @@ export function TokenInspector() {
 
   return (
     <div
-      className="relative flex h-full flex-col border-l bg-background shrink-0"
-      style={{ width: inspectorWidth }}
+      className="relative flex h-full flex-col border-l bg-background shrink-0 overflow-hidden"
+      style={{ width: inspectorWidth, minWidth: inspectorWidth, maxWidth: inspectorWidth }}
     >
       {/* 左侧拖拽条：向左拖变宽，向右拖变窄 */}
       <div
@@ -125,8 +125,8 @@ export function TokenInspector() {
         </Button>
       </div>
 
-      <ScrollArea className="min-h-0 flex-1">
-        <div className="min-w-0 space-y-5 p-4">
+      <ScrollArea className="min-h-0 min-w-0 flex-1 w-full" viewportClassName="!overflow-x-hidden">
+        <div className="min-w-0 w-full space-y-5 p-4 overflow-hidden">
           {/* Current Value Preview */}
           <Section title="当前值">
             {resolved?.type === "COLOR" && (
