@@ -128,6 +128,17 @@ export function TokenList() {
   const [editGroupValue, setEditGroupValue] = useState("");            // 输入框中的分组路径值
   const [editGroupTargetIds, setEditGroupTargetIds] = useState<string[]>([]); // 要修改分组的 Token ID 列表
   const [editGroupCurrentGroup, setEditGroupCurrentGroup] = useState("");     // 当前分组路径（用于对比是否有变化）
+  const [editGroupDropdownOpen, setEditGroupDropdownOpen] = useState(false);  // 下拉建议是否展开
+
+  // 从所有 token 中提取已有的唯一分组路径（排序后）
+  const existingGroups = useMemo(() => {
+    const groups = new Set<string>();
+    for (const id of filteredTokenIds) {
+      const t = tokens[id];
+      if (t?.group) groups.add(t.group);
+    }
+    return Array.from(groups).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+  }, [filteredTokenIds, tokens]);
 
   // 表格最小宽度 = 所有列宽之和，确保水平滚动时表格不会被压缩
   const tableMinWidth = columnWidths.reduce((a, b) => a + b, 0);
@@ -655,18 +666,60 @@ export function TokenList() {
             <label className="text-xs font-medium text-muted-foreground">
               分组路径（使用 / 分隔，留空表示根分组）
             </label>
-            <Input
-              value={editGroupValue}
-              onChange={(e) => setEditGroupValue(e.target.value)}
-              placeholder="例如：color/blue"
-              autoFocus
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  handleEditGroupConfirm();
-                }
-              }}
-            />
+            <div className="relative">
+              <Input
+                value={editGroupValue}
+                onChange={(e) => {
+                  setEditGroupValue(e.target.value);
+                  setEditGroupDropdownOpen(true);
+                }}
+                onFocus={() => setEditGroupDropdownOpen(true)}
+                onBlur={() => {
+                  // 延迟关闭，让 mousedown 事件先触发
+                  setTimeout(() => setEditGroupDropdownOpen(false), 150);
+                }}
+                placeholder="选择已有分组或输入新分组"
+                autoFocus
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    setEditGroupDropdownOpen(false);
+                    handleEditGroupConfirm();
+                  }
+                  if (e.key === "Escape") {
+                    setEditGroupDropdownOpen(false);
+                  }
+                }}
+              />
+              {editGroupDropdownOpen && (() => {
+                const q = editGroupValue.trim().toLowerCase();
+                const filtered = existingGroups.filter(
+                  (g) => g.toLowerCase().includes(q) && g !== editGroupCurrentGroup
+                );
+                if (filtered.length === 0) return null;
+                return (
+                  <div className="absolute z-10 mt-1 w-full max-h-48 overflow-auto rounded-md border border-input bg-popover shadow-md">
+                    {filtered.map((g) => (
+                      <button
+                        key={g}
+                        type="button"
+                        className={cn(
+                          "w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent cursor-pointer",
+                          editGroupValue === g && "bg-accent"
+                        )}
+                        onMouseDown={(e) => e.preventDefault()}
+                        onClick={() => {
+                          setEditGroupValue(g);
+                          setEditGroupDropdownOpen(false);
+                        }}
+                      >
+                        {g}
+                      </button>
+                    ))}
+                  </div>
+                );
+              })()}
+            </div>
           </div>
           <DialogFooter>
             <Button

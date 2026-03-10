@@ -233,7 +233,10 @@ export function TokenInspector() {
                             )}
                             title={item.name}
                           >
-                            {item.name.length > 28 ? item.name.slice(0, 25) + "…" : item.name}
+                            {(() => {
+                              const leafName = chainToken?.path[chainToken.path.length - 1] ?? item.name;
+                              return leafName.length > 28 ? leafName.slice(0, 25) + "…" : leafName;
+                            })()}
                           </span>
                         </button>
                       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTokenStore } from "@/stores/token-store";
@@ -53,6 +53,7 @@ export function TokenEditPopover() {
   const [isDragging, setIsDragging] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const metaFormRef = useRef<TokenMetaFormHandle>(null);
   const didDragRef = useRef(false);
   const reduceMotion = useReducedMotion();
 
@@ -219,6 +220,7 @@ export function TokenEditPopover() {
           )}
 
           <TokenMetaForm
+            ref={metaFormRef}
             key={token.id}
             token={token}
             modeId={modeId}
@@ -260,6 +262,9 @@ export function TokenEditPopover() {
             <Button variant="outline" size="sm" className="cursor-pointer" onClick={startClose}>
               关闭
             </Button>
+            <Button size="sm" className="cursor-pointer" onClick={() => metaFormRef.current?.save()}>
+              保存元数据
+            </Button>
           </div>
         </div>
       </motion.div>
@@ -269,24 +274,25 @@ export function TokenEditPopover() {
   return typeof document !== "undefined" ? createPortal(content, document.body) : null;
 }
 
-function TokenMetaForm({
-  token,
-  modeId,
-  referenceOptions,
-  isAliasMode,
-  onSaveMeta,
-}: {
-  token: DesignToken;
-  modeId: string;
-  referenceOptions: { id: string; name: string; group: string; collection: string }[];
-  isAliasMode: boolean;
-  onSaveMeta: (
-    name: string,
-    description: string,
-    codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string },
-    referenceTokenId: string | null
-  ) => void;
-}) {
+export interface TokenMetaFormHandle {
+  save: () => void;
+}
+
+const TokenMetaForm = React.forwardRef<
+  TokenMetaFormHandle,
+  {
+    token: DesignToken;
+    modeId: string;
+    referenceOptions: { id: string; name: string; group: string; collection: string }[];
+    isAliasMode: boolean;
+    onSaveMeta: (
+      name: string,
+      description: string,
+      codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string },
+      referenceTokenId: string | null
+    ) => void;
+  }
+>(function TokenMetaForm({ token, modeId, referenceOptions, isAliasMode, onSaveMeta }, ref) {
   const raw = token.rawValues[modeId];
   const currentReferenceId = raw?.type === "ALIAS" ? raw.id : null;
 
@@ -338,6 +344,8 @@ function TokenMetaForm({
   const handleSave = () => {
     onSaveMeta(name, description, { WEB: web || undefined, ANDROID: android || undefined, iOS: ios || undefined }, referenceId);
   };
+
+  useImperativeHandle(ref, () => ({ save: handleSave }), [handleSave]);
 
   return (
     <div className="space-y-3">
@@ -452,12 +460,9 @@ function TokenMetaForm({
           </div>
         )}
       </div>
-      <Button size="sm" className="w-full cursor-pointer" onClick={handleSave}>
-        保存元数据
-      </Button>
     </div>
   );
-}
+});
 
 function EditForm({
   tokenId,
@@ -475,7 +480,7 @@ function EditForm({
   if (raw.type === "COLOR") {
     return (
       <ColorEditForm
-        initial={raw.value}
+        initial={raw.value as ColorValue}
         onSave={(v) => onSave({ type: "COLOR", value: v })}
         onCancel={onCancel}
       />
@@ -558,12 +563,6 @@ function ColorEditForm({
     syncFromHex(v.startsWith("#") ? v : `#${v}`);
   };
 
-  const handleRgbaChange = (key: keyof ColorValue, value: number) => {
-    const next = { ...color, [key]: value };
-    setColor(next);
-    setHex(colorToHexInput(next));
-  };
-
   const handlePickerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = hexToColor(e.target.value);
     setColor(v);
@@ -588,36 +587,6 @@ function ColorEditForm({
             onChange={handlePickerChange}
             aria-label="选色"
           />
-        </div>
-      </div>
-      <div className="grid grid-cols-4 gap-2 text-[10px]">
-        {(["r", "g", "b"] as const).map((k) => (
-          <div key={k}>
-            <label className="text-muted-foreground uppercase">{k}</label>
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={1 / 255}
-              value={color[k]}
-              onChange={(e) => handleRgbaChange(k, parseFloat(e.target.value))}
-              className="w-full h-6 accent-primary"
-            />
-            <span className="font-mono">{Math.round(color[k] * 255)}</span>
-          </div>
-        ))}
-        <div>
-          <label className="text-muted-foreground uppercase">A</label>
-          <input
-            type="range"
-            min={0}
-            max={1}
-            step={0.01}
-            value={color.a}
-            onChange={(e) => handleRgbaChange("a", parseFloat(e.target.value))}
-            className="w-full h-6 accent-primary"
-          />
-          <span className="font-mono">{color.a.toFixed(2)}</span>
         </div>
       </div>
       <div className="flex gap-2 justify-end pt-1">
