@@ -34,7 +34,7 @@ export function ExportDialog() {
   const code =
     format === "json"
       ? exportRawJSON()
-      : generateTokenBlock(visibleTokens, format, activeModeId ?? undefined);
+      : generateTokenBlock(visibleTokens, format, activeModeId ?? undefined, tokens);
 
   const html = useShikiHtml(code, format);
 

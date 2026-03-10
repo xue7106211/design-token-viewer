@@ -74,7 +74,7 @@ export function TokenInspector() {
 
   const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
   const resolved = token.resolvedValues[modeId];
-  const code = generateTokenCode(token, codeFormat, modeId);
+  const code = generateTokenCode(token, codeFormat, modeId, tokens);
 
   // Alias chain
   const aliasChain = getAliasChain(token.id, modeId, tokens);

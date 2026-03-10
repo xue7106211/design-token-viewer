@@ -675,22 +675,12 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.10196078431372547
-          }
+          "type": "ALIAS",
+          "id": "var_174"
         },
         "mode_dark": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 0.2
-          }
+          "type": "ALIAS",
+          "id": "var_146"
         }
       }
     },
@@ -797,6 +787,7 @@
           }
         }
       },
+      "description": "内容描述设置内容描述设置内容描述设置内容描述设置内容描述设置内容描述设置。",
       "codeSyntax": {}
     },
     "var_32": {
@@ -1341,22 +1332,12 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.2
-          }
+          "type": "ALIAS",
+          "id": "var_172"
         },
         "mode_dark": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.6
-          }
+          "type": "ALIAS",
+          "id": "var_168"
         }
       }
     },
@@ -1366,22 +1347,12 @@
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.2
-          }
+          "type": "ALIAS",
+          "id": "var_172"
         },
         "mode_dark": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 0.4
-          }
+          "type": "ALIAS",
+          "id": "var_170"
         }
       }
     },

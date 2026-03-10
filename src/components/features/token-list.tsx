@@ -604,7 +604,7 @@ export function TokenList() {
                   if (!resolved) return null;
 
                   // 根据当前代码格式生成对应的代码片段（CSS var / SCSS / JS 等）
-                  const code = generateTokenCode(token, codeFormat, modeId);
+                  const code = generateTokenCode(token, codeFormat, modeId, tokens);
 
                   return (
                     <TokenListRow

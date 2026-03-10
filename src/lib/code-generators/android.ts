@@ -1,12 +1,57 @@
-import type { DesignToken, TokenValue } from "@/types/token";
-import { stripCodeSyntaxPrefix } from "./utils";
+import type { DesignToken, TokenType, TokenValue } from "@/types/token";
 
 /**
- * Generate Android resource name from token name
- * e.g. "color/blue/500" -> "color_blue_500"
+ * Extract the leaf segment from a token name (last path segment).
+ * e.g. "文字图标色/on_surface" -> "on_surface", "black/color-black-level1" -> "color-black-level1"
  */
-function toAndroidName(name: string): string {
-  return name.replace(/\//g, "_").replace(/-/g, "_").replace(/\s+/g, "_").toLowerCase();
+function getLeafName(name: string): string {
+  const segments = name.split("/").filter(Boolean);
+  return (segments[segments.length - 1] ?? name).replace(/-/g, "_").replace(/\s+/g, "_").toLowerCase();
+}
+
+/**
+ * Extract mode suffix from modeId.
+ * e.g. "mode_light" -> "_light", "mode_dark" -> "_dark"
+ * Returns empty string if modeId doesn't match "mode_*" pattern.
+ */
+function getModeSuffix(modeId: string): string {
+  const match = modeId.match(/^mode_(.+)$/);
+  return match ? `_${match[1]}` : "";
+}
+
+/**
+ * Map TokenType to HyperOS miuix resource type segment.
+ */
+function getMiuixTypeSegment(type: TokenType): string {
+  switch (type) {
+    case "COLOR": return "color";
+    case "NUMBER": return "dimen";
+    case "STRING": return "string";
+    case "BOOLEAN": return "bool";
+  }
+}
+
+/**
+ * Generate HyperOS miuix Android resource name for a Feature Token (alias / 2nd-level).
+ * Pattern: miuix_default_{type}_{leaf}_{modeSuffix}
+ * e.g. "miuix_default_color_on_surface_light"
+ */
+function getMiuixFeatureName(token: DesignToken, modeId: string): string {
+  const typeSeg = getMiuixTypeSegment(token.type);
+  const leaf = getLeafName(token.name);
+  const suffix = getModeSuffix(modeId);
+  return `miuix_default_${typeSeg}_${leaf}${suffix}`;
+}
+
+/**
+ * Generate HyperOS miuix Android resource name for a Primitive Token (1st-level, no mode suffix).
+ * Pattern: miuix_{type}_{leaf}
+ * e.g. "miuix_color_black_level1"
+ */
+function getMiuixPrimitiveName(token: DesignToken): string {
+  const typeSeg = getMiuixTypeSegment(token.type);
+  const leaf = getLeafName(token.name);
+  return `miuix_${typeSeg}_${leaf}`;
 }
 
 /**
@@ -24,16 +69,86 @@ function formatAndroidColor(color: { r: number; g: number; b: number; a: number 
 }
 
 /**
- * Generate a single Android XML resource line.
- * Uses token.codeSyntax.ANDROID when present (e.g. from Figma), otherwise derives from token name.
+ * Map TokenType to Android resource prefix for alias references.
  */
-export function generateAndroidToken(token: DesignToken, modeId?: string): string {
+function getAndroidResourcePrefix(type: TokenType): string {
+  switch (type) {
+    case "COLOR":
+      return "color";
+    case "NUMBER":
+      return "dimen";
+    case "STRING":
+      return "string";
+    case "BOOLEAN":
+      return "bool";
+  }
+}
+
+/**
+ * Get the Android resource name for a referenced (target) token.
+ * Uses codeSyntax.ANDROID if available, otherwise generates HyperOS miuix primitive name.
+ */
+function getReferenceName(targetToken: DesignToken): string {
+  if (targetToken.codeSyntax?.ANDROID) {
+    return targetToken.codeSyntax.ANDROID;
+  }
+  return getMiuixPrimitiveName(targetToken);
+}
+
+/**
+ * Get the XML tag name for a given token type.
+ */
+function getXmlTag(type: TokenType): string {
+  switch (type) {
+    case "COLOR":
+      return "color";
+    case "NUMBER":
+      return "dimen";
+    case "STRING":
+      return "string";
+    case "BOOLEAN":
+      return "bool";
+  }
+}
+
+/**
+ * Generate a single Android XML resource line.
+ * Uses token.codeSyntax.ANDROID when present, otherwise generates HyperOS miuix name.
+ * When tokens dictionary is provided, alias tokens output @prefix/refName references.
+ */
+export function generateAndroidToken(
+  token: DesignToken,
+  modeId?: string,
+  tokens?: Record<string, DesignToken>
+): string {
   const resolvedModeId = modeId ?? Object.keys(token.resolvedValues)[0];
   const value = token.resolvedValues[resolvedModeId];
   if (!value) return "";
 
-  const rawName = token.codeSyntax?.ANDROID ?? toAndroidName(token.name);
-  const name = stripCodeSyntaxPrefix(rawName);
+  // Determine the Android resource name for this token
+  let name: string;
+  if (token.codeSyntax?.ANDROID) {
+    name = token.codeSyntax.ANDROID;
+  } else if (token.isAlias) {
+    name = getMiuixFeatureName(token, resolvedModeId);
+  } else {
+    name = getMiuixPrimitiveName(token);
+  }
+
+  // Check if this token is an alias in the current mode and tokens dict is available
+  if (tokens) {
+    const rawValue = token.rawValues[resolvedModeId];
+    if (rawValue && rawValue.type === "ALIAS") {
+      const targetToken = tokens[rawValue.id];
+      if (targetToken) {
+        const prefix = getAndroidResourcePrefix(token.type);
+        const refName = getReferenceName(targetToken);
+        const tag = getXmlTag(token.type);
+        return `<${tag} name="${name}">@${prefix}/${refName}</${tag}>`;
+      }
+    }
+  }
+
   return formatAndroidXML(name, value);
 }
 
@@ -54,11 +169,12 @@ function formatAndroidXML(name: string, value: TokenValue): string {
  * Generate full Android XML resource file
  */
 export function generateAndroidBlock(
-  tokens: DesignToken[],
-  modeId?: string
+  tokenList: DesignToken[],
+  modeId?: string,
+  tokens?: Record<string, DesignToken>
 ): string {
-  const lines = tokens
-    .map((t) => generateAndroidToken(t, modeId))
+  const lines = tokenList
+    .map((t) => generateAndroidToken(t, modeId, tokens))
     .filter(Boolean)
     .map((line) => `    ${line}`);
 

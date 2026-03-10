@@ -11,13 +11,14 @@ export { generateAndroidToken, generateAndroidBlock } from "./android";
 export function generateTokenCode(
   token: DesignToken,
   format: CodeFormat,
-  modeId?: string
+  modeId?: string,
+  tokens?: Record<string, DesignToken>
 ): string {
   switch (format) {
     case "css":
       return generateCSSToken(token, modeId);
     case "android":
-      return generateAndroidToken(token, modeId);
+      return generateAndroidToken(token, modeId, tokens);
   }
 }
 
@@ -25,14 +26,15 @@ export function generateTokenCode(
  * Generate code block for multiple tokens
  */
 export function generateTokenBlock(
-  tokens: DesignToken[],
+  tokenList: DesignToken[],
   format: CodeFormat,
-  modeId?: string
+  modeId?: string,
+  tokens?: Record<string, DesignToken>
 ): string {
   switch (format) {
     case "css":
-      return generateCSSBlock(tokens, modeId);
+      return generateCSSBlock(tokenList, modeId);
     case "android":
-      return generateAndroidBlock(tokens, modeId);
+      return generateAndroidBlock(tokenList, modeId, tokens);
   }
 }
