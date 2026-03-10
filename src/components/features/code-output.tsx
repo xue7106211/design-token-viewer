@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTokenStore } from "@/stores/token-store";
+import { useShikiHtml } from "@/lib/use-shiki";
 import type { CodeFormat } from "@/types/token";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +15,8 @@ interface CodeOutputProps {
 
 export function CodeOutput({ code, className }: CodeOutputProps) {
   const [copied, setCopied] = useState(false);
+  const codeFormat = useTokenStore((s) => s.codeFormat);
+  const html = useShikiHtml(code, codeFormat);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(code);
@@ -43,9 +46,16 @@ export function CodeOutput({ code, className }: CodeOutputProps) {
           )}
         </Button>
       </div>
-      <pre className="min-w-0 max-w-full overflow-x-auto overflow-y-hidden whitespace-pre-wrap break-all p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
-        <code>{code}</code>
-      </pre>
+      {html ? (
+        <div
+          className="shiki-wrapper min-w-0 max-w-full overflow-x-auto overflow-y-hidden p-3 text-[11px] font-mono leading-relaxed [&_pre]:!bg-transparent [&_code]:!bg-transparent"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      ) : (
+        <pre className="min-w-0 max-w-full overflow-x-auto overflow-y-hidden whitespace-pre-wrap break-all p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
+          <code>{code}</code>
+        </pre>
+      )}
     </div>
   );
 }

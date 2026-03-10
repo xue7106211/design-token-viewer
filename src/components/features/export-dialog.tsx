@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { useTokenStore } from "@/stores/token-store";
 import { generateTokenBlock } from "@/lib/code-generators";
+import { useShikiHtml } from "@/lib/use-shiki";
 import type { CodeFormat, DesignToken } from "@/types/token";
 import { cn } from "@/lib/utils";
 import { saveAs } from "file-saver";
@@ -23,7 +24,7 @@ export function ExportDialog() {
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);
   const activeModeId = useTokenStore((s) => s.activeModeId);
   const exportRawJSON = useTokenStore((s) => s.exportRawJSON);
-  const [format, setFormat] = useState<ExportFormat>("css");
+  const [format, setFormat] = useState<ExportFormat>("android");
   const [copied, setCopied] = useState(false);
 
   const visibleTokens: DesignToken[] = filteredTokenIds
@@ -34,6 +35,8 @@ export function ExportDialog() {
     format === "json"
       ? exportRawJSON()
       : generateTokenBlock(visibleTokens, format, activeModeId ?? undefined);
+
+  const html = useShikiHtml(code, format);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(code);
@@ -56,7 +59,7 @@ export function ExportDialog() {
           <span className="text-xs">导出</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>导出设计令牌</DialogTitle>
         </DialogHeader>
@@ -66,7 +69,7 @@ export function ExportDialog() {
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">格式：</span>
             <div className="flex items-center gap-1 rounded-lg border bg-muted/50 p-0.5">
-              {(["css", "android", "json"] as const).map((f) => (
+              {(["android", "css", "json"] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => setFormat(f)}
@@ -87,10 +90,17 @@ export function ExportDialog() {
           </div>
 
           {/* Code preview */}
-          <div className="relative rounded-lg border bg-muted/30 overflow-hidden max-h-96">
-            <pre className="overflow-auto p-4 text-[11px] font-mono leading-relaxed text-foreground/90 max-h-80">
-              <code>{code}</code>
-            </pre>
+          <div className="relative rounded-lg border bg-muted/30">
+            {html ? (
+              <div
+                className="shiki-wrapper overflow-auto p-4 text-[11px] font-mono leading-relaxed max-h-80 [&_pre]:!bg-transparent [&_code]:!bg-transparent"
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
+            ) : (
+              <pre className="overflow-auto p-4 text-[11px] font-mono leading-relaxed text-foreground/90 max-h-80">
+                <code>{code}</code>
+              </pre>
+            )}
           </div>
 
           {/* Actions */}
