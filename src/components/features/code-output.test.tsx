@@ -59,7 +59,7 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     expect(shikiWrapper!.className).toContain("[&_pre]:overflow-x-auto");
   });
 
-  it("shiki-wrapper should have [&_pre]:max-w-full class for long code lines", () => {
+  it("shiki-wrapper should have [&_pre]:min-w-0 class for long code lines", () => {
     // Mock useShikiHtml to return a long CSS custom property line
     const longCssHtml =
       '<pre class="shiki github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#0550AE">--miuix-default-color-surface-container-light</span>: <span style="color:#953800">oklch(0.95 0.01 250)</span>;</span></code></pre>';
@@ -73,8 +73,8 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     const shikiWrapper = container.querySelector(".shiki-wrapper");
     expect(shikiWrapper).not.toBeNull();
 
-    // Assert: `.shiki-wrapper` className 应包含 [&_pre]:max-w-full
-    expect(shikiWrapper!.className).toContain("[&_pre]:max-w-full");
+    // Assert: `.shiki-wrapper` className 应包含 [&_pre]:min-w-0（约束 <pre> 元素宽度）
+    expect(shikiWrapper!.className).toContain("[&_pre]:min-w-0");
   });
 });
 

@@ -12,6 +12,7 @@ import { parseTokenJSON } from "@/lib/parsers";
 import { resolveTokens } from "@/lib/token-resolver";
 import { buildTokenTree } from "@/lib/tree-builder";
 import { rebuildRawJSON } from "@/lib/token-rebuilder";
+import { useChangeLogStore } from "@/stores/changelog-store";
 
 interface TokenState {
   // Data
@@ -266,6 +267,7 @@ export const useTokenStore = create<TokenState>()(
         const { tokens, collections, activeCollectionId } = get();
         const token = tokens[tokenId];
         if (!token || !token.rawValues[modeId] || token.rawValues[modeId].type === "ALIAS") return;
+        const oldValue = token.rawValues[modeId];
         const nextTokens = { ...tokens };
         const t = { ...nextTokens[tokenId], rawValues: { ...token.rawValues, [modeId]: value } };
         nextTokens[tokenId] = t;
@@ -285,12 +287,21 @@ export const useTokenStore = create<TokenState>()(
           editingTokenId: null,
           editingPosition: null,
         });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "update_value",
+          tokenId,
+          tokenName: token.name,
+          oldValue,
+          newValue: value,
+          meta: { modeId },
+        });
       },
 
       updateTokenName: (tokenId: string, newName: string) => {
         const { tokens, collections, activeCollectionId } = get();
         const token = tokens[tokenId];
         if (!token || !newName.trim()) return;
+        const oldName = token.name;
         const trimmed = newName.trim();
         const pathSegments = trimmed.split("/").filter(Boolean);
         if (pathSegments.length === 0) return;
@@ -315,32 +326,56 @@ export const useTokenStore = create<TokenState>()(
           filteredTokenIds: resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ?? get().filteredTokenIds,
           activeCollection: resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
         });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "update_name",
+          tokenId,
+          tokenName: trimmed,
+          oldValue: oldName,
+          newValue: trimmed,
+        });
       },
 
       updateTokenDescription: (tokenId: string, description: string) => {
         const { tokens, collections } = get();
         const token = tokens[tokenId];
         if (!token) return;
+        const oldDescription = token.description;
         const nextTokens = { ...tokens };
         nextTokens[tokenId] = { ...token, description: description || undefined };
         const rawJSON = rebuildRawJSON(collections, nextTokens);
         set({ tokens: nextTokens, rawJSON });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "update_description",
+          tokenId,
+          tokenName: token.name,
+          oldValue: oldDescription,
+          newValue: description || undefined,
+        });
       },
 
       updateTokenCodeSyntax: (tokenId: string, codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string }) => {
         const { tokens, collections } = get();
         const token = tokens[tokenId];
         if (!token) return;
+        const oldCodeSyntax = token.codeSyntax;
         const nextTokens = { ...tokens };
         nextTokens[tokenId] = { ...token, codeSyntax };
         const rawJSON = rebuildRawJSON(collections, nextTokens);
         set({ tokens: nextTokens, rawJSON });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "update_code_syntax",
+          tokenId,
+          tokenName: token.name,
+          oldValue: oldCodeSyntax,
+          newValue: codeSyntax,
+        });
       },
 
       setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => {
         const { tokens, collections, activeCollectionId } = get();
         const token = tokens[tokenId];
         if (!token) return;
+        const oldAliasTarget = token.rawValues[modeId]?.type === "ALIAS" ? (token.rawValues[modeId] as { type: "ALIAS"; id: string }).id : null;
         const nextTokens = { ...tokens };
         const rawValues = { ...token.rawValues };
         if (targetTokenId == null) {
@@ -369,10 +404,19 @@ export const useTokenStore = create<TokenState>()(
           filteredTokenIds: resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ?? get().filteredTokenIds,
           activeCollection: resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
         });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "set_alias",
+          tokenId,
+          tokenName: token.name,
+          oldValue: oldAliasTarget,
+          newValue: targetTokenId,
+          meta: { modeId },
+        });
       },
 
       deleteToken: (tokenId: string) => {
         const { tokens, collections, activeCollectionId, selectedTokenId } = get();
+        const deletedToken = tokens[tokenId];
         const nextTokens = { ...tokens };
         delete nextTokens[tokenId];
         const nextCollections = collections.map((col) => ({
@@ -399,11 +443,20 @@ export const useTokenStore = create<TokenState>()(
           editingTokenId: get().editingTokenId === tokenId ? null : get().editingTokenId,
           editingPosition: get().editingTokenId === tokenId ? null : get().editingPosition,
         });
+        if (deletedToken) {
+          useChangeLogStore.getState().addLogEntry({
+            changeType: "delete_token",
+            tokenId,
+            tokenName: deletedToken.name,
+            oldValue: deletedToken,
+          });
+        }
       },
 
       reorderFilteredTokens: (newOrder: string[]) => {
-        const { collections, activeCollectionId, tokens, searchQuery } = get();
+        const { collections, activeCollectionId, tokens, searchQuery, filteredTokenIds } = get();
         if (searchQuery.trim()) return;
+        const oldOrder = [...filteredTokenIds];
         const nextCollections = collections.map((col) =>
           col.id === activeCollectionId ? { ...col, tokenIds: newOrder } : col
         );
@@ -414,6 +467,11 @@ export const useTokenStore = create<TokenState>()(
           collections: nextCollections,
           activeCollection: activeCol,
           rawJSON,
+        });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "reorder",
+          oldValue: oldOrder,
+          newValue: newOrder,
         });
       },
 
@@ -455,6 +513,11 @@ export const useTokenStore = create<TokenState>()(
             get().filteredTokenIds,
           activeCollection:
             resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
+        });
+        useChangeLogStore.getState().addLogEntry({
+          changeType: "rename_group",
+          oldValue: oldPath,
+          newValue: trimmed,
         });
       },
 

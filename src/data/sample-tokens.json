@@ -226,8 +226,8 @@
         "var_190",
         "var_191"
       ]
-    }
-    ,{
+    },
+    {
       "id": "col_radius",
       "name": "Radius Token",
       "modes": [
@@ -893,8 +893,11 @@
           }
         }
       },
-      "description": "内容描述设置内容描述设置内容描述设置内容描述设置内容描述设置内容描述设置。",
-      "codeSyntax": {}
+      "description": "内容描述设置内容描述。",
+      "codeSyntax": {
+        "WEB": "--文字图标色-on_surface",
+        "ANDROID": "miuix_default_color_on_surface_light"
+      }
     },
     "var_32": {
       "id": "var_32",
@@ -4908,7 +4911,10 @@
       "name": "Thin",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 150 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 150
+        }
       },
       "codeSyntax": {}
     },
@@ -4917,7 +4923,10 @@
       "name": "Extralight",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 200 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 200
+        }
       },
       "codeSyntax": {}
     },
@@ -4926,7 +4935,10 @@
       "name": "Light",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 250 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 250
+        }
       },
       "codeSyntax": {}
     },
@@ -4935,7 +4947,10 @@
       "name": "Normal",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 305 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 305
+        }
       },
       "codeSyntax": {}
     },
@@ -4944,7 +4959,10 @@
       "name": "Regular",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 330 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 330
+        }
       },
       "codeSyntax": {}
     },
@@ -4953,7 +4971,10 @@
       "name": "Medium",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 380 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 380
+        }
       },
       "codeSyntax": {}
     },
@@ -4962,7 +4983,10 @@
       "name": "Demibold",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 450 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 450
+        }
       },
       "codeSyntax": {}
     },
@@ -4971,7 +4995,10 @@
       "name": "Semibold",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 520 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 520
+        }
       },
       "codeSyntax": {}
     },
@@ -4980,7 +5007,10 @@
       "name": "Bold",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 630 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 630
+        }
       },
       "codeSyntax": {}
     },
@@ -4989,7 +5019,10 @@
       "name": "Heavy",
       "type": "NUMBER",
       "valuesByMode": {
-        "mode_default": { "type": "NUMBER", "value": 700 }
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 700
+        }
       },
       "codeSyntax": {}
     },
@@ -4997,210 +5030,360 @@
       "id": "var_250",
       "name": "Size/Title 1",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 32 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 32
+        }
+      },
       "codeSyntax": {}
     },
     "var_251": {
       "id": "var_251",
       "name": "Size/Title 2",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 24 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 24
+        }
+      },
       "codeSyntax": {}
     },
     "var_252": {
       "id": "var_252",
       "name": "Size/Title 3",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 20 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 20
+        }
+      },
       "codeSyntax": {}
     },
     "var_253": {
       "id": "var_253",
       "name": "Size/Title 4",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 18 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 18
+        }
+      },
       "codeSyntax": {}
     },
     "var_254": {
       "id": "var_254",
       "name": "Size/Headline 1",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 17 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 17
+        }
+      },
       "codeSyntax": {}
     },
     "var_255": {
       "id": "var_255",
       "name": "Size/Headline 2",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 16
+        }
+      },
       "codeSyntax": {}
     },
     "var_256": {
       "id": "var_256",
       "name": "Size/Subtitle",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      },
       "codeSyntax": {}
     },
     "var_257": {
       "id": "var_257",
       "name": "Size/Subtitle 2",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      },
       "codeSyntax": {}
     },
     "var_258": {
       "id": "var_258",
       "name": "Size/Subtitle 3",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      },
       "codeSyntax": {}
     },
     "var_259": {
       "id": "var_259",
       "name": "Size/Body 1",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 16
+        }
+      },
       "codeSyntax": {}
     },
     "var_260": {
       "id": "var_260",
       "name": "Size/Body 2",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      },
       "codeSyntax": {}
     },
     "var_261": {
       "id": "var_261",
       "name": "Size/Footnote 1",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 13 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 13
+        }
+      },
       "codeSyntax": {}
     },
     "var_262": {
       "id": "var_262",
       "name": "Size/Footnote 2",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 11 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 11
+        }
+      },
       "codeSyntax": {}
     },
     "var_263": {
       "id": "var_263",
       "name": "Size/Footnote 3",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 11 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 11
+        }
+      },
       "codeSyntax": {}
     },
     "var_264": {
       "id": "var_264",
       "name": "Size/Button",
       "type": "NUMBER",
-      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 17 } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 17
+        }
+      },
       "codeSyntax": {}
     },
     "var_265": {
       "id": "var_265",
       "name": "Weight/Title 1",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Regular"
+        }
+      },
       "codeSyntax": {}
     },
     "var_266": {
       "id": "var_266",
       "name": "Weight/Title 2",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Semibold" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Semibold"
+        }
+      },
       "codeSyntax": {}
     },
     "var_267": {
       "id": "var_267",
       "name": "Weight/Title 3",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Medium"
+        }
+      },
       "codeSyntax": {}
     },
     "var_268": {
       "id": "var_268",
       "name": "Weight/Title 4",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Medium"
+        }
+      },
       "codeSyntax": {}
     },
     "var_269": {
       "id": "var_269",
       "name": "Weight/Headline 1",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Medium"
+        }
+      },
       "codeSyntax": {}
     },
     "var_270": {
       "id": "var_270",
       "name": "Weight/Headline 2",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Medium"
+        }
+      },
       "codeSyntax": {}
     },
     "var_271": {
       "id": "var_271",
       "name": "Weight/Subtitle",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Medium"
+        }
+      },
       "codeSyntax": {}
     },
     "var_272": {
       "id": "var_272",
       "name": "Weight/Subtitle 2",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Demibold" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Demibold"
+        }
+      },
       "codeSyntax": {}
     },
     "var_273": {
       "id": "var_273",
       "name": "Weight/Subtitle 3",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Regular"
+        }
+      },
       "codeSyntax": {}
     },
     "var_274": {
       "id": "var_274",
       "name": "Weight/Body 1",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Regular"
+        }
+      },
       "codeSyntax": {}
     },
     "var_275": {
       "id": "var_275",
       "name": "Weight/Body 2",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Regular"
+        }
+      },
       "codeSyntax": {}
     },
     "var_276": {
       "id": "var_276",
       "name": "Weight/Footnote 1",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Regular"
+        }
+      },
       "codeSyntax": {}
     },
     "var_277": {
       "id": "var_277",
       "name": "Weight/Footnote 2",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Regular"
+        }
+      },
       "codeSyntax": {}
     },
     "var_278": {
       "id": "var_278",
       "name": "Weight/Footnote 3",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Demibold" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Demibold"
+        }
+      },
       "codeSyntax": {}
     },
     "var_279": {
       "id": "var_279",
       "name": "Weight/Button",
       "type": "STRING",
-      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "valuesByMode": {
+        "mode_default": {
+          "type": "STRING",
+          "value": "Medium"
+        }
+      },
       "codeSyntax": {}
     }
   }

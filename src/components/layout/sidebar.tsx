@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Trash2, PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ChangeLogDialog } from "@/components/features/changelog-dialog";
 import { useState } from "react";
 
 export function Sidebar() {
@@ -33,6 +34,9 @@ export function Sidebar() {
         >
           <PanelLeftOpen className="h-4 w-4" />
         </Button>
+        <div className="mt-auto">
+          <ChangeLogDialog collapsed />
+        </div>
       </div>
     );
   }
@@ -125,6 +129,11 @@ export function Sidebar() {
           <TokenTree />
         </div>
       </ScrollArea>
+
+      {/* 底部日志入口 */}
+      <div className="shrink-0 border-t px-2 py-2">
+        <ChangeLogDialog />
+      </div>
     </div>
   );
 }
