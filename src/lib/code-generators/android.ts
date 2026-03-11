@@ -36,7 +36,7 @@ function getMiuixTypeSegment(type: TokenType): string {
  * Pattern: miuix_default_{type}_{leaf}_{modeSuffix}
  * e.g. "miuix_default_color_on_surface_light"
  */
-function getMiuixFeatureName(token: DesignToken, modeId: string): string {
+export function getMiuixFeatureName(token: DesignToken, modeId: string): string {
   const typeSeg = getMiuixTypeSegment(token.type);
   const leaf = getLeafName(token.name);
   const suffix = getModeSuffix(modeId);
@@ -48,7 +48,7 @@ function getMiuixFeatureName(token: DesignToken, modeId: string): string {
  * Pattern: miuix_{type}_{leaf}
  * e.g. "miuix_color_black_level1"
  */
-function getMiuixPrimitiveName(token: DesignToken): string {
+export function getMiuixPrimitiveName(token: DesignToken): string {
   const typeSeg = getMiuixTypeSegment(token.type);
   const leaf = getLeafName(token.name);
   return `miuix_${typeSeg}_${leaf}`;
@@ -179,4 +179,15 @@ export function generateAndroidBlock(
     .map((line) => `    ${line}`);
 
   return `<?xml version="1.0" encoding="utf-8"?>\n<resources>\n${lines.join("\n")}\n</resources>`;
+}
+
+/**
+ * Get the Android resource name for a token (without XML wrapping).
+ * Returns codeSyntax.ANDROID if set, otherwise generates HyperOS miuix name.
+ */
+export function getAndroidResourceName(token: DesignToken, modeId?: string): string {
+  if (token.codeSyntax?.ANDROID) return token.codeSyntax.ANDROID;
+  const resolvedModeId = modeId ?? Object.keys(token.rawValues)[0];
+  if (token.isAlias) return getMiuixFeatureName(token, resolvedModeId);
+  return getMiuixPrimitiveName(token);
 }

@@ -47,6 +47,8 @@ interface TokenState {
   scrollToGroup: (path: string) => void;
   clearScrollTarget: () => void;
   togglePath: (path: string) => void;
+  expandAll: () => void;
+  collapseAll: () => void;
   setSearchQuery: (query: string) => void;
   setViewMode: (mode: ViewMode) => void;
   setCodeFormat: (format: CodeFormat) => void;
@@ -202,6 +204,25 @@ export const useTokenStore = create<TokenState>()(
           next.add(path);
         }
         set({ expandedPaths: next });
+      },
+
+      expandAll: () => {
+        const { tree } = get();
+        const allPaths = new Set<string>();
+        const collect = (nodes: TokenTreeNode[]) => {
+          for (const node of nodes) {
+            if (node.children.length > 0) {
+              allPaths.add(node.path);
+              collect(node.children);
+            }
+          }
+        };
+        collect(tree);
+        set({ expandedPaths: allPaths });
+      },
+
+      collapseAll: () => {
+        set({ expandedPaths: new Set<string>() });
       },
 
       setSearchQuery: (query: string) => {

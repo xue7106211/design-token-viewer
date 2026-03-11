@@ -14,6 +14,9 @@ import type { TokenValue, ColorValue, DesignToken } from "@/types/token";
 import { X, GripVertical } from "lucide-react";
 
 import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
+import { getAndroidResourceName } from "@/lib/code-generators/android";
+import { toCSSVarName } from "@/lib/code-generators/css";
+import { stripCodeSyntaxPrefix } from "@/lib/code-generators/utils";
 
 const POPOVER_TRANSITION = { duration: 0.25, ease: [0.165, 0.84, 0.44, 1] as const };
 
@@ -54,6 +57,7 @@ export function TokenEditPopover() {
   const [isExiting, setIsExiting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const metaFormRef = useRef<TokenMetaFormHandle>(null);
+  const valueFormRef = useRef<ValueFormHandle>(null);
   const didDragRef = useRef(false);
   const reduceMotion = useReducedMotion();
 
@@ -240,15 +244,10 @@ export function TokenEditPopover() {
             <>
               <SectionLabel>当前值</SectionLabel>
               <EditForm
+                ref={valueFormRef}
                 tokenId={token.id}
                 modeId={modeId}
                 raw={raw}
-                onSave={(value) => {
-                  updateTokenValue(token.id, modeId, value);
-                  syncSampleTokensToFile();
-                  startClose();
-                }}
-                onCancel={startClose}
               />
             </>
           )}
@@ -262,8 +261,15 @@ export function TokenEditPopover() {
             <Button variant="outline" size="sm" className="cursor-pointer" onClick={startClose}>
               关闭
             </Button>
-            <Button size="sm" className="cursor-pointer" onClick={() => metaFormRef.current?.save()}>
-              保存元数据
+            <Button size="sm" className="cursor-pointer" onClick={() => {
+              metaFormRef.current?.save();
+              const newValue = valueFormRef.current?.getValue();
+              if (newValue) {
+                updateTokenValue(token.id, modeId, newValue);
+                syncSampleTokensToFile();
+              }
+            }}>
+              保存
             </Button>
           </div>
         </div>
@@ -272,6 +278,10 @@ export function TokenEditPopover() {
   );
 
   return typeof document !== "undefined" ? createPortal(content, document.body) : null;
+}
+
+export interface ValueFormHandle {
+  getValue: () => TokenValue | null;
 }
 
 export interface TokenMetaFormHandle {
@@ -293,30 +303,52 @@ const TokenMetaForm = React.forwardRef<
     ) => void;
   }
 >(function TokenMetaForm({ token, modeId, referenceOptions, isAliasMode, onSaveMeta }, ref) {
+  const tokens = useTokenStore((s) => s.tokens);
   const raw = token.rawValues[modeId];
   const currentReferenceId = raw?.type === "ALIAS" ? raw.id : null;
 
+  // Auto-generated code syntax names (derived from token name by code generators)
+  const autoWebName = toCSSVarName(stripCodeSyntaxPrefix(token.name));
+  const autoAndroidName = getAndroidResourceName(token, modeId);
+
+  // Resolve effective codeSyntax: own > referenced target > auto-generated
+  const resolveField = (field: "WEB" | "ANDROID" | "iOS", autoValue?: string) => {
+    if (token.codeSyntax?.[field]) return token.codeSyntax[field];
+    if (currentReferenceId && tokens[currentReferenceId]?.codeSyntax?.[field]) {
+      return tokens[currentReferenceId].codeSyntax![field];
+    }
+    return autoValue ?? "";
+  };
+
   const [name, setName] = useState(token.name);
   const [description, setDescription] = useState(token.description ?? "");
-  const [web, setWeb] = useState(token.codeSyntax?.WEB ?? "");
-  const [android, setAndroid] = useState(token.codeSyntax?.ANDROID ?? "");
-  const [ios, setIos] = useState(token.codeSyntax?.iOS ?? "");
+  const [web, setWeb] = useState(resolveField("WEB", autoWebName));
+  const [android, setAndroid] = useState(resolveField("ANDROID", autoAndroidName));
+  const [ios, setIos] = useState(resolveField("iOS"));
   const [referenceId, setReferenceId] = useState<string | null>(currentReferenceId);
   const [referenceQuery, setReferenceQuery] = useState("");
   const [referenceFocused, setReferenceFocused] = useState(false);
 
   // Sync local state when token updates from store (e.g. after saving name)
   useEffect(() => {
+    const syncWeb = toCSSVarName(stripCodeSyntaxPrefix(token.name));
+    const syncAndroid = getAndroidResourceName(token, modeId);
+    const syncField = (field: "WEB" | "ANDROID" | "iOS", autoVal?: string) => {
+      if (token.codeSyntax?.[field]) return token.codeSyntax[field];
+      const refId = raw?.type === "ALIAS" ? raw.id : null;
+      if (refId && tokens[refId]?.codeSyntax?.[field]) return tokens[refId].codeSyntax![field];
+      return autoVal ?? "";
+    };
     setName(token.name);
     setDescription(token.description ?? "");
-    setWeb(token.codeSyntax?.WEB ?? "");
-    setAndroid(token.codeSyntax?.ANDROID ?? "");
-    setIos(token.codeSyntax?.iOS ?? "");
+    setWeb(syncField("WEB", syncWeb));
+    setAndroid(syncField("ANDROID", syncAndroid));
+    setIos(syncField("iOS"));
     setReferenceId(currentReferenceId);
     const current = referenceOptions.find((opt) => opt.id === currentReferenceId);
     setReferenceQuery(current?.name ?? "");
     setReferenceFocused(false);
-  }, [token.name, token.description, token.codeSyntax, currentReferenceId, referenceOptions]);
+  }, [token.name, token.description, token.codeSyntax, currentReferenceId, referenceOptions, tokens, modeId, raw]);
 
   const filteredReferences = referenceOptions.filter((opt) => {
     const q = referenceQuery.trim().toLowerCase();
@@ -373,15 +405,15 @@ const TokenMetaForm = React.forwardRef<
         <div className="space-y-1.5">
           <Input
             className="font-mono text-xs"
-            value={web}
-            onChange={(e) => setWeb(e.target.value)}
-            placeholder="WEB (e.g. --var-name)"
-          />
-          <Input
-            className="font-mono text-xs"
             value={android}
             onChange={(e) => setAndroid(e.target.value)}
             placeholder="ANDROID"
+          />
+          <Input
+            className="font-mono text-xs"
+            value={web}
+            onChange={(e) => setWeb(e.target.value)}
+            placeholder="CSS (e.g. --var-name)"
           />
           <Input
             className="font-mono text-xs"
@@ -464,57 +496,28 @@ const TokenMetaForm = React.forwardRef<
   );
 });
 
-function EditForm({
-  tokenId,
-  modeId,
-  raw,
-  onSave,
-  onCancel,
-}: {
-  tokenId: string;
-  modeId: string;
-  raw: TokenValue;
-  onSave: (value: TokenValue) => void;
-  onCancel: () => void;
-}) {
+const EditForm = React.forwardRef<
+  ValueFormHandle,
+  {
+    tokenId: string;
+    modeId: string;
+    raw: TokenValue;
+  }
+>(function EditForm({ raw }, ref) {
   if (raw.type === "COLOR") {
-    return (
-      <ColorEditForm
-        initial={raw.value as ColorValue}
-        onSave={(v) => onSave({ type: "COLOR", value: v })}
-        onCancel={onCancel}
-      />
-    );
+    return <ColorEditForm ref={ref} initial={raw.value as ColorValue} />;
   }
   if (raw.type === "NUMBER") {
-    return (
-      <NumberEditForm
-        initial={raw.value}
-        onSave={(v) => onSave({ type: "NUMBER", value: v })}
-        onCancel={onCancel}
-      />
-    );
+    return <NumberEditForm ref={ref} initial={raw.value} />;
   }
   if (raw.type === "STRING") {
-    return (
-      <StringEditForm
-        initial={raw.value}
-        onSave={(v) => onSave({ type: "STRING", value: v })}
-        onCancel={onCancel}
-      />
-    );
+    return <StringEditForm ref={ref} initial={raw.value} />;
   }
   if (raw.type === "BOOLEAN") {
-    return (
-      <BooleanEditForm
-        initial={raw.value}
-        onSave={(v) => onSave({ type: "BOOLEAN", value: v })}
-        onCancel={onCancel}
-      />
-    );
+    return <BooleanEditForm ref={ref} initial={raw.value} />;
   }
   return null;
-}
+});
 
 function colorToHexInput(c: ColorValue): string {
   const hex = colorToHex(c).toUpperCase();
@@ -533,15 +536,10 @@ function hexToColor(hex: string): ColorValue {
   };
 }
 
-function ColorEditForm({
-  initial,
-  onSave,
-  onCancel,
-}: {
-  initial: ColorValue;
-  onSave: (v: ColorValue) => void;
-  onCancel: () => void;
-}) {
+const ColorEditForm = React.forwardRef<
+  ValueFormHandle,
+  { initial: ColorValue }
+>(function ColorEditForm({ initial }, ref) {
   const [hex, setHex] = useState(() => colorToHexInput(initial));
   const [color, setColor] = useState<ColorValue>(initial);
 
@@ -569,51 +567,35 @@ function ColorEditForm({
     setHex(colorToHexInput(v));
   };
 
+  useImperativeHandle(ref, () => ({
+    getValue: () => ({ type: "COLOR" as const, value: color }),
+  }), [color]);
+
   return (
-    <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        <ColorSwatch color={color} size="md" className="shrink-0" />
-        <div className="flex-1 min-w-0 space-y-1">
-          <Input
-            className="font-mono text-xs h-8"
-            value={hex}
-            onChange={handleHexChange}
-            placeholder="#000000"
-          />
-          <input
-            type="color"
-            className="h-8 w-full cursor-pointer rounded border border-border bg-transparent"
-            value={colorToHexInput(color)}
-            onChange={handlePickerChange}
-            aria-label="选色"
-          />
-        </div>
-      </div>
-      <div className="flex gap-2 justify-end pt-1">
-        <Button variant="outline" size="sm" className="cursor-pointer" onClick={onCancel}>
-          取消
-        </Button>
-        <Button size="sm" className="cursor-pointer" onClick={() => onSave(color)}>
-          保存
-        </Button>
-      </div>
+    <div className="flex items-center gap-2">
+      <ColorSwatch color={color} size="sm" className="shrink-0" />
+      <Input
+        className="font-mono text-xs h-8 flex-1 min-w-0"
+        value={hex}
+        onChange={handleHexChange}
+        placeholder="#000000"
+      />
     </div>
   );
-}
+});
 
-function NumberEditForm({
-  initial,
-  onSave,
-  onCancel,
-}: {
-  initial: number;
-  onSave: (v: number) => void;
-  onCancel: () => void;
-}) {
+const NumberEditForm = React.forwardRef<
+  ValueFormHandle,
+  { initial: number }
+>(function NumberEditForm({ initial }, ref) {
   const [value, setValue] = useState(String(initial));
 
   const num = parseFloat(value);
   const valid = !Number.isNaN(num);
+
+  useImperativeHandle(ref, () => ({
+    getValue: () => valid ? { type: "NUMBER" as const, value: num } : null,
+  }), [valid, num]);
 
   return (
     <div className="space-y-3">
@@ -624,33 +606,19 @@ function NumberEditForm({
         onChange={(e) => setValue(e.target.value)}
         step={1}
       />
-      <div className="flex gap-2 justify-end pt-1">
-        <Button variant="outline" size="sm" className="cursor-pointer" onClick={onCancel}>
-          取消
-        </Button>
-        <Button
-          size="sm"
-          className="cursor-pointer"
-          onClick={() => valid && onSave(num)}
-          disabled={!valid}
-        >
-          保存
-        </Button>
-      </div>
     </div>
   );
-}
+});
 
-function StringEditForm({
-  initial,
-  onSave,
-  onCancel,
-}: {
-  initial: string;
-  onSave: (v: string) => void;
-  onCancel: () => void;
-}) {
+const StringEditForm = React.forwardRef<
+  ValueFormHandle,
+  { initial: string }
+>(function StringEditForm({ initial }, ref) {
   const [value, setValue] = useState(initial);
+
+  useImperativeHandle(ref, () => ({
+    getValue: () => ({ type: "STRING" as const, value }),
+  }), [value]);
 
   return (
     <div className="space-y-3">
@@ -659,28 +627,19 @@ function StringEditForm({
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <div className="flex gap-2 justify-end pt-1">
-        <Button variant="outline" size="sm" className="cursor-pointer" onClick={onCancel}>
-          取消
-        </Button>
-        <Button size="sm" className="cursor-pointer" onClick={() => onSave(value)}>
-          保存
-        </Button>
-      </div>
     </div>
   );
-}
+});
 
-function BooleanEditForm({
-  initial,
-  onSave,
-  onCancel,
-}: {
-  initial: boolean;
-  onSave: (v: boolean) => void;
-  onCancel: () => void;
-}) {
+const BooleanEditForm = React.forwardRef<
+  ValueFormHandle,
+  { initial: boolean }
+>(function BooleanEditForm({ initial }, ref) {
   const [value, setValue] = useState(initial);
+
+  useImperativeHandle(ref, () => ({
+    getValue: () => ({ type: "BOOLEAN" as const, value }),
+  }), [value]);
 
   return (
     <div className="space-y-3">
@@ -693,14 +652,6 @@ function BooleanEditForm({
         />
         <span className="text-sm">{value ? "true" : "false"}</span>
       </label>
-      <div className="flex gap-2 justify-end pt-1">
-        <Button variant="outline" size="sm" className="cursor-pointer" onClick={onCancel}>
-          取消
-        </Button>
-        <Button size="sm" className="cursor-pointer" onClick={() => onSave(value)}>
-          保存
-        </Button>
-      </div>
     </div>
   );
-}
+});

@@ -6,7 +6,7 @@ import { stripCodeSyntaxPrefix } from "./utils";
  * Generate CSS custom property name from token name
  * e.g. "color/blue/500" -> "--color-blue-500"
  */
-function toCSSVarName(name: string): string {
+export function toCSSVarName(name: string): string {
   return `--${name.replace(/\//g, "-").replace(/\s+/g, "-").toLowerCase()}`;
 }
 

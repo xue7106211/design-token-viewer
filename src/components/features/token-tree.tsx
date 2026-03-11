@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ChevronRight, Palette, Hash, Type, ToggleLeft, Pencil } from "lucide-react";
+import { ChevronRight, Palette, Hash, Type, ToggleLeft, Pencil, ChevronsUpDown, ChevronsDownUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTokenStore } from "@/stores/token-store";
 import type { TokenTreeNode, TokenType } from "@/types/token";
@@ -133,6 +133,9 @@ function TreeNode({
 
 export function TokenTree() {
   const tree = useTokenStore((s) => s.tree);
+  const expandedPaths = useTokenStore((s) => s.expandedPaths);
+  const expandAll = useTokenStore((s) => s.expandAll);
+  const collapseAll = useTokenStore((s) => s.collapseAll);
   const renameGroup = useTokenStore((s) => s.renameGroup);
   const [renameGroupPath, setRenameGroupPath] = useState<string | null>(null);
   const [newPathValue, setNewPathValue] = useState("");
@@ -156,6 +159,8 @@ export function TokenTree() {
     setRenameGroupPath(null);
   };
 
+  const isAllExpanded = expandedPaths.size > 0;
+
   if (tree.length === 0) {
     return (
       <div className="px-3 py-6 text-center text-xs text-muted-foreground">
@@ -166,6 +171,21 @@ export function TokenTree() {
 
   return (
     <>
+      <div className="flex items-center justify-end px-2 pb-1">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-6 w-6 text-muted-foreground cursor-pointer"
+          onClick={isAllExpanded ? collapseAll : expandAll}
+          title={isAllExpanded ? "全部收起" : "全部展开"}
+        >
+          {isAllExpanded ? (
+            <ChevronsDownUp className="h-3.5 w-3.5" />
+          ) : (
+            <ChevronsUpDown className="h-3.5 w-3.5" />
+          )}
+        </Button>
+      </div>
       <div className="space-y-0.5 px-1">
         {tree.map((node) => (
           <TreeNode

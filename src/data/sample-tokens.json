@@ -227,6 +227,25 @@
         "var_191"
       ]
     }
+    ,{
+      "id": "col_radius",
+      "name": "Radius Token",
+      "modes": [
+        {
+          "modeId": "mode_default",
+          "name": "Default"
+        }
+      ],
+      "variableIds": [
+        "var_200",
+        "var_201",
+        "var_202",
+        "var_203",
+        "var_204",
+        "var_205",
+        "var_206"
+      ]
+    }
   ],
   "variables": {
     "var_0": {
@@ -4580,6 +4599,90 @@
           }
         }
       }
+    },
+    "var_200": {
+      "id": "var_200",
+      "name": "tiny",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 8
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_201": {
+      "id": "var_201",
+      "name": "small",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_202": {
+      "id": "var_202",
+      "name": "common",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 16
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_203": {
+      "id": "var_203",
+      "name": "medium",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 20
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_204": {
+      "id": "var_204",
+      "name": "demi_big",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 24
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_205": {
+      "id": "var_205",
+      "name": "big",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 36
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_206": {
+      "id": "var_206",
+      "name": "circle",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 999
+        }
+      },
+      "codeSyntax": {}
     }
   }
 }
