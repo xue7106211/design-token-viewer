@@ -85,7 +85,7 @@ export const useTokenStore = create<TokenState>()(
       expandedPaths: new Set<string>(),
       searchQuery: "",
       viewMode: "list" as ViewMode,
-      codeFormat: "css" as CodeFormat,
+      codeFormat: "android" as CodeFormat,
       inspectorOpen: false,
       inspectorWidth: 320,
       editingTokenId: null,

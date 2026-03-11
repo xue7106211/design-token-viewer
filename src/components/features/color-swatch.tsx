@@ -1,7 +1,7 @@
 "use client";
 
 import type { ColorValue } from "@/types/token";
-import { colorToHex, colorToRGB, contrastRatio } from "@/lib/contrast";
+import { colorToHex, colorToHexWithAlpha, colorToRGB, contrastRatio, alphaComposite } from "@/lib/contrast";
 import { cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -17,9 +17,12 @@ const BLACK = { r: 0, g: 0, b: 0, a: 1 };
 
 export function ColorSwatch({ color, size = "md", showLabel = false, className }: ColorSwatchProps) {
   const hex = colorToHex(color);
+  const displayHex = colorToHexWithAlpha(color);
   const rgb = colorToRGB(color);
-  const ratioOnWhite = contrastRatio(color, WHITE);
-  const ratioOnBlack = contrastRatio(color, BLACK);
+  // Alpha-composite onto white to get the actual visible color for contrast calculation
+  const visibleColor = color.a < 1 ? alphaComposite(color, WHITE) : color;
+  const ratioOnWhite = contrastRatio(visibleColor, WHITE);
+  const ratioOnBlack = contrastRatio(visibleColor, BLACK);
   const textColor = ratioOnBlack > ratioOnWhite ? "#000" : "#fff";
 
   const sizeClasses = {
@@ -45,17 +48,17 @@ export function ColorSwatch({ color, size = "md", showLabel = false, className }
                 className="flex h-full items-center justify-center text-[10px] font-mono font-medium"
                 style={{ color: textColor }}
               >
-                {hex.toUpperCase()}
+                {displayHex.toUpperCase()}
               </span>
             )}
           </div>
           {showLabel && (
-            <span className="text-xs font-mono text-muted-foreground">{hex.toUpperCase()}</span>
+            <span className="text-xs font-mono text-muted-foreground">{displayHex.toUpperCase()}</span>
           )}
         </div>
       </TooltipTrigger>
       <TooltipContent side="top" className="text-xs space-y-0.5">
-        <p className="font-mono">{hex.toUpperCase()}</p>
+        <p className="font-mono">{displayHex.toUpperCase()}</p>
         <p className="font-mono text-muted-foreground">{rgb}</p>
       </TooltipContent>
     </Tooltip>

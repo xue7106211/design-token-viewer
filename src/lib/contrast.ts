@@ -23,6 +23,21 @@ export function contrastRatio(color1: ColorValue, color2: ColorValue): number {
 }
 
 /**
+ * Alpha-composite a foreground color over a background color.
+ * Returns an opaque color representing the visual result.
+ */
+export function alphaComposite(fg: ColorValue, bg: ColorValue): ColorValue {
+  const a = fg.a;
+  return {
+    r: fg.r * a + bg.r * (1 - a),
+    g: fg.g * a + bg.g * (1 - a),
+    b: fg.b * a + bg.b * (1 - a),
+    a: 1,
+  };
+}
+
+
+/**
  * Check WCAG compliance levels
  */
 export function getWCAGLevel(ratio: number): {
@@ -53,6 +68,23 @@ export function colorToHex(color: ColorValue): string {
   }
   return hex;
 }
+
+/**
+ * Format color as "#RRGGBB · XX%" when alpha < 1, otherwise "#RRGGBB"
+ * This provides a more readable representation for semi-transparent colors.
+ */
+export function colorToHexWithAlpha(color: ColorValue): string {
+  const r = Math.round(color.r * 255);
+  const g = Math.round(color.g * 255);
+  const b = Math.round(color.b * 255);
+  const hex = `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+  if (color.a < 1) {
+    const percent = Math.round(color.a * 100);
+    return `${hex}·${percent}%`;
+  }
+  return hex;
+}
+
 
 /**
  * Convert 0-1 color values to rgb() string

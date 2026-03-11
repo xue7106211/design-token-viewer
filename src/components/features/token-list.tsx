@@ -16,7 +16,7 @@
 
 import { useTokenStore } from "@/stores/token-store";
 import { ColorSwatch } from "./color-swatch";
-import { colorToHex } from "@/lib/contrast";
+import { colorToHex, colorToHexWithAlpha } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2 } from "lucide-react";
@@ -867,7 +867,7 @@ function TokenListRow({
       return (
         <div className="flex items-center gap-2 min-w-0">
           <ColorSwatch color={color} size="sm" className="shrink-0" />
-          <span className="font-mono text-xs truncate">{colorToHex(color).toUpperCase()}</span>
+          <span className="font-mono text-xs truncate">{colorToHexWithAlpha(color).toUpperCase()}</span>
         </div>
       );
     }

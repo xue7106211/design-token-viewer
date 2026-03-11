@@ -4,7 +4,7 @@ import { useRef, useCallback, useEffect, useState } from "react";
 import { useTokenStore } from "@/stores/token-store";
 import { getAliasChain } from "@/lib/token-resolver";
 import { generateTokenCode } from "@/lib/code-generators";
-import { colorToHex, colorToRGB, colorToHSL, contrastRatio, getWCAGLevel } from "@/lib/contrast";
+import { colorToHex, colorToHexWithAlpha, colorToRGB, colorToHSL, contrastRatio, getWCAGLevel } from "@/lib/contrast";
 import { ColorSwatch } from "./color-swatch";
 import { NumberPreview } from "./number-preview";
 import { CodeOutput } from "./code-output";
@@ -133,7 +133,7 @@ export function TokenInspector() {
               <div className="space-y-3">
                 <ColorSwatch color={resolved.value} size="lg" />
                 <div className="space-y-1.5 text-xs font-mono">
-                  <Row label="HEX" value={colorToHex(resolved.value).toUpperCase()} />
+                  <Row label="HEX" value={colorToHexWithAlpha(resolved.value).toUpperCase()} />
                   <Row label="RGB" value={colorToRGB(resolved.value)} />
                   <Row label="HSL" value={colorToHSL(resolved.value)} />
                 </div>
@@ -233,10 +233,7 @@ export function TokenInspector() {
                             )}
                             title={item.name}
                           >
-                            {(() => {
-                              const leafName = chainToken?.path[chainToken.path.length - 1] ?? item.name;
-                              return leafName.length > 28 ? leafName.slice(0, 25) + "…" : leafName;
-                            })()}
+                            {chainToken?.path[chainToken.path.length - 1] ?? item.name}
                           </span>
                         </button>
                       </div>
@@ -251,7 +248,7 @@ export function TokenInspector() {
                     )}
                     <span className="text-xs font-mono text-foreground">
                       {resolved.type === "COLOR"
-                        ? colorToHex(resolved.value).toUpperCase()
+                        ? colorToHexWithAlpha(resolved.value).toUpperCase()
                         : resolved.type === "NUMBER"
                           ? `${resolved.value}px`
                           : String(resolved.value)}

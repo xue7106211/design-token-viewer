@@ -268,6 +268,70 @@
         "var_219",
         "var_220"
       ]
+    },
+    {
+      "id": "col_weight",
+      "name": "Weight Token",
+      "modes": [
+        {
+          "modeId": "mode_default",
+          "name": "Default"
+        }
+      ],
+      "variableIds": [
+        "var_230",
+        "var_231",
+        "var_232",
+        "var_233",
+        "var_234",
+        "var_235",
+        "var_236",
+        "var_237",
+        "var_238",
+        "var_239"
+      ]
+    },
+    {
+      "id": "col_types",
+      "name": "Types Token",
+      "modes": [
+        {
+          "modeId": "mode_default",
+          "name": "Default"
+        }
+      ],
+      "variableIds": [
+        "var_250",
+        "var_251",
+        "var_252",
+        "var_253",
+        "var_254",
+        "var_255",
+        "var_256",
+        "var_257",
+        "var_258",
+        "var_259",
+        "var_260",
+        "var_261",
+        "var_262",
+        "var_263",
+        "var_264",
+        "var_265",
+        "var_266",
+        "var_267",
+        "var_268",
+        "var_269",
+        "var_270",
+        "var_271",
+        "var_272",
+        "var_273",
+        "var_274",
+        "var_275",
+        "var_276",
+        "var_277",
+        "var_278",
+        "var_279"
+      ]
     }
   ],
   "variables": {
@@ -4837,6 +4901,306 @@
           "value": 12
         }
       },
+      "codeSyntax": {}
+    },
+    "var_230": {
+      "id": "var_230",
+      "name": "Thin",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 150 }
+      },
+      "codeSyntax": {}
+    },
+    "var_231": {
+      "id": "var_231",
+      "name": "Extralight",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 200 }
+      },
+      "codeSyntax": {}
+    },
+    "var_232": {
+      "id": "var_232",
+      "name": "Light",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 250 }
+      },
+      "codeSyntax": {}
+    },
+    "var_233": {
+      "id": "var_233",
+      "name": "Normal",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 305 }
+      },
+      "codeSyntax": {}
+    },
+    "var_234": {
+      "id": "var_234",
+      "name": "Regular",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 330 }
+      },
+      "codeSyntax": {}
+    },
+    "var_235": {
+      "id": "var_235",
+      "name": "Medium",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 380 }
+      },
+      "codeSyntax": {}
+    },
+    "var_236": {
+      "id": "var_236",
+      "name": "Demibold",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 450 }
+      },
+      "codeSyntax": {}
+    },
+    "var_237": {
+      "id": "var_237",
+      "name": "Semibold",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 520 }
+      },
+      "codeSyntax": {}
+    },
+    "var_238": {
+      "id": "var_238",
+      "name": "Bold",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 630 }
+      },
+      "codeSyntax": {}
+    },
+    "var_239": {
+      "id": "var_239",
+      "name": "Heavy",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": { "type": "NUMBER", "value": 700 }
+      },
+      "codeSyntax": {}
+    },
+    "var_250": {
+      "id": "var_250",
+      "name": "Size/Title 1",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 32 } },
+      "codeSyntax": {}
+    },
+    "var_251": {
+      "id": "var_251",
+      "name": "Size/Title 2",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 24 } },
+      "codeSyntax": {}
+    },
+    "var_252": {
+      "id": "var_252",
+      "name": "Size/Title 3",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 20 } },
+      "codeSyntax": {}
+    },
+    "var_253": {
+      "id": "var_253",
+      "name": "Size/Title 4",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 18 } },
+      "codeSyntax": {}
+    },
+    "var_254": {
+      "id": "var_254",
+      "name": "Size/Headline 1",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 17 } },
+      "codeSyntax": {}
+    },
+    "var_255": {
+      "id": "var_255",
+      "name": "Size/Headline 2",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } },
+      "codeSyntax": {}
+    },
+    "var_256": {
+      "id": "var_256",
+      "name": "Size/Subtitle",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "codeSyntax": {}
+    },
+    "var_257": {
+      "id": "var_257",
+      "name": "Size/Subtitle 2",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "codeSyntax": {}
+    },
+    "var_258": {
+      "id": "var_258",
+      "name": "Size/Subtitle 3",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "codeSyntax": {}
+    },
+    "var_259": {
+      "id": "var_259",
+      "name": "Size/Body 1",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 16 } },
+      "codeSyntax": {}
+    },
+    "var_260": {
+      "id": "var_260",
+      "name": "Size/Body 2",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 14 } },
+      "codeSyntax": {}
+    },
+    "var_261": {
+      "id": "var_261",
+      "name": "Size/Footnote 1",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 13 } },
+      "codeSyntax": {}
+    },
+    "var_262": {
+      "id": "var_262",
+      "name": "Size/Footnote 2",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 11 } },
+      "codeSyntax": {}
+    },
+    "var_263": {
+      "id": "var_263",
+      "name": "Size/Footnote 3",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 11 } },
+      "codeSyntax": {}
+    },
+    "var_264": {
+      "id": "var_264",
+      "name": "Size/Button",
+      "type": "NUMBER",
+      "valuesByMode": { "mode_default": { "type": "NUMBER", "value": 17 } },
+      "codeSyntax": {}
+    },
+    "var_265": {
+      "id": "var_265",
+      "name": "Weight/Title 1",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "codeSyntax": {}
+    },
+    "var_266": {
+      "id": "var_266",
+      "name": "Weight/Title 2",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Semibold" } },
+      "codeSyntax": {}
+    },
+    "var_267": {
+      "id": "var_267",
+      "name": "Weight/Title 3",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "codeSyntax": {}
+    },
+    "var_268": {
+      "id": "var_268",
+      "name": "Weight/Title 4",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "codeSyntax": {}
+    },
+    "var_269": {
+      "id": "var_269",
+      "name": "Weight/Headline 1",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "codeSyntax": {}
+    },
+    "var_270": {
+      "id": "var_270",
+      "name": "Weight/Headline 2",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "codeSyntax": {}
+    },
+    "var_271": {
+      "id": "var_271",
+      "name": "Weight/Subtitle",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
+      "codeSyntax": {}
+    },
+    "var_272": {
+      "id": "var_272",
+      "name": "Weight/Subtitle 2",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Demibold" } },
+      "codeSyntax": {}
+    },
+    "var_273": {
+      "id": "var_273",
+      "name": "Weight/Subtitle 3",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "codeSyntax": {}
+    },
+    "var_274": {
+      "id": "var_274",
+      "name": "Weight/Body 1",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "codeSyntax": {}
+    },
+    "var_275": {
+      "id": "var_275",
+      "name": "Weight/Body 2",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "codeSyntax": {}
+    },
+    "var_276": {
+      "id": "var_276",
+      "name": "Weight/Footnote 1",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "codeSyntax": {}
+    },
+    "var_277": {
+      "id": "var_277",
+      "name": "Weight/Footnote 2",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Regular" } },
+      "codeSyntax": {}
+    },
+    "var_278": {
+      "id": "var_278",
+      "name": "Weight/Footnote 3",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Demibold" } },
+      "codeSyntax": {}
+    },
+    "var_279": {
+      "id": "var_279",
+      "name": "Weight/Button",
+      "type": "STRING",
+      "valuesByMode": { "mode_default": { "type": "STRING", "value": "Medium" } },
       "codeSyntax": {}
     }
   }
