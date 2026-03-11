@@ -6,14 +6,36 @@ import { TokenTree } from "@/components/features/token-tree";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { Trash2 } from "lucide-react";
+import { Trash2, PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export function Sidebar() {
   const collections = useTokenStore((s) => s.collections);
   const activeCollectionId = useTokenStore((s) => s.activeCollectionId);
   const setActiveCollection = useTokenStore((s) => s.setActiveCollection);
   const clearData = useTokenStore((s) => s.clearData);
+  const expandedPaths = useTokenStore((s) => s.expandedPaths);
+  const expandAll = useTokenStore((s) => s.expandAll);
+  const collapseAll = useTokenStore((s) => s.collapseAll);
+  const [collapsed, setCollapsed] = useState(false);
+  const isAllExpanded = expandedPaths.size > 0;
+
+  if (collapsed) {
+    return (
+      <div className="flex h-full w-10 flex-col items-center border-r bg-sidebar py-2.5">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-7 w-7 text-muted-foreground cursor-pointer"
+          onClick={() => setCollapsed(false)}
+          title="展开侧边栏"
+        >
+          <PanelLeftOpen className="h-4 w-4" />
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-full w-64 flex-col border-r bg-sidebar">
@@ -26,15 +48,26 @@ export function Sidebar() {
             className="h-4 w-auto max-w-full object-contain object-left block"
           />
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7 text-muted-foreground hover:text-destructive cursor-pointer"
-          onClick={clearData}
-          title="清除数据"
-        >
-          <Trash2 className="h-3.5 w-3.5" />
-        </Button>
+        <div className="flex items-center gap-0.5">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-7 w-7 text-muted-foreground hover:text-foreground cursor-pointer"
+            onClick={() => setCollapsed(true)}
+            title="收起侧边栏"
+          >
+            <PanelLeftClose className="h-3.5 w-3.5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-7 w-7 text-muted-foreground hover:text-destructive cursor-pointer"
+            onClick={clearData}
+            title="清除数据"
+          >
+            <Trash2 className="h-3.5 w-3.5" />
+          </Button>
+        </div>
       </div>
 
       {/* Collection Tabs */}
@@ -67,6 +100,24 @@ export function Sidebar() {
       </div>
 
       <Separator />
+
+      {/* Token 组标题 + 展开/收起 */}
+      <div className="flex items-center justify-between pl-3 pr-2 pt-2 pb-1">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Token 组</span>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-6 w-6 text-muted-foreground cursor-pointer"
+          onClick={isAllExpanded ? collapseAll : expandAll}
+          title={isAllExpanded ? "全部收起" : "全部展开"}
+        >
+          {isAllExpanded ? (
+            <ChevronsDownUp className="h-3.5 w-3.5" />
+          ) : (
+            <ChevronsUpDown className="h-3.5 w-3.5" />
+          )}
+        </Button>
+      </div>
 
       {/* Tree: min-h-0 让 flex 子项可收缩，内部才能滚动 */}
       <ScrollArea className="min-h-0 flex-1">

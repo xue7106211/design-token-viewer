@@ -245,6 +245,29 @@
         "var_205",
         "var_206"
       ]
+    },
+    {
+      "id": "col_number",
+      "name": "Number Token",
+      "modes": [
+        {
+          "modeId": "mode_default",
+          "name": "Default"
+        }
+      ],
+      "variableIds": [
+        "var_210",
+        "var_211",
+        "var_212",
+        "var_213",
+        "var_214",
+        "var_215",
+        "var_216",
+        "var_217",
+        "var_218",
+        "var_219",
+        "var_220"
+      ]
     }
   ],
   "variables": {
@@ -4680,6 +4703,138 @@
         "mode_default": {
           "type": "NUMBER",
           "value": 999
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_210": {
+      "id": "var_210",
+      "name": "padding/padding_xs",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 8
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_211": {
+      "id": "var_211",
+      "name": "padding/padding_sm",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_212": {
+      "id": "var_212",
+      "name": "padding/padding_md",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 20
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_213": {
+      "id": "var_213",
+      "name": "padding/padding_lg",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 28
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_214": {
+      "id": "var_214",
+      "name": "padding/padding_xl",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 56
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_215": {
+      "id": "var_215",
+      "name": "margin/top",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 4
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_216": {
+      "id": "var_216",
+      "name": "margin/base_horizontal",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_217": {
+      "id": "var_217",
+      "name": "margin/extra_horizontal",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 0
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_218": {
+      "id": "var_218",
+      "name": "margin/bottom",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 28
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_219": {
+      "id": "var_219",
+      "name": "margin/item_vertical",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_220": {
+      "id": "var_220",
+      "name": "margin/item_horizontal",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_default": {
+          "type": "NUMBER",
+          "value": 12
         }
       },
       "codeSyntax": {}

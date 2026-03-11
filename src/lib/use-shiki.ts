@@ -1,26 +1,30 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { BundledLanguage } from "shiki";
 import type { ExportFormat } from "@/components/features/export-dialog";
 import type { CodeFormat } from "@/types/token";
 
-const FORMAT_LANG: Record<ExportFormat, BundledLanguage> = {
+const FORMAT_LANG: Record<string, string> = {
   android: "xml",
   css: "css",
   json: "json",
 };
 
-let highlighterPromise: Promise<import("shiki").HighlighterGeneric<any, any>> | null = null;
+let highlighterPromise: Promise<any> | null = null;
 
 function getHighlighter() {
   if (!highlighterPromise) {
-    highlighterPromise = import("shiki").then((mod) =>
+    highlighterPromise = import("shiki/bundle/web").then((mod) =>
       mod.createHighlighter({
         themes: ["github-light", "github-dark"],
         langs: ["xml", "css", "json"],
       })
-    );
+    ).catch((err) => {
+      // 加载失败时重置，允许下次重试
+      console.warn("[shiki] chunk 加载失败，将回退到纯文本:", err);
+      highlighterPromise = null;
+      return null;
+    });
   }
   return highlighterPromise;
 }
@@ -34,15 +38,19 @@ export function useShikiHtml(
   useEffect(() => {
     let cancelled = false;
     getHighlighter().then((highlighter) => {
-      if (cancelled) return;
-      const result = highlighter.codeToHtml(code, {
-        lang: FORMAT_LANG[format] ?? "text",
-        themes: {
-          light: "github-light",
-          dark: "github-dark",
-        },
-      });
-      setHtml(result);
+      if (cancelled || !highlighter) return;
+      try {
+        const result = highlighter.codeToHtml(code, {
+          lang: FORMAT_LANG[format] ?? "text",
+          themes: {
+            light: "github-light",
+            dark: "github-dark",
+          },
+        });
+        setHtml(result);
+      } catch {
+        // 高亮失败时保持空字符串，组件会回退到纯文本
+      }
     });
     return () => {
       cancelled = true;

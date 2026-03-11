@@ -532,7 +532,7 @@ export function TokenList() {
       {/* 滚动容器：支持水平和垂直滚动 */}
       <div
         ref={scrollRef}
-        className="relative h-full overflow-auto rounded-md border border-border"
+        className="relative max-h-full overflow-auto rounded-md border border-border"
       >
         {/* 表格：table-fixed 确保列宽由 colgroup 控制，border-separate 允许独立控制单元格边框 */}
         <table
