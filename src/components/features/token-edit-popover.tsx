@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect */
+
 import React, { useEffect, useRef, useState, useCallback, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "framer-motion";
@@ -13,7 +15,6 @@ import { colord } from "colord";
 import type { TokenValue, ColorValue, DesignToken } from "@/types/token";
 import { X, GripVertical } from "lucide-react";
 
-import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
 import { getAndroidResourceName } from "@/lib/code-generators/android";
 import { toCSSVarName } from "@/lib/code-generators/css";
 import { stripCodeSyntaxPrefix } from "@/lib/code-generators/utils";
@@ -230,13 +231,12 @@ export function TokenEditPopover() {
             modeId={modeId}
             referenceOptions={referenceOptions}
             isAliasMode={isAliasMode}
-            onSaveMeta={(name, description, codeSyntax, referenceTokenId) => {
-              if (name.trim() && name !== token.name) updateTokenName(token.id, name.trim());
-              if (description !== (token.description ?? "")) updateTokenDescription(token.id, description);
-              if (codeSyntax !== undefined) updateTokenCodeSyntax(token.id, codeSyntax);
+            onSaveMeta={async (name, description, codeSyntax, referenceTokenId) => {
+              if (name.trim() && name !== token.name) await updateTokenName(token.id, name.trim());
+              if (description !== (token.description ?? "")) await updateTokenDescription(token.id, description);
+              if (codeSyntax !== undefined) await updateTokenCodeSyntax(token.id, codeSyntax);
               const currentAliasId = raw?.type === "ALIAS" ? raw.id : null;
-              if (referenceTokenId !== currentAliasId) setTokenAlias(token.id, modeId, referenceTokenId);
-              syncSampleTokensToFile();
+              if (referenceTokenId !== currentAliasId) await setTokenAlias(token.id, modeId, referenceTokenId);
             }}
           />
 
@@ -261,12 +261,11 @@ export function TokenEditPopover() {
             <Button variant="outline" size="sm" className="cursor-pointer" onClick={startClose}>
               关闭
             </Button>
-            <Button size="sm" className="cursor-pointer" onClick={() => {
-              metaFormRef.current?.save();
+            <Button size="sm" className="cursor-pointer" onClick={async () => {
+              await metaFormRef.current?.save();
               const newValue = valueFormRef.current?.getValue();
               if (newValue) {
-                updateTokenValue(token.id, modeId, newValue);
-                syncSampleTokensToFile();
+                await updateTokenValue(token.id, modeId, newValue);
               }
             }}>
               保存
@@ -285,7 +284,7 @@ export interface ValueFormHandle {
 }
 
 export interface TokenMetaFormHandle {
-  save: () => void;
+  save: () => Promise<void>;
 }
 
 const TokenMetaForm = React.forwardRef<
@@ -300,7 +299,7 @@ const TokenMetaForm = React.forwardRef<
       description: string,
       codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string },
       referenceTokenId: string | null
-    ) => void;
+    ) => Promise<void>;
   }
 >(function TokenMetaForm({ token, modeId, referenceOptions, isAliasMode, onSaveMeta }, ref) {
   const tokens = useTokenStore((s) => s.tokens);
@@ -373,8 +372,8 @@ const TokenMetaForm = React.forwardRef<
     return Array.from(groups.entries()).sort((a, b) => a[0].localeCompare(b[0]));
   })();
 
-  const handleSave = () => {
-    onSaveMeta(name, description, { WEB: web || undefined, ANDROID: android || undefined, iOS: ios || undefined }, referenceId);
+  const handleSave = async () => {
+    await onSaveMeta(name, description, { WEB: web || undefined, ANDROID: android || undefined, iOS: ios || undefined }, referenceId);
   };
 
   useImperativeHandle(ref, () => ({ save: handleSave }), [handleSave]);

@@ -32,7 +32,7 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     vi.clearAllMocks();
 
     // Mock useTokenStore to return codeFormat and setCodeFormat
-    (useTokenStore as ReturnType<typeof vi.fn>).mockImplementation(
+    (useTokenStore as unknown as ReturnType<typeof vi.fn>).mockImplementation(
       (selector: (s: Record<string, unknown>) => unknown) =>
         selector({
           codeFormat: "android",
@@ -46,7 +46,7 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     const longCodeHtml =
       '<pre class="shiki github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#1F2328">&lt;</span><span style="color:#1F6FEB">color</span> <span style="color:#0550AE">name</span>=<span style="color:#0A3069">"miuix_default_color_surface_container_light"</span><span style="color:#1F2328">&gt;</span>@color/ref_value<span style="color:#1F2328">&lt;/</span><span style="color:#1F6FEB">color</span><span style="color:#1F2328">&gt;</span></span></code></pre>';
 
-    (useShikiHtml as ReturnType<typeof vi.fn>).mockReturnValue(longCodeHtml);
+    (useShikiHtml as unknown as ReturnType<typeof vi.fn>).mockReturnValue(longCodeHtml);
 
     const { container } = render(
       <CodeOutput code='<color name="miuix_default_color_surface_container_light">@color/ref_value</color>' />
@@ -64,7 +64,7 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     const longCssHtml =
       '<pre class="shiki github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#0550AE">--miuix-default-color-surface-container-light</span>: <span style="color:#953800">oklch(0.95 0.01 250)</span>;</span></code></pre>';
 
-    (useShikiHtml as ReturnType<typeof vi.fn>).mockReturnValue(longCssHtml);
+    (useShikiHtml as unknown as ReturnType<typeof vi.fn>).mockReturnValue(longCssHtml);
 
     const { container } = render(
       <CodeOutput code="--miuix-default-color-surface-container-light: oklch(0.95 0.01 250);" />
@@ -94,7 +94,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
   beforeEach(() => {
     vi.clearAllMocks();
 
-    (useTokenStore as ReturnType<typeof vi.fn>).mockImplementation(
+    (useTokenStore as unknown as ReturnType<typeof vi.fn>).mockImplementation(
       (selector: (s: Record<string, unknown>) => unknown) =>
         selector({
           codeFormat: "css",
@@ -119,7 +119,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
       fc.property(shortCodeArb, (code) => {
         // Mock useShikiHtml 返回包含代码的 HTML
         const mockHtml = `<pre class="shiki"><code><span class="line"><span>${code}</span></span></code></pre>`;
-        (useShikiHtml as ReturnType<typeof vi.fn>).mockReturnValue(mockHtml);
+        (useShikiHtml as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockHtml);
 
         const { container, unmount } = render(<CodeOutput code={code} />);
 
@@ -151,7 +151,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
 
     fc.assert(
       fc.property(codeFormatArb, (format) => {
-        (useTokenStore as ReturnType<typeof vi.fn>).mockImplementation(
+        (useTokenStore as unknown as ReturnType<typeof vi.fn>).mockImplementation(
           (selector: (s: Record<string, unknown>) => unknown) =>
             selector({
               codeFormat: format,
@@ -160,7 +160,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
         );
 
         const mockHtml = `<pre class="shiki"><code><span>test</span></code></pre>`;
-        (useShikiHtml as ReturnType<typeof vi.fn>).mockReturnValue(mockHtml);
+        (useShikiHtml as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockHtml);
 
         const { container, unmount } = render(<CodeOutput code="test" />);
 
@@ -192,7 +192,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
     fc.assert(
       fc.property(codeArb, (code) => {
         const mockHtml = `<pre class="shiki"><code><span>${code}</span></code></pre>`;
-        (useShikiHtml as ReturnType<typeof vi.fn>).mockReturnValue(mockHtml);
+        (useShikiHtml as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockHtml);
 
         const { container, unmount } = render(<CodeOutput code={code} />);
 
@@ -223,7 +223,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
     fc.assert(
       fc.property(codeArb, (code) => {
         // Mock useShikiHtml 返回 null，触发 fallback 渲染
-        (useShikiHtml as ReturnType<typeof vi.fn>).mockReturnValue(null);
+        (useShikiHtml as unknown as ReturnType<typeof vi.fn>).mockReturnValue(null);
 
         const { container, unmount } = render(<CodeOutput code={code} />);
 

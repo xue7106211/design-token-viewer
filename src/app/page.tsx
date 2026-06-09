@@ -4,31 +4,30 @@ import { useEffect } from "react";
 import { useTokenStore } from "@/stores/token-store";
 import { AppShell } from "@/components/layout/app-shell";
 import { FileUpload } from "@/components/features/file-upload";
-import sampleData from "@/data/sample-tokens.json";
 
 export default function Home() {
-  const rawJSON = useTokenStore((s) => s.rawJSON);
   const collections = useTokenStore((s) => s.collections);
-  const loadJSON = useTokenStore((s) => s.loadJSON);
+  const isLoading = useTokenStore((s) => s.isLoading);
+  const error = useTokenStore((s) => s.error);
+  const loadRemoteDocument = useTokenStore((s) => s.loadRemoteDocument);
   const hasData = collections.length > 0;
 
-  // After rehydration: if we have rawJSON but no tokens (e.g. old persist format),
-  // re-parse so tokens/collections/tree are restored
   useEffect(() => {
-    if (rawJSON && !hasData) {
-      loadJSON(rawJSON);
+    if (!hasData && !isLoading) {
+      loadRemoteDocument();
     }
-  }, [rawJSON, hasData, loadJSON]);
+  }, [hasData, isLoading, loadRemoteDocument]);
 
-  // 默认数据源：无任何数据时自动加载示例，保证打开页面即有 Collection 展示
-  useEffect(() => {
-    if (!hasData && rawJSON == null) {
-      loadJSON(sampleData);
-    }
-  }, [hasData, rawJSON, loadJSON]);
+  if (isLoading && !hasData) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background text-sm text-muted-foreground">
+        正在加载共享 Token 表...
+      </div>
+    );
+  }
 
   if (!hasData) {
-    return <FileUpload />;
+    return <FileUpload error={error} />;
   }
 
   return <AppShell />;

@@ -8,18 +8,29 @@ import type {
   ViewMode,
   CodeFormat,
 } from "@/types/token";
-import { parseTokenJSON } from "@/lib/parsers";
-import { resolveTokens } from "@/lib/token-resolver";
 import { buildTokenTree } from "@/lib/tree-builder";
 import { rebuildRawJSON } from "@/lib/token-rebuilder";
-import { useChangeLogStore } from "@/stores/changelog-store";
+import {
+  ApiError,
+  apiRequest,
+  withActor,
+  type TokenDocumentResponse,
+} from "@/lib/collaboration/client";
+
+type CodeSyntax = { WEB?: string; ANDROID?: string; iOS?: string };
 
 interface TokenState {
-  // Data
+  // Shared server data
   rawJSON: unknown | null;
+  revision: number | null;
+  updatedAt: number | null;
+  updatedBy?: string;
   collections: TokenCollection[];
   tokens: Record<string, DesignToken>;
   tree: TokenTreeNode[];
+  isLoading: boolean;
+  isSaving: boolean;
+  error: string | null;
 
   // UI state
   activeCollectionId: string | null;
@@ -40,7 +51,8 @@ interface TokenState {
   filteredTokenIds: string[];
 
   // Actions
-  loadJSON: (json: unknown) => boolean;
+  loadRemoteDocument: () => Promise<void>;
+  loadJSON: (json: unknown) => Promise<boolean>;
   clearData: () => void;
   setActiveCollection: (id: string) => void;
   setActiveMode: (modeId: string) => void;
@@ -56,513 +68,385 @@ interface TokenState {
   setInspectorOpen: (open: boolean) => void;
   setInspectorWidth: (width: number) => void;
   setEditingToken: (id: string | null, position?: { x: number; y: number }) => void;
-  updateTokenValue: (tokenId: string, modeId: string, value: TokenValue) => void;
-  updateTokenName: (tokenId: string, newName: string) => void;
-  updateTokenDescription: (tokenId: string, description: string) => void;
-  updateTokenCodeSyntax: (tokenId: string, codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string }) => void;
-  setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => void;
-  deleteToken: (tokenId: string) => void;
-  reorderFilteredTokens: (newOrder: string[]) => void;
-  renameGroup: (oldPath: string, newPath: string) => void;
+  updateTokenValue: (tokenId: string, modeId: string, value: TokenValue) => Promise<void>;
+  updateTokenName: (tokenId: string, newName: string) => Promise<void>;
+  updateTokenDescription: (tokenId: string, description: string) => Promise<void>;
+  updateTokenCodeSyntax: (tokenId: string, codeSyntax: CodeSyntax) => Promise<void>;
+  setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => Promise<void>;
+  deleteToken: (tokenId: string) => Promise<void>;
+  reorderFilteredTokens: (newOrder: string[]) => Promise<void>;
+  renameGroup: (oldPath: string, newPath: string) => Promise<void>;
   exportRawJSON: () => string;
   getTokensByGroup: (group: string) => DesignToken[];
   getVisibleTokens: () => DesignToken[];
 }
 
+type PersistedTokenState = Partial<
+  Pick<
+    TokenState,
+    | "activeCollectionId"
+    | "activeModeId"
+    | "searchQuery"
+    | "viewMode"
+    | "codeFormat"
+    | "inspectorWidth"
+  >
+> & {
+  expandedPaths?: string[];
+};
+
 export const useTokenStore = create<TokenState>()(
   persist(
-    (set, get) => ({
-      // Data
-      rawJSON: null,
-      collections: [],
-      tokens: {},
-      tree: [],
-
-      // UI state
-      activeCollectionId: null,
-      activeModeId: null,
-      selectedTokenId: null,
-      scrollToTokenId: null,
-      expandedPaths: new Set<string>(),
-      searchQuery: "",
-      viewMode: "list" as ViewMode,
-      codeFormat: "android" as CodeFormat,
-      inspectorOpen: false,
-      inspectorWidth: 320,
-      editingTokenId: null,
-      editingPosition: null,
-
-      // Computed
-      activeCollection: null,
-      filteredTokenIds: [],
-
-      // Actions
-      loadJSON: (json: unknown) => {
-        const parsed = parseTokenJSON(json);
-        if (!parsed) return false;
-
-        const resolved = resolveTokens(parsed);
-        const firstCollection = resolved.collections[0] ?? null;
-        const firstMode = firstCollection?.modes[0] ?? null;
-
-        const tree = buildTokenTree(
-          Object.values(resolved.tokens),
-          firstCollection?.name
+    (set, get) => {
+      const applyDocument = (document: TokenDocumentResponse) => {
+        const preferredCollectionId = get().activeCollectionId;
+        const preferredModeId = get().activeModeId;
+        const activeCollection =
+          document.collections.find((collection) => collection.id === preferredCollectionId) ??
+          document.collections[0] ??
+          null;
+        const activeMode =
+          activeCollection?.modes.find((mode) => mode.modeId === preferredModeId) ??
+          activeCollection?.modes[0] ??
+          null;
+        const tree = buildTokenTree(Object.values(document.tokens), activeCollection?.name);
+        const filteredTokenIds = filterTokenIds(
+          activeCollection,
+          document.tokens,
+          get().searchQuery
         );
+        const selectedTokenId = get().selectedTokenId;
+        const selectedTokenStillExists = selectedTokenId != null && document.tokens[selectedTokenId] != null;
 
         set({
-          rawJSON: json,
-          collections: resolved.collections,
-          tokens: resolved.tokens,
+          rawJSON: document.currentJson,
+          revision: document.revision,
+          updatedAt: document.updatedAt,
+          updatedBy: document.updatedBy,
+          collections: document.collections,
+          tokens: document.tokens,
           tree,
-          activeCollectionId: firstCollection?.id ?? null,
-          activeModeId: firstMode?.modeId ?? null,
-          selectedTokenId: null,
-          scrollToTokenId: null,
-          expandedPaths: new Set<string>(),
-          searchQuery: "",
-          inspectorOpen: false,
-          editingTokenId: null,
-          editingPosition: null,
-          filteredTokenIds: firstCollection?.tokenIds ?? [],
-          activeCollection: firstCollection,
+          activeCollectionId: activeCollection?.id ?? null,
+          activeModeId: activeMode?.modeId ?? null,
+          activeCollection,
+          filteredTokenIds,
+          selectedTokenId: selectedTokenStillExists ? selectedTokenId : null,
+          inspectorOpen: selectedTokenStillExists ? get().inspectorOpen : false,
+          error: null,
         });
+      };
 
-        return true;
-      },
-
-      clearData: () => {
-        set({
-          rawJSON: null,
-          collections: [],
-          tokens: {},
-          tree: [],
-          activeCollectionId: null,
-          activeModeId: null,
-          selectedTokenId: null,
-          scrollToTokenId: null,
-          expandedPaths: new Set<string>(),
-          searchQuery: "",
-          inspectorOpen: false,
-          editingTokenId: null,
-          editingPosition: null,
-          filteredTokenIds: [],
-          activeCollection: null,
-        });
-      },
-
-      setActiveCollection: (id: string) => {
-        const { collections, tokens } = get();
-        const collection = collections.find((c) => c.id === id) ?? null;
-        const firstMode = collection?.modes[0] ?? null;
-        const tree = buildTokenTree(
-          Object.values(tokens),
-          collection?.name
-        );
-        set({
-          activeCollectionId: id,
-          activeModeId: firstMode?.modeId ?? null,
-          activeCollection: collection,
-          filteredTokenIds: collection?.tokenIds ?? [],
-          tree,
-          selectedTokenId: null,
-          scrollToTokenId: null,
-          expandedPaths: new Set<string>(),
-          searchQuery: "",
-        });
-      },
-
-      setActiveMode: (modeId: string) => {
-        set({ activeModeId: modeId });
-      },
-
-      selectToken: (id: string | null) => {
-        set({
-          selectedTokenId: id,
-          scrollToTokenId: id,
-          inspectorOpen: id !== null,
-        });
-      },
-
-      scrollToGroup: (path: string) => {
-        const { filteredTokenIds, tokens } = get();
-        const prefix = path + "/";
-        const firstId = filteredTokenIds.find((id) => {
-          const token = tokens[id];
-          return token?.name.startsWith(prefix) ?? false;
-        }) ?? null;
-        set({ scrollToTokenId: firstId });
-      },
-
-      clearScrollTarget: () => set({ scrollToTokenId: null }),
-
-      togglePath: (path: string) => {
-        const { expandedPaths } = get();
-        const next = new Set(expandedPaths);
-        if (next.has(path)) {
-          next.delete(path);
-        } else {
-          next.add(path);
+      const commit = async (
+        url: string,
+        body: Record<string, unknown>,
+        method: "PATCH" | "POST" | "DELETE" = "PATCH"
+      ) => {
+        const revision = get().revision;
+        if (revision == null) return;
+        set({ isSaving: true, error: null });
+        try {
+          const document = await apiRequest<TokenDocumentResponse>(url, {
+            method,
+            body: JSON.stringify(withActor({ ...body, revision })),
+          });
+          applyDocument(document);
+        } catch (error) {
+          await handleMutationError(error, get().loadRemoteDocument);
+          set({ error: error instanceof Error ? error.message : "保存失败" });
+        } finally {
+          set({ isSaving: false });
         }
-        set({ expandedPaths: next });
-      },
+      };
 
-      expandAll: () => {
-        const { tree } = get();
-        const allPaths = new Set<string>();
-        const collect = (nodes: TokenTreeNode[]) => {
-          for (const node of nodes) {
-            if (node.children.length > 0) {
-              allPaths.add(node.path);
-              collect(node.children);
-            }
+      return {
+        // Shared server data
+        rawJSON: null,
+        revision: null,
+        updatedAt: null,
+        updatedBy: undefined,
+        collections: [],
+        tokens: {},
+        tree: [],
+        isLoading: false,
+        isSaving: false,
+        error: null,
+
+        // UI state
+        activeCollectionId: null,
+        activeModeId: null,
+        selectedTokenId: null,
+        scrollToTokenId: null,
+        expandedPaths: new Set<string>(),
+        searchQuery: "",
+        viewMode: "list" as ViewMode,
+        codeFormat: "android" as CodeFormat,
+        inspectorOpen: false,
+        inspectorWidth: 320,
+        editingTokenId: null,
+        editingPosition: null,
+
+        // Computed
+        activeCollection: null,
+        filteredTokenIds: [],
+
+        loadRemoteDocument: async () => {
+          set({ isLoading: true, error: null });
+          try {
+            const document = await apiRequest<TokenDocumentResponse>("/api/token-document");
+            applyDocument(document);
+          } catch (error) {
+            set({ error: error instanceof Error ? error.message : "加载失败" });
+          } finally {
+            set({ isLoading: false });
           }
-        };
-        collect(tree);
-        set({ expandedPaths: allPaths });
-      },
+        },
 
-      collapseAll: () => {
-        set({ expandedPaths: new Set<string>() });
-      },
+        loadJSON: async (json: unknown) => {
+          const revision = get().revision;
+          if (revision == null) return false;
+          set({ isSaving: true, error: null });
+          try {
+            const document = await apiRequest<TokenDocumentResponse>("/api/token-document/import", {
+              method: "POST",
+              body: JSON.stringify(withActor({ json, revision })),
+            });
+            applyDocument(document);
+            return true;
+          } catch (error) {
+            await handleMutationError(error, get().loadRemoteDocument);
+            set({ error: error instanceof Error ? error.message : "导入失败" });
+            return false;
+          } finally {
+            set({ isSaving: false });
+          }
+        },
 
-      setSearchQuery: (query: string) => {
-        const { activeCollection, tokens } = get();
-        if (!activeCollection) {
-          set({ searchQuery: query, filteredTokenIds: [] });
-          return;
-        }
+        clearData: () => {
+          set({
+            rawJSON: null,
+            revision: null,
+            updatedAt: null,
+            updatedBy: undefined,
+            collections: [],
+            tokens: {},
+            tree: [],
+            activeCollectionId: null,
+            activeModeId: null,
+            selectedTokenId: null,
+            scrollToTokenId: null,
+            expandedPaths: new Set<string>(),
+            searchQuery: "",
+            inspectorOpen: false,
+            editingTokenId: null,
+            editingPosition: null,
+            filteredTokenIds: [],
+            activeCollection: null,
+          });
+        },
 
-        if (!query.trim()) {
+        setActiveCollection: (id: string) => {
+          const { collections, tokens, searchQuery } = get();
+          const collection = collections.find((c) => c.id === id) ?? null;
+          const firstMode = collection?.modes[0] ?? null;
+          const tree = buildTokenTree(Object.values(tokens), collection?.name);
+          set({
+            activeCollectionId: id,
+            activeModeId: firstMode?.modeId ?? null,
+            activeCollection: collection,
+            filteredTokenIds: filterTokenIds(collection, tokens, searchQuery),
+            tree,
+            selectedTokenId: null,
+            scrollToTokenId: null,
+            expandedPaths: new Set<string>(),
+          });
+        },
+
+        setActiveMode: (modeId: string) => {
+          set({ activeModeId: modeId });
+        },
+
+        selectToken: (id: string | null) => {
+          set({
+            selectedTokenId: id,
+            scrollToTokenId: id,
+            inspectorOpen: id !== null,
+          });
+        },
+
+        scrollToGroup: (path: string) => {
+          const { filteredTokenIds, tokens } = get();
+          const prefix = path + "/";
+          const firstId = filteredTokenIds.find((id) => {
+            const token = tokens[id];
+            return token?.name.startsWith(prefix) ?? false;
+          }) ?? null;
+          set({ scrollToTokenId: firstId });
+        },
+
+        clearScrollTarget: () => set({ scrollToTokenId: null }),
+
+        togglePath: (path: string) => {
+          const { expandedPaths } = get();
+          const next = new Set(expandedPaths);
+          if (next.has(path)) {
+            next.delete(path);
+          } else {
+            next.add(path);
+          }
+          set({ expandedPaths: next });
+        },
+
+        expandAll: () => {
+          const { tree } = get();
+          const allPaths = new Set<string>();
+          const collect = (nodes: TokenTreeNode[]) => {
+            for (const node of nodes) {
+              if (node.children.length > 0) {
+                allPaths.add(node.path);
+                collect(node.children);
+              }
+            }
+          };
+          collect(tree);
+          set({ expandedPaths: allPaths });
+        },
+
+        collapseAll: () => {
+          set({ expandedPaths: new Set<string>() });
+        },
+
+        setSearchQuery: (query: string) => {
+          const { activeCollection, tokens } = get();
           set({
             searchQuery: query,
-            filteredTokenIds: activeCollection.tokenIds,
+            filteredTokenIds: filterTokenIds(activeCollection, tokens, query),
           });
-          return;
-        }
+        },
 
-        const lowerQuery = query.toLowerCase();
-        const filtered = activeCollection.tokenIds.filter((id) => {
-          const token = tokens[id];
-          return token?.name.toLowerCase().includes(lowerQuery);
-        });
+        setViewMode: (mode: ViewMode) => set({ viewMode: mode }),
+        setCodeFormat: (format: CodeFormat) => set({ codeFormat: format }),
+        setInspectorOpen: (open: boolean) => set({ inspectorOpen: open }),
+        setInspectorWidth: (width: number) =>
+          set({ inspectorWidth: Math.min(560, Math.max(280, width)) }),
 
-        set({ searchQuery: query, filteredTokenIds: filtered });
-      },
-
-      setViewMode: (mode: ViewMode) => set({ viewMode: mode }),
-      setCodeFormat: (format: CodeFormat) => set({ codeFormat: format }),
-      setInspectorOpen: (open: boolean) => set({ inspectorOpen: open }),
-      setInspectorWidth: (width: number) =>
-        set({ inspectorWidth: Math.min(560, Math.max(280, width)) }),
-
-      setEditingToken: (id: string | null, position?: { x: number; y: number }) => {
-        set({
-          editingTokenId: id,
-          editingPosition: id != null && position ? position : null,
-        });
-      },
-
-      updateTokenValue: (tokenId: string, modeId: string, value: TokenValue) => {
-        const { tokens, collections, activeCollectionId } = get();
-        const token = tokens[tokenId];
-        if (!token || !token.rawValues[modeId] || token.rawValues[modeId].type === "ALIAS") return;
-        const oldValue = token.rawValues[modeId];
-        const nextTokens = { ...tokens };
-        const t = { ...nextTokens[tokenId], rawValues: { ...token.rawValues, [modeId]: value } };
-        nextTokens[tokenId] = t;
-        const resolved = resolveTokens({ collections, tokens: nextTokens });
-        const tree = buildTokenTree(
-          Object.values(resolved.tokens),
-          collections.find((c) => c.id === activeCollectionId)?.name
-        );
-        const rawJSON = rebuildRawJSON(resolved.collections, resolved.tokens);
-        set({
-          tokens: resolved.tokens,
-          collections: resolved.collections,
-          tree,
-          rawJSON,
-          filteredTokenIds: resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ?? get().filteredTokenIds,
-          activeCollection: resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
-          editingTokenId: null,
-          editingPosition: null,
-        });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "update_value",
-          tokenId,
-          tokenName: token.name,
-          oldValue,
-          newValue: value,
-          meta: { modeId },
-        });
-      },
-
-      updateTokenName: (tokenId: string, newName: string) => {
-        const { tokens, collections, activeCollectionId } = get();
-        const token = tokens[tokenId];
-        if (!token || !newName.trim()) return;
-        const oldName = token.name;
-        const trimmed = newName.trim();
-        const pathSegments = trimmed.split("/").filter(Boolean);
-        if (pathSegments.length === 0) return;
-        const group = pathSegments.slice(0, -1).join("/");
-        const nextTokens = { ...tokens };
-        nextTokens[tokenId] = {
-          ...token,
-          name: trimmed,
-          path: pathSegments,
-          group,
-        };
-        const resolved = resolveTokens({ collections, tokens: nextTokens });
-        const tree = buildTokenTree(
-          Object.values(resolved.tokens),
-          collections.find((c) => c.id === activeCollectionId)?.name
-        );
-        const rawJSON = rebuildRawJSON(resolved.collections, resolved.tokens);
-        set({
-          tokens: resolved.tokens,
-          tree,
-          rawJSON,
-          filteredTokenIds: resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ?? get().filteredTokenIds,
-          activeCollection: resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
-        });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "update_name",
-          tokenId,
-          tokenName: trimmed,
-          oldValue: oldName,
-          newValue: trimmed,
-        });
-      },
-
-      updateTokenDescription: (tokenId: string, description: string) => {
-        const { tokens, collections } = get();
-        const token = tokens[tokenId];
-        if (!token) return;
-        const oldDescription = token.description;
-        const nextTokens = { ...tokens };
-        nextTokens[tokenId] = { ...token, description: description || undefined };
-        const rawJSON = rebuildRawJSON(collections, nextTokens);
-        set({ tokens: nextTokens, rawJSON });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "update_description",
-          tokenId,
-          tokenName: token.name,
-          oldValue: oldDescription,
-          newValue: description || undefined,
-        });
-      },
-
-      updateTokenCodeSyntax: (tokenId: string, codeSyntax: { WEB?: string; ANDROID?: string; iOS?: string }) => {
-        const { tokens, collections } = get();
-        const token = tokens[tokenId];
-        if (!token) return;
-        const oldCodeSyntax = token.codeSyntax;
-        const nextTokens = { ...tokens };
-        nextTokens[tokenId] = { ...token, codeSyntax };
-        const rawJSON = rebuildRawJSON(collections, nextTokens);
-        set({ tokens: nextTokens, rawJSON });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "update_code_syntax",
-          tokenId,
-          tokenName: token.name,
-          oldValue: oldCodeSyntax,
-          newValue: codeSyntax,
-        });
-      },
-
-      setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => {
-        const { tokens, collections, activeCollectionId } = get();
-        const token = tokens[tokenId];
-        if (!token) return;
-        const oldAliasTarget = token.rawValues[modeId]?.type === "ALIAS" ? (token.rawValues[modeId] as { type: "ALIAS"; id: string }).id : null;
-        const nextTokens = { ...tokens };
-        const rawValues = { ...token.rawValues };
-        if (targetTokenId == null) {
-          const resolved = token.resolvedValues[modeId];
-          if (resolved) rawValues[modeId] = resolved;
-        } else {
-          rawValues[modeId] = { type: "ALIAS", id: targetTokenId };
-        }
-        nextTokens[tokenId] = { ...token, rawValues };
-        const resolved = resolveTokens({ collections, tokens: nextTokens });
-        const t = resolved.tokens[tokenId];
-        const isAlias = Object.values(t.rawValues).some((v) => v.type === "ALIAS");
-        const firstRaw = Object.values(t.rawValues)[0];
-        const aliasOf = firstRaw?.type === "ALIAS" ? firstRaw.id : undefined;
-        resolved.tokens[tokenId] = { ...t, isAlias, aliasOf };
-        const tree = buildTokenTree(
-          Object.values(resolved.tokens),
-          collections.find((c) => c.id === activeCollectionId)?.name
-        );
-        const rawJSON = rebuildRawJSON(resolved.collections, resolved.tokens);
-        set({
-          tokens: resolved.tokens,
-          collections: resolved.collections,
-          tree,
-          rawJSON,
-          filteredTokenIds: resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ?? get().filteredTokenIds,
-          activeCollection: resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
-        });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "set_alias",
-          tokenId,
-          tokenName: token.name,
-          oldValue: oldAliasTarget,
-          newValue: targetTokenId,
-          meta: { modeId },
-        });
-      },
-
-      deleteToken: (tokenId: string) => {
-        const { tokens, collections, activeCollectionId, selectedTokenId } = get();
-        const deletedToken = tokens[tokenId];
-        const nextTokens = { ...tokens };
-        delete nextTokens[tokenId];
-        const nextCollections = collections.map((col) => ({
-          ...col,
-          tokenIds: col.tokenIds.filter((id) => id !== tokenId),
-        }));
-        const resolved = resolveTokens({ collections: nextCollections, tokens: nextTokens });
-        const activeCol = resolved.collections.find((c) => c.id === activeCollectionId) ?? null;
-        const tree = buildTokenTree(
-          Object.values(resolved.tokens),
-          activeCol?.name
-        );
-        const rawJSON = rebuildRawJSON(resolved.collections, resolved.tokens);
-        set({
-          tokens: resolved.tokens,
-          collections: resolved.collections,
-          tree,
-          rawJSON,
-          filteredTokenIds: activeCol?.tokenIds ?? [],
-          activeCollection: activeCol,
-          selectedTokenId: selectedTokenId === tokenId ? null : selectedTokenId,
-          scrollToTokenId: get().scrollToTokenId === tokenId ? null : get().scrollToTokenId,
-          inspectorOpen: selectedTokenId === tokenId ? false : get().inspectorOpen,
-          editingTokenId: get().editingTokenId === tokenId ? null : get().editingTokenId,
-          editingPosition: get().editingTokenId === tokenId ? null : get().editingPosition,
-        });
-        if (deletedToken) {
-          useChangeLogStore.getState().addLogEntry({
-            changeType: "delete_token",
-            tokenId,
-            tokenName: deletedToken.name,
-            oldValue: deletedToken,
+        setEditingToken: (id: string | null, position?: { x: number; y: number }) => {
+          set({
+            editingTokenId: id,
+            editingPosition: id != null && position ? position : null,
           });
-        }
-      },
+        },
 
-      reorderFilteredTokens: (newOrder: string[]) => {
-        const { collections, activeCollectionId, tokens, searchQuery, filteredTokenIds } = get();
-        if (searchQuery.trim()) return;
-        const oldOrder = [...filteredTokenIds];
-        const nextCollections = collections.map((col) =>
-          col.id === activeCollectionId ? { ...col, tokenIds: newOrder } : col
-        );
-        const activeCol = nextCollections.find((c) => c.id === activeCollectionId) ?? null;
-        const rawJSON = rebuildRawJSON(nextCollections, tokens);
-        set({
-          filteredTokenIds: newOrder,
-          collections: nextCollections,
-          activeCollection: activeCol,
-          rawJSON,
-        });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "reorder",
-          oldValue: oldOrder,
-          newValue: newOrder,
-        });
-      },
+        updateTokenValue: async (tokenId: string, modeId: string, value: TokenValue) => {
+          await commit(`/api/tokens/${encodeURIComponent(tokenId)}/value`, { modeId, value });
+          set({ editingTokenId: null, editingPosition: null });
+        },
 
-      renameGroup: (oldPath: string, newPath: string) => {
-        const { tokens, collections, activeCollectionId } = get();
-        const trimmed = newPath.trim();
-        if (!trimmed || trimmed === oldPath) return;
-        const newSegments = trimmed.split("/").filter(Boolean);
-        if (newSegments.length === 0) return;
+        updateTokenName: (tokenId: string, newName: string) =>
+          commit(`/api/tokens/${encodeURIComponent(tokenId)}/name`, { newName }),
 
-        const nextTokens = { ...tokens };
-        const prefix = oldPath + "/";
-        for (const token of Object.values(tokens)) {
-          if (token.name === oldPath || token.name.startsWith(prefix)) {
-            const newName =
+        updateTokenDescription: (tokenId: string, description: string) =>
+          commit(`/api/tokens/${encodeURIComponent(tokenId)}/description`, { description }),
+
+        updateTokenCodeSyntax: (tokenId: string, codeSyntax: CodeSyntax) =>
+          commit(`/api/tokens/${encodeURIComponent(tokenId)}/code-syntax`, { codeSyntax }),
+
+        setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) =>
+          commit(`/api/tokens/${encodeURIComponent(tokenId)}/alias`, { modeId, targetTokenId }),
+
+        deleteToken: (tokenId: string) =>
+          commit(`/api/tokens/${encodeURIComponent(tokenId)}`, {}, "DELETE"),
+
+        reorderFilteredTokens: async (newOrder: string[]) => {
+          const { collections, activeCollectionId, tokens, searchQuery, revision } = get();
+          if (searchQuery.trim() || revision == null) return;
+          const nextCollections = collections.map((collection) =>
+            collection.id === activeCollectionId ? { ...collection, tokenIds: newOrder } : collection
+          );
+          const rawJSON = rebuildRawJSON(nextCollections, tokens);
+          await get().loadJSON(rawJSON);
+        },
+
+        renameGroup: async (oldPath: string, newPath: string) => {
+          const { tokens } = get();
+          const trimmed = newPath.trim();
+          if (!trimmed || trimmed === oldPath) return;
+          const prefix = oldPath + "/";
+          const affected = Object.values(tokens).filter(
+            (token) => token.name === oldPath || token.name.startsWith(prefix)
+          );
+          for (const token of affected) {
+            const nextName =
               token.name === oldPath ? trimmed : trimmed + token.name.slice(oldPath.length);
-            const pathSegments = newName.split("/").filter(Boolean);
-            const group = pathSegments.length > 1 ? pathSegments.slice(0, -1).join("/") : "";
-            nextTokens[token.id] = {
-              ...token,
-              name: newName,
-              path: pathSegments,
-              group,
-            };
+            await get().updateTokenName(token.id, nextName);
           }
-        }
-        const resolved = resolveTokens({ collections, tokens: nextTokens });
-        const tree = buildTokenTree(
-          Object.values(resolved.tokens),
-          collections.find((c) => c.id === activeCollectionId)?.name
-        );
-        const rawJSON = rebuildRawJSON(resolved.collections, resolved.tokens);
-        set({
-          tokens: resolved.tokens,
-          tree,
-          rawJSON,
-          filteredTokenIds:
-            resolved.collections.find((c) => c.id === activeCollectionId)?.tokenIds ??
-            get().filteredTokenIds,
-          activeCollection:
-            resolved.collections.find((c) => c.id === activeCollectionId) ?? null,
-        });
-        useChangeLogStore.getState().addLogEntry({
-          changeType: "rename_group",
-          oldValue: oldPath,
-          newValue: trimmed,
-        });
-      },
+        },
 
-      exportRawJSON: () => {
-        const { collections, tokens } = get();
-        const json = rebuildRawJSON(collections, tokens);
-        return JSON.stringify(json, null, 2);
-      },
+        exportRawJSON: () => {
+          const { rawJSON, collections, tokens } = get();
+          const json = rawJSON ?? rebuildRawJSON(collections, tokens);
+          return JSON.stringify(json, null, 2);
+        },
 
-      getTokensByGroup: (group: string) => {
-        const { filteredTokenIds, tokens } = get();
-        return filteredTokenIds
-          .map((id) => tokens[id])
-          .filter((t): t is DesignToken => t !== undefined && t.group === group);
-      },
+        getTokensByGroup: (group: string) => {
+          const { filteredTokenIds, tokens } = get();
+          return filteredTokenIds
+            .map((id) => tokens[id])
+            .filter((t): t is DesignToken => t !== undefined && t.group === group);
+        },
 
-      getVisibleTokens: () => {
-        const { filteredTokenIds, tokens } = get();
-        return filteredTokenIds
-          .map((id) => tokens[id])
-          .filter((t): t is DesignToken => t !== undefined);
-      },
-    }),
+        getVisibleTokens: () => {
+          const { filteredTokenIds, tokens } = get();
+          return filteredTokenIds
+            .map((id) => tokens[id])
+            .filter((t): t is DesignToken => t !== undefined);
+        },
+      };
+    },
     {
       name: "design-token-viewer-storage",
-      partialize: (state) => ({
-        rawJSON: state.rawJSON,
-        collections: state.collections,
-        tokens: state.tokens,
-        tree: state.tree,
-        activeCollectionId: state.activeCollectionId,
-        activeModeId: state.activeModeId,
-        activeCollection: state.activeCollection,
-        filteredTokenIds: state.filteredTokenIds,
-        viewMode: state.viewMode,
-        codeFormat: state.codeFormat,
-        inspectorWidth: state.inspectorWidth,
-      }),
-      onRehydrateStorage: () => (state) => {
-        // Legacy: only rawJSON was persisted → re-parse to restore collections/tokens/tree
-        const hasData = state?.collections?.length && Object.keys(state?.tokens ?? {}).length > 0;
-        if (state?.rawJSON && !hasData) {
-          state.loadJSON(state.rawJSON);
-        }
+      partialize: (state) =>
+        ({
+          activeCollectionId: state.activeCollectionId,
+          activeModeId: state.activeModeId,
+          expandedPaths: [...state.expandedPaths],
+          searchQuery: state.searchQuery,
+          viewMode: state.viewMode,
+          codeFormat: state.codeFormat,
+          inspectorWidth: state.inspectorWidth,
+        }) as PersistedTokenState,
+      merge: (persisted, current) => {
+        const state = persisted as PersistedTokenState;
+        return {
+          ...current,
+          ...state,
+          expandedPaths: new Set(state.expandedPaths ?? []),
+        };
       },
     }
   )
 );
+
+function filterTokenIds(
+  activeCollection: TokenCollection | null,
+  tokens: Record<string, DesignToken>,
+  query: string
+) {
+  if (!activeCollection) return [];
+  if (!query.trim()) return activeCollection.tokenIds;
+  const lowerQuery = query.toLowerCase();
+  return activeCollection.tokenIds.filter((id) => {
+    const token = tokens[id];
+    return token?.name.toLowerCase().includes(lowerQuery) ?? false;
+  });
+}
+
+async function handleMutationError(error: unknown, refresh: () => Promise<void>) {
+  if (error instanceof ApiError && error.status === 409) {
+    window.alert(error.message);
+    await refresh();
+    return;
+  }
+  if (typeof window !== "undefined") {
+    window.alert(error instanceof Error ? error.message : "保存失败");
+  }
+}

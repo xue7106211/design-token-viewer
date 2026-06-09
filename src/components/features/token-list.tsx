@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable react-hooks/set-state-in-effect */
+
 // ============================================================================
 // TokenList 组件 — 设计令牌（Design Token）的表格列表视图
 //
@@ -39,7 +41,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TokenEditPopover } from "./token-edit-popover";
-import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
 
 // --- 列宽相关常量 ---
 /** 四列的默认宽度：Token Name / Value / Code Syntax / Reference */
@@ -115,7 +116,10 @@ export function TokenList() {
   const [resizingIndex, setResizingIndex] = useState<number | null>(null);  // 当前正在调整的列索引
   const resizeStartRef = useRef({ x: 0, widths: [] as number[] });          // 拖拽起始位置和初始宽度快照
   const columnWidthsRef = useRef(columnWidths);                              // 用 ref 保持最新值，供事件回调读取
-  columnWidthsRef.current = columnWidths;
+
+  useEffect(() => {
+    columnWidthsRef.current = columnWidths;
+  }, [columnWidths]);
 
   // ---- 多选相关状态 ----
   const [selectedIds, setSelectedIds] = useState<Set<string>>(
@@ -270,8 +274,7 @@ export function TokenList() {
     const targetIndex = newIds.indexOf(dragOverId);
     const insertIndex = dropPosition === "before" ? targetIndex : targetIndex + 1;
     newIds.splice(insertIndex, 0, dragSourceId);
-    reorderFilteredTokens(newIds);
-    syncSampleTokensToFile(); // 将新顺序持久化到 sample-tokens.json
+    void reorderFilteredTokens(newIds);
     setDragSourceId(null);
     setDragOverId(null);
     setDragOverGroup(null);
@@ -316,7 +319,7 @@ export function TokenList() {
 
     // 仅在名称实际变化时才更新
     if (nextName !== token.name) {
-      updateTokenName(dragSourceId, nextName);
+      void updateTokenName(dragSourceId, nextName);
     }
 
     // 将 Token 插入到目标分组中最后一个同组 Token 之后
@@ -330,8 +333,7 @@ export function TokenList() {
       }
     }
     newIds.splice(insertIndex, 0, dragSourceId);
-    reorderFilteredTokens(newIds);
-    syncSampleTokensToFile();
+    void reorderFilteredTokens(newIds);
     setDragSourceId(null);
     setDragOverId(null);
     setDragOverGroup(null);
@@ -498,9 +500,8 @@ export function TokenList() {
       // 提取叶子名称：优先从 path 数组取最后一段，否则从 name 中按 "/" 分割取最后一段
       const leaf = t.path[t.path.length - 1] ?? t.name.split("/").filter(Boolean).pop() ?? t.name;
       const nextName = nextGroup ? `${nextGroup}/${leaf}` : leaf;
-      if (nextName !== t.name) updateTokenName(id, nextName);
+      if (nextName !== t.name) void updateTokenName(id, nextName);
     }
-    syncSampleTokensToFile();
     setEditGroupOpen(false);
   }, [editGroupTargetIds, editGroupValue, editGroupCurrentGroup, tokens, updateTokenName]);
 
@@ -1067,8 +1068,7 @@ function TokenListRow({
           variant="destructive"
           className="cursor-pointer"
           onSelect={() => {
-            deleteToken(tokenId);
-            syncSampleTokensToFile(); // 同步删除到文件
+            void deleteToken(tokenId);
           }}
         >
           <Trash2 className="h-3.5 w-3.5" />

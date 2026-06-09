@@ -12,6 +12,7 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 - 别名引用链路可视化，反向引用查看
 - 令牌编辑：值、名称、描述、Code Syntax、别名引用
 - 令牌删除、分组重命名、令牌重排序
+- 变更日志：自动记录所有编辑操作（值、名称、描述、Code Syntax、别名、删除、重命名、重排序），含时间戳、客户端 IP、前后值对比（颜色色块高亮）
 - 代码导出：CSS 自定义属性、Android XML resources、原始 JSON
 - Shiki 语法高亮（支持 XML / CSS / JSON，亮色暗色双主题）
 - 亮色 / 暗色主题切换
@@ -51,7 +52,7 @@ src/
 ├── components/
 │   ├── ui/           # shadcn/ui 基础组件 (12 个)
 │   ├── layout/       # AppShell, Sidebar, MainView
-│   └── features/     # 业务组件 (上传、树、网格、列表、检查器、导出等，18 个)
+│   └── features/     # 业务组件 (上传、树、网格、列表、检查器、导出、变更日志等，17 个)
 ├── lib/
 │   ├── parsers/      # JSON 格式检测与解析 (7 个文件含测试)
 │   ├── code-generators/  # CSS / Android XML 代码生成 (5 个文件含测试)
@@ -59,8 +60,9 @@ src/
 │   ├── tree-builder.ts   # 树形结构构建
 │   ├── token-rebuilder.ts # 重建 Figma Native JSON
 │   ├── contrast.ts       # WCAG 对比度计算
+│   ├── changelog.ts      # 变更日志工具 (IP 获取、时间格式化、类型标签)
 │   └── use-shiki.ts      # Shiki 语法高亮 hook
-├── stores/           # Zustand 全局状态
+├── stores/           # Zustand 全局状态 (令牌 store + 变更日志 store)
 ├── types/            # TypeScript 类型定义
 └── data/             # 示例数据
 

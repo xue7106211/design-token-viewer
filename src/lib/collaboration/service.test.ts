@@ -1,0 +1,115 @@
+import { describe, expect, it } from "vitest";
+import sampleData from "@/data/sample-tokens.json";
+import type { TokenValue } from "@/types/token";
+import {
+  ConflictError,
+  createMemoryCollaborationRepository,
+  createTokenDocumentService,
+} from "./service";
+
+const actor = {
+  actorName: "Mi",
+  actorClientId: "client-1",
+  ip: "127.0.0.1",
+};
+
+describe("token document collaboration service", () => {
+  it("initializes a shared token document from sample JSON", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+
+    const document = await service.getDocument();
+
+    expect(document.name).toBe("HyperOS Tokens");
+    expect(document.revision).toBe(1);
+    expect(document.currentJson).toEqual(sampleData);
+  });
+
+  it("updates a token value, increments revision, and writes an audit log", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const firstToken = Object.values(document.tokens)[0];
+    const modeId = Object.keys(firstToken.rawValues)[0];
+    const nextValue: TokenValue = { type: "NUMBER", value: 12 };
+
+    const updated = await service.updateTokenValue({
+      tokenId: firstToken.id,
+      modeId,
+      value: nextValue,
+      revision: document.revision,
+      actor,
+    });
+
+    expect(updated.revision).toBe(document.revision + 1);
+    expect(updated.tokens[firstToken.id].rawValues[modeId]).toEqual(nextValue);
+
+    const logs = await service.getChangeLogs();
+    expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      changeType: "update_value",
+      tokenId: firstToken.id,
+      tokenName: firstToken.name,
+      actorName: actor.actorName,
+      actorClientId: actor.actorClientId,
+      ip: actor.ip,
+    });
+  });
+
+  it("rejects stale edits when the revision has changed", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const firstToken = Object.values(document.tokens)[0];
+
+    await service.updateTokenDescription({
+      tokenId: firstToken.id,
+      description: "fresh change",
+      revision: document.revision,
+      actor,
+    });
+
+    await expect(
+      service.updateTokenDescription({
+        tokenId: firstToken.id,
+        description: "stale change",
+        revision: document.revision,
+        actor,
+      })
+    ).rejects.toBeInstanceOf(ConflictError);
+  });
+
+  it("creates immutable snapshots and restores them as a new revision", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const firstToken = Object.values(document.tokens)[0];
+
+    const snapshot = await service.createSnapshot({
+      name: "Baseline",
+      description: "Before edits",
+      actor,
+    });
+
+    const edited = await service.updateTokenDescription({
+      tokenId: firstToken.id,
+      description: "changed after snapshot",
+      revision: document.revision,
+      actor,
+    });
+
+    expect(edited.tokens[firstToken.id].description).toBe("changed after snapshot");
+
+    const restored = await service.restoreSnapshot({
+      snapshotId: snapshot.id,
+      revision: edited.revision,
+      actor,
+    });
+
+    expect(restored.revision).toBe(edited.revision + 1);
+    expect(restored.tokens[firstToken.id].description).toBe(firstToken.description);
+
+    const snapshots = await service.getSnapshots();
+    expect(snapshots[0].json).toEqual(sampleData);
+  });
+});
