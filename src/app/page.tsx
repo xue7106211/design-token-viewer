@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useTokenStore } from "@/stores/token-store";
 import { AppShell } from "@/components/layout/app-shell";
 import { FileUpload } from "@/components/features/file-upload";
+import { shouldLoadRemoteDocument } from "@/lib/collaboration/loading-state";
 
 export default function Home() {
   const collections = useTokenStore((s) => s.collections);
@@ -13,10 +14,10 @@ export default function Home() {
   const hasData = collections.length > 0;
 
   useEffect(() => {
-    if (!hasData && !isLoading) {
+    if (shouldLoadRemoteDocument({ hasData, isLoading, error })) {
       loadRemoteDocument();
     }
-  }, [hasData, isLoading, loadRemoteDocument]);
+  }, [error, hasData, isLoading, loadRemoteDocument]);
 
   if (isLoading && !hasData) {
     return (
