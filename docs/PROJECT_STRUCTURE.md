@@ -44,6 +44,7 @@ design-token-viewer/
 ### `docs/` — 文档
 
 - `ACCEPTANCE_CHECKLIST.md`：功能与测试验收清单
+- `FIGMA_PRESET_VARIABLES.md`：Figma 预设变量格式说明
 - `PROJECT_STRUCTURE.md`：本文件，目录结构说明
 
 ### `scripts/` — 脚本与脚本用数据
