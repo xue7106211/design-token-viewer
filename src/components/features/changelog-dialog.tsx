@@ -171,6 +171,11 @@ function LogEntryCard({ entry }: { entry: LogEntry }) {
         <span className="text-xs text-muted-foreground">
           IP: {entry.ip}
         </span>
+        {entry.actorName && (
+          <span className="text-xs text-muted-foreground">
+            by {entry.actorName}
+          </span>
+        )}
         <span
           className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium ${typeBadgeClass(entry.changeType)}`}
         >
@@ -196,7 +201,10 @@ function LogEntryCard({ entry }: { entry: LogEntry }) {
 export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) {
   const entries = useChangeLogStore((s) => s.entries);
   const clearAll = useChangeLogStore((s) => s.clearAll);
+  const fetchEntries = useChangeLogStore((s) => s.fetchEntries);
+  const isLoading = useChangeLogStore((s) => s.isLoading);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   // 按时间倒序（最新在前）
   const sortedEntries = useMemo(
@@ -210,7 +218,13 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
   };
 
   return (
-    <Dialog>
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        setOpen(nextOpen);
+        if (nextOpen && typeof fetchEntries === "function") void fetchEntries();
+      }}
+    >
       <DialogTrigger asChild>
         {collapsed ? (
           <Button
@@ -224,7 +238,7 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         ) : (
           <Button variant="ghost" size="sm" className="w-full justify-start gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
             <History className="h-3.5 w-3.5" />
-            <span className="text-xs">Design Token ChangeLogs</span>
+            <span className="text-xs">日志</span>
             {entries.length > 0 && (
               <span className="ml-auto text-[10px] tabular-nums text-muted-foreground">{entries.length}</span>
             )}
@@ -234,7 +248,7 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
 
       <DialogContent className="sm:max-w-4xl max-h-[85vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle>Design Token ChangeLogs</DialogTitle>
+          <DialogTitle>修改日志</DialogTitle>
           <DialogDescription className="sr-only">
             查看所有 Token 变更记录
           </DialogDescription>
@@ -243,7 +257,7 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         {/* 工具栏 */}
         <div className="flex items-center justify-between">
           <span className="text-xs text-muted-foreground">
-            共 {entries.length} 条记录
+            {isLoading ? "正在加载..." : `共 ${entries.length} 条记录`}
           </span>
           {entries.length > 0 && (
             <Button

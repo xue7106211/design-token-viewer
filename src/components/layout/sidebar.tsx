@@ -6,16 +6,20 @@ import { TokenTree } from "@/components/features/token-tree";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { Trash2, PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ChangeLogDialog } from "@/components/features/changelog-dialog";
+import { SnapshotDialog } from "@/components/features/snapshot-dialog";
+import { formatTimestamp } from "@/lib/changelog";
 import { useState } from "react";
 
 export function Sidebar() {
   const collections = useTokenStore((s) => s.collections);
   const activeCollectionId = useTokenStore((s) => s.activeCollectionId);
   const setActiveCollection = useTokenStore((s) => s.setActiveCollection);
-  const clearData = useTokenStore((s) => s.clearData);
+  const loadRemoteDocument = useTokenStore((s) => s.loadRemoteDocument);
+  const updatedAt = useTokenStore((s) => s.updatedAt);
+  const updatedBy = useTokenStore((s) => s.updatedBy);
   const expandedPaths = useTokenStore((s) => s.expandedPaths);
   const expandAll = useTokenStore((s) => s.expandAll);
   const collapseAll = useTokenStore((s) => s.collapseAll);
@@ -35,6 +39,7 @@ export function Sidebar() {
           <PanelLeftOpen className="h-4 w-4" />
         </Button>
         <div className="mt-auto">
+          <SnapshotDialog collapsed />
           <ChangeLogDialog collapsed />
         </div>
       </div>
@@ -65,14 +70,21 @@ export function Sidebar() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-7 w-7 text-muted-foreground hover:text-destructive cursor-pointer"
-            onClick={clearData}
-            title="清除数据"
+            className="h-7 w-7 text-muted-foreground hover:text-foreground cursor-pointer"
+            onClick={() => void loadRemoteDocument()}
+            title="刷新共享数据"
           >
-            <Trash2 className="h-3.5 w-3.5" />
+            <RefreshCw className="h-3.5 w-3.5" />
           </Button>
         </div>
       </div>
+
+      {updatedAt && (
+        <div className="border-b px-3 py-2 text-[10px] leading-relaxed text-muted-foreground">
+          <div>更新：{formatTimestamp(updatedAt)}</div>
+          {updatedBy && <div className="truncate">修改人：{updatedBy}</div>}
+        </div>
+      )}
 
       {/* Collection Tabs */}
       {collections.length > 1 && (
@@ -131,7 +143,8 @@ export function Sidebar() {
       </ScrollArea>
 
       {/* 底部日志入口 */}
-      <div className="shrink-0 border-t px-2 py-2">
+      <div className="shrink-0 space-y-1 border-t px-2 py-2">
+        <SnapshotDialog />
         <ChangeLogDialog />
       </div>
     </div>

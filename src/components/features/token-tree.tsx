@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { syncSampleTokensToFile } from "@/lib/sync-sample-tokens";
 
 function TokenTypeIcon({ type, className }: { type?: TokenType; className?: string }) {
   const iconClass = cn("h-3.5 w-3.5 shrink-0", className);
@@ -140,7 +139,6 @@ export function TokenTree() {
 
   useEffect(() => {
     if (renameGroupPath !== null) {
-      setNewPathValue(renameGroupPath);
       setTimeout(() => inputRef.current?.focus(), 0);
     }
   }, [renameGroupPath]);
@@ -151,8 +149,7 @@ export function TokenTree() {
       setRenameGroupPath(null);
       return;
     }
-    renameGroup(renameGroupPath, newPathValue.trim());
-    syncSampleTokensToFile();
+    void renameGroup(renameGroupPath, newPathValue.trim());
     setRenameGroupPath(null);
   };
 
@@ -172,7 +169,10 @@ export function TokenTree() {
           <TreeNode
             key={node.path}
             node={node}
-            onRenameGroup={(path) => setRenameGroupPath(path)}
+            onRenameGroup={(path) => {
+              setNewPathValue(path);
+              setRenameGroupPath(path);
+            }}
           />
         ))}
       </div>

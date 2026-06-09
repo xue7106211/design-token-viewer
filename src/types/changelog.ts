@@ -11,7 +11,10 @@ export type ChangeType =
   | 'set_alias'
   | 'delete_token'
   | 'rename_group'
-  | 'reorder';
+  | 'reorder'
+  | 'restore_snapshot'
+  | 'create_snapshot'
+  | 'import_document';
 
 /** 单条日志记录 */
 export interface LogEntry {
@@ -21,6 +24,10 @@ export interface LogEntry {
   timestamp: number;
   /** 操作者 IP */
   ip: string;
+  /** 操作者昵称（轻量身份，无认证） */
+  actorName?: string;
+  /** 浏览器生成的客户端 ID */
+  actorClientId?: string;
   /** 变更类型 */
   changeType: ChangeType;
   /** 被修改 Token 的 ID（delete_token/rename_group/reorder 时可选） */

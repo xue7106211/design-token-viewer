@@ -16,6 +16,8 @@ import { useShikiHtml } from "@/lib/use-shiki";
 import type { CodeFormat, DesignToken } from "@/types/token";
 import { cn } from "@/lib/utils";
 import { saveAs } from "file-saver";
+import { apiRequest, type SnapshotsResponse } from "@/lib/collaboration/client";
+import type { SnapshotRecord } from "@/lib/collaboration/service";
 
 export type ExportFormat = CodeFormat | "json";
 
@@ -25,18 +27,48 @@ export function ExportDialog() {
   const activeModeId = useTokenStore((s) => s.activeModeId);
   const exportRawJSON = useTokenStore((s) => s.exportRawJSON);
   const [format, setFormat] = useState<ExportFormat>("android");
+  const [open, setOpen] = useState(false);
+  const [snapshots, setSnapshots] = useState<SnapshotRecord[]>([]);
+  const [source, setSource] = useState("current");
+  const [remoteCode, setRemoteCode] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const visibleTokens: DesignToken[] = filteredTokenIds
     .map((id) => tokens[id])
     .filter((t): t is DesignToken => t !== undefined);
 
-  const code =
+  const localCode =
     format === "json"
       ? exportRawJSON()
       : generateTokenBlock(visibleTokens, format, activeModeId ?? undefined, tokens);
+  const code = remoteCode ?? localCode;
 
   const html = useShikiHtml(code, format);
+
+  const loadSnapshots = useCallback(async () => {
+    const response = await apiRequest<SnapshotsResponse>("/api/snapshots");
+    setSnapshots(response.snapshots);
+  }, []);
+
+  const syncExportCode = useCallback(async (nextFormat: ExportFormat, nextSource: string) => {
+    if (nextSource === "current") {
+      setRemoteCode(null);
+      return;
+    }
+    const params = new URLSearchParams({ format: nextFormat });
+    if (activeModeId) params.set("modeId", activeModeId);
+    params.set("snapshotId", nextSource);
+    setIsGenerating(true);
+    try {
+      const response = await apiRequest<{ code: string }>(`/api/export?${params.toString()}`);
+      setRemoteCode(response.code);
+    } catch {
+      setRemoteCode(localCode);
+    } finally {
+      setIsGenerating(false);
+    }
+  }, [activeModeId, localCode]);
 
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(code);
@@ -52,7 +84,16 @@ export function ExportDialog() {
   }, [code, format]);
 
   return (
-    <Dialog>
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        setOpen(nextOpen);
+        if (nextOpen) {
+          void loadSnapshots();
+          void syncExportCode(format, source);
+        }
+      }}
+    >
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-1.5 cursor-pointer">
           <Download className="h-3.5 w-3.5" />
@@ -72,7 +113,10 @@ export function ExportDialog() {
               {(["android", "css", "json"] as const).map((f) => (
                 <button
                   key={f}
-                  onClick={() => setFormat(f)}
+                  onClick={() => {
+                    setFormat(f);
+                    void syncExportCode(f, source);
+                  }}
                   className={cn(
                     "rounded-md px-3 py-1 text-xs font-medium cursor-pointer transition-all duration-200 ease",
                     format === f
@@ -87,6 +131,28 @@ export function ExportDialog() {
             <span className="text-xs text-muted-foreground ml-auto">
               {visibleTokens.length} 个令牌
             </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">来源：</span>
+            <select
+              value={source}
+              onChange={(event) => {
+                setSource(event.target.value);
+                void syncExportCode(format, event.target.value);
+              }}
+              className="h-8 rounded-md border bg-background px-2 text-xs"
+            >
+              <option value="current">当前 Token 表</option>
+              {snapshots.map((snapshot) => (
+                <option key={snapshot.id} value={snapshot.id}>
+                  {snapshot.name}
+                </option>
+              ))}
+            </select>
+            {isGenerating && (
+              <span className="text-xs text-muted-foreground">正在生成...</span>
+            )}
           </div>
 
           {/* Code preview */}

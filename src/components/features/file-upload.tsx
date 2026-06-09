@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useTokenStore } from "@/stores/token-store";
 import sampleData from "@/data/sample-tokens.json";
 
-export function FileUpload() {
+export function FileUpload({ error: remoteError }: { error?: string | null }) {
   const loadJSON = useTokenStore((s) => s.loadJSON);
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +18,7 @@ export function FileUpload() {
       try {
         const text = await file.text();
         const json = JSON.parse(text);
-        const success = loadJSON(json);
+        const success = await loadJSON(json);
         if (!success) {
           setError("无法识别的文件格式。请上传 Figma 原生导出或 Variables2CSS 格式的 JSON 文件。");
         }
@@ -51,7 +51,7 @@ export function FileUpload() {
 
   const handleLoadSample = useCallback(() => {
     setError(null);
-    loadJSON(sampleData);
+    void loadJSON(sampleData);
   }, [loadJSON]);
 
   return (
@@ -109,10 +109,10 @@ export function FileUpload() {
         </div>
 
         {/* Error */}
-        {error && (
+        {(error || remoteError) && (
           <div className="flex items-start gap-2 rounded-lg border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
             <X className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>{error}</p>
+            <p>{error ?? remoteError}</p>
           </div>
         )}
 

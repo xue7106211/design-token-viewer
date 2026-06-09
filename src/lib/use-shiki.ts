@@ -10,7 +10,17 @@ const FORMAT_LANG: Record<string, string> = {
   json: "json",
 };
 
-let highlighterPromise: Promise<any> | null = null;
+type ShikiHighlighter = {
+  codeToHtml: (
+    code: string,
+    options: {
+      lang: string;
+      themes: { light: string; dark: string };
+    }
+  ) => string;
+};
+
+let highlighterPromise: Promise<ShikiHighlighter | null> | null = null;
 
 function getHighlighter() {
   if (!highlighterPromise) {
