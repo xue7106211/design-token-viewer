@@ -21,13 +21,50 @@ const FILE_STORE_PATH = path.join(process.cwd(), ".data", "collaboration-store.j
 
 let repository: CollaborationRepository | null = null;
 
+export type RepositoryKind = "postgres" | "file" | "missing-database";
+
+export function selectRepositoryKind({
+  hasDatabaseUrl,
+  nodeEnv,
+}: {
+  hasDatabaseUrl: boolean;
+  nodeEnv: string | undefined;
+}): RepositoryKind {
+  if (hasDatabaseUrl) return "postgres";
+  return nodeEnv === "production" ? "missing-database" : "file";
+}
+
 export function getCollaborationRepository(): CollaborationRepository {
   if (!repository) {
-    repository = hasDatabaseUrl()
-      ? createDrizzleCollaborationRepository()
-      : createFileCollaborationRepository(FILE_STORE_PATH);
+    const kind = selectRepositoryKind({
+      hasDatabaseUrl: hasDatabaseUrl(),
+      nodeEnv: process.env.NODE_ENV,
+    });
+    repository =
+      kind === "postgres"
+        ? createDrizzleCollaborationRepository()
+        : kind === "file"
+          ? createFileCollaborationRepository(FILE_STORE_PATH)
+          : createMissingDatabaseRepository();
   }
   return repository;
+}
+
+export function createMissingDatabaseRepository(): CollaborationRepository {
+  const error = () => {
+    throw new Error(
+      "线上共享 Token 表需要配置 PostgreSQL DATABASE_URL。请在 Netlify 环境变量中配置 DATABASE_URL，并先执行 npm run db:migrate 初始化数据表。"
+    );
+  };
+  return {
+    getDocument: async () => error(),
+    saveDocument: async () => error(),
+    addLog: async () => error(),
+    listLogs: async () => error(),
+    addSnapshot: async () => error(),
+    listSnapshots: async () => error(),
+    getSnapshot: async () => error(),
+  };
 }
 
 export function createDrizzleCollaborationRepository(): CollaborationRepository {
