@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { actorFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
+import { actorFromRequest, documentIdFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
 import type { TokenValue } from "@/types/token";
 
 export async function PATCH(
@@ -9,7 +9,7 @@ export async function PATCH(
   try {
     const body = await request.json();
     const { tokenId } = await context.params;
-    const document = await getTokenDocumentService().updateTokenValue({
+    const document = await getTokenDocumentService(documentIdFromRequest(request)).updateTokenValue({
       tokenId,
       modeId: String((body as { modeId?: unknown }).modeId ?? ""),
       value: (body as { value: TokenValue }).value,

@@ -14,6 +14,8 @@ import {
   ApiError,
   apiRequest,
   withActor,
+  setActiveDocumentId,
+  DEFAULT_DOCUMENT_ID,
   type TokenDocumentResponse,
 } from "@/lib/collaboration/client";
 
@@ -31,6 +33,9 @@ interface TokenState {
   isLoading: boolean;
   isSaving: boolean;
   error: string | null;
+
+  // Active token document (HyperOS3 / HyperOS4)
+  activeDocumentId: string;
 
   // UI state
   activeCollectionId: string | null;
@@ -51,6 +56,7 @@ interface TokenState {
   filteredTokenIds: string[];
 
   // Actions
+  setActiveDocument: (documentId: string) => void;
   loadRemoteDocument: () => Promise<void>;
   loadJSON: (json: unknown) => Promise<boolean>;
   clearData: () => void;
@@ -84,6 +90,7 @@ interface TokenState {
 type PersistedTokenState = Partial<
   Pick<
     TokenState,
+    | "activeDocumentId"
     | "activeCollectionId"
     | "activeModeId"
     | "searchQuery"
@@ -171,6 +178,9 @@ export const useTokenStore = create<TokenState>()(
         isSaving: false,
         error: null,
 
+        // Active document
+        activeDocumentId: DEFAULT_DOCUMENT_ID,
+
         // UI state
         activeCollectionId: null,
         activeModeId: null,
@@ -199,6 +209,35 @@ export const useTokenStore = create<TokenState>()(
           } finally {
             set({ isLoading: false });
           }
+        },
+
+        setActiveDocument: (documentId: string) => {
+          if (documentId === get().activeDocumentId) return;
+          // 同步全局请求头来源，使后续 apiRequest 命中新文档
+          setActiveDocumentId(documentId);
+          // 切表即清空当前文档相关状态，避免旧集合/选中残留
+          set({
+            activeDocumentId: documentId,
+            rawJSON: null,
+            revision: null,
+            updatedAt: null,
+            updatedBy: undefined,
+            collections: [],
+            tokens: {},
+            tree: [],
+            activeCollectionId: null,
+            activeModeId: null,
+            activeCollection: null,
+            selectedTokenId: null,
+            scrollToTokenId: null,
+            expandedPaths: new Set<string>(),
+            filteredTokenIds: [],
+            inspectorOpen: false,
+            editingTokenId: null,
+            editingPosition: null,
+            error: null,
+          });
+          void get().loadRemoteDocument();
         },
 
         loadJSON: async (json: unknown) => {
@@ -406,6 +445,7 @@ export const useTokenStore = create<TokenState>()(
       name: "design-token-viewer-storage",
       partialize: (state) =>
         ({
+          activeDocumentId: state.activeDocumentId,
           activeCollectionId: state.activeCollectionId,
           activeModeId: state.activeModeId,
           expandedPaths: [...state.expandedPaths],
@@ -416,9 +456,13 @@ export const useTokenStore = create<TokenState>()(
         }) as PersistedTokenState,
       merge: (persisted, current) => {
         const state = persisted as PersistedTokenState;
+        const activeDocumentId = state.activeDocumentId ?? DEFAULT_DOCUMENT_ID;
+        // 水合时同步全局文档 id，保证首个请求命中持久化的文档
+        setActiveDocumentId(activeDocumentId);
         return {
           ...current,
           ...state,
+          activeDocumentId,
           expandedPaths: new Set(state.expandedPaths ?? []),
         };
       },

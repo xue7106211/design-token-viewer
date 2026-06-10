@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { actorFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
+import { actorFromRequest, documentIdFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
 
 export async function DELETE(
   request: NextRequest,
@@ -8,7 +8,7 @@ export async function DELETE(
   try {
     const body = await request.json();
     const { tokenId } = await context.params;
-    const document = await getTokenDocumentService().deleteToken({
+    const document = await getTokenDocumentService(documentIdFromRequest(request)).deleteToken({
       tokenId,
       revision: readRevision(body),
       actor: actorFromRequest(request, body),

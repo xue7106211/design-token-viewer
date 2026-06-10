@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { generateTokenBlock } from "@/lib/code-generators";
 import { parseTokenJSON } from "@/lib/parsers";
 import { resolveTokens } from "@/lib/token-resolver";
-import { getTokenDocumentService, jsonError } from "@/lib/collaboration/server";
+import { documentIdFromRequest, getTokenDocumentService, jsonError } from "@/lib/collaboration/server";
 import type { CodeFormat, ParsedTokenData } from "@/types/token";
 
 export async function GET(request: NextRequest) {
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const snapshotId = searchParams.get("snapshotId");
     const modeId = searchParams.get("modeId") ?? undefined;
 
-    const service = getTokenDocumentService();
+    const service = getTokenDocumentService(documentIdFromRequest(request));
     const sourceJson = snapshotId
       ? (await service.getSnapshot(snapshotId)).json
       : (await service.getDocument()).currentJson;

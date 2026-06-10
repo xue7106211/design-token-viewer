@@ -122,7 +122,8 @@ export function createMemoryCollaborationRepository(): CollaborationRepository {
 export function createTokenDocumentService(
   repository: CollaborationRepository,
   initialJson: unknown,
-  documentId = DEFAULT_DOCUMENT_ID
+  documentId = DEFAULT_DOCUMENT_ID,
+  documentName = DEFAULT_DOCUMENT_NAME
 ) {
   async function ensureDocument(): Promise<TokenDocumentRecord> {
     const existing = await repository.getDocument(documentId);
@@ -131,7 +132,7 @@ export function createTokenDocumentService(
     const now = Date.now();
     return repository.saveDocument({
       id: documentId,
-      name: DEFAULT_DOCUMENT_NAME,
+      name: documentName,
       currentJson: clone(initialJson),
       revision: 1,
       updatedAt: now,

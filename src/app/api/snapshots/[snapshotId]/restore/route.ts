@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { actorFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
+import { actorFromRequest, documentIdFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
 
 export async function POST(
   request: NextRequest,
@@ -8,7 +8,7 @@ export async function POST(
   try {
     const body = await request.json();
     const { snapshotId } = await context.params;
-    const document = await getTokenDocumentService().restoreSnapshot({
+    const document = await getTokenDocumentService(documentIdFromRequest(request)).restoreSnapshot({
       snapshotId,
       revision: readRevision(body),
       actor: actorFromRequest(request, body),

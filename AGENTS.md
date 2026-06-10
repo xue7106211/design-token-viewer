@@ -6,6 +6,7 @@ Design Token Viewer 是一个 Figma 设计令牌可视化工具，用于浏览�
 
 核心能力：
 - 解析 Figma Variables 原生导出 JSON 和 Variables2CSS 插件格式
+- 多套 Token 表切换（HyperOS3 / HyperOS4），各自数据/日志/快照独立
 - 可视化浏览令牌（颜色色块、数值预览、树形导航）
 - 多 Collection / 多 Mode 切换
 - 令牌编辑（值、名称、描述、codeSyntax、别名引用）
@@ -112,16 +113,24 @@ src/
 │   ├── token.ts                   # 核心类型: DesignToken, TokenCollection, TokenTreeNode 等
 │   └── changelog.ts               # 变更日志类型: LogEntry, ChangeType
 └── data/
-    └── sample-tokens.json         # 示例数据 (Xiaomi HyperOS4 Feature Token)
+    ├── sample-tokens.json          # HyperOS3 种子 (Figma Native 格式)
+    └── sample-tokens-hyperos4.json # HyperOS4 种子 (由 DTCG 转换生成)
 ```
 
 其他顶层目录：
 
 ```
+figma-token/                # HyperOS4 Figma DTCG 导出源 (3 Collection × Light/Dark)
+├── Component Token/{Light,Dark}.tokens.json
+├── Reference Token/{Light,Dark}.tokens.json
+└── Semantic Token/{Light,Dark}.tokens.json
+
 scripts/                    # 辅助脚本
 ├── css-vars-to-sample.mjs
 ├── figma-flat-to-preset.mjs
-└── figma-vars-to-sample.mjs
+├── figma-vars-to-sample.mjs
+├── figma-dtcg-to-sample.mjs # W3C DTCG → Figma Native (合并多 Collection + 按名称解析别名)
+└── init-db.mjs              # 用迁移 SQL 初始化数据库
 
 docs/                       # 项目文档
 ├── ACCEPTANCE_CHECKLIST.md
@@ -225,6 +234,21 @@ UI：`changelog-dialog.tsx` 提供日志查看对话框 (sidebar 底部入口)�
 
 检测逻辑在 `format-detector.ts`，通过结构特征自动判断。
 
+> **W3C DTCG**（Figma 新版「导出变量」格式）**不被运行时解析器识别**，需离线转换：`$type/$value/$extensions` 结构，颜色为 `{ components:[r,g,b], alpha, hex }`，别名在 `$extensions["com.figma.aliasData"]` 中**按 `targetVariableName` + `targetVariableSetName`（名称，而非 variableId）** 引用。用 `scripts/figma-dtcg-to-sample.mjs` 转成 Figma Native 种子。
+
+## 多套 Token 表（多文档架构）
+
+应用支持多套独立 Token 表，顶部 `DocumentSwitcher`（main-view 工具栏左上）在 **HyperOS3 / HyperOS4** 间切换。数据库 schema 本就按 `document_id` 隔离，故无需改库。
+
+关键点：
+- **注册表** `src/lib/collaboration/server.ts` 的 `DOCUMENTS = { hyperos3: {name, seed}, hyperos4: {name, seed} }`；`getTokenDocumentService(documentId)` 按 id 选种子；`documentIdFromRequest(request)` 从 `x-document-id` 头解析（非法值回退 `hyperos3`）。
+- **种子**：`data/sample-tokens.json`（HyperOS3）、`data/sample-tokens-hyperos4.json`（HyperOS4）。种子仅在该文档首次创建时灌入（`ensureDocument` 读不到才创建）。
+- **前端**：`client.ts` 模块级 `activeDocumentId` + `TOKEN_DOCUMENTS` 清单，在 `apiRequest` 统一注入 `x-document-id` 头（所有调用点零改动）；`token-store` 的 `activeDocumentId`（持久化）+ `setActiveDocument(id)`（清状态后 `loadRemoteDocument`），水合时在 persist `merge` 里调 `setActiveDocumentId` 同步。
+- **隔离**：每套表的编辑 / 变更日志 / 快照通过 `document_id` 外键彼此独立。
+
+> 新增第三套表：① `client.ts` 的 `TOKEN_DOCUMENTS` 加一项；② `server.ts` 的 `DOCUMENTS` 加种子；③ 放置对应种子 JSON。无需改数据库或迁移。
+> 替换已存在文档的种子不会自动生效（种子只首次灌入），需走界面「上传 JSON」覆盖，或清 `.data/collaboration-store.json` 中该文档后重新灌入。
+
 ## 命令
 
 ```bash
@@ -251,6 +275,8 @@ npm run lint         # ESLint
 ## 新增功能时的注意事项
 
 - 新解析格式 → `src/lib/parsers/` 新增 parser + 更新 format-detector + index.ts
+- 新增一套 Token 表 → 更新 `client.ts` 的 `TOKEN_DOCUMENTS` + `server.ts` 的 `DOCUMENTS` + 放置种子 JSON（无需改库）
+- HyperOS4 数据更新 → 替换 `figma-token/` 下 DTCG 导出，重跑 `node scripts/figma-dtcg-to-sample.mjs`
 - 新代码导出格式 → `src/lib/code-generators/` 新增 generator + 更新 index.ts + `CodeFormat` 类型
 - 新 UI 组件 → `src/components/features/` (业务) 或 `ui/` (通用)
 - 新纯逻辑 → `src/lib/` + 同目录 `*.test.ts`

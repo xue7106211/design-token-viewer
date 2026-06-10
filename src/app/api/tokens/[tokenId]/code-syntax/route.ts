@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { actorFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
+import { actorFromRequest, documentIdFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
 
 type CodeSyntax = { WEB?: string; ANDROID?: string; iOS?: string };
 
@@ -10,7 +10,7 @@ export async function PATCH(
   try {
     const body = await request.json();
     const { tokenId } = await context.params;
-    const document = await getTokenDocumentService().updateTokenCodeSyntax({
+    const document = await getTokenDocumentService(documentIdFromRequest(request)).updateTokenCodeSyntax({
       tokenId,
       codeSyntax: ((body as { codeSyntax?: CodeSyntax }).codeSyntax ?? {}) as CodeSyntax,
       revision: readRevision(body),

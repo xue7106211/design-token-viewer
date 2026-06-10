@@ -4,6 +4,7 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 
 ## 功能
 
+- 多套 Token 表切换：顶部一键切换 **HyperOS 3 / HyperOS 4**，两套数据、变更日志、快照完全独立
 - 拖拽上传 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
 - 树形导航 + 搜索过滤，Grid / List 双视图
 - 多 Collection、多 Mode 切换
@@ -63,7 +64,7 @@ src/
 ├── components/
 │   ├── ui/           # shadcn/ui 基础组件 (12 个)
 │   ├── layout/       # AppShell, Sidebar, MainView
-│   └── features/     # 业务组件 (上传、树、网格、列表、检查器、导出、变更日志、快照、协作者署名等，19 个)
+│   └── features/     # 业务组件 (上传、树、网格、列表、检查器、导出、变更日志、快照、协作者署名、文档切换器等，20 个)
 ├── lib/
 │   ├── parsers/      # JSON 格式检测与解析 (7 个文件含测试)
 │   ├── code-generators/  # CSS / Android XML 代码生成 (5 个文件含测试)
@@ -78,11 +79,12 @@ src/
 │   └── use-shiki.ts      # Shiki 语法高亮 hook
 ├── stores/           # Zustand 全局状态 (令牌 store + 变更日志 store)
 ├── types/            # TypeScript 类型定义
-└── data/             # 示例数据
+└── data/             # 种子数据 (sample-tokens.json = HyperOS3, sample-tokens-hyperos4.json = HyperOS4)
 
+figma-token/          # HyperOS4 Figma DTCG 导出源 (3 Collection × Light/Dark)
 drizzle/              # Drizzle 数据库迁移 SQL
 drizzle.config.ts     # Drizzle Kit 配置 (postgresql)
-scripts/              # 辅助脚本 (Figma 数据转换、数据库初始化 init-db)
+scripts/              # 辅助脚本 (Figma 数据转换、DTCG 转换、数据库初始化)
 docs/                 # 项目文档 (验收清单、预设变量、结构说明)
 e2e/                  # Playwright E2E 测试
 ```
@@ -95,6 +97,26 @@ e2e/                  # Playwright E2E 测试
 - **Variables2CSS** — Variables2CSS 插件导出 (`collections` with `variables` array)
 
 上传时自动检测格式，无需手动选择。
+
+> 注：Figma 新版「导出变量」的 **W3C DTCG** 格式（`$type/$value/$extensions`，颜色为 `components+alpha`，别名在 `$extensions["com.figma.aliasData"]`）不被运行时解析器直接识别，需先用 `scripts/figma-dtcg-to-sample.mjs` 转换成 Figma Native 种子。
+
+## 多套 Token 表（HyperOS3 / HyperOS4）
+
+应用支持多套独立的 Token 表，顶部切换器可在 **HyperOS 3 / HyperOS 4** 间切换。
+
+- 每套表对应服务端一份独立文档（`token_documents` 表的一行），各自的编辑、变更日志、快照互不影响。
+- 文档注册表在 `src/lib/collaboration/server.ts` 的 `DOCUMENTS`，种子分别为 `src/data/sample-tokens.json`（HyperOS3）与 `src/data/sample-tokens-hyperos4.json`（HyperOS4）。
+- 前端通过 `x-document-id` 请求头标识当前文档（由 `src/lib/collaboration/client.ts` 在 `apiRequest` 统一注入），id 清单见 `TOKEN_DOCUMENTS`。
+
+### 更新 HyperOS4 数据
+
+1. 从 Figma「导出变量」得到 DTCG 文件，按 `figma-token/<Collection>/<Light|Dark>.tokens.json` 放置（当前为 Component / Reference / Semantic 三组）。
+2. 运行转换脚本（合并三组、按名称解析跨集合别名、校验无环）：
+   ```bash
+   node scripts/figma-dtcg-to-sample.mjs
+   ```
+   输出 `src/data/sample-tokens-hyperos4.json`。
+3. 种子仅在文档首次创建时灌入。若库/文件中已存在 hyperos4 文档，替换种子后需通过界面「上传 JSON」覆盖，或清除 `.data/collaboration-store.json` 中的 hyperos4 文档让其重新灌入。
 
 ## 路径别名
 

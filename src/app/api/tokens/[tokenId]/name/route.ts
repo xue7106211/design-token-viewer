@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { actorFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
+import { actorFromRequest, documentIdFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
 
 export async function PATCH(
   request: NextRequest,
@@ -8,7 +8,7 @@ export async function PATCH(
   try {
     const body = await request.json();
     const { tokenId } = await context.params;
-    const document = await getTokenDocumentService().updateTokenName({
+    const document = await getTokenDocumentService(documentIdFromRequest(request)).updateTokenName({
       tokenId,
       newName: String((body as { newName?: unknown }).newName ?? ""),
       revision: readRevision(body),
