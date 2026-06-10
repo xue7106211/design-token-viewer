@@ -102,14 +102,21 @@ type PersistedTokenState = Partial<
   expandedPaths?: string[];
 };
 
+// 每套文档的默认选中集合（无持久化选择时生效）
+const DEFAULT_COLLECTION_BY_DOCUMENT: Record<string, string> = {
+  hyperos4: "col_reference",
+};
+
 export const useTokenStore = create<TokenState>()(
   persist(
     (set, get) => {
       const applyDocument = (document: TokenDocumentResponse) => {
         const preferredCollectionId = get().activeCollectionId;
         const preferredModeId = get().activeModeId;
+        const fallbackCollectionId = DEFAULT_COLLECTION_BY_DOCUMENT[get().activeDocumentId];
         const activeCollection =
           document.collections.find((collection) => collection.id === preferredCollectionId) ??
+          document.collections.find((collection) => collection.id === fallbackCollectionId) ??
           document.collections[0] ??
           null;
         const activeMode =

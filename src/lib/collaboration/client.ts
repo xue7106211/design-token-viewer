@@ -10,7 +10,7 @@ export const TOKEN_DOCUMENTS = [
   { id: "hyperos4", label: "HyperOS 4" },
 ] as const;
 
-export const DEFAULT_DOCUMENT_ID = "hyperos3";
+export const DEFAULT_DOCUMENT_ID = "hyperos4";
 
 // 模块级当前文档 id：所有 apiRequest 自动带上 x-document-id 头，
 // 由 token-store 在切换/水合时通过 setActiveDocumentId 同步。

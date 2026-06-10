@@ -17,7 +17,7 @@ const DOCUMENTS: Record<string, { name: string; seed: unknown }> = {
   hyperos4: { name: "HyperOS 4 Tokens", seed: sampleHyperOS4 },
 };
 
-const DEFAULT_DOCUMENT_ID = "hyperos3";
+const DEFAULT_DOCUMENT_ID = "hyperos4";
 
 /** 从请求头 x-document-id 解析当前文档 id，非法值回退到默认文档。 */
 export function documentIdFromRequest(request: NextRequest): string {

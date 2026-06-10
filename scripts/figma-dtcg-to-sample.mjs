@@ -145,6 +145,15 @@ for (const coll of COLLECTIONS) {
 }
 
 const output = { collections: collectionsOut, variables };
+
+// 展示顺序（自上而下）：Component → Semantic → Reference。
+// 注意：id 分配仍按 COLLECTIONS 顺序进行，这里只调整输出的 collections 数组顺序，
+// 不影响 variables / variableIds，保证 diff 最小且别名解析不变。
+const DISPLAY_ORDER = ["col_component", "col_semantic", "col_reference"];
+output.collections.sort(
+  (a, b) => DISPLAY_ORDER.indexOf(a.id) - DISPLAY_ORDER.indexOf(b.id)
+);
+
 writeFileSync(outPath, JSON.stringify(output, null, 2), "utf-8");
 
 const total = Object.keys(variables).length;
