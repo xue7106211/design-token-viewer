@@ -11,13 +11,14 @@ import { CodeOutput } from "./code-output";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { X, ArrowRight, Link2, Eye, GripVertical, ChevronDown } from "lucide-react";
+import { X, Link2, Eye, GripVertical, ArrowDown, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { ColorValue } from "@/types/token";
 
 const INSPECTOR_WIDTH_MIN = 280;
 const INSPECTOR_WIDTH_MAX = 560;
+const INSPECTOR_VIEWPORT_GUTTER = 48;
 
 const WHITE: ColorValue = { r: 1, g: 1, b: 1, a: 1 };
 const BLACK: ColorValue = { r: 0, g: 0, b: 0, a: 1 };
@@ -35,23 +36,39 @@ export function TokenInspector() {
   const setInspectorWidth = useTokenStore((s) => s.setInspectorWidth);
 
   const [isResizing, setIsResizing] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(() =>
+    typeof window === "undefined" ? INSPECTOR_WIDTH_MAX : window.innerWidth
+  );
   const resizeStartRef = useRef({ x: 0, width: 0 });
+
+  const maxUsableInspectorWidth = Math.max(
+    INSPECTOR_WIDTH_MIN,
+    Math.min(INSPECTOR_WIDTH_MAX, viewportWidth - INSPECTOR_VIEWPORT_GUTTER)
+  );
+  const effectiveInspectorWidth = Math.min(inspectorWidth, maxUsableInspectorWidth);
 
   const handleResizeStart = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
-      resizeStartRef.current = { x: e.clientX, width: inspectorWidth };
+      resizeStartRef.current = { x: e.clientX, width: effectiveInspectorWidth };
       setIsResizing(true);
     },
-    [inspectorWidth]
+    [effectiveInspectorWidth]
   );
+
+  useEffect(() => {
+    const onResize = () => setViewportWidth(window.innerWidth);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     if (!isResizing) return;
     const onMove = (e: MouseEvent) => {
       const { x, width } = resizeStartRef.current;
       const delta = x - e.clientX;
-      const next = Math.min(INSPECTOR_WIDTH_MAX, Math.max(INSPECTOR_WIDTH_MIN, width + delta));
+      const next = Math.min(maxUsableInspectorWidth, Math.max(INSPECTOR_WIDTH_MIN, width + delta));
       setInspectorWidth(next);
     };
     const onEnd = () => setIsResizing(false);
@@ -65,7 +82,7 @@ export function TokenInspector() {
       document.body.classList.remove("select-none");
       document.body.style.cursor = "";
     };
-  }, [isResizing, setInspectorWidth]);
+  }, [isResizing, maxUsableInspectorWidth, setInspectorWidth]);
 
   if (!inspectorOpen || !selectedTokenId) return null;
 
@@ -86,8 +103,11 @@ export function TokenInspector() {
 
   return (
     <div
-      className="relative flex h-full flex-col border-l bg-background shrink-0 overflow-hidden"
-      style={{ width: inspectorWidth, minWidth: inspectorWidth, maxWidth: inspectorWidth }}
+      className={cn(
+        "relative flex h-full flex-col border-l bg-background shrink-0 overflow-hidden",
+        isResizing && "shadow-[-8px_0_24px_-18px_hsl(var(--foreground))]"
+      )}
+      style={{ width: effectiveInspectorWidth, minWidth: effectiveInspectorWidth, maxWidth: effectiveInspectorWidth }}
     >
       {/* 左侧拖拽条：向左拖变宽，向右拖变窄 */}
       <div
@@ -95,19 +115,25 @@ export function TokenInspector() {
         aria-label="调整 Inspector 宽度"
         onMouseDown={handleResizeStart}
         className={cn(
-          "absolute left-0 top-0 z-10 h-full w-1.5 -translate-x-1/2 cursor-col-resize",
+          "absolute left-0 top-0 z-10 h-full w-2 -translate-x-1/2 cursor-col-resize",
           "flex items-center justify-center select-none",
-          "transition-[background] duration-150 ease-out",
+          "transition-[background,width] duration-150 ease-out",
           "hover:bg-primary/20 active:bg-primary/30",
+          isResizing && "w-3 bg-primary/25",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         )}
         style={{ touchAction: "none" }}
       >
-        <GripVertical className="h-3 w-3 text-muted-foreground/50 pointer-events-none" />
+        <GripVertical className={cn("h-3 w-3 text-muted-foreground/50 pointer-events-none", isResizing && "text-primary")} />
+        {isResizing && (
+          <span className="absolute left-2 top-3 rounded-md border bg-popover px-1.5 py-0.5 text-[10px] font-mono text-popover-foreground shadow-sm">
+            {effectiveInspectorWidth}px
+          </span>
+        )}
       </div>
 
       {/* Header */}
-      <div className="flex h-14 shrink-0 items-center justify-between border-b px-4 py-2.5">
+      <div className="flex h-14 shrink-0 items-center justify-between gap-2 border-b px-3 py-2.5">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold truncate">{token.path[token.path.length - 1]}</h3>
           <p className="text-[10px] font-mono text-muted-foreground truncate">{token.name}</p>
@@ -126,13 +152,15 @@ export function TokenInspector() {
       </div>
 
       <ScrollArea className="min-h-0 min-w-0 flex-1 w-full" viewportClassName="!overflow-x-hidden">
-        <div className="min-w-0 w-full space-y-5 p-4 overflow-hidden">
+        <div className="min-w-0 w-full space-y-4 overflow-hidden p-3">
           {/* Current Value Preview */}
           <Section title="当前值">
             {resolved?.type === "COLOR" && (
-              <div className="space-y-3">
-                <ColorSwatch color={resolved.value} size="lg" />
-                <div className="space-y-1.5 text-xs font-mono">
+              <div className="min-w-0 space-y-3">
+                <div className="min-w-0 [&>button]:max-w-full [&>div]:max-w-full">
+                  <ColorSwatch color={resolved.value} size="lg" />
+                </div>
+                <div className="min-w-0 space-y-1.5 text-xs font-mono">
                   <Row label="HEX" value={colorToHexWithAlpha(resolved.value).toUpperCase()} />
                   <Row label="RGB" value={colorToRGB(resolved.value)} />
                   <Row label="HSL" value={colorToHSL(resolved.value)} />
@@ -172,19 +200,21 @@ export function TokenInspector() {
                       <div
                         key={mode.modeId}
                         className={cn(
-                          "flex items-center justify-between rounded-lg border p-2.5",
+                          "flex min-w-0 items-center justify-between gap-2 rounded-lg border p-2.5",
                           mode.modeId === activeModeId && "border-primary/30 bg-primary/5"
                         )}
                       >
-                        <span className="text-xs font-medium">{mode.name}</span>
+                        <span className="shrink-0 text-xs font-medium">{mode.name}</span>
                         {modeResolved.type === "COLOR" && (
-                          <ColorSwatch color={modeResolved.value} size="sm" showLabel />
+                          <div className="min-w-0 flex-1 overflow-hidden [&>button]:max-w-full [&>div]:min-w-0 [&>div]:justify-end [&_span]:min-w-0 [&_span]:truncate">
+                            <ColorSwatch color={modeResolved.value} size="sm" showLabel />
+                          </div>
                         )}
                         {modeResolved.type === "NUMBER" && (
-                          <span className="text-xs font-mono">{modeResolved.value}px</span>
+                          <span className="min-w-0 truncate text-xs font-mono">{modeResolved.value}px</span>
                         )}
                         {modeResolved.type === "STRING" && (
-                          <span className="text-xs font-mono truncate max-w-[120px]">{modeResolved.value}</span>
+                          <span className="min-w-0 truncate text-xs font-mono">{modeResolved.value}</span>
                         )}
                       </div>
                     );
@@ -198,61 +228,75 @@ export function TokenInspector() {
           {/* Alias Chain */}
           {aliasChain.length > 1 && resolved && (
             <>
-              <Section title="引用链路">
-                <div className="flex flex-col gap-1">
+              <Section title="引用链路" icon={<Link2 className="h-3 w-3" />}>
+                <div className="min-w-0 rounded-xl border bg-muted/20 p-2">
+                  <div className="space-y-1.5">
                   {aliasChain.map((item, idx) => {
                     const chainToken = tokens[item.id];
                     const chainResolved = chainToken?.resolvedValues[modeId];
                     const isColor = chainResolved?.type === "COLOR";
                     return (
-                      <div key={item.id}>
+                      <div key={item.id} className="relative">
                         {idx > 0 && (
-                          <div className="flex justify-center py-0.5">
-                            <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+                          <div className="flex items-center justify-center py-0.5 text-muted-foreground">
+                            <div className="h-px flex-1 bg-border" />
+                            <ArrowDown className="mx-2 h-3.5 w-3.5" aria-hidden />
+                            <div className="h-px flex-1 bg-border" />
                           </div>
                         )}
                         <button
                           type="button"
                           onClick={() => selectToken(item.id)}
                           className={cn(
-                            "flex items-center gap-2 min-w-0 w-full text-left rounded-md px-1 py-0.5 -mx-1 hover:bg-accent/50 transition-colors",
-                            item.id === token.id && "bg-accent/30"
+                            "grid min-w-0 w-full grid-cols-[1.5rem_1.5rem_minmax(0,1fr)] items-start gap-x-2 rounded-lg border bg-background px-2.5 py-2 text-left transition-[background-color,border-color,transform] duration-150 ease-out",
+                            "hover:border-primary/25 hover:bg-accent/45 active:scale-[0.99]",
+                            item.id === token.id && "border-primary/35 bg-primary/[0.045]"
                           )}
                         >
-                          {isColor && chainResolved && (
-                            <ColorSwatch
-                              color={(chainResolved as { type: "COLOR"; value: ColorValue }).value}
-                              size="sm"
-                              className="shrink-0"
-                            />
+                          <span className="flex h-6 w-6 items-center justify-center rounded-md border bg-muted/35 text-[10px] font-semibold text-muted-foreground tabular-nums">
+                            {idx + 1}
+                          </span>
+                          {isColor && chainResolved ? (
+                            <ColorSwatch color={(chainResolved as { type: "COLOR"; value: ColorValue }).value} size="sm" className="[&>div]:!h-6 [&>div]:!w-6" />
+                          ) : (
+                            <span className="h-6 w-6 rounded-md border bg-muted" />
                           )}
-                          <span
-                            className={cn(
-                              "text-xs font-mono truncate text-foreground",
-                              item.id === token.id && "font-medium"
-                            )}
-                            title={item.name}
-                          >
-                            {chainToken?.path[chainToken.path.length - 1] ?? item.name}
+                          <span className="min-w-0 space-y-0.5 overflow-hidden">
+                            <span className="flex min-w-0 items-center gap-1.5">
+                              <span className={cn("min-w-0 truncate text-xs font-mono text-foreground", item.id === token.id && "font-semibold")} title={item.name}>
+                                {chainToken?.path[chainToken.path.length - 1] ?? item.name}
+                              </span>
+                              {item.id === token.id && (
+                                <span className="shrink-0 rounded bg-primary/10 px-1 py-0.5 text-[9px] font-medium leading-none text-primary">
+                                  当前
+                                </span>
+                              )}
+                            </span>
+                            <span className="block truncate text-[10px] font-mono text-muted-foreground" title={item.name}>
+                              {item.name}
+                            </span>
                           </span>
                         </button>
                       </div>
                     );
                   })}
-                  <div className="flex justify-center py-0.5">
-                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" aria-hidden />
+                  <div className="flex items-center justify-center py-0.5 text-muted-foreground">
+                    <div className="h-px flex-1 bg-border" />
+                    <ArrowDown className="mx-2 h-3.5 w-3.5" aria-hidden />
+                    <div className="h-px flex-1 bg-border" />
                   </div>
-                  <div className="flex items-center gap-2 min-w-0">
-                    {resolved.type === "COLOR" && (
-                      <ColorSwatch color={resolved.value} size="sm" className="shrink-0" />
+                  <div className="grid min-w-0 grid-cols-[1.5rem_1.5rem_minmax(0,1fr)] items-center gap-x-2 rounded-lg border border-emerald-500/25 bg-emerald-500/[0.055] px-2.5 py-2">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                    {resolved.type === "COLOR" ? (
+                      <ColorSwatch color={resolved.value} size="sm" className="[&>div]:!h-6 [&>div]:!w-6" />
+                    ) : (
+                      <span className="h-6 w-6 rounded-md border bg-muted" />
                     )}
-                    <span className="text-xs font-mono text-foreground">
-                      {resolved.type === "COLOR"
-                        ? colorToHexWithAlpha(resolved.value).toUpperCase()
-                        : resolved.type === "NUMBER"
-                          ? `${resolved.value}px`
-                          : String(resolved.value)}
-                    </span>
+                    <div className="min-w-0 flex-1 overflow-hidden">
+                      <div className="text-[10px] font-medium text-muted-foreground">Resolved value</div>
+                      <div className="truncate text-xs font-mono text-foreground">{formatResolvedValue(resolved)}</div>
+                    </div>
+                  </div>
                   </div>
                 </div>
               </Section>
@@ -269,10 +313,10 @@ export function TokenInspector() {
                     <button
                       key={ref.id}
                       onClick={() => selectToken(ref.id)}
-                      className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-accent transition-colors"
+                      className="flex min-w-0 w-full items-center gap-2 rounded-md px-2 py-1.5 text-xs font-mono cursor-pointer hover:bg-accent transition-colors"
                     >
                       <Eye className="h-3 w-3 text-muted-foreground shrink-0" />
-                      <span className="truncate">{ref.name}</span>
+                      <span className="min-w-0 truncate">{ref.name}</span>
                     </button>
                   ))}
                 </div>
@@ -315,11 +359,21 @@ function Section({
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-center justify-between">
-      <span className="text-muted-foreground">{label}</span>
-      <span className="text-foreground">{value}</span>
+    <div className="grid min-w-0 grid-cols-1 gap-0.5 rounded-md bg-muted/25 px-2 py-1.5">
+      <span className="text-[10px] text-muted-foreground">{label}</span>
+      <span className="min-w-0 break-all text-left text-foreground" title={value}>{value}</span>
     </div>
   );
+}
+
+function formatResolvedValue(resolved: { type: string; value: unknown }) {
+  if (resolved.type === "COLOR") {
+    return colorToHexWithAlpha(resolved.value as ColorValue).toUpperCase();
+  }
+  if (resolved.type === "NUMBER") {
+    return `${resolved.value}px`;
+  }
+  return String(resolved.value);
 }
 
 function ContrastInfo({
@@ -336,8 +390,8 @@ function ContrastInfo({
   const bgHex = colorToHex(against);
 
   return (
-    <div className="flex items-center justify-between rounded-md border px-2.5 py-1.5">
-      <div className="flex items-center gap-2">
+    <div className="grid min-w-0 grid-cols-1 gap-2 rounded-md border px-2.5 py-1.5 min-[360px]:grid-cols-[minmax(0,1fr)_auto] min-[360px]:items-center">
+      <div className="flex min-w-0 items-center gap-2">
         <div
           className="h-5 w-5 rounded border"
           style={{ backgroundColor: bgHex }}
@@ -349,9 +403,9 @@ function ContrastInfo({
             A
           </div>
         </div>
-        <span className="text-[10px] text-muted-foreground">{label}</span>
+        <span className="min-w-0 truncate text-[10px] text-muted-foreground">{label}</span>
       </div>
-      <div className="flex items-center gap-1.5">
+      <div className="flex min-w-0 items-center gap-1.5 min-[360px]:shrink-0">
         <span className="text-[10px] font-mono font-medium">{ratio.toFixed(1)}:1</span>
         <Badge
           variant={levels.aa ? "default" : "secondary"}

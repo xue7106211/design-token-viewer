@@ -5,7 +5,6 @@ import { TokenGrid } from "@/components/features/token-grid";
 import { TokenList } from "@/components/features/token-list";
 import { ViewToggle } from "@/components/features/view-toggle";
 import { ModeSwitcher } from "@/components/features/mode-switcher";
-import { DocumentSwitcher } from "@/components/features/document-switcher";
 import { ExportDialog } from "@/components/features/export-dialog";
 import { ThemeToggle } from "@/components/features/theme-toggle";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -22,7 +21,6 @@ export function MainView() {
       {/* Toolbar */}
       <div className="flex h-14 shrink-0 items-center justify-between border-b px-4 py-2.5">
         <div className="flex items-center gap-3">
-          <DocumentSwitcher />
           <div className="flex items-center gap-2">
             <FileJson className="h-4 w-4 text-muted-foreground" />
             <h2 className="text-sm font-semibold">

@@ -13,13 +13,13 @@ export function ModeSwitcher() {
   }
 
   return (
-    <div className="flex items-center gap-1 rounded-lg border bg-muted/50 p-0.5">
+    <div className="flex h-8 items-center gap-1 rounded-lg border bg-muted/50 p-0.5">
       {activeCollection.modes.map((mode) => (
         <button
           key={mode.modeId}
           onClick={() => setActiveMode(mode.modeId)}
           className={cn(
-            "rounded-md px-3 py-1 text-xs font-medium cursor-pointer",
+            "h-7 rounded-md px-3 text-xs font-medium cursor-pointer",
             "transition-all duration-200 ease",
             activeModeId === mode.modeId
               ? "bg-background text-foreground shadow-sm"

@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChangeLogStore } from "@/stores/changelog-store";
+import { useTokenStore } from "@/stores/token-store";
 import { getChangeTypeLabel, formatTimestamp } from "@/lib/changelog";
 import { colorToHex } from "@/lib/contrast";
 import type { LogEntry, ChangeType } from "@/types/changelog";
@@ -204,6 +205,8 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
   const fetchEntries = useChangeLogStore((s) => s.fetchEntries);
   const isLoading = useChangeLogStore((s) => s.isLoading);
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const updatedAt = useTokenStore((s) => s.updatedAt);
+  const updatedBy = useTokenStore((s) => s.updatedBy);
   const [open, setOpen] = useState(false);
 
   // 按时间倒序（最新在前）
@@ -255,10 +258,15 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         </DialogHeader>
 
         {/* 工具栏 */}
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-muted-foreground">
-            {isLoading ? "正在加载..." : `共 ${entries.length} 条记录`}
-          </span>
+        <div className="flex items-start justify-between gap-3">
+          <div className="space-y-0.5 text-xs text-muted-foreground">
+            <div>{isLoading ? "正在加载..." : `共 ${entries.length} 条记录`}</div>
+            {updatedAt && (
+              <div className="text-[11px]">
+                最近更新：{formatTimestamp(updatedAt)}{updatedBy ? ` · ${updatedBy}` : ""}
+              </div>
+            )}
+          </div>
           {entries.length > 0 && (
             <Button
               variant="outline"

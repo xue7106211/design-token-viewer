@@ -26,13 +26,19 @@ export function TokenGrid() {
   }
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="space-y-7 p-5 lg:p-6">
       {Array.from(groups.entries()).map(([groupName, tokenIds]) => (
         <div key={groupName}>
-          <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            {groupName}
-          </h3>
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3">
+          <div className="mb-3 flex items-center gap-2">
+            <h3 className="truncate text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              {groupName}
+            </h3>
+            <span className="rounded-full border bg-muted/40 px-1.5 py-0.5 text-[10px] tabular-nums text-muted-foreground">
+              {tokenIds.length}
+            </span>
+            <div className="h-px flex-1 bg-border/60" />
+          </div>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3">
             {tokenIds.map((id) => {
               const token = tokens[id];
               if (!token) return null;

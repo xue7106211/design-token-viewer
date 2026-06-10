@@ -48,11 +48,11 @@ export function CodeOutput({ code, className }: CodeOutputProps) {
       </div>
       {html ? (
         <div
-          className="shiki-wrapper min-w-0 w-full overflow-x-auto overflow-y-hidden p-3 text-[11px] font-mono leading-relaxed [&_pre]:!bg-transparent [&_pre]:min-w-0 [&_pre]:overflow-x-auto [&_code]:!bg-transparent [&_code]:break-all [&_code]:whitespace-pre-wrap"
+          className="shiki-wrapper min-w-0 w-full overflow-hidden p-3 text-[11px] font-mono leading-relaxed [&_pre]:!bg-transparent [&_pre]:min-w-0 [&_pre]:max-w-full [&_pre]:overflow-hidden [&_code]:!bg-transparent [&_code]:break-all [&_code]:whitespace-pre-wrap"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       ) : (
-        <pre className="min-w-0 w-full overflow-x-auto overflow-y-hidden whitespace-pre-wrap break-all p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
+        <pre className="min-w-0 w-full overflow-hidden whitespace-pre-wrap break-all p-3 text-[11px] font-mono leading-relaxed text-foreground/90">
           <code>{code}</code>
         </pre>
       )}

@@ -16,7 +16,7 @@ export function ViewToggle() {
   ];
 
   return (
-    <div className="flex items-center rounded-lg border bg-muted/50 p-0.5">
+    <div className="flex h-8 items-center rounded-lg border bg-muted/50 p-0.5">
       {modes.map(({ value, icon: Icon, label }) => (
         <Button
           key={value}

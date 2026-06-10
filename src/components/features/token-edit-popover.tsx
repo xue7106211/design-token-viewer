@@ -2,7 +2,7 @@
 
 /* eslint-disable react-hooks/set-state-in-effect */
 
-import React, { useEffect, useRef, useState, useCallback, useImperativeHandle } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState, useCallback, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { useTokenStore } from "@/stores/token-store";
@@ -13,7 +13,7 @@ import { ColorSwatch } from "./color-swatch";
 import { cn } from "@/lib/utils";
 import { colord } from "colord";
 import type { TokenValue, ColorValue, DesignToken } from "@/types/token";
-import { X, GripVertical } from "lucide-react";
+import { ArrowRight, Link2, X, GripVertical } from "lucide-react";
 
 import { getAndroidResourceName } from "@/lib/code-generators/android";
 import { toCSSVarName } from "@/lib/code-generators/css";
@@ -24,11 +24,201 @@ const POPOVER_TRANSITION = { duration: 0.25, ease: [0.165, 0.84, 0.44, 1] as con
 const POPOVER_WIDTH = 360;
 const PADDING = 12;
 
+type SegmentMetric<T extends string> = {
+  value: T;
+  left: number;
+  width: number;
+  center: number;
+};
+
+type DragState = {
+  left: number;
+  targetIndex: number;
+};
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
       {children}
     </p>
+  );
+}
+
+function PanelSection({ children }: { children: React.ReactNode }) {
+  return <div className="space-y-2 border-t border-border/70 px-3 py-3 first:border-t-0">{children}</div>;
+}
+
+function SegmentedControl<T extends string>({
+  ariaLabel,
+  value,
+  options,
+  onChange,
+}: {
+  ariaLabel: string;
+  value: T;
+  options: readonly { value: T; label: string }[];
+  onChange: (value: T) => void;
+}) {
+  const groupRef = useRef<HTMLDivElement>(null);
+  const dragStartRef = useRef<{
+    pointerId: number;
+    startX: number;
+    initialLeft: number;
+    width: number;
+  } | null>(null);
+  const suppressNextClickRef = useRef(false);
+  const [metrics, setMetrics] = useState<SegmentMetric<T>[]>([]);
+  const [dragState, setDragState] = useState<DragState | null>(null);
+
+  useLayoutEffect(() => {
+    const group = groupRef.current;
+    if (!group) return;
+
+    const measure = () => {
+      const buttons = Array.from(group.querySelectorAll<HTMLButtonElement>("[data-segment-value]"));
+      setMetrics(
+        buttons.map((button) => {
+          const optionValue = button.dataset.segmentValue as T;
+          const left = button.offsetLeft;
+          const width = button.offsetWidth;
+          return { value: optionValue, left, width, center: left + width / 2 };
+        })
+      );
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(group);
+    return () => observer.disconnect();
+  }, [options]);
+
+  const activeIndex = Math.max(0, options.findIndex((option) => option.value === value));
+  const activeMetric = metrics[activeIndex];
+  const indicatorLeft = dragState?.left ?? activeMetric?.left ?? 0;
+  const indicatorWidth = activeMetric?.width ?? 0;
+  const visualIndex = dragState?.targetIndex ?? activeIndex;
+
+  const getNearestIndex = useCallback((center: number) => {
+    if (metrics.length === 0) return activeIndex;
+    return metrics.reduce((nearestIndex, metric, index) => {
+      const nearestDistance = Math.abs(metrics[nearestIndex].center - center);
+      const currentDistance = Math.abs(metric.center - center);
+      return currentDistance < nearestDistance ? index : nearestIndex;
+    }, 0);
+  }, [activeIndex, metrics]);
+
+  const updateDrag = useCallback((clientX: number) => {
+    const dragStart = dragStartRef.current;
+    const first = metrics[0];
+    const last = metrics[metrics.length - 1];
+    if (!dragStart || !first || !last) return;
+
+    const rawLeft = dragStart.initialLeft + clientX - dragStart.startX;
+    const left = clamp(rawLeft, first.left, last.left);
+    const center = left + dragStart.width / 2;
+    const targetIndex = getNearestIndex(center);
+
+    if (Math.abs(clientX - dragStart.startX) > 3) suppressNextClickRef.current = true;
+    setDragState({ left, targetIndex });
+  }, [getNearestIndex, metrics]);
+
+  const finishDrag = useCallback(() => {
+    const targetIndex = dragState?.targetIndex;
+    const shouldClearSuppressedClick = suppressNextClickRef.current;
+    dragStartRef.current = null;
+    setDragState(null);
+
+    if (shouldClearSuppressedClick) {
+      window.setTimeout(() => {
+        suppressNextClickRef.current = false;
+      }, 0);
+    }
+
+    if (targetIndex === undefined) return;
+    const target = options[targetIndex];
+    if (target && target.value !== value) onChange(target.value);
+  }, [dragState?.targetIndex, onChange, options, value]);
+
+  return (
+    <div
+      ref={groupRef}
+      role="radiogroup"
+      aria-label={ariaLabel}
+      className="relative isolate grid h-8 w-full auto-cols-fr grid-flow-col gap-1 overflow-hidden rounded-lg border bg-muted/50 p-0.5 shadow-inner shadow-black/[0.03]"
+    >
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute bottom-0.5 left-0 top-0.5 z-0 rounded-md border bg-background shadow-sm",
+          dragState ? "transition-none" : "transition-[transform,width,opacity] duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]"
+        )}
+        style={{
+          opacity: indicatorWidth > 0 ? 1 : 0,
+          transform: `translate3d(${indicatorLeft}px, 0, 0) scale(${dragState ? 1.025 : 1})`,
+          width: indicatorWidth,
+        }}
+      />
+
+      {options.map((option, index) => {
+        const active = value === option.value;
+        const highlighted = visualIndex === index;
+        return (
+          <button
+            key={option.value}
+            data-segment-value={option.value}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={(event) => {
+              if (suppressNextClickRef.current) {
+                suppressNextClickRef.current = false;
+                event.preventDefault();
+                return;
+              }
+              onChange(option.value);
+            }}
+            onPointerDown={(event) => {
+              if (!active || !activeMetric) return;
+              dragStartRef.current = {
+                pointerId: event.pointerId,
+                startX: event.clientX,
+                initialLeft: activeMetric.left,
+                width: activeMetric.width,
+              };
+              event.currentTarget.setPointerCapture(event.pointerId);
+              setDragState({ left: activeMetric.left, targetIndex: activeIndex });
+            }}
+            onPointerMove={(event) => {
+              if (dragStartRef.current?.pointerId !== event.pointerId) return;
+              updateDrag(event.clientX);
+            }}
+            onPointerUp={(event) => {
+              if (dragStartRef.current?.pointerId !== event.pointerId) return;
+              event.currentTarget.releasePointerCapture(event.pointerId);
+              finishDrag();
+            }}
+            onPointerCancel={(event) => {
+              if (dragStartRef.current?.pointerId !== event.pointerId) return;
+              event.currentTarget.releasePointerCapture(event.pointerId);
+              dragStartRef.current = null;
+              setDragState(null);
+            }}
+            className={cn(
+              "relative z-10 flex h-7 min-w-0 touch-none select-none items-center justify-center rounded-md px-2 text-[11px] font-medium leading-none outline-none transition-[color,transform] duration-150 ease-out active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-ring/60",
+              highlighted
+                ? "cursor-grab text-foreground active:cursor-grabbing"
+                : "text-muted-foreground hover:text-foreground"
+            )}
+          >
+            <span className="truncate whitespace-nowrap">{option.label}</span>
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
@@ -46,6 +236,7 @@ export function TokenEditPopover() {
   const tokens = useTokenStore((s) => s.tokens);
   const activeCollection = useTokenStore((s) => s.activeCollection);
   const activeModeId = useTokenStore((s) => s.activeModeId);
+  const setActiveMode = useTokenStore((s) => s.setActiveMode);
   const setEditingToken = useTokenStore((s) => s.setEditingToken);
   const updateTokenValue = useTokenStore((s) => s.updateTokenValue);
   const updateTokenName = useTokenStore((s) => s.updateTokenName);
@@ -162,7 +353,7 @@ export function TokenEditPopover() {
     >
       <motion.div
         ref={containerRef}
-        className="rounded-lg border bg-popover text-popover-foreground shadow-lg overflow-hidden min-w-0"
+        className="rounded-xl border bg-popover text-popover-foreground shadow-xl shadow-black/10 overflow-hidden min-w-0 ring-1 ring-black/5 dark:shadow-black/40"
         style={{
           position: "fixed",
           left: position.x,
@@ -184,16 +375,17 @@ export function TokenEditPopover() {
       >
         <div
           className={cn(
-            "flex h-10 shrink-0 items-center gap-2 border-b px-3 select-none",
+            "flex h-12 shrink-0 items-center gap-2 border-b bg-muted/30 px-3 select-none",
             "cursor-grab active:cursor-grabbing"
           )}
           style={{ cursor: isDragging ? "grabbing" : undefined }}
           onMouseDown={handleHeaderMouseDown}
         >
           <GripVertical className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
-          <p className="text-xs font-medium truncate min-w-0 flex-1" title={token.name}>
-            {token.path[token.path.length - 1]}
-          </p>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-xs font-semibold leading-4" title={token.name}>{token.path[token.path.length - 1]}</p>
+            <p className="truncate font-mono text-[10px] text-muted-foreground" title={token.name}>{token.name}</p>
+          </div>
           <Button
             variant="ghost"
             size="icon"
@@ -205,24 +397,19 @@ export function TokenEditPopover() {
           </Button>
         </div>
 
-        <div className="p-3 space-y-4 max-h-[70vh] overflow-y-auto">
+        <div className="max-h-[70vh] overflow-y-auto">
+          <div className="border-b bg-muted/20 px-3 py-2">
           {hasMultipleModes && (
-            <div className="flex flex-wrap gap-1">
-              {modes.map((m) => (
-                <span
-                  key={m.modeId}
-                  className={cn(
-                    "rounded px-2 py-0.5 text-[10px] font-medium",
-                    m.modeId === modeId
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground"
-                  )}
-                >
-                  {m.name}
-                </span>
-              ))}
-            </div>
+            <SegmentedControl
+              ariaLabel="切换编辑模式"
+              value={modeId}
+              options={modes.map((m) => ({ value: m.modeId, label: m.name }))}
+              onChange={setActiveMode}
+            />
           )}
+          </div>
+
+          <div className="bg-popover">
 
           <TokenMetaForm
             ref={metaFormRef}
@@ -241,7 +428,7 @@ export function TokenEditPopover() {
           />
 
           {raw && !isAliasMode && (
-            <>
+            <PanelSection>
               <SectionLabel>当前值</SectionLabel>
               <EditForm
                 ref={valueFormRef}
@@ -249,19 +436,32 @@ export function TokenEditPopover() {
                 modeId={modeId}
                 raw={raw}
               />
-            </>
+            </PanelSection>
           )}
           {isAliasMode && raw?.type === "ALIAS" && (
-            <p className="text-xs text-muted-foreground">
-              引用自：{tokens[raw.id]?.name ?? raw.id}
-            </p>
+            <PanelSection>
+              <SectionLabel>当前引用</SectionLabel>
+              <div className="inline-grid max-w-full grid-cols-[auto_auto_minmax(0,1fr)] items-center overflow-hidden rounded-lg border bg-muted/25 text-[11px]">
+                <span className="flex h-8 items-center border-r bg-muted/45 px-2 text-muted-foreground">
+                  <Link2 className="h-3.5 w-3.5" />
+                </span>
+                <span className="flex h-8 items-center border-r px-1.5 text-muted-foreground">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+                <span className="truncate px-2.5 py-1.5 font-mono text-foreground/85" title={tokens[raw.id]?.name ?? raw.id}>
+                  {tokens[raw.id]?.name ?? raw.id}
+                </span>
+              </div>
+            </PanelSection>
           )}
+          </div>
 
-          <div className="flex gap-2 justify-end pt-1 border-t pt-3">
-            <Button variant="outline" size="sm" className="cursor-pointer" onClick={startClose}>
+          <div className="sticky bottom-0 border-t bg-muted/35 px-3 py-2 backdrop-blur">
+            <div className="flex justify-end gap-1.5 rounded-lg bg-muted/55 p-1">
+            <Button variant="ghost" size="sm" className="h-7 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground cursor-pointer" onClick={startClose}>
               关闭
             </Button>
-            <Button size="sm" className="cursor-pointer" onClick={async () => {
+            <Button variant="ghost" size="sm" className="h-7 px-2.5 text-xs font-medium cursor-pointer data-[primary=true]:bg-background data-[primary=true]:shadow-xs" data-primary="true" onClick={async () => {
               await metaFormRef.current?.save();
               const newValue = valueFormRef.current?.getValue();
               if (newValue) {
@@ -270,6 +470,7 @@ export function TokenEditPopover() {
             }}>
               保存
             </Button>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -380,52 +581,52 @@ const TokenMetaForm = React.forwardRef<
 
   return (
     <div className="space-y-3">
-      <div className="space-y-1.5">
+      <PanelSection>
         <SectionLabel>Token 名称</SectionLabel>
         <Input
-          className="font-mono text-xs"
+          className="h-9 bg-muted/35 font-mono text-[11px] shadow-none"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="group/subgroup/token"
         />
-      </div>
-      <div className="space-y-1.5">
+      </PanelSection>
+      <PanelSection>
         <SectionLabel>描述</SectionLabel>
         <textarea
-          className="min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-xs shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="min-h-[64px] w-full resize-none rounded-md border border-input bg-muted/35 px-3 py-2 text-[11px] shadow-none placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="可选"
           rows={2}
         />
-      </div>
-      <div className="space-y-1.5">
+      </PanelSection>
+      <PanelSection>
         <SectionLabel>Code Syntax</SectionLabel>
-        <div className="space-y-1.5">
+        <div className="overflow-hidden rounded-lg border bg-muted/20">
           <Input
-            className="font-mono text-xs"
+            className="h-8 rounded-none border-0 border-b bg-transparent font-mono text-[11px] shadow-none focus-visible:ring-0"
             value={android}
             onChange={(e) => setAndroid(e.target.value)}
             placeholder="ANDROID"
           />
           <Input
-            className="font-mono text-xs"
+            className="h-8 rounded-none border-0 border-b bg-transparent font-mono text-[11px] shadow-none focus-visible:ring-0"
             value={web}
             onChange={(e) => setWeb(e.target.value)}
             placeholder="CSS (e.g. --var-name)"
           />
           <Input
-            className="font-mono text-xs"
+            className="h-8 rounded-none border-0 bg-transparent font-mono text-[11px] shadow-none focus-visible:ring-0"
             value={ios}
             onChange={(e) => setIos(e.target.value)}
             placeholder="iOS"
           />
         </div>
-      </div>
-      <div className="space-y-1.5">
+      </PanelSection>
+      <PanelSection>
         <SectionLabel>引用 (Reference)</SectionLabel>
         <Input
-          className="text-xs"
+          className="h-9 bg-muted/35 text-[11px] shadow-none"
           value={referenceFocused ? referenceQuery : (referenceOptions.find((opt) => opt.id === referenceId)?.name ?? "")}
           onChange={(e) => setReferenceQuery(e.target.value)}
           onFocus={() => {
@@ -444,7 +645,7 @@ const TokenMetaForm = React.forwardRef<
           placeholder="搜索 Token（名称/分组/Collection）"
         />
         {referenceFocused && (
-          <div className="max-h-56 overflow-auto rounded-md border border-input bg-transparent">
+          <div className="max-h-56 overflow-auto rounded-lg border border-input bg-background shadow-lg">
             <button
               type="button"
               className={cn(
@@ -464,7 +665,7 @@ const TokenMetaForm = React.forwardRef<
             ) : (
               groupedReferences.map(([groupName, opts]) => (
                 <div key={groupName} className="border-t border-border/60 first:border-t-0">
-                  <div className="px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/40">
+                  <div className="sticky top-0 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/80 backdrop-blur">
                     {groupName}
                   </div>
                   {opts.map((opt) => (
@@ -490,7 +691,7 @@ const TokenMetaForm = React.forwardRef<
             )}
           </div>
         )}
-      </div>
+      </PanelSection>
     </div>
   );
 });

@@ -18,10 +18,10 @@
 
 import { useTokenStore } from "@/stores/token-store";
 import { ColorSwatch } from "./color-swatch";
-import { colorToHex, colorToHexWithAlpha } from "@/lib/contrast";
+import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2 } from "lucide-react";
+import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, Hash, Type, ToggleLeft, Link2 } from "lucide-react";
 import { useState, useCallback, useEffect, useMemo, useRef, Fragment } from "react";
 import {
   ContextMenu,
@@ -517,13 +517,11 @@ export function TokenList() {
 
   // ---- 粘性列阴影样式 ----
   // 水平滚动时第一列（Token Name）保持粘性定位，通过阴影提示用户存在被遮挡的内容
-  const stickyShadowClass = stickyShadow
-    ? "shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)]"
-    : "shadow-[2px_0_4px_-1px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_4px_-1px_rgba(0,0,0,0.12)]";
+  const stickyShadowClass = "";
 
   // 表头第一列的粘性样式（左侧固定 + 阴影）
   const stickyHeaderClass = cn(
-    "sticky left-0 z-50 border-b border-r border-border bg-muted",
+    "sticky left-0 z-50 border-b border-r border-border bg-muted/95 backdrop-blur",
     stickyShadowClass
   );
 
@@ -533,7 +531,7 @@ export function TokenList() {
       {/* 滚动容器：支持水平和垂直滚动 */}
       <div
         ref={scrollRef}
-        className="relative max-h-full overflow-auto rounded-md border border-border"
+        className="relative max-h-full overflow-auto rounded-lg border border-border bg-card"
       >
         {/* 表格：table-fixed 确保列宽由 colgroup 控制，border-separate 允许独立控制单元格边框 */}
         <table
@@ -555,16 +553,16 @@ export function TokenList() {
                 Token Name
                 <ResizeHandle onResizeStart={(e) => handleResizeStart(0, e.clientX)} />
               </th>
-              <th className="h-10 relative border-b border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted">
+              <th className="h-10 relative border-b border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/95 backdrop-blur">
                 Value
                 <ResizeHandle onResizeStart={(e) => handleResizeStart(1, e.clientX)} />
               </th>
-              <th className="h-10 relative border-b border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted">
+              <th className="h-10 relative border-b border-r border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/95 backdrop-blur">
                 Code Syntax
                 <ResizeHandle onResizeStart={(e) => handleResizeStart(2, e.clientX)} />
               </th>
               {/* 最后一列没有 ResizeHandle，因为它会自动填充剩余空间 */}
-              <th className="h-10 relative border-b border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted">
+              <th className="h-10 relative border-b border-border px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/95 backdrop-blur">
                 Reference
               </th>
             </tr>
@@ -583,15 +581,20 @@ export function TokenList() {
             {groupedEntries.map(([groupName, tokenIds]) => (
               <Fragment key={groupName}>
                 {/* 分组标题行：支持拖拽放置以将 Token 移入该分组 */}
-                <tr className={cn("bg-muted/60", dragOverGroup === groupName && "bg-primary/10")}>
+                <tr className={cn("bg-muted/45", dragOverGroup === groupName && "bg-primary/10")}>
                   <td
                     colSpan={4}
-                    className="h-8 px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground border-b border-border"
+                    className="h-8 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground border-b border-border"
                     onDragOver={(e) => handleGroupDragOver(e, groupName)}
                     onDragLeave={(e) => handleGroupDragLeave(e, groupName)}
                     onDrop={(e) => { e.preventDefault(); handleGroupDrop(groupName); }}
                   >
-                    {groupName}
+                    <div className="flex items-center gap-2">
+                      <span className="truncate">{groupName}</span>
+                      <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums normal-case tracking-normal">
+                        {tokenIds.length}
+                      </span>
+                    </div>
                   </td>
                 </tr>
 
@@ -776,6 +779,29 @@ function getValueCopyText(resolved: { type: string; value: unknown }): string {
   return String(resolved.value);
 }
 
+function TokenTypeBadge({ type }: { type: string }) {
+  const meta = {
+    COLOR: { label: "Color", icon: Palette, className: "text-sky-600 dark:text-sky-400" },
+    NUMBER: { label: "Number", icon: Hash, className: "text-violet-600 dark:text-violet-400" },
+    STRING: { label: "String", icon: Type, className: "text-amber-600 dark:text-amber-400" },
+    BOOLEAN: { label: "Boolean", icon: ToggleLeft, className: "text-emerald-600 dark:text-emerald-400" },
+  }[type] ?? { label: type, icon: Code, className: "text-muted-foreground" };
+  const Icon = meta.icon;
+
+  return (
+    <span className={cn("inline-flex items-center gap-1 rounded-md border bg-background px-1.5 py-0.5 text-[10px] font-medium", meta.className)}>
+      <Icon className="h-3 w-3" />
+      {meta.label}
+    </span>
+  );
+}
+
+function formatColorParts(color: { r: number; g: number; b: number; a: number }) {
+  const hex = colorToHex(color).toUpperCase();
+  const alpha = color.a < 1 ? `${Math.round(color.a * 100)}%` : null;
+  return { hex, alpha };
+}
+
 /**
  * TokenListRow — 单个 Token 的表格行组件
  *
@@ -865,38 +891,54 @@ function TokenListRow({
   const valueDisplay = () => {
     if (resolved.type === "COLOR") {
       const color = resolved.value as { r: number; g: number; b: number; a: number };
+      const { hex, alpha } = formatColorParts(color);
       return (
         <div className="flex items-center gap-2 min-w-0">
           <ColorSwatch color={color} size="sm" className="shrink-0" />
-          <span className="font-mono text-xs truncate">{colorToHexWithAlpha(color).toUpperCase()}</span>
+          <span className="inline-flex max-w-full items-center overflow-hidden rounded-md border bg-background font-mono text-[11px] shadow-[inset_0_0_0_1px_hsl(var(--muted))]">
+            <span className="truncate px-1.5 py-0.5 text-foreground">{hex}</span>
+            {alpha && (
+              <span className="border-l bg-muted/55 px-1.5 py-0.5 text-muted-foreground tabular-nums">
+                {alpha}
+              </span>
+            )}
+          </span>
         </div>
       );
     }
     if (resolved.type === "NUMBER") {
-      return <span className="font-mono text-xs">{String(resolved.value)}</span>;
+      return <span className="rounded-md bg-muted/45 px-1.5 py-0.5 font-mono text-[11px]">{String(resolved.value)}</span>;
     }
-    return <span className="font-mono text-xs truncate">{String(resolved.value)}</span>;
+    if (resolved.type === "BOOLEAN") {
+      return (
+        <span className={cn(
+          "inline-flex rounded-md px-1.5 py-0.5 text-[11px] font-medium",
+          resolved.value ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" : "bg-muted text-muted-foreground"
+        )}>
+          {String(resolved.value)}
+        </span>
+      );
+    }
+    return <span className="rounded-md bg-muted/45 px-1.5 py-0.5 font-mono text-[11px] truncate">{String(resolved.value)}</span>;
   };
 
   // 普通单元格样式：包含选中高亮、悬停效果、拖拽放置指示线
   const cellClass = cn(
-    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0",
-    "group-hover:bg-accent/50 transition-colors duration-200 ease",
-    isSelected && "bg-accent",
+    "h-11 px-3 text-left border-b border-r border-border/80 align-middle min-w-0",
+    "group-hover:bg-muted/45 transition-colors duration-150 ease-out",
+    isSelected && "bg-primary/[0.055]",
     dropIndicator === "before" && "border-t-2 border-t-primary",
     dropIndicator === "after" && "border-b-2 border-b-primary"
   );
 
   // 粘性单元格样式（第一列 Token Name）：sticky left-0 + 背景色 + 阴影
   const stickyCellClass = cn(
-    "h-10 px-3 text-left border-b border-r border-border align-middle min-w-0",
-    "transition-colors duration-200 ease",
-    "sticky left-0 z-20 text-xs font-mono truncate max-w-0",
-    isSelected ? "bg-accent" : "bg-background", // 选中时使用 accent 背景，否则使用默认背景
-    "group-hover:bg-accent",
-    stickyShadow
-      ? "shadow-[4px_0_8px_-2px_rgba(0,0,0,0.1)] dark:shadow-[4px_0_8px_-2px_rgba(0,0,0,0.3)]"
-      : "shadow-[2px_0_4px_-1px_rgba(0,0,0,0.04)] dark:shadow-[2px_0_4px_-1px_rgba(0,0,0,0.12)]"
+    "h-11 px-3 text-left border-b border-r border-border/80 align-middle min-w-0",
+    "transition-colors duration-150 ease-out",
+    "sticky left-0 z-20 text-xs truncate max-w-0",
+    isSelected ? "bg-primary/[0.055]" : "bg-card", // 选中时使用强调背景，否则使用默认背景
+    "group-hover:bg-muted/45",
+    stickyShadow && ""
   );
 
   return (
@@ -907,7 +949,11 @@ function TokenListRow({
           data-token-id={tokenId}
           tabIndex={0}
           draggable={isDragEnabled}
-          className={cn("group cursor-pointer", isSelected && "bg-accent", isDragSource && "opacity-40")}
+          className={cn(
+            "group cursor-pointer outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
+            isSelected && "bg-primary/[0.055]",
+            isDragSource && "opacity-40"
+          )}
           onMouseDown={(e) => {
             if (e.button !== 0) return; // 仅响应左键
             const target = e.target as HTMLElement;
@@ -953,7 +999,7 @@ function TokenListRow({
               dropIndicator === "after" && "border-b-2 border-b-primary"
             )}
           >
-            <div className="flex items-center min-w-0">
+            <div className="flex items-center gap-2 min-w-0">
               {/* 拖拽手柄：仅在非搜索状态下显示，hover 时渐显 */}
               {isDragEnabled && (
                 <span
@@ -971,7 +1017,8 @@ function TokenListRow({
                 </span>
               )}
               {/* 仅显示叶子名称，完整路径通过分组标题体现 */}
-              <span className="truncate">{displayName}</span>
+              <span className={cn("truncate font-mono", isSelected && "font-semibold text-foreground")}>{displayName}</span>
+              <TokenTypeBadge type={resolved.type} />
             </div>
           </td>
 
@@ -986,12 +1033,14 @@ function TokenListRow({
           >
             <div className="flex items-center gap-1.5">
               <code className="text-[11px] font-mono text-muted-foreground truncate min-w-0 flex-1">
+                <span title={code}>
                 {code}
+                </span>
               </code>
               <button
                 type="button"
                 onClick={handleCopy}
-                className="shrink-0 opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-0.5"
+                className="shrink-0 rounded-md opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-1 hover:bg-accent active:scale-95"
                 aria-label="复制代码"
               >
                 {copied ? (
@@ -1007,10 +1056,19 @@ function TokenListRow({
           <td
             className={cn(cellClass, "text-xs text-muted-foreground truncate border-r-0")}
           >
-            {isAlias && aliasName && (
-              <span className="flex items-center gap-1 min-w-0">
-                <ArrowRight className="h-3 w-3 shrink-0" />
-                <span className="truncate">{aliasName}</span>
+            {isAlias && aliasName ? (
+              <span className="inline-grid max-w-full grid-cols-[auto_auto_minmax(0,1fr)] items-center overflow-hidden rounded-md border bg-background text-[11px] shadow-[inset_2px_0_0_hsl(var(--primary))]">
+                <span className="flex h-full items-center border-r bg-muted/45 px-1.5 text-muted-foreground">
+                  <Link2 className="h-3 w-3" />
+                </span>
+                <span className="flex h-full items-center border-r px-1 text-muted-foreground">
+                  <ArrowRight className="h-3 w-3" />
+                </span>
+                <span className="truncate px-2 py-1 font-mono text-foreground/80">{aliasName}</span>
+              </span>
+            ) : (
+              <span className="inline-flex items-center rounded-md border border-dashed bg-muted/25 px-1.5 py-1 text-[11px] text-muted-foreground/75">
+                Source token
               </span>
             )}
           </td>

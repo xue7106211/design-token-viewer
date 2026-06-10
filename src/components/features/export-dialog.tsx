@@ -95,7 +95,7 @@ export function ExportDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-1.5 cursor-pointer">
+        <Button variant="outline" size="sm" className="h-8 gap-1.5 cursor-pointer">
           <Download className="h-3.5 w-3.5" />
           <span className="text-xs">导出</span>
         </Button>

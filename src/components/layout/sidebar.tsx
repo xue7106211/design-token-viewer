@@ -10,7 +10,7 @@ import { PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp, RefreshC
 import { Button } from "@/components/ui/button";
 import { ChangeLogDialog } from "@/components/features/changelog-dialog";
 import { SnapshotDialog } from "@/components/features/snapshot-dialog";
-import { formatTimestamp } from "@/lib/changelog";
+import { DocumentSwitcher } from "@/components/features/document-switcher";
 import { useState } from "react";
 
 export function Sidebar() {
@@ -18,8 +18,6 @@ export function Sidebar() {
   const activeCollectionId = useTokenStore((s) => s.activeCollectionId);
   const setActiveCollection = useTokenStore((s) => s.setActiveCollection);
   const loadRemoteDocument = useTokenStore((s) => s.loadRemoteDocument);
-  const updatedAt = useTokenStore((s) => s.updatedAt);
-  const updatedBy = useTokenStore((s) => s.updatedBy);
   const expandedPaths = useTokenStore((s) => s.expandedPaths);
   const expandAll = useTokenStore((s) => s.expandAll);
   const collapseAll = useTokenStore((s) => s.collapseAll);
@@ -79,12 +77,9 @@ export function Sidebar() {
         </div>
       </div>
 
-      {updatedAt && (
-        <div className="border-b px-3 py-2 text-[10px] leading-relaxed text-muted-foreground">
-          <div>更新：{formatTimestamp(updatedAt)}</div>
-          {updatedBy && <div className="truncate">修改人：{updatedBy}</div>}
-        </div>
-      )}
+      <div className="border-b px-2 py-2">
+        <DocumentSwitcher className="w-full" />
+      </div>
 
       {/* Collection Tabs */}
       {collections.length > 1 && (
@@ -143,7 +138,7 @@ export function Sidebar() {
       </ScrollArea>
 
       {/* 底部日志入口 */}
-      <div className="shrink-0 space-y-1 border-t px-2 py-2">
+      <div className="shrink-0 space-y-1 border-t px-3 py-2">
         <SnapshotDialog />
         <ChangeLogDialog />
       </div>
