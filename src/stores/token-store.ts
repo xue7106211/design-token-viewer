@@ -104,6 +104,14 @@ type PersistedTokenState = Partial<
 
 // 每套文档的默认选中集合（无持久化选择时生效）
 const DEFAULT_COLLECTION_BY_DOCUMENT: Record<string, string> = {
+  hyperos4: "col_semantic",
+};
+
+const COLLECTION_ORDER_BY_DOCUMENT: Record<string, string[]> = {
+  hyperos4: ["col_component", "col_semantic", "col_reference"],
+};
+
+const LEGACY_DEFAULT_COLLECTION_BY_DOCUMENT: Record<string, string> = {
   hyperos4: "col_reference",
 };
 
@@ -113,11 +121,15 @@ export const useTokenStore = create<TokenState>()(
       const applyDocument = (document: TokenDocumentResponse) => {
         const preferredCollectionId = get().activeCollectionId;
         const preferredModeId = get().activeModeId;
+        const collections = sortCollectionsForDocument(
+          document.collections,
+          get().activeDocumentId
+        );
         const fallbackCollectionId = DEFAULT_COLLECTION_BY_DOCUMENT[get().activeDocumentId];
         const activeCollection =
-          document.collections.find((collection) => collection.id === preferredCollectionId) ??
-          document.collections.find((collection) => collection.id === fallbackCollectionId) ??
-          document.collections[0] ??
+          collections.find((collection) => collection.id === preferredCollectionId) ??
+          collections.find((collection) => collection.id === fallbackCollectionId) ??
+          collections[0] ??
           null;
         const activeMode =
           activeCollection?.modes.find((mode) => mode.modeId === preferredModeId) ??
@@ -137,7 +149,7 @@ export const useTokenStore = create<TokenState>()(
           revision: document.revision,
           updatedAt: document.updatedAt,
           updatedBy: document.updatedBy,
-          collections: document.collections,
+          collections,
           tokens: document.tokens,
           tree,
           activeCollectionId: activeCollection?.id ?? null,
@@ -464,12 +476,17 @@ export const useTokenStore = create<TokenState>()(
       merge: (persisted, current) => {
         const state = persisted as PersistedTokenState;
         const activeDocumentId = state.activeDocumentId ?? DEFAULT_DOCUMENT_ID;
+        const activeCollectionId = getHydratedCollectionId(
+          activeDocumentId,
+          state.activeCollectionId
+        );
         // 水合时同步全局文档 id，保证首个请求命中持久化的文档
         setActiveDocumentId(activeDocumentId);
         return {
           ...current,
           ...state,
           activeDocumentId,
+          activeCollectionId,
           expandedPaths: new Set(state.expandedPaths ?? []),
         };
       },
@@ -489,6 +506,41 @@ function filterTokenIds(
     const token = tokens[id];
     return token?.name.toLowerCase().includes(lowerQuery) ?? false;
   });
+}
+
+export function sortCollectionsForDocument(
+  collections: TokenCollection[],
+  documentId: string
+) {
+  const order = COLLECTION_ORDER_BY_DOCUMENT[documentId];
+  if (!order) return collections;
+
+  return [...collections].sort((a, b) => {
+    const aIndex = order.indexOf(a.id);
+    const bIndex = order.indexOf(b.id);
+
+    if (aIndex === -1 && bIndex === -1) return 0;
+    if (aIndex === -1) return 1;
+    if (bIndex === -1) return -1;
+
+    return aIndex - bIndex;
+  });
+}
+
+export function getDefaultCollectionId(documentId: string) {
+  return DEFAULT_COLLECTION_BY_DOCUMENT[documentId] ?? null;
+}
+
+export function getHydratedCollectionId(
+  documentId: string,
+  persistedCollectionId: string | null | undefined
+) {
+  const legacyDefault = LEGACY_DEFAULT_COLLECTION_BY_DOCUMENT[documentId];
+  if (persistedCollectionId != null && persistedCollectionId !== legacyDefault) {
+    return persistedCollectionId;
+  }
+
+  return DEFAULT_COLLECTION_BY_DOCUMENT[documentId] ?? persistedCollectionId ?? null;
 }
 
 async function handleMutationError(error: unknown, refresh: () => Promise<void>) {

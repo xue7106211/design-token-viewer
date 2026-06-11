@@ -3,6 +3,7 @@ import type { ServerLogEntry } from "./service";
 
 const ACTOR_NAME_KEY = "design-token-actor-name";
 const ACTOR_CLIENT_ID_KEY = "design-token-actor-client-id";
+const ACTOR_SOURCE_KEY = "design-token-actor-source";
 
 // 可切换的 Token 表（文档）。id 必须与 server.ts 的 DOCUMENTS 注册表保持一致。
 export const TOKEN_DOCUMENTS = [
@@ -58,17 +59,41 @@ export function setStoredActorName(actorName: string): ClientActor {
     localStorage.setItem(ACTOR_CLIENT_ID_KEY, actorClientId);
   }
   localStorage.setItem(ACTOR_NAME_KEY, trimmed);
+  localStorage.setItem(ACTOR_SOURCE_KEY, "manual");
   return { actorName: trimmed, actorClientId };
+}
+
+export function setStoredActorFromIP(ip: string): ClientActor {
+  if (typeof window === "undefined") {
+    return { actorName: ip, actorClientId: "server" };
+  }
+  const actorName = ip.trim() || "unknown";
+  let actorClientId = localStorage.getItem(ACTOR_CLIENT_ID_KEY);
+  if (!actorClientId) {
+    actorClientId = crypto.randomUUID();
+    localStorage.setItem(ACTOR_CLIENT_ID_KEY, actorClientId);
+  }
+  localStorage.setItem(ACTOR_NAME_KEY, actorName);
+  localStorage.setItem(ACTOR_SOURCE_KEY, "ip");
+  return { actorName, actorClientId };
 }
 
 export function ensureActor(): ClientActor {
   const existing = getStoredActor();
   if (existing) return existing;
   if (typeof window === "undefined") {
-    return { actorName: "Anonymous", actorClientId: "server" };
+    return { actorName: "unknown", actorClientId: "server" };
   }
-  const name = window.prompt("请输入你的名字，用于记录 Token 修改日志") ?? "Anonymous";
-  return setStoredActorName(name);
+  return setStoredActorFromIP("unknown");
+}
+
+export async function initializeActorFromIP() {
+  if (typeof window === "undefined") return;
+  const source = localStorage.getItem(ACTOR_SOURCE_KEY);
+  if (source && source !== "ip") return;
+
+  const response = await apiRequest<{ ip: string }>("/api/client-ip");
+  setStoredActorFromIP(response.ip);
 }
 
 export async function apiRequest<T>(url: string, init?: RequestInit): Promise<T> {
