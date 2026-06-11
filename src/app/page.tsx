@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useTokenStore } from "@/stores/token-store";
 import { AppShell } from "@/components/layout/app-shell";
 import { FileUpload } from "@/components/features/file-upload";
+import { LoadingScreen } from "@/components/features/loading-screen";
 import { shouldLoadRemoteDocument } from "@/lib/collaboration/loading-state";
 
 export default function Home() {
@@ -20,11 +21,7 @@ export default function Home() {
   }, [error, hasData, isLoading, loadRemoteDocument]);
 
   if (isLoading && !hasData) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background text-sm text-muted-foreground">
-        正在加载共享 Token 表...
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (!hasData) {
