@@ -415,28 +415,15 @@ export const useTokenStore = create<TokenState>()(
           commit(`/api/tokens/${encodeURIComponent(tokenId)}`, {}, "DELETE"),
 
         reorderFilteredTokens: async (newOrder: string[]) => {
-          const { collections, activeCollectionId, tokens, searchQuery, revision } = get();
-          if (searchQuery.trim() || revision == null) return;
-          const nextCollections = collections.map((collection) =>
-            collection.id === activeCollectionId ? { ...collection, tokenIds: newOrder } : collection
-          );
-          const rawJSON = rebuildRawJSON(nextCollections, tokens);
-          await get().loadJSON(rawJSON);
+          const { activeCollectionId, searchQuery } = get();
+          if (searchQuery.trim() || activeCollectionId == null) return;
+          await commit("/api/tokens/reorder", { collectionId: activeCollectionId, tokenIds: newOrder });
         },
 
         renameGroup: async (oldPath: string, newPath: string) => {
-          const { tokens } = get();
           const trimmed = newPath.trim();
           if (!trimmed || trimmed === oldPath) return;
-          const prefix = oldPath + "/";
-          const affected = Object.values(tokens).filter(
-            (token) => token.name === oldPath || token.name.startsWith(prefix)
-          );
-          for (const token of affected) {
-            const nextName =
-              token.name === oldPath ? trimmed : trimmed + token.name.slice(oldPath.length);
-            await get().updateTokenName(token.id, nextName);
-          }
+          await commit("/api/groups/rename", { oldPath, newPath: trimmed });
         },
 
         exportRawJSON: () => {

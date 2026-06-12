@@ -57,6 +57,12 @@ export interface CollaborationRepository {
   getSnapshot: (id: string) => Promise<SnapshotRecord | null>;
 }
 
+type DocumentSummary = {
+  label: string;
+  collections: number;
+  tokens: number;
+};
+
 export class ConflictError extends Error {
   constructor() {
     super("Token 表已被其他人更新，请刷新后再修改。");
@@ -207,8 +213,8 @@ export function createTokenDocumentService(
         actorName: input.actor.actorName,
         actorClientId: input.actor.actorClientId,
         changeType: "import_document",
-        oldValue: document.currentJson,
-        newValue: input.json,
+        oldValue: summarizeDocument(document.currentJson, "原文档"),
+        newValue: summarizeDocument(input.json, "导入文档"),
       });
       return toDocumentView(updated);
     },
@@ -339,6 +345,77 @@ export function createTokenDocumentService(
       });
     },
 
+    reorderTokens(input: {
+      collectionId: string;
+      tokenIds: string[];
+      revision: number;
+      actor: Actor;
+    }) {
+      return updateDocument(input.revision, input.actor, "reorder", (data) => {
+        const collection = data.collections.find((item) => item.id === input.collectionId);
+        if (!collection) throw new NotFoundError("Collection not found");
+
+        const currentIds = collection.tokenIds;
+        const currentIdSet = new Set(currentIds);
+        const nextIdSet = new Set(input.tokenIds);
+        const hasSameMembers =
+          input.tokenIds.length === currentIds.length &&
+          input.tokenIds.every((id) => currentIdSet.has(id)) &&
+          currentIds.every((id) => nextIdSet.has(id));
+        if (!hasSameMembers) throw new Error("Token order must include the same collection tokens");
+
+        collection.tokenIds = [...input.tokenIds];
+        return {
+          oldValue: { collectionId: collection.id, tokenIds: currentIds },
+          newValue: { collectionId: collection.id, tokenIds: collection.tokenIds },
+          meta: {
+            collectionId: collection.id,
+            collectionName: collection.name,
+            count: collection.tokenIds.length,
+          },
+        };
+      });
+    },
+
+    renameGroup(input: {
+      oldPath: string;
+      newPath: string;
+      revision: number;
+      actor: Actor;
+    }) {
+      return updateDocument(input.revision, input.actor, "rename_group", (data) => {
+        const oldPath = input.oldPath.trim();
+        const newPath = input.newPath.trim();
+        if (!oldPath || !newPath) throw new Error("Group path cannot be empty");
+        if (oldPath === newPath) {
+          return {
+            oldValue: oldPath,
+            newValue: newPath,
+            meta: { count: 0 },
+          };
+        }
+
+        const prefix = `${oldPath}/`;
+        const affected = Object.values(data.tokens).filter(
+          (token) => token.name === oldPath || token.name.startsWith(prefix)
+        );
+
+        for (const token of affected) {
+          const nextName = token.name === oldPath ? newPath : newPath + token.name.slice(oldPath.length);
+          const path = nextName.split("/").filter(Boolean);
+          token.name = nextName;
+          token.path = path;
+          token.group = path.slice(0, -1).join("/");
+        }
+
+        return {
+          oldValue: oldPath,
+          newValue: newPath,
+          meta: { count: affected.length },
+        };
+      });
+    },
+
     async getChangeLogs() {
       const document = await ensureDocument();
       return repository.listLogs(document.id);
@@ -402,7 +479,7 @@ export function createTokenDocumentService(
         actorName: input.actor.actorName,
         actorClientId: input.actor.actorClientId,
         changeType: "restore_snapshot",
-        oldValue: document.currentJson,
+        oldValue: summarizeDocument(document.currentJson, "恢复前文档"),
         newValue: { snapshotId: snapshot.id, name: snapshot.name },
       });
       return toDocumentView(updated);
@@ -428,6 +505,15 @@ function toDocumentView(document: TokenDocumentRecord): TokenDocumentView {
 
 function assertFreshRevision(document: TokenDocumentRecord, revision: number) {
   if (document.revision !== revision) throw new ConflictError();
+}
+
+function summarizeDocument(json: unknown, label: string): DocumentSummary {
+  const parsed = parseAndResolve(json);
+  return {
+    label,
+    collections: parsed.collections.length,
+    tokens: Object.keys(parsed.tokens).length,
+  };
 }
 
 function getTokenOrThrow(tokens: Record<string, DesignToken>, tokenId: string) {

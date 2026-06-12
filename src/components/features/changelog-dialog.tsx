@@ -20,6 +20,8 @@ import { colorToHex } from "@/lib/contrast";
 import type { LogEntry, ChangeType } from "@/types/changelog";
 import type { ColorValue } from "@/types/token";
 
+const MAX_INLINE_VALUE_LENGTH = 160;
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -52,6 +54,37 @@ function valueToString(v: unknown): string {
   if (typeof v === "string") return v || "（空）";
   if (typeof v === "number" || typeof v === "boolean") return String(v);
   return JSON.stringify(v, null, 2);
+}
+
+function isRecord(v: unknown): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null && !Array.isArray(v);
+}
+
+function isFullTokenDocument(v: unknown): v is { collections: unknown[]; variables: Record<string, unknown> } {
+  return isRecord(v) && Array.isArray(v.collections) && isRecord(v.variables);
+}
+
+function documentSummary(v: unknown, fallbackLabel: string): string | null {
+  if (isRecord(v) && typeof v.label === "string") {
+    const parts = [v.label];
+    if (typeof v.collections === "number") parts.push(`${v.collections} collections`);
+    if (typeof v.tokens === "number") parts.push(`${v.tokens} tokens`);
+    return parts.join(" · ");
+  }
+
+  if (!isFullTokenDocument(v)) return null;
+  const variables = v.variables as Record<string, unknown>;
+  return `${fallbackLabel} · ${v.collections.length} collections · ${Object.keys(variables).length} tokens`;
+}
+
+function compactValueToString(v: unknown, fallbackLabel: string): string {
+  const summary = documentSummary(v, fallbackLabel);
+  if (summary) return summary;
+
+  const value = valueToString(v);
+  return value.length > MAX_INLINE_VALUE_LENGTH
+    ? `${value.slice(0, MAX_INLINE_VALUE_LENGTH)}…`
+    : value;
 }
 
 /** ChangeType 对应的 badge 颜色 */
@@ -107,7 +140,58 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
   // 重排序：简要展示
   if (changeType === "reorder") {
     return (
-      <span className="text-xs text-muted-foreground">令牌顺序已调整</span>
+      <span className="text-xs text-muted-foreground">
+        令牌顺序已调整{typeof meta?.count === "number" ? ` · ${meta.count} tokens` : ""}
+      </span>
+    );
+  }
+
+  if (changeType === "rename_group") {
+    return (
+      <div className="flex items-center gap-2 text-xs flex-wrap">
+        <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
+          {compactValueToString(oldValue, "原分组")}
+        </span>
+        <span className="text-muted-foreground">→</span>
+        <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
+          {compactValueToString(newValue, "新分组")}
+        </span>
+        {typeof meta?.count === "number" && (
+          <span className="text-muted-foreground">影响 {meta.count} tokens</span>
+        )}
+      </div>
+    );
+  }
+
+  if (changeType === "import_document") {
+    return (
+      <div className="flex items-center gap-2 text-xs flex-wrap">
+        <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
+          {compactValueToString(oldValue, "原文档")}
+        </span>
+        <span className="text-muted-foreground">→</span>
+        <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
+          {compactValueToString(newValue, "导入文档")}
+        </span>
+      </div>
+    );
+  }
+
+  if (changeType === "restore_snapshot" || changeType === "create_snapshot") {
+    return (
+      <div className="flex items-center gap-2 text-xs flex-wrap">
+        {oldValue !== undefined && (
+          <>
+            <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
+              {compactValueToString(oldValue, "恢复前文档")}
+            </span>
+            <span className="text-muted-foreground">→</span>
+          </>
+        )}
+        <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
+          {compactValueToString(newValue, "快照")}
+        </span>
+      </div>
     );
   }
 
@@ -141,16 +225,16 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
   }
 
   // 通用文本对比
-  const oldStr = valueToString(oldValue);
-  const newStr = valueToString(newValue);
+  const oldStr = compactValueToString(oldValue, "修改前");
+  const newStr = compactValueToString(newValue, "修改后");
 
   return (
     <div className="flex items-center gap-2 text-xs flex-wrap">
-      <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400 break-all">
+      <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400 break-words">
         {oldStr}
       </span>
       <span className="text-muted-foreground">→</span>
-      <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400 break-all">
+      <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400 break-words">
         {newStr}
       </span>
     </div>

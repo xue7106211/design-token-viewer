@@ -56,6 +56,65 @@ describe("token document collaboration service", () => {
     });
   });
 
+  it("reorders collection tokens with a reorder audit log", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const collection = document.collections.find((item) => item.tokenIds.length > 1);
+    expect(collection).toBeDefined();
+    if (!collection) return;
+    const nextOrder = [collection.tokenIds[1], collection.tokenIds[0], ...collection.tokenIds.slice(2)];
+
+    const updated = await service.reorderTokens({
+      collectionId: collection.id,
+      tokenIds: nextOrder,
+      revision: document.revision,
+      actor,
+    });
+
+    expect(updated.collections.find((item) => item.id === collection.id)?.tokenIds).toEqual(nextOrder);
+
+    const logs = await service.getChangeLogs();
+    expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      changeType: "reorder",
+      actorName: actor.actorName,
+      meta: {
+        collectionId: collection.id,
+        collectionName: collection.name,
+        count: collection.tokenIds.length,
+      },
+    });
+  });
+
+  it("renames a group with one rename_group audit log", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const token = Object.values(document.tokens).find((item) => item.group);
+    expect(token).toBeDefined();
+    if (!token) return;
+    const oldPath = token.group;
+    const newPath = `${oldPath}-renamed`;
+
+    const updated = await service.renameGroup({
+      oldPath,
+      newPath,
+      revision: document.revision,
+      actor,
+    });
+
+    expect(Object.values(updated.tokens).some((item) => item.name.startsWith(`${newPath}/`))).toBe(true);
+
+    const logs = await service.getChangeLogs();
+    expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      changeType: "rename_group",
+      oldValue: oldPath,
+      newValue: newPath,
+    });
+  });
+
   it("rejects stale edits when the revision has changed", async () => {
     const repo = createMemoryCollaborationRepository();
     const service = createTokenDocumentService(repo, sampleData);

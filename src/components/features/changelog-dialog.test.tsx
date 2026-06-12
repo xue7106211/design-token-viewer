@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent, within } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { ChangeLogDialog } from "./changelog-dialog";
 import type { LogEntry } from "@/types/changelog";
 
@@ -9,6 +9,10 @@ import type { LogEntry } from "@/types/changelog";
 
 vi.mock("@/stores/changelog-store", () => ({
   useChangeLogStore: vi.fn(),
+}));
+
+vi.mock("@/stores/token-store", () => ({
+  useTokenStore: vi.fn(),
 }));
 
 vi.mock("@/lib/changelog", () => ({
@@ -25,6 +29,7 @@ vi.mock("colord", () => ({
 }));
 
 const { useChangeLogStore } = await import("@/stores/changelog-store");
+const { useTokenStore } = await import("@/stores/token-store");
 const { getChangeTypeLabel, formatTimestamp } = await import("@/lib/changelog");
 const { colorToHex } = await import("@/lib/contrast");
 
@@ -36,8 +41,22 @@ const mockClearAll = vi.fn();
 
 function setupStore(entries: LogEntry[] = []) {
   (useChangeLogStore as ReturnType<typeof vi.fn>).mockImplementation(
-    (selector: (s: { entries: LogEntry[]; clearAll: () => void }) => unknown) =>
-      selector({ entries, clearAll: mockClearAll })
+    (selector: (s: {
+      entries: LogEntry[];
+      clearAll: () => void;
+      fetchEntries: () => void;
+      isLoading: boolean;
+    }) => unknown) =>
+      selector({
+        entries,
+        clearAll: mockClearAll,
+        fetchEntries: vi.fn(),
+        isLoading: false,
+      })
+  );
+  (useTokenStore as ReturnType<typeof vi.fn>).mockImplementation(
+    (selector: (s: { updatedAt?: number; updatedBy?: string }) => unknown) =>
+      selector({})
   );
 }
 
@@ -69,6 +88,7 @@ describe("ChangeLogDialog", () => {
           update_value: "修改值",
           update_name: "修改名称",
           delete_token: "删除令牌",
+          import_document: "导入数据",
         };
         return map[type] ?? type;
       }
@@ -179,5 +199,30 @@ describe("ChangeLogDialog", () => {
     render(<ChangeLogDialog />);
     fireEvent.click(screen.getByText("日志"));
     expect(screen.getByText("暂无日志记录")).toBeInTheDocument();
+  });
+
+  it("summarizes import document logs instead of rendering full JSON", () => {
+    const fullDocument = {
+      collections: [{ id: "collection-1" }, { id: "collection-2" }],
+      variables: {
+        var_1: { name: "color/a" },
+        var_2: { name: "color/b" },
+        var_3: { name: "color/c" },
+      },
+    };
+    setupStore([
+      makeEntry({
+        changeType: "import_document",
+        oldValue: fullDocument,
+        newValue: { label: "导入文档", collections: 3, tokens: 537 },
+      }),
+    ]);
+
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("原文档 · 2 collections · 3 tokens")).toBeInTheDocument();
+    expect(screen.getByText("导入文档 · 3 collections · 537 tokens")).toBeInTheDocument();
+    expect(screen.queryByText(/"variables"/)).not.toBeInTheDocument();
   });
 });
