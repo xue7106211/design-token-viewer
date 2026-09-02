@@ -6,11 +6,14 @@ Design Token Viewer 的目录约定与职责说明，便于新人上手和日常
 
 ```
 design-token-viewer/
+├── drizzle/             # PostgreSQL 迁移 SQL
 ├── e2e/                 # E2E 测试（Playwright）
 ├── docs/                # 项目文档
+├── figma-token/         # HyperOS4 DTCG 导出源
 ├── public/              # 静态资源
 ├── scripts/             # 构建/转换脚本（非运行时）
 ├── src/                 # 应用源码
+├── drizzle.config.ts     # Drizzle Kit 配置
 ├── next.config.ts
 ├── playwright.config.ts
 ├── vitest.config.ts
@@ -28,9 +31,11 @@ design-token-viewer/
 | `src/components/` | React 组件，按用途分子目录 |
 | `src/components/ui/` | 基础 UI 组件（如 shadcn/ui），无业务逻辑 |
 | `src/components/layout/` | 布局组件：AppShell、Sidebar、MainView |
-| `src/components/features/` | 功能组件：上传、Token 树/网格/列表、检查器、导出等 |
-| `src/lib/` | 纯逻辑：解析器、代码生成、解析树、对比度等，可单测 |
-| `src/stores/` | 全局状态（Zustand） |
+| `src/components/features/` | 功能组件：Token 树/网格/列表、检查器、导出等 |
+| `src/lib/` | 解析器、代码生成、树、对比度和协作服务；纯逻辑可单测 |
+| `src/lib/collaboration/` | 文档、变更日志、快照的 client / server / service / repository 层 |
+| `src/lib/db/` | PostgreSQL 的 Drizzle 连接与 schema |
+| `src/stores/` | Zustand UI 状态；Token 正文由服务端加载 |
 | `src/types/` | 共享 TypeScript 类型 |
 | `src/data/` | 应用内使用的静态/示例数据（如示例 Token JSON） |
 
@@ -44,16 +49,27 @@ design-token-viewer/
 ### `docs/` — 文档
 
 - `ACCEPTANCE_CHECKLIST.md`：功能与测试验收清单
-- `FIGMA_PRESET_VARIABLES.md`：Figma 预设变量格式说明
+- `FIGMA_PRESET_VARIABLES.md`：Figma DTCG 与兼容扁平变量脚本说明
 - `PROJECT_STRUCTURE.md`：本文件，目录结构说明
+- `superpowers/plans/`：历史实现计划，不是当前功能承诺
+
+### `figma-token/` — HyperOS4 DTCG 源
+
+- 包含 Component、Reference、Semantic 三个 Collection 的 Light / Dark 导出。
+- `node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，并按名称解析跨 Collection 别名。
 
 ### `scripts/` — 脚本与脚本用数据
 
 - 仅用于本地/CI 的转换或生成，**不参与 Next 构建**。
-- 例：`figma-vars-to-sample.mjs` 将 Figma 变量 JSON 转为应用可用的示例数据：
-  - 输入：`scripts/figma-hyperos4-vars.json`
-  - 输出：`src/data/sample-tokens.json`
-- 运行示例：`node scripts/figma-vars-to-sample.mjs`
+- 当前 HyperOS4 同步脚本：`figma-dtcg-to-sample.mjs`，输入为 `figma-token/`，输出为 `src/data/sample-tokens-hyperos4.json`。
+- `figma-flat-to-preset.mjs` 与 `figma-vars-to-sample.mjs` 是兼容扁平变量输入的辅助脚本；它们的 `scripts/figma-hyperos4-vars.json` 输入不在仓库中。
+- `init-db.mjs` 需要 `DATABASE_URL`，读取 `drizzle/0000_lightweight_collaboration.sql` 初始化协作数据表。
+
+### 数据持久化
+
+- 开发环境没有 `DATABASE_URL` 时，协作数据写入 Git 忽略的 `.data/collaboration-store.json`。
+- 生产环境必须使用 PostgreSQL `DATABASE_URL`；先执行 `npm run db:migrate`，再运行应用。
+- 浏览器 localStorage 只保存 UI 偏好与协作者标识，不保存 Token 文档正文。
 
 ### `public/` — 静态资源
 

@@ -8,13 +8,11 @@
 npm run test
 ```
 
-- [ ] 格式检测 (format-detector): 7 个用例通过
-- [ ] JSON 解析 (parseTokenJSON): 3 个用例通过
-- [ ] 别名解析 (token-resolver): 4 个用例通过
-- [ ] 树构建 (tree-builder): 3 个用例通过
-- [ ] 文件上传组件 (file-upload): 3 个用例通过
+- [ ] 解析器、别名解析、树构建和代码生成测试通过
+- [ ] 协作文档、仓储选择、加载状态和 Zustand Store 测试通过
+- [ ] 代码展示、变更日志等组件测试通过
 
-**预期结果**：20 个测试全部通过
+**预期结果**：`npm run test` 退出码为 0，所有测试文件通过。测试数量会随覆盖范围调整，不在本文档中固定。
 
 ### 覆盖率
 
@@ -36,26 +34,26 @@ npx playwright install
 npm run test:e2e
 ```
 
-- [ ] 首页展示上传界面
-- [ ] 点击「加载示例数据」后进入 Token 查看器
+- [ ] 首页自动加载默认的 HyperOS 4 Token 文档并进入 Token 查看器
+- [ ] 服务端文档不可用时，错误状态不会触发重复加载
 
 ---
 
 ## 二、功能验收（手动）
 
-### 1. 上传流程
+### 1. 文档加载与服务器导入
 
-- [ ] 首页显示「Design Token Viewer」标题和拖拽区域
-- [ ] 拖拽 JSON 文件到区域可上传
-- [ ] 点击区域选择文件可上传
-- [ ] 上传 Figma 原生导出格式 JSON → 解析成功
-- [ ] 上传 Variables2CSS 格式 JSON → 解析成功
-- [ ] 上传无效 JSON → 显示错误提示
-- [ ] 点击「加载示例数据」→ 加载 Xiaomi Hyper OS4 数据并进入主界面
+- [ ] 服务端文档不可用时显示加载错误，且不会触发重复加载
+- [ ] 通过 `/api/token-document/import` 向已有文档导入 Figma Native 或 Variables2CSS JSON
+- [ ] 导入携带当前 revision；旧 revision 返回冲突而不覆盖服务端数据
+- [ ] 无效 JSON 返回解析错误
+- [ ] DTCG JSON 先经 `node scripts/figma-dtcg-to-sample.mjs` 转为 Figma Native JSON 后再导入
+
+> 产品不提供用户侧上传或重新导入控件。`/api/token-document/import` 仅供维护 HyperOS Token 数据的受控服务端流程调用。
 
 ### 2. 主界面布局
 
-- [ ] 左侧边栏：集合列表、搜索、Token 树
+- [ ] 左侧边栏：HyperOS 文档切换、集合列表、搜索、Token 树
 - [ ] 中间主区域：Token 网格/列表
 - [ ] 右侧检查器（选中 Token 时显示）
 
@@ -63,8 +61,9 @@ npm run test:e2e
 
 - [ ] Token 树可展开/收起
 - [ ] 搜索框可筛选 Token
-- [ ] 多集合时可切换
-- [ ] 「清除数据」可返回上传界面
+- [ ] Collection 与 Mode 可切换
+- [ ] HyperOS 3 / HyperOS 4 文档互相隔离
+- [ ] Semantic Token 顶层组按 `bg → fill → stroke → text → mask → margin → padding → gap → radius` 排列
 
 ### 4. Token 展示
 
@@ -79,7 +78,13 @@ npm run test:e2e
 - [ ] 代码导出（CSS/Android 格式切换）
 - [ ] 可调整宽度
 
-### 6. 主题
+### 6. 共享记录与快照
+
+- [ ] 编辑、导入、重排序、分组重命名会产生服务端变更日志
+- [ ] 可创建、下载和恢复版本快照
+- [ ] 发生 revision 冲突时刷新到最新服务端文档
+
+### 7. 主题
 
 - [ ] 亮色/暗色切换正常
 
@@ -94,6 +99,7 @@ npm run start
 
 - [ ] 构建无报错
 - [ ] 生产模式访问 `http://localhost:3000` 正常
+- [ ] 生产环境已设置 `DATABASE_URL` 并完成数据库迁移
 
 ---
 

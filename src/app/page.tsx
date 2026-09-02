@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useTokenStore } from "@/stores/token-store";
 import { AppShell } from "@/components/layout/app-shell";
-import { FileUpload } from "@/components/features/file-upload";
 import { LoadingScreen } from "@/components/features/loading-screen";
 import { shouldLoadRemoteDocument } from "@/lib/collaboration/loading-state";
 
@@ -20,12 +19,21 @@ export default function Home() {
     }
   }, [error, hasData, isLoading, loadRemoteDocument]);
 
-  if (isLoading && !hasData) {
-    return <LoadingScreen />;
-  }
-
   if (!hasData) {
-    return <FileUpload error={error} />;
+    if (error) {
+      return (
+        <main className="flex min-h-screen items-center justify-center bg-background p-4">
+          <div className="max-w-md space-y-2 text-center">
+            <h1 className="text-lg font-semibold">共享 Token 表加载失败</h1>
+            <p className="text-sm text-muted-foreground" role="alert">
+              {error}
+            </p>
+          </div>
+        </main>
+      );
+    }
+
+    return <LoadingScreen />;
   }
 
   return <AppShell />;

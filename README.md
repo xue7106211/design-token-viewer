@@ -5,7 +5,7 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 ## 功能
 
 - 多套 Token 表切换：顶部一键切换 **HyperOS 3 / HyperOS 4**，两套数据、变更日志、快照完全独立
-- 拖拽上传 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
+- 服务端导入 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
 - 树形导航 + 搜索过滤，Grid / List 双视图
 - 多 Collection、多 Mode 切换
 - 颜色令牌：色块预览、HEX/RGB/HSL 值、WCAG 对比度检查
@@ -17,7 +17,7 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 - 代码导出：CSS 自定义属性、Android XML resources、原始 JSON
 - Shiki 语法高亮（支持 XML / CSS / JSON，亮色暗色双主题）
 - 亮色 / 暗色主题切换
-- 数据持久化到 localStorage，刷新不丢失
+- Token 文档、变更日志和快照由服务端持久化；浏览器 localStorage 仅保存当前文档、视图和面板偏好
 
 ## 技术栈
 
@@ -30,7 +30,7 @@ npm install
 npm run dev
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)，默认会加载 HyperOS Feature Token 示例数据。
+打开 [http://localhost:3000](http://localhost:3000)，默认会加载服务端的 HyperOS 4 Token 文档。
 
 ## 命令
 
@@ -38,7 +38,7 @@ npm run dev
 |------|------|
 | `npm run dev` | 开发服务器 |
 | `npm run build` | 生产构建 |
-| `npm run start` | 生产模式运行 |
+| `npm run start` | 生产模式运行（先执行 `npm run build`） |
 | `npm run lint` | ESLint 检查 |
 | `npm run test` | 单元测试 (Vitest) |
 | `npm run test:watch` | 单元测试 watch 模式 |
@@ -55,16 +55,18 @@ src/
 ├── app/              # Next.js App Router
 │   ├── layout.tsx / page.tsx / providers.tsx / globals.css
 │   └── api/          # 后端路由 (Route Handlers)
-│       ├── token-document/      # 令牌文档读取 / import 导入
+│       ├── token-document/      # 令牌文档读取 / 导入
 │       ├── tokens/[tokenId]/    # 单令牌编辑 (value / name / description / code-syntax / alias)
 │       ├── snapshots/           # 快照列表 / 创建 / [snapshotId]/restore 恢复
-│       ├── change-logs/         # 变更日志读写
+│       ├── change-logs/         # 变更日志读取
+│       ├── groups/rename/       # 分组重命名
+│       ├── client-ip/           # 请求来源 IP
 │       ├── export/              # 服务端导出
 │       └── save-sample-tokens/  # DEV: 写回示例数据
 ├── components/
 │   ├── ui/           # shadcn/ui 基础组件 (12 个)
 │   ├── layout/       # AppShell, Sidebar, MainView
-│   └── features/     # 业务组件 (上传、树、网格、列表、检查器、导出、变更日志、快照、协作者署名、文档切换器等，20 个)
+│   └── features/     # 业务组件 (树、网格、列表、检查器、导出、变更日志、快照、协作者署名、文档切换器等)
 ├── lib/
 │   ├── parsers/      # JSON 格式检测与解析 (7 个文件含测试)
 │   ├── code-generators/  # CSS / Android XML 代码生成 (5 个文件含测试)
@@ -81,7 +83,7 @@ src/
 ├── types/            # TypeScript 类型定义
 └── data/             # 种子数据 (sample-tokens.json = HyperOS3, sample-tokens-hyperos4.json = HyperOS4)
 
-figma-token/          # HyperOS4 Figma DTCG 导出源 (3 Collection × Light/Dark)
+figma-token/          # HyperOS4 Figma DTCG 导出源 (Component / Reference / Semantic，各含 Light/Dark)
 drizzle/              # Drizzle 数据库迁移 SQL
 drizzle.config.ts     # Drizzle Kit 配置 (postgresql)
 scripts/              # 辅助脚本 (Figma 数据转换、DTCG 转换、数据库初始化)
@@ -96,9 +98,15 @@ e2e/                  # Playwright E2E 测试
 - **Figma Native** — Figma Variables 原生导出 (`collections` + `variables` with `valuesByMode`)
 - **Variables2CSS** — Variables2CSS 插件导出 (`collections` with `variables` array)
 
-上传时自动检测格式，无需手动选择。
+服务端导入时自动检测格式，无需手动选择。
 
 > 注：Figma 新版「导出变量」的 **W3C DTCG** 格式（`$type/$value/$extensions`，颜色为 `components+alpha`，别名在 `$extensions["com.figma.aliasData"]`）不被运行时解析器直接识别，需先用 `scripts/figma-dtcg-to-sample.mjs` 转换成 Figma Native 种子。
+
+## 数据持久化与数据库
+
+- 开发环境未设置 `DATABASE_URL` 时，服务端会把 Token 文档、日志和快照写入被 Git 忽略的 `.data/collaboration-store.json`。
+- 生产环境必须设置 PostgreSQL `DATABASE_URL`，并先执行 `npm run db:migrate`；否则共享 Token 文档接口会返回配置错误。
+- 浏览器 localStorage 只保存当前文档、当前 Collection/Mode、搜索、树展开状态、视图、代码格式和检查器宽度，以及协作者标识；不保存 Token 正文。
 
 ## 多套 Token 表（HyperOS3 / HyperOS4）
 
@@ -110,13 +118,13 @@ e2e/                  # Playwright E2E 测试
 
 ### 更新 HyperOS4 数据
 
-1. 从 Figma「导出变量」得到 DTCG 文件，按 `figma-token/<Collection>/<Light|Dark>.tokens.json` 放置（当前为 Component / Reference / Semantic 三组）。
-2. 运行转换脚本（合并三组、按名称解析跨集合别名、校验无环）：
+1. 从 Figma「导出变量」得到 DTCG 文件，分别替换 `figma-token/Component Token`、`figma-token/Reference Token`、`figma-token/Semantic Token` 中的 `Light.tokens.json` 和 `Dark.tokens.json`。
+2. 运行转换脚本；它合并三组，并按 `targetVariableSetName` 与 `targetVariableName` 解析跨 Collection 别名：
    ```bash
    node scripts/figma-dtcg-to-sample.mjs
    ```
-   输出 `src/data/sample-tokens-hyperos4.json`。
-3. 种子仅在文档首次创建时灌入。若库/文件中已存在 hyperos4 文档，替换种子后需通过界面「上传 JSON」覆盖，或清除 `.data/collaboration-store.json` 中的 hyperos4 文档让其重新灌入。
+   输出 `src/data/sample-tokens-hyperos4.json`。脚本会报告无法解析的别名，并以该 Token 的原始值降级；发布前应处理这类报告。
+3. 种子仅在文档首次创建时灌入。已存在的 HyperOS 4 文档需要通过 `POST /api/token-document/import`（请求头 `x-document-id: hyperos4`，携带当前 `revision`）导入生成的 Figma Native JSON；不要通过删除 `.data` 文件重置已有数据。
 
 ## 路径别名
 

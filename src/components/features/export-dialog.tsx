@@ -1,8 +1,17 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Download, Copy, Check } from "lucide-react";
+import { Download, Copy, Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Dialog,
   DialogContent,
@@ -12,8 +21,9 @@ import {
 } from "@/components/ui/dialog";
 import { useTokenStore } from "@/stores/token-store";
 import { generateTokenBlock } from "@/lib/code-generators";
+import { rebuildRawJSON } from "@/lib/token-rebuilder";
 import { useShikiHtml } from "@/lib/use-shiki";
-import type { CodeFormat, DesignToken } from "@/types/token";
+import type { CodeFormat, DesignToken, TokenCollection } from "@/types/token";
 import { cn } from "@/lib/utils";
 import { saveAs } from "file-saver";
 import { apiRequest, type SnapshotsResponse } from "@/lib/collaboration/client";
@@ -21,8 +31,44 @@ import type { SnapshotRecord } from "@/lib/collaboration/service";
 
 export type ExportFormat = CodeFormat | "json";
 
+function rebuildExportJSON(tokens: DesignToken[], collection: TokenCollection | null): string {
+  const tokenMap = Object.fromEntries(tokens.map((token) => [token.id, token]));
+  const collections = collection
+    ? [{ ...collection, tokenIds: collection.tokenIds.filter((id) => tokenMap[id] != null) }]
+    : [];
+
+  return JSON.stringify(rebuildRawJSON(collections, tokenMap), null, 2);
+}
+
+function getSourceLabel(source: string, snapshots: SnapshotRecord[]): string {
+  if (source === "all") return "全部 Token 表";
+  if (source === "current") return "当前 Token 表";
+
+  return snapshots.find((snapshot) => snapshot.id === source)?.name ?? "当前 Token 表";
+}
+
+function getJSONExportCode(
+  source: string,
+  tokens: DesignToken[],
+  collection: TokenCollection | null,
+  exportRawJSON: () => string
+): string {
+  if (source === "all") return exportRawJSON();
+
+  return rebuildExportJSON(tokens, collection);
+}
+
+function getExportFileExtension(format: ExportFormat): "json" | "css" | "xml" {
+  if (format === "json") return "json";
+  if (format === "css") return "css";
+
+  return "xml";
+}
+
 export function ExportDialog() {
   const tokens = useTokenStore((s) => s.tokens);
+  const collections = useTokenStore((s) => s.collections);
+  const activeCollection = useTokenStore((s) => s.activeCollection);
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);
   const activeModeId = useTokenStore((s) => s.activeModeId);
   const exportRawJSON = useTokenStore((s) => s.exportRawJSON);
@@ -37,11 +83,17 @@ export function ExportDialog() {
   const visibleTokens: DesignToken[] = filteredTokenIds
     .map((id) => tokens[id])
     .filter((t): t is DesignToken => t !== undefined);
+  const allTokens: DesignToken[] = collections
+    .flatMap((collection) => collection.tokenIds)
+    .map((id) => tokens[id])
+    .filter((t): t is DesignToken => t !== undefined);
+  const sourceTokens = source === "all" ? allTokens : visibleTokens;
+  const sourceLabel = getSourceLabel(source, snapshots);
 
   const localCode =
     format === "json"
-      ? exportRawJSON()
-      : generateTokenBlock(visibleTokens, format, activeModeId ?? undefined, tokens);
+      ? getJSONExportCode(source, sourceTokens, activeCollection, exportRawJSON)
+      : generateTokenBlock(sourceTokens, format, activeModeId ?? undefined, tokens);
   const code = remoteCode ?? localCode;
 
   const html = useShikiHtml(code, format);
@@ -52,7 +104,7 @@ export function ExportDialog() {
   }, []);
 
   const syncExportCode = useCallback(async (nextFormat: ExportFormat, nextSource: string) => {
-    if (nextSource === "current") {
+    if (nextSource === "current" || nextSource === "all") {
       setRemoteCode(null);
       return;
     }
@@ -70,6 +122,11 @@ export function ExportDialog() {
     }
   }, [activeModeId, localCode]);
 
+  const handleSourceChange = useCallback((nextSource: string) => {
+    setSource(nextSource);
+    void syncExportCode(format, nextSource);
+  }, [format, syncExportCode]);
+
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(code);
     setCopied(true);
@@ -77,11 +134,11 @@ export function ExportDialog() {
   }, [code]);
 
   const handleDownload = useCallback(() => {
-    const ext = format === "json" ? "json" : format === "css" ? "css" : "xml";
-    const filename = `design-tokens.${ext}`;
+    const ext = getExportFileExtension(format);
+    const filename = `design-tokens${source === "all" ? "-all" : ""}.${ext}`;
     const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
     saveAs(blob, filename);
-  }, [code, format]);
+  }, [code, format, source]);
 
   return (
     <Dialog
@@ -128,28 +185,52 @@ export function ExportDialog() {
                 </button>
               ))}
             </div>
-            <span className="text-xs text-muted-foreground ml-auto">
-              {visibleTokens.length} 个令牌
+            <span className="text-xs text-muted-foreground ml-auto" data-testid="export-token-count">
+              {sourceTokens.length} 个令牌
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">来源：</span>
-            <select
-              value={source}
-              onChange={(event) => {
-                setSource(event.target.value);
-                void syncExportCode(format, event.target.value);
-              }}
-              className="h-8 rounded-md border bg-background px-2 text-xs"
-            >
-              <option value="current">当前 Token 表</option>
-              {snapshots.map((snapshot) => (
-                <option key={snapshot.id} value={snapshot.id}>
-                  {snapshot.name}
-                </option>
-              ))}
-            </select>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 min-w-32 justify-between gap-2 px-2.5 text-xs font-normal"
+                  aria-label="选择导出来源"
+                >
+                  <span className="truncate">{sourceLabel}</span>
+                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="min-w-40">
+                <DropdownMenuLabel className="px-2 py-1 text-[11px] font-medium text-muted-foreground">
+                  导出范围
+                </DropdownMenuLabel>
+                <DropdownMenuRadioGroup value={source} onValueChange={handleSourceChange}>
+                  <DropdownMenuRadioItem value="current" className="cursor-pointer text-xs">
+                    当前 Token 表
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="all" className="cursor-pointer text-xs">
+                    全部 Token 表
+                  </DropdownMenuRadioItem>
+                  {snapshots.length > 0 && (
+                    <>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuLabel className="px-2 py-1 text-[11px] font-medium text-muted-foreground">
+                        版本快照
+                      </DropdownMenuLabel>
+                      {snapshots.map((snapshot) => (
+                        <DropdownMenuRadioItem key={snapshot.id} value={snapshot.id} className="max-w-64 cursor-pointer text-xs">
+                          <span className="truncate">{snapshot.name}</span>
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </>
+                  )}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
             {isGenerating && (
               <span className="text-xs text-muted-foreground">正在生成...</span>
             )}

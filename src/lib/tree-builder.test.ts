@@ -59,4 +59,32 @@ describe("buildTokenTree", () => {
     expect(colorNode.tokenCount).toBe(2);
     expect(blueNode.tokenCount).toBe(2);
   });
+
+  it("uses the Semantic Token group order at the tree root", () => {
+    const tokens: DesignToken[] = [
+      makeToken("t1", "text/default/primary", "Semantic Token"),
+      makeToken("t2", "radius/container", "Semantic Token"),
+      makeToken("t3", "bg/layout/page", "Semantic Token"),
+      makeToken("t4", "padding/horizontal/container", "Semantic Token"),
+      makeToken("t5", "fill/default/primary", "Semantic Token"),
+      makeToken("t6", "gap/horizontal/md", "Semantic Token"),
+      makeToken("t7", "mask/default", "Semantic Token"),
+      makeToken("t8", "margin/default", "Semantic Token"),
+      makeToken("t9", "stroke/border/default", "Semantic Token"),
+    ];
+
+    const tree = buildTokenTree(tokens, "Semantic Token");
+
+    expect(tree.map((node) => node.label)).toEqual([
+      "bg",
+      "fill",
+      "stroke",
+      "text",
+      "mask",
+      "margin",
+      "padding",
+      "gap",
+      "radius",
+    ]);
+  });
 });

@@ -9757,11 +9757,31 @@
           ]
         }
       },
+      "miuix_space_10": {
+        "$type": "number",
+        "$value": 10,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6968:8466",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
       "miuix_space_12": {
         "$type": "number",
         "$value": 12,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3115",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_space_14": {
+        "$type": "number",
+        "$value": 14,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6968:8467",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -9787,11 +9807,31 @@
           ]
         }
       },
+      "miuix_space_22": {
+        "$type": "number",
+        "$value": 22,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6968:8468",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
       "miuix_space_24": {
         "$type": "number",
         "$value": 24,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3124",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_space_26": {
+        "$type": "number",
+        "$value": 26,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6968:8469",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -9837,11 +9877,31 @@
           ]
         }
       },
+      "miuix_space_44": {
+        "$type": "number",
+        "$value": 44,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6968:8470",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
       "miuix_space_48": {
         "$type": "number",
         "$value": 48,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3140",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_space_50": {
+        "$type": "number",
+        "$value": 50,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8471",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -9862,6 +9922,16 @@
         "$value": 64,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3146",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_space_70": {
+        "$type": "number",
+        "$value": 70,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8472",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -9949,11 +10019,31 @@
           ]
         }
       },
+      "miuix_radius_14": {
+        "$type": "number",
+        "$value": 14,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8473",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
       "miuix_radius_16": {
         "$type": "number",
         "$value": 16,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3174",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_radius_18": {
+        "$type": "number",
+        "$value": 18,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8474",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -9969,11 +10059,31 @@
           ]
         }
       },
+      "miuix_radius_22": {
+        "$type": "number",
+        "$value": 22,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8475",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
       "miuix_radius_24": {
         "$type": "number",
         "$value": 24,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3180",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_radius_26": {
+        "$type": "number",
+        "$value": 26,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8476",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]
@@ -10024,6 +10134,16 @@
         "$value": 48,
         "$extensions": {
           "com.figma.variableId": "VariableID:4232:3195",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "miuix_radius_56": {
+        "$type": "number",
+        "$value": 56,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6969:8477",
           "com.figma.scopes": [
             "ALL_SCOPES"
           ]

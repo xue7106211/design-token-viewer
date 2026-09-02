@@ -1,5 +1,17 @@
 import type { DesignToken, TokenTreeNode } from "@/types/token";
 
+const SEMANTIC_TOKEN_GROUP_ORDER = [
+  "bg",
+  "fill",
+  "stroke",
+  "text",
+  "mask",
+  "margin",
+  "padding",
+  "gap",
+  "radius",
+];
+
 /**
  * Build a hierarchical tree from flat tokens for sidebar navigation.
  */
@@ -51,8 +63,11 @@ export function buildTokenTree(
   // Calculate token counts
   calculateTokenCounts(root);
 
-  // Sort children alphabetically
-  sortTree(root);
+  // Semantic Token 的一级组按设计系统层级展示，其余节点保持自然排序。
+  sortTree(
+    root,
+    collectionName === "Semantic Token" ? SEMANTIC_TOKEN_GROUP_ORDER : undefined
+  );
 
   return root.children;
 }
@@ -70,15 +85,26 @@ function calculateTokenCounts(node: TokenTreeNode): number {
   return count;
 }
 
-function sortTree(node: TokenTreeNode): void {
+function sortTree(node: TokenTreeNode, rootGroupOrder?: string[]): void {
   node.children.sort((a, b) => {
     // Groups before leaves
     const aIsGroup = a.children.length > 0;
     const bIsGroup = b.children.length > 0;
     if (aIsGroup !== bIsGroup) return aIsGroup ? -1 : 1;
+
+    if (node.path === "" && rootGroupOrder) {
+      const aIndex = rootGroupOrder.indexOf(a.label);
+      const bIndex = rootGroupOrder.indexOf(b.label);
+      if (aIndex !== -1 || bIndex !== -1) {
+        if (aIndex === -1) return 1;
+        if (bIndex === -1) return -1;
+        return aIndex - bIndex;
+      }
+    }
+
     return a.label.localeCompare(b.label, undefined, { numeric: true });
   });
   for (const child of node.children) {
-    sortTree(child);
+    sortTree(child, rootGroupOrder);
   }
 }

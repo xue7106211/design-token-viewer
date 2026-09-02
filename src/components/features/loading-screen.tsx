@@ -20,34 +20,13 @@ const fallbackSpinner: UnicodeSpinner = {
 
 const animationModule = unicodeAnimations as UnicodeAnimationsModule;
 const animationMap = animationModule.spinners ?? animationModule.default ?? animationModule;
-const spinnerNames = [
-  "braillewave",
-  "dna",
-  "rain",
-  "pulse",
-  "sparkle",
-  "columns",
-  "waverows",
-  "checkerboard",
-  "helix",
-  "fillsweep",
-  "diagswipe",
-];
-
-function getRandomSpinner() {
-  const availableSpinners = spinnerNames
-    .map((name) => animationMap[name])
-    .filter((spinner): spinner is UnicodeSpinner => Boolean(spinner));
-
-  if (availableSpinners.length === 0) {
-    return animationMap.braille ?? fallbackSpinner;
-  }
-
-  return availableSpinners[Math.floor(Math.random() * availableSpinners.length)];
+function getInitialSpinner() {
+  return animationMap.braillewave ?? fallbackSpinner;
 }
 
 export function LoadingScreen() {
-  const [spinner] = useState(getRandomSpinner);
+  // 服务端和客户端的首次渲染必须使用同一个 spinner，避免 hydration 文本不一致。
+  const spinner = getInitialSpinner();
   const [frameIndex, setFrameIndex] = useState(0);
 
   useEffect(() => {

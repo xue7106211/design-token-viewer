@@ -88,18 +88,6 @@
         }
       ],
       "variableIds": [
-        "var_595",
-        "var_596",
-        "var_597",
-        "var_598",
-        "var_599",
-        "var_600",
-        "var_601",
-        "var_602",
-        "var_603",
-        "var_604",
-        "var_605",
-        "var_606",
         "var_607",
         "var_608",
         "var_609",
@@ -178,7 +166,14 @@
         "var_682",
         "var_683",
         "var_684",
-        "var_685"
+        "var_685",
+        "var_686",
+        "var_687",
+        "var_688",
+        "var_689",
+        "var_690",
+        "var_691",
+        "var_692"
       ]
     },
     {
@@ -731,7 +726,19 @@
         "var_591",
         "var_592",
         "var_593",
-        "var_594"
+        "var_594",
+        "var_595",
+        "var_596",
+        "var_597",
+        "var_598",
+        "var_599",
+        "var_600",
+        "var_601",
+        "var_602",
+        "var_603",
+        "var_604",
+        "var_605",
+        "var_606"
       ]
     }
   ],
@@ -15200,6 +15207,22 @@
     },
     "var_567": {
       "id": "var_567",
+      "name": "number/space/miuix_space_10",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 10
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 10
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_568": {
+      "id": "var_568",
       "name": "number/space/miuix_space_12",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15214,8 +15237,24 @@
       },
       "codeSyntax": {}
     },
-    "var_568": {
-      "id": "var_568",
+    "var_569": {
+      "id": "var_569",
+      "name": "number/space/miuix_space_14",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 14
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_570": {
+      "id": "var_570",
       "name": "number/space/miuix_space_16",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15230,8 +15269,8 @@
       },
       "codeSyntax": {}
     },
-    "var_569": {
-      "id": "var_569",
+    "var_571": {
+      "id": "var_571",
       "name": "number/space/miuix_space_20",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15246,8 +15285,24 @@
       },
       "codeSyntax": {}
     },
-    "var_570": {
-      "id": "var_570",
+    "var_572": {
+      "id": "var_572",
+      "name": "number/space/miuix_space_22",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 22
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 22
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_573": {
+      "id": "var_573",
       "name": "number/space/miuix_space_24",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15262,8 +15317,24 @@
       },
       "codeSyntax": {}
     },
-    "var_571": {
-      "id": "var_571",
+    "var_574": {
+      "id": "var_574",
+      "name": "number/space/miuix_space_26",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 26
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 26
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_575": {
+      "id": "var_575",
       "name": "number/space/miuix_space_28",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15278,8 +15349,8 @@
       },
       "codeSyntax": {}
     },
-    "var_572": {
-      "id": "var_572",
+    "var_576": {
+      "id": "var_576",
       "name": "number/space/miuix_space_32",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15294,8 +15365,8 @@
       },
       "codeSyntax": {}
     },
-    "var_573": {
-      "id": "var_573",
+    "var_577": {
+      "id": "var_577",
       "name": "number/space/miuix_space_36",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15310,8 +15381,8 @@
       },
       "codeSyntax": {}
     },
-    "var_574": {
-      "id": "var_574",
+    "var_578": {
+      "id": "var_578",
       "name": "number/space/miuix_space_40",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15326,8 +15397,24 @@
       },
       "codeSyntax": {}
     },
-    "var_575": {
-      "id": "var_575",
+    "var_579": {
+      "id": "var_579",
+      "name": "number/space/miuix_space_44",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 44
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 44
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_580": {
+      "id": "var_580",
       "name": "number/space/miuix_space_48",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15342,8 +15429,24 @@
       },
       "codeSyntax": {}
     },
-    "var_576": {
-      "id": "var_576",
+    "var_581": {
+      "id": "var_581",
+      "name": "number/space/miuix_space_50",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 50
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 50
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_582": {
+      "id": "var_582",
       "name": "number/space/miuix_space_56",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15358,8 +15461,8 @@
       },
       "codeSyntax": {}
     },
-    "var_577": {
-      "id": "var_577",
+    "var_583": {
+      "id": "var_583",
       "name": "number/space/miuix_space_64",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15374,8 +15477,24 @@
       },
       "codeSyntax": {}
     },
-    "var_578": {
-      "id": "var_578",
+    "var_584": {
+      "id": "var_584",
+      "name": "number/space/miuix_space_70",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 70
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 70
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_585": {
+      "id": "var_585",
       "name": "number/space/miuix_space_72",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15390,8 +15509,8 @@
       },
       "codeSyntax": {}
     },
-    "var_579": {
-      "id": "var_579",
+    "var_586": {
+      "id": "var_586",
       "name": "number/space/miuix_space_80",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15406,8 +15525,8 @@
       },
       "codeSyntax": {}
     },
-    "var_580": {
-      "id": "var_580",
+    "var_587": {
+      "id": "var_587",
       "name": "number/space/miuix_space_96",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15422,8 +15541,8 @@
       },
       "codeSyntax": {}
     },
-    "var_581": {
-      "id": "var_581",
+    "var_588": {
+      "id": "var_588",
       "name": "number/space/miuix_space_128",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15438,8 +15557,8 @@
       },
       "codeSyntax": {}
     },
-    "var_582": {
-      "id": "var_582",
+    "var_589": {
+      "id": "var_589",
       "name": "number/radius/miuix_radius_0",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15454,8 +15573,8 @@
       },
       "codeSyntax": {}
     },
-    "var_583": {
-      "id": "var_583",
+    "var_590": {
+      "id": "var_590",
       "name": "number/radius/miuix_radius_4",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15470,8 +15589,8 @@
       },
       "codeSyntax": {}
     },
-    "var_584": {
-      "id": "var_584",
+    "var_591": {
+      "id": "var_591",
       "name": "number/radius/miuix_radius_8",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15486,8 +15605,8 @@
       },
       "codeSyntax": {}
     },
-    "var_585": {
-      "id": "var_585",
+    "var_592": {
+      "id": "var_592",
       "name": "number/radius/miuix_radius_12",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15502,8 +15621,24 @@
       },
       "codeSyntax": {}
     },
-    "var_586": {
-      "id": "var_586",
+    "var_593": {
+      "id": "var_593",
+      "name": "number/radius/miuix_radius_14",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 14
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 14
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_594": {
+      "id": "var_594",
       "name": "number/radius/miuix_radius_16",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15518,8 +15653,24 @@
       },
       "codeSyntax": {}
     },
-    "var_587": {
-      "id": "var_587",
+    "var_595": {
+      "id": "var_595",
+      "name": "number/radius/miuix_radius_18",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 18
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 18
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_596": {
+      "id": "var_596",
       "name": "number/radius/miuix_radius_20",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15534,8 +15685,24 @@
       },
       "codeSyntax": {}
     },
-    "var_588": {
-      "id": "var_588",
+    "var_597": {
+      "id": "var_597",
+      "name": "number/radius/miuix_radius_22",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 22
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 22
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_598": {
+      "id": "var_598",
       "name": "number/radius/miuix_radius_24",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15550,8 +15717,24 @@
       },
       "codeSyntax": {}
     },
-    "var_589": {
-      "id": "var_589",
+    "var_599": {
+      "id": "var_599",
+      "name": "number/radius/miuix_radius_26",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 26
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 26
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_600": {
+      "id": "var_600",
       "name": "number/radius/miuix_radius_28",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15566,8 +15749,8 @@
       },
       "codeSyntax": {}
     },
-    "var_590": {
-      "id": "var_590",
+    "var_601": {
+      "id": "var_601",
       "name": "number/radius/miuix_radius_32",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15582,8 +15765,8 @@
       },
       "codeSyntax": {}
     },
-    "var_591": {
-      "id": "var_591",
+    "var_602": {
+      "id": "var_602",
       "name": "number/radius/miuix_radius_36",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15598,8 +15781,8 @@
       },
       "codeSyntax": {}
     },
-    "var_592": {
-      "id": "var_592",
+    "var_603": {
+      "id": "var_603",
       "name": "number/radius/miuix_radius_40",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15614,8 +15797,8 @@
       },
       "codeSyntax": {}
     },
-    "var_593": {
-      "id": "var_593",
+    "var_604": {
+      "id": "var_604",
       "name": "number/radius/miuix_radius_48",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15630,8 +15813,24 @@
       },
       "codeSyntax": {}
     },
-    "var_594": {
-      "id": "var_594",
+    "var_605": {
+      "id": "var_605",
+      "name": "number/radius/miuix_radius_56",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "NUMBER",
+          "value": 56
+        },
+        "mode_dark": {
+          "type": "NUMBER",
+          "value": 56
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_606": {
+      "id": "var_606",
       "name": "number/radius/miuix_radius_999",
       "type": "NUMBER",
       "valuesByMode": {
@@ -15646,8 +15845,8 @@
       },
       "codeSyntax": {}
     },
-    "var_595": {
-      "id": "var_595",
+    "var_607": {
+      "id": "var_607",
       "name": "bg/layout/miuix_color_bg_layout_white_page",
       "type": "COLOR",
       "valuesByMode": {
@@ -15662,8 +15861,8 @@
       },
       "codeSyntax": {}
     },
-    "var_596": {
-      "id": "var_596",
+    "var_608": {
+      "id": "var_608",
       "name": "bg/layout/miuix_color_bg_layout_grey_page",
       "type": "COLOR",
       "valuesByMode": {
@@ -15678,8 +15877,8 @@
       },
       "codeSyntax": {}
     },
-    "var_597": {
-      "id": "var_597",
+    "var_609": {
+      "id": "var_609",
       "name": "bg/floating/miuix_color_bg_floating_white_page",
       "type": "COLOR",
       "valuesByMode": {
@@ -15694,8 +15893,8 @@
       },
       "codeSyntax": {}
     },
-    "var_598": {
-      "id": "var_598",
+    "var_610": {
+      "id": "var_610",
       "name": "bg/floating/miuix_color_bg_floating_grey_page",
       "type": "COLOR",
       "valuesByMode": {
@@ -15710,8 +15909,8 @@
       },
       "codeSyntax": {}
     },
-    "var_599": {
-      "id": "var_599",
+    "var_611": {
+      "id": "var_611",
       "name": "bg/compoment/miuix_color_bg_compoment",
       "type": "COLOR",
       "valuesByMode": {
@@ -15726,8 +15925,8 @@
       },
       "codeSyntax": {}
     },
-    "var_600": {
-      "id": "var_600",
+    "var_612": {
+      "id": "var_612",
       "name": "text/default/miuix_color_text_primary_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15742,8 +15941,8 @@
       },
       "codeSyntax": {}
     },
-    "var_601": {
-      "id": "var_601",
+    "var_613": {
+      "id": "var_613",
       "name": "text/default/miuix_color_text_secondary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15758,8 +15957,8 @@
       },
       "codeSyntax": {}
     },
-    "var_602": {
-      "id": "var_602",
+    "var_614": {
+      "id": "var_614",
       "name": "text/default/miuix_color_text_tertiary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15774,8 +15973,8 @@
       },
       "codeSyntax": {}
     },
-    "var_603": {
-      "id": "var_603",
+    "var_615": {
+      "id": "var_615",
       "name": "text/default/miuix_color_text_quaternary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15790,8 +15989,8 @@
       },
       "codeSyntax": {}
     },
-    "var_604": {
-      "id": "var_604",
+    "var_616": {
+      "id": "var_616",
       "name": "text/default/miuix_color_text_octonary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15806,8 +16005,8 @@
       },
       "codeSyntax": {}
     },
-    "var_605": {
-      "id": "var_605",
+    "var_617": {
+      "id": "var_617",
       "name": "text/default/miuix_color_text_primary_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15822,8 +16021,8 @@
       },
       "codeSyntax": {}
     },
-    "var_606": {
-      "id": "var_606",
+    "var_618": {
+      "id": "var_618",
       "name": "text/default/miuix_color_text_primary_pressed",
       "type": "COLOR",
       "valuesByMode": {
@@ -15838,8 +16037,24 @@
       },
       "codeSyntax": {}
     },
-    "var_607": {
-      "id": "var_607",
+    "var_619": {
+      "id": "var_619",
+      "name": "text/default/miuix_radius_container",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_596"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_596"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_620": {
+      "id": "var_620",
       "name": "text/brand/miuix_color_text_brand_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15854,8 +16069,8 @@
       },
       "codeSyntax": {}
     },
-    "var_608": {
-      "id": "var_608",
+    "var_621": {
+      "id": "var_621",
       "name": "text/brand/miuix_color_text_brand_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15870,8 +16085,8 @@
       },
       "codeSyntax": {}
     },
-    "var_609": {
-      "id": "var_609",
+    "var_622": {
+      "id": "var_622",
       "name": "text/link/miuix_color_text_link_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15886,8 +16101,8 @@
       },
       "codeSyntax": {}
     },
-    "var_610": {
-      "id": "var_610",
+    "var_623": {
+      "id": "var_623",
       "name": "text/link/miuix_color_text_link_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15902,8 +16117,8 @@
       },
       "codeSyntax": {}
     },
-    "var_611": {
-      "id": "var_611",
+    "var_624": {
+      "id": "var_624",
       "name": "text/caution/miuix_color_text_caution_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15918,8 +16133,8 @@
       },
       "codeSyntax": {}
     },
-    "var_612": {
-      "id": "var_612",
+    "var_625": {
+      "id": "var_625",
       "name": "text/caution/miuix_color_text_caution_disable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15934,8 +16149,8 @@
       },
       "codeSyntax": {}
     },
-    "var_613": {
-      "id": "var_613",
+    "var_626": {
+      "id": "var_626",
       "name": "text/warning/miuix_color_text_warning_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15950,8 +16165,8 @@
       },
       "codeSyntax": {}
     },
-    "var_614": {
-      "id": "var_614",
+    "var_627": {
+      "id": "var_627",
       "name": "text/warning/miuix_color_text_warning_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15966,8 +16181,8 @@
       },
       "codeSyntax": {}
     },
-    "var_615": {
-      "id": "var_615",
+    "var_628": {
+      "id": "var_628",
       "name": "text/success/miuix_color_text_success_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -15982,8 +16197,8 @@
       },
       "codeSyntax": {}
     },
-    "var_616": {
-      "id": "var_616",
+    "var_629": {
+      "id": "var_629",
       "name": "text/success/miuix_color_text_success_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -15998,8 +16213,8 @@
       },
       "codeSyntax": {}
     },
-    "var_617": {
-      "id": "var_617",
+    "var_630": {
+      "id": "var_630",
       "name": "text/status/miuix_color_text_status_hover",
       "type": "COLOR",
       "valuesByMode": {
@@ -16014,8 +16229,8 @@
       },
       "codeSyntax": {}
     },
-    "var_618": {
-      "id": "var_618",
+    "var_631": {
+      "id": "var_631",
       "name": "text/status/miuix_color_text_status_pressed",
       "type": "COLOR",
       "valuesByMode": {
@@ -16030,8 +16245,8 @@
       },
       "codeSyntax": {}
     },
-    "var_619": {
-      "id": "var_619",
+    "var_632": {
+      "id": "var_632",
       "name": "text/status/miuix_color_text_status_selected",
       "type": "COLOR",
       "valuesByMode": {
@@ -16046,8 +16261,8 @@
       },
       "codeSyntax": {}
     },
-    "var_620": {
-      "id": "var_620",
+    "var_633": {
+      "id": "var_633",
       "name": "text/static_white/miuix_color_text_static_white_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16062,8 +16277,8 @@
       },
       "codeSyntax": {}
     },
-    "var_621": {
-      "id": "var_621",
+    "var_634": {
+      "id": "var_634",
       "name": "text/static_white/miuix_color_text_static_white_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16078,8 +16293,8 @@
       },
       "codeSyntax": {}
     },
-    "var_622": {
-      "id": "var_622",
+    "var_635": {
+      "id": "var_635",
       "name": "fill/default/miuix_color_fill_primary_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16094,8 +16309,8 @@
       },
       "codeSyntax": {}
     },
-    "var_623": {
-      "id": "var_623",
+    "var_636": {
+      "id": "var_636",
       "name": "fill/default/miuix_color_fill_secondary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16110,8 +16325,8 @@
       },
       "codeSyntax": {}
     },
-    "var_624": {
-      "id": "var_624",
+    "var_637": {
+      "id": "var_637",
       "name": "fill/default/miuix_color_fill_tertiary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16126,8 +16341,8 @@
       },
       "codeSyntax": {}
     },
-    "var_625": {
-      "id": "var_625",
+    "var_638": {
+      "id": "var_638",
       "name": "fill/default/miuix_color_fill_quaternary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16142,8 +16357,8 @@
       },
       "codeSyntax": {}
     },
-    "var_626": {
-      "id": "var_626",
+    "var_639": {
+      "id": "var_639",
       "name": "fill/default/miuix_color_fill_primary_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16168,8 +16383,8 @@
       },
       "codeSyntax": {}
     },
-    "var_627": {
-      "id": "var_627",
+    "var_640": {
+      "id": "var_640",
       "name": "fill/default/miuix_color_fill_secondary_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16194,8 +16409,8 @@
       },
       "codeSyntax": {}
     },
-    "var_628": {
-      "id": "var_628",
+    "var_641": {
+      "id": "var_641",
       "name": "fill/default/miuix_color_fill_tertiary_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16220,8 +16435,8 @@
       },
       "codeSyntax": {}
     },
-    "var_629": {
-      "id": "var_629",
+    "var_642": {
+      "id": "var_642",
       "name": "fill/default/miuix_color_fill_quaternary_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16236,8 +16451,8 @@
       },
       "codeSyntax": {}
     },
-    "var_630": {
-      "id": "var_630",
+    "var_643": {
+      "id": "var_643",
       "name": "fill/brand/miuix_color_fill_brand_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16252,8 +16467,8 @@
       },
       "codeSyntax": {}
     },
-    "var_631": {
-      "id": "var_631",
+    "var_644": {
+      "id": "var_644",
       "name": "fill/brand/miuix_color_fill_brand_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16268,8 +16483,8 @@
       },
       "codeSyntax": {}
     },
-    "var_632": {
-      "id": "var_632",
+    "var_645": {
+      "id": "var_645",
       "name": "fill/caution/miuix_color_fill_caution_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16284,8 +16499,8 @@
       },
       "codeSyntax": {}
     },
-    "var_633": {
-      "id": "var_633",
+    "var_646": {
+      "id": "var_646",
       "name": "fill/caution/miuix_color_fill_caution_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16300,8 +16515,8 @@
       },
       "codeSyntax": {}
     },
-    "var_634": {
-      "id": "var_634",
+    "var_647": {
+      "id": "var_647",
       "name": "fill/warning/miuix_color_fill_warning_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16316,8 +16531,8 @@
       },
       "codeSyntax": {}
     },
-    "var_635": {
-      "id": "var_635",
+    "var_648": {
+      "id": "var_648",
       "name": "fill/warning/miuix_color_fill_warning_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16332,8 +16547,8 @@
       },
       "codeSyntax": {}
     },
-    "var_636": {
-      "id": "var_636",
+    "var_649": {
+      "id": "var_649",
       "name": "fill/success/miuix_color_fill_success_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16348,8 +16563,8 @@
       },
       "codeSyntax": {}
     },
-    "var_637": {
-      "id": "var_637",
+    "var_650": {
+      "id": "var_650",
       "name": "fill/success/miuix_color_fill_success_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16364,8 +16579,8 @@
       },
       "codeSyntax": {}
     },
-    "var_638": {
-      "id": "var_638",
+    "var_651": {
+      "id": "var_651",
       "name": "fill/status/miuix_color_fill_status_hover",
       "type": "COLOR",
       "valuesByMode": {
@@ -16380,8 +16595,8 @@
       },
       "codeSyntax": {}
     },
-    "var_639": {
-      "id": "var_639",
+    "var_652": {
+      "id": "var_652",
       "name": "fill/status/miuix_color_fill_status_pressed",
       "type": "COLOR",
       "valuesByMode": {
@@ -16396,8 +16611,8 @@
       },
       "codeSyntax": {}
     },
-    "var_640": {
-      "id": "var_640",
+    "var_653": {
+      "id": "var_653",
       "name": "fill/status/miuix_color_fill_status_selected",
       "type": "COLOR",
       "valuesByMode": {
@@ -16412,8 +16627,8 @@
       },
       "codeSyntax": {}
     },
-    "var_641": {
-      "id": "var_641",
+    "var_654": {
+      "id": "var_654",
       "name": "fill/static_white/miuix_color_fill_static_white_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16428,8 +16643,8 @@
       },
       "codeSyntax": {}
     },
-    "var_642": {
-      "id": "var_642",
+    "var_655": {
+      "id": "var_655",
       "name": "fill/static_white/miuix_color_fill_static_white_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16444,8 +16659,8 @@
       },
       "codeSyntax": {}
     },
-    "var_643": {
-      "id": "var_643",
+    "var_656": {
+      "id": "var_656",
       "name": "stroke/border/miuix_color_stroke_border_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16460,8 +16675,8 @@
       },
       "codeSyntax": {}
     },
-    "var_644": {
-      "id": "var_644",
+    "var_657": {
+      "id": "var_657",
       "name": "stroke/border/miuix_color_stroke_border_disable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16476,9 +16691,9 @@
       },
       "codeSyntax": {}
     },
-    "var_645": {
-      "id": "var_645",
-      "name": "stroke/devider/miuix_color_stroke_devider",
+    "var_658": {
+      "id": "var_658",
+      "name": "stroke/divider/miuix_color_stroke_divider",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16492,8 +16707,8 @@
       },
       "codeSyntax": {}
     },
-    "var_646": {
-      "id": "var_646",
+    "var_659": {
+      "id": "var_659",
       "name": "mask/miuix_color_mask",
       "type": "COLOR",
       "valuesByMode": {
@@ -16508,626 +16723,530 @@
       },
       "codeSyntax": {}
     },
-    "var_647": {
-      "id": "var_647",
-      "name": "padding/miuix_space_padding_none",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_562"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_562"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_648": {
-      "id": "var_648",
-      "name": "padding/miuix_space_padding_xs",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_563"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_563"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_649": {
-      "id": "var_649",
-      "name": "padding/miuix_space_padding_sm",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_564"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_564"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_650": {
-      "id": "var_650",
-      "name": "padding/miuix_space_padding_md",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_565"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_565"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_651": {
-      "id": "var_651",
-      "name": "padding/miuix_space_padding_lg",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_566"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_566"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_652": {
-      "id": "var_652",
-      "name": "padding/miuix_space_padding_xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_567"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_567"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_653": {
-      "id": "var_653",
-      "name": "padding/miuix_space_padding_2xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_568"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_568"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_654": {
-      "id": "var_654",
-      "name": "padding/miuix_space_padding_3xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_569"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_569"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_655": {
-      "id": "var_655",
-      "name": "padding/miuix_space_padding_4xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_570"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_570"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_656": {
-      "id": "var_656",
-      "name": "padding/miuix_space_padding_5xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_571"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_571"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_657": {
-      "id": "var_657",
-      "name": "padding/miuix_space_padding_6xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_572"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_572"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_658": {
-      "id": "var_658",
-      "name": "padding/miuix_space_padding_7xl",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_573"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_573"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_659": {
-      "id": "var_659",
-      "name": "margin/miuix_space_margin_none",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_562"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_562"
-        }
-      },
-      "codeSyntax": {}
-    },
     "var_660": {
       "id": "var_660",
-      "name": "margin/miuix_space_margin_xs",
+      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_563"
+          "id": "var_568"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_563"
+          "id": "var_568"
         }
       },
       "codeSyntax": {}
     },
     "var_661": {
       "id": "var_661",
-      "name": "margin/miuix_space_margin_sm",
+      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_564"
+          "id": "var_570"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_564"
+          "id": "var_570"
         }
       },
       "codeSyntax": {}
     },
     "var_662": {
       "id": "var_662",
-      "name": "margin/miuix_space_margin_md",
+      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_566"
+          "id": "var_573"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_566"
+          "id": "var_573"
         }
       },
       "codeSyntax": {}
     },
     "var_663": {
       "id": "var_663",
-      "name": "margin/miuix_space_margin_lg",
+      "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_567"
+          "id": "var_568"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_567"
+          "id": "var_568"
         }
       },
       "codeSyntax": {}
     },
     "var_664": {
       "id": "var_664",
-      "name": "margin/miuix_space_margin_xl",
+      "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_568"
+          "id": "var_570"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_568"
+          "id": "var_570"
         }
       },
       "codeSyntax": {}
     },
     "var_665": {
       "id": "var_665",
-      "name": "margin/miuix_space_margin_2xl",
+      "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_570"
+          "id": "var_571"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_570"
+          "id": "var_571"
         }
       },
       "codeSyntax": {}
     },
     "var_666": {
       "id": "var_666",
-      "name": "margin/miuix_space_margin_3xl",
+      "name": "padding/vertical/container/miuix_space_container_padding_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_571"
+          "id": "var_565"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_571"
+          "id": "var_565"
         }
       },
       "codeSyntax": {}
     },
     "var_667": {
       "id": "var_667",
-      "name": "margin/miuix_space_margin_4xl",
+      "name": "padding/vertical/container/miuix_space_container_padding_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_572"
+          "id": "var_573"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_572"
+          "id": "var_573"
         }
       },
       "codeSyntax": {}
     },
     "var_668": {
       "id": "var_668",
-      "name": "gap/miuix_space_gap_none",
+      "name": "padding/vertical/control/miuix_space_control_padding_vertical_xs",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_562"
+          "id": "var_564"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_562"
+          "id": "var_564"
         }
       },
       "codeSyntax": {}
     },
     "var_669": {
       "id": "var_669",
-      "name": "gap/miuix_space_gap_xs",
+      "name": "padding/vertical/control/miuix_space_control_padding_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_563"
+          "id": "var_565"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_563"
+          "id": "var_565"
         }
       },
       "codeSyntax": {}
     },
     "var_670": {
       "id": "var_670",
-      "name": "gap/miuix_space_gap_sm",
+      "name": "padding/vertical/control/miuix_space_control_padding_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_564"
+          "id": "var_566"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_564"
+          "id": "var_566"
         }
       },
       "codeSyntax": {}
     },
     "var_671": {
       "id": "var_671",
-      "name": "gap/miuix_space_gap_mg",
+      "name": "padding/vertical/control/miuix_space_control_padding_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_565"
+          "id": "var_569"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_565"
+          "id": "var_569"
         }
       },
       "codeSyntax": {}
     },
     "var_672": {
       "id": "var_672",
-      "name": "gap/miuix_space_gap_lg",
+      "name": "padding/vertical/control/miuix_space_control_padding_vertical_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_566"
+          "id": "var_570"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_566"
+          "id": "var_570"
         }
       },
       "codeSyntax": {}
     },
     "var_673": {
       "id": "var_673",
-      "name": "gap/miuix_space_gap_xl",
+      "name": "margin/miuix_space_margin_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_567"
+          "id": "var_568"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_567"
+          "id": "var_568"
         }
       },
       "codeSyntax": {}
     },
     "var_674": {
       "id": "var_674",
-      "name": "gap/miuix_space_gap_2xl",
+      "name": "margin/miuix_space_margin_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_568"
+          "id": "var_571"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_568"
+          "id": "var_571"
         }
       },
       "codeSyntax": {}
     },
     "var_675": {
       "id": "var_675",
-      "name": "gap/miuix_space_gap_3xl",
+      "name": "margin/miuix_space_margin_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_570"
+          "id": "var_575"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_570"
+          "id": "var_575"
         }
       },
       "codeSyntax": {}
     },
     "var_676": {
       "id": "var_676",
-      "name": "gap/miuix_space_gap_4xl",
+      "name": "margin/miuix_space_margin_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_571"
+          "id": "var_582"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_571"
+          "id": "var_582"
         }
       },
       "codeSyntax": {}
     },
     "var_677": {
       "id": "var_677",
-      "name": "gap/miuix_space_gap_5xl",
+      "name": "gap/horizontal/miuix_space_gap_horizontal_xs",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_572"
+          "id": "var_564"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_572"
+          "id": "var_564"
         }
       },
       "codeSyntax": {}
     },
     "var_678": {
       "id": "var_678",
-      "name": "radius/miuix_raidus_shape_none",
+      "name": "gap/horizontal/miuix_space_gap_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_582"
+          "id": "var_566"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_582"
+          "id": "var_566"
         }
       },
       "codeSyntax": {}
     },
     "var_679": {
       "id": "var_679",
-      "name": "radius/miuix_raidus_shape_xs",
+      "name": "gap/horizontal/miuix_space_gap_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_584"
+          "id": "var_568"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_584"
+          "id": "var_568"
         }
       },
       "codeSyntax": {}
     },
     "var_680": {
       "id": "var_680",
-      "name": "radius/miuix_raidus_shape_sm",
+      "name": "gap/horizontal/miuix_space_gap_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_585"
+          "id": "var_570"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_585"
+          "id": "var_570"
         }
       },
       "codeSyntax": {}
     },
     "var_681": {
       "id": "var_681",
-      "name": "radius/miuix_raidus_shape_md",
+      "name": "gap/vertical/miuix_space_gap_vertical_xs",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_586"
+          "id": "var_568"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_586"
+          "id": "var_568"
         }
       },
       "codeSyntax": {}
     },
     "var_682": {
       "id": "var_682",
-      "name": "radius/miuix_raidus_shape_lg",
+      "name": "gap/vertical/miuix_space_gap_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_587"
+          "id": "var_570"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_587"
+          "id": "var_570"
         }
       },
       "codeSyntax": {}
     },
     "var_683": {
       "id": "var_683",
-      "name": "radius/miuix_raidus_shape_xl",
+      "name": "gap/vertical/miuix_space_gap_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_588"
+          "id": "var_573"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_588"
+          "id": "var_573"
         }
       },
       "codeSyntax": {}
     },
     "var_684": {
       "id": "var_684",
-      "name": "radius/miuix_raidus_shape_2xl",
+      "name": "gap/vertical/miuix_space_gap_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_591"
+          "id": "var_576"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_591"
+          "id": "var_576"
         }
       },
       "codeSyntax": {}
     },
     "var_685": {
       "id": "var_685",
-      "name": "radius/miuix_raidus_shape_full",
+      "name": "gap/vertical/miuix_space_gap_vertical_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
           "type": "ALIAS",
-          "id": "var_594"
+          "id": "var_580"
         },
         "mode_dark": {
           "type": "ALIAS",
-          "id": "var_594"
+          "id": "var_580"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_686": {
+      "id": "var_686",
+      "name": "radius/miuix_radius_none",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_589"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_589"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_687": {
+      "id": "var_687",
+      "name": "radius/miuix_radius_container",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_596"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_596"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_688": {
+      "id": "var_688",
+      "name": "radius/miuix_radius_control_sm",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_596"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_596"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_689": {
+      "id": "var_689",
+      "name": "radius/miuix_radius_control_md",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_597"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_597"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_690": {
+      "id": "var_690",
+      "name": "radius/miuix_radius_control_lg",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_600"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_600"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_691": {
+      "id": "var_691",
+      "name": "radius/miuix_radius_overlay",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_602"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_602"
+        }
+      },
+      "codeSyntax": {}
+    },
+    "var_692": {
+      "id": "var_692",
+      "name": "radius/miuix_radius_full",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_606"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_606"
         }
       },
       "codeSyntax": {}
