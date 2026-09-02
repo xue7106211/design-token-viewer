@@ -152,122 +152,138 @@ export function ExportDialog() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="h-8 gap-1.5 cursor-pointer">
+        <Button
+          variant="outline"
+          size="sm"
+          className="h-8 gap-1.5 cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
+        >
           <Download className="h-3.5 w-3.5" />
           <span className="text-xs">导出</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-2xl">
-        <DialogHeader>
-          <DialogTitle>导出设计令牌</DialogTitle>
+      <DialogContent className="flex h-[calc(100dvh-1rem)] w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] flex-col gap-0 overflow-hidden p-0 sm:h-[min(90dvh,54rem)] sm:max-w-5xl">
+        <DialogHeader className="shrink-0 border-b px-5 py-4 sm:px-6">
+          <DialogTitle className="pr-8">导出设计令牌</DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-4">
-          {/* Format selector */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">格式：</span>
-            <div className="flex items-center gap-1 rounded-lg border bg-muted/50 p-0.5">
-              {(["android", "css", "json"] as const).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => {
-                    setFormat(f);
-                    void syncExportCode(f, source);
-                  }}
-                  className={cn(
-                    "rounded-md px-3 py-1 text-xs font-medium cursor-pointer transition-all duration-200 ease",
-                    format === f
-                      ? "bg-background text-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {f === "css" ? "CSS" : f === "android" ? "Android XML" : "JSON (原始数据)"}
-                </button>
-              ))}
+        <div className="flex min-h-0 flex-1 flex-col gap-4 p-5 sm:p-6">
+          <div className="flex shrink-0 flex-col gap-3 rounded-lg border bg-muted/20 p-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <span className="text-xs text-muted-foreground">格式：</span>
+              <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-lg border bg-muted/50 p-0.5">
+                {(["android", "css", "json"] as const).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => {
+                      setFormat(f);
+                      void syncExportCode(f, source);
+                    }}
+                    className={cn(
+                      "shrink-0 rounded-md px-3 py-1 text-xs font-medium cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]",
+                      format === f
+                        ? "bg-background text-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {f === "css" ? "CSS" : f === "android" ? "Android XML" : "JSON (原始数据)"}
+                  </button>
+                ))}
+              </div>
             </div>
-            <span className="text-xs text-muted-foreground ml-auto" data-testid="export-token-count">
-              {sourceTokens.length} 个令牌
-            </span>
+
+            <div className="flex min-w-0 flex-wrap items-center gap-2 sm:justify-end">
+              <span className="text-xs text-muted-foreground">来源：</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-8 min-w-32 justify-between gap-2 px-2.5 text-xs font-normal transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
+                    aria-label="选择导出来源"
+                  >
+                    <span className="truncate">{sourceLabel}</span>
+                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="min-w-40">
+                  <DropdownMenuLabel className="px-2 py-1 text-[11px] font-medium text-muted-foreground">
+                    导出范围
+                  </DropdownMenuLabel>
+                  <DropdownMenuRadioGroup value={source} onValueChange={handleSourceChange}>
+                    <DropdownMenuRadioItem value="current" className="cursor-pointer text-xs">
+                      当前 Token 表
+                    </DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="all" className="cursor-pointer text-xs">
+                      全部 Token 表
+                    </DropdownMenuRadioItem>
+                    {snapshots.length > 0 && (
+                      <>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuLabel className="px-2 py-1 text-[11px] font-medium text-muted-foreground">
+                          版本快照
+                        </DropdownMenuLabel>
+                        {snapshots.map((snapshot) => (
+                          <DropdownMenuRadioItem key={snapshot.id} value={snapshot.id} className="max-w-64 cursor-pointer text-xs">
+                            <span className="truncate">{snapshot.name}</span>
+                          </DropdownMenuRadioItem>
+                        ))}
+                      </>
+                    )}
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {isGenerating && (
+                <span className="text-xs text-muted-foreground">正在生成...</span>
+              )}
+              <span className="whitespace-nowrap rounded-md bg-background px-2 py-1 text-xs text-muted-foreground" data-testid="export-token-count">
+                {sourceTokens.length} 个令牌
+              </span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">来源：</span>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="h-8 min-w-32 justify-between gap-2 px-2.5 text-xs font-normal"
-                  aria-label="选择导出来源"
-                >
-                  <span className="truncate">{sourceLabel}</span>
-                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="min-w-40">
-                <DropdownMenuLabel className="px-2 py-1 text-[11px] font-medium text-muted-foreground">
-                  导出范围
-                </DropdownMenuLabel>
-                <DropdownMenuRadioGroup value={source} onValueChange={handleSourceChange}>
-                  <DropdownMenuRadioItem value="current" className="cursor-pointer text-xs">
-                    当前 Token 表
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="all" className="cursor-pointer text-xs">
-                    全部 Token 表
-                  </DropdownMenuRadioItem>
-                  {snapshots.length > 0 && (
-                    <>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuLabel className="px-2 py-1 text-[11px] font-medium text-muted-foreground">
-                        版本快照
-                      </DropdownMenuLabel>
-                      {snapshots.map((snapshot) => (
-                        <DropdownMenuRadioItem key={snapshot.id} value={snapshot.id} className="max-w-64 cursor-pointer text-xs">
-                          <span className="truncate">{snapshot.name}</span>
-                        </DropdownMenuRadioItem>
-                      ))}
-                    </>
-                  )}
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            {isGenerating && (
-              <span className="text-xs text-muted-foreground">正在生成...</span>
-            )}
-          </div>
-
-          {/* Code preview */}
-          <div className="relative min-w-0 w-full rounded-lg border bg-muted/30 overflow-hidden">
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border bg-muted/30">
+            <div className="flex shrink-0 items-center justify-between border-b bg-background/60 px-3 py-2">
+              <span className="text-xs font-medium">代码预览</span>
+              <span className="text-[11px] text-muted-foreground">可横向滚动查看完整代码</span>
+            </div>
             {html ? (
               <div
-                className="shiki-wrapper min-w-0 w-full overflow-x-auto overflow-y-auto p-4 text-[11px] font-mono leading-relaxed max-h-80 [&_pre]:!bg-transparent [&_pre]:min-w-0 [&_code]:!bg-transparent [&_code]:break-all [&_code]:whitespace-pre-wrap"
+                className="shiki-wrapper min-h-0 flex-1 overflow-auto p-4 text-[11px] font-mono leading-relaxed [&_pre]:!w-max [&_pre]:!min-w-max [&_pre]:!bg-transparent [&_code]:!bg-transparent [&_code]:!whitespace-pre"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             ) : (
-              <pre className="min-w-0 w-full overflow-x-auto overflow-y-auto whitespace-pre-wrap break-all p-4 text-[11px] font-mono leading-relaxed text-foreground/90 max-h-80">
+              <pre className="min-h-0 flex-1 overflow-auto whitespace-pre p-4 text-[11px] font-mono leading-relaxed text-foreground/90">
                 <code>{code}</code>
               </pre>
             )}
           </div>
 
-          {/* Actions */}
-          <div className="flex justify-end gap-2">
+          <div className="flex shrink-0 justify-end gap-2 border-t pt-4">
             <Button
               variant="outline"
               size="sm"
-              className="gap-1.5 cursor-pointer"
+              className="gap-1.5 cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
               onClick={handleCopy}
             >
-              {copied ? (
-                <Check className="h-3.5 w-3.5 text-green-500" />
-              ) : (
-                <Copy className="h-3.5 w-3.5" />
-              )}
+              <span className="relative flex h-3.5 w-3.5 items-center justify-center" aria-hidden="true">
+                <Copy
+                  className={cn(
+                    "absolute h-3.5 w-3.5 transition-[transform,opacity,filter] duration-150 ease-[cubic-bezier(0.2,0,0,1)]",
+                    copied ? "scale-[0.25] opacity-0 blur-[4px]" : "scale-100 opacity-100 blur-0"
+                  )}
+                />
+                <Check
+                  className={cn(
+                    "absolute h-3.5 w-3.5 text-green-500 transition-[transform,opacity,filter] duration-150 ease-[cubic-bezier(0.2,0,0,1)]",
+                    copied ? "scale-100 opacity-100 blur-0" : "scale-[0.25] opacity-0 blur-[4px]"
+                  )}
+                />
+              </span>
               <span>{copied ? "已复制" : "复制"}</span>
             </Button>
             <Button
               size="sm"
-              className="gap-1.5 cursor-pointer"
+              className="gap-1.5 cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
               onClick={handleDownload}
             >
               <Download className="h-3.5 w-3.5" />
