@@ -37,6 +37,8 @@ export interface FigmaVariable {
   name: string;
   type: "COLOR" | "NUMBER" | "STRING" | "BOOLEAN";
   description?: string;
+  /** Figma variable usage scopes */
+  scopes?: string[];
   valuesByMode: Record<string, FigmaValue>;
   /** Import key (Figma Plugin API); optional in JSON export */
   key?: string;

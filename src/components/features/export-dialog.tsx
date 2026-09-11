@@ -155,7 +155,7 @@ export function ExportDialog() {
         <Button
           variant="outline"
           size="sm"
-          className="h-8 gap-1.5 cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
+          className="cursor-pointer active:scale-[0.96]"
         >
           <Download className="h-3.5 w-3.5" />
           <span className="text-xs">导出</span>
@@ -167,7 +167,7 @@ export function ExportDialog() {
         </DialogHeader>
 
         <div className="flex min-h-0 flex-1 flex-col gap-4 p-5 sm:p-6">
-          <div className="flex shrink-0 flex-col gap-3 rounded-lg border bg-muted/20 p-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex shrink-0 flex-col gap-3 rounded-xl bg-muted/30 p-3 shadow-[var(--elevation-raised)] sm:flex-row sm:items-center sm:justify-between">
             <div className="flex min-w-0 flex-wrap items-center gap-2">
               <span className="text-xs text-muted-foreground">格式：</span>
               <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-lg border bg-muted/50 p-0.5">
@@ -179,7 +179,7 @@ export function ExportDialog() {
                       void syncExportCode(f, source);
                     }}
                     className={cn(
-                      "shrink-0 rounded-md px-3 py-1 text-xs font-medium cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]",
+                      "shrink-0 rounded-md px-3 py-1 text-xs font-medium cursor-pointer transition-[color,background-color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]",
                       format === f
                         ? "bg-background text-foreground shadow-sm"
                         : "text-muted-foreground hover:text-foreground"
@@ -198,7 +198,7 @@ export function ExportDialog() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-8 min-w-32 justify-between gap-2 px-2.5 text-xs font-normal transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
+                    className="min-w-32 justify-between gap-2 px-2.5 text-xs font-normal active:scale-[0.96]"
                     aria-label="选择导出来源"
                   >
                     <span className="truncate">{sourceLabel}</span>
@@ -235,13 +235,13 @@ export function ExportDialog() {
               {isGenerating && (
                 <span className="text-xs text-muted-foreground">正在生成...</span>
               )}
-              <span className="whitespace-nowrap rounded-md bg-background px-2 py-1 text-xs text-muted-foreground" data-testid="export-token-count">
+              <span className="whitespace-nowrap rounded-md bg-background px-2 py-1 text-xs font-mono tabular-nums text-muted-foreground" data-testid="export-token-count">
                 {sourceTokens.length} 个令牌
               </span>
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border bg-muted/30">
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border bg-muted/30">
             <div className="flex shrink-0 items-center justify-between border-b bg-background/60 px-3 py-2">
               <span className="text-xs font-medium">代码预览</span>
               <span className="text-[11px] text-muted-foreground">可横向滚动查看完整代码</span>
@@ -262,20 +262,20 @@ export function ExportDialog() {
             <Button
               variant="outline"
               size="sm"
-              className="gap-1.5 cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
+              className="h-9 gap-1.5 cursor-pointer active:scale-[0.96]"
               onClick={handleCopy}
             >
               <span className="relative flex h-3.5 w-3.5 items-center justify-center" aria-hidden="true">
                 <Copy
                   className={cn(
-                    "absolute h-3.5 w-3.5 transition-[transform,opacity,filter] duration-150 ease-[cubic-bezier(0.2,0,0,1)]",
-                    copied ? "scale-[0.25] opacity-0 blur-[4px]" : "scale-100 opacity-100 blur-0"
+                    "absolute h-3.5 w-3.5 transition-[transform,opacity] duration-150 ease-[cubic-bezier(0.2,0,0,1)]",
+                    copied ? "scale-0 opacity-0" : "scale-100 opacity-100"
                   )}
                 />
                 <Check
                   className={cn(
-                    "absolute h-3.5 w-3.5 text-green-500 transition-[transform,opacity,filter] duration-150 ease-[cubic-bezier(0.2,0,0,1)]",
-                    copied ? "scale-100 opacity-100 blur-0" : "scale-[0.25] opacity-0 blur-[4px]"
+                    "absolute h-3.5 w-3.5 text-green-500 transition-[transform,opacity] duration-150 ease-[cubic-bezier(0.2,0,0,1)]",
+                    copied ? "scale-100 opacity-100" : "scale-0 opacity-0"
                   )}
                 />
               </span>
@@ -283,7 +283,7 @@ export function ExportDialog() {
             </Button>
             <Button
               size="sm"
-              className="gap-1.5 cursor-pointer transition-[background-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.96]"
+              className="h-9 gap-1.5 cursor-pointer active:scale-[0.96]"
               onClick={handleDownload}
             >
               <Download className="h-3.5 w-3.5" />

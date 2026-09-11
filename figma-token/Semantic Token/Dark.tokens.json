@@ -13,10 +13,12 @@
           "alpha": 1,
           "hex": "#000000"
         },
+        "$description": "用于白底页面的整体背景，随 Light / Dark 模式切换。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2691",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "FRAME_FILL",
+            "SHAPE_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:08af0a11d81a159a317227f02367fb0ed6f1ddcd/-1:-1",
@@ -38,10 +40,12 @@
           "alpha": 1,
           "hex": "#000000"
         },
+        "$description": "用于灰底页面的整体背景，随 Light / Dark 模式切换。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2692",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "FRAME_FILL",
+            "SHAPE_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:08af0a11d81a159a317227f02367fb0ed6f1ddcd/-1:-1",
@@ -65,10 +69,12 @@
           "alpha": 1,
           "hex": "#242424"
         },
+        "$description": "用于白底样式浮层的背景，随 Light / Dark 模式切换。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2801",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "FRAME_FILL",
+            "SHAPE_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:50d19056e9bd9965056704b53ddd0af294a1c218/-1:-1",
@@ -90,10 +96,12 @@
           "alpha": 1,
           "hex": "#242424"
         },
+        "$description": "用于灰底样式浮层的背景，随 Light / Dark 模式切换。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2802",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "FRAME_FILL",
+            "SHAPE_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:50d19056e9bd9965056704b53ddd0af294a1c218/-1:-1",
@@ -117,10 +125,12 @@
           "alpha": 1,
           "hex": "#2C2C2C"
         },
+        "$description": "用于页面内组件容器的背景，随 Light / Dark 模式切换。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2803",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "FRAME_FILL",
+            "SHAPE_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ca9d3ea01815364611af4d6b54bdad05eec4d82e/-1:-1",
@@ -146,6 +156,7 @@
           "alpha": 0.949999988079071,
           "hex": "#FFFFFF"
         },
+        "$description": "用于主要文字，如页面标题、正文和关键内容。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2693",
           "com.figma.scopes": [
@@ -171,6 +182,7 @@
           "alpha": 0.800000011920929,
           "hex": "#FFFFFF"
         },
+        "$description": "用于次要文字，如辅助说明和次级内容，层级低于主要文字。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2694",
           "com.figma.scopes": [
@@ -196,6 +208,7 @@
           "alpha": 0.5,
           "hex": "#FFFFFF"
         },
+        "$description": "用于第三层级文字，弱化补充信息。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2695",
           "com.figma.scopes": [
@@ -221,6 +234,7 @@
           "alpha": 0.4000000059604645,
           "hex": "#FFFFFF"
         },
+        "$description": "用于第四层级文字，呈现更弱的辅助信息。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2696",
           "com.figma.scopes": [
@@ -246,6 +260,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
+        "$description": "用于低强调层级的文字，具体适用场景以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2697",
           "com.figma.scopes": [
@@ -271,6 +286,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
+        "$description": "用于主要文字的禁用状态，表示关联内容或操作不可用。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2698",
           "com.figma.scopes": [
@@ -296,6 +312,7 @@
           "alpha": 0.5,
           "hex": "#FFFFFF"
         },
+        "$description": "用于主要文字的按下状态，反馈正在进行的按压操作。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4325:3501",
           "com.figma.scopes": [
@@ -304,22 +321,6 @@
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d607098b4dcdfe2f2ea1758ae122ca8da13537ca/-1:-1",
             "targetVariableName": "opacity/white/miuix_white_opacity_level_500",
-            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-            "targetVariableSetName": "Reference Token"
-          }
-        }
-      },
-      "miuix_radius_container": {
-        "$type": "number",
-        "$value": 20,
-        "$extensions": {
-          "com.figma.variableId": "VariableID:7009:6610",
-          "com.figma.scopes": [
-            "CORNER_RADIUS"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:794bfb4bb7042eec8c5da78a604516667be66921/-1:-1",
-            "targetVariableName": "number/radius/miuix_radius_20",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -339,6 +340,7 @@
           "alpha": 1,
           "hex": "#3482FF"
         },
+        "$description": "用于品牌强调文字，突出品牌相关内容或操作。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5474",
           "com.figma.scopes": [
@@ -364,6 +366,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#3482FF"
         },
+        "$description": "用于品牌强调文字的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5475",
           "com.figma.scopes": [
@@ -391,6 +394,7 @@
           "alpha": 1,
           "hex": "#3482FF"
         },
+        "$description": "用于可交互的链接文字，提示可跳转或查看关联内容。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2721",
           "com.figma.scopes": [
@@ -416,6 +420,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#3482FF"
         },
+        "$description": "用于链接文字的禁用状态，表示链接当前不可用。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2722",
           "com.figma.scopes": [
@@ -443,6 +448,7 @@
           "alpha": 1,
           "hex": "#FF9F05"
         },
+        "$description": "用于提醒用户注意的文字，表达 caution 提示语义。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2730",
           "com.figma.scopes": [
@@ -468,6 +474,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#FF9F05"
         },
+        "$description": "用于 caution 提示文字的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2731",
           "com.figma.scopes": [
@@ -495,6 +502,7 @@
           "alpha": 1,
           "hex": "#FA382E"
         },
+        "$description": "用于警告或风险提示文字，表达 warning 语义。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5464",
           "com.figma.scopes": [
@@ -520,6 +528,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#FA382E"
         },
+        "$description": "用于 warning 警告文字的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5465",
           "com.figma.scopes": [
@@ -547,6 +556,7 @@
           "alpha": 1,
           "hex": "#1DCD3A"
         },
+        "$description": "用于成功状态的文字，表达操作成功或完成。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5462",
           "com.figma.scopes": [
@@ -572,6 +582,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#1DCD3A"
         },
+        "$description": "用于成功语义文字的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5463",
           "com.figma.scopes": [
@@ -599,6 +610,7 @@
           "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
+        "$description": "用于文字相关交互的悬停状态反馈，具体作用对象与使用方式以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3919:2",
           "com.figma.scopes": [
@@ -624,6 +636,7 @@
           "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
+        "$description": "用于文字相关交互的按下状态反馈，具体作用对象与使用方式以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3919:6",
           "com.figma.scopes": [
@@ -649,6 +662,7 @@
           "alpha": 0.11999999731779099,
           "hex": "#FFFFFF"
         },
+        "$description": "用于文字相关交互的选中状态反馈，具体作用对象与使用方式以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3919:17",
           "com.figma.scopes": [
@@ -676,6 +690,7 @@
           "alpha": 1,
           "hex": "#FFFFFF"
         },
+        "$description": "用于需要在 Light / Dark 模式下保持白色的文字。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5472",
           "com.figma.scopes": [
@@ -701,6 +716,7 @@
           "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
+        "$description": "用于固定白色文字的禁用状态，通过降低不透明度弱化表现。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5473",
           "com.figma.scopes": [
@@ -730,10 +746,11 @@
           "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
+        "$description": "用于默认中性填充的一级层级，随 Light / Dark 模式适配。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2751",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
@@ -755,10 +772,11 @@
           "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
+        "$description": "用于默认中性填充的二级层级，具体组件用法以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2764",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
@@ -780,10 +798,11 @@
           "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
+        "$description": "用于默认中性填充的三级层级，具体组件用法以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2765",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
@@ -805,10 +824,11 @@
           "alpha": 0.20000000298023224,
           "hex": "#FFFFFF"
         },
+        "$description": "用于默认中性填充的四级层级，具体组件用法以组件规范为准。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4168:8635",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
@@ -816,63 +836,6 @@
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
-        }
-      },
-      "miuix_color_fill_primary_disabled": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0,
-            0,
-            0
-          ],
-          "alpha": 1,
-          "hex": "#000000"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:3525:2768",
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ]
-        }
-      },
-      "miuix_color_fill_secondary_disabled": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0,
-            0,
-            0
-          ],
-          "alpha": 1,
-          "hex": "#000000"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:4352:3507",
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ]
-        }
-      },
-      "miuix_color_fill_tertiary_disabled": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0,
-            0,
-            0
-          ],
-          "alpha": 1,
-          "hex": "#000000"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:4352:3508",
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ]
         }
       },
       "miuix_color_fill_quaternary_disabled": {
@@ -887,10 +850,11 @@
           "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
+        "$description": "用于默认中性四级填充的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4352:3509",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
@@ -914,10 +878,11 @@
           "alpha": 1,
           "hex": "#3482FF"
         },
+        "$description": "用于品牌强调填充，突出品牌相关区域或主要操作。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2752",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:b93f3f19ca5db6d07d9c3978fe0c541dc49b5bdf/-1:-1",
@@ -939,10 +904,11 @@
           "alpha": 0.30000001192092896,
           "hex": "#3482FF"
         },
+        "$description": "用于品牌强调填充的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2753",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:5b3b65433a2088f8e4b76fb227be449dafe86560/-1:-1",
@@ -966,10 +932,11 @@
           "alpha": 1,
           "hex": "#FFBB0F"
         },
+        "$description": "用于提醒用户注意的区域或元素填充，表达 caution 提示语义。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2791",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:6e30e39c63a22e66e1e089b3309d9bfbffe9b713/-1:-1",
@@ -991,10 +958,11 @@
           "alpha": 0.30000001192092896,
           "hex": "#FFBB0F"
         },
+        "$description": "用于 caution 提示填充的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2792",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:9a9401678849d442aa33d7d119fd9f6e1b56e56b/-1:-1",
@@ -1018,10 +986,11 @@
           "alpha": 1,
           "hex": "#FA382E"
         },
+        "$description": "用于警告或风险提示的填充，表达 warning 语义。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3978:18",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:b36d2e0d08cb89be41b34f59de3a91986cd0b67f/-1:-1",
@@ -1043,10 +1012,11 @@
           "alpha": 0.30000001192092896,
           "hex": "#FA382E"
         },
+        "$description": "用于 warning 警告填充的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3978:17",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:2e3bea4d957ab61307fc9839d0b1d2dcd6a85cfa/-1:-1",
@@ -1070,10 +1040,11 @@
           "alpha": 1,
           "hex": "#1DCD3A"
         },
+        "$description": "用于成功状态的填充，表达操作成功或完成。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2797",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:09d01ba8180a14ee5ade87b8ea26975250b7dadd/-1:-1",
@@ -1095,10 +1066,11 @@
           "alpha": 0.30000001192092896,
           "hex": "#1DCD3A"
         },
+        "$description": "用于成功语义填充的禁用状态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2798",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:46f730a867b6db717f47a4b51ea87f50f1a0a070/-1:-1",
@@ -1122,10 +1094,11 @@
           "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
+        "$description": "用于填充区域的悬停状态反馈。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5459",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
@@ -1147,10 +1120,11 @@
           "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
+        "$description": "用于填充区域的按下状态反馈。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5460",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
@@ -1172,10 +1146,11 @@
           "alpha": 0.11999999731779099,
           "hex": "#FFFFFF"
         },
+        "$description": "用于填充区域的选中状态反馈。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5461",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:340a7df8215e34cf6d94a13020fd2e15e6d1bd1a/-1:-1",
@@ -1199,10 +1174,11 @@
           "alpha": 1,
           "hex": "#FFFFFF"
         },
+        "$description": "用于需要在 Light / Dark 模式下保持白色的填充。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2756",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
@@ -1224,10 +1200,11 @@
           "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
+        "$description": "用于固定白色填充的禁用状态，通过降低不透明度弱化表现。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2761",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "TEXT_FILL"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
@@ -1253,10 +1230,11 @@
           "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
+        "$description": "用于可用状态下的边框描边，界定元素或容器边界。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3531:2689",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "STROKE"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
@@ -1278,10 +1256,11 @@
           "alpha": 0.20000000298023224,
           "hex": "#FFFFFF"
         },
+        "$description": "用于禁用状态下的边框描边，弱化不可用元素的边界。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3901:5",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "STROKE"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
@@ -1305,10 +1284,11 @@
           "alpha": 0.20000000298023224,
           "hex": "#FFFFFF"
         },
+        "$description": "用于内容分隔线，区分相邻内容或分组。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3531:2693",
           "com.figma.scopes": [
-            "ALL_SCOPES"
+            "STROKE"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
@@ -1333,10 +1313,12 @@
         "alpha": 0.6000000238418579,
         "hex": "#000000"
       },
+      "$description": "用于遮罩，弱化被覆盖的背景内容并突出前景层。",
       "$extensions": {
         "com.figma.variableId": "VariableID:3533:2696",
         "com.figma.scopes": [
-          "ALL_SCOPES"
+          "FRAME_FILL",
+          "SHAPE_FILL"
         ],
         "com.figma.aliasData": {
           "targetVariableId": "VariableID:e6b66350ea685ca140d57fe8ea0ab5e912e1a8de/-1:-1",
@@ -1396,6 +1378,23 @@
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:e776360f3544f2882f51faadf711a3ca7e03ee49/-1:-1",
               "targetVariableName": "number/space/miuix_space_24",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_space_container_padding_horizontal_xl": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "卡片、抽屉、弹出框类",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:7466:6594",
+            "com.figma.scopes": [
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f0e027d37687837d436b666920297c4cf5fff824/-1:-1",
+              "targetVariableName": "number/space/miuix_space_28",
               "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
               "targetVariableSetName": "Reference Token"
             }
@@ -1487,6 +1486,23 @@
             "com.figma.aliasData": {
               "targetVariableId": "VariableID:e776360f3544f2882f51faadf711a3ca7e03ee49/-1:-1",
               "targetVariableName": "number/space/miuix_space_24",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_space_container_padding_vertical_lg": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "卡片、抽屉、弹出框类",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:7466:6595",
+            "com.figma.scopes": [
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f0e027d37687837d436b666920297c4cf5fff824/-1:-1",
+              "targetVariableName": "number/space/miuix_space_28",
               "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
               "targetVariableSetName": "Reference Token"
             }
@@ -1921,6 +1937,78 @@
           "targetVariableName": "number/radius/miuix_radius_999",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "safe_area": {
+    "bottom": {
+      "miuix_space_safe_area_bottom_sm": {
+        "$type": "number",
+        "$value": 24,
+        "$description": "页面底部安全间距（Safe Area），纵向。底部悬浮元素：底部导航栏、底部工具栏、弹出框容器类等。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:7469:8466",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:e776360f3544f2882f51faadf711a3ca7e03ee49/-1:-1",
+            "targetVariableName": "number/space/miuix_space_24",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_space_safe_area_bottom_md": {
+        "$type": "number",
+        "$value": 32,
+        "$description": "页面底部安全间距（Safe Area），纵向。录音按钮、独立性主操作按钮。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:7469:8467",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:3ff40756d9cf79927d280f97c840328df7c9dce6/-1:-1",
+            "targetVariableName": "number/space/miuix_space_32",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_space_safe_area_bottom_lg": {
+        "$type": "number",
+        "$value": 48,
+        "$description": "页面底部安全间距（Safe Area），纵向。底部固定按钮、列表底部；底部悬浮元素与跟随按钮、列表底部之间距。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:7469:8468",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:44b131de14dba8c386355d754cb34ad39d979461/-1:-1",
+            "targetVariableName": "number/space/miuix_space_48",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_space_safe_area_bottom_xl": {
+        "$type": "number",
+        "$value": 128,
+        "$description": "页面底部安全间距（Safe Area），纵向。系统 Toast。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:7469:8469",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:8d3bbe9ce73b18fe128ef26a1c705a0c1f2a8f8b/-1:-1",
+            "targetVariableName": "number/space/miuix_space_128",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
         }
       }
     }

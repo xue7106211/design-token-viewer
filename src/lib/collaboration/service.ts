@@ -131,6 +131,8 @@ export function createTokenDocumentService(
   documentId = DEFAULT_DOCUMENT_ID,
   documentName = DEFAULT_DOCUMENT_NAME
 ) {
+  const seedTokens = parseTokenDocument(initialJson).tokens;
+
   async function ensureDocument(): Promise<TokenDocumentRecord> {
     const existing = await repository.getDocument(documentId);
     if (existing) return existing;
@@ -148,7 +150,7 @@ export function createTokenDocumentService(
 
   async function getDocument(): Promise<TokenDocumentView> {
     const document = await ensureDocument();
-    return toDocumentView(document);
+    return toDocumentView(document, seedTokens);
   }
 
   async function updateDocument(
@@ -166,7 +168,7 @@ export function createTokenDocumentService(
     const document = await ensureDocument();
     assertFreshRevision(document, revision);
 
-    const parsed = parseAndResolve(document.currentJson);
+    const parsed = parseDocumentWithSeedMetadata(document.currentJson, seedTokens);
     const logPayload = mutate(parsed);
     const rawJSON = rebuildRawJSON(parsed.collections, parsed.tokens);
     const updated = await repository.saveDocument({
@@ -188,7 +190,7 @@ export function createTokenDocumentService(
       ...logPayload,
     });
 
-    return toDocumentView(updated);
+    return toDocumentView(updated, seedTokens);
   }
 
   return {
@@ -216,7 +218,7 @@ export function createTokenDocumentService(
         oldValue: summarizeDocument(document.currentJson, "原文档"),
         newValue: summarizeDocument(input.json, "导入文档"),
       });
-      return toDocumentView(updated);
+      return toDocumentView(updated, seedTokens);
     },
 
     updateTokenValue(input: {
@@ -482,19 +484,40 @@ export function createTokenDocumentService(
         oldValue: summarizeDocument(document.currentJson, "恢复前文档"),
         newValue: { snapshotId: snapshot.id, name: snapshot.name },
       });
-      return toDocumentView(updated);
+      return toDocumentView(updated, seedTokens);
     },
   };
 }
 
-function parseAndResolve(json: unknown): ParsedTokenData {
+function parseTokenDocument(json: unknown): ParsedTokenData {
   const parsed = parseTokenJSON(json);
   if (!parsed) throw new InvalidTokenDocumentError();
-  return resolveTokens(parsed);
+  return parsed;
 }
 
-function toDocumentView(document: TokenDocumentRecord): TokenDocumentView {
-  const parsed = parseAndResolve(document.currentJson);
+function parseAndResolve(json: unknown): ParsedTokenData {
+  return resolveTokens(parseTokenDocument(json));
+}
+
+function parseDocumentWithSeedMetadata(
+  json: unknown,
+  seedTokens: Record<string, DesignToken>
+): ParsedTokenData {
+  const parsed = parseAndResolve(json);
+  for (const token of Object.values(parsed.tokens)) {
+    const seedToken = seedTokens[token.id];
+    if (!seedToken || seedToken.name !== token.name || seedToken.type !== token.type) continue;
+    if (!token.description && seedToken.description) token.description = seedToken.description;
+    if (!token.scopes?.length && seedToken.scopes?.length) token.scopes = seedToken.scopes;
+  }
+  return parsed;
+}
+
+function toDocumentView(
+  document: TokenDocumentRecord,
+  seedTokens: Record<string, DesignToken>
+): TokenDocumentView {
+  const parsed = parseDocumentWithSeedMetadata(document.currentJson, seedTokens);
   return {
     ...document,
     currentJson: clone(document.currentJson),

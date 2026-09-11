@@ -22,6 +22,7 @@ export function rebuildRawJSON(
       type: token.type,
       valuesByMode,
       description: token.description,
+      scopes: token.scopes,
       codeSyntax: token.codeSyntax,
     };
   }

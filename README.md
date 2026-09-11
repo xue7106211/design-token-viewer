@@ -4,20 +4,21 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 
 ## 功能
 
-- 多套 Token 表切换：顶部一键切换 **HyperOS 3 / HyperOS 4**，两套数据、变更日志、快照完全独立
+- 多套 Token 表切换：在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**；文档、编辑和日志按文档 ID 隔离，快照隔离限制见下文
 - 服务端导入 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
 - 树形导航 + 搜索过滤，Grid / List 双视图
 - 多 Collection、多 Mode 切换
 - 颜色令牌：色块预览、HEX/RGB/HSL 值、WCAG 对比度检查
 - 数值 / 字符串 / 布尔令牌预览
 - 别名引用链路可视化，反向引用查看
+- 保留并展示 Figma description；NUMBER Token 展示 Figma scopes
 - 令牌编辑：值、名称、描述、Code Syntax、别名引用
 - 令牌删除、分组重命名、令牌重排序
-- 变更日志：自动记录所有编辑操作（值、名称、描述、Code Syntax、别名、删除、重命名、重排序），含时间戳、客户端 IP、前后值对比（颜色色块高亮）
-- 代码导出：CSS 自定义属性、Android XML resources、原始 JSON
+- 变更日志：记录编辑、导入、快照创建/恢复等操作，包含 actor、时间戳、客户端 IP 和前后值对比
+- 代码导出：CSS 自定义属性、Android XML resources、原始 JSON；来源可选当前过滤结果、当前文档全部 Collection，或在确认请求成功后导出版本快照
 - Shiki 语法高亮（支持 XML / CSS / JSON，亮色暗色双主题）
 - 亮色 / 暗色主题切换
-- Token 文档、变更日志和快照由服务端持久化；浏览器 localStorage 仅保存当前文档、视图和面板偏好
+- Token 文档、变更日志和快照由服务端持久化；浏览器 localStorage 仅保存文档选择、UI 偏好和轻量 actor 标识
 
 ## 技术栈
 
@@ -50,81 +51,86 @@ npm run dev
 
 ## 项目结构
 
-```
+```text
 src/
 ├── app/              # Next.js App Router
 │   ├── layout.tsx / page.tsx / providers.tsx / globals.css
-│   └── api/          # 后端路由 (Route Handlers)
-│       ├── token-document/      # 令牌文档读取 / 导入
-│       ├── tokens/[tokenId]/    # 单令牌编辑 (value / name / description / code-syntax / alias)
-│       ├── snapshots/           # 快照列表 / 创建 / [snapshotId]/restore 恢复
-│       ├── change-logs/         # 变更日志读取
-│       ├── groups/rename/       # 分组重命名
-│       ├── client-ip/           # 请求来源 IP
-│       ├── export/              # 服务端导出
-│       └── save-sample-tokens/  # DEV: 写回示例数据
+│   └── api/          # Route Handlers
+│       ├── token-document/      # GET 读取、POST 导入；import/ 为 POST 别名
+│       ├── tokens/              # 单 Token 编辑/删除与 reorder
+│       ├── snapshots/           # GET/POST 列表与创建、[snapshotId]/restore 恢复
+│       ├── change-logs/         # GET 变更日志
+│       ├── groups/rename/       # PATCH 分组重命名
+│       ├── client-ip/           # GET 请求来源 IP
+│       ├── export/              # GET JSON/CSS/Android，可选 snapshotId/modeId
+│       └── save-sample-tokens/  # DEV-only，写回 HyperOS3 示例数据
 ├── components/
-│   ├── ui/           # shadcn/ui 基础组件 (12 个)
-│   ├── layout/       # AppShell, Sidebar, MainView
-│   └── features/     # 业务组件 (树、网格、列表、检查器、导出、变更日志、快照、协作者署名、文档切换器等)
+│   ├── ui/           # shadcn/ui 基础组件
+│   ├── layout/       # AppShell、Sidebar、MainView
+│   └── features/     # Token 浏览、检查器、导出、日志、快照、文档切换等业务组件
 ├── lib/
-│   ├── parsers/      # JSON 格式检测与解析 (7 个文件含测试)
-│   ├── code-generators/  # CSS / Android XML 代码生成 (5 个文件含测试)
-│   ├── collaboration/    # 协作层 (client / server / service / repository + 测试)
-│   ├── db/               # Drizzle ORM (index 连接 + schema 表结构)
-│   ├── token-resolver.ts # 别名递归解析
-│   ├── tree-builder.ts   # 树形结构构建
-│   ├── token-rebuilder.ts # 重建 Figma Native JSON
-│   ├── contrast.ts       # WCAG 对比度计算
-│   ├── changelog.ts      # 变更日志工具 (IP 获取、时间格式化、类型标签)
-│   ├── sync-sample-tokens.ts # DEV: 同步示例数据到文件
-│   └── use-shiki.ts      # Shiki 语法高亮 hook
-├── stores/           # Zustand 全局状态 (令牌 store + 变更日志 store)
-├── types/            # TypeScript 类型定义
-└── data/             # 种子数据 (sample-tokens.json = HyperOS3, sample-tokens-hyperos4.json = HyperOS4)
+│   ├── parsers/          # JSON 格式检测与解析
+│   ├── code-generators/  # CSS / Android XML 生成
+│   ├── collaboration/    # client / server / service / repository 与加载状态
+│   ├── db/               # Drizzle PostgreSQL 连接与 schema
+│   ├── token-resolver.ts
+│   ├── tree-builder.ts
+│   ├── token-rebuilder.ts
+│   └── contrast.ts
+├── stores/           # Zustand UI 状态与前端日志缓存
+├── types/            # TypeScript 类型
+└── data/             # HyperOS3 / HyperOS4 种子
 
-figma-token/          # HyperOS4 Figma DTCG 导出源 (Component / Reference / Semantic，各含 Light/Dark)
-drizzle/              # Drizzle 数据库迁移 SQL
-drizzle.config.ts     # Drizzle Kit 配置 (postgresql)
-scripts/              # 辅助脚本 (Figma 数据转换、DTCG 转换、数据库初始化)
-docs/                 # 项目文档 (验收清单、预设变量、结构说明)
+figma-token/          # HyperOS4 DTCG 源（3 Collection × Light/Dark）
+drizzle/              # 数据库迁移 SQL
+scripts/              # 数据转换与数据库初始化脚本
+docs/                 # 验收、Figma 数据源和结构说明；superpowers/plans 为历史计划
 e2e/                  # Playwright E2E 测试
 ```
 
-详细目录说明见 [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)，Figma 预设变量格式见 [docs/FIGMA_PRESET_VARIABLES.md](./docs/FIGMA_PRESET_VARIABLES.md)，验收清单见 [docs/ACCEPTANCE_CHECKLIST.md](./docs/ACCEPTANCE_CHECKLIST.md)。
+详细目录说明见 [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md)，Figma 数据源格式见 [docs/FIGMA_PRESET_VARIABLES.md](./docs/FIGMA_PRESET_VARIABLES.md)，验收清单见 [docs/ACCEPTANCE_CHECKLIST.md](./docs/ACCEPTANCE_CHECKLIST.md)。
 
 ## 支持的 JSON 格式
 
-- **Figma Native** — Figma Variables 原生导出 (`collections` + `variables` with `valuesByMode`)
-- **Variables2CSS** — Variables2CSS 插件导出 (`collections` with `variables` array)
+- **Figma Native** — `collections` + `variables` + `valuesByMode`，可保留 `description`、`scopes` 和 `codeSyntax`
+- **Variables2CSS** — `collections` + `variables[]`；不提供 Figma Native 的别名和元数据保真能力
 
 服务端导入时自动检测格式，无需手动选择。
 
-> 注：Figma 新版「导出变量」的 **W3C DTCG** 格式（`$type/$value/$extensions`，颜色为 `components+alpha`，别名在 `$extensions["com.figma.aliasData"]`）不被运行时解析器直接识别，需先用 `scripts/figma-dtcg-to-sample.mjs` 转换成 Figma Native 种子。
+> Figma 新版“导出变量”的 **W3C DTCG** 格式（`$type/$value/$extensions`）不被运行时解析器直接识别，需先用 `scripts/figma-dtcg-to-sample.mjs` 转换成 Figma Native 种子。
 
 ## 数据持久化与数据库
 
-- 开发环境未设置 `DATABASE_URL` 时，服务端会把 Token 文档、日志和快照写入被 Git 忽略的 `.data/collaboration-store.json`。
-- 生产环境必须设置 PostgreSQL `DATABASE_URL`，并先执行 `npm run db:migrate`；否则共享 Token 文档接口会返回配置错误。
-- 浏览器 localStorage 只保存当前文档、当前 Collection/Mode、搜索、树展开状态、视图、代码格式和检查器宽度，以及协作者标识；不保存 Token 正文。
+- 非 production 环境未设置 `DATABASE_URL` 时，服务端把 Token 文档、日志和快照写入 Git 忽略的 `.data/collaboration-store.json`。
+- 生产环境必须设置 PostgreSQL `DATABASE_URL` 并先执行 `npm run db:migrate`，否则共享文档接口返回配置错误。
+- localStorage 保存当前文档、Collection/Mode、搜索、树展开状态、视图、代码格式、检查器宽度和轻量 actor 标识；不保存 Token 正文、日志或快照。
 
 ## 多套 Token 表（HyperOS3 / HyperOS4）
 
-应用支持多套独立的 Token 表，顶部切换器可在 **HyperOS 3 / HyperOS 4** 间切换。
+应用在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**。
 
-- 每套表对应服务端一份独立文档（`token_documents` 表的一行），各自的编辑、变更日志、快照互不影响。
-- 文档注册表在 `src/lib/collaboration/server.ts` 的 `DOCUMENTS`，种子分别为 `src/data/sample-tokens.json`（HyperOS3）与 `src/data/sample-tokens-hyperos4.json`（HyperOS4）。
-- 前端通过 `x-document-id` 请求头标识当前文档（由 `src/lib/collaboration/client.ts` 在 `apiRequest` 统一注入），id 清单见 `TOKEN_DOCUMENTS`。
+- 每套表对应一份服务端文档，编辑和变更日志按 `document_id` 隔离；快照列表、读取和导出也按文档隔离。
+- 注册表位于 `src/lib/collaboration/server.ts` 的 `DOCUMENTS`；种子分别为 `src/data/sample-tokens.json` 与 `src/data/sample-tokens-hyperos4.json`。
+- `src/lib/collaboration/client.ts` 统一通过 `x-document-id` 请求头标识当前文档。
 
 ### 更新 HyperOS4 数据
 
-1. 从 Figma「导出变量」得到 DTCG 文件，分别替换 `figma-token/Component Token`、`figma-token/Reference Token`、`figma-token/Semantic Token` 中的 `Light.tokens.json` 和 `Dark.tokens.json`。
-2. 运行转换脚本；它合并三组，并按 `targetVariableSetName` 与 `targetVariableName` 解析跨 Collection 别名：
-   ```bash
-   node scripts/figma-dtcg-to-sample.mjs
-   ```
-   输出 `src/data/sample-tokens-hyperos4.json`。脚本会报告无法解析的别名，并以该 Token 的原始值降级；发布前应处理这类报告。
-3. 种子仅在文档首次创建时灌入。已存在的 HyperOS 4 文档需要通过 `POST /api/token-document/import`（请求头 `x-document-id: hyperos4`，携带当前 `revision`）导入生成的 Figma Native JSON；不要通过删除 `.data` 文件重置已有数据。
+必须完整执行以下流程，不能在只替换源文件或只生成种子后报告完成：
+
+1. 以用户明确指定的目录或文件为权威输入，逐文件比较内容或 SHA-256，确认同步到 `figma-token/<Collection>/{Light,Dark}.tokens.json`。只能确认与本次指定输入一致，不能据此声称是 Figma 中的最新版本。
+2. 运行 `node scripts/figma-dtcg-to-sample.mjs`，核对各 Collection 数量，并确保输出中的 `Aliases unresolved (fell back to raw value)` 计数为 `0`；非 0 时停止同步并先修复别名。
+3. 区分 DTCG 源、`src/data/sample-tokens-hyperos4.json` 种子和 repository 中的 `hyperos4.currentJson`。种子只在首次建档时灌入，页面和导出读取已有协作文档。
+4. 读取当前 revision，创建导入前快照，再调用 `POST /api/token-document/import`。请求头包含 `x-document-id: hyperos4`，请求体为 `{ json, revision, actor: { actorName, actorClientId } }`，其中 `json` 是种子对象。禁止删除或手改 `.data/collaboration-store.json`。
+5. 重新读取文档并调用 `/api/export?format=json`。响应结构为 `{ format, code }`，需对 `JSON.parse(code)` 与种子做深度比较，同时核对 revision、总量、各 Collection、别名和 Light/Dark 完整性。
+
+详细约束见 `AGENTS.md` 的“HyperOS4 数据更新强制流程”。无法访问实际 repository 时，只能说明源和种子已更新，不能声称当前应用或线上数据已同步。
+
+> 安全边界：导入路由当前没有内建认证或授权；`actor` 只是可由调用方填写的审计标签，revision 只提供乐观并发控制。公开部署必须在网络/网关层限制此接口，或补充真实鉴权后才能作为受信任的维护入口。
+
+## 已知限制
+
+- 快照列表、读取和导出会校验当前文档；但当前 `restoreSnapshot` 尚未校验 `snapshot.documentId`，已知其他文档的 snapshot ID 时存在跨文档恢复风险。修复前不要把快照恢复描述为完全隔离，也不要使用来源不明的 snapshot ID。
+- 导出对话框请求快照失败时，当前实现会保留快照来源标签并回退到本地代码。修复为 fail-closed 前，必须确认快照请求成功后再复制或下载，不能仅凭界面标签认定文件来自该快照。
 
 ## 路径别名
 

@@ -92,6 +92,8 @@ export function TokenInspector() {
   const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
   const resolved = token.resolvedValues[modeId];
   const code = generateTokenCode(token, codeFormat, modeId, tokens);
+  const description = token.description?.trim();
+  const scopes = resolved?.type === "NUMBER" ? token.scopes?.filter(Boolean) ?? [] : [];
 
   // Alias chain
   const aliasChain = getAliasChain(token.id, modeId, tokens);
@@ -165,16 +167,13 @@ export function TokenInspector() {
                   <Row label="RGB" value={colorToRGB(resolved.value)} />
                   <Row label="HSL" value={colorToHSL(resolved.value)} />
                 </div>
-                {/* Contrast info */}
-                <div className="space-y-1.5 mt-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">对比度</p>
-                  <ContrastInfo color={resolved.value} against={WHITE} label="白色背景" />
-                  <ContrastInfo color={resolved.value} against={BLACK} label="黑色背景" />
-                </div>
               </div>
             )}
             {resolved?.type === "NUMBER" && (
-              <NumberPreview value={resolved.value} name={token.name} />
+              <div className="space-y-3">
+                <NumberPreview value={resolved.value} name={token.name} />
+                {scopes.length > 0 && <ScopeList scopes={scopes} />}
+              </div>
             )}
             {resolved?.type === "STRING" && (
               <p className="text-sm font-mono">{resolved.value}</p>
@@ -183,6 +182,14 @@ export function TokenInspector() {
               <Badge variant={resolved.value ? "default" : "secondary"}>
                 {resolved.value ? "true" : "false"}
               </Badge>
+            )}
+            {description && <Description value={description} />}
+            {resolved?.type === "COLOR" && (
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">对比度</p>
+                <ContrastInfo color={resolved.value} against={WHITE} label="白色背景" />
+                <ContrastInfo color={resolved.value} against={BLACK} label="黑色背景" />
+              </div>
             )}
           </Section>
 
@@ -353,6 +360,32 @@ function Section({
         </h4>
       </div>
       {children}
+    </div>
+  );
+}
+
+function ScopeList({ scopes }: { scopes: string[] }) {
+  return (
+    <div className="space-y-1.5">
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Scope</p>
+      <div className="flex flex-wrap gap-1.5">
+        {scopes.map((scope) => (
+          <Badge key={scope} variant="secondary" className="h-5 px-1.5 text-[9px] font-mono font-medium">
+            {scope}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Description({ value }: { value: string }) {
+  return (
+    <div className="space-y-1.5">
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">描述</p>
+      <p className="whitespace-pre-wrap break-words rounded-md bg-muted/35 px-2.5 py-2 text-xs leading-relaxed text-foreground/85">
+        {value}
+      </p>
     </div>
   );
 }

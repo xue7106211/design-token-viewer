@@ -94,6 +94,12 @@ for (const coll of COLLECTIONS) {
   }
 }
 
+function figmaVariableType(token) {
+  if (token.$type === "number") return "NUMBER";
+  if (token.$type === "color") return "COLOR";
+  return "STRING";
+}
+
 // ---- Pass 2: build variables with valuesByMode, resolving aliases by name ----
 const variables = {};
 const collectionsOut = [];
@@ -106,8 +112,9 @@ for (const coll of COLLECTIONS) {
   for (const path of order) {
     const id = idForCollPath(coll.name, path);
     variableIds.push(id);
-    // pick a representative token for type/extensions (prefer Light)
-    const repr = modes[MODES[0].modeId].get(path) ?? modes[MODES[1].modeId].get(path);
+    // Pick a representative token for type and extensions, preferring Light.
+    const representativeToken =
+      modes[MODES[0].modeId].get(path) ?? modes[MODES[1].modeId].get(path);
     const valuesByMode = {};
     for (const mode of MODES) {
       const tok = modes[mode.modeId].get(path);
@@ -131,8 +138,10 @@ for (const coll of COLLECTIONS) {
     variables[id] = {
       id,
       name: path,
-      type: repr.$type === "number" ? "NUMBER" : repr.$type === "color" ? "COLOR" : "STRING",
+      type: figmaVariableType(representativeToken),
       valuesByMode,
+      description: representativeToken.$description,
+      scopes: representativeToken.$extensions?.["com.figma.scopes"],
       codeSyntax: {},
     };
   }

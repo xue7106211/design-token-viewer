@@ -47,3 +47,6 @@ next-env.d.ts
 /.kiro
 /.cursor
 /.claude
+
+# Local Netlify folder
+.netlify

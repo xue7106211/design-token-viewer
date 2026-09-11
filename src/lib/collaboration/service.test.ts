@@ -25,6 +25,41 @@ describe("token document collaboration service", () => {
     expect(document.currentJson).toEqual(sampleData);
   });
 
+  it("backfills missing seed metadata for an existing matching token", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const seed = {
+      collections: [{ id: "col_1", name: "Reference", modes: [{ modeId: "light", name: "Light" }], variableIds: ["var_1"] }],
+      variables: {
+        var_1: {
+          id: "var_1",
+          name: "space/card",
+          type: "NUMBER",
+          description: "Card spacing",
+          scopes: ["GAP"],
+          valuesByMode: { light: { type: "NUMBER", value: 16 } },
+        },
+      },
+    };
+    await repo.saveDocument({
+      id: "default",
+      name: "HyperOS Tokens",
+      currentJson: {
+        ...seed,
+        variables: {
+          var_1: { ...seed.variables.var_1, description: undefined, scopes: undefined },
+        },
+      },
+      revision: 3,
+      updatedAt: 0,
+    });
+
+    const document = await createTokenDocumentService(repo, seed).getDocument();
+
+    expect(document.revision).toBe(3);
+    expect(document.tokens.var_1.description).toBe("Card spacing");
+    expect(document.tokens.var_1.scopes).toEqual(["GAP"]);
+  });
+
   it("updates a token value, increments revision, and writes an audit log", async () => {
     const repo = createMemoryCollaborationRepository();
     const service = createTokenDocumentService(repo, sampleData);

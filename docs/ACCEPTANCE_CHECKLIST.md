@@ -2,17 +2,20 @@
 
 ## 一、自动化测试
 
-### 单元测试 (Vitest)
+### 单元测试（Vitest）
 
 ```bash
 npm run test
 ```
 
 - [ ] 解析器、别名解析、树构建和代码生成测试通过
+- [ ] Figma Native `description/scopes` 解析及 rebuild 元数据保真测试通过
 - [ ] 协作文档、仓储选择、加载状态和 Zustand Store 测试通过
+- [ ] 旧文档按 id/name/type 从种子补齐 metadata 的测试通过
+- [ ] 服务端加载失败后不重复请求的 loading-state 测试通过
 - [ ] 代码展示、变更日志等组件测试通过
 
-**预期结果**：`npm run test` 退出码为 0，所有测试文件通过。测试数量会随覆盖范围调整，不在本文档中固定。
+**预期结果**：`npm run test` 退出码为 0，所有测试文件通过。测试数量会随覆盖范围调整，不固定在文档中。
 
 ### 覆盖率
 
@@ -22,20 +25,17 @@ npm run test:coverage
 
 - [ ] `src/lib/` 核心逻辑有测试覆盖
 
-### E2E 测试 (Playwright)
+### E2E 测试（Playwright）
 
 首次运行需安装浏览器：
 
 ```bash
 npx playwright install
-```
-
-```bash
 npm run test:e2e
 ```
 
-- [ ] 首页自动加载默认的 HyperOS 4 Token 文档并进入 Token 查看器
-- [ ] 服务端文档不可用时，错误状态不会触发重复加载
+- [ ] 首页自动加载默认 HyperOS4 文档并显示 Semantic Token
+- [ ] 导出弹窗从“当前”切换到“全部”后，来源标签和 Token 数发生对应变化
 
 ---
 
@@ -44,25 +44,27 @@ npm run test:e2e
 ### 1. 文档加载与服务器导入
 
 - [ ] 服务端文档不可用时显示加载错误，且不会触发重复加载
-- [ ] 通过 `/api/token-document/import` 向已有文档导入 Figma Native 或 Variables2CSS JSON
-- [ ] 导入携带当前 revision；旧 revision 返回冲突而不覆盖服务端数据
+- [ ] `POST /api/token-document` 与 `POST /api/token-document/import` 均可按维护流程导入 Figma Native 或 Variables2CSS JSON
+- [ ] 导入请求体使用 `{ json, revision, actor: { actorName, actorClientId } }`，并通过 `x-document-id` 选择文档
+- [ ] 导入携带当前 revision；旧 revision 返回冲突且不覆盖服务端数据
 - [ ] 无效 JSON 返回解析错误
-- [ ] DTCG JSON 先经 `node scripts/figma-dtcg-to-sample.mjs` 转为 Figma Native JSON 后再导入
+- [ ] DTCG JSON 先经 `node scripts/figma-dtcg-to-sample.mjs` 转为 Figma Native，再按 AGENTS 的强制流程同步
+- [ ] 导入原样保存输入 `currentJson`；后续编辑统一通过 rebuild 写回 Figma Native
 
-> 产品不提供用户侧上传或重新导入控件。`/api/token-document/import` 仅供维护 HyperOS Token 数据的受控服务端流程调用。
+> 产品不提供用户侧上传控件。导入 API 仅供维护 HyperOS Token 数据，但当前路由没有内建认证或授权；`actor` 是可伪造的审计标签，revision 只防并发覆盖。公开部署必须在网络/网关层限制访问，或补充真实鉴权。
 
 ### 2. 主界面布局
 
-- [ ] 左侧边栏：HyperOS 文档切换、集合列表、搜索、Token 树
+- [ ] 左侧边栏：HyperOS 文档切换、Collection 列表、搜索、Token 树
 - [ ] 中间主区域：Token 网格/列表
-- [ ] 右侧检查器（选中 Token 时显示）
+- [ ] 右侧检查器：选中 Token 时显示
 
 ### 3. 侧边栏
 
 - [ ] Token 树可展开/收起
 - [ ] 搜索框可筛选 Token
 - [ ] Collection 与 Mode 可切换
-- [ ] HyperOS 3 / HyperOS 4 文档互相隔离
+- [ ] HyperOS3 / HyperOS4 文档、编辑和日志互相隔离
 - [ ] Semantic Token 顶层组按 `bg → fill → stroke → text → mask → margin → padding → gap → radius` 排列
 
 ### 4. Token 展示
@@ -72,17 +74,26 @@ npm run test:e2e
 - [ ] 数值 Token 显示预览
 - [ ] 点击 Token 打开右侧检查器
 
-### 5. 检查器
+### 5. 检查器与导出
 
-- [ ] 显示 Token 名称、类型、值
-- [ ] 代码导出（CSS/Android 格式切换）
-- [ ] 可调整宽度
+- [ ] 显示 Token 名称、类型、值和非空 description
+- [ ] NUMBER Token 的 scopes 以标签展示
+- [ ] 颜色值提供 HEX/RGB/HSL 和 WCAG 对比度信息
+- [ ] Alias Token 显示引用链和反向引用
+- [ ] 检查器宽度可调整
+- [ ] CSS、Android XML 和 JSON 格式可导出
+- [ ] 导出来源支持当前过滤结果、当前文档全部 Collection；版本快照仅在远端请求成功后可复制或下载
+- [ ] “当前”来源随搜索过滤变化；“全部”只包含当前 HyperOS 文档，不跨 HyperOS3/4
+- [ ] JSON 导出接口的 `{ format, code }` 响应可通过 `JSON.parse(code)` 还原源 JSON
+- [ ] **待修复**：快照导出请求失败时应禁止复制/下载并显示错误；当前实现会保留快照标签并回退本地代码
 
 ### 6. 共享记录与快照
 
-- [ ] 编辑、导入、重排序、分组重命名会产生服务端变更日志
-- [ ] 可创建、下载和恢复版本快照
+- [ ] 编辑、导入、重排序、分组重命名、创建快照和恢复快照会产生服务端变更日志
+- [ ] 日志包含 actor、IP、时间戳及必要的前后值
+- [ ] 可创建、下载和恢复当前文档的版本快照
 - [ ] 发生 revision 冲突时刷新到最新服务端文档
+- [ ] **待修复**：使用其他 `documentId` 的 `snapshotId` 恢复当前文档必须被拒绝；当前 `restoreSnapshot` 尚未校验快照归属
 
 ### 7. 主题
 

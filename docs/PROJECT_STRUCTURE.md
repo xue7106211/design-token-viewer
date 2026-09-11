@@ -4,20 +4,20 @@ Design Token Viewer 的目录约定与职责说明，便于新人上手和日常
 
 ## 根目录一览
 
-```
+```text
 design-token-viewer/
-├── drizzle/             # PostgreSQL 迁移 SQL
-├── e2e/                 # E2E 测试（Playwright）
-├── docs/                # 项目文档
-├── figma-token/         # HyperOS4 DTCG 导出源
-├── public/              # 静态资源
-├── scripts/             # 构建/转换脚本（非运行时）
-├── src/                 # 应用源码
+├── drizzle/              # PostgreSQL 迁移 SQL
+├── e2e/                  # Playwright E2E 测试
+├── docs/                 # 项目文档与历史计划
+├── figma-token/          # HyperOS4 DTCG 导出源
+├── public/               # 静态资源
+├── scripts/              # 本地转换/数据库脚本
+├── src/                  # 应用源码
 ├── drizzle.config.ts     # Drizzle Kit 配置
 ├── next.config.ts
 ├── playwright.config.ts
 ├── vitest.config.ts
-├── vitest.setup.ts      # 单元测试全局 setup
+├── vitest.setup.ts       # Vitest 全局 setup
 └── package.json
 ```
 
@@ -27,73 +27,79 @@ design-token-viewer/
 
 | 路径 | 说明 |
 |------|------|
-| `src/app/` | Next.js App Router：页面、布局、全局样式、providers |
-| `src/components/` | React 组件，按用途分子目录 |
-| `src/components/ui/` | 基础 UI 组件（如 shadcn/ui），无业务逻辑 |
-| `src/components/layout/` | 布局组件：AppShell、Sidebar、MainView |
-| `src/components/features/` | 功能组件：Token 树/网格/列表、检查器、导出等 |
-| `src/lib/` | 解析器、代码生成、树、对比度和协作服务；纯逻辑可单测 |
-| `src/lib/collaboration/` | 文档、变更日志、快照的 client / server / service / repository 层 |
-| `src/lib/db/` | PostgreSQL 的 Drizzle 连接与 schema |
-| `src/stores/` | Zustand UI 状态；Token 正文由服务端加载 |
-| `src/types/` | 共享 TypeScript 类型 |
-| `src/data/` | 应用内使用的静态/示例数据（如示例 Token JSON） |
+| `src/app/` | Next.js App Router：页面、布局、全局样式、providers 和 Route Handlers |
+| `src/components/ui/` | shadcn/ui 基础组件，无业务逻辑 |
+| `src/components/layout/` | AppShell、Sidebar、MainView 等布局组件 |
+| `src/components/features/` | Token 树/网格/列表、检查器、导出、日志和快照等业务组件 |
+| `src/lib/` | 解析、生成、树、对比度和其他可测试逻辑 |
+| `src/lib/collaboration/` | 文档、日志、快照的 client / server / service / repository 与加载状态 |
+| `src/lib/db/` | PostgreSQL Drizzle 连接与 schema |
+| `src/stores/` | Zustand UI 状态；Token 正文从服务端加载 |
+| `src/types/` | 共享 TypeScript 类型及第三方声明 |
+| `src/data/` | HyperOS3 / HyperOS4 Figma Native 种子 |
 
-**测试约定**：单元测试与源码同目录，文件名形如 `*.test.ts` / `*.test.tsx` 或 `*.spec.ts`，由 Vitest 的 `src/**/*.{test,spec}.{ts,tsx}` 匹配。
+单元测试与源码同目录，文件名为 `*.test.ts`、`*.test.tsx` 或 `*.spec.ts(x)`，由 Vitest 的 `src/**/*.{test,spec}.{ts,tsx}` 匹配。
 
 ### `e2e/` — E2E 测试
 
-- 使用 Playwright，配置在根目录 `playwright.config.ts`
-- `testDir: "./e2e"`，与 `src/` 分离，避免和单元测试混淆
+- 使用 Playwright，配置位于 `playwright.config.ts`。
+- `testDir: "./e2e"`，与单元测试分离。
+- 当前用例覆盖默认 HyperOS4/Semantic 加载，以及导出来源从“当前”切换到“全部”。
 
 ### `docs/` — 文档
 
-- `ACCEPTANCE_CHECKLIST.md`：功能与测试验收清单
-- `FIGMA_PRESET_VARIABLES.md`：Figma DTCG 与兼容扁平变量脚本说明
-- `PROJECT_STRUCTURE.md`：本文件，目录结构说明
-- `superpowers/plans/`：历史实现计划，不是当前功能承诺
+- `ACCEPTANCE_CHECKLIST.md`：功能与测试验收清单。
+- `FIGMA_PRESET_VARIABLES.md`：Figma DTCG 与兼容脚本说明。
+- `PROJECT_STRUCTURE.md`：本文件。
+- `superpowers/plans/`：历史实现计划，不是当前功能承诺。
 
 ### `figma-token/` — HyperOS4 DTCG 源
 
-- 包含 Component、Reference、Semantic 三个 Collection 的 Light / Dark 导出。
-- `node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，并按名称解析跨 Collection 别名。
+包含 Component、Reference、Semantic 三个 Collection 的 Light/Dark 导出。`node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，按名称解析跨 Collection 别名，并保留受支持的 description/scopes 元数据。
 
 ### `scripts/` — 脚本与脚本用数据
 
-- 仅用于本地/CI 的转换或生成，**不参与 Next 构建**。
-- 当前 HyperOS4 同步脚本：`figma-dtcg-to-sample.mjs`，输入为 `figma-token/`，输出为 `src/data/sample-tokens-hyperos4.json`。
-- `figma-flat-to-preset.mjs` 与 `figma-vars-to-sample.mjs` 是兼容扁平变量输入的辅助脚本；它们的 `scripts/figma-hyperos4-vars.json` 输入不在仓库中。
-- `init-db.mjs` 需要 `DATABASE_URL`，读取 `drizzle/0000_lightweight_collaboration.sql` 初始化协作数据表。
+这些脚本仅用于本地或 CI，不参与 Next 运行时：
+
+- `figma-dtcg-to-sample.mjs`：HyperOS4 正式同步脚本，输入 `figma-token/`，输出 `src/data/sample-tokens-hyperos4.json`。
+- `figma-flat-to-preset.mjs`：读取未纳入仓库的 `scripts/figma-hyperos4-vars.json`，输出格式检查用 preset。
+- `figma-vars-to-sample.mjs`：读取相同扁平输入并覆盖 `src/data/sample-tokens.json`（HyperOS3 种子）。
+- `css-vars-to-sample.mjs`：读取脚本内嵌 `CSS_VARS_INPUT` 并覆盖 HyperOS3 种子；当前实现不读取 stdin。
+- `init-db.mjs`：需要 `DATABASE_URL`，读取 `drizzle/0000_lightweight_collaboration.sql` 初始化数据库。
+
+运行兼容脚本前应确认输出目标，避免误覆盖 HyperOS3 种子。
 
 ### 数据持久化
 
-- 开发环境没有 `DATABASE_URL` 时，协作数据写入 Git 忽略的 `.data/collaboration-store.json`。
-- 生产环境必须使用 PostgreSQL `DATABASE_URL`；先执行 `npm run db:migrate`，再运行应用。
-- 浏览器 localStorage 只保存 UI 偏好与协作者标识，不保存 Token 文档正文。
+- 非 production 环境没有 `DATABASE_URL` 时，协作数据写入 Git 忽略的 `.data/collaboration-store.json`。
+- 生产环境必须设置 PostgreSQL `DATABASE_URL`；先执行 `npm run db:migrate`，再运行应用。
+- localStorage 只保存 UI 偏好和轻量 actor 标识，不保存 Token 正文、日志或快照。
 
 ### `public/` — 静态资源
 
-- Next 会从根路径提供，如 `/file.svg`。
-- 仅放无需经构建处理的静态文件。
+Next 从根路径提供此处资源，例如 `/file.svg`。
 
 ## 路径别名
 
-- `@/*` → `src/*`（在 `tsconfig.json` 的 `paths` 中配置）
-- 引用示例：`@/components/ui/button`、`@/lib/parsers`、`@/stores/token-store`、`@/types/token`、`@/data/sample-tokens.json`
+- `@/*` → `src/*`，配置位于 `tsconfig.json`。
+- 示例：`@/components/ui/button`、`@/lib/parsers`、`@/stores/token-store`、`@/types/token`。
 
 ## 测试与质量
 
-- **单元测试**：`npm run test`（Vitest），入口与覆盖率见 `vitest.config.ts`，全局 setup 为根目录 `vitest.setup.ts`。
-- **E2E**：`npm run test:e2e`（Playwright），用例在 `e2e/`。
-- **验收清单**：见 `docs/ACCEPTANCE_CHECKLIST.md`。
+- 单元测试：`npm run test`
+- 覆盖率：`npm run test:coverage`
+- E2E：`npm run test:e2e`
+- ESLint：`npm run lint`
+- 生产构建：`npm run build`
+- 完整验收项见 `docs/ACCEPTANCE_CHECKLIST.md`。
 
 ## 新增文件时的建议
 
 - 新页面/路由 → `src/app/`
-- 新业务组件 → `src/components/features/` 或 `layout/`
+- 新业务组件 → `src/components/features/` 或 `src/components/layout/`
 - 新基础组件 → `src/components/ui/`
-- 新纯逻辑/工具 → `src/lib/`（建议同目录增加 `*.test.ts`）
-- 新类型 → `src/types/`
+- 新纯逻辑/工具 → `src/lib/`，建议同目录增加测试
+- 新类型/声明 → `src/types/`
 - 新状态 → `src/stores/`
 - 新 E2E 用例 → `e2e/`
 - 新脚本/脚本用数据 → `scripts/`

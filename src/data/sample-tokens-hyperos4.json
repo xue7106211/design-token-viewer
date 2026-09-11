@@ -173,7 +173,9 @@
         "var_689",
         "var_690",
         "var_691",
-        "var_692"
+        "var_692",
+        "var_693",
+        "var_694"
       ]
     },
     {
@@ -767,6 +769,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_1": {
@@ -793,6 +798,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_2": {
@@ -819,6 +827,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_3": {
@@ -845,6 +856,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_4": {
@@ -871,6 +885,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_5": {
@@ -897,6 +914,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_6": {
@@ -923,6 +943,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_7": {
@@ -949,6 +972,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_8": {
@@ -975,6 +1001,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_9": {
@@ -1001,6 +1030,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_10": {
@@ -1017,6 +1049,9 @@
           "id": "var_209"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_11": {
@@ -1043,6 +1078,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_12": {
@@ -1069,6 +1107,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_13": {
@@ -1085,6 +1126,9 @@
           "id": "var_209"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_14": {
@@ -1111,6 +1155,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_15": {
@@ -1137,6 +1184,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_16": {
@@ -1163,6 +1213,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_17": {
@@ -1179,6 +1232,9 @@
           "id": "var_323"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_18": {
@@ -1195,6 +1251,9 @@
           "id": "var_210"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_19": {
@@ -1221,6 +1280,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_20": {
@@ -1247,6 +1309,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_21": {
@@ -1263,6 +1328,9 @@
           "id": "var_211"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_22": {
@@ -1289,6 +1357,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_23": {
@@ -1315,6 +1386,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_24": {
@@ -1341,6 +1415,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_25": {
@@ -1367,6 +1444,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_26": {
@@ -1383,6 +1463,9 @@
           "id": "var_230"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_27": {
@@ -1409,6 +1492,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_28": {
@@ -1435,6 +1521,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_29": {
@@ -1461,6 +1550,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_30": {
@@ -1487,6 +1579,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_31": {
@@ -1503,6 +1598,9 @@
           "id": "var_209"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_32": {
@@ -1519,6 +1617,9 @@
           "id": "var_206"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_33": {
@@ -1535,6 +1636,9 @@
           "id": "var_209"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_34": {
@@ -1551,6 +1655,9 @@
           "id": "var_206"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_35": {
@@ -1567,6 +1674,9 @@
           "id": "var_212"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_36": {
@@ -1583,6 +1693,9 @@
           "id": "var_210"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_37": {
@@ -1599,6 +1712,9 @@
           "id": "var_552"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_38": {
@@ -1615,6 +1731,9 @@
           "id": "var_456"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_39": {
@@ -1631,6 +1750,9 @@
           "id": "var_158"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_40": {
@@ -1647,6 +1769,9 @@
           "id": "var_304"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_41": {
@@ -1663,6 +1788,9 @@
           "id": "var_86"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_42": {
@@ -1679,6 +1807,9 @@
           "id": "var_247"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_43": {
@@ -1695,6 +1826,9 @@
           "id": "var_59"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_44": {
@@ -1721,6 +1855,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_45": {
@@ -1747,6 +1884,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_46": {
@@ -1773,6 +1913,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_47": {
@@ -1789,6 +1932,9 @@
           "id": "var_209"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_48": {
@@ -1815,6 +1961,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_49": {
@@ -1841,6 +1990,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_50": {
@@ -1857,6 +2009,9 @@
           "id": "var_215"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_51": {
@@ -1883,6 +2038,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_52": {
@@ -1909,6 +2067,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_53": {
@@ -1935,6 +2096,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_54": {
@@ -1961,6 +2125,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_55": {
@@ -1977,6 +2144,9 @@
           "id": "var_211"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_56": {
@@ -1993,6 +2163,9 @@
           "id": "var_228"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_57": {
@@ -2019,6 +2192,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_58": {
@@ -2045,6 +2221,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_59": {
@@ -2071,6 +2250,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_60": {
@@ -2097,6 +2279,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_61": {
@@ -2123,6 +2308,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_62": {
@@ -2149,6 +2337,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_63": {
@@ -2175,6 +2366,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_64": {
@@ -2201,6 +2395,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_65": {
@@ -2227,6 +2424,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_66": {
@@ -2253,6 +2453,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_67": {
@@ -2279,6 +2482,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_68": {
@@ -2305,6 +2511,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_69": {
@@ -2331,6 +2540,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_70": {
@@ -2357,6 +2569,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_71": {
@@ -2383,6 +2598,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_72": {
@@ -2409,6 +2627,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_73": {
@@ -2435,6 +2656,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_74": {
@@ -2461,6 +2685,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_75": {
@@ -2487,6 +2714,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_76": {
@@ -2513,6 +2743,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_77": {
@@ -2539,6 +2772,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_78": {
@@ -2565,6 +2801,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_79": {
@@ -2591,6 +2830,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_80": {
@@ -2617,6 +2859,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_81": {
@@ -2643,6 +2888,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_82": {
@@ -2669,6 +2917,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_83": {
@@ -2695,6 +2946,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_84": {
@@ -2721,6 +2975,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_85": {
@@ -2747,6 +3004,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_86": {
@@ -2773,6 +3033,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_87": {
@@ -2799,6 +3062,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_88": {
@@ -2825,6 +3091,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_89": {
@@ -2851,6 +3120,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_90": {
@@ -2877,6 +3149,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_91": {
@@ -2903,6 +3178,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_92": {
@@ -2929,6 +3207,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_93": {
@@ -2955,6 +3236,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_94": {
@@ -2981,6 +3265,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_95": {
@@ -3007,6 +3294,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_96": {
@@ -3033,6 +3323,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_97": {
@@ -3059,6 +3352,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_98": {
@@ -3085,6 +3381,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_99": {
@@ -3111,6 +3410,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_100": {
@@ -3137,6 +3439,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_101": {
@@ -3163,6 +3468,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_102": {
@@ -3189,6 +3497,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_103": {
@@ -3215,6 +3526,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_104": {
@@ -3241,6 +3555,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_105": {
@@ -3267,6 +3584,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_106": {
@@ -3293,6 +3613,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_107": {
@@ -3319,6 +3642,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_108": {
@@ -3345,6 +3671,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_109": {
@@ -3371,6 +3700,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_110": {
@@ -3397,6 +3729,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_111": {
@@ -3423,6 +3758,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_112": {
@@ -3449,6 +3787,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_113": {
@@ -3475,6 +3816,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_114": {
@@ -3501,6 +3845,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_115": {
@@ -3527,6 +3874,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_116": {
@@ -3553,6 +3903,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_117": {
@@ -3579,6 +3932,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_118": {
@@ -3605,6 +3961,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_119": {
@@ -3631,6 +3990,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_120": {
@@ -3657,6 +4019,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_121": {
@@ -3683,6 +4048,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_122": {
@@ -3709,6 +4077,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_123": {
@@ -3735,6 +4106,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_124": {
@@ -3761,6 +4135,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_125": {
@@ -3787,6 +4164,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_126": {
@@ -3813,6 +4193,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_127": {
@@ -3839,6 +4222,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_128": {
@@ -3865,6 +4251,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_129": {
@@ -3891,6 +4280,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_130": {
@@ -3917,6 +4309,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_131": {
@@ -3943,6 +4338,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_132": {
@@ -3969,6 +4367,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_133": {
@@ -3995,6 +4396,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_134": {
@@ -4021,6 +4425,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_135": {
@@ -4047,6 +4454,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_136": {
@@ -4073,6 +4483,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_137": {
@@ -4099,6 +4512,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_138": {
@@ -4125,6 +4541,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_139": {
@@ -4151,6 +4570,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_140": {
@@ -4177,6 +4599,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_141": {
@@ -4203,6 +4628,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_142": {
@@ -4229,6 +4657,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_143": {
@@ -4255,6 +4686,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_144": {
@@ -4281,6 +4715,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_145": {
@@ -4307,6 +4744,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_146": {
@@ -4333,6 +4773,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_147": {
@@ -4359,6 +4802,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_148": {
@@ -4385,6 +4831,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_149": {
@@ -4411,6 +4860,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_150": {
@@ -4437,6 +4889,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_151": {
@@ -4463,6 +4918,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_152": {
@@ -4489,6 +4947,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_153": {
@@ -4515,6 +4976,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_154": {
@@ -4541,6 +5005,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_155": {
@@ -4567,6 +5034,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_156": {
@@ -4593,6 +5063,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_157": {
@@ -4619,6 +5092,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_158": {
@@ -4645,6 +5121,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_159": {
@@ -4671,6 +5150,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_160": {
@@ -4697,6 +5179,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_161": {
@@ -4723,6 +5208,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_162": {
@@ -4749,6 +5237,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_163": {
@@ -4775,6 +5266,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_164": {
@@ -4801,6 +5295,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_165": {
@@ -4827,6 +5324,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_166": {
@@ -4853,6 +5353,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_167": {
@@ -4879,6 +5382,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_168": {
@@ -4905,6 +5411,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_169": {
@@ -4931,6 +5440,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_170": {
@@ -4957,6 +5469,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_171": {
@@ -4983,6 +5498,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_172": {
@@ -5009,6 +5527,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_173": {
@@ -5035,6 +5556,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_174": {
@@ -5061,6 +5585,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_175": {
@@ -5087,6 +5614,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_176": {
@@ -5113,6 +5643,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_177": {
@@ -5139,6 +5672,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_178": {
@@ -5165,6 +5701,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_179": {
@@ -5191,6 +5730,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_180": {
@@ -5217,6 +5759,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_181": {
@@ -5243,6 +5788,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_182": {
@@ -5269,6 +5817,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_183": {
@@ -5295,6 +5846,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_184": {
@@ -5321,6 +5875,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_185": {
@@ -5347,6 +5904,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_186": {
@@ -5373,6 +5933,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_187": {
@@ -5399,6 +5962,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_188": {
@@ -5425,6 +5991,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_189": {
@@ -5451,6 +6020,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_190": {
@@ -5477,6 +6049,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_191": {
@@ -5503,6 +6078,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_192": {
@@ -5529,6 +6107,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_193": {
@@ -5555,6 +6136,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_194": {
@@ -5581,6 +6165,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_195": {
@@ -5607,6 +6194,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_196": {
@@ -5633,6 +6223,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_197": {
@@ -5659,6 +6252,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_198": {
@@ -5685,6 +6281,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_199": {
@@ -5711,6 +6310,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_200": {
@@ -5737,6 +6339,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_201": {
@@ -5763,6 +6368,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_202": {
@@ -5789,6 +6397,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_203": {
@@ -5815,6 +6427,10 @@
           }
         }
       },
+      "description": "White 4% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_204": {
@@ -5841,6 +6457,10 @@
           }
         }
       },
+      "description": "White 5% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_205": {
@@ -5867,6 +6487,10 @@
           }
         }
       },
+      "description": "White 6% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_206": {
@@ -5893,6 +6517,10 @@
           }
         }
       },
+      "description": "White 8% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_207": {
@@ -5919,6 +6547,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_208": {
@@ -5945,6 +6577,10 @@
           }
         }
       },
+      "description": "White 12% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_209": {
@@ -5971,6 +6607,10 @@
           }
         }
       },
+      "description": "White 14% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_210": {
@@ -5997,6 +6637,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_211": {
@@ -6023,6 +6667,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_212": {
@@ -6049,6 +6697,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_213": {
@@ -6075,6 +6727,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_214": {
@@ -6101,6 +6757,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_215": {
@@ -6127,6 +6787,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_216": {
@@ -6153,6 +6817,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_217": {
@@ -6179,6 +6847,10 @@
           }
         }
       },
+      "description": "White 83% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_218": {
@@ -6205,6 +6877,10 @@
           }
         }
       },
+      "description": "White 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_219": {
@@ -6231,6 +6907,10 @@
           }
         }
       },
+      "description": "White 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_220": {
@@ -6257,6 +6937,10 @@
           }
         }
       },
+      "description": "Black 3% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_221": {
@@ -6283,6 +6967,10 @@
           }
         }
       },
+      "description": "Black 4% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_222": {
@@ -6309,6 +6997,10 @@
           }
         }
       },
+      "description": "Black 5% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_223": {
@@ -6335,6 +7027,10 @@
           }
         }
       },
+      "description": "Black 6% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_224": {
@@ -6361,6 +7057,10 @@
           }
         }
       },
+      "description": "Black 8% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_225": {
@@ -6387,6 +7087,10 @@
           }
         }
       },
+      "description": "Black 12% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_226": {
@@ -6413,6 +7117,10 @@
           }
         }
       },
+      "description": "Black 12% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_227": {
@@ -6439,6 +7147,10 @@
           }
         }
       },
+      "description": "Black 14% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_228": {
@@ -6465,6 +7177,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_229": {
@@ -6491,6 +7207,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_230": {
@@ -6517,6 +7237,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_231": {
@@ -6543,6 +7267,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_232": {
@@ -6569,6 +7297,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_233": {
@@ -6595,6 +7327,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_234": {
@@ -6621,6 +7357,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_235": {
@@ -6647,6 +7387,10 @@
           }
         }
       },
+      "description": "Black 83% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_236": {
@@ -6673,6 +7417,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_237": {
@@ -6699,6 +7447,10 @@
           }
         }
       },
+      "description": "Black 95% opacity",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_238": {
@@ -6725,6 +7477,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_239": {
@@ -6751,6 +7506,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_240": {
@@ -6777,6 +7535,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_241": {
@@ -6803,6 +7564,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_242": {
@@ -6829,6 +7593,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_243": {
@@ -6855,6 +7622,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_244": {
@@ -6881,6 +7651,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_245": {
@@ -6907,6 +7680,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_246": {
@@ -6933,6 +7709,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_247": {
@@ -6959,6 +7738,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_248": {
@@ -6985,6 +7767,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_249": {
@@ -7011,6 +7796,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_250": {
@@ -7037,6 +7825,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_251": {
@@ -7063,6 +7854,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_252": {
@@ -7089,6 +7883,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_253": {
@@ -7115,6 +7912,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_254": {
@@ -7141,6 +7941,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_255": {
@@ -7167,6 +7970,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_256": {
@@ -7193,6 +7999,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_257": {
@@ -7219,6 +8028,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_258": {
@@ -7245,6 +8057,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_259": {
@@ -7271,6 +8086,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_260": {
@@ -7297,6 +8115,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_261": {
@@ -7323,6 +8144,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_262": {
@@ -7349,6 +8173,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_263": {
@@ -7375,6 +8202,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_264": {
@@ -7401,6 +8231,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_265": {
@@ -7427,6 +8260,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_266": {
@@ -7453,6 +8289,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_267": {
@@ -7479,6 +8318,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_268": {
@@ -7505,6 +8347,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_269": {
@@ -7531,6 +8376,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_270": {
@@ -7557,6 +8405,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_271": {
@@ -7583,6 +8434,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_272": {
@@ -7609,6 +8463,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_273": {
@@ -7635,6 +8492,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_274": {
@@ -7661,6 +8521,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_275": {
@@ -7687,6 +8550,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_276": {
@@ -7713,6 +8579,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_277": {
@@ -7739,6 +8608,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_278": {
@@ -7765,6 +8637,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_279": {
@@ -7791,6 +8666,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_280": {
@@ -7817,6 +8695,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_281": {
@@ -7843,6 +8724,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_282": {
@@ -7869,6 +8753,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_283": {
@@ -7895,6 +8782,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_284": {
@@ -7921,6 +8811,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_285": {
@@ -7947,6 +8840,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_286": {
@@ -7973,6 +8869,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_287": {
@@ -7999,6 +8898,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_288": {
@@ -8025,6 +8927,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_289": {
@@ -8051,6 +8956,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_290": {
@@ -8077,6 +8985,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_291": {
@@ -8103,6 +9014,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_292": {
@@ -8129,6 +9043,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_293": {
@@ -8155,6 +9072,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_294": {
@@ -8181,6 +9101,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_295": {
@@ -8207,6 +9130,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_296": {
@@ -8233,6 +9159,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_297": {
@@ -8259,6 +9188,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_298": {
@@ -8285,6 +9217,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_299": {
@@ -8311,6 +9246,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_300": {
@@ -8337,6 +9275,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_301": {
@@ -8363,6 +9304,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_302": {
@@ -8389,6 +9333,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_303": {
@@ -8415,6 +9362,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_304": {
@@ -8441,6 +9391,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_305": {
@@ -8467,6 +9420,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_306": {
@@ -8493,6 +9449,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_307": {
@@ -8519,6 +9478,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_308": {
@@ -8545,6 +9507,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_309": {
@@ -8571,6 +9536,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_310": {
@@ -8597,6 +9565,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_311": {
@@ -8623,6 +9594,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_312": {
@@ -8649,6 +9623,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_313": {
@@ -8675,6 +9652,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_314": {
@@ -8701,6 +9681,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_315": {
@@ -8727,6 +9710,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_316": {
@@ -8753,6 +9739,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_317": {
@@ -8779,6 +9768,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_318": {
@@ -8805,6 +9797,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_319": {
@@ -8831,6 +9826,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_320": {
@@ -8857,6 +9855,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_321": {
@@ -8883,6 +9884,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_322": {
@@ -8909,6 +9913,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_323": {
@@ -8935,6 +9942,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_324": {
@@ -8961,6 +9971,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_325": {
@@ -8987,6 +10000,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_326": {
@@ -9013,6 +10029,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_327": {
@@ -9039,6 +10058,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_328": {
@@ -9065,6 +10087,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_329": {
@@ -9091,6 +10116,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_330": {
@@ -9117,6 +10145,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_331": {
@@ -9143,6 +10174,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_332": {
@@ -9169,6 +10203,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_333": {
@@ -9195,6 +10232,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_334": {
@@ -9221,6 +10261,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_335": {
@@ -9247,6 +10290,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_336": {
@@ -9273,6 +10319,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_337": {
@@ -9299,6 +10348,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_338": {
@@ -9325,6 +10377,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_339": {
@@ -9351,6 +10406,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_340": {
@@ -9377,6 +10435,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_341": {
@@ -9403,6 +10464,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_342": {
@@ -9429,6 +10493,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_343": {
@@ -9455,6 +10522,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_344": {
@@ -9481,6 +10551,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_345": {
@@ -9507,6 +10580,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_346": {
@@ -9533,6 +10609,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_347": {
@@ -9559,6 +10638,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_348": {
@@ -9585,6 +10667,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_349": {
@@ -9611,6 +10696,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_350": {
@@ -9637,6 +10725,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_351": {
@@ -9663,6 +10754,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_352": {
@@ -9689,6 +10783,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_353": {
@@ -9715,6 +10812,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_354": {
@@ -9741,6 +10841,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_355": {
@@ -9767,6 +10870,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_356": {
@@ -9793,6 +10899,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_357": {
@@ -9819,6 +10928,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_358": {
@@ -9845,6 +10957,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_359": {
@@ -9871,6 +10986,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_360": {
@@ -9897,6 +11015,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_361": {
@@ -9923,6 +11044,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_362": {
@@ -9949,6 +11073,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_363": {
@@ -9975,6 +11102,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_364": {
@@ -10001,6 +11131,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_365": {
@@ -10027,6 +11160,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_366": {
@@ -10053,6 +11189,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_367": {
@@ -10079,6 +11218,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_368": {
@@ -10105,6 +11247,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_369": {
@@ -10131,6 +11276,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_370": {
@@ -10157,6 +11305,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_371": {
@@ -10183,6 +11334,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_372": {
@@ -10209,6 +11363,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_373": {
@@ -10235,6 +11392,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_374": {
@@ -10261,6 +11421,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_375": {
@@ -10287,6 +11450,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_376": {
@@ -10313,6 +11479,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_377": {
@@ -10339,6 +11508,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_378": {
@@ -10365,6 +11537,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_379": {
@@ -10391,6 +11566,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_380": {
@@ -10417,6 +11595,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_381": {
@@ -10443,6 +11624,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_382": {
@@ -10469,6 +11653,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_383": {
@@ -10495,6 +11682,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_384": {
@@ -10521,6 +11711,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_385": {
@@ -10547,6 +11740,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_386": {
@@ -10573,6 +11769,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_387": {
@@ -10599,6 +11798,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_388": {
@@ -10625,6 +11827,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_389": {
@@ -10651,6 +11856,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_390": {
@@ -10677,6 +11885,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_391": {
@@ -10703,6 +11914,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_392": {
@@ -10729,6 +11943,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_393": {
@@ -10755,6 +11972,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_394": {
@@ -10781,6 +12001,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_395": {
@@ -10807,6 +12030,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_396": {
@@ -10833,6 +12059,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_397": {
@@ -10859,6 +12088,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_398": {
@@ -10885,6 +12117,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_399": {
@@ -10911,6 +12146,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_400": {
@@ -10937,6 +12175,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_401": {
@@ -10963,6 +12204,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_402": {
@@ -10989,6 +12233,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_403": {
@@ -11015,6 +12262,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_404": {
@@ -11041,6 +12291,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_405": {
@@ -11067,6 +12320,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_406": {
@@ -11093,6 +12349,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_407": {
@@ -11119,6 +12378,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_408": {
@@ -11145,6 +12407,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_409": {
@@ -11171,6 +12436,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_410": {
@@ -11197,6 +12465,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_411": {
@@ -11223,6 +12494,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_412": {
@@ -11249,6 +12523,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_413": {
@@ -11275,6 +12552,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_414": {
@@ -11301,6 +12581,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_415": {
@@ -11327,6 +12610,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_416": {
@@ -11353,6 +12639,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_417": {
@@ -11379,6 +12668,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_418": {
@@ -11405,6 +12697,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_419": {
@@ -11431,6 +12726,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_420": {
@@ -11457,6 +12755,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_421": {
@@ -11483,6 +12784,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_422": {
@@ -11509,6 +12813,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_423": {
@@ -11535,6 +12842,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_424": {
@@ -11561,6 +12871,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_425": {
@@ -11587,6 +12900,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_426": {
@@ -11613,6 +12929,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_427": {
@@ -11639,6 +12958,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_428": {
@@ -11665,6 +12987,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_429": {
@@ -11691,6 +13016,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_430": {
@@ -11717,6 +13045,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_431": {
@@ -11743,6 +13074,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_432": {
@@ -11769,6 +13103,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_433": {
@@ -11795,6 +13132,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_434": {
@@ -11821,6 +13161,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_435": {
@@ -11847,6 +13190,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_436": {
@@ -11873,6 +13219,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_437": {
@@ -11899,6 +13248,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_438": {
@@ -11925,6 +13277,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_439": {
@@ -11951,6 +13306,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_440": {
@@ -11977,6 +13335,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_441": {
@@ -12003,6 +13364,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_442": {
@@ -12029,6 +13393,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_443": {
@@ -12055,6 +13422,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_444": {
@@ -12081,6 +13451,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_445": {
@@ -12107,6 +13480,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_446": {
@@ -12133,6 +13509,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_447": {
@@ -12159,6 +13538,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_448": {
@@ -12185,6 +13567,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_449": {
@@ -12211,6 +13596,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_450": {
@@ -12237,6 +13625,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_451": {
@@ -12263,6 +13654,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_452": {
@@ -12289,6 +13683,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_453": {
@@ -12315,6 +13712,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_454": {
@@ -12341,6 +13741,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_455": {
@@ -12367,6 +13770,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_456": {
@@ -12393,6 +13799,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_457": {
@@ -12419,6 +13828,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_458": {
@@ -12445,6 +13857,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_459": {
@@ -12471,6 +13886,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_460": {
@@ -12497,6 +13915,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_461": {
@@ -12523,6 +13944,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_462": {
@@ -12549,6 +13973,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_463": {
@@ -12575,6 +14002,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_464": {
@@ -12601,6 +14031,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_465": {
@@ -12627,6 +14060,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_466": {
@@ -12653,6 +14089,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_467": {
@@ -12679,6 +14118,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_468": {
@@ -12705,6 +14147,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_469": {
@@ -12731,6 +14176,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_470": {
@@ -12757,6 +14205,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_471": {
@@ -12783,6 +14234,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_472": {
@@ -12809,6 +14263,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_473": {
@@ -12835,6 +14292,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_474": {
@@ -12861,6 +14321,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_475": {
@@ -12887,6 +14350,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_476": {
@@ -12913,6 +14379,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_477": {
@@ -12939,6 +14408,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_478": {
@@ -12965,6 +14437,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_479": {
@@ -12991,6 +14466,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_480": {
@@ -13017,6 +14495,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_481": {
@@ -13043,6 +14524,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_482": {
@@ -13069,6 +14553,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_483": {
@@ -13095,6 +14582,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_484": {
@@ -13121,6 +14611,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_485": {
@@ -13147,6 +14640,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_486": {
@@ -13173,6 +14669,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_487": {
@@ -13199,6 +14698,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_488": {
@@ -13225,6 +14727,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_489": {
@@ -13251,6 +14756,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_490": {
@@ -13277,6 +14785,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_491": {
@@ -13303,6 +14814,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_492": {
@@ -13329,6 +14843,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_493": {
@@ -13355,6 +14872,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_494": {
@@ -13381,6 +14901,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_495": {
@@ -13407,6 +14930,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_496": {
@@ -13433,6 +14959,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_497": {
@@ -13459,6 +14988,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_498": {
@@ -13485,6 +15017,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_499": {
@@ -13511,6 +15046,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_500": {
@@ -13537,6 +15075,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_501": {
@@ -13563,6 +15104,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_502": {
@@ -13589,6 +15133,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_503": {
@@ -13615,6 +15162,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_504": {
@@ -13641,6 +15191,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_505": {
@@ -13667,6 +15220,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_506": {
@@ -13693,6 +15249,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_507": {
@@ -13719,6 +15278,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_508": {
@@ -13745,6 +15307,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_509": {
@@ -13771,6 +15336,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_510": {
@@ -13797,6 +15365,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_511": {
@@ -13823,6 +15394,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_512": {
@@ -13849,6 +15423,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_513": {
@@ -13875,6 +15452,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_514": {
@@ -13901,6 +15481,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_515": {
@@ -13927,6 +15510,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_516": {
@@ -13953,6 +15539,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_517": {
@@ -13979,6 +15568,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_518": {
@@ -14005,6 +15597,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_519": {
@@ -14031,6 +15626,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_520": {
@@ -14057,6 +15655,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_521": {
@@ -14083,6 +15684,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_522": {
@@ -14109,6 +15713,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_523": {
@@ -14135,6 +15742,10 @@
           }
         }
       },
+      "description": "White solid - 3%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_524": {
@@ -14161,6 +15772,10 @@
           }
         }
       },
+      "description": "White solid - 4%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_525": {
@@ -14187,6 +15802,10 @@
           }
         }
       },
+      "description": "White solid - 5%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_526": {
@@ -14213,6 +15832,10 @@
           }
         }
       },
+      "description": "White solid - 6%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_527": {
@@ -14239,6 +15862,10 @@
           }
         }
       },
+      "description": "White solid - 8%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_528": {
@@ -14265,6 +15892,10 @@
           }
         }
       },
+      "description": "White solid - 12%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_529": {
@@ -14291,6 +15922,10 @@
           }
         }
       },
+      "description": "White solid - 14%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_530": {
@@ -14317,6 +15952,10 @@
           }
         }
       },
+      "description": "White solid - 83%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_531": {
@@ -14343,6 +15982,10 @@
           }
         }
       },
+      "description": "White solid - 95%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_532": {
@@ -14369,6 +16012,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_533": {
@@ -14395,6 +16041,10 @@
           }
         }
       },
+      "description": "Black solid - 3%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_534": {
@@ -14421,6 +16071,10 @@
           }
         }
       },
+      "description": "Black solid - 4%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_535": {
@@ -14447,6 +16101,10 @@
           }
         }
       },
+      "description": "Black solid - 5%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_536": {
@@ -14473,6 +16131,10 @@
           }
         }
       },
+      "description": "Black solid - 6%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_537": {
@@ -14499,6 +16161,10 @@
           }
         }
       },
+      "description": "Black solid - 8%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_538": {
@@ -14525,6 +16191,10 @@
           }
         }
       },
+      "description": "Black solid - 12%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_539": {
@@ -14551,6 +16221,10 @@
           }
         }
       },
+      "description": "Black solid - 14%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_540": {
@@ -14577,6 +16251,10 @@
           }
         }
       },
+      "description": "Black solid - 83%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_541": {
@@ -14603,6 +16281,10 @@
           }
         }
       },
+      "description": "Black solid - 95%",
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_542": {
@@ -14629,6 +16311,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_543": {
@@ -14655,6 +16340,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_544": {
@@ -14681,6 +16369,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_545": {
@@ -14707,6 +16398,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_546": {
@@ -14733,6 +16427,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_547": {
@@ -14759,6 +16456,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_548": {
@@ -14785,6 +16485,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_549": {
@@ -14811,6 +16514,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_550": {
@@ -14837,6 +16543,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_551": {
@@ -14863,6 +16572,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_552": {
@@ -14889,6 +16601,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_553": {
@@ -14915,6 +16630,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_554": {
@@ -14941,6 +16659,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_555": {
@@ -14967,6 +16688,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_556": {
@@ -14993,6 +16717,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_557": {
@@ -15019,6 +16746,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_558": {
@@ -15045,6 +16775,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_559": {
@@ -15071,6 +16804,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_560": {
@@ -15097,6 +16833,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_561": {
@@ -15123,6 +16862,9 @@
           }
         }
       },
+      "scopes": [
+        "ALL_FILLS"
+      ],
       "codeSyntax": {}
     },
     "var_562": {
@@ -15139,6 +16881,9 @@
           "value": 0
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_563": {
@@ -15155,6 +16900,9 @@
           "value": 3
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_564": {
@@ -15171,6 +16919,9 @@
           "value": 4
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_565": {
@@ -15187,6 +16938,9 @@
           "value": 6
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_566": {
@@ -15203,6 +16957,9 @@
           "value": 8
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_567": {
@@ -15219,6 +16976,9 @@
           "value": 10
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_568": {
@@ -15235,6 +16995,9 @@
           "value": 12
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_569": {
@@ -15251,6 +17014,9 @@
           "value": 14
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_570": {
@@ -15267,6 +17033,9 @@
           "value": 16
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_571": {
@@ -15283,6 +17052,9 @@
           "value": 20
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_572": {
@@ -15299,6 +17071,9 @@
           "value": 22
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_573": {
@@ -15315,6 +17090,9 @@
           "value": 24
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_574": {
@@ -15331,6 +17109,9 @@
           "value": 26
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_575": {
@@ -15347,6 +17128,9 @@
           "value": 28
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_576": {
@@ -15363,6 +17147,9 @@
           "value": 32
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_577": {
@@ -15379,6 +17166,9 @@
           "value": 36
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_578": {
@@ -15395,6 +17185,9 @@
           "value": 40
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_579": {
@@ -15411,6 +17204,9 @@
           "value": 44
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_580": {
@@ -15427,6 +17223,9 @@
           "value": 48
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_581": {
@@ -15443,6 +17242,9 @@
           "value": 50
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_582": {
@@ -15459,6 +17261,9 @@
           "value": 56
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_583": {
@@ -15475,6 +17280,9 @@
           "value": 64
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_584": {
@@ -15491,6 +17299,9 @@
           "value": 70
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_585": {
@@ -15507,6 +17318,9 @@
           "value": 72
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_586": {
@@ -15523,6 +17337,9 @@
           "value": 80
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_587": {
@@ -15539,6 +17356,9 @@
           "value": 96
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_588": {
@@ -15555,6 +17375,9 @@
           "value": 128
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_589": {
@@ -15571,6 +17394,9 @@
           "value": 0
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_590": {
@@ -15587,6 +17413,9 @@
           "value": 4
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_591": {
@@ -15603,6 +17432,9 @@
           "value": 8
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_592": {
@@ -15619,6 +17451,9 @@
           "value": 12
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_593": {
@@ -15635,6 +17470,9 @@
           "value": 14
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_594": {
@@ -15651,6 +17489,9 @@
           "value": 16
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_595": {
@@ -15667,6 +17508,9 @@
           "value": 18
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_596": {
@@ -15683,6 +17527,9 @@
           "value": 20
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_597": {
@@ -15699,6 +17546,9 @@
           "value": 22
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_598": {
@@ -15715,6 +17565,9 @@
           "value": 24
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_599": {
@@ -15731,6 +17584,9 @@
           "value": 26
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_600": {
@@ -15747,6 +17603,9 @@
           "value": 28
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_601": {
@@ -15763,6 +17622,9 @@
           "value": 32
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_602": {
@@ -15779,6 +17641,9 @@
           "value": 36
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_603": {
@@ -15795,6 +17660,9 @@
           "value": 40
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_604": {
@@ -15811,6 +17679,9 @@
           "value": 48
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_605": {
@@ -15827,6 +17698,9 @@
           "value": 56
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_606": {
@@ -15843,6 +17717,9 @@
           "value": 999
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_607": {
@@ -15859,6 +17736,11 @@
           "id": "var_542"
         }
       },
+      "description": "用于白底页面的整体背景，随 Light / Dark 模式切换。",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
       "codeSyntax": {}
     },
     "var_608": {
@@ -15875,6 +17757,11 @@
           "id": "var_542"
         }
       },
+      "description": "用于灰底页面的整体背景，随 Light / Dark 模式切换。",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
       "codeSyntax": {}
     },
     "var_609": {
@@ -15891,6 +17778,11 @@
           "id": "var_529"
         }
       },
+      "description": "用于白底样式浮层的背景，随 Light / Dark 模式切换。",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
       "codeSyntax": {}
     },
     "var_610": {
@@ -15907,6 +17799,11 @@
           "id": "var_529"
         }
       },
+      "description": "用于灰底样式浮层的背景，随 Light / Dark 模式切换。",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
       "codeSyntax": {}
     },
     "var_611": {
@@ -15923,6 +17820,11 @@
           "id": "var_540"
         }
       },
+      "description": "用于页面内组件容器的背景，随 Light / Dark 模式切换。",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
       "codeSyntax": {}
     },
     "var_612": {
@@ -15939,6 +17841,10 @@
           "id": "var_219"
         }
       },
+      "description": "用于主要文字，如页面标题、正文和关键内容。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_613": {
@@ -15955,6 +17861,10 @@
           "id": "var_216"
         }
       },
+      "description": "用于次要文字，如辅助说明和次级内容，层级低于主要文字。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_614": {
@@ -15971,6 +17881,10 @@
           "id": "var_213"
         }
       },
+      "description": "用于第三层级文字，弱化补充信息。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_615": {
@@ -15987,6 +17901,10 @@
           "id": "var_212"
         }
       },
+      "description": "用于第四层级文字，呈现更弱的辅助信息。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_616": {
@@ -16003,6 +17921,10 @@
           "id": "var_211"
         }
       },
+      "description": "用于低强调层级的文字，具体适用场景以组件规范为准。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_617": {
@@ -16019,6 +17941,10 @@
           "id": "var_211"
         }
       },
+      "description": "用于主要文字的禁用状态，表示关联内容或操作不可用。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_618": {
@@ -16035,26 +17961,14 @@
           "id": "var_213"
         }
       },
+      "description": "用于主要文字的按下状态，反馈正在进行的按压操作。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
     "var_619": {
       "id": "var_619",
-      "name": "text/default/miuix_radius_container",
-      "type": "NUMBER",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_596"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_596"
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_620": {
-      "id": "var_620",
       "name": "text/brand/miuix_color_text_brand_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16067,10 +17981,14 @@
           "id": "var_456"
         }
       },
+      "description": "用于品牌强调文字，突出品牌相关内容或操作。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_621": {
-      "id": "var_621",
+    "var_620": {
+      "id": "var_620",
       "name": "text/brand/miuix_color_text_brand_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16083,10 +18001,14 @@
           "id": "var_159"
         }
       },
+      "description": "用于品牌强调文字的禁用状态。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_622": {
-      "id": "var_622",
+    "var_621": {
+      "id": "var_621",
       "name": "text/link/miuix_color_text_link_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16099,10 +18021,14 @@
           "id": "var_456"
         }
       },
+      "description": "用于可交互的链接文字，提示可跳转或查看关联内容。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_623": {
-      "id": "var_623",
+    "var_622": {
+      "id": "var_622",
       "name": "text/link/miuix_color_text_link_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16115,10 +18041,14 @@
           "id": "var_159"
         }
       },
+      "description": "用于链接文字的禁用状态，表示链接当前不可用。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_624": {
-      "id": "var_624",
+    "var_623": {
+      "id": "var_623",
       "name": "text/caution/miuix_color_text_caution_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16131,10 +18061,14 @@
           "id": "var_304"
         }
       },
+      "description": "用于提醒用户注意的文字，表达 caution 提示语义。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_625": {
-      "id": "var_625",
+    "var_624": {
+      "id": "var_624",
       "name": "text/caution/miuix_color_text_caution_disable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16147,10 +18081,14 @@
           "id": "var_87"
         }
       },
+      "description": "用于 caution 提示文字的禁用状态。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_626": {
-      "id": "var_626",
+    "var_625": {
+      "id": "var_625",
       "name": "text/warning/miuix_color_text_warning_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16163,10 +18101,14 @@
           "id": "var_247"
         }
       },
+      "description": "用于警告或风险提示文字，表达 warning 语义。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_627": {
-      "id": "var_627",
+    "var_626": {
+      "id": "var_626",
       "name": "text/warning/miuix_color_text_warning_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16179,10 +18121,14 @@
           "id": "var_60"
         }
       },
+      "description": "用于 warning 警告文字的禁用状态。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_628": {
-      "id": "var_628",
+    "var_627": {
+      "id": "var_627",
       "name": "text/success/miuix_color_text_success_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16195,10 +18141,14 @@
           "id": "var_380"
         }
       },
+      "description": "用于成功状态的文字，表达操作成功或完成。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_629": {
-      "id": "var_629",
+    "var_628": {
+      "id": "var_628",
       "name": "text/success/miuix_color_text_success_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16211,10 +18161,14 @@
           "id": "var_123"
         }
       },
+      "description": "用于成功语义文字的禁用状态。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_630": {
-      "id": "var_630",
+    "var_629": {
+      "id": "var_629",
       "name": "text/status/miuix_color_text_status_hover",
       "type": "COLOR",
       "valuesByMode": {
@@ -16227,10 +18181,14 @@
           "id": "var_206"
         }
       },
+      "description": "用于文字相关交互的悬停状态反馈，具体作用对象与使用方式以组件规范为准。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_631": {
-      "id": "var_631",
+    "var_630": {
+      "id": "var_630",
       "name": "text/status/miuix_color_text_status_pressed",
       "type": "COLOR",
       "valuesByMode": {
@@ -16243,10 +18201,14 @@
           "id": "var_209"
         }
       },
+      "description": "用于文字相关交互的按下状态反馈，具体作用对象与使用方式以组件规范为准。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_632": {
-      "id": "var_632",
+    "var_631": {
+      "id": "var_631",
       "name": "text/status/miuix_color_text_status_selected",
       "type": "COLOR",
       "valuesByMode": {
@@ -16259,10 +18221,14 @@
           "id": "var_208"
         }
       },
+      "description": "用于文字相关交互的选中状态反馈，具体作用对象与使用方式以组件规范为准。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_633": {
-      "id": "var_633",
+    "var_632": {
+      "id": "var_632",
       "name": "text/static_white/miuix_color_text_static_white_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16275,10 +18241,14 @@
           "id": "var_532"
         }
       },
+      "description": "用于需要在 Light / Dark 模式下保持白色的文字。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_634": {
-      "id": "var_634",
+    "var_633": {
+      "id": "var_633",
       "name": "text/static_white/miuix_color_text_static_white_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16291,10 +18261,14 @@
           "id": "var_211"
         }
       },
+      "description": "用于固定白色文字的禁用状态，通过降低不透明度弱化表现。",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
       "codeSyntax": {}
     },
-    "var_635": {
-      "id": "var_635",
+    "var_634": {
+      "id": "var_634",
       "name": "fill/default/miuix_color_fill_primary_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16307,10 +18281,14 @@
           "id": "var_206"
         }
       },
+      "description": "用于默认中性填充的一级层级，随 Light / Dark 模式适配。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_636": {
-      "id": "var_636",
+    "var_635": {
+      "id": "var_635",
       "name": "fill/default/miuix_color_fill_secondary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16323,10 +18301,14 @@
           "id": "var_209"
         }
       },
+      "description": "用于默认中性填充的二级层级，具体组件用法以组件规范为准。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_637": {
-      "id": "var_637",
+    "var_636": {
+      "id": "var_636",
       "name": "fill/default/miuix_color_fill_tertiary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16339,10 +18321,14 @@
           "id": "var_209"
         }
       },
+      "description": "用于默认中性填充的三级层级，具体组件用法以组件规范为准。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_638": {
-      "id": "var_638",
+    "var_637": {
+      "id": "var_637",
       "name": "fill/default/miuix_color_fill_quaternary_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16355,88 +18341,14 @@
           "id": "var_210"
         }
       },
+      "description": "用于默认中性填充的四级层级，具体组件用法以组件规范为准。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_639": {
-      "id": "var_639",
-      "name": "fill/default/miuix_color_fill_primary_disabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
-        },
-        "mode_dark": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 1
-          }
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_640": {
-      "id": "var_640",
-      "name": "fill/default/miuix_color_fill_secondary_disabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
-        },
-        "mode_dark": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 1
-          }
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_641": {
-      "id": "var_641",
-      "name": "fill/default/miuix_color_fill_tertiary_disabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "COLOR",
-          "value": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
-        },
-        "mode_dark": {
-          "type": "COLOR",
-          "value": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 1
-          }
-        }
-      },
-      "codeSyntax": {}
-    },
-    "var_642": {
-      "id": "var_642",
+    "var_638": {
+      "id": "var_638",
       "name": "fill/default/miuix_color_fill_quaternary_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16449,10 +18361,14 @@
           "id": "var_206"
         }
       },
+      "description": "用于默认中性四级填充的禁用状态。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_643": {
-      "id": "var_643",
+    "var_639": {
+      "id": "var_639",
       "name": "fill/brand/miuix_color_fill_brand_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16465,10 +18381,14 @@
           "id": "var_456"
         }
       },
+      "description": "用于品牌强调填充，突出品牌相关区域或主要操作。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_644": {
-      "id": "var_644",
+    "var_640": {
+      "id": "var_640",
       "name": "fill/brand/miuix_color_fill_brand_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16481,10 +18401,14 @@
           "id": "var_159"
         }
       },
+      "description": "用于品牌强调填充的禁用状态。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_645": {
-      "id": "var_645",
+    "var_641": {
+      "id": "var_641",
       "name": "fill/caution/miuix_color_fill_caution_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16497,10 +18421,14 @@
           "id": "var_323"
         }
       },
+      "description": "用于提醒用户注意的区域或元素填充，表达 caution 提示语义。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_646": {
-      "id": "var_646",
+    "var_642": {
+      "id": "var_642",
       "name": "fill/caution/miuix_color_fill_caution_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16513,10 +18441,14 @@
           "id": "var_96"
         }
       },
+      "description": "用于 caution 提示填充的禁用状态。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_647": {
-      "id": "var_647",
+    "var_643": {
+      "id": "var_643",
       "name": "fill/warning/miuix_color_fill_warning_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16529,10 +18461,14 @@
           "id": "var_247"
         }
       },
+      "description": "用于警告或风险提示的填充，表达 warning 语义。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_648": {
-      "id": "var_648",
+    "var_644": {
+      "id": "var_644",
       "name": "fill/warning/miuix_color_fill_warning_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16545,10 +18481,14 @@
           "id": "var_60"
         }
       },
+      "description": "用于 warning 警告填充的禁用状态。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_649": {
-      "id": "var_649",
+    "var_645": {
+      "id": "var_645",
       "name": "fill/success/miuix_color_fill_success_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16561,10 +18501,14 @@
           "id": "var_380"
         }
       },
+      "description": "用于成功状态的填充，表达操作成功或完成。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_650": {
-      "id": "var_650",
+    "var_646": {
+      "id": "var_646",
       "name": "fill/success/miuix_color_fill_success_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16577,10 +18521,14 @@
           "id": "var_123"
         }
       },
+      "description": "用于成功语义填充的禁用状态。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_651": {
-      "id": "var_651",
+    "var_647": {
+      "id": "var_647",
       "name": "fill/status/miuix_color_fill_status_hover",
       "type": "COLOR",
       "valuesByMode": {
@@ -16593,10 +18541,14 @@
           "id": "var_206"
         }
       },
+      "description": "用于填充区域的悬停状态反馈。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_652": {
-      "id": "var_652",
+    "var_648": {
+      "id": "var_648",
       "name": "fill/status/miuix_color_fill_status_pressed",
       "type": "COLOR",
       "valuesByMode": {
@@ -16609,10 +18561,14 @@
           "id": "var_209"
         }
       },
+      "description": "用于填充区域的按下状态反馈。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_653": {
-      "id": "var_653",
+    "var_649": {
+      "id": "var_649",
       "name": "fill/status/miuix_color_fill_status_selected",
       "type": "COLOR",
       "valuesByMode": {
@@ -16625,10 +18581,14 @@
           "id": "var_208"
         }
       },
+      "description": "用于填充区域的选中状态反馈。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_654": {
-      "id": "var_654",
+    "var_650": {
+      "id": "var_650",
       "name": "fill/static_white/miuix_color_fill_static_white_enabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16641,10 +18601,14 @@
           "id": "var_532"
         }
       },
+      "description": "用于需要在 Light / Dark 模式下保持白色的填充。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_655": {
-      "id": "var_655",
+    "var_651": {
+      "id": "var_651",
       "name": "fill/static_white/miuix_color_fill_static_white_disabled",
       "type": "COLOR",
       "valuesByMode": {
@@ -16657,10 +18621,14 @@
           "id": "var_211"
         }
       },
+      "description": "用于固定白色填充的禁用状态，通过降低不透明度弱化表现。",
+      "scopes": [
+        "TEXT_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_656": {
-      "id": "var_656",
+    "var_652": {
+      "id": "var_652",
       "name": "stroke/border/miuix_color_stroke_border_enable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16673,10 +18641,14 @@
           "id": "var_211"
         }
       },
+      "description": "用于可用状态下的边框描边，界定元素或容器边界。",
+      "scopes": [
+        "STROKE"
+      ],
       "codeSyntax": {}
     },
-    "var_657": {
-      "id": "var_657",
+    "var_653": {
+      "id": "var_653",
       "name": "stroke/border/miuix_color_stroke_border_disable",
       "type": "COLOR",
       "valuesByMode": {
@@ -16689,10 +18661,14 @@
           "id": "var_210"
         }
       },
+      "description": "用于禁用状态下的边框描边，弱化不可用元素的边界。",
+      "scopes": [
+        "STROKE"
+      ],
       "codeSyntax": {}
     },
-    "var_658": {
-      "id": "var_658",
+    "var_654": {
+      "id": "var_654",
       "name": "stroke/divider/miuix_color_stroke_divider",
       "type": "COLOR",
       "valuesByMode": {
@@ -16705,10 +18681,14 @@
           "id": "var_210"
         }
       },
+      "description": "用于内容分隔线，区分相邻内容或分组。",
+      "scopes": [
+        "STROKE"
+      ],
       "codeSyntax": {}
     },
-    "var_659": {
-      "id": "var_659",
+    "var_655": {
+      "id": "var_655",
       "name": "mask/miuix_color_mask",
       "type": "COLOR",
       "valuesByMode": {
@@ -16721,10 +18701,15 @@
           "id": "var_232"
         }
       },
+      "description": "用于遮罩，弱化被覆盖的背景内容并突出前景层。",
+      "scopes": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
       "codeSyntax": {}
     },
-    "var_660": {
-      "id": "var_660",
+    "var_656": {
+      "id": "var_656",
       "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16737,10 +18722,14 @@
           "id": "var_568"
         }
       },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_661": {
-      "id": "var_661",
+    "var_657": {
+      "id": "var_657",
       "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16753,10 +18742,14 @@
           "id": "var_570"
         }
       },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_662": {
-      "id": "var_662",
+    "var_658": {
+      "id": "var_658",
       "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16769,10 +18762,34 @@
           "id": "var_573"
         }
       },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_663": {
-      "id": "var_663",
+    "var_659": {
+      "id": "var_659",
+      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_xl",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_575"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_575"
+        }
+      },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {}
+    },
+    "var_660": {
+      "id": "var_660",
       "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16785,10 +18802,14 @@
           "id": "var_568"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_664": {
-      "id": "var_664",
+    "var_661": {
+      "id": "var_661",
       "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16801,10 +18822,14 @@
           "id": "var_570"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_665": {
-      "id": "var_665",
+    "var_662": {
+      "id": "var_662",
       "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16817,10 +18842,14 @@
           "id": "var_571"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_666": {
-      "id": "var_666",
+    "var_663": {
+      "id": "var_663",
       "name": "padding/vertical/container/miuix_space_container_padding_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16833,10 +18862,14 @@
           "id": "var_565"
         }
       },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_667": {
-      "id": "var_667",
+    "var_664": {
+      "id": "var_664",
       "name": "padding/vertical/container/miuix_space_container_padding_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16849,10 +18882,34 @@
           "id": "var_573"
         }
       },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_668": {
-      "id": "var_668",
+    "var_665": {
+      "id": "var_665",
+      "name": "padding/vertical/container/miuix_space_container_padding_vertical_lg",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_575"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_575"
+        }
+      },
+      "description": "卡片、抽屉、弹出框类",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {}
+    },
+    "var_666": {
+      "id": "var_666",
       "name": "padding/vertical/control/miuix_space_control_padding_vertical_xs",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16865,10 +18922,14 @@
           "id": "var_564"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_669": {
-      "id": "var_669",
+    "var_667": {
+      "id": "var_667",
       "name": "padding/vertical/control/miuix_space_control_padding_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16881,10 +18942,14 @@
           "id": "var_565"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_670": {
-      "id": "var_670",
+    "var_668": {
+      "id": "var_668",
       "name": "padding/vertical/control/miuix_space_control_padding_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16897,10 +18962,14 @@
           "id": "var_566"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_671": {
-      "id": "var_671",
+    "var_669": {
+      "id": "var_669",
       "name": "padding/vertical/control/miuix_space_control_padding_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16913,10 +18982,14 @@
           "id": "var_569"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_672": {
-      "id": "var_672",
+    "var_670": {
+      "id": "var_670",
       "name": "padding/vertical/control/miuix_space_control_padding_vertical_xl",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16929,10 +19002,14 @@
           "id": "var_570"
         }
       },
+      "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_673": {
-      "id": "var_673",
+    "var_671": {
+      "id": "var_671",
       "name": "margin/miuix_space_margin_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16945,10 +19022,14 @@
           "id": "var_568"
         }
       },
+      "description": "页面以及分栏区域左右边距",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_674": {
-      "id": "var_674",
+    "var_672": {
+      "id": "var_672",
       "name": "margin/miuix_space_margin_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16961,10 +19042,14 @@
           "id": "var_571"
         }
       },
+      "description": "页面以及分栏区域左右边距",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_675": {
-      "id": "var_675",
+    "var_673": {
+      "id": "var_673",
       "name": "margin/miuix_space_margin_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16977,10 +19062,14 @@
           "id": "var_575"
         }
       },
+      "description": "页面以及分栏区域左右边距",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_676": {
-      "id": "var_676",
+    "var_674": {
+      "id": "var_674",
       "name": "margin/miuix_space_margin_xl",
       "type": "NUMBER",
       "valuesByMode": {
@@ -16993,10 +19082,14 @@
           "id": "var_582"
         }
       },
+      "description": "页面以及分栏区域左右边距",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_677": {
-      "id": "var_677",
+    "var_675": {
+      "id": "var_675",
       "name": "gap/horizontal/miuix_space_gap_horizontal_xs",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17009,10 +19102,14 @@
           "id": "var_564"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_678": {
-      "id": "var_678",
+    "var_676": {
+      "id": "var_676",
       "name": "gap/horizontal/miuix_space_gap_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17025,10 +19122,14 @@
           "id": "var_566"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_679": {
-      "id": "var_679",
+    "var_677": {
+      "id": "var_677",
       "name": "gap/horizontal/miuix_space_gap_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17041,10 +19142,14 @@
           "id": "var_568"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_680": {
-      "id": "var_680",
+    "var_678": {
+      "id": "var_678",
       "name": "gap/horizontal/miuix_space_gap_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17057,10 +19162,14 @@
           "id": "var_570"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_681": {
-      "id": "var_681",
+    "var_679": {
+      "id": "var_679",
       "name": "gap/vertical/miuix_space_gap_vertical_xs",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17073,10 +19182,14 @@
           "id": "var_568"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_682": {
-      "id": "var_682",
+    "var_680": {
+      "id": "var_680",
       "name": "gap/vertical/miuix_space_gap_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17089,10 +19202,14 @@
           "id": "var_570"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_683": {
-      "id": "var_683",
+    "var_681": {
+      "id": "var_681",
       "name": "gap/vertical/miuix_space_gap_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17105,10 +19222,14 @@
           "id": "var_573"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_684": {
-      "id": "var_684",
+    "var_682": {
+      "id": "var_682",
       "name": "gap/vertical/miuix_space_gap_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17121,10 +19242,14 @@
           "id": "var_576"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_685": {
-      "id": "var_685",
+    "var_683": {
+      "id": "var_683",
       "name": "gap/vertical/miuix_space_gap_vertical_xl",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17137,10 +19262,14 @@
           "id": "var_580"
         }
       },
+      "description": "图标与文本、内容分组、区块",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     },
-    "var_686": {
-      "id": "var_686",
+    "var_684": {
+      "id": "var_684",
       "name": "radius/miuix_radius_none",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17153,10 +19282,13 @@
           "id": "var_589"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
       "codeSyntax": {}
     },
-    "var_687": {
-      "id": "var_687",
+    "var_685": {
+      "id": "var_685",
       "name": "radius/miuix_radius_container",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17169,10 +19301,13 @@
           "id": "var_596"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
       "codeSyntax": {}
     },
-    "var_688": {
-      "id": "var_688",
+    "var_686": {
+      "id": "var_686",
       "name": "radius/miuix_radius_control_sm",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17185,10 +19320,13 @@
           "id": "var_596"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
       "codeSyntax": {}
     },
-    "var_689": {
-      "id": "var_689",
+    "var_687": {
+      "id": "var_687",
       "name": "radius/miuix_radius_control_md",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17201,10 +19339,13 @@
           "id": "var_597"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
       "codeSyntax": {}
     },
-    "var_690": {
-      "id": "var_690",
+    "var_688": {
+      "id": "var_688",
       "name": "radius/miuix_radius_control_lg",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17217,10 +19358,13 @@
           "id": "var_600"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
       "codeSyntax": {}
     },
-    "var_691": {
-      "id": "var_691",
+    "var_689": {
+      "id": "var_689",
       "name": "radius/miuix_radius_overlay",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17233,10 +19377,13 @@
           "id": "var_602"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
       "codeSyntax": {}
     },
-    "var_692": {
-      "id": "var_692",
+    "var_690": {
+      "id": "var_690",
       "name": "radius/miuix_radius_full",
       "type": "NUMBER",
       "valuesByMode": {
@@ -17249,6 +19396,89 @@
           "id": "var_606"
         }
       },
+      "scopes": [
+        "CORNER_RADIUS"
+      ],
+      "codeSyntax": {}
+    },
+    "var_691": {
+      "id": "var_691",
+      "name": "safe_area/bottom/miuix_space_safe_area_bottom_sm",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_573"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_573"
+        }
+      },
+      "description": "页面底部安全间距（Safe Area），纵向。底部悬浮元素：底部导航栏、底部工具栏、弹出框容器类等。",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {}
+    },
+    "var_692": {
+      "id": "var_692",
+      "name": "safe_area/bottom/miuix_space_safe_area_bottom_md",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_576"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_576"
+        }
+      },
+      "description": "页面底部安全间距（Safe Area），纵向。录音按钮、独立性主操作按钮。",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {}
+    },
+    "var_693": {
+      "id": "var_693",
+      "name": "safe_area/bottom/miuix_space_safe_area_bottom_lg",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_580"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_580"
+        }
+      },
+      "description": "页面底部安全间距（Safe Area），纵向。底部固定按钮、列表底部；底部悬浮元素与跟随按钮、列表底部之间距。",
+      "scopes": [
+        "GAP"
+      ],
+      "codeSyntax": {}
+    },
+    "var_694": {
+      "id": "var_694",
+      "name": "safe_area/bottom/miuix_space_safe_area_bottom_xl",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_588"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_588"
+        }
+      },
+      "description": "页面底部安全间距（Safe Area），纵向。系统 Toast。",
+      "scopes": [
+        "GAP"
+      ],
       "codeSyntax": {}
     }
   }

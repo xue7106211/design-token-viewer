@@ -23,6 +23,8 @@ describe("parseTokenJSON", () => {
           id: "var_1",
           name: "color/blue",
           type: "COLOR",
+          description: "Primary blue",
+          scopes: ["ALL_SCOPES"],
           valuesByMode: {
             mode_1: { type: "COLOR", value: { r: 0, g: 0, b: 1, a: 1 } },
           },
@@ -36,6 +38,8 @@ describe("parseTokenJSON", () => {
     expect(Object.keys(result!.tokens)).toContain("var_1");
     expect(result!.tokens.var_1.name).toBe("color/blue");
     expect(result!.tokens.var_1.type).toBe("COLOR");
+    expect(result!.tokens.var_1.description).toBe("Primary blue");
+    expect(result!.tokens.var_1.scopes).toEqual(["ALL_SCOPES"]);
   });
 
   it("parses Variables2CSS format", () => {

@@ -81,6 +81,8 @@ export interface DesignToken {
   referencedBy: string[];
   /** Human-readable description */
   description?: string;
+  /** Figma variable usage scopes, e.g. "GAP" or "CORNER_RADIUS" */
+  scopes?: string[];
   /** Code syntax per platform (Figma: WEB, ANDROID, iOS) */
   // 各平台代码命名（Figma 的 codeSyntax）。导出 Android XML 时优先用 ANDROID 字段。
   codeSyntax?: { WEB?: string; ANDROID?: string; iOS?: string };

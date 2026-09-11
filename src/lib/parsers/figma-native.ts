@@ -31,13 +31,11 @@ export function parseFigmaNative(json: FigmaNativeJSON): ParsedTokenData {
       rawValues[modeId] = convertFigmaValue(fValue, variable.type as TokenType);
     }
 
-    // Check if any mode value is an alias
-    const isAlias = Object.values(variable.valuesByMode).some(
-      (v) => v.type === "ALIAS"
-    );
+    const modeValues = Object.values(variable.valuesByMode);
+    const isAlias = modeValues.some((value) => value.type === "ALIAS");
 
     // Find alias target from first mode (if alias)
-    const firstModeValue = Object.values(variable.valuesByMode)[0];
+    const firstModeValue = modeValues[0];
     const aliasOf =
       firstModeValue?.type === "ALIAS" ? firstModeValue.id : undefined;
 
@@ -54,6 +52,7 @@ export function parseFigmaNative(json: FigmaNativeJSON): ParsedTokenData {
       aliasOf,
       referencedBy: [],
       description: variable.description,
+      scopes: variable.scopes,
       codeSyntax: variable.codeSyntax,
     };
   }
