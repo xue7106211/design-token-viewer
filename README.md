@@ -11,10 +11,10 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 - 颜色令牌：色块预览、HEX/RGB/HSL 值、WCAG 对比度检查
 - 数值 / 字符串 / 布尔令牌预览
 - 别名引用链路可视化，反向引用查看
-- 保留并展示 Figma description；NUMBER Token 展示 Figma scopes
+- 保留并展示 Figma description；Token Inspector 在 description 之后、COLOR 对比度之前展示 Token Scope，支持 COLOR、NUMBER、STRING、BOOLEAN 四种 Token 类型、多个 scope Badge，无 scope 时显示“未设置”
 - 令牌编辑：值、名称、描述、Code Syntax、别名引用
-- 令牌删除、分组重命名、令牌重排序
-- 变更日志：记录编辑、导入、快照创建/恢复等操作，包含 actor、时间戳、客户端 IP 和前后值对比
+- 令牌删除、批量移动分组、分组重命名、令牌重排序；拖放移动时可在同一次 revision 更新中同步重排序
+- 变更日志：记录编辑、移动分组、导入、快照创建/恢复等操作，包含 actor、时间戳、客户端 IP 和前后值对比
 - 代码导出：CSS 自定义属性、Android XML resources、原始 JSON；来源可选当前过滤结果、当前文档全部 Collection，或在确认请求成功后导出版本快照
 - Shiki 语法高亮（支持 XML / CSS / JSON，亮色暗色双主题）
 - 亮色 / 暗色主题切换
@@ -57,7 +57,7 @@ src/
 │   ├── layout.tsx / page.tsx / providers.tsx / globals.css
 │   └── api/          # Route Handlers
 │       ├── token-document/      # GET 读取、POST 导入；import/ 为 POST 别名
-│       ├── tokens/              # 单 Token 编辑/删除与 reorder
+│       ├── tokens/              # 单 Token 编辑/删除；reorder/ 重排序；move-to-group/ 移动分组
 │       ├── snapshots/           # GET/POST 列表与创建、[snapshotId]/restore 恢复
 │       ├── change-logs/         # GET 变更日志
 │       ├── groups/rename/       # PATCH 分组重命名

@@ -93,6 +93,7 @@ export function TokenList() {
   // ---- 从全局 store 中订阅所需状态与操作 ----
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);  // 经过搜索/筛选后的 Token ID 列表
   const tokens = useTokenStore((s) => s.tokens);                      // 所有 Token 的字典 { id -> token }
+  const activeCollectionId = useTokenStore((s) => s.activeCollectionId); // 当前集合，用于原子移动并重排序
   const activeModeId = useTokenStore((s) => s.activeModeId);          // 当前激活的模式 ID（如 light/dark）
   const selectToken = useTokenStore((s) => s.selectToken);            // 选中某个 Token 的 action
   const selectedTokenId = useTokenStore((s) => s.selectedTokenId);    // 当前选中的 Token ID（单选）
@@ -101,7 +102,7 @@ export function TokenList() {
   const codeFormat = useTokenStore((s) => s.codeFormat);              // 代码格式（CSS / SCSS / JS 等）
   const searchQuery = useTokenStore((s) => s.searchQuery);            // 当前搜索关键词
   const reorderFilteredTokens = useTokenStore((s) => s.reorderFilteredTokens); // 重新排序 Token 列表
-  const updateTokenName = useTokenStore((s) => s.updateTokenName);    // 更新 Token 名称（含路径）
+  const moveTokensToGroup = useTokenStore((s) => s.moveTokensToGroup); // 原子移动分组及可选重排序
 
   // ---- 拖拽排序相关状态 ----
   // 搜索状态下禁用拖拽，因为搜索结果的顺序不应被手动改变
@@ -301,10 +302,7 @@ export function TokenList() {
 
   /**
    * 分组级放置处理：将 Token 移动到目标分组
-   * 1. 提取 Token 的叶子名称（最后一段路径）
-   * 2. 拼接新的完整路径名（targetGroup/leaf）
-   * 3. 如果名称有变化则更新
-   * 4. 将 Token 插入到目标分组的末尾位置
+   * 服务端在一个 revision 内同时完成改分组和重排序，避免两个并发写入发生冲突。
    */
   const handleGroupDrop = useCallback((groupName: string) => {
     if (!dragSourceId) return;
@@ -313,15 +311,6 @@ export function TokenList() {
 
     // "(root)" 是 UI 显示用的占位名，实际存储中根分组为空字符串
     const targetGroup = groupName === "(root)" ? "" : groupName;
-    // 提取 Token 名称的叶子部分（最后一段路径）
-    const leaf = token.path[token.path.length - 1] ?? token.name.split("/").filter(Boolean).pop() ?? token.name;
-    const nextName = targetGroup ? `${targetGroup}/${leaf}` : leaf;
-
-    // 仅在名称实际变化时才更新
-    if (nextName !== token.name) {
-      void updateTokenName(dragSourceId, nextName);
-    }
-
     // 将 Token 插入到目标分组中最后一个同组 Token 之后
     const newIds = filteredTokenIds.filter((id) => id !== dragSourceId);
     let insertIndex = newIds.length; // 默认插入到末尾
@@ -333,11 +322,15 @@ export function TokenList() {
       }
     }
     newIds.splice(insertIndex, 0, dragSourceId);
-    void reorderFilteredTokens(newIds);
+    void moveTokensToGroup({
+      tokenIds: [dragSourceId],
+      targetGroup,
+      ...(activeCollectionId != null ? { collectionId: activeCollectionId, tokenOrder: newIds } : {}),
+    });
     setDragSourceId(null);
     setDragOverId(null);
     setDragOverGroup(null);
-  }, [dragSourceId, tokens, filteredTokenIds, updateTokenName, reorderFilteredTokens]);
+  }, [activeCollectionId, dragSourceId, tokens, filteredTokenIds, moveTokensToGroup]);
 
   // ---- 选择状态同步 ----
 
@@ -476,8 +469,8 @@ export function TokenList() {
    * 确认分组编辑：
    * 1. 将输入值标准化（空字符串或 "(root)" 都表示根分组）
    * 2. 如果分组没有变化则直接关闭
-   * 3. 遍历所有目标 Token，提取叶子名称并拼接新路径
-   * 4. 同步到文件并关闭对话框
+   * 3. 通过单次服务端写入移动所有目标 Token，保证不会产生部分成功
+   * 4. 关闭对话框
    */
   const handleEditGroupConfirm = useCallback(() => {
     if (!editGroupTargetIds.length) {
@@ -493,17 +486,9 @@ export function TokenList() {
       return;
     }
 
-    // 批量更新每个目标 Token 的名称（路径）
-    for (const id of editGroupTargetIds) {
-      const t = tokens[id];
-      if (!t) continue;
-      // 提取叶子名称：优先从 path 数组取最后一段，否则从 name 中按 "/" 分割取最后一段
-      const leaf = t.path[t.path.length - 1] ?? t.name.split("/").filter(Boolean).pop() ?? t.name;
-      const nextName = nextGroup ? `${nextGroup}/${leaf}` : leaf;
-      if (nextName !== t.name) void updateTokenName(id, nextName);
-    }
+    void moveTokensToGroup({ tokenIds: editGroupTargetIds, targetGroup: nextGroup });
     setEditGroupOpen(false);
-  }, [editGroupTargetIds, editGroupValue, editGroupCurrentGroup, tokens, updateTokenName]);
+  }, [editGroupTargetIds, editGroupValue, editGroupCurrentGroup, moveTokensToGroup]);
 
   // ---- 空状态 ----
   // 筛选结果为空时显示提示信息
@@ -581,15 +566,18 @@ export function TokenList() {
             {groupedEntries.map(([groupName, tokenIds]) => (
               <Fragment key={groupName}>
                 {/* 分组标题行：支持拖拽放置以将 Token 移入该分组 */}
-                <tr className={cn("bg-muted/45", dragOverGroup === groupName && "bg-primary/10")}>
+                <tr>
                   <td
                     colSpan={4}
-                    className="h-8 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground border-b border-border"
+                    className={cn(
+                      "h-8 border-b border-border bg-muted/45 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground",
+                      dragOverGroup === groupName && "bg-primary/10"
+                    )}
                     onDragOver={(e) => handleGroupDragOver(e, groupName)}
                     onDragLeave={(e) => handleGroupDragLeave(e, groupName)}
                     onDrop={(e) => { e.preventDefault(); handleGroupDrop(groupName); }}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="sticky left-3 z-10 flex w-fit items-center gap-2">
                       <span className="truncate">{groupName}</span>
                       <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums normal-case tracking-normal">
                         {tokenIds.length}
@@ -934,10 +922,9 @@ function TokenListRow({
   // 粘性单元格样式（第一列 Token Name）：sticky left-0 + 背景色 + 阴影
   const stickyCellClass = cn(
     "h-11 px-3 text-left border-b border-r border-border/80 align-middle min-w-0",
-    "transition-colors duration-150 ease-out",
-    "sticky left-0 z-20 text-xs truncate max-w-0",
-    isSelected ? "bg-primary/[0.055]" : "bg-card", // 选中时使用强调背景，否则使用默认背景
-    "group-hover:bg-muted/45",
+    "relative isolate sticky left-0 z-20 max-w-0 bg-card text-xs truncate",
+    "before:pointer-events-none before:absolute before:inset-0 before:z-0 before:bg-transparent before:content-[''] before:transition-colors before:duration-150 before:ease-out",
+    isSelected ? "before:bg-primary/[0.055]" : "group-hover:before:bg-muted/45",
     stickyShadow && ""
   );
 
@@ -999,7 +986,7 @@ function TokenListRow({
               dropIndicator === "after" && "border-b-2 border-b-primary"
             )}
           >
-            <div className="flex items-center gap-2 min-w-0">
+            <div className="relative z-10 flex min-w-0 items-center gap-2">
               {/* 拖拽手柄：仅在非搜索状态下显示，hover 时渐显 */}
               {isDragEnabled && (
                 <span

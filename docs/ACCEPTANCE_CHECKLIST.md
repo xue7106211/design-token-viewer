@@ -13,7 +13,8 @@ npm run test
 - [ ] 协作文档、仓储选择、加载状态和 Zustand Store 测试通过
 - [ ] 旧文档按 id/name/type 从种子补齐 metadata 的测试通过
 - [ ] 服务端加载失败后不重复请求的 loading-state 测试通过
-- [ ] 代码展示、变更日志等组件测试通过
+- [ ] 代码展示、变更日志和 Token Inspector Scope 等组件测试通过
+- [ ] `token-inspector.test.tsx` 覆盖四种 Token 类型、多个 scope 顺序，以及 undefined、空数组和空白 scope 的“未设置”回退
 
 **预期结果**：`npm run test` 退出码为 0，所有测试文件通过。测试数量会随覆盖范围调整，不固定在文档中。
 
@@ -77,9 +78,13 @@ npm run test:e2e
 ### 5. 检查器与导出
 
 - [ ] 显示 Token 名称、类型、值和非空 description
-- [ ] NUMBER Token 的 scopes 以标签展示
+- [ ] COLOR、NUMBER、STRING、BOOLEAN 四种 Token 均在 description 之后展示 Token Scope；COLOR 的 Scope 位于对比度之前
+- [ ] 多个 scope 按源顺序分别显示为 Badge；无 scope、空数组或仅空白 scope 时显示“未设置”
 - [ ] 颜色值提供 HEX/RGB/HSL 和 WCAG 对比度信息
 - [ ] Alias Token 显示引用链和反向引用
+- [ ] List 视图支持将单个或批量 Token 移动到目标分组；拖放移动及可选重排序在一次 revision 更新中完成
+- [ ] 移动分组接口拒绝缺失或非字符串的 `targetGroup`，并阻止目标名称冲突及跨 Collection 的移动/重排组合
+- [ ] 混合分组多选仅在全部 Token 已位于目标分组时判定为 no-op；Route、Store 和 List 边界行为均有测试覆盖
 - [ ] 检查器宽度可调整
 - [ ] CSS、Android XML 和 JSON 格式可导出
 - [ ] 导出来源支持当前过滤结果、当前文档全部 Collection；版本快照仅在远端请求成功后可复制或下载
@@ -89,7 +94,8 @@ npm run test:e2e
 
 ### 6. 共享记录与快照
 
-- [ ] 编辑、导入、重排序、分组重命名、创建快照和恢复快照会产生服务端变更日志
+- [ ] 编辑、导入、移动令牌分组、重排序、分组重命名、创建快照和恢复快照会产生服务端变更日志
+- [ ] 移动分组日志 `move_tokens_to_group` 包含移动前后名称、Token 数量、目标分组及可选的 Collection 重排元数据
 - [ ] 日志包含 actor、IP、时间戳及必要的前后值
 - [ ] 可创建、下载和恢复当前文档的版本快照
 - [ ] 发生 revision 冲突时刷新到最新服务端文档

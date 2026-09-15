@@ -13,6 +13,7 @@ const CHANGE_TYPE_LABELS: Record<ChangeType, string> = {
   set_alias: '设置别名',
   delete_token: '删除令牌',
   rename_group: '重命名分组',
+  move_tokens_to_group: '移动令牌分组',
   reorder: '重排序',
   restore_snapshot: '恢复快照',
   create_snapshot: '创建快照',

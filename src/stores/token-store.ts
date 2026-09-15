@@ -81,6 +81,12 @@ interface TokenState {
   setTokenAlias: (tokenId: string, modeId: string, targetTokenId: string | null) => Promise<void>;
   deleteToken: (tokenId: string) => Promise<void>;
   reorderFilteredTokens: (newOrder: string[]) => Promise<void>;
+  moveTokensToGroup: (input: {
+    tokenIds: string[];
+    targetGroup: string;
+    collectionId?: string;
+    tokenOrder?: string[];
+  }) => Promise<void>;
   renameGroup: (oldPath: string, newPath: string) => Promise<void>;
   exportRawJSON: () => string;
   getTokensByGroup: (group: string) => DesignToken[];
@@ -418,6 +424,14 @@ export const useTokenStore = create<TokenState>()(
           const { activeCollectionId, searchQuery } = get();
           if (searchQuery.trim() || activeCollectionId == null) return;
           await commit("/api/tokens/reorder", { collectionId: activeCollectionId, tokenIds: newOrder });
+        },
+
+        moveTokensToGroup: async ({ tokenIds, targetGroup, collectionId, tokenOrder }) => {
+          await commit("/api/tokens/move-to-group", {
+            tokenIds,
+            targetGroup,
+            ...(collectionId != null && tokenOrder != null ? { collectionId, tokenOrder } : {}),
+          });
         },
 
         renameGroup: async (oldPath: string, newPath: string) => {

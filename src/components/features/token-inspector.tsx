@@ -93,7 +93,7 @@ export function TokenInspector() {
   const resolved = token.resolvedValues[modeId];
   const code = generateTokenCode(token, codeFormat, modeId, tokens);
   const description = token.description?.trim();
-  const scopes = resolved?.type === "NUMBER" ? token.scopes?.filter(Boolean) ?? [] : [];
+  const scopes = token.scopes?.map((scope) => scope.trim()).filter(Boolean) ?? [];
 
   // Alias chain
   const aliasChain = getAliasChain(token.id, modeId, tokens);
@@ -170,10 +170,7 @@ export function TokenInspector() {
               </div>
             )}
             {resolved?.type === "NUMBER" && (
-              <div className="space-y-3">
-                <NumberPreview value={resolved.value} name={token.name} />
-                {scopes.length > 0 && <ScopeList scopes={scopes} />}
-              </div>
+              <NumberPreview value={resolved.value} name={token.name} />
             )}
             {resolved?.type === "STRING" && (
               <p className="text-sm font-mono">{resolved.value}</p>
@@ -184,6 +181,7 @@ export function TokenInspector() {
               </Badge>
             )}
             {description && <Description value={description} />}
+            <ScopeList scopes={scopes} />
             {resolved?.type === "COLOR" && (
               <div className="space-y-1.5">
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">对比度</p>
@@ -367,14 +365,18 @@ function Section({
 function ScopeList({ scopes }: { scopes: string[] }) {
   return (
     <div className="space-y-1.5">
-      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Scope</p>
-      <div className="flex flex-wrap gap-1.5">
-        {scopes.map((scope) => (
-          <Badge key={scope} variant="secondary" className="h-5 px-1.5 text-[9px] font-mono font-medium">
-            {scope}
-          </Badge>
-        ))}
-      </div>
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Token Scope</p>
+      {scopes.length > 0 ? (
+        <div className="flex flex-wrap gap-1.5">
+          {scopes.map((scope) => (
+            <Badge key={scope} variant="secondary" className="h-5 px-1.5 text-[9px] font-mono font-medium">
+              {scope}
+            </Badge>
+          ))}
+        </div>
+      ) : (
+        <p className="rounded-md bg-muted/35 px-2.5 py-2 text-xs text-muted-foreground">未设置</p>
+      )}
     </div>
   );
 }

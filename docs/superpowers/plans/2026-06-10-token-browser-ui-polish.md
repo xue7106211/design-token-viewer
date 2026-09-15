@@ -1,6 +1,6 @@
 # Token Browser UI Polish Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **历史归档：** 本文件保留当时的实施计划，不是当前执行指令或功能承诺；复选框及工作区提示反映计划创建时的语境。
 
 **Goal:** Make Grid/List feel like a professional design asset browser with clearer token previews, alias/mode readability, and lightweight interaction feedback.
 

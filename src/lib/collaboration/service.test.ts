@@ -122,6 +122,70 @@ describe("token document collaboration service", () => {
     });
   });
 
+  it("moves multiple tokens to a group and reorders them in one revision", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const collection = document.collections.find((item) => item.tokenIds.length > 2);
+    expect(collection).toBeDefined();
+    if (!collection) return;
+
+    const [firstId, secondId] = collection.tokenIds;
+    const nextOrder = [secondId, firstId, ...collection.tokenIds.slice(2)];
+    const updated = await service.moveTokensToGroup({
+      tokenIds: [firstId, secondId],
+      targetGroup: "moved",
+      collectionId: collection.id,
+      tokenOrder: nextOrder,
+      revision: document.revision,
+      actor,
+    });
+
+    expect(updated.revision).toBe(document.revision + 1);
+    expect(updated.collections.find((item) => item.id === collection.id)?.tokenIds).toEqual(nextOrder);
+    expect(updated.tokens[firstId].group).toBe("moved");
+    expect(updated.tokens[secondId].group).toBe("moved");
+
+    const logs = await service.getChangeLogs();
+    expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      changeType: "move_tokens_to_group",
+      meta: {
+        count: 2,
+        targetGroup: "moved",
+        collectionId: collection.id,
+        reordered: true,
+      },
+    });
+  });
+
+  it("does not persist a group move when its bundled order is invalid", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const collection = document.collections.find((item) => item.tokenIds.length > 2);
+    expect(collection).toBeDefined();
+    if (!collection) return;
+
+    const tokenId = collection.tokenIds[0];
+    const originalName = document.tokens[tokenId].name;
+    await expect(
+      service.moveTokensToGroup({
+        tokenIds: [tokenId],
+        targetGroup: "moved",
+        collectionId: collection.id,
+        tokenOrder: collection.tokenIds.slice(1),
+        revision: document.revision,
+        actor,
+      })
+    ).rejects.toThrow("Token order must include the same collection tokens");
+
+    const after = await service.getDocument();
+    expect(after.revision).toBe(document.revision);
+    expect(after.tokens[tokenId].name).toBe(originalName);
+    expect(await service.getChangeLogs()).toHaveLength(0);
+  });
+
   it("renames a group with one rename_group audit log", async () => {
     const repo = createMemoryCollaborationRepository();
     const service = createTokenDocumentService(repo, sampleData);

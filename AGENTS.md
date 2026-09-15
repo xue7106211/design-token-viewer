@@ -9,9 +9,9 @@ Design Token Viewer 是一个 Figma 设计令牌可视化工具，用于浏览�
 - 多套 Token 表切换（HyperOS3 / HyperOS4），文档、编辑和日志按文档隔离；快照恢复见“已知限制”
 - 可视化浏览令牌（颜色色块、数值预览、树形导航）
 - 多 Collection / 多 Mode 切换
-- 保留并展示 Figma description；NUMBER Token 展示 scopes
-- 令牌编辑（值、名称、描述、codeSyntax、别名引用）
-- 变更日志（记录编辑、导入和快照操作，含 actor / IP / 时间戳 / 前后值）
+- 保留并展示 Figma description；Token Inspector 对 COLOR、NUMBER、STRING、BOOLEAN 四种 Token 均展示 Token Scope，多个 scope 分别以 Badge 呈现，无 scope 时显示“未设置”
+- 令牌编辑（值、名称、描述、codeSyntax、别名引用），以及删除、批量移动分组、重排序和分组重命名
+- 变更日志（记录编辑、移动分组、导入和快照操作，含 actor / IP / 时间戳 / 前后值）
 - 代码导出（CSS 自定义属性、Android XML resources、原始 JSON）
 - 亮色/暗色主题
 
@@ -42,7 +42,7 @@ src/
 │   ├── globals.css         # Tailwind + shadcn 主题变量 (oklch)
 │   └── api/                     # Route Handlers：文档、Token 编辑、快照、日志、导出
 │       ├── token-document/       # GET/POST 读取与导入；import/ 为 POST 别名
-│       ├── tokens/               # 单 Token 编辑/删除；reorder/ 负责重排序
+│       ├── tokens/               # 单 Token 编辑/删除；reorder/ 重排序；move-to-group/ 原子移动分组并可选重排序
 │       ├── groups/rename/        # PATCH 分组重命名
 │       ├── snapshots/            # GET/POST 列表与创建；[snapshotId]/restore 恢复
 │       ├── change-logs/          # 变更日志读取
@@ -75,7 +75,8 @@ src/
 │       ├── token-grid.tsx          # 网格视图
 │       ├── token-list.tsx          # 列表视图
 │       ├── token-card.tsx          # 单个令牌卡片
-│       ├── token-inspector.tsx     # 右侧检查器面板 (可拖拽调宽)
+│       ├── token-inspector.tsx     # 右侧检查器面板 (可拖拽调宽；展示 description / Token Scope / 对比度)
+│       ├── token-inspector.test.tsx # Token Scope 类型、顺序与空值回退测试
 │       ├── token-edit-popover.tsx  # 浮动编辑弹窗 (可拖拽)
 │       ├── code-output.tsx         # 代码展示 (Shiki 高亮)
 │       ├── code-output.test.tsx
@@ -186,12 +187,16 @@ POST /api/token-document 或 /api/token-document/import（当前 revision + acto
 
 编辑流：
 ```text
-用户编辑 → updateTokenValue/Name/Description/CodeSyntax/Alias
+用户编辑/组织 Token
+  → updateTokenValue/Name/Description/CodeSyntax、setTokenAlias、deleteToken、
+    reorderFilteredTokens、moveTokensToGroup、renameGroup
   → 对应 Route Handler（当前 revision + actor）
   → service 解析 currentJson、应用修改、rebuildRawJSON 为 Figma Native
   → repository 保存并记录服务端变更日志
   → 返回最新 TokenDocumentView，前端更新 rawJSON + tokens + tree
 ```
+
+`PATCH /api/tokens/move-to-group` 接收 `tokenIds`、`targetGroup`，以及成对可选的 `collectionId` / `tokenOrder`；service 在一次 `updateDocument` 中完成批量改组和可选重排序，只增加一次 revision，并记录一条 `move_tokens_to_group` 日志。
 
 repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未配置时使用 `.data/collaboration-store.json`。seed metadata 补齐不会因 GET 自动写回 `currentJson`，但后续编辑 rebuild 时可能随文档一起持久化。
 
@@ -226,6 +231,7 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 - `setTokenAlias` — 设置/取消别名引用
 - `deleteToken` — 删除令牌
 - `reorderFilteredTokens` — 重排序
+- `moveTokensToGroup` — 批量移动 Token 到目标分组；拖放时可同时提交 Collection 新顺序
 - `renameGroup` — 重命名分组
 - `exportRawJSON` — 导出原始 JSON
 - `getTokensByGroup` / `getVisibleTokens` — 查询
@@ -247,7 +253,7 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 
 类型 (types/changelog.ts)：
 - `LogEntry` — id, timestamp, ip, actorName, actorClientId, changeType, tokenId?, tokenName?, oldValue?, newValue?, meta?
-- `ChangeType` — update_value | update_name | update_description | update_code_syntax | set_alias | delete_token | rename_group | reorder | restore_snapshot | create_snapshot | import_document
+- `ChangeType` — update_value | update_name | update_description | update_code_syntax | set_alias | delete_token | rename_group | move_tokens_to_group | reorder | restore_snapshot | create_snapshot | import_document
 
 工具 (lib/changelog.ts)：
 - `fetchClientIP` — 调用 api.ipify.org 获取公网 IP (5s 超时，失败返回 "unknown")
@@ -343,7 +349,7 @@ npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
 - Android XML 中 codeSyntax.ANDROID 优先于从 token name 派生的名称
 - `stripCodeSyntaxPrefix` 会去除中文前缀（如 "文字_on_surface" → "on_surface"），这是 HyperOS 特有的命名约定
 - rebuildRawJSON 始终输出 Figma Native 格式，即使原始输入是 Variables2CSS
-- DTCG converter、Figma Native parser 与 rebuildRawJSON 保留受支持的 description/scopes；Inspector 展示非空 description，并仅对 NUMBER Token 展示 scopes
+- DTCG converter、Figma Native parser 与 rebuildRawJSON 保留受支持的 description/scopes；Inspector 展示非空 description，并对 COLOR、NUMBER、STRING、BOOLEAN 四种 Token 固定展示 Token Scope。Scope 位于 description 之后、COLOR 对比度之前；多个 scope 按源顺序分别显示为 Badge，无 scope 或仅含空白值时显示“未设置”
 - service 仅对 id/name/type 均匹配的旧 Token 从 seed 补齐缺失 metadata；GET 只影响返回视图、不改 currentJson，后续编辑 rebuild 时可能写回
 - 导出支持 Android XML、CSS、JSON；来源可选当前过滤结果、当前文档全部 Collection 或版本快照。“全部”JSON 使用 currentJson，“当前”JSON 由可见 Token 重建
 - 快照来源在导出对话框显示的 Token 数当前取自当前可见 Token，不代表快照内容的精确数量
@@ -355,3 +361,4 @@ npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
 
 - 快照列表、读取和导出会按当前文档校验；但 `restoreSnapshot` 当前只按 snapshotId 读取，尚未验证 `snapshot.documentId === document.id`。修复前不得声称快照恢复完全隔离，也不得使用来源不明或属于其他文档的 snapshot ID。
 - `export-dialog.tsx` 的快照请求失败路径当前会保留快照来源标签并回退到本地代码。修复为 fail-closed 前，必须确认远端请求成功后再允许复制或下载，不能只根据来源标签判断内容来自快照。
+- `move-to-group` 当前尚未严格拒绝缺失或非字符串的 `targetGroup`，service 也未校验目标名称冲突及 `tokenIds` 与可选 `collectionId` 的归属一致性；List 的混合分组多选 no-op 判断以触发行所在分组为准。修复并补齐 Route / Store / List 边界测试前，不得将该能力描述为已覆盖所有异常输入。

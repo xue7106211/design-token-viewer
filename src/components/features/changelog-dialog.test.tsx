@@ -139,6 +139,15 @@ describe("ChangeLogDialog", () => {
     expect(screen.getByText("font-size")).toBeInTheDocument();
   });
 
+  it("keeps long log lists inside a shrinkable scroll region", () => {
+    setupStore(Array.from({ length: 12 }, (_, index) => makeEntry({ id: `entry-${index}` })));
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByRole("dialog")).toHaveClass("h-[85dvh]", "overflow-hidden");
+    expect(screen.getByTestId("change-log-list")).toHaveClass("min-h-0", "flex-1");
+  });
+
   // 4. 颜色类型的色块渲染
   it("renders color swatches with backgroundColor for color type entries", () => {
     const entry = makeEntry({

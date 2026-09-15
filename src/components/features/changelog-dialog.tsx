@@ -96,6 +96,7 @@ function typeBadgeClass(type: ChangeType): string {
       return "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400";
     case "update_name":
     case "rename_group":
+    case "move_tokens_to_group":
       return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
     default:
       return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400";
@@ -160,6 +161,14 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
           <span className="text-muted-foreground">影响 {meta.count} tokens</span>
         )}
       </div>
+    );
+  }
+
+  if (changeType === "move_tokens_to_group") {
+    return (
+      <span className="text-xs text-muted-foreground">
+        已移动 {typeof meta?.count === "number" ? `${meta.count} 个 ` : ""}Token 至 {String(meta?.targetGroup ?? "(root)")}
+      </span>
     );
   }
 
@@ -333,8 +342,8 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         )}
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-4xl max-h-[85vh] flex flex-col">
-        <DialogHeader>
+      <DialogContent className="flex h-[85dvh] max-h-[calc(100dvh-2rem)] flex-col overflow-hidden sm:max-w-4xl">
+        <DialogHeader className="shrink-0">
           <DialogTitle>修改日志</DialogTitle>
           <DialogDescription className="sr-only">
             查看所有 Token 变更记录
@@ -342,7 +351,7 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         </DialogHeader>
 
         {/* 工具栏 */}
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex shrink-0 items-start justify-between gap-3">
           <div className="space-y-0.5 text-xs text-muted-foreground">
             <div>{isLoading ? "正在加载..." : `共 ${entries.length} 条记录`}</div>
             {updatedAt && (
@@ -366,11 +375,11 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
 
         {/* 日志列表 */}
         {sortedEntries.length === 0 ? (
-          <div className="flex flex-1 items-center justify-center py-16 text-sm text-muted-foreground">
+          <div className="flex min-h-0 flex-1 items-center justify-center py-16 text-sm text-muted-foreground">
             暂无日志记录
           </div>
         ) : (
-          <ScrollArea className="flex-1 -mx-6 px-6" style={{ maxHeight: "calc(85vh - 160px)" }}>
+          <ScrollArea data-testid="change-log-list" className="-mx-6 min-h-0 flex-1 px-6">
             <div className="space-y-2 pb-2">
               {sortedEntries.map((entry) => (
                 <LogEntryCard key={entry.id} entry={entry} />

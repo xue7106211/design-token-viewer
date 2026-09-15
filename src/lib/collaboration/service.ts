@@ -193,6 +193,27 @@ export function createTokenDocumentService(
     return toDocumentView(updated, seedTokens);
   }
 
+  function reorderCollectionTokens(
+    data: ParsedTokenData,
+    collectionId: string,
+    tokenIds: string[]
+  ) {
+    const collection = data.collections.find((item) => item.id === collectionId);
+    if (!collection) throw new NotFoundError("Collection not found");
+
+    const currentIds = collection.tokenIds;
+    const currentIdSet = new Set(currentIds);
+    const nextIdSet = new Set(tokenIds);
+    const hasSameMembers =
+      tokenIds.length === currentIds.length &&
+      tokenIds.every((id) => currentIdSet.has(id)) &&
+      currentIds.every((id) => nextIdSet.has(id));
+    if (!hasSameMembers) throw new Error("Token order must include the same collection tokens");
+
+    collection.tokenIds = [...tokenIds];
+    return { collection, currentIds };
+  }
+
   return {
     getDocument,
 
@@ -354,19 +375,11 @@ export function createTokenDocumentService(
       actor: Actor;
     }) {
       return updateDocument(input.revision, input.actor, "reorder", (data) => {
-        const collection = data.collections.find((item) => item.id === input.collectionId);
-        if (!collection) throw new NotFoundError("Collection not found");
-
-        const currentIds = collection.tokenIds;
-        const currentIdSet = new Set(currentIds);
-        const nextIdSet = new Set(input.tokenIds);
-        const hasSameMembers =
-          input.tokenIds.length === currentIds.length &&
-          input.tokenIds.every((id) => currentIdSet.has(id)) &&
-          currentIds.every((id) => nextIdSet.has(id));
-        if (!hasSameMembers) throw new Error("Token order must include the same collection tokens");
-
-        collection.tokenIds = [...input.tokenIds];
+        const { collection, currentIds } = reorderCollectionTokens(
+          data,
+          input.collectionId,
+          input.tokenIds
+        );
         return {
           oldValue: { collectionId: collection.id, tokenIds: currentIds },
           newValue: { collectionId: collection.id, tokenIds: collection.tokenIds },
@@ -374,6 +387,57 @@ export function createTokenDocumentService(
             collectionId: collection.id,
             collectionName: collection.name,
             count: collection.tokenIds.length,
+          },
+        };
+      });
+    },
+
+    moveTokensToGroup(input: {
+      tokenIds: string[];
+      targetGroup: string;
+      collectionId?: string;
+      tokenOrder?: string[];
+      revision: number;
+      actor: Actor;
+    }) {
+      return updateDocument(input.revision, input.actor, "move_tokens_to_group", (data) => {
+        const tokenIds = Array.from(new Set(input.tokenIds));
+        if (tokenIds.length === 0) throw new Error("At least one token is required");
+        if ((input.collectionId == null) !== (input.tokenOrder == null)) {
+          throw new Error("Collection ID and token order must be provided together");
+        }
+
+        const targetGroup = input.targetGroup.trim();
+        const moved = tokenIds.map((tokenId) => {
+          const token = getTokenOrThrow(data.tokens, tokenId);
+          const oldName = token.name;
+          const leaf = token.path[token.path.length - 1] ?? oldName.split("/").filter(Boolean).pop() ?? oldName;
+          const nextName = targetGroup ? `${targetGroup}/${leaf}` : leaf;
+          const path = nextName.split("/").filter(Boolean);
+          token.name = nextName;
+          token.path = path;
+          token.group = path.slice(0, -1).join("/");
+          return { tokenId, oldName, nextName };
+        });
+
+        const reordered =
+          input.collectionId && input.tokenOrder
+            ? reorderCollectionTokens(data, input.collectionId, input.tokenOrder)
+            : null;
+
+        return {
+          oldValue: moved.map(({ tokenId, oldName }) => ({ tokenId, name: oldName })),
+          newValue: moved.map(({ tokenId, nextName }) => ({ tokenId, name: nextName })),
+          meta: {
+            count: moved.length,
+            targetGroup: targetGroup || "(root)",
+            ...(reordered
+              ? {
+                  collectionId: reordered.collection.id,
+                  collectionName: reordered.collection.name,
+                  reordered: true,
+                }
+              : {}),
           },
         };
       });

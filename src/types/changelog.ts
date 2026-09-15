@@ -11,6 +11,7 @@ export type ChangeType =
   | 'set_alias'
   | 'delete_token'
   | 'rename_group'
+  | 'move_tokens_to_group'
   | 'reorder'
   | 'restore_snapshot'
   | 'create_snapshot'
