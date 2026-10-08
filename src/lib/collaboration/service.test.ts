@@ -3,8 +3,10 @@ import sampleData from "@/data/sample-tokens.json";
 import type { TokenValue } from "@/types/token";
 import {
   ConflictError,
+  NotFoundError,
   createMemoryCollaborationRepository,
   createTokenDocumentService,
+  type CollaborationRepository,
 } from "./service";
 
 const actor = {
@@ -80,8 +82,9 @@ describe("token document collaboration service", () => {
     expect(updated.tokens[firstToken.id].rawValues[modeId]).toEqual(nextValue);
 
     const logs = await service.getChangeLogs();
-    expect(logs).toHaveLength(1);
-    expect(logs[0]).toMatchObject({
+    expect(logs.total).toBe(1);
+    expect(logs.entries).toHaveLength(1);
+    expect(logs.entries[0]).toMatchObject({
       changeType: "update_value",
       tokenId: firstToken.id,
       tokenName: firstToken.name,
@@ -110,8 +113,8 @@ describe("token document collaboration service", () => {
     expect(updated.collections.find((item) => item.id === collection.id)?.tokenIds).toEqual(nextOrder);
 
     const logs = await service.getChangeLogs();
-    expect(logs).toHaveLength(1);
-    expect(logs[0]).toMatchObject({
+    expect(logs.total).toBe(1);
+    expect(logs.entries[0]).toMatchObject({
       changeType: "reorder",
       actorName: actor.actorName,
       meta: {
@@ -147,8 +150,8 @@ describe("token document collaboration service", () => {
     expect(updated.tokens[secondId].group).toBe("moved");
 
     const logs = await service.getChangeLogs();
-    expect(logs).toHaveLength(1);
-    expect(logs[0]).toMatchObject({
+    expect(logs.total).toBe(1);
+    expect(logs.entries[0]).toMatchObject({
       changeType: "move_tokens_to_group",
       meta: {
         count: 2,
@@ -183,7 +186,7 @@ describe("token document collaboration service", () => {
     const after = await service.getDocument();
     expect(after.revision).toBe(document.revision);
     expect(after.tokens[tokenId].name).toBe(originalName);
-    expect(await service.getChangeLogs()).toHaveLength(0);
+    await expect(service.getChangeLogs()).resolves.toEqual({ entries: [], total: 0 });
   });
 
   it("renames a group with one rename_group audit log", async () => {
@@ -206,8 +209,8 @@ describe("token document collaboration service", () => {
     expect(Object.values(updated.tokens).some((item) => item.name.startsWith(`${newPath}/`))).toBe(true);
 
     const logs = await service.getChangeLogs();
-    expect(logs).toHaveLength(1);
-    expect(logs[0]).toMatchObject({
+    expect(logs.total).toBe(1);
+    expect(logs.entries[0]).toMatchObject({
       changeType: "rename_group",
       oldValue: oldPath,
       newValue: newPath,
@@ -269,5 +272,86 @@ describe("token document collaboration service", () => {
 
     const snapshots = await service.getSnapshots();
     expect(snapshots[0].json).toEqual(sampleData);
+  });
+
+  it("returns the newest page of change logs and the full total", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData, "doc-logs");
+    const document = await service.getDocument();
+
+    for (let index = 0; index < 501; index += 1) {
+      await repo.addLog({
+        id: `log-${index}`,
+        documentId: document.id,
+        timestamp: index,
+        ip: actor.ip,
+        actorName: actor.actorName,
+        actorClientId: actor.actorClientId,
+        changeType: "update_value",
+      });
+    }
+
+    const page = await service.getChangeLogs();
+
+    expect(page.total).toBe(501);
+    expect(page.entries).toHaveLength(500);
+    expect(page.entries[0]?.id).toBe("log-500");
+    expect(page.entries[499]?.id).toBe("log-1");
+  });
+
+  it("rejects a snapshot owned by another document without writing a restore log", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const source = createTokenDocumentService(repo, sampleData, "doc-source", "Source");
+    const target = createTokenDocumentService(repo, sampleData, "doc-target", "Target");
+    const sourceDocument = await source.getDocument();
+    const snapshot = await source.createSnapshot({ name: "Source baseline", actor });
+    const targetDocument = await target.getDocument();
+
+    await expect(
+      target.restoreSnapshot({
+        snapshotId: snapshot.id,
+        revision: targetDocument.revision,
+        actor,
+      })
+    ).rejects.toBeInstanceOf(NotFoundError);
+
+    const after = await target.getDocument();
+    expect(after.revision).toBe(targetDocument.revision);
+    expect(after.currentJson).toEqual(targetDocument.currentJson);
+    await expect(target.getChangeLogs()).resolves.toEqual({ entries: [], total: 0 });
+    expect((await source.getDocument()).revision).toBe(sourceDocument.revision);
+  });
+
+  it("rolls back a token edit when the audit log cannot be written", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const failingRepo = {
+      ...repo,
+      transact: ((fn) =>
+        repo.transact(async (tx) =>
+          fn({
+            ...tx,
+            addLog: async () => {
+              throw new Error("log failed");
+            },
+          })
+        )) as CollaborationRepository["transact"],
+    } satisfies CollaborationRepository;
+    const service = createTokenDocumentService(failingRepo, sampleData);
+    const document = await service.getDocument();
+    const token = Object.values(document.tokens)[0];
+
+    await expect(
+      service.updateTokenDescription({
+        tokenId: token.id,
+        description: "should roll back",
+        revision: document.revision,
+        actor,
+      })
+    ).rejects.toThrow("log failed");
+
+    const after = await service.getDocument();
+    expect(after.revision).toBe(document.revision);
+    expect(after.tokens[token.id]?.description).toBe(token.description);
+    await expect(service.getChangeLogs()).resolves.toEqual({ entries: [], total: 0 });
   });
 });

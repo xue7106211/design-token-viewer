@@ -1,5 +1,4 @@
-import type { SnapshotRecord, TokenDocumentView } from "./service";
-import type { ServerLogEntry } from "./service";
+import type { ChangeLogPage, SnapshotRecord, TokenDocumentView } from "./service";
 
 const ACTOR_NAME_KEY = "design-token-actor-name";
 const ACTOR_CLIENT_ID_KEY = "design-token-actor-client-id";
@@ -123,5 +122,5 @@ export function withActor(body: Record<string, unknown>) {
 }
 
 export type TokenDocumentResponse = TokenDocumentView;
-export type ChangeLogsResponse = { entries: ServerLogEntry[] };
+export type ChangeLogsResponse = ChangeLogPage;
 export type SnapshotsResponse = { snapshots: SnapshotRecord[] };

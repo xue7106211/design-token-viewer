@@ -9,6 +9,7 @@ import type {
   CodeFormat,
 } from "@/types/token";
 import { buildTokenTree } from "@/lib/tree-builder";
+import { useChangeLogStore } from "@/stores/changelog-store";
 import { rebuildRawJSON } from "@/lib/token-rebuilder";
 import {
   ApiError,
@@ -240,6 +241,7 @@ export const useTokenStore = create<TokenState>()(
           if (documentId === get().activeDocumentId) return;
           // 同步全局请求头来源，使后续 apiRequest 命中新文档
           setActiveDocumentId(documentId);
+          useChangeLogStore.getState().resetForDocument();
           // 切表即清空当前文档相关状态，避免旧集合/选中残留
           set({
             activeDocumentId: documentId,

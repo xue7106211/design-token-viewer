@@ -25,7 +25,10 @@ vi.mock("@/lib/contrast", () => ({
 }));
 
 vi.mock("colord", () => ({
-  colord: vi.fn(() => ({ isValid: () => false })),
+  colord: vi.fn((value: string) => ({
+    isValid: () => value === "red" || value.startsWith("#"),
+    toHex: () => (value === "red" ? "#ff0000" : value),
+  })),
 }));
 
 const { useChangeLogStore } = await import("@/stores/changelog-store");
@@ -37,26 +40,46 @@ const { colorToHex } = await import("@/lib/contrast");
 // Helpers
 // ---------------------------------------------------------------------------
 
-const mockClearAll = vi.fn();
+const mockFetchEntries = vi.fn();
 
-function setupStore(entries: LogEntry[] = []) {
+function setupStore(
+  entries: LogEntry[] = [],
+  extras: { total?: number; error?: string | null; isLoading?: boolean; documentId?: string } = {}
+) {
   (useChangeLogStore as ReturnType<typeof vi.fn>).mockImplementation(
     (selector: (s: {
       entries: LogEntry[];
-      clearAll: () => void;
+      total: number;
       fetchEntries: () => void;
       isLoading: boolean;
+      error: string | null;
     }) => unknown) =>
       selector({
         entries,
-        clearAll: mockClearAll,
-        fetchEntries: vi.fn(),
-        isLoading: false,
+        total: extras.total ?? entries.length,
+        fetchEntries: mockFetchEntries,
+        isLoading: extras.isLoading ?? false,
+        error: extras.error ?? null,
       })
   );
   (useTokenStore as ReturnType<typeof vi.fn>).mockImplementation(
-    (selector: (s: { updatedAt?: number; updatedBy?: string }) => unknown) =>
-      selector({})
+    (selector: (s: {
+      updatedAt?: number;
+      updatedBy?: string;
+      activeDocumentId?: string;
+      collections: { id: string; name: string; modes: { modeId: string; name: string }[]; tokenIds: string[] }[];
+    }) => unknown) =>
+      selector({
+        activeDocumentId: extras.documentId ?? "hyperos4",
+        collections: [
+          {
+            id: "collection-1",
+            name: "Reference",
+            modes: [{ modeId: "mode-light", name: "Light" }],
+            tokenIds: [],
+          },
+        ],
+      })
   );
 }
 
@@ -82,6 +105,7 @@ function makeEntry(overrides: Partial<LogEntry> = {}): LogEntry {
 describe("ChangeLogDialog", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockFetchEntries.mockReset();
     (getChangeTypeLabel as ReturnType<typeof vi.fn>).mockImplementation(
       (type: string) => {
         const map: Record<string, string> = {
@@ -172,34 +196,82 @@ describe("ChangeLogDialog", () => {
     expect(swatches.length).toBeGreaterThanOrEqual(2);
   });
 
-  // 5. 清空按钮显示确认对话框
-  it("shows confirmation dialog when clear button is clicked", () => {
+  it("does not offer a control that clears server logs", () => {
     setupStore([makeEntry()]);
     render(<ChangeLogDialog />);
     fireEvent.click(screen.getByText("日志"));
-    fireEvent.click(screen.getByText("清空日志"));
 
-    // "确认清空"同时出现在标题(h2)和按钮中，用 getAllByText 验证
-    const confirmTexts = screen.getAllByText("确认清空");
-    expect(confirmTexts.length).toBeGreaterThanOrEqual(2);
-    expect(
-      screen.getByText(/此操作将删除所有日志记录且无法恢复/)
-    ).toBeInTheDocument();
+    expect(screen.queryByText("清空日志")).not.toBeInTheDocument();
+    expect(screen.queryByText(/无法恢复/)).not.toBeInTheDocument();
   });
 
-  // 6. 确认清空调用 clearAll
-  it("calls clearAll when user confirms clear action", () => {
-    setupStore([makeEntry()]);
+  it("shows a load error and retries without treating it as an empty log", () => {
+    setupStore([], { error: "日志加载失败" });
     render(<ChangeLogDialog />);
     fireEvent.click(screen.getByText("日志"));
-    fireEvent.click(screen.getByText("清空日志"));
 
-    // 点击确认按钮（注意：确认对话框中的按钮文字也是"确认清空"）
-    const confirmButtons = screen.getAllByText("确认清空");
-    // 最后一个是确认对话框中的按钮
-    fireEvent.click(confirmButtons[confirmButtons.length - 1]);
+    expect(screen.getByText("日志加载失败")).toBeInTheDocument();
+    expect(screen.queryByText("暂无日志记录")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "重试" }));
+    expect(mockFetchEntries).toHaveBeenCalled();
+  });
 
-    expect(mockClearAll).toHaveBeenCalledTimes(1);
+  it("shows the server total when the visible page is truncated", () => {
+    setupStore([makeEntry()], { total: 1200 });
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("共 1200 条记录，显示最新 1 条")).toBeInTheDocument();
+  });
+
+  it("shows the mode name and both sides when only one value is a color", () => {
+    setupStore([
+      makeEntry({
+        changeType: "update_value",
+        meta: { modeId: "mode-light" },
+        oldValue: { r: 1, g: 0, b: 0, a: 1 },
+        newValue: { type: "ALIAS", id: "var_blue" },
+      }),
+    ]);
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("模式 Light")).toBeInTheDocument();
+    expect(screen.getByText("别名 var_blue")).toBeInTheDocument();
+  });
+
+  it("keeps ordinary text that happens to be a color name", () => {
+    setupStore([
+      makeEntry({
+        changeType: "update_description",
+        oldValue: "red",
+        newValue: "按钮文案",
+      }),
+    ]);
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("red")).toBeInTheDocument();
+    expect(screen.getByText("按钮文案")).toBeInTheDocument();
+    expect(screen.queryByText("#FF0000")).not.toBeInTheDocument();
+  });
+
+  it("shows each moved token name", () => {
+    setupStore([
+      makeEntry({
+        changeType: "move_tokens_to_group",
+        tokenName: undefined,
+        oldValue: [{ tokenId: "var_a", name: "color/a" }],
+        newValue: [{ tokenId: "var_a", name: "moved/a" }],
+        meta: { count: 1, targetGroup: "moved" },
+      }),
+    ]);
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("color/a")).toBeInTheDocument();
+    expect(screen.getByText("moved/a")).toBeInTheDocument();
+    expect(screen.getByText(/已移动 1 个 Token 至 moved/)).toBeInTheDocument();
   });
 
   // 7. 空状态显示提示

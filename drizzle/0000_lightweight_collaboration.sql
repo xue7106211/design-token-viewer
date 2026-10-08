@@ -38,6 +38,9 @@ CREATE TABLE IF NOT EXISTS "change_logs" (
     FOREIGN KEY ("document_id") REFERENCES "token_documents"("id") ON DELETE cascade
 );
 
+CREATE INDEX IF NOT EXISTS "change_logs_document_created_at_idx"
+  ON "change_logs" ("document_id", "created_at");
+
 -- ----------------------------------------------------------------------------
 -- 快照表：保存某份文档在特定时刻的完整副本，可用于回滚/恢复
 -- ----------------------------------------------------------------------------

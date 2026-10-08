@@ -1,10 +1,22 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import type { TokenCollection } from "@/types/token";
+import { useChangeLogStore } from "./changelog-store";
 import {
   getDefaultCollectionId,
   getHydratedCollectionId,
   sortCollectionsForDocument,
+  useTokenStore,
 } from "./token-store";
+
+vi.mock("@/lib/collaboration/client", async () => {
+  const actual = await vi.importActual<typeof import("@/lib/collaboration/client")>(
+    "@/lib/collaboration/client"
+  );
+  return {
+    ...actual,
+    apiRequest: vi.fn().mockResolvedValue({}),
+  };
+});
 
 function makeCollection(id: string, name: string): TokenCollection {
   return {
@@ -40,6 +52,28 @@ describe("token-store collection defaults", () => {
 
   it("keeps an explicit non-legacy collection selection", () => {
     expect(getHydratedCollectionId("hyperos4", "col_component")).toBe("col_component");
+  });
+
+  it("clears the changelog cache when the active document changes", () => {
+    useTokenStore.setState({ activeDocumentId: "hyperos4" });
+    useChangeLogStore.setState({
+      entries: [
+        {
+          id: "log-1",
+          timestamp: 1,
+          ip: "127.0.0.1",
+          changeType: "update_value",
+        },
+      ],
+      total: 1,
+      epoch: 2,
+    });
+
+    useTokenStore.getState().setActiveDocument("hyperos3");
+
+    expect(useChangeLogStore.getState().entries).toEqual([]);
+    expect(useChangeLogStore.getState().total).toBe(0);
+    expect(useChangeLogStore.getState().epoch).toBe(3);
   });
 
   it("keeps unknown document collection order unchanged", () => {

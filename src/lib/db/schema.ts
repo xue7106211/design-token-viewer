@@ -1,4 +1,4 @@
-import { integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import { index, integer, jsonb, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const tokenDocuments = pgTable("token_documents", {
   id: text("id").primaryKey(),
@@ -24,7 +24,9 @@ export const changeLogs = pgTable("change_logs", {
   actorClientId: text("actor_client_id").notNull(),
   ip: text("ip").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull(),
-});
+}, (table) => [
+  index("change_logs_document_created_at_idx").on(table.documentId, table.createdAt),
+]);
 
 export const snapshots = pgTable("snapshots", {
   id: text("id").primaryKey(),

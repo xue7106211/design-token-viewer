@@ -6,7 +6,7 @@ Design Token Viewer 是一个 Figma 设计令牌可视化工具，用于浏览�
 
 核心能力：
 - 解析 Figma Variables 原生导出 JSON 和 Variables2CSS 插件格式
-- 多套 Token 表切换（HyperOS3 / HyperOS4），文档、编辑和日志按文档隔离；快照恢复见“已知限制”
+- 多套 Token 表切换（HyperOS3 / HyperOS4），文档、编辑、日志和快照恢复按文档隔离
 - 可视化浏览令牌（颜色色块、数值预览、树形导航）
 - 多 Collection / 多 Mode 切换
 - 保留并展示 Figma description；Token Inspector 对 COLOR、NUMBER、STRING、BOOLEAN 四种 Token 均展示 Token Scope，多个 scope 分别以 Badge 呈现，无 scope 时显示“未设置”
@@ -243,12 +243,12 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 独立的 Zustand store，用于缓存当前文档从 `/api/change-logs` 读取的服务端日志；它不使用 persist middleware。
 
 关键状态：
-- `entries` — 当前文档的日志条目（UI 最多保留最新 500 条）
+- `entries` / `total` — 当前文档最新一页日志，以及服务端总条数。接口按时间倒序最多返回 500 条；`total` 大于 `entries.length` 时界面标明只显示最新一页
 - `clientIP` — 兼容本地日志工具的 IP 缓存；实际服务端 actor 在 `providers.tsx` 通过 `/api/client-ip` 初始化
 
 关键 Actions：
 - `fetchEntries` — 从当前文档的服务端日志加载条目
-- `clearAll` — 仅清空当前前端缓存，不删除服务端日志
+- `resetForDocument` — 切换文档时清空当前前端缓存并作废进行中的请求；不删除服务端日志
 - `setClientIP` / `fetchAndCacheIP` — 设置 / 获取兼容本地日志工具的 IP 缓存
 
 类型 (types/changelog.ts)：
@@ -279,7 +279,7 @@ UI：`changelog-dialog.tsx` 提供日志查看对话框（sidebar 底部入口�
 - **注册表** `src/lib/collaboration/server.ts` 的 `DOCUMENTS = { hyperos3: {name, seed}, hyperos4: {name, seed} }`；`getTokenDocumentService(documentId)` 按 id 选种子；`documentIdFromRequest(request)` 从 `x-document-id` 头解析（非法值回退 `hyperos4`）。
 - **种子**：`src/data/sample-tokens.json`（HyperOS3）、`src/data/sample-tokens-hyperos4.json`（HyperOS4）。种子仅在该文档首次创建时灌入（`ensureDocument` 读不到才创建）。
 - **前端**：`client.ts` 模块级 `activeDocumentId` + `TOKEN_DOCUMENTS` 清单，在 `apiRequest` 统一注入 `x-document-id` 头；`token-store` 的 `activeDocumentId`（持久化）+ `setActiveDocument(id)`（清状态后 `loadRemoteDocument`），水合时在 persist `merge` 里调 `setActiveDocumentId` 同步。
-- **隔离**：编辑、日志以及快照列表/读取/导出按 `document_id` 隔离；快照恢复接口的已知归属校验缺口见“已知限制”。
+- **隔离**：编辑、日志、快照列表/读取/导出和快照恢复按 `document_id` 隔离。恢复时要求 `snapshot.documentId === document.id`，否则返回 404，不改文档、不写恢复日志。
 
 > 新增第三套表：① `client.ts` 的 `TOKEN_DOCUMENTS` 加一项；② `server.ts` 的 `DOCUMENTS` 加种子；③ 放置对应种子 JSON。无需改数据库或迁移。
 > 替换已存在文档的种子不会自动生效（种子只首次灌入）。使用 `/api/token-document/import` 以当前 revision 导入新的 Figma Native JSON；不要通过删除 `.data/collaboration-store.json` 重置已有文档。
@@ -353,12 +353,11 @@ npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
 - service 仅对 id/name/type 均匹配的旧 Token 从 seed 补齐缺失 metadata；GET 只影响返回视图、不改 currentJson，后续编辑 rebuild 时可能写回
 - 导出支持 Android XML、CSS、JSON；来源可选当前过滤结果、当前文档全部 Collection 或版本快照。“全部”JSON 使用 currentJson，“当前”JSON 由可见 Token 重建
 - 快照来源在导出对话框显示的 Token 数当前取自当前可见 Token，不代表快照内容的精确数量
-- 变更日志与快照保存在当前服务端文档中；ChangeLog Store 只缓存 UI 展示的最新 500 条，`clearData` 不会删除服务端记录
+- 变更日志与快照保存在当前服务端文档中。读取日志按文档倒序分页，最多返回最新 500 条，并带总条数。ChangeLog Store 只缓存这一页，`clearData` 和切换文档都不会删除服务端记录。文档保存和对应日志写入在同一次 `transact` 中提交，日志写入失败时文档修改会回滚
 - Semantic Token 顶层树组固定为 `bg → fill → stroke → text → mask → margin → padding → gap → radius`；其他 Collection 和子组维持自然排序
 
 
 ## 已知限制
 
-- 快照列表、读取和导出会按当前文档校验；但 `restoreSnapshot` 当前只按 snapshotId 读取，尚未验证 `snapshot.documentId === document.id`。修复前不得声称快照恢复完全隔离，也不得使用来源不明或属于其他文档的 snapshot ID。
 - `export-dialog.tsx` 的快照请求失败路径当前会保留快照来源标签并回退到本地代码。修复为 fail-closed 前，必须确认远端请求成功后再允许复制或下载，不能只根据来源标签判断内容来自快照。
 - `move-to-group` 当前尚未严格拒绝缺失或非字符串的 `targetGroup`，service 也未校验目标名称冲突及 `tokenIds` 与可选 `collectionId` 的归属一致性；List 的混合分组多选 no-op 判断以触发行所在分组为准。修复并补齐 Route / Store / List 边界测试前，不得将该能力描述为已覆盖所有异常输入。

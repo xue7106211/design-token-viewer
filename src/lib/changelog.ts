@@ -4,6 +4,21 @@
 
 import type { ChangeType } from '@/types/changelog';
 
+export const CHANGE_LOG_PAGE_SIZE = 500;
+
+export function pageByNewest<T extends { timestamp: number; id: string }>(
+  entries: T[],
+  limit = CHANGE_LOG_PAGE_SIZE,
+): { entries: T[]; total: number } {
+  const sorted = [...entries].sort((left, right) => {
+    if (right.timestamp !== left.timestamp) return right.timestamp - left.timestamp;
+    if (left.id === right.id) return 0;
+    return left.id < right.id ? 1 : -1;
+  });
+  const size = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : CHANGE_LOG_PAGE_SIZE;
+  return { total: entries.length, entries: sorted.slice(0, size) };
+}
+
 /** ChangeType → 中文标签映射 */
 const CHANGE_TYPE_LABELS: Record<ChangeType, string> = {
   update_value: '修改值',

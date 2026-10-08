@@ -3,8 +3,8 @@ import { documentIdFromRequest, getTokenDocumentService, jsonError } from "@/lib
 
 export async function GET(request: NextRequest) {
   try {
-    const entries = await getTokenDocumentService(documentIdFromRequest(request)).getChangeLogs();
-    return NextResponse.json({ entries });
+    const page = await getTokenDocumentService(documentIdFromRequest(request)).getChangeLogs();
+    return NextResponse.json(page);
   } catch (error) {
     return jsonError(error);
   }

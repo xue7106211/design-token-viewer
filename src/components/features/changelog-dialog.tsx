@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { History, Trash2 } from "lucide-react";
+import { useEffect, useState, useMemo } from "react";
+import { History } from "lucide-react";
 import { colord } from "colord";
 import { Button } from "@/components/ui/button";
 import {
@@ -77,7 +77,14 @@ function documentSummary(v: unknown, fallbackLabel: string): string | null {
   return `${fallbackLabel} · ${v.collections.length} collections · ${Object.keys(variables).length} tokens`;
 }
 
+function aliasLabel(v: unknown): string | null {
+  if (!isRecord(v) || v.type !== "ALIAS" || typeof v.id !== "string") return null;
+  return `别名 ${v.id}`;
+}
+
 function compactValueToString(v: unknown, fallbackLabel: string): string {
+  const alias = aliasLabel(v);
+  if (alias) return alias;
   const summary = documentSummary(v, fallbackLabel);
   if (summary) return summary;
 
@@ -106,6 +113,60 @@ function typeBadgeClass(type: ChangeType): string {
 // ---------------------------------------------------------------------------
 // 颜色色块小组件
 // ---------------------------------------------------------------------------
+
+function readMovePairs(oldValue: unknown, newValue: unknown) {
+  if (!Array.isArray(oldValue)) return [];
+  return oldValue.flatMap((item, index) => {
+    if (!isRecord(item) || typeof item.tokenId !== "string" || typeof item.name !== "string") return [];
+    const next = Array.isArray(newValue) ? newValue[index] : undefined;
+    const newName = isRecord(next) && typeof next.name === "string" ? next.name : item.name;
+    return [{ tokenId: item.tokenId, oldName: item.name, newName }];
+  });
+}
+
+function ModeLabel({ modeId }: { modeId?: string }) {
+  const modeName = useTokenStore((state) => {
+    if (!modeId) return null;
+    for (const collection of state.collections) {
+      const mode = collection.modes.find((item) => item.modeId === modeId);
+      if (mode) return mode.name;
+    }
+    return modeId;
+  });
+  if (!modeName) return null;
+  return <span className="text-xs text-muted-foreground">模式 {modeName}</span>;
+}
+
+function DiffSide({
+  value,
+  tone,
+  allowColor,
+}: {
+  value: unknown;
+  tone: "old" | "new";
+  allowColor: boolean;
+}) {
+  const color = allowColor ? tryResolveColor(value) : null;
+  const textClass =
+    tone === "old"
+      ? "rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400 break-words"
+      : "rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400 break-words";
+  if (!color) {
+    return <span className={textClass}>{compactValueToString(value, tone === "old" ? "修改前" : "修改后")}</span>;
+  }
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 ${
+        tone === "old" ? "bg-red-50 dark:bg-red-900/20" : "bg-green-50 dark:bg-green-900/20"
+      }`}
+    >
+      <MiniColorSwatch hex={color} />
+      <span className={`font-mono ${tone === "old" ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}>
+        {color.toUpperCase()}
+      </span>
+    </span>
+  );
+}
 
 function MiniColorSwatch({ hex }: { hex: string }) {
   return (
@@ -142,7 +203,9 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
   if (changeType === "reorder") {
     return (
       <span className="text-xs text-muted-foreground">
-        令牌顺序已调整{typeof meta?.count === "number" ? ` · ${meta.count} tokens` : ""}
+        令牌顺序已调整
+        {typeof meta?.collectionName === "string" ? ` · ${meta.collectionName}` : ""}
+        {typeof meta?.count === "number" ? ` · ${meta.count} tokens` : ""}
       </span>
     );
   }
@@ -165,10 +228,32 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
   }
 
   if (changeType === "move_tokens_to_group") {
+    const pairs = readMovePairs(oldValue, newValue);
+    const visiblePairs = pairs.slice(0, 8);
     return (
-      <span className="text-xs text-muted-foreground">
-        已移动 {typeof meta?.count === "number" ? `${meta.count} 个 ` : ""}Token 至 {String(meta?.targetGroup ?? "(root)")}
-      </span>
+      <div className="space-y-1.5">
+        <span className="text-xs text-muted-foreground">
+          已移动 {typeof meta?.count === "number" ? `${meta.count} 个 ` : ""}Token 至 {String(meta?.targetGroup ?? "(root)")}
+        </span>
+        {visiblePairs.length > 0 && (
+          <div className="space-y-1">
+            {visiblePairs.map((pair) => (
+              <div key={pair.tokenId} className="flex items-center gap-2 text-xs flex-wrap">
+                <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
+                  {pair.oldName}
+                </span>
+                <span className="text-muted-foreground">→</span>
+                <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
+                  {pair.newName}
+                </span>
+              </div>
+            ))}
+            {pairs.length > visiblePairs.length && (
+              <span className="text-xs text-muted-foreground">另有 {pairs.length - visiblePairs.length} 个</span>
+            )}
+          </div>
+        )}
+      </div>
     );
   }
 
@@ -204,36 +289,19 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
     );
   }
 
-  // 颜色类型检测
-  const oldColor = tryResolveColor(oldValue);
-  const newColor = tryResolveColor(newValue);
-  const isColor = oldColor !== null || newColor !== null;
-
-  if (isColor) {
+  if (changeType === "update_value" || changeType === "set_alias") {
     return (
-      <div className="flex items-center gap-2 text-xs flex-wrap">
-        {oldColor !== null && (
-          <span className="inline-flex items-center gap-1 rounded bg-red-50 px-1.5 py-0.5 dark:bg-red-900/20">
-            <MiniColorSwatch hex={oldColor} />
-            <span className="font-mono text-red-600 dark:text-red-400">
-              {oldColor.toUpperCase()}
-            </span>
-          </span>
-        )}
-        <span className="text-muted-foreground">→</span>
-        {newColor !== null && (
-          <span className="inline-flex items-center gap-1 rounded bg-green-50 px-1.5 py-0.5 dark:bg-green-900/20">
-            <MiniColorSwatch hex={newColor} />
-            <span className="font-mono text-green-600 dark:text-green-400">
-              {newColor.toUpperCase()}
-            </span>
-          </span>
-        )}
+      <div className="space-y-1.5">
+        <ModeLabel modeId={typeof meta?.modeId === "string" ? meta.modeId : undefined} />
+        <div className="flex items-center gap-2 text-xs flex-wrap">
+          <DiffSide value={oldValue} tone="old" allowColor />
+          <span className="text-muted-foreground">→</span>
+          <DiffSide value={newValue} tone="new" allowColor />
+        </div>
       </div>
     );
   }
 
-  // 通用文本对比
   const oldStr = compactValueToString(oldValue, "修改前");
   const newStr = compactValueToString(newValue, "修改后");
 
@@ -294,13 +362,19 @@ function LogEntryCard({ entry }: { entry: LogEntry }) {
 
 export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) {
   const entries = useChangeLogStore((s) => s.entries);
-  const clearAll = useChangeLogStore((s) => s.clearAll);
+  const total = useChangeLogStore((s) => s.total);
   const fetchEntries = useChangeLogStore((s) => s.fetchEntries);
   const isLoading = useChangeLogStore((s) => s.isLoading);
-  const [confirmOpen, setConfirmOpen] = useState(false);
+  const error = useChangeLogStore((s) => s.error);
   const updatedAt = useTokenStore((s) => s.updatedAt);
   const updatedBy = useTokenStore((s) => s.updatedBy);
+  const activeDocumentId = useTokenStore((s) => s.activeDocumentId);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open || typeof fetchEntries !== "function") return;
+    void fetchEntries();
+  }, [open, activeDocumentId, fetchEntries]);
 
   // 按时间倒序（最新在前）
   const sortedEntries = useMemo(
@@ -308,19 +382,14 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
     [entries]
   );
 
-  const handleClear = () => {
-    clearAll();
-    setConfirmOpen(false);
-  };
+  const countLabel = isLoading && entries.length === 0
+    ? "正在加载..."
+    : total > entries.length
+      ? `共 ${total} 条记录，显示最新 ${entries.length} 条`
+      : `共 ${total} 条记录`;
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={(nextOpen) => {
-        setOpen(nextOpen);
-        if (nextOpen && typeof fetchEntries === "function") void fetchEntries();
-      }}
-    >
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {collapsed ? (
           <Button
@@ -335,8 +404,8 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
           <Button variant="ghost" size="sm" className="w-full justify-start gap-2 cursor-pointer text-muted-foreground hover:text-foreground">
             <History className="h-3.5 w-3.5" />
             <span className="text-xs">日志</span>
-            {entries.length > 0 && (
-              <span className="ml-auto text-[10px] tabular-nums text-muted-foreground">{entries.length}</span>
+            {total > 0 && (
+              <span className="ml-auto text-[10px] tabular-nums text-muted-foreground">{total}</span>
             )}
           </Button>
         )}
@@ -353,32 +422,26 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         {/* 工具栏 */}
         <div className="flex shrink-0 items-start justify-between gap-3">
           <div className="space-y-0.5 text-xs text-muted-foreground">
-            <div>{isLoading ? "正在加载..." : `共 ${entries.length} 条记录`}</div>
+            <div>{countLabel}</div>
             {updatedAt && (
               <div className="text-[11px]">
                 最近更新：{formatTimestamp(updatedAt)}{updatedBy ? ` · ${updatedBy}` : ""}
               </div>
             )}
           </div>
-          {entries.length > 0 && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="gap-1.5 text-destructive hover:text-destructive cursor-pointer"
-              onClick={() => setConfirmOpen(true)}
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-              <span className="text-xs">清空日志</span>
-            </Button>
-          )}
         </div>
 
-        {/* 日志列表 */}
-        {sortedEntries.length === 0 ? (
-          <div className="flex min-h-0 flex-1 items-center justify-center py-16 text-sm text-muted-foreground">
-            暂无日志记录
+        {error && (
+          <div className="flex shrink-0 items-center justify-between gap-3 rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2">
+            <p className="text-xs text-destructive">{error}</p>
+            <Button variant="outline" size="sm" className="cursor-pointer" onClick={() => void fetchEntries()}>
+              重试
+            </Button>
           </div>
-        ) : (
+        )}
+
+        {/* 日志列表 */}
+        {sortedEntries.length > 0 ? (
           <ScrollArea data-testid="change-log-list" className="-mx-6 min-h-0 flex-1 px-6">
             <div className="space-y-2 pb-2">
               {sortedEntries.map((entry) => (
@@ -386,37 +449,11 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
               ))}
             </div>
           </ScrollArea>
+        ) : error ? null : (
+          <div className="flex min-h-0 flex-1 items-center justify-center py-16 text-sm text-muted-foreground">
+            {isLoading ? "正在加载..." : "暂无日志记录"}
+          </div>
         )}
-
-        {/* 清空确认对话框 */}
-        <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
-          <DialogContent className="sm:max-w-sm" showCloseButton={false}>
-            <DialogHeader>
-              <DialogTitle>确认清空</DialogTitle>
-              <DialogDescription className="text-sm text-muted-foreground">
-                此操作将删除所有日志记录且无法恢复，确定要继续吗？
-              </DialogDescription>
-            </DialogHeader>
-            <div className="flex justify-end gap-2 pt-2">
-              <Button
-                variant="outline"
-                size="sm"
-                className="cursor-pointer"
-                onClick={() => setConfirmOpen(false)}
-              >
-                取消
-              </Button>
-              <Button
-                variant="destructive"
-                size="sm"
-                className="cursor-pointer"
-                onClick={handleClear}
-              >
-                确认清空
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
       </DialogContent>
     </Dialog>
   );

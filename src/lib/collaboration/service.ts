@@ -1,6 +1,9 @@
+import { CHANGE_LOG_PAGE_SIZE } from "@/lib/changelog";
 import { parseTokenJSON } from "@/lib/parsers";
 import { resolveTokens } from "@/lib/token-resolver";
 import { rebuildRawJSON } from "@/lib/token-rebuilder";
+import { createExclusiveQueue } from "./exclusive";
+import { createStateRepository, type CollaborationState } from "./state-repository";
 import type {
   DesignToken,
   ParsedTokenData,
@@ -47,14 +50,20 @@ export interface SnapshotRecord {
   createdAt: number;
 }
 
+export interface ChangeLogPage {
+  entries: ServerLogEntry[];
+  total: number;
+}
+
 export interface CollaborationRepository {
   getDocument: (id: string) => Promise<TokenDocumentRecord | null>;
   saveDocument: (document: TokenDocumentRecord) => Promise<TokenDocumentRecord>;
   addLog: (entry: ServerLogEntry) => Promise<ServerLogEntry>;
-  listLogs: (documentId: string) => Promise<ServerLogEntry[]>;
+  listLogs: (documentId: string, limit?: number) => Promise<ChangeLogPage>;
   addSnapshot: (snapshot: SnapshotRecord) => Promise<SnapshotRecord>;
   listSnapshots: (documentId: string) => Promise<SnapshotRecord[]>;
   getSnapshot: (id: string) => Promise<SnapshotRecord | null>;
+  transact: <T>(run: (tx: CollaborationRepository) => Promise<T>) => Promise<T>;
 }
 
 type DocumentSummary = {
@@ -85,43 +94,30 @@ export class InvalidTokenDocumentError extends Error {
 }
 
 export function createMemoryCollaborationRepository(): CollaborationRepository {
-  const documents = new Map<string, TokenDocumentRecord>();
-  const logs: ServerLogEntry[] = [];
-  const snapshots = new Map<string, SnapshotRecord>();
+  const live: CollaborationState = { documents: [], logs: [], snapshots: [] };
+  const exclusive = createExclusiveQueue();
+
+  function bind(state: CollaborationState) {
+    return createStateRepository(state);
+  }
 
   return {
-    async getDocument(id) {
-      const document = documents.get(id);
-      return document ? clone(document) : null;
-    },
-    async saveDocument(document) {
-      const next = clone(document);
-      documents.set(next.id, next);
-      return clone(next);
-    },
-    async addLog(entry) {
-      const next = clone(entry);
-      logs.push(next);
-      return clone(next);
-    },
-    async listLogs(documentId) {
-      return logs.filter((entry) => entry.documentId === documentId).map(clone);
-    },
-    async addSnapshot(snapshot) {
-      const next = clone(snapshot);
-      snapshots.set(next.id, next);
-      return clone(next);
-    },
-    async listSnapshots(documentId) {
-      return [...snapshots.values()]
-        .filter((snapshot) => snapshot.documentId === documentId)
-        .sort((a, b) => b.createdAt - a.createdAt)
-        .map(clone);
-    },
-    async getSnapshot(id) {
-      const snapshot = snapshots.get(id);
-      return snapshot ? clone(snapshot) : null;
-    },
+    getDocument: (id) => exclusive(() => bind(live).getDocument(id)),
+    saveDocument: (document) => exclusive(() => bind(live).saveDocument(document)),
+    addLog: (entry) => exclusive(() => bind(live).addLog(entry)),
+    listLogs: (documentId, limit) => exclusive(() => bind(live).listLogs(documentId, limit)),
+    addSnapshot: (snapshot) => exclusive(() => bind(live).addSnapshot(snapshot)),
+    listSnapshots: (documentId) => exclusive(() => bind(live).listSnapshots(documentId)),
+    getSnapshot: (id) => exclusive(() => bind(live).getSnapshot(id)),
+    transact: (run) =>
+      exclusive(async () => {
+        const draft = clone(live);
+        const result = await run(bind(draft));
+        live.documents = draft.documents;
+        live.logs = draft.logs;
+        live.snapshots = draft.snapshots;
+        return result;
+      }),
   };
 }
 
@@ -133,12 +129,12 @@ export function createTokenDocumentService(
 ) {
   const seedTokens = parseTokenDocument(initialJson).tokens;
 
-  async function ensureDocument(): Promise<TokenDocumentRecord> {
-    const existing = await repository.getDocument(documentId);
+  async function ensureDocument(repo: CollaborationRepository = repository): Promise<TokenDocumentRecord> {
+    const existing = await repo.getDocument(documentId);
     if (existing) return existing;
 
     const now = Date.now();
-    return repository.saveDocument({
+    return repo.saveDocument({
       id: documentId,
       name: documentName,
       currentJson: clone(initialJson),
@@ -165,32 +161,34 @@ export function createTokenDocumentService(
       meta?: Record<string, unknown>;
     }
   ): Promise<TokenDocumentView> {
-    const document = await ensureDocument();
-    assertFreshRevision(document, revision);
+    return repository.transact(async (tx) => {
+      const document = await ensureDocument(tx);
+      assertFreshRevision(document, revision);
 
-    const parsed = parseDocumentWithSeedMetadata(document.currentJson, seedTokens);
-    const logPayload = mutate(parsed);
-    const rawJSON = rebuildRawJSON(parsed.collections, parsed.tokens);
-    const updated = await repository.saveDocument({
-      ...document,
-      currentJson: rawJSON,
-      revision: document.revision + 1,
-      updatedAt: Date.now(),
-      updatedBy: actor.actorName,
+      const parsed = parseDocumentWithSeedMetadata(document.currentJson, seedTokens);
+      const logPayload = mutate(parsed);
+      const rawJSON = rebuildRawJSON(parsed.collections, parsed.tokens);
+      const updated = await tx.saveDocument({
+        ...document,
+        currentJson: rawJSON,
+        revision: document.revision + 1,
+        updatedAt: Date.now(),
+        updatedBy: actor.actorName,
+      });
+
+      await tx.addLog({
+        id: randomId(),
+        documentId: document.id,
+        timestamp: updated.updatedAt,
+        ip: actor.ip,
+        actorName: actor.actorName,
+        actorClientId: actor.actorClientId,
+        changeType,
+        ...logPayload,
+      });
+
+      return toDocumentView(updated, seedTokens);
     });
-
-    await repository.addLog({
-      id: randomId(),
-      documentId: document.id,
-      timestamp: updated.updatedAt,
-      ip: actor.ip,
-      actorName: actor.actorName,
-      actorClientId: actor.actorClientId,
-      changeType,
-      ...logPayload,
-    });
-
-    return toDocumentView(updated, seedTokens);
   }
 
   function reorderCollectionTokens(
@@ -218,28 +216,30 @@ export function createTokenDocumentService(
     getDocument,
 
     async importDocument(input: { json: unknown; revision: number; actor: Actor }) {
-      const document = await ensureDocument();
-      assertFreshRevision(document, input.revision);
-      parseAndResolve(input.json);
-      const updated = await repository.saveDocument({
-        ...document,
-        currentJson: clone(input.json),
-        revision: document.revision + 1,
-        updatedAt: Date.now(),
-        updatedBy: input.actor.actorName,
+      return repository.transact(async (tx) => {
+        const document = await ensureDocument(tx);
+        assertFreshRevision(document, input.revision);
+        parseAndResolve(input.json);
+        const updated = await tx.saveDocument({
+          ...document,
+          currentJson: clone(input.json),
+          revision: document.revision + 1,
+          updatedAt: Date.now(),
+          updatedBy: input.actor.actorName,
+        });
+        await tx.addLog({
+          id: randomId(),
+          documentId: document.id,
+          timestamp: updated.updatedAt,
+          ip: input.actor.ip,
+          actorName: input.actor.actorName,
+          actorClientId: input.actor.actorClientId,
+          changeType: "import_document",
+          oldValue: summarizeDocument(document.currentJson, "原文档"),
+          newValue: summarizeDocument(input.json, "导入文档"),
+        });
+        return toDocumentView(updated, seedTokens);
       });
-      await repository.addLog({
-        id: randomId(),
-        documentId: document.id,
-        timestamp: updated.updatedAt,
-        ip: input.actor.ip,
-        actorName: input.actor.actorName,
-        actorClientId: input.actor.actorClientId,
-        changeType: "import_document",
-        oldValue: summarizeDocument(document.currentJson, "原文档"),
-        newValue: summarizeDocument(input.json, "导入文档"),
-      });
-      return toDocumentView(updated, seedTokens);
     },
 
     updateTokenValue(input: {
@@ -484,31 +484,34 @@ export function createTokenDocumentService(
 
     async getChangeLogs() {
       const document = await ensureDocument();
-      return repository.listLogs(document.id);
+      return repository.listLogs(document.id, CHANGE_LOG_PAGE_SIZE);
     },
 
     async createSnapshot(input: { name: string; description?: string; actor: Actor }) {
-      const document = await ensureDocument();
-      const snapshot = await repository.addSnapshot({
-        id: randomId(),
-        documentId: document.id,
-        name: input.name.trim() || "Untitled snapshot",
-        description: input.description?.trim() || undefined,
-        json: clone(document.currentJson),
-        createdBy: input.actor.actorName,
-        createdAt: Date.now(),
+      return repository.transact(async (tx) => {
+        const document = await ensureDocument(tx);
+        const snapshot = await tx.addSnapshot({
+          id: randomId(),
+          documentId: document.id,
+          name: input.name.trim() || "Untitled snapshot",
+          description: input.description?.trim() || undefined,
+          json: clone(document.currentJson),
+          createdBy: input.actor.actorName,
+          createdAt: Date.now(),
+        });
+        await tx.addLog({
+          id: randomId(),
+          documentId: document.id,
+          timestamp: snapshot.createdAt,
+          ip: input.actor.ip,
+          actorName: input.actor.actorName,
+          actorClientId: input.actor.actorClientId,
+          changeType: "create_snapshot",
+          newValue: { snapshotId: snapshot.id, name: snapshot.name },
+          meta: { snapshotId: snapshot.id, snapshotDocumentId: document.id },
+        });
+        return snapshot;
       });
-      await repository.addLog({
-        id: randomId(),
-        documentId: document.id,
-        timestamp: snapshot.createdAt,
-        ip: input.actor.ip,
-        actorName: input.actor.actorName,
-        actorClientId: input.actor.actorClientId,
-        changeType: "create_snapshot",
-        newValue: { snapshotId: snapshot.id, name: snapshot.name },
-      });
-      return snapshot;
     },
 
     async getSnapshots() {
@@ -526,29 +529,34 @@ export function createTokenDocumentService(
     },
 
     async restoreSnapshot(input: { snapshotId: string; revision: number; actor: Actor }) {
-      const document = await ensureDocument();
-      assertFreshRevision(document, input.revision);
-      const snapshot = await repository.getSnapshot(input.snapshotId);
-      if (!snapshot) throw new NotFoundError("Snapshot not found");
-      const updated = await repository.saveDocument({
-        ...document,
-        currentJson: clone(snapshot.json),
-        revision: document.revision + 1,
-        updatedAt: Date.now(),
-        updatedBy: input.actor.actorName,
+      return repository.transact(async (tx) => {
+        const document = await ensureDocument(tx);
+        assertFreshRevision(document, input.revision);
+        const snapshot = await tx.getSnapshot(input.snapshotId);
+        if (!snapshot || snapshot.documentId !== document.id) {
+          throw new NotFoundError("Snapshot not found");
+        }
+        const updated = await tx.saveDocument({
+          ...document,
+          currentJson: clone(snapshot.json),
+          revision: document.revision + 1,
+          updatedAt: Date.now(),
+          updatedBy: input.actor.actorName,
+        });
+        await tx.addLog({
+          id: randomId(),
+          documentId: document.id,
+          timestamp: updated.updatedAt,
+          ip: input.actor.ip,
+          actorName: input.actor.actorName,
+          actorClientId: input.actor.actorClientId,
+          changeType: "restore_snapshot",
+          oldValue: summarizeDocument(document.currentJson, "恢复前文档"),
+          newValue: { snapshotId: snapshot.id, name: snapshot.name },
+          meta: { snapshotId: snapshot.id, snapshotDocumentId: snapshot.documentId },
+        });
+        return toDocumentView(updated, seedTokens);
       });
-      await repository.addLog({
-        id: randomId(),
-        documentId: document.id,
-        timestamp: updated.updatedAt,
-        ip: input.actor.ip,
-        actorName: input.actor.actorName,
-        actorClientId: input.actor.actorClientId,
-        changeType: "restore_snapshot",
-        oldValue: summarizeDocument(document.currentJson, "恢复前文档"),
-        newValue: { snapshotId: snapshot.id, name: snapshot.name },
-      });
-      return toDocumentView(updated, seedTokens);
     },
   };
 }
