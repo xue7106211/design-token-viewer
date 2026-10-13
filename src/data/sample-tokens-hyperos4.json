@@ -140,7 +140,21 @@
         "var_694",
         "var_695",
         "var_696",
-        "var_697"
+        "var_697",
+        "var_698",
+        "var_699",
+        "var_700",
+        "var_701",
+        "var_702",
+        "var_703",
+        "var_704",
+        "var_705",
+        "var_706",
+        "var_707",
+        "var_708",
+        "var_709",
+        "var_710",
+        "var_711"
       ]
     },
     {
@@ -16560,7 +16574,7 @@
     },
     "var_614": {
       "id": "var_614",
-      "name": "bg/compoment/miuix_color_bg_compoment",
+      "name": "bg/compoment/miuix_color_bg_component",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16581,7 +16595,7 @@
     },
     "var_615": {
       "id": "var_615",
-      "name": "text/default/miuix_color_text_primary_enable",
+      "name": "text/default/miuix_color_text_primary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16721,7 +16735,7 @@
     },
     "var_622": {
       "id": "var_622",
-      "name": "text/brand/miuix_color_text_brand_enable",
+      "name": "text/brand/miuix_color_text_brand_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16761,7 +16775,7 @@
     },
     "var_624": {
       "id": "var_624",
-      "name": "text/link/miuix_color_text_link_enable",
+      "name": "text/link/miuix_color_text_link_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16801,7 +16815,7 @@
     },
     "var_626": {
       "id": "var_626",
-      "name": "text/caution/miuix_color_text_caution_enable",
+      "name": "text/caution/miuix_color_text_caution_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16821,7 +16835,7 @@
     },
     "var_627": {
       "id": "var_627",
-      "name": "text/caution/miuix_color_text_caution_disable",
+      "name": "text/caution/miuix_color_text_caution_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16841,7 +16855,7 @@
     },
     "var_628": {
       "id": "var_628",
-      "name": "text/warning/miuix_color_text_warning_enable",
+      "name": "text/warning/miuix_color_text_warning_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16881,7 +16895,7 @@
     },
     "var_630": {
       "id": "var_630",
-      "name": "text/success/miuix_color_text_success_enable",
+      "name": "text/success/miuix_color_text_success_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17021,7 +17035,7 @@
     },
     "var_637": {
       "id": "var_637",
-      "name": "fill/default/miuix_color_fill_primary_enable",
+      "name": "fill/default/miuix_color_fill_primary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17035,7 +17049,8 @@
       },
       "description": "用于默认中性填充的一级层级，随 Light / Dark 模式适配。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17055,7 +17070,8 @@
       },
       "description": "用于默认中性填充的二级层级，具体组件用法以组件规范为准。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17075,7 +17091,8 @@
       },
       "description": "用于默认中性填充的三级层级，具体组件用法以组件规范为准。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17095,7 +17112,8 @@
       },
       "description": "用于默认中性填充的四级层级，具体组件用法以组件规范为准。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17115,13 +17133,14 @@
       },
       "description": "用于默认中性四级填充的禁用状态。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
     "var_642": {
       "id": "var_642",
-      "name": "fill/brand/miuix_color_fill_brand_enable",
+      "name": "fill/brand/miuix_color_fill_brand_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17135,7 +17154,8 @@
       },
       "description": "用于品牌强调填充，突出品牌相关区域或主要操作。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17155,13 +17175,14 @@
       },
       "description": "用于品牌强调填充的禁用状态。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
     "var_644": {
       "id": "var_644",
-      "name": "fill/caution/miuix_color_fill_caution_enable",
+      "name": "fill/caution/miuix_color_fill_caution_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17175,7 +17196,8 @@
       },
       "description": "用于提醒用户注意的区域或元素填充，表达 caution 提示语义。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17195,13 +17217,14 @@
       },
       "description": "用于 caution 提示填充的禁用状态。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
     "var_646": {
       "id": "var_646",
-      "name": "fill/warning/miuix_color_fill_warning_enable",
+      "name": "fill/warning/miuix_color_fill_warning_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17215,7 +17238,8 @@
       },
       "description": "用于警告或风险提示的填充，表达 warning 语义。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17235,13 +17259,14 @@
       },
       "description": "用于 warning 警告填充的禁用状态。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
     "var_648": {
       "id": "var_648",
-      "name": "fill/success/miuix_color_fill_success_enable",
+      "name": "fill/success/miuix_color_fill_success_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17255,7 +17280,8 @@
       },
       "description": "用于成功状态的填充，表达操作成功或完成。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17275,7 +17301,8 @@
       },
       "description": "用于成功语义填充的禁用状态。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17295,7 +17322,8 @@
       },
       "description": "用于填充区域的悬停状态反馈。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17315,7 +17343,8 @@
       },
       "description": "用于填充区域的按下状态反馈。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17335,7 +17364,8 @@
       },
       "description": "用于填充区域的选中状态反馈。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17355,7 +17385,8 @@
       },
       "description": "用于需要在 Light / Dark 模式下保持白色的填充。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
@@ -17375,13 +17406,14 @@
       },
       "description": "用于固定白色填充的禁用状态，通过降低不透明度弱化表现。",
       "scopes": [
-        "TEXT_FILL"
+        "ALL_FILLS",
+        "STROKE"
       ],
       "codeSyntax": {}
     },
     "var_655": {
       "id": "var_655",
-      "name": "stroke/border/miuix_color_stroke_border_enable",
+      "name": "stroke/border/miuix_color_stroke_border_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17401,7 +17433,7 @@
     },
     "var_656": {
       "id": "var_656",
-      "name": "stroke/border/miuix_color_stroke_border_disable",
+      "name": "stroke/border/miuix_color_stroke_border_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17476,6 +17508,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17496,6 +17529,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17516,6 +17550,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17536,6 +17571,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17556,6 +17592,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17576,6 +17613,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17596,6 +17634,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17616,6 +17655,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17636,6 +17676,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17656,6 +17697,7 @@
       },
       "description": "卡片、抽屉、弹出框类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17676,6 +17718,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17696,6 +17739,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17716,6 +17760,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17736,6 +17781,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -17756,6 +17802,7 @@
       },
       "description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
       "scopes": [
+        "WIDTH_HEIGHT",
         "GAP"
       ],
       "codeSyntax": {}
@@ -18230,6 +18277,272 @@
       "description": "页面底部安全间距（Safe Area），纵向。系统 Toast。",
       "scopes": [
         "GAP"
+      ],
+      "codeSyntax": {}
+    },
+    "var_698": {
+      "id": "var_698",
+      "name": "height/vertical/miuix_height_vertical_0_7",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_572"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_572"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_699": {
+      "id": "var_699",
+      "name": "height/vertical/miuix_height_vertical_10",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_573"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_573"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_700": {
+      "id": "var_700",
+      "name": "height/vertical/miuix_height_vertical_16",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_574"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_574"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_701": {
+      "id": "var_701",
+      "name": "height/vertical/miuix_height_vertical_20",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_575"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_575"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_702": {
+      "id": "var_702",
+      "name": "height/vertical/miuix_height_vertical_24",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_576"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_576"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_703": {
+      "id": "var_703",
+      "name": "height/vertical/miuix_height_vertical_28",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_577"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_577"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_704": {
+      "id": "var_704",
+      "name": "height/vertical/miuix_height_vertical_32",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_578"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_578"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_705": {
+      "id": "var_705",
+      "name": "height/vertical/miuix_height_vertical_36",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_579"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_579"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_706": {
+      "id": "var_706",
+      "name": "height/vertical/miuix_height_vertical_40",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_580"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_580"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_707": {
+      "id": "var_707",
+      "name": "height/vertical/miuix_height_vertical_44",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_581"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_581"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_708": {
+      "id": "var_708",
+      "name": "height/vertical/miuix_height_vertical_50",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_582"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_582"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_709": {
+      "id": "var_709",
+      "name": "height/vertical/miuix_height_vertical_56",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_583"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_583"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_710": {
+      "id": "var_710",
+      "name": "height/vertical/miuix_height_vertical_70",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_584"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_584"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "codeSyntax": {}
+    },
+    "var_711": {
+      "id": "var_711",
+      "name": "height/vertical/miuix_height_vertical_72",
+      "type": "NUMBER",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_585"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_585"
+        }
+      },
+      "scopes": [
+        "WIDTH_HEIGHT"
       ],
       "codeSyntax": {}
     }
