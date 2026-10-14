@@ -389,3 +389,120 @@ describe("generateAndroidToken — HyperOS real-world case", () => {
     );
   });
 });
+
+// ---------------------------------------------------------------------------
+// 9. Leaf already is a HyperOS Android resource name (miuix_…)
+// ---------------------------------------------------------------------------
+describe("generateAndroidToken — explicit miuix resource names", () => {
+  const whiteSolid = makeToken({
+    id: "var_497",
+    name: "solid/white/miuix_white_solid_level_1000",
+    type: "COLOR",
+    rawValues: {
+      mode_light: { type: "COLOR", value: { r: 1, g: 1, b: 1, a: 1 } },
+      mode_dark: { type: "COLOR", value: { r: 1, g: 1, b: 1, a: 1 } },
+    },
+    resolvedValues: {
+      mode_light: { type: "COLOR", value: { r: 1, g: 1, b: 1, a: 1 } },
+      mode_dark: { type: "COLOR", value: { r: 1, g: 1, b: 1, a: 1 } },
+    },
+  });
+  const blackSolid = makeToken({
+    id: "var_500",
+    name: "solid/black/miuix_black_solid_level_300",
+    type: "COLOR",
+    rawValues: {
+      mode_light: { type: "COLOR", value: { r: 0.95, g: 0.95, b: 0.95, a: 1 } },
+    },
+    resolvedValues: {
+      mode_light: { type: "COLOR", value: { r: 0.95, g: 0.95, b: 0.95, a: 1 } },
+    },
+  });
+  const whitePage = makeToken({
+    id: "var_610",
+    name: "bg/layout/miuix_color_bg_layout_white_page",
+    type: "COLOR",
+    isAlias: true,
+    aliasOf: "var_497",
+    rawValues: { mode_light: { type: "ALIAS", id: "var_497" } },
+    resolvedValues: { mode_light: { type: "COLOR", value: { r: 1, g: 1, b: 1, a: 1 } } },
+  });
+  const greyPage = makeToken({
+    id: "var_611",
+    name: "bg/layout/miuix_color_bg_layout_grey_page",
+    type: "COLOR",
+    isAlias: true,
+    aliasOf: "var_500",
+    rawValues: { mode_light: { type: "ALIAS", id: "var_500" } },
+    resolvedValues: { mode_light: { type: "COLOR", value: { r: 0.95, g: 0.95, b: 0.95, a: 1 } } },
+  });
+  const tokens = {
+    var_497: whiteSolid,
+    var_500: blackSolid,
+    var_610: whitePage,
+    var_611: greyPage,
+  };
+
+  it("drops miuix_default_color_ on the resource name and the extra miuix_color_ on the alias", () => {
+    expect(generateAndroidToken(whitePage, "mode_light", tokens)).toBe(
+      '<color name="miuix_color_bg_layout_white_page_light">@color/miuix_white_solid_level_1000</color>'
+    );
+    expect(generateAndroidToken(greyPage, "mode_light", tokens)).toBe(
+      '<color name="miuix_color_bg_layout_grey_page_light">@color/miuix_black_solid_level_300</color>'
+    );
+  });
+
+  it("exports the referenced primitive under its own Android name", () => {
+    expect(generateAndroidToken(whiteSolid, "mode_light", tokens)).toBe(
+      '<color name="miuix_white_solid_level_1000">#FFFFFF</color>'
+    );
+  });
+
+  it("applies the same rule to non-color tokens whose leaf already starts with miuix_", () => {
+    const space = makeToken({
+      id: "space-8",
+      name: "number/space/miuix_space_8",
+      type: "NUMBER",
+      rawValues: { mode_light: { type: "NUMBER", value: 8 } },
+      resolvedValues: { mode_light: { type: "NUMBER", value: 8 } },
+    });
+    const gap = makeToken({
+      id: "gap-default",
+      name: "gap/miuix_space_gap_default",
+      type: "NUMBER",
+      isAlias: true,
+      aliasOf: "space-8",
+      rawValues: { mode_light: { type: "ALIAS", id: "space-8" } },
+      resolvedValues: { mode_light: { type: "NUMBER", value: 8 } },
+    });
+
+    expect(generateAndroidToken(gap, "mode_light", { "space-8": space, "gap-default": gap })).toBe(
+      '<dimen name="miuix_space_gap_default_light">@dimen/miuix_space_8</dimen>'
+    );
+  });
+
+  it("strips a Chinese group prefix before deciding the leaf is already a miuix resource name", () => {
+    const prefixed = makeToken({
+      ...whitePage,
+      name: "bg/layout/文字_miuix_color_bg_layout_white_page",
+    });
+    expect(generateAndroidToken(prefixed, "mode_light", { ...tokens, var_610: prefixed })).toBe(
+      '<color name="miuix_color_bg_layout_white_page_light">@color/miuix_white_solid_level_1000</color>'
+    );
+  });
+
+  it("strips a Chinese prefix from codeSyntax.ANDROID and does not add another miuix prefix", () => {
+    const target = makeToken({
+      ...whiteSolid,
+      codeSyntax: { ANDROID: "颜色_miuix_white_solid_level_1000" },
+    });
+    const alias = makeToken({
+      ...whitePage,
+      codeSyntax: { ANDROID: "文字_miuix_color_bg_layout_white_page_light" },
+    });
+    const result = generateAndroidToken(alias, "mode_light", { var_497: target, var_610: alias });
+    expect(result).toBe(
+      '<color name="miuix_color_bg_layout_white_page_light">@color/miuix_white_solid_level_1000</color>'
+    );
+  });
+});
