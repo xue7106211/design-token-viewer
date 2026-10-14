@@ -1201,7 +1201,7 @@
     },
     "var_23": {
       "id": "var_23",
-      "name": "opacity/red/miuix_red_opacity_level_100",
+      "name": "opacity/red/miuix_ref_red_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1230,7 +1230,7 @@
     },
     "var_24": {
       "id": "var_24",
-      "name": "opacity/red/miuix_red_opacity_level_200",
+      "name": "opacity/red/miuix_ref_red_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1259,7 +1259,7 @@
     },
     "var_25": {
       "id": "var_25",
-      "name": "opacity/red/miuix_red_opacity_level_300",
+      "name": "opacity/red/miuix_ref_red_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1288,7 +1288,7 @@
     },
     "var_26": {
       "id": "var_26",
-      "name": "opacity/red/miuix_red_opacity_level_400",
+      "name": "opacity/red/miuix_ref_red_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1317,7 +1317,7 @@
     },
     "var_27": {
       "id": "var_27",
-      "name": "opacity/red/miuix_red_opacity_level_500",
+      "name": "opacity/red/miuix_ref_red_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1346,7 +1346,7 @@
     },
     "var_28": {
       "id": "var_28",
-      "name": "opacity/red/miuix_red_opacity_level_600",
+      "name": "opacity/red/miuix_ref_red_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1375,7 +1375,7 @@
     },
     "var_29": {
       "id": "var_29",
-      "name": "opacity/red/miuix_red_opacity_level_700",
+      "name": "opacity/red/miuix_ref_red_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1404,7 +1404,7 @@
     },
     "var_30": {
       "id": "var_30",
-      "name": "opacity/red/miuix_red_opacity_level_800",
+      "name": "opacity/red/miuix_ref_red_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1433,7 +1433,7 @@
     },
     "var_31": {
       "id": "var_31",
-      "name": "opacity/red/miuix_red_opacity_level_900",
+      "name": "opacity/red/miuix_ref_red_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1462,7 +1462,7 @@
     },
     "var_32": {
       "id": "var_32",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_100",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1491,7 +1491,7 @@
     },
     "var_33": {
       "id": "var_33",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_200",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1520,7 +1520,7 @@
     },
     "var_34": {
       "id": "var_34",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_300",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1549,7 +1549,7 @@
     },
     "var_35": {
       "id": "var_35",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_400",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1578,7 +1578,7 @@
     },
     "var_36": {
       "id": "var_36",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_500",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1607,7 +1607,7 @@
     },
     "var_37": {
       "id": "var_37",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_600",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1636,7 +1636,7 @@
     },
     "var_38": {
       "id": "var_38",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_700",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1665,7 +1665,7 @@
     },
     "var_39": {
       "id": "var_39",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_800",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1694,7 +1694,7 @@
     },
     "var_40": {
       "id": "var_40",
-      "name": "opacity/deep_orange/miuix_deep_orange_opacity_level_900",
+      "name": "opacity/deep_orange/miuix_ref_deep_orange_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1723,7 +1723,7 @@
     },
     "var_41": {
       "id": "var_41",
-      "name": "opacity/orange/miuix_orange_opacity_level_100",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1752,7 +1752,7 @@
     },
     "var_42": {
       "id": "var_42",
-      "name": "opacity/orange/miuix_orange_opacity_level_200",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1781,7 +1781,7 @@
     },
     "var_43": {
       "id": "var_43",
-      "name": "opacity/orange/miuix_orange_opacity_level_300",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1810,7 +1810,7 @@
     },
     "var_44": {
       "id": "var_44",
-      "name": "opacity/orange/miuix_orange_opacity_level_400",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1839,7 +1839,7 @@
     },
     "var_45": {
       "id": "var_45",
-      "name": "opacity/orange/miuix_orange_opacity_level_500",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1868,7 +1868,7 @@
     },
     "var_46": {
       "id": "var_46",
-      "name": "opacity/orange/miuix_orange_opacity_level_600",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1897,7 +1897,7 @@
     },
     "var_47": {
       "id": "var_47",
-      "name": "opacity/orange/miuix_orange_opacity_level_700",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1926,7 +1926,7 @@
     },
     "var_48": {
       "id": "var_48",
-      "name": "opacity/orange/miuix_orange_opacity_level_800",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1955,7 +1955,7 @@
     },
     "var_49": {
       "id": "var_49",
-      "name": "opacity/orange/miuix_orange_opacity_level_900",
+      "name": "opacity/orange/miuix_ref_orange_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -1984,7 +1984,7 @@
     },
     "var_50": {
       "id": "var_50",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_100",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2013,7 +2013,7 @@
     },
     "var_51": {
       "id": "var_51",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_200",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2042,7 +2042,7 @@
     },
     "var_52": {
       "id": "var_52",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_300",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2071,7 +2071,7 @@
     },
     "var_53": {
       "id": "var_53",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_400",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2100,7 +2100,7 @@
     },
     "var_54": {
       "id": "var_54",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_500",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2129,7 +2129,7 @@
     },
     "var_55": {
       "id": "var_55",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_600",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2158,7 +2158,7 @@
     },
     "var_56": {
       "id": "var_56",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_700",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2187,7 +2187,7 @@
     },
     "var_57": {
       "id": "var_57",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_800",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2216,7 +2216,7 @@
     },
     "var_58": {
       "id": "var_58",
-      "name": "opacity/apricot/miuix_apricot_orange_opacity_level_900",
+      "name": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2245,7 +2245,7 @@
     },
     "var_59": {
       "id": "var_59",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_100",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2274,7 +2274,7 @@
     },
     "var_60": {
       "id": "var_60",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_200",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2303,7 +2303,7 @@
     },
     "var_61": {
       "id": "var_61",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_300",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2332,7 +2332,7 @@
     },
     "var_62": {
       "id": "var_62",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_400",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2361,7 +2361,7 @@
     },
     "var_63": {
       "id": "var_63",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_500",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2390,7 +2390,7 @@
     },
     "var_64": {
       "id": "var_64",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_600",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2419,7 +2419,7 @@
     },
     "var_65": {
       "id": "var_65",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_700",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2448,7 +2448,7 @@
     },
     "var_66": {
       "id": "var_66",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_800",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2477,7 +2477,7 @@
     },
     "var_67": {
       "id": "var_67",
-      "name": "opacity/yellow/miuix_yellow_opacity_level_900",
+      "name": "opacity/yellow/miuix_ref_yellow_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2506,7 +2506,7 @@
     },
     "var_68": {
       "id": "var_68",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_100",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2535,7 +2535,7 @@
     },
     "var_69": {
       "id": "var_69",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_200",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2564,7 +2564,7 @@
     },
     "var_70": {
       "id": "var_70",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_300",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2593,7 +2593,7 @@
     },
     "var_71": {
       "id": "var_71",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_400",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2622,7 +2622,7 @@
     },
     "var_72": {
       "id": "var_72",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_500",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2651,7 +2651,7 @@
     },
     "var_73": {
       "id": "var_73",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_600",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2680,7 +2680,7 @@
     },
     "var_74": {
       "id": "var_74",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_700",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2709,7 +2709,7 @@
     },
     "var_75": {
       "id": "var_75",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_800",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2738,7 +2738,7 @@
     },
     "var_76": {
       "id": "var_76",
-      "name": "opacity/lemon_yellow/miuix_lemon_yellow_opacity_level_900",
+      "name": "opacity/lemon_yellow/miuix_ref_lemon_yellow_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2767,7 +2767,7 @@
     },
     "var_77": {
       "id": "var_77",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_100",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2796,7 +2796,7 @@
     },
     "var_78": {
       "id": "var_78",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_200",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2825,7 +2825,7 @@
     },
     "var_79": {
       "id": "var_79",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_300",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2854,7 +2854,7 @@
     },
     "var_80": {
       "id": "var_80",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_400",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2883,7 +2883,7 @@
     },
     "var_81": {
       "id": "var_81",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_500",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2912,7 +2912,7 @@
     },
     "var_82": {
       "id": "var_82",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_600",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2941,7 +2941,7 @@
     },
     "var_83": {
       "id": "var_83",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_700",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2970,7 +2970,7 @@
     },
     "var_84": {
       "id": "var_84",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_800",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -2999,7 +2999,7 @@
     },
     "var_85": {
       "id": "var_85",
-      "name": "opacity/chartreuse/miuix_chartreuse_opacity_level_900",
+      "name": "opacity/chartreuse/miuix_ref_chartreuse_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3028,7 +3028,7 @@
     },
     "var_86": {
       "id": "var_86",
-      "name": "opacity/green/miuix_green_opacity_level_100",
+      "name": "opacity/green/miuix_ref_green_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3057,7 +3057,7 @@
     },
     "var_87": {
       "id": "var_87",
-      "name": "opacity/green/miuix_green_opacity_level_200",
+      "name": "opacity/green/miuix_ref_green_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3086,7 +3086,7 @@
     },
     "var_88": {
       "id": "var_88",
-      "name": "opacity/green/miuix_green_opacity_level_300",
+      "name": "opacity/green/miuix_ref_green_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3115,7 +3115,7 @@
     },
     "var_89": {
       "id": "var_89",
-      "name": "opacity/green/miuix_green_opacity_level_400",
+      "name": "opacity/green/miuix_ref_green_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3144,7 +3144,7 @@
     },
     "var_90": {
       "id": "var_90",
-      "name": "opacity/green/miuix_green_opacity_level_500",
+      "name": "opacity/green/miuix_ref_green_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3173,7 +3173,7 @@
     },
     "var_91": {
       "id": "var_91",
-      "name": "opacity/green/miuix_green_opacity_level_600",
+      "name": "opacity/green/miuix_ref_green_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3202,7 +3202,7 @@
     },
     "var_92": {
       "id": "var_92",
-      "name": "opacity/green/miuix_green_opacity_level_700",
+      "name": "opacity/green/miuix_ref_green_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3231,7 +3231,7 @@
     },
     "var_93": {
       "id": "var_93",
-      "name": "opacity/green/miuix_green_opacity_level_800",
+      "name": "opacity/green/miuix_ref_green_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3260,7 +3260,7 @@
     },
     "var_94": {
       "id": "var_94",
-      "name": "opacity/green/miuix_green_opacity_level_900",
+      "name": "opacity/green/miuix_ref_green_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3289,7 +3289,7 @@
     },
     "var_95": {
       "id": "var_95",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_100",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3318,7 +3318,7 @@
     },
     "var_96": {
       "id": "var_96",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_200",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3347,7 +3347,7 @@
     },
     "var_97": {
       "id": "var_97",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_300",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3376,7 +3376,7 @@
     },
     "var_98": {
       "id": "var_98",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_400",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3405,7 +3405,7 @@
     },
     "var_99": {
       "id": "var_99",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_500",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3434,7 +3434,7 @@
     },
     "var_100": {
       "id": "var_100",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_600",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3463,7 +3463,7 @@
     },
     "var_101": {
       "id": "var_101",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_700",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3492,7 +3492,7 @@
     },
     "var_102": {
       "id": "var_102",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_800",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3521,7 +3521,7 @@
     },
     "var_103": {
       "id": "var_103",
-      "name": "opacity/turquoise/miuix_turquoise_opacity_level_900",
+      "name": "opacity/turquoise/miuix_ref_turquoise_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3550,7 +3550,7 @@
     },
     "var_104": {
       "id": "var_104",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_100",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3579,7 +3579,7 @@
     },
     "var_105": {
       "id": "var_105",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_200",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3608,7 +3608,7 @@
     },
     "var_106": {
       "id": "var_106",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_300",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3637,7 +3637,7 @@
     },
     "var_107": {
       "id": "var_107",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_400",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3666,7 +3666,7 @@
     },
     "var_108": {
       "id": "var_108",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_500",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3695,7 +3695,7 @@
     },
     "var_109": {
       "id": "var_109",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_600",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3724,7 +3724,7 @@
     },
     "var_110": {
       "id": "var_110",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_700",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3753,7 +3753,7 @@
     },
     "var_111": {
       "id": "var_111",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_800",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3782,7 +3782,7 @@
     },
     "var_112": {
       "id": "var_112",
-      "name": "opacity/cyan/miuix_cyan_opacity_level_900",
+      "name": "opacity/cyan/miuix_ref_cyan_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3811,7 +3811,7 @@
     },
     "var_113": {
       "id": "var_113",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_100",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3840,7 +3840,7 @@
     },
     "var_114": {
       "id": "var_114",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_200",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3869,7 +3869,7 @@
     },
     "var_115": {
       "id": "var_115",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_300",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3898,7 +3898,7 @@
     },
     "var_116": {
       "id": "var_116",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_400",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3927,7 +3927,7 @@
     },
     "var_117": {
       "id": "var_117",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_500",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3956,7 +3956,7 @@
     },
     "var_118": {
       "id": "var_118",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_600",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -3985,7 +3985,7 @@
     },
     "var_119": {
       "id": "var_119",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_700",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4014,7 +4014,7 @@
     },
     "var_120": {
       "id": "var_120",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_800",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4043,7 +4043,7 @@
     },
     "var_121": {
       "id": "var_121",
-      "name": "opacity/sky_blue/miuix_sky_blue_opacity_level_900",
+      "name": "opacity/sky_blue/miuix_ref_sky_blue_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4072,7 +4072,7 @@
     },
     "var_122": {
       "id": "var_122",
-      "name": "opacity/blue/miuix_blue_opacity_level_100",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4101,7 +4101,7 @@
     },
     "var_123": {
       "id": "var_123",
-      "name": "opacity/blue/miuix_blue_opacity_level_200",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4130,7 +4130,7 @@
     },
     "var_124": {
       "id": "var_124",
-      "name": "opacity/blue/miuix_blue_opacity_level_300",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4159,7 +4159,7 @@
     },
     "var_125": {
       "id": "var_125",
-      "name": "opacity/blue/miuix_blue_opacity_level_400",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4188,7 +4188,7 @@
     },
     "var_126": {
       "id": "var_126",
-      "name": "opacity/blue/miuix_blue_opacity_level_500",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4217,7 +4217,7 @@
     },
     "var_127": {
       "id": "var_127",
-      "name": "opacity/blue/miuix_blue_opacity_level_600",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4246,7 +4246,7 @@
     },
     "var_128": {
       "id": "var_128",
-      "name": "opacity/blue/miuix_blue_opacity_level_700",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4275,7 +4275,7 @@
     },
     "var_129": {
       "id": "var_129",
-      "name": "opacity/blue/miuix_blue_opacity_level_800",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4304,7 +4304,7 @@
     },
     "var_130": {
       "id": "var_130",
-      "name": "opacity/blue/miuix_blue_opacity_level_900",
+      "name": "opacity/blue/miuix_ref_blue_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4333,7 +4333,7 @@
     },
     "var_131": {
       "id": "var_131",
-      "name": "opacity/purple/miuix_purple_opacity_level_100",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4362,7 +4362,7 @@
     },
     "var_132": {
       "id": "var_132",
-      "name": "opacity/purple/miuix_purple_opacity_level_200",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4391,7 +4391,7 @@
     },
     "var_133": {
       "id": "var_133",
-      "name": "opacity/purple/miuix_purple_opacity_level_300",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4420,7 +4420,7 @@
     },
     "var_134": {
       "id": "var_134",
-      "name": "opacity/purple/miuix_purple_opacity_level_400",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4449,7 +4449,7 @@
     },
     "var_135": {
       "id": "var_135",
-      "name": "opacity/purple/miuix_purple_opacity_level_500",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4478,7 +4478,7 @@
     },
     "var_136": {
       "id": "var_136",
-      "name": "opacity/purple/miuix_purple_opacity_level_600",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4507,7 +4507,7 @@
     },
     "var_137": {
       "id": "var_137",
-      "name": "opacity/purple/miuix_purple_opacity_level_700",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4536,7 +4536,7 @@
     },
     "var_138": {
       "id": "var_138",
-      "name": "opacity/purple/miuix_purple_opacity_level_800",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4565,7 +4565,7 @@
     },
     "var_139": {
       "id": "var_139",
-      "name": "opacity/purple/miuix_purple_opacity_level_900",
+      "name": "opacity/purple/miuix_ref_purple_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4594,7 +4594,7 @@
     },
     "var_140": {
       "id": "var_140",
-      "name": "opacity/violet/miuix_violet_opacity_level_100",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4623,7 +4623,7 @@
     },
     "var_141": {
       "id": "var_141",
-      "name": "opacity/violet/miuix_violet_opacity_level_200",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4652,7 +4652,7 @@
     },
     "var_142": {
       "id": "var_142",
-      "name": "opacity/violet/miuix_violet_opacity_level_300",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4681,7 +4681,7 @@
     },
     "var_143": {
       "id": "var_143",
-      "name": "opacity/violet/miuix_violet_opacity_level_400",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4710,7 +4710,7 @@
     },
     "var_144": {
       "id": "var_144",
-      "name": "opacity/violet/miuix_violet_opacity_level_500",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4739,7 +4739,7 @@
     },
     "var_145": {
       "id": "var_145",
-      "name": "opacity/violet/miuix_violet_opacity_level_600",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4768,7 +4768,7 @@
     },
     "var_146": {
       "id": "var_146",
-      "name": "opacity/violet/miuix_violet_opacity_level_700",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4797,7 +4797,7 @@
     },
     "var_147": {
       "id": "var_147",
-      "name": "opacity/violet/miuix_violet_opacity_level_800",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4826,7 +4826,7 @@
     },
     "var_148": {
       "id": "var_148",
-      "name": "opacity/violet/miuix_violet_opacity_level_900",
+      "name": "opacity/violet/miuix_ref_violet_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4855,7 +4855,7 @@
     },
     "var_149": {
       "id": "var_149",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_100",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4884,7 +4884,7 @@
     },
     "var_150": {
       "id": "var_150",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_200",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4913,7 +4913,7 @@
     },
     "var_151": {
       "id": "var_151",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_300",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4942,7 +4942,7 @@
     },
     "var_152": {
       "id": "var_152",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_400",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -4971,7 +4971,7 @@
     },
     "var_153": {
       "id": "var_153",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_500",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5000,7 +5000,7 @@
     },
     "var_154": {
       "id": "var_154",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_600",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5029,7 +5029,7 @@
     },
     "var_155": {
       "id": "var_155",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_700",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5058,7 +5058,7 @@
     },
     "var_156": {
       "id": "var_156",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_800",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5087,7 +5087,7 @@
     },
     "var_157": {
       "id": "var_157",
-      "name": "opacity/magenta/miuix_magenta_opacity_level_900",
+      "name": "opacity/magenta/miuix_ref_magenta_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5116,7 +5116,7 @@
     },
     "var_158": {
       "id": "var_158",
-      "name": "opacity/grey/miuix_grey_opacity_level_100",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5145,7 +5145,7 @@
     },
     "var_159": {
       "id": "var_159",
-      "name": "opacity/grey/miuix_grey_opacity_level_200",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5174,7 +5174,7 @@
     },
     "var_160": {
       "id": "var_160",
-      "name": "opacity/grey/miuix_grey_opacity_level_300",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5203,7 +5203,7 @@
     },
     "var_161": {
       "id": "var_161",
-      "name": "opacity/grey/miuix_grey_opacity_level_400",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5232,7 +5232,7 @@
     },
     "var_162": {
       "id": "var_162",
-      "name": "opacity/grey/miuix_grey_opacity_level_500",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5261,7 +5261,7 @@
     },
     "var_163": {
       "id": "var_163",
-      "name": "opacity/grey/miuix_grey_opacity_level_600",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5290,7 +5290,7 @@
     },
     "var_164": {
       "id": "var_164",
-      "name": "opacity/grey/miuix_grey_opacity_level_700",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5319,7 +5319,7 @@
     },
     "var_165": {
       "id": "var_165",
-      "name": "opacity/grey/miuix_grey_opacity_level_800",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5348,7 +5348,7 @@
     },
     "var_166": {
       "id": "var_166",
-      "name": "opacity/grey/miuix_grey_opacity_level_900",
+      "name": "opacity/grey/miuix_ref_grey_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5377,7 +5377,7 @@
     },
     "var_167": {
       "id": "var_167",
-      "name": "opacity/white/miuix_white_opacity_level_030",
+      "name": "opacity/white/miuix_ref_white_opacity_level_030",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5407,7 +5407,7 @@
     },
     "var_168": {
       "id": "var_168",
-      "name": "opacity/white/miuix_white_opacity_level_040",
+      "name": "opacity/white/miuix_ref_white_opacity_level_040",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5437,7 +5437,7 @@
     },
     "var_169": {
       "id": "var_169",
-      "name": "opacity/white/miuix_white_opacity_level_050",
+      "name": "opacity/white/miuix_ref_white_opacity_level_050",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5467,7 +5467,7 @@
     },
     "var_170": {
       "id": "var_170",
-      "name": "opacity/white/miuix_white_opacity_level_060",
+      "name": "opacity/white/miuix_ref_white_opacity_level_060",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5497,7 +5497,7 @@
     },
     "var_171": {
       "id": "var_171",
-      "name": "opacity/white/miuix_white_opacity_level_080",
+      "name": "opacity/white/miuix_ref_white_opacity_level_080",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5527,7 +5527,7 @@
     },
     "var_172": {
       "id": "var_172",
-      "name": "opacity/white/miuix_white_opacity_level_100",
+      "name": "opacity/white/miuix_ref_white_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5557,7 +5557,7 @@
     },
     "var_173": {
       "id": "var_173",
-      "name": "opacity/white/miuix_white_opacity_level_120",
+      "name": "opacity/white/miuix_ref_white_opacity_level_120",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5587,7 +5587,7 @@
     },
     "var_174": {
       "id": "var_174",
-      "name": "opacity/white/miuix_white_opacity_level_140",
+      "name": "opacity/white/miuix_ref_white_opacity_level_140",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5617,7 +5617,7 @@
     },
     "var_175": {
       "id": "var_175",
-      "name": "opacity/white/miuix_white_opacity_level_200",
+      "name": "opacity/white/miuix_ref_white_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5647,7 +5647,7 @@
     },
     "var_176": {
       "id": "var_176",
-      "name": "opacity/white/miuix_white_opacity_level_300",
+      "name": "opacity/white/miuix_ref_white_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5677,7 +5677,7 @@
     },
     "var_177": {
       "id": "var_177",
-      "name": "opacity/white/miuix_white_opacity_level_400",
+      "name": "opacity/white/miuix_ref_white_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5707,7 +5707,7 @@
     },
     "var_178": {
       "id": "var_178",
-      "name": "opacity/white/miuix_white_opacity_level_500",
+      "name": "opacity/white/miuix_ref_white_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5737,7 +5737,7 @@
     },
     "var_179": {
       "id": "var_179",
-      "name": "opacity/white/miuix_white_opacity_level_600",
+      "name": "opacity/white/miuix_ref_white_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5767,7 +5767,7 @@
     },
     "var_180": {
       "id": "var_180",
-      "name": "opacity/white/miuix_white_opacity_level_700",
+      "name": "opacity/white/miuix_ref_white_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5797,7 +5797,7 @@
     },
     "var_181": {
       "id": "var_181",
-      "name": "opacity/white/miuix_white_opacity_level_800",
+      "name": "opacity/white/miuix_ref_white_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5827,7 +5827,7 @@
     },
     "var_182": {
       "id": "var_182",
-      "name": "opacity/white/miuix_white_opacity_level_830",
+      "name": "opacity/white/miuix_ref_white_opacity_level_830",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5857,7 +5857,7 @@
     },
     "var_183": {
       "id": "var_183",
-      "name": "opacity/white/miuix_white_opacity_level_900",
+      "name": "opacity/white/miuix_ref_white_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5887,7 +5887,7 @@
     },
     "var_184": {
       "id": "var_184",
-      "name": "opacity/white/miuix_white_opacity_level_950",
+      "name": "opacity/white/miuix_ref_white_opacity_level_950",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5917,7 +5917,7 @@
     },
     "var_185": {
       "id": "var_185",
-      "name": "opacity/black/miuix_black_opacity_level_030",
+      "name": "opacity/black/miuix_ref_black_opacity_level_030",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5947,7 +5947,7 @@
     },
     "var_186": {
       "id": "var_186",
-      "name": "opacity/black/miuix_black_opacity_level_040",
+      "name": "opacity/black/miuix_ref_black_opacity_level_040",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -5977,7 +5977,7 @@
     },
     "var_187": {
       "id": "var_187",
-      "name": "opacity/black/miuix_black_opacity_level_050",
+      "name": "opacity/black/miuix_ref_black_opacity_level_050",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6007,7 +6007,7 @@
     },
     "var_188": {
       "id": "var_188",
-      "name": "opacity/black/miuix_black_opacity_level_060",
+      "name": "opacity/black/miuix_ref_black_opacity_level_060",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6037,7 +6037,7 @@
     },
     "var_189": {
       "id": "var_189",
-      "name": "opacity/black/miuix_black_opacity_level_080",
+      "name": "opacity/black/miuix_ref_black_opacity_level_080",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6067,7 +6067,7 @@
     },
     "var_190": {
       "id": "var_190",
-      "name": "opacity/black/miuix_black_opacity_level_100",
+      "name": "opacity/black/miuix_ref_black_opacity_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6097,7 +6097,7 @@
     },
     "var_191": {
       "id": "var_191",
-      "name": "opacity/black/miuix_black_opacity_level_120",
+      "name": "opacity/black/miuix_ref_black_opacity_level_120",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6127,7 +6127,7 @@
     },
     "var_192": {
       "id": "var_192",
-      "name": "opacity/black/miuix_black_opacity_level_140",
+      "name": "opacity/black/miuix_ref_black_opacity_level_140",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6157,7 +6157,7 @@
     },
     "var_193": {
       "id": "var_193",
-      "name": "opacity/black/miuix_black_opacity_level_200",
+      "name": "opacity/black/miuix_ref_black_opacity_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6187,7 +6187,7 @@
     },
     "var_194": {
       "id": "var_194",
-      "name": "opacity/black/miuix_black_opacity_level_300",
+      "name": "opacity/black/miuix_ref_black_opacity_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6217,7 +6217,7 @@
     },
     "var_195": {
       "id": "var_195",
-      "name": "opacity/black/miuix_black_opacity_level_400",
+      "name": "opacity/black/miuix_ref_black_opacity_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6247,7 +6247,7 @@
     },
     "var_196": {
       "id": "var_196",
-      "name": "opacity/black/miuix_black_opacity_level_500",
+      "name": "opacity/black/miuix_ref_black_opacity_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6277,7 +6277,7 @@
     },
     "var_197": {
       "id": "var_197",
-      "name": "opacity/black/miuix_black_opacity_level_600",
+      "name": "opacity/black/miuix_ref_black_opacity_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6307,7 +6307,7 @@
     },
     "var_198": {
       "id": "var_198",
-      "name": "opacity/black/miuix_black_opacity_level_700",
+      "name": "opacity/black/miuix_ref_black_opacity_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6337,7 +6337,7 @@
     },
     "var_199": {
       "id": "var_199",
-      "name": "opacity/black/miuix_black_opacity_level_800",
+      "name": "opacity/black/miuix_ref_black_opacity_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6367,7 +6367,7 @@
     },
     "var_200": {
       "id": "var_200",
-      "name": "opacity/black/miuix_black_opacity_level_830",
+      "name": "opacity/black/miuix_ref_black_opacity_level_830",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6397,7 +6397,7 @@
     },
     "var_201": {
       "id": "var_201",
-      "name": "opacity/black/miuix_black_opacity_level_900",
+      "name": "opacity/black/miuix_ref_black_opacity_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6427,7 +6427,7 @@
     },
     "var_202": {
       "id": "var_202",
-      "name": "opacity/black/miuix_black_opacity_level_950",
+      "name": "opacity/black/miuix_ref_black_opacity_level_950",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6457,7 +6457,7 @@
     },
     "var_203": {
       "id": "var_203",
-      "name": "solid/red/miuix_red_solid_level_1900",
+      "name": "solid/red/miuix_ref_red_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6483,7 +6483,7 @@
     },
     "var_204": {
       "id": "var_204",
-      "name": "solid/red/miuix_red_solid_level_1800",
+      "name": "solid/red/miuix_ref_red_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6509,7 +6509,7 @@
     },
     "var_205": {
       "id": "var_205",
-      "name": "solid/red/miuix_red_solid_level_1700",
+      "name": "solid/red/miuix_ref_red_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6535,7 +6535,7 @@
     },
     "var_206": {
       "id": "var_206",
-      "name": "solid/red/miuix_red_solid_level_1600",
+      "name": "solid/red/miuix_ref_red_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6561,7 +6561,7 @@
     },
     "var_207": {
       "id": "var_207",
-      "name": "solid/red/miuix_red_solid_level_1500",
+      "name": "solid/red/miuix_ref_red_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6587,7 +6587,7 @@
     },
     "var_208": {
       "id": "var_208",
-      "name": "solid/red/miuix_red_solid_level_1400",
+      "name": "solid/red/miuix_ref_red_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6613,7 +6613,7 @@
     },
     "var_209": {
       "id": "var_209",
-      "name": "solid/red/miuix_red_solid_level_1300",
+      "name": "solid/red/miuix_ref_red_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6639,7 +6639,7 @@
     },
     "var_210": {
       "id": "var_210",
-      "name": "solid/red/miuix_red_solid_level_1200",
+      "name": "solid/red/miuix_ref_red_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6665,7 +6665,7 @@
     },
     "var_211": {
       "id": "var_211",
-      "name": "solid/red/miuix_red_solid_level_1100",
+      "name": "solid/red/miuix_ref_red_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6691,7 +6691,7 @@
     },
     "var_212": {
       "id": "var_212",
-      "name": "solid/red/miuix_red_solid_level_1000",
+      "name": "solid/red/miuix_ref_red_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6717,7 +6717,7 @@
     },
     "var_213": {
       "id": "var_213",
-      "name": "solid/red/miuix_red_solid_level_900",
+      "name": "solid/red/miuix_ref_red_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6743,7 +6743,7 @@
     },
     "var_214": {
       "id": "var_214",
-      "name": "solid/red/miuix_red_solid_level_800",
+      "name": "solid/red/miuix_ref_red_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6769,7 +6769,7 @@
     },
     "var_215": {
       "id": "var_215",
-      "name": "solid/red/miuix_red_solid_level_700",
+      "name": "solid/red/miuix_ref_red_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6795,7 +6795,7 @@
     },
     "var_216": {
       "id": "var_216",
-      "name": "solid/red/miuix_red_solid_level_600",
+      "name": "solid/red/miuix_ref_red_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6821,7 +6821,7 @@
     },
     "var_217": {
       "id": "var_217",
-      "name": "solid/red/miuix_red_solid_level_500",
+      "name": "solid/red/miuix_ref_red_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6847,7 +6847,7 @@
     },
     "var_218": {
       "id": "var_218",
-      "name": "solid/red/miuix_red_solid_level_400",
+      "name": "solid/red/miuix_ref_red_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6873,7 +6873,7 @@
     },
     "var_219": {
       "id": "var_219",
-      "name": "solid/red/miuix_red_solid_level_300",
+      "name": "solid/red/miuix_ref_red_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6899,7 +6899,7 @@
     },
     "var_220": {
       "id": "var_220",
-      "name": "solid/red/miuix_red_solid_level_200",
+      "name": "solid/red/miuix_ref_red_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6925,7 +6925,7 @@
     },
     "var_221": {
       "id": "var_221",
-      "name": "solid/red/miuix_red_solid_level_100",
+      "name": "solid/red/miuix_ref_red_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6951,7 +6951,7 @@
     },
     "var_222": {
       "id": "var_222",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1900",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -6977,7 +6977,7 @@
     },
     "var_223": {
       "id": "var_223",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1800",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7003,7 +7003,7 @@
     },
     "var_224": {
       "id": "var_224",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1700",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7029,7 +7029,7 @@
     },
     "var_225": {
       "id": "var_225",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1600",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7055,7 +7055,7 @@
     },
     "var_226": {
       "id": "var_226",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1500",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7081,7 +7081,7 @@
     },
     "var_227": {
       "id": "var_227",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1400",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7107,7 +7107,7 @@
     },
     "var_228": {
       "id": "var_228",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1300",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7133,7 +7133,7 @@
     },
     "var_229": {
       "id": "var_229",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1200",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7159,7 +7159,7 @@
     },
     "var_230": {
       "id": "var_230",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1100",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7185,7 +7185,7 @@
     },
     "var_231": {
       "id": "var_231",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_1000",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7211,7 +7211,7 @@
     },
     "var_232": {
       "id": "var_232",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_900",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7237,7 +7237,7 @@
     },
     "var_233": {
       "id": "var_233",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_800",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7263,7 +7263,7 @@
     },
     "var_234": {
       "id": "var_234",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_700",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7289,7 +7289,7 @@
     },
     "var_235": {
       "id": "var_235",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_600",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7315,7 +7315,7 @@
     },
     "var_236": {
       "id": "var_236",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_500",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7341,7 +7341,7 @@
     },
     "var_237": {
       "id": "var_237",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_400",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7367,7 +7367,7 @@
     },
     "var_238": {
       "id": "var_238",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_300",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7393,7 +7393,7 @@
     },
     "var_239": {
       "id": "var_239",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_200",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7419,7 +7419,7 @@
     },
     "var_240": {
       "id": "var_240",
-      "name": "solid/deep_orange/miuix_deep_orange_solid_level_100",
+      "name": "solid/deep_orange/miuix_ref_deep_orange_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7445,7 +7445,7 @@
     },
     "var_241": {
       "id": "var_241",
-      "name": "solid/orange/miuix_orange_solid_level_1900",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7471,7 +7471,7 @@
     },
     "var_242": {
       "id": "var_242",
-      "name": "solid/orange/miuix_orange_solid_level_1800",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7497,7 +7497,7 @@
     },
     "var_243": {
       "id": "var_243",
-      "name": "solid/orange/miuix_orange_solid_level_1700",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7523,7 +7523,7 @@
     },
     "var_244": {
       "id": "var_244",
-      "name": "solid/orange/miuix_orange_solid_level_1600",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7549,7 +7549,7 @@
     },
     "var_245": {
       "id": "var_245",
-      "name": "solid/orange/miuix_orange_solid_level_1500",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7575,7 +7575,7 @@
     },
     "var_246": {
       "id": "var_246",
-      "name": "solid/orange/miuix_orange_solid_level_1400",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7601,7 +7601,7 @@
     },
     "var_247": {
       "id": "var_247",
-      "name": "solid/orange/miuix_orange_solid_level_1300",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7627,7 +7627,7 @@
     },
     "var_248": {
       "id": "var_248",
-      "name": "solid/orange/miuix_orange_solid_level_1200",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7653,7 +7653,7 @@
     },
     "var_249": {
       "id": "var_249",
-      "name": "solid/orange/miuix_orange_solid_level_1100",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7679,7 +7679,7 @@
     },
     "var_250": {
       "id": "var_250",
-      "name": "solid/orange/miuix_orange_solid_level_1000",
+      "name": "solid/orange/miuix_ref_orange_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7705,7 +7705,7 @@
     },
     "var_251": {
       "id": "var_251",
-      "name": "solid/orange/miuix_orange_solid_level_900",
+      "name": "solid/orange/miuix_ref_orange_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7731,7 +7731,7 @@
     },
     "var_252": {
       "id": "var_252",
-      "name": "solid/orange/miuix_orange_solid_level_800",
+      "name": "solid/orange/miuix_ref_orange_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7757,7 +7757,7 @@
     },
     "var_253": {
       "id": "var_253",
-      "name": "solid/orange/miuix_orange_solid_level_700",
+      "name": "solid/orange/miuix_ref_orange_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7783,7 +7783,7 @@
     },
     "var_254": {
       "id": "var_254",
-      "name": "solid/orange/miuix_orange_solid_level_600",
+      "name": "solid/orange/miuix_ref_orange_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7809,7 +7809,7 @@
     },
     "var_255": {
       "id": "var_255",
-      "name": "solid/orange/miuix_orange_solid_level_500",
+      "name": "solid/orange/miuix_ref_orange_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7835,7 +7835,7 @@
     },
     "var_256": {
       "id": "var_256",
-      "name": "solid/orange/miuix_orange_solid_level_400",
+      "name": "solid/orange/miuix_ref_orange_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7861,7 +7861,7 @@
     },
     "var_257": {
       "id": "var_257",
-      "name": "solid/orange/miuix_orange_solid_level_300",
+      "name": "solid/orange/miuix_ref_orange_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7887,7 +7887,7 @@
     },
     "var_258": {
       "id": "var_258",
-      "name": "solid/orange/miuix_orange_solid_level_200",
+      "name": "solid/orange/miuix_ref_orange_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7913,7 +7913,7 @@
     },
     "var_259": {
       "id": "var_259",
-      "name": "solid/orange/miuix_orange_solid_level_100",
+      "name": "solid/orange/miuix_ref_orange_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7939,7 +7939,7 @@
     },
     "var_260": {
       "id": "var_260",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1900",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7965,7 +7965,7 @@
     },
     "var_261": {
       "id": "var_261",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1800",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -7991,7 +7991,7 @@
     },
     "var_262": {
       "id": "var_262",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1700",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8017,7 +8017,7 @@
     },
     "var_263": {
       "id": "var_263",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1600",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8043,7 +8043,7 @@
     },
     "var_264": {
       "id": "var_264",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1500",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8069,7 +8069,7 @@
     },
     "var_265": {
       "id": "var_265",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1400",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8095,7 +8095,7 @@
     },
     "var_266": {
       "id": "var_266",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1300",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8121,7 +8121,7 @@
     },
     "var_267": {
       "id": "var_267",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1200",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8147,7 +8147,7 @@
     },
     "var_268": {
       "id": "var_268",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1100",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8173,7 +8173,7 @@
     },
     "var_269": {
       "id": "var_269",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_1000",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8199,7 +8199,7 @@
     },
     "var_270": {
       "id": "var_270",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_900",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8225,7 +8225,7 @@
     },
     "var_271": {
       "id": "var_271",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_800",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8251,7 +8251,7 @@
     },
     "var_272": {
       "id": "var_272",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_700",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8277,7 +8277,7 @@
     },
     "var_273": {
       "id": "var_273",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_600",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8303,7 +8303,7 @@
     },
     "var_274": {
       "id": "var_274",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_500",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8329,7 +8329,7 @@
     },
     "var_275": {
       "id": "var_275",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_400",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8355,7 +8355,7 @@
     },
     "var_276": {
       "id": "var_276",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_300",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8381,7 +8381,7 @@
     },
     "var_277": {
       "id": "var_277",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_200",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8407,7 +8407,7 @@
     },
     "var_278": {
       "id": "var_278",
-      "name": "solid/apricot_orange/miuix_apricot_orange_solid_level_100",
+      "name": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8433,7 +8433,7 @@
     },
     "var_279": {
       "id": "var_279",
-      "name": "solid/yellow/miuix_yellow_solid_level_1900",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8459,7 +8459,7 @@
     },
     "var_280": {
       "id": "var_280",
-      "name": "solid/yellow/miuix_yellow_solid_level_1800",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8485,7 +8485,7 @@
     },
     "var_281": {
       "id": "var_281",
-      "name": "solid/yellow/miuix_yellow_solid_level_1700",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8511,7 +8511,7 @@
     },
     "var_282": {
       "id": "var_282",
-      "name": "solid/yellow/miuix_yellow_solid_level_1600",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8537,7 +8537,7 @@
     },
     "var_283": {
       "id": "var_283",
-      "name": "solid/yellow/miuix_yellow_solid_level_1500",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8563,7 +8563,7 @@
     },
     "var_284": {
       "id": "var_284",
-      "name": "solid/yellow/miuix_yellow_solid_level_1400",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8589,7 +8589,7 @@
     },
     "var_285": {
       "id": "var_285",
-      "name": "solid/yellow/miuix_yellow_solid_level_1300",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8615,7 +8615,7 @@
     },
     "var_286": {
       "id": "var_286",
-      "name": "solid/yellow/miuix_yellow_solid_level_1200",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8641,7 +8641,7 @@
     },
     "var_287": {
       "id": "var_287",
-      "name": "solid/yellow/miuix_yellow_solid_level_1100",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8667,7 +8667,7 @@
     },
     "var_288": {
       "id": "var_288",
-      "name": "solid/yellow/miuix_yellow_solid_level_1000",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8693,7 +8693,7 @@
     },
     "var_289": {
       "id": "var_289",
-      "name": "solid/yellow/miuix_yellow_solid_level_900",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8719,7 +8719,7 @@
     },
     "var_290": {
       "id": "var_290",
-      "name": "solid/yellow/miuix_yellow_solid_level_800",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8745,7 +8745,7 @@
     },
     "var_291": {
       "id": "var_291",
-      "name": "solid/yellow/miuix_yellow_solid_level_700",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8771,7 +8771,7 @@
     },
     "var_292": {
       "id": "var_292",
-      "name": "solid/yellow/miuix_yellow_solid_level_600",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8797,7 +8797,7 @@
     },
     "var_293": {
       "id": "var_293",
-      "name": "solid/yellow/miuix_yellow_solid_level_500",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8823,7 +8823,7 @@
     },
     "var_294": {
       "id": "var_294",
-      "name": "solid/yellow/miuix_yellow_solid_level_400",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8849,7 +8849,7 @@
     },
     "var_295": {
       "id": "var_295",
-      "name": "solid/yellow/miuix_yellow_solid_level_300",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8875,7 +8875,7 @@
     },
     "var_296": {
       "id": "var_296",
-      "name": "solid/yellow/miuix_yellow_solid_level_200",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8901,7 +8901,7 @@
     },
     "var_297": {
       "id": "var_297",
-      "name": "solid/yellow/miuix_yellow_solid_level_100",
+      "name": "solid/yellow/miuix_ref_yellow_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8927,7 +8927,7 @@
     },
     "var_298": {
       "id": "var_298",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1900",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8953,7 +8953,7 @@
     },
     "var_299": {
       "id": "var_299",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1800",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -8979,7 +8979,7 @@
     },
     "var_300": {
       "id": "var_300",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1700",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9005,7 +9005,7 @@
     },
     "var_301": {
       "id": "var_301",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1600",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9031,7 +9031,7 @@
     },
     "var_302": {
       "id": "var_302",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1500",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9057,7 +9057,7 @@
     },
     "var_303": {
       "id": "var_303",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1400",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9083,7 +9083,7 @@
     },
     "var_304": {
       "id": "var_304",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1300",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9109,7 +9109,7 @@
     },
     "var_305": {
       "id": "var_305",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1200",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9135,7 +9135,7 @@
     },
     "var_306": {
       "id": "var_306",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1100",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9161,7 +9161,7 @@
     },
     "var_307": {
       "id": "var_307",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_1000",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9187,7 +9187,7 @@
     },
     "var_308": {
       "id": "var_308",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_900",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9213,7 +9213,7 @@
     },
     "var_309": {
       "id": "var_309",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_800",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9239,7 +9239,7 @@
     },
     "var_310": {
       "id": "var_310",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_700",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9265,7 +9265,7 @@
     },
     "var_311": {
       "id": "var_311",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_600",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9291,7 +9291,7 @@
     },
     "var_312": {
       "id": "var_312",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_500",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9317,7 +9317,7 @@
     },
     "var_313": {
       "id": "var_313",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_400",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9343,7 +9343,7 @@
     },
     "var_314": {
       "id": "var_314",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_300",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9369,7 +9369,7 @@
     },
     "var_315": {
       "id": "var_315",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_200",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9395,7 +9395,7 @@
     },
     "var_316": {
       "id": "var_316",
-      "name": "solid/lemom_yellow/miuix_lemon_yellow_solid_level_100",
+      "name": "solid/lemom_yellow/miuix_ref_lemon_yellow_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9421,7 +9421,7 @@
     },
     "var_317": {
       "id": "var_317",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1900",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9447,7 +9447,7 @@
     },
     "var_318": {
       "id": "var_318",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1800",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9473,7 +9473,7 @@
     },
     "var_319": {
       "id": "var_319",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1700",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9499,7 +9499,7 @@
     },
     "var_320": {
       "id": "var_320",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1600",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9525,7 +9525,7 @@
     },
     "var_321": {
       "id": "var_321",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1500",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9551,7 +9551,7 @@
     },
     "var_322": {
       "id": "var_322",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1400",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9577,7 +9577,7 @@
     },
     "var_323": {
       "id": "var_323",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1300",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9603,7 +9603,7 @@
     },
     "var_324": {
       "id": "var_324",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1200",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9629,7 +9629,7 @@
     },
     "var_325": {
       "id": "var_325",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1100",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9655,7 +9655,7 @@
     },
     "var_326": {
       "id": "var_326",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_1000",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9681,7 +9681,7 @@
     },
     "var_327": {
       "id": "var_327",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_900",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9707,7 +9707,7 @@
     },
     "var_328": {
       "id": "var_328",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_800",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9733,7 +9733,7 @@
     },
     "var_329": {
       "id": "var_329",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_700",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9759,7 +9759,7 @@
     },
     "var_330": {
       "id": "var_330",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_600",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9785,7 +9785,7 @@
     },
     "var_331": {
       "id": "var_331",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_500",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9811,7 +9811,7 @@
     },
     "var_332": {
       "id": "var_332",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_400",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9837,7 +9837,7 @@
     },
     "var_333": {
       "id": "var_333",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_300",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9863,7 +9863,7 @@
     },
     "var_334": {
       "id": "var_334",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_200",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9889,7 +9889,7 @@
     },
     "var_335": {
       "id": "var_335",
-      "name": "solid/chartreuse/miuix_chartreuse_solid_level_100",
+      "name": "solid/chartreuse/miuix_ref_chartreuse_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9915,7 +9915,7 @@
     },
     "var_336": {
       "id": "var_336",
-      "name": "solid/green/miuix_green_solid_level_1900",
+      "name": "solid/green/miuix_ref_green_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9941,7 +9941,7 @@
     },
     "var_337": {
       "id": "var_337",
-      "name": "solid/green/miuix_green_solid_level_1800",
+      "name": "solid/green/miuix_ref_green_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9967,7 +9967,7 @@
     },
     "var_338": {
       "id": "var_338",
-      "name": "solid/green/miuix_green_solid_level_1700",
+      "name": "solid/green/miuix_ref_green_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -9993,7 +9993,7 @@
     },
     "var_339": {
       "id": "var_339",
-      "name": "solid/green/miuix_green_solid_level_1600",
+      "name": "solid/green/miuix_ref_green_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10019,7 +10019,7 @@
     },
     "var_340": {
       "id": "var_340",
-      "name": "solid/green/miuix_green_solid_level_1500",
+      "name": "solid/green/miuix_ref_green_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10045,7 +10045,7 @@
     },
     "var_341": {
       "id": "var_341",
-      "name": "solid/green/miuix_green_solid_level_1400",
+      "name": "solid/green/miuix_ref_green_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10071,7 +10071,7 @@
     },
     "var_342": {
       "id": "var_342",
-      "name": "solid/green/miuix_green_solid_level_1300",
+      "name": "solid/green/miuix_ref_green_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10097,7 +10097,7 @@
     },
     "var_343": {
       "id": "var_343",
-      "name": "solid/green/miuix_green_solid_level_1200",
+      "name": "solid/green/miuix_ref_green_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10123,7 +10123,7 @@
     },
     "var_344": {
       "id": "var_344",
-      "name": "solid/green/miuix_green_solid_level_1100",
+      "name": "solid/green/miuix_ref_green_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10149,7 +10149,7 @@
     },
     "var_345": {
       "id": "var_345",
-      "name": "solid/green/miuix_green_solid_level_1000",
+      "name": "solid/green/miuix_ref_green_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10175,7 +10175,7 @@
     },
     "var_346": {
       "id": "var_346",
-      "name": "solid/green/miuix_green_solid_level_900",
+      "name": "solid/green/miuix_ref_green_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10201,7 +10201,7 @@
     },
     "var_347": {
       "id": "var_347",
-      "name": "solid/green/miuix_green_solid_level_800",
+      "name": "solid/green/miuix_ref_green_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10227,7 +10227,7 @@
     },
     "var_348": {
       "id": "var_348",
-      "name": "solid/green/miuix_green_solid_level_700",
+      "name": "solid/green/miuix_ref_green_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10253,7 +10253,7 @@
     },
     "var_349": {
       "id": "var_349",
-      "name": "solid/green/miuix_green_solid_level_600",
+      "name": "solid/green/miuix_ref_green_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10279,7 +10279,7 @@
     },
     "var_350": {
       "id": "var_350",
-      "name": "solid/green/miuix_green_solid_level_500",
+      "name": "solid/green/miuix_ref_green_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10305,7 +10305,7 @@
     },
     "var_351": {
       "id": "var_351",
-      "name": "solid/green/miuix_green_solid_level_400",
+      "name": "solid/green/miuix_ref_green_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10331,7 +10331,7 @@
     },
     "var_352": {
       "id": "var_352",
-      "name": "solid/green/miuix_green_solid_level_300",
+      "name": "solid/green/miuix_ref_green_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10357,7 +10357,7 @@
     },
     "var_353": {
       "id": "var_353",
-      "name": "solid/green/miuix_green_solid_level_200",
+      "name": "solid/green/miuix_ref_green_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10383,7 +10383,7 @@
     },
     "var_354": {
       "id": "var_354",
-      "name": "solid/green/miuix_green_solid_level_100",
+      "name": "solid/green/miuix_ref_green_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10409,7 +10409,7 @@
     },
     "var_355": {
       "id": "var_355",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1900",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10435,7 +10435,7 @@
     },
     "var_356": {
       "id": "var_356",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1800",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10461,7 +10461,7 @@
     },
     "var_357": {
       "id": "var_357",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1700",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10487,7 +10487,7 @@
     },
     "var_358": {
       "id": "var_358",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1600",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10513,7 +10513,7 @@
     },
     "var_359": {
       "id": "var_359",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1500",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10539,7 +10539,7 @@
     },
     "var_360": {
       "id": "var_360",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1400",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10565,7 +10565,7 @@
     },
     "var_361": {
       "id": "var_361",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1300",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10591,7 +10591,7 @@
     },
     "var_362": {
       "id": "var_362",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1200",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10617,7 +10617,7 @@
     },
     "var_363": {
       "id": "var_363",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1100",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10643,7 +10643,7 @@
     },
     "var_364": {
       "id": "var_364",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_1000",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10669,7 +10669,7 @@
     },
     "var_365": {
       "id": "var_365",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_900",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10695,7 +10695,7 @@
     },
     "var_366": {
       "id": "var_366",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_800",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10721,7 +10721,7 @@
     },
     "var_367": {
       "id": "var_367",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_700",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10747,7 +10747,7 @@
     },
     "var_368": {
       "id": "var_368",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_600",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10773,7 +10773,7 @@
     },
     "var_369": {
       "id": "var_369",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_500",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10799,7 +10799,7 @@
     },
     "var_370": {
       "id": "var_370",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_400",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10825,7 +10825,7 @@
     },
     "var_371": {
       "id": "var_371",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_300",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10851,7 +10851,7 @@
     },
     "var_372": {
       "id": "var_372",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_200",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10877,7 +10877,7 @@
     },
     "var_373": {
       "id": "var_373",
-      "name": "solid/turquoise/miuix_turquoise_solid_level_100",
+      "name": "solid/turquoise/miuix_ref_turquoise_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10903,7 +10903,7 @@
     },
     "var_374": {
       "id": "var_374",
-      "name": "solid/cyan/miuix_cyan_solid_level_1900",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10929,7 +10929,7 @@
     },
     "var_375": {
       "id": "var_375",
-      "name": "solid/cyan/miuix_cyan_solid_level_1800",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10955,7 +10955,7 @@
     },
     "var_376": {
       "id": "var_376",
-      "name": "solid/cyan/miuix_cyan_solid_level_1700",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -10981,7 +10981,7 @@
     },
     "var_377": {
       "id": "var_377",
-      "name": "solid/cyan/miuix_cyan_solid_level_1600",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11007,7 +11007,7 @@
     },
     "var_378": {
       "id": "var_378",
-      "name": "solid/cyan/miuix_cyan_solid_level_1500",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11033,7 +11033,7 @@
     },
     "var_379": {
       "id": "var_379",
-      "name": "solid/cyan/miuix_cyan_solid_level_1400",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11059,7 +11059,7 @@
     },
     "var_380": {
       "id": "var_380",
-      "name": "solid/cyan/miuix_cyan_solid_level_1300",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11085,7 +11085,7 @@
     },
     "var_381": {
       "id": "var_381",
-      "name": "solid/cyan/miuix_cyan_solid_level_1200",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11111,7 +11111,7 @@
     },
     "var_382": {
       "id": "var_382",
-      "name": "solid/cyan/miuix_cyan_solid_level_1100",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11137,7 +11137,7 @@
     },
     "var_383": {
       "id": "var_383",
-      "name": "solid/cyan/miuix_cyan_solid_level_1000",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11163,7 +11163,7 @@
     },
     "var_384": {
       "id": "var_384",
-      "name": "solid/cyan/miuix_cyan_solid_level_900",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11189,7 +11189,7 @@
     },
     "var_385": {
       "id": "var_385",
-      "name": "solid/cyan/miuix_cyan_solid_level_800",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11215,7 +11215,7 @@
     },
     "var_386": {
       "id": "var_386",
-      "name": "solid/cyan/miuix_cyan_solid_level_700",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11241,7 +11241,7 @@
     },
     "var_387": {
       "id": "var_387",
-      "name": "solid/cyan/miuix_cyan_solid_level_600",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11267,7 +11267,7 @@
     },
     "var_388": {
       "id": "var_388",
-      "name": "solid/cyan/miuix_cyan_solid_level_500",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11293,7 +11293,7 @@
     },
     "var_389": {
       "id": "var_389",
-      "name": "solid/cyan/miuix_cyan_solid_level_400",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11319,7 +11319,7 @@
     },
     "var_390": {
       "id": "var_390",
-      "name": "solid/cyan/miuix_cyan_solid_level_300",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11345,7 +11345,7 @@
     },
     "var_391": {
       "id": "var_391",
-      "name": "solid/cyan/miuix_cyan_solid_level_200",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11371,7 +11371,7 @@
     },
     "var_392": {
       "id": "var_392",
-      "name": "solid/cyan/miuix_cyan_solid_level_100",
+      "name": "solid/cyan/miuix_ref_cyan_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11397,7 +11397,7 @@
     },
     "var_393": {
       "id": "var_393",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1900",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11423,7 +11423,7 @@
     },
     "var_394": {
       "id": "var_394",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1800",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11449,7 +11449,7 @@
     },
     "var_395": {
       "id": "var_395",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1700",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11475,7 +11475,7 @@
     },
     "var_396": {
       "id": "var_396",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1600",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11501,7 +11501,7 @@
     },
     "var_397": {
       "id": "var_397",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1500",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11527,7 +11527,7 @@
     },
     "var_398": {
       "id": "var_398",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1400",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11553,7 +11553,7 @@
     },
     "var_399": {
       "id": "var_399",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1300",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11579,7 +11579,7 @@
     },
     "var_400": {
       "id": "var_400",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1200",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11605,7 +11605,7 @@
     },
     "var_401": {
       "id": "var_401",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1100",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11631,7 +11631,7 @@
     },
     "var_402": {
       "id": "var_402",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_1000",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11657,7 +11657,7 @@
     },
     "var_403": {
       "id": "var_403",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_900",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11683,7 +11683,7 @@
     },
     "var_404": {
       "id": "var_404",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_800",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11709,7 +11709,7 @@
     },
     "var_405": {
       "id": "var_405",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_700",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11735,7 +11735,7 @@
     },
     "var_406": {
       "id": "var_406",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_600",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11761,7 +11761,7 @@
     },
     "var_407": {
       "id": "var_407",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_500",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11787,7 +11787,7 @@
     },
     "var_408": {
       "id": "var_408",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_400",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11813,7 +11813,7 @@
     },
     "var_409": {
       "id": "var_409",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_300",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11839,7 +11839,7 @@
     },
     "var_410": {
       "id": "var_410",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_200",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11865,7 +11865,7 @@
     },
     "var_411": {
       "id": "var_411",
-      "name": "solid/sky_blue/miuix_sky_blue_solid_level_100",
+      "name": "solid/sky_blue/miuix_ref_sky_blue_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11891,7 +11891,7 @@
     },
     "var_412": {
       "id": "var_412",
-      "name": "solid/blue/miuix_blue_solid_level_1900",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11917,7 +11917,7 @@
     },
     "var_413": {
       "id": "var_413",
-      "name": "solid/blue/miuix_blue_solid_level_1800",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11943,7 +11943,7 @@
     },
     "var_414": {
       "id": "var_414",
-      "name": "solid/blue/miuix_blue_solid_level_1700",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11969,7 +11969,7 @@
     },
     "var_415": {
       "id": "var_415",
-      "name": "solid/blue/miuix_blue_solid_level_1600",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -11995,7 +11995,7 @@
     },
     "var_416": {
       "id": "var_416",
-      "name": "solid/blue/miuix_blue_solid_level_1500",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12021,7 +12021,7 @@
     },
     "var_417": {
       "id": "var_417",
-      "name": "solid/blue/miuix_blue_solid_level_1400",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12047,7 +12047,7 @@
     },
     "var_418": {
       "id": "var_418",
-      "name": "solid/blue/miuix_blue_solid_level_1300",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12073,7 +12073,7 @@
     },
     "var_419": {
       "id": "var_419",
-      "name": "solid/blue/miuix_blue_solid_level_1200",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12099,7 +12099,7 @@
     },
     "var_420": {
       "id": "var_420",
-      "name": "solid/blue/miuix_blue_solid_level_1100",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12125,7 +12125,7 @@
     },
     "var_421": {
       "id": "var_421",
-      "name": "solid/blue/miuix_blue_solid_level_1000",
+      "name": "solid/blue/miuix_ref_blue_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12151,7 +12151,7 @@
     },
     "var_422": {
       "id": "var_422",
-      "name": "solid/blue/miuix_blue_solid_level_900",
+      "name": "solid/blue/miuix_ref_blue_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12177,7 +12177,7 @@
     },
     "var_423": {
       "id": "var_423",
-      "name": "solid/blue/miuix_blue_solid_level_800",
+      "name": "solid/blue/miuix_ref_blue_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12203,7 +12203,7 @@
     },
     "var_424": {
       "id": "var_424",
-      "name": "solid/blue/miuix_blue_solid_level_700",
+      "name": "solid/blue/miuix_ref_blue_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12229,7 +12229,7 @@
     },
     "var_425": {
       "id": "var_425",
-      "name": "solid/blue/miuix_blue_solid_level_600",
+      "name": "solid/blue/miuix_ref_blue_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12255,7 +12255,7 @@
     },
     "var_426": {
       "id": "var_426",
-      "name": "solid/blue/miuix_blue_solid_level_500",
+      "name": "solid/blue/miuix_ref_blue_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12281,7 +12281,7 @@
     },
     "var_427": {
       "id": "var_427",
-      "name": "solid/blue/miuix_blue_solid_level_400",
+      "name": "solid/blue/miuix_ref_blue_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12307,7 +12307,7 @@
     },
     "var_428": {
       "id": "var_428",
-      "name": "solid/blue/miuix_blue_solid_level_300",
+      "name": "solid/blue/miuix_ref_blue_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12333,7 +12333,7 @@
     },
     "var_429": {
       "id": "var_429",
-      "name": "solid/blue/miuix_blue_solid_level_200",
+      "name": "solid/blue/miuix_ref_blue_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12359,7 +12359,7 @@
     },
     "var_430": {
       "id": "var_430",
-      "name": "solid/blue/miuix_blue_solid_level_100",
+      "name": "solid/blue/miuix_ref_blue_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12385,7 +12385,7 @@
     },
     "var_431": {
       "id": "var_431",
-      "name": "solid/purple/miuix_purple_solid_level_1900",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12411,7 +12411,7 @@
     },
     "var_432": {
       "id": "var_432",
-      "name": "solid/purple/miuix_purple_solid_level_1800",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12437,7 +12437,7 @@
     },
     "var_433": {
       "id": "var_433",
-      "name": "solid/purple/miuix_purple_solid_level_1700",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12463,7 +12463,7 @@
     },
     "var_434": {
       "id": "var_434",
-      "name": "solid/purple/miuix_purple_solid_level_1600",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12489,7 +12489,7 @@
     },
     "var_435": {
       "id": "var_435",
-      "name": "solid/purple/miuix_purple_solid_level_1500",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12515,7 +12515,7 @@
     },
     "var_436": {
       "id": "var_436",
-      "name": "solid/purple/miuix_purple_solid_level_1400",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12541,7 +12541,7 @@
     },
     "var_437": {
       "id": "var_437",
-      "name": "solid/purple/miuix_purple_solid_level_1300",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12567,7 +12567,7 @@
     },
     "var_438": {
       "id": "var_438",
-      "name": "solid/purple/miuix_purple_solid_level_1200",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12593,7 +12593,7 @@
     },
     "var_439": {
       "id": "var_439",
-      "name": "solid/purple/miuix_purple_solid_level_1100",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12619,7 +12619,7 @@
     },
     "var_440": {
       "id": "var_440",
-      "name": "solid/purple/miuix_purple_solid_level_1000",
+      "name": "solid/purple/miuix_ref_purple_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12645,7 +12645,7 @@
     },
     "var_441": {
       "id": "var_441",
-      "name": "solid/purple/miuix_purple_solid_level_900",
+      "name": "solid/purple/miuix_ref_purple_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12671,7 +12671,7 @@
     },
     "var_442": {
       "id": "var_442",
-      "name": "solid/purple/miuix_purple_solid_level_800",
+      "name": "solid/purple/miuix_ref_purple_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12697,7 +12697,7 @@
     },
     "var_443": {
       "id": "var_443",
-      "name": "solid/purple/miuix_purple_solid_level_700",
+      "name": "solid/purple/miuix_ref_purple_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12723,7 +12723,7 @@
     },
     "var_444": {
       "id": "var_444",
-      "name": "solid/purple/miuix_purple_solid_level_600",
+      "name": "solid/purple/miuix_ref_purple_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12749,7 +12749,7 @@
     },
     "var_445": {
       "id": "var_445",
-      "name": "solid/purple/miuix_purple_solid_level_500",
+      "name": "solid/purple/miuix_ref_purple_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12775,7 +12775,7 @@
     },
     "var_446": {
       "id": "var_446",
-      "name": "solid/purple/miuix_purple_solid_level_400",
+      "name": "solid/purple/miuix_ref_purple_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12801,7 +12801,7 @@
     },
     "var_447": {
       "id": "var_447",
-      "name": "solid/purple/miuix_purple_solid_level_300",
+      "name": "solid/purple/miuix_ref_purple_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12827,7 +12827,7 @@
     },
     "var_448": {
       "id": "var_448",
-      "name": "solid/purple/miuix_purple_solid_level_200",
+      "name": "solid/purple/miuix_ref_purple_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12853,7 +12853,7 @@
     },
     "var_449": {
       "id": "var_449",
-      "name": "solid/purple/miuix_purple_solid_level_100",
+      "name": "solid/purple/miuix_ref_purple_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12879,7 +12879,7 @@
     },
     "var_450": {
       "id": "var_450",
-      "name": "solid/violet/miuix_violet_solid_level_1900",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12905,7 +12905,7 @@
     },
     "var_451": {
       "id": "var_451",
-      "name": "solid/violet/miuix_violet_solid_level_1800",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12931,7 +12931,7 @@
     },
     "var_452": {
       "id": "var_452",
-      "name": "solid/violet/miuix_violet_solid_level_1700",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12957,7 +12957,7 @@
     },
     "var_453": {
       "id": "var_453",
-      "name": "solid/violet/miuix_violet_solid_level_1600",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -12983,7 +12983,7 @@
     },
     "var_454": {
       "id": "var_454",
-      "name": "solid/violet/miuix_violet_solid_level_1500",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13009,7 +13009,7 @@
     },
     "var_455": {
       "id": "var_455",
-      "name": "solid/violet/miuix_violet_solid_level_1400",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13035,7 +13035,7 @@
     },
     "var_456": {
       "id": "var_456",
-      "name": "solid/violet/miuix_violet_solid_level_1300",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13061,7 +13061,7 @@
     },
     "var_457": {
       "id": "var_457",
-      "name": "solid/violet/miuix_violet_solid_level_1200",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13087,7 +13087,7 @@
     },
     "var_458": {
       "id": "var_458",
-      "name": "solid/violet/miuix_violet_solid_level_1100",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13113,7 +13113,7 @@
     },
     "var_459": {
       "id": "var_459",
-      "name": "solid/violet/miuix_violet_solid_level_1000",
+      "name": "solid/violet/miuix_ref_violet_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13139,7 +13139,7 @@
     },
     "var_460": {
       "id": "var_460",
-      "name": "solid/violet/miuix_violet_solid_level_900",
+      "name": "solid/violet/miuix_ref_violet_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13165,7 +13165,7 @@
     },
     "var_461": {
       "id": "var_461",
-      "name": "solid/violet/miuix_violet_solid_level_800",
+      "name": "solid/violet/miuix_ref_violet_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13191,7 +13191,7 @@
     },
     "var_462": {
       "id": "var_462",
-      "name": "solid/violet/miuix_violet_solid_level_700",
+      "name": "solid/violet/miuix_ref_violet_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13217,7 +13217,7 @@
     },
     "var_463": {
       "id": "var_463",
-      "name": "solid/violet/miuix_violet_solid_level_600",
+      "name": "solid/violet/miuix_ref_violet_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13243,7 +13243,7 @@
     },
     "var_464": {
       "id": "var_464",
-      "name": "solid/violet/miuix_violet_solid_level_500",
+      "name": "solid/violet/miuix_ref_violet_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13269,7 +13269,7 @@
     },
     "var_465": {
       "id": "var_465",
-      "name": "solid/violet/miuix_violet_solid_level_400",
+      "name": "solid/violet/miuix_ref_violet_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13295,7 +13295,7 @@
     },
     "var_466": {
       "id": "var_466",
-      "name": "solid/violet/miuix_violet_solid_level_300",
+      "name": "solid/violet/miuix_ref_violet_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13321,7 +13321,7 @@
     },
     "var_467": {
       "id": "var_467",
-      "name": "solid/violet/miuix_violet_solid_level_200",
+      "name": "solid/violet/miuix_ref_violet_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13347,7 +13347,7 @@
     },
     "var_468": {
       "id": "var_468",
-      "name": "solid/violet/miuix_violet_solid_level_100",
+      "name": "solid/violet/miuix_ref_violet_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13373,7 +13373,7 @@
     },
     "var_469": {
       "id": "var_469",
-      "name": "solid/magenta/miuix_magenta_solid_level_1900",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13399,7 +13399,7 @@
     },
     "var_470": {
       "id": "var_470",
-      "name": "solid/magenta/miuix_magenta_solid_level_1800",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13425,7 +13425,7 @@
     },
     "var_471": {
       "id": "var_471",
-      "name": "solid/magenta/miuix_magenta_solid_level_1700",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13451,7 +13451,7 @@
     },
     "var_472": {
       "id": "var_472",
-      "name": "solid/magenta/miuix_magenta_solid_level_1600",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13477,7 +13477,7 @@
     },
     "var_473": {
       "id": "var_473",
-      "name": "solid/magenta/miuix_magenta_solid_level_1500",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13503,7 +13503,7 @@
     },
     "var_474": {
       "id": "var_474",
-      "name": "solid/magenta/miuix_magenta_solid_level_1400",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13529,7 +13529,7 @@
     },
     "var_475": {
       "id": "var_475",
-      "name": "solid/magenta/miuix_magenta_solid_level_1300",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13555,7 +13555,7 @@
     },
     "var_476": {
       "id": "var_476",
-      "name": "solid/magenta/miuix_magenta_solid_level_1200",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13581,7 +13581,7 @@
     },
     "var_477": {
       "id": "var_477",
-      "name": "solid/magenta/miuix_magenta_solid_level_1100",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13607,7 +13607,7 @@
     },
     "var_478": {
       "id": "var_478",
-      "name": "solid/magenta/miuix_magenta_solid_level_1000",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13633,7 +13633,7 @@
     },
     "var_479": {
       "id": "var_479",
-      "name": "solid/magenta/miuix_magenta_solid_level_900",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13659,7 +13659,7 @@
     },
     "var_480": {
       "id": "var_480",
-      "name": "solid/magenta/miuix_magenta_solid_level_800",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13685,7 +13685,7 @@
     },
     "var_481": {
       "id": "var_481",
-      "name": "solid/magenta/miuix_magenta_solid_level_700",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13711,7 +13711,7 @@
     },
     "var_482": {
       "id": "var_482",
-      "name": "solid/magenta/miuix_magenta_solid_level_600",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13737,7 +13737,7 @@
     },
     "var_483": {
       "id": "var_483",
-      "name": "solid/magenta/miuix_magenta_solid_level_500",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13763,7 +13763,7 @@
     },
     "var_484": {
       "id": "var_484",
-      "name": "solid/magenta/miuix_magenta_solid_level_400",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13789,7 +13789,7 @@
     },
     "var_485": {
       "id": "var_485",
-      "name": "solid/magenta/miuix_magenta_solid_level_300",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13815,7 +13815,7 @@
     },
     "var_486": {
       "id": "var_486",
-      "name": "solid/magenta/miuix_magenta_solid_level_200",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13841,7 +13841,7 @@
     },
     "var_487": {
       "id": "var_487",
-      "name": "solid/magenta/miuix_magenta_solid_level_100",
+      "name": "solid/magenta/miuix_ref_magenta_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13867,7 +13867,7 @@
     },
     "var_488": {
       "id": "var_488",
-      "name": "solid/white/miuix_white_solid_level_100",
+      "name": "solid/white/miuix_ref_white_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13894,7 +13894,7 @@
     },
     "var_489": {
       "id": "var_489",
-      "name": "solid/white/miuix_white_solid_level_200",
+      "name": "solid/white/miuix_ref_white_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13921,7 +13921,7 @@
     },
     "var_490": {
       "id": "var_490",
-      "name": "solid/white/miuix_white_solid_level_300",
+      "name": "solid/white/miuix_ref_white_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13948,7 +13948,7 @@
     },
     "var_491": {
       "id": "var_491",
-      "name": "solid/white/miuix_white_solid_level_400",
+      "name": "solid/white/miuix_ref_white_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -13975,7 +13975,7 @@
     },
     "var_492": {
       "id": "var_492",
-      "name": "solid/white/miuix_white_solid_level_500",
+      "name": "solid/white/miuix_ref_white_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14002,7 +14002,7 @@
     },
     "var_493": {
       "id": "var_493",
-      "name": "solid/white/miuix_white_solid_level_600",
+      "name": "solid/white/miuix_ref_white_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14029,7 +14029,7 @@
     },
     "var_494": {
       "id": "var_494",
-      "name": "solid/white/miuix_white_solid_level_700",
+      "name": "solid/white/miuix_ref_white_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14056,7 +14056,7 @@
     },
     "var_495": {
       "id": "var_495",
-      "name": "solid/white/miuix_white_solid_level_800",
+      "name": "solid/white/miuix_ref_white_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14083,7 +14083,7 @@
     },
     "var_496": {
       "id": "var_496",
-      "name": "solid/white/miuix_white_solid_level_900",
+      "name": "solid/white/miuix_ref_white_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14110,7 +14110,7 @@
     },
     "var_497": {
       "id": "var_497",
-      "name": "solid/white/miuix_white_solid_level_1000",
+      "name": "solid/white/miuix_ref_white_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14136,7 +14136,7 @@
     },
     "var_498": {
       "id": "var_498",
-      "name": "solid/black/miuix_black_solid_level_100",
+      "name": "solid/black/miuix_ref_black_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14163,7 +14163,7 @@
     },
     "var_499": {
       "id": "var_499",
-      "name": "solid/black/miuix_black_solid_level_200",
+      "name": "solid/black/miuix_ref_black_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14190,7 +14190,7 @@
     },
     "var_500": {
       "id": "var_500",
-      "name": "solid/black/miuix_black_solid_level_300",
+      "name": "solid/black/miuix_ref_black_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14217,7 +14217,7 @@
     },
     "var_501": {
       "id": "var_501",
-      "name": "solid/black/miuix_black_solid_level_400",
+      "name": "solid/black/miuix_ref_black_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14244,7 +14244,7 @@
     },
     "var_502": {
       "id": "var_502",
-      "name": "solid/black/miuix_black_solid_level_500",
+      "name": "solid/black/miuix_ref_black_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14271,7 +14271,7 @@
     },
     "var_503": {
       "id": "var_503",
-      "name": "solid/black/miuix_black_solid_level_600",
+      "name": "solid/black/miuix_ref_black_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14298,7 +14298,7 @@
     },
     "var_504": {
       "id": "var_504",
-      "name": "solid/black/miuix_black_solid_level_700",
+      "name": "solid/black/miuix_ref_black_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14325,7 +14325,7 @@
     },
     "var_505": {
       "id": "var_505",
-      "name": "solid/black/miuix_black_solid_level_800",
+      "name": "solid/black/miuix_ref_black_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14352,7 +14352,7 @@
     },
     "var_506": {
       "id": "var_506",
-      "name": "solid/black/miuix_black_solid_level_900",
+      "name": "solid/black/miuix_ref_black_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14379,7 +14379,7 @@
     },
     "var_507": {
       "id": "var_507",
-      "name": "solid/black/miuix_black_solid_level_1000",
+      "name": "solid/black/miuix_ref_black_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14405,7 +14405,7 @@
     },
     "var_508": {
       "id": "var_508",
-      "name": "solid/grey/miuix_grey_solid_level_1900",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14431,7 +14431,7 @@
     },
     "var_509": {
       "id": "var_509",
-      "name": "solid/grey/miuix_grey_solid_level_1800",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14457,7 +14457,7 @@
     },
     "var_510": {
       "id": "var_510",
-      "name": "solid/grey/miuix_grey_solid_level_1700",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14483,7 +14483,7 @@
     },
     "var_511": {
       "id": "var_511",
-      "name": "solid/grey/miuix_grey_solid_level_1600",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14509,7 +14509,7 @@
     },
     "var_512": {
       "id": "var_512",
-      "name": "solid/grey/miuix_grey_solid_level_1500",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14535,7 +14535,7 @@
     },
     "var_513": {
       "id": "var_513",
-      "name": "solid/grey/miuix_grey_solid_level_1400",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14561,7 +14561,7 @@
     },
     "var_514": {
       "id": "var_514",
-      "name": "solid/grey/miuix_grey_solid_level_1300",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14587,7 +14587,7 @@
     },
     "var_515": {
       "id": "var_515",
-      "name": "solid/grey/miuix_grey_solid_level_1200",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14613,7 +14613,7 @@
     },
     "var_516": {
       "id": "var_516",
-      "name": "solid/grey/miuix_grey_solid_level_1100",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14639,7 +14639,7 @@
     },
     "var_517": {
       "id": "var_517",
-      "name": "solid/grey/miuix_grey_solid_level_1000",
+      "name": "solid/grey/miuix_ref_grey_solid_level_1000",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14665,7 +14665,7 @@
     },
     "var_518": {
       "id": "var_518",
-      "name": "solid/grey/miuix_grey_solid_level_900",
+      "name": "solid/grey/miuix_ref_grey_solid_level_900",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14691,7 +14691,7 @@
     },
     "var_519": {
       "id": "var_519",
-      "name": "solid/grey/miuix_grey_solid_level_800",
+      "name": "solid/grey/miuix_ref_grey_solid_level_800",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14717,7 +14717,7 @@
     },
     "var_520": {
       "id": "var_520",
-      "name": "solid/grey/miuix_grey_solid_level_700",
+      "name": "solid/grey/miuix_ref_grey_solid_level_700",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14743,7 +14743,7 @@
     },
     "var_521": {
       "id": "var_521",
-      "name": "solid/grey/miuix_grey_solid_level_600",
+      "name": "solid/grey/miuix_ref_grey_solid_level_600",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14769,7 +14769,7 @@
     },
     "var_522": {
       "id": "var_522",
-      "name": "solid/grey/miuix_grey_solid_level_500",
+      "name": "solid/grey/miuix_ref_grey_solid_level_500",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14795,7 +14795,7 @@
     },
     "var_523": {
       "id": "var_523",
-      "name": "solid/grey/miuix_grey_solid_level_400",
+      "name": "solid/grey/miuix_ref_grey_solid_level_400",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14821,7 +14821,7 @@
     },
     "var_524": {
       "id": "var_524",
-      "name": "solid/grey/miuix_grey_solid_level_300",
+      "name": "solid/grey/miuix_ref_grey_solid_level_300",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14847,7 +14847,7 @@
     },
     "var_525": {
       "id": "var_525",
-      "name": "solid/grey/miuix_grey_solid_level_200",
+      "name": "solid/grey/miuix_ref_grey_solid_level_200",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14873,7 +14873,7 @@
     },
     "var_526": {
       "id": "var_526",
-      "name": "solid/grey/miuix_grey_solid_level_100",
+      "name": "solid/grey/miuix_ref_grey_solid_level_100",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -14899,7 +14899,7 @@
     },
     "var_527": {
       "id": "var_527",
-      "name": "number/space/miuix_space_0",
+      "name": "number/space/miuix_ref_space_0",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -14918,7 +14918,7 @@
     },
     "var_528": {
       "id": "var_528",
-      "name": "number/space/miuix_space_3",
+      "name": "number/space/miuix_ref_space_3",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -14937,7 +14937,7 @@
     },
     "var_529": {
       "id": "var_529",
-      "name": "number/space/miuix_space_4",
+      "name": "number/space/miuix_ref_space_4",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -14956,7 +14956,7 @@
     },
     "var_530": {
       "id": "var_530",
-      "name": "number/space/miuix_space_6",
+      "name": "number/space/miuix_ref_space_6",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -14975,7 +14975,7 @@
     },
     "var_531": {
       "id": "var_531",
-      "name": "number/space/miuix_space_8",
+      "name": "number/space/miuix_ref_space_8",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -14994,7 +14994,7 @@
     },
     "var_532": {
       "id": "var_532",
-      "name": "number/space/miuix_space_10",
+      "name": "number/space/miuix_ref_space_10",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15013,7 +15013,7 @@
     },
     "var_533": {
       "id": "var_533",
-      "name": "number/space/miuix_space_12",
+      "name": "number/space/miuix_ref_space_12",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15032,7 +15032,7 @@
     },
     "var_534": {
       "id": "var_534",
-      "name": "number/space/miuix_space_14",
+      "name": "number/space/miuix_ref_space_14",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15051,7 +15051,7 @@
     },
     "var_535": {
       "id": "var_535",
-      "name": "number/space/miuix_space_16",
+      "name": "number/space/miuix_ref_space_16",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15070,7 +15070,7 @@
     },
     "var_536": {
       "id": "var_536",
-      "name": "number/space/miuix_space_20",
+      "name": "number/space/miuix_ref_space_20",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15089,7 +15089,7 @@
     },
     "var_537": {
       "id": "var_537",
-      "name": "number/space/miuix_space_22",
+      "name": "number/space/miuix_ref_space_22",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15108,7 +15108,7 @@
     },
     "var_538": {
       "id": "var_538",
-      "name": "number/space/miuix_space_24",
+      "name": "number/space/miuix_ref_space_24",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15127,7 +15127,7 @@
     },
     "var_539": {
       "id": "var_539",
-      "name": "number/space/miuix_space_26",
+      "name": "number/space/miuix_ref_space_26",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15146,7 +15146,7 @@
     },
     "var_540": {
       "id": "var_540",
-      "name": "number/space/miuix_space_28",
+      "name": "number/space/miuix_ref_space_28",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15165,7 +15165,7 @@
     },
     "var_541": {
       "id": "var_541",
-      "name": "number/space/miuix_space_32",
+      "name": "number/space/miuix_ref_space_32",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15184,7 +15184,7 @@
     },
     "var_542": {
       "id": "var_542",
-      "name": "number/space/miuix_space_36",
+      "name": "number/space/miuix_ref_space_36",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15203,7 +15203,7 @@
     },
     "var_543": {
       "id": "var_543",
-      "name": "number/space/miuix_space_40",
+      "name": "number/space/miuix_ref_space_40",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15222,7 +15222,7 @@
     },
     "var_544": {
       "id": "var_544",
-      "name": "number/space/miuix_space_44",
+      "name": "number/space/miuix_ref_space_44",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15241,7 +15241,7 @@
     },
     "var_545": {
       "id": "var_545",
-      "name": "number/space/miuix_space_48",
+      "name": "number/space/miuix_ref_space_48",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15260,7 +15260,7 @@
     },
     "var_546": {
       "id": "var_546",
-      "name": "number/space/miuix_space_50",
+      "name": "number/space/miuix_ref_space_50",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15279,7 +15279,7 @@
     },
     "var_547": {
       "id": "var_547",
-      "name": "number/space/miuix_space_56",
+      "name": "number/space/miuix_ref_space_56",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15298,7 +15298,7 @@
     },
     "var_548": {
       "id": "var_548",
-      "name": "number/space/miuix_space_64",
+      "name": "number/space/miuix_ref_space_64",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15317,7 +15317,7 @@
     },
     "var_549": {
       "id": "var_549",
-      "name": "number/space/miuix_space_70",
+      "name": "number/space/miuix_ref_space_70",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15336,7 +15336,7 @@
     },
     "var_550": {
       "id": "var_550",
-      "name": "number/space/miuix_space_72",
+      "name": "number/space/miuix_ref_space_72",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15355,7 +15355,7 @@
     },
     "var_551": {
       "id": "var_551",
-      "name": "number/space/miuix_space_80",
+      "name": "number/space/miuix_ref_space_80",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15374,7 +15374,7 @@
     },
     "var_552": {
       "id": "var_552",
-      "name": "number/space/miuix_space_96",
+      "name": "number/space/miuix_ref_space_96",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15393,7 +15393,7 @@
     },
     "var_553": {
       "id": "var_553",
-      "name": "number/space/miuix_space_128",
+      "name": "number/space/miuix_ref_space_128",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15412,7 +15412,7 @@
     },
     "var_554": {
       "id": "var_554",
-      "name": "number/radius/miuix_radius_0",
+      "name": "number/radius/miuix_ref_radius_0",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15431,7 +15431,7 @@
     },
     "var_555": {
       "id": "var_555",
-      "name": "number/radius/miuix_radius_4",
+      "name": "number/radius/miuix_ref_radius_4",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15450,7 +15450,7 @@
     },
     "var_556": {
       "id": "var_556",
-      "name": "number/radius/miuix_radius_8",
+      "name": "number/radius/miuix_ref_radius_8",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15469,7 +15469,7 @@
     },
     "var_557": {
       "id": "var_557",
-      "name": "number/radius/miuix_radius_12",
+      "name": "number/radius/miuix_ref_radius_12",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15488,7 +15488,7 @@
     },
     "var_558": {
       "id": "var_558",
-      "name": "number/radius/miuix_radius_14",
+      "name": "number/radius/miuix_ref_radius_14",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15507,7 +15507,7 @@
     },
     "var_559": {
       "id": "var_559",
-      "name": "number/radius/miuix_radius_16",
+      "name": "number/radius/miuix_ref_radius_16",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15526,7 +15526,7 @@
     },
     "var_560": {
       "id": "var_560",
-      "name": "number/radius/miuix_radius_18",
+      "name": "number/radius/miuix_ref_radius_18",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15545,7 +15545,7 @@
     },
     "var_561": {
       "id": "var_561",
-      "name": "number/radius/miuix_radius_20",
+      "name": "number/radius/miuix_ref_radius_20",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15564,7 +15564,7 @@
     },
     "var_562": {
       "id": "var_562",
-      "name": "number/radius/miuix_radius_22",
+      "name": "number/radius/miuix_ref_radius_22",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15583,7 +15583,7 @@
     },
     "var_563": {
       "id": "var_563",
-      "name": "number/radius/miuix_radius_24",
+      "name": "number/radius/miuix_ref_radius_24",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15602,7 +15602,7 @@
     },
     "var_564": {
       "id": "var_564",
-      "name": "number/radius/miuix_radius_26",
+      "name": "number/radius/miuix_ref_radius_26",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15621,7 +15621,7 @@
     },
     "var_565": {
       "id": "var_565",
-      "name": "number/radius/miuix_radius_28",
+      "name": "number/radius/miuix_ref_radius_28",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15640,7 +15640,7 @@
     },
     "var_566": {
       "id": "var_566",
-      "name": "number/radius/miuix_radius_32",
+      "name": "number/radius/miuix_ref_radius_32",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15659,7 +15659,7 @@
     },
     "var_567": {
       "id": "var_567",
-      "name": "number/radius/miuix_radius_36",
+      "name": "number/radius/miuix_ref_radius_36",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15678,7 +15678,7 @@
     },
     "var_568": {
       "id": "var_568",
-      "name": "number/radius/miuix_radius_40",
+      "name": "number/radius/miuix_ref_radius_40",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15697,7 +15697,7 @@
     },
     "var_569": {
       "id": "var_569",
-      "name": "number/radius/miuix_radius_48",
+      "name": "number/radius/miuix_ref_radius_48",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15716,7 +15716,7 @@
     },
     "var_570": {
       "id": "var_570",
-      "name": "number/radius/miuix_radius_56",
+      "name": "number/radius/miuix_ref_radius_56",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15735,7 +15735,7 @@
     },
     "var_571": {
       "id": "var_571",
-      "name": "number/radius/miuix_radius_999",
+      "name": "number/radius/miuix_ref_radius_999",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15754,7 +15754,7 @@
     },
     "var_572": {
       "id": "var_572",
-      "name": "number/height/miuix_height_0_7",
+      "name": "number/height/miuix_ref_height_0_7",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15774,7 +15774,7 @@
     },
     "var_573": {
       "id": "var_573",
-      "name": "number/height/miuix_height_10",
+      "name": "number/height/miuix_ref_height_10",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15794,7 +15794,7 @@
     },
     "var_574": {
       "id": "var_574",
-      "name": "number/height/miuix_height_16",
+      "name": "number/height/miuix_ref_height_16",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15814,7 +15814,7 @@
     },
     "var_575": {
       "id": "var_575",
-      "name": "number/height/miuix_height_20",
+      "name": "number/height/miuix_ref_height_20",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15834,7 +15834,7 @@
     },
     "var_576": {
       "id": "var_576",
-      "name": "number/height/miuix_height_24",
+      "name": "number/height/miuix_ref_height_24",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15854,7 +15854,7 @@
     },
     "var_577": {
       "id": "var_577",
-      "name": "number/height/miuix_height_28",
+      "name": "number/height/miuix_ref_height_28",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15874,7 +15874,7 @@
     },
     "var_578": {
       "id": "var_578",
-      "name": "number/height/miuix_height_32",
+      "name": "number/height/miuix_ref_height_32",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15894,7 +15894,7 @@
     },
     "var_579": {
       "id": "var_579",
-      "name": "number/height/miuix_height_36",
+      "name": "number/height/miuix_ref_height_36",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15914,7 +15914,7 @@
     },
     "var_580": {
       "id": "var_580",
-      "name": "number/height/miuix_height_40",
+      "name": "number/height/miuix_ref_height_40",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15934,7 +15934,7 @@
     },
     "var_581": {
       "id": "var_581",
-      "name": "number/height/miuix_height_44",
+      "name": "number/height/miuix_ref_height_44",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15954,7 +15954,7 @@
     },
     "var_582": {
       "id": "var_582",
-      "name": "number/height/miuix_height_50",
+      "name": "number/height/miuix_ref_height_50",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15974,7 +15974,7 @@
     },
     "var_583": {
       "id": "var_583",
-      "name": "number/height/miuix_height_56",
+      "name": "number/height/miuix_ref_height_56",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -15994,7 +15994,7 @@
     },
     "var_584": {
       "id": "var_584",
-      "name": "number/height/miuix_height_70",
+      "name": "number/height/miuix_ref_height_70",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16014,7 +16014,7 @@
     },
     "var_585": {
       "id": "var_585",
-      "name": "number/height/miuix_height_72",
+      "name": "number/height/miuix_ref_height_72",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16034,7 +16034,7 @@
     },
     "var_586": {
       "id": "var_586",
-      "name": "number/font_size/miuix_font_size_9",
+      "name": "number/font_size/miuix_ref_font_size_9",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16053,7 +16053,7 @@
     },
     "var_587": {
       "id": "var_587",
-      "name": "number/font_size/miuix_font_size_11",
+      "name": "number/font_size/miuix_ref_font_size_11",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16072,7 +16072,7 @@
     },
     "var_588": {
       "id": "var_588",
-      "name": "number/font_size/miuix_font_size_13",
+      "name": "number/font_size/miuix_ref_font_size_13",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16091,7 +16091,7 @@
     },
     "var_589": {
       "id": "var_589",
-      "name": "number/font_size/miuix_font_size_14",
+      "name": "number/font_size/miuix_ref_font_size_14",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16110,7 +16110,7 @@
     },
     "var_590": {
       "id": "var_590",
-      "name": "number/font_size/miuix_font_size_16",
+      "name": "number/font_size/miuix_ref_font_size_16",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16129,7 +16129,7 @@
     },
     "var_591": {
       "id": "var_591",
-      "name": "number/font_size/miuix_font_size_17",
+      "name": "number/font_size/miuix_ref_font_size_17",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16148,7 +16148,7 @@
     },
     "var_592": {
       "id": "var_592",
-      "name": "number/font_size/miuix_font_size_18",
+      "name": "number/font_size/miuix_ref_font_size_18",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16167,7 +16167,7 @@
     },
     "var_593": {
       "id": "var_593",
-      "name": "number/font_size/miuix_font_size_20",
+      "name": "number/font_size/miuix_ref_font_size_20",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16186,7 +16186,7 @@
     },
     "var_594": {
       "id": "var_594",
-      "name": "number/font_size/miuix_font_size_26",
+      "name": "number/font_size/miuix_ref_font_size_26",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16205,7 +16205,7 @@
     },
     "var_595": {
       "id": "var_595",
-      "name": "number/font_size/miuix_font_size_32",
+      "name": "number/font_size/miuix_ref_font_size_32",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16224,7 +16224,7 @@
     },
     "var_596": {
       "id": "var_596",
-      "name": "number/line_height/miuix_line_height_12",
+      "name": "number/line_height/miuix_ref_line_height_12",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16243,7 +16243,7 @@
     },
     "var_597": {
       "id": "var_597",
-      "name": "number/line_height/miuix_line_height_15",
+      "name": "number/line_height/miuix_ref_line_height_15",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16262,7 +16262,7 @@
     },
     "var_598": {
       "id": "var_598",
-      "name": "number/line_height/miuix_line_height_17",
+      "name": "number/line_height/miuix_ref_line_height_17",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16281,7 +16281,7 @@
     },
     "var_599": {
       "id": "var_599",
-      "name": "number/line_height/miuix_line_height_19",
+      "name": "number/line_height/miuix_ref_line_height_19",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16300,7 +16300,7 @@
     },
     "var_600": {
       "id": "var_600",
-      "name": "number/line_height/miuix_line_height_21",
+      "name": "number/line_height/miuix_ref_line_height_21",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16319,7 +16319,7 @@
     },
     "var_601": {
       "id": "var_601",
-      "name": "number/line_height/miuix_line_height_23",
+      "name": "number/line_height/miuix_ref_line_height_23",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16338,7 +16338,7 @@
     },
     "var_602": {
       "id": "var_602",
-      "name": "number/line_height/miuix_line_height_24",
+      "name": "number/line_height/miuix_ref_line_height_24",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16357,7 +16357,7 @@
     },
     "var_603": {
       "id": "var_603",
-      "name": "number/line_height/miuix_line_height_27",
+      "name": "number/line_height/miuix_ref_line_height_27",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16376,7 +16376,7 @@
     },
     "var_604": {
       "id": "var_604",
-      "name": "number/line_height/miuix_line_height_34",
+      "name": "number/line_height/miuix_ref_line_height_34",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16395,7 +16395,7 @@
     },
     "var_605": {
       "id": "var_605",
-      "name": "number/line_height/miuix_line_height_42",
+      "name": "number/line_height/miuix_ref_line_height_42",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -16414,7 +16414,7 @@
     },
     "var_606": {
       "id": "var_606",
-      "name": "font/family/miuix_font_family_misans",
+      "name": "font/family/miuix_ref_font_family_misans",
       "type": "STRING",
       "valuesByMode": {
         "mode_light": {
@@ -16433,7 +16433,7 @@
     },
     "var_607": {
       "id": "var_607",
-      "name": "font/style/miuix_font_style_regular",
+      "name": "font/style/miuix_ref_font_style_regular",
       "type": "STRING",
       "valuesByMode": {
         "mode_light": {
@@ -16452,7 +16452,7 @@
     },
     "var_608": {
       "id": "var_608",
-      "name": "font/style/miuix_font_style_medium",
+      "name": "font/style/miuix_ref_font_style_medium",
       "type": "STRING",
       "valuesByMode": {
         "mode_light": {
@@ -16471,7 +16471,7 @@
     },
     "var_609": {
       "id": "var_609",
-      "name": "font/style/miuix_font_style_demibold",
+      "name": "font/style/miuix_ref_font_style_demibold",
       "type": "STRING",
       "valuesByMode": {
         "mode_light": {
@@ -16490,7 +16490,7 @@
     },
     "var_610": {
       "id": "var_610",
-      "name": "bg/layout/miuix_color_bg_layout_white_page",
+      "name": "bg/layout/miuix_sys_color_bg_layout_white_page",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16511,7 +16511,7 @@
     },
     "var_611": {
       "id": "var_611",
-      "name": "bg/layout/miuix_color_bg_layout_grey_page",
+      "name": "bg/layout/miuix_sys_color_bg_layout_grey_page",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16532,7 +16532,7 @@
     },
     "var_612": {
       "id": "var_612",
-      "name": "bg/floating/miuix_color_bg_floating_white_page",
+      "name": "bg/floating/miuix_sys_color_bg_floating_white_page",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16553,7 +16553,7 @@
     },
     "var_613": {
       "id": "var_613",
-      "name": "bg/floating/miuix_color_bg_floating_grey_page",
+      "name": "bg/floating/miuix_sys_color_bg_floating_grey_page",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16574,7 +16574,7 @@
     },
     "var_614": {
       "id": "var_614",
-      "name": "bg/compoment/miuix_color_bg_component",
+      "name": "bg/compoment/miuix_sys_color_bg_component",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16595,7 +16595,7 @@
     },
     "var_615": {
       "id": "var_615",
-      "name": "text/default/miuix_color_text_primary_enabled",
+      "name": "text/default/miuix_sys_color_text_primary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16615,7 +16615,7 @@
     },
     "var_616": {
       "id": "var_616",
-      "name": "text/default/miuix_color_text_secondary_enabled",
+      "name": "text/default/miuix_sys_color_text_secondary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16635,7 +16635,7 @@
     },
     "var_617": {
       "id": "var_617",
-      "name": "text/default/miuix_color_text_tertiary_enabled",
+      "name": "text/default/miuix_sys_color_text_tertiary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16655,7 +16655,7 @@
     },
     "var_618": {
       "id": "var_618",
-      "name": "text/default/miuix_color_text_quaternary_enabled",
+      "name": "text/default/miuix_sys_color_text_quaternary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16675,7 +16675,7 @@
     },
     "var_619": {
       "id": "var_619",
-      "name": "text/default/miuix_color_text_octonary_enabled",
+      "name": "text/default/miuix_sys_color_text_octonary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16695,7 +16695,7 @@
     },
     "var_620": {
       "id": "var_620",
-      "name": "text/default/miuix_color_text_primary_disabled",
+      "name": "text/default/miuix_sys_color_text_primary_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16715,7 +16715,7 @@
     },
     "var_621": {
       "id": "var_621",
-      "name": "text/default/miuix_color_text_primary_pressed",
+      "name": "text/default/miuix_sys_color_text_primary_pressed",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16735,7 +16735,7 @@
     },
     "var_622": {
       "id": "var_622",
-      "name": "text/brand/miuix_color_text_brand_enabled",
+      "name": "text/brand/miuix_sys_color_text_brand_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16755,7 +16755,7 @@
     },
     "var_623": {
       "id": "var_623",
-      "name": "text/brand/miuix_color_text_brand_disabled",
+      "name": "text/brand/miuix_sys_color_text_brand_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16775,7 +16775,7 @@
     },
     "var_624": {
       "id": "var_624",
-      "name": "text/link/miuix_color_text_link_enabled",
+      "name": "text/link/miuix_sys_color_text_link_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16795,7 +16795,7 @@
     },
     "var_625": {
       "id": "var_625",
-      "name": "text/link/miuix_color_text_link_disabled",
+      "name": "text/link/miuix_sys_color_text_link_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16815,7 +16815,7 @@
     },
     "var_626": {
       "id": "var_626",
-      "name": "text/caution/miuix_color_text_caution_enabled",
+      "name": "text/caution/miuix_sys_color_text_caution_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16835,7 +16835,7 @@
     },
     "var_627": {
       "id": "var_627",
-      "name": "text/caution/miuix_color_text_caution_disabled",
+      "name": "text/caution/miuix_sys_color_text_caution_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16855,7 +16855,7 @@
     },
     "var_628": {
       "id": "var_628",
-      "name": "text/warning/miuix_color_text_warning_enabled",
+      "name": "text/warning/miuix_sys_color_text_warning_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16875,7 +16875,7 @@
     },
     "var_629": {
       "id": "var_629",
-      "name": "text/warning/miuix_color_text_warning_disabled",
+      "name": "text/warning/miuix_sys_color_text_warning_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16895,7 +16895,7 @@
     },
     "var_630": {
       "id": "var_630",
-      "name": "text/success/miuix_color_text_success_enabled",
+      "name": "text/success/miuix_sys_color_text_success_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16915,7 +16915,7 @@
     },
     "var_631": {
       "id": "var_631",
-      "name": "text/success/miuix_color_text_success_disabled",
+      "name": "text/success/miuix_sys_color_text_success_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16935,7 +16935,7 @@
     },
     "var_632": {
       "id": "var_632",
-      "name": "text/status/miuix_color_text_status_hover",
+      "name": "text/status/miuix_sys_color_text_status_hover",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16955,7 +16955,7 @@
     },
     "var_633": {
       "id": "var_633",
-      "name": "text/status/miuix_color_text_status_pressed",
+      "name": "text/status/miuix_sys_color_text_status_pressed",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16975,7 +16975,7 @@
     },
     "var_634": {
       "id": "var_634",
-      "name": "text/status/miuix_color_text_status_selected",
+      "name": "text/status/miuix_sys_color_text_status_selected",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -16995,7 +16995,7 @@
     },
     "var_635": {
       "id": "var_635",
-      "name": "text/static_white/miuix_color_text_static_white_enabled",
+      "name": "text/static_white/miuix_sys_color_text_static_white_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17015,7 +17015,7 @@
     },
     "var_636": {
       "id": "var_636",
-      "name": "text/static_white/miuix_color_text_static_white_disabled",
+      "name": "text/static_white/miuix_sys_color_text_static_white_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17035,7 +17035,7 @@
     },
     "var_637": {
       "id": "var_637",
-      "name": "fill/default/miuix_color_fill_primary_enabled",
+      "name": "fill/default/miuix_sys_color_fill_primary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17056,7 +17056,7 @@
     },
     "var_638": {
       "id": "var_638",
-      "name": "fill/default/miuix_color_fill_secondary_enabled",
+      "name": "fill/default/miuix_sys_color_fill_secondary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17077,7 +17077,7 @@
     },
     "var_639": {
       "id": "var_639",
-      "name": "fill/default/miuix_color_fill_tertiary_enabled",
+      "name": "fill/default/miuix_sys_color_fill_tertiary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17098,7 +17098,7 @@
     },
     "var_640": {
       "id": "var_640",
-      "name": "fill/default/miuix_color_fill_quaternary_enabled",
+      "name": "fill/default/miuix_sys_color_fill_quaternary_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17119,7 +17119,7 @@
     },
     "var_641": {
       "id": "var_641",
-      "name": "fill/default/miuix_color_fill_quaternary_disabled",
+      "name": "fill/default/miuix_sys_color_fill_quaternary_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17140,7 +17140,7 @@
     },
     "var_642": {
       "id": "var_642",
-      "name": "fill/brand/miuix_color_fill_brand_enabled",
+      "name": "fill/brand/miuix_sys_color_fill_brand_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17161,7 +17161,7 @@
     },
     "var_643": {
       "id": "var_643",
-      "name": "fill/brand/miuix_color_fill_brand_disabled",
+      "name": "fill/brand/miuix_sys_color_fill_brand_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17182,7 +17182,7 @@
     },
     "var_644": {
       "id": "var_644",
-      "name": "fill/caution/miuix_color_fill_caution_enabled",
+      "name": "fill/caution/miuix_sys_color_fill_caution_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17203,7 +17203,7 @@
     },
     "var_645": {
       "id": "var_645",
-      "name": "fill/caution/miuix_color_fill_caution_disabled",
+      "name": "fill/caution/miuix_sys_color_fill_caution_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17224,7 +17224,7 @@
     },
     "var_646": {
       "id": "var_646",
-      "name": "fill/warning/miuix_color_fill_warning_enabled",
+      "name": "fill/warning/miuix_sys_color_fill_warning_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17245,7 +17245,7 @@
     },
     "var_647": {
       "id": "var_647",
-      "name": "fill/warning/miuix_color_fill_warning_disabled",
+      "name": "fill/warning/miuix_sys_color_fill_warning_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17266,7 +17266,7 @@
     },
     "var_648": {
       "id": "var_648",
-      "name": "fill/success/miuix_color_fill_success_enabled",
+      "name": "fill/success/miuix_sys_color_fill_success_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17287,7 +17287,7 @@
     },
     "var_649": {
       "id": "var_649",
-      "name": "fill/success/miuix_color_fill_success_disabled",
+      "name": "fill/success/miuix_sys_color_fill_success_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17308,7 +17308,7 @@
     },
     "var_650": {
       "id": "var_650",
-      "name": "fill/status/miuix_color_fill_status_hover",
+      "name": "fill/status/miuix_sys_color_fill_status_hover",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17329,7 +17329,7 @@
     },
     "var_651": {
       "id": "var_651",
-      "name": "fill/status/miuix_color_fill_status_pressed",
+      "name": "fill/status/miuix_sys_color_fill_status_pressed",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17350,7 +17350,7 @@
     },
     "var_652": {
       "id": "var_652",
-      "name": "fill/status/miuix_color_fill_status_selected",
+      "name": "fill/status/miuix_sys_color_fill_status_selected",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17371,7 +17371,7 @@
     },
     "var_653": {
       "id": "var_653",
-      "name": "fill/static_white/miuix_color_fill_static_white_enabled",
+      "name": "fill/static_white/miuix_sys_color_fill_static_white_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17392,7 +17392,7 @@
     },
     "var_654": {
       "id": "var_654",
-      "name": "fill/static_white/miuix_color_fill_static_white_disabled",
+      "name": "fill/static_white/miuix_sys_color_fill_static_white_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17413,7 +17413,7 @@
     },
     "var_655": {
       "id": "var_655",
-      "name": "stroke/border/miuix_color_stroke_border_enabled",
+      "name": "stroke/border/miuix_sys_color_stroke_border_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17433,7 +17433,7 @@
     },
     "var_656": {
       "id": "var_656",
-      "name": "stroke/border/miuix_color_stroke_border_disabled",
+      "name": "stroke/border/miuix_sys_color_stroke_border_disabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17453,7 +17453,7 @@
     },
     "var_657": {
       "id": "var_657",
-      "name": "stroke/divider/miuix_color_stroke_divider",
+      "name": "stroke/divider/miuix_sys_color_stroke_divider",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17473,7 +17473,7 @@
     },
     "var_658": {
       "id": "var_658",
-      "name": "mask/miuix_color_mask",
+      "name": "mask/miuix_sys_color_mask",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -17494,7 +17494,7 @@
     },
     "var_659": {
       "id": "var_659",
-      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_sm",
+      "name": "padding/horizontal/container/miuix_sys_space_container_padding_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17515,7 +17515,7 @@
     },
     "var_660": {
       "id": "var_660",
-      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_md",
+      "name": "padding/horizontal/container/miuix_sys_space_container_padding_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17536,7 +17536,7 @@
     },
     "var_661": {
       "id": "var_661",
-      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_lg",
+      "name": "padding/horizontal/container/miuix_sys_space_container_padding_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17557,7 +17557,7 @@
     },
     "var_662": {
       "id": "var_662",
-      "name": "padding/horizontal/container/miuix_space_container_padding_horizontal_xl",
+      "name": "padding/horizontal/container/miuix_sys_space_container_padding_horizontal_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17578,7 +17578,7 @@
     },
     "var_663": {
       "id": "var_663",
-      "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_sm",
+      "name": "padding/horizontal/control/miuix_sys_space_control_padding_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17599,7 +17599,7 @@
     },
     "var_664": {
       "id": "var_664",
-      "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_md",
+      "name": "padding/horizontal/control/miuix_sys_space_control_padding_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17620,7 +17620,7 @@
     },
     "var_665": {
       "id": "var_665",
-      "name": "padding/horizontal/control/miuix_space_control_padding_horizontal_lg",
+      "name": "padding/horizontal/control/miuix_sys_space_control_padding_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17641,7 +17641,7 @@
     },
     "var_666": {
       "id": "var_666",
-      "name": "padding/vertical/container/miuix_space_container_padding_vertical_sm",
+      "name": "padding/vertical/container/miuix_sys_space_container_padding_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17662,7 +17662,7 @@
     },
     "var_667": {
       "id": "var_667",
-      "name": "padding/vertical/container/miuix_space_container_padding_vertical_md",
+      "name": "padding/vertical/container/miuix_sys_space_container_padding_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17683,7 +17683,7 @@
     },
     "var_668": {
       "id": "var_668",
-      "name": "padding/vertical/container/miuix_space_container_padding_vertical_lg",
+      "name": "padding/vertical/container/miuix_sys_space_container_padding_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17704,7 +17704,7 @@
     },
     "var_669": {
       "id": "var_669",
-      "name": "padding/vertical/control/miuix_space_control_padding_vertical_xs",
+      "name": "padding/vertical/control/miuix_sys_space_control_padding_vertical_xs",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17725,7 +17725,7 @@
     },
     "var_670": {
       "id": "var_670",
-      "name": "padding/vertical/control/miuix_space_control_padding_vertical_sm",
+      "name": "padding/vertical/control/miuix_sys_space_control_padding_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17746,7 +17746,7 @@
     },
     "var_671": {
       "id": "var_671",
-      "name": "padding/vertical/control/miuix_space_control_padding_vertical_md",
+      "name": "padding/vertical/control/miuix_sys_space_control_padding_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17767,7 +17767,7 @@
     },
     "var_672": {
       "id": "var_672",
-      "name": "padding/vertical/control/miuix_space_control_padding_vertical_lg",
+      "name": "padding/vertical/control/miuix_sys_space_control_padding_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17788,7 +17788,7 @@
     },
     "var_673": {
       "id": "var_673",
-      "name": "padding/vertical/control/miuix_space_control_padding_vertical_xl",
+      "name": "padding/vertical/control/miuix_sys_space_control_padding_vertical_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17809,7 +17809,7 @@
     },
     "var_674": {
       "id": "var_674",
-      "name": "margin/miuix_space_margin_sm",
+      "name": "margin/miuix_sys_space_margin_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17829,7 +17829,7 @@
     },
     "var_675": {
       "id": "var_675",
-      "name": "margin/miuix_space_margin_md",
+      "name": "margin/miuix_sys_space_margin_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17849,7 +17849,7 @@
     },
     "var_676": {
       "id": "var_676",
-      "name": "margin/miuix_space_margin_lg",
+      "name": "margin/miuix_sys_space_margin_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17869,7 +17869,7 @@
     },
     "var_677": {
       "id": "var_677",
-      "name": "margin/miuix_space_margin_xl",
+      "name": "margin/miuix_sys_space_margin_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17889,7 +17889,7 @@
     },
     "var_678": {
       "id": "var_678",
-      "name": "gap/horizontal/miuix_space_gap_horizontal_xs",
+      "name": "gap/horizontal/miuix_sys_space_gap_horizontal_xs",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17909,7 +17909,7 @@
     },
     "var_679": {
       "id": "var_679",
-      "name": "gap/horizontal/miuix_space_gap_horizontal_sm",
+      "name": "gap/horizontal/miuix_sys_space_gap_horizontal_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17929,7 +17929,7 @@
     },
     "var_680": {
       "id": "var_680",
-      "name": "gap/horizontal/miuix_space_gap_horizontal_md",
+      "name": "gap/horizontal/miuix_sys_space_gap_horizontal_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17949,7 +17949,7 @@
     },
     "var_681": {
       "id": "var_681",
-      "name": "gap/horizontal/miuix_space_gap_horizontal_lg",
+      "name": "gap/horizontal/miuix_sys_space_gap_horizontal_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17969,7 +17969,7 @@
     },
     "var_682": {
       "id": "var_682",
-      "name": "gap/vertical/miuix_space_gap_vertical_xs",
+      "name": "gap/vertical/miuix_sys_space_gap_vertical_xs",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -17989,7 +17989,7 @@
     },
     "var_683": {
       "id": "var_683",
-      "name": "gap/vertical/miuix_space_gap_vertical_sm",
+      "name": "gap/vertical/miuix_sys_space_gap_vertical_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18009,7 +18009,7 @@
     },
     "var_684": {
       "id": "var_684",
-      "name": "gap/vertical/miuix_space_gap_vertical_md",
+      "name": "gap/vertical/miuix_sys_space_gap_vertical_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18029,7 +18029,7 @@
     },
     "var_685": {
       "id": "var_685",
-      "name": "gap/vertical/miuix_space_gap_vertical_lg",
+      "name": "gap/vertical/miuix_sys_space_gap_vertical_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18049,7 +18049,7 @@
     },
     "var_686": {
       "id": "var_686",
-      "name": "gap/vertical/miuix_space_gap_vertical_xl",
+      "name": "gap/vertical/miuix_sys_space_gap_vertical_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18069,7 +18069,7 @@
     },
     "var_687": {
       "id": "var_687",
-      "name": "radius/miuix_radius_none",
+      "name": "radius/miuix_sys_radius_none",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18088,7 +18088,7 @@
     },
     "var_688": {
       "id": "var_688",
-      "name": "radius/miuix_radius_container",
+      "name": "radius/miuix_sys_radius_container",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18107,7 +18107,7 @@
     },
     "var_689": {
       "id": "var_689",
-      "name": "radius/miuix_radius_control_sm",
+      "name": "radius/miuix_sys_radius_control_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18126,7 +18126,7 @@
     },
     "var_690": {
       "id": "var_690",
-      "name": "radius/miuix_radius_control_md",
+      "name": "radius/miuix_sys_radius_control_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18145,7 +18145,7 @@
     },
     "var_691": {
       "id": "var_691",
-      "name": "radius/miuix_radius_control_lg",
+      "name": "radius/miuix_sys_radius_control_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18164,7 +18164,7 @@
     },
     "var_692": {
       "id": "var_692",
-      "name": "radius/miuix_radius_overlay",
+      "name": "radius/miuix_sys_radius_overlay",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18183,7 +18183,7 @@
     },
     "var_693": {
       "id": "var_693",
-      "name": "radius/miuix_radius_full",
+      "name": "radius/miuix_sys_radius_full",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18202,7 +18202,7 @@
     },
     "var_694": {
       "id": "var_694",
-      "name": "safe_area/bottom/miuix_space_safe_area_bottom_sm",
+      "name": "safe_area/bottom/miuix_sys_space_safe_area_bottom_sm",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18222,7 +18222,7 @@
     },
     "var_695": {
       "id": "var_695",
-      "name": "safe_area/bottom/miuix_space_safe_area_bottom_md",
+      "name": "safe_area/bottom/miuix_sys_space_safe_area_bottom_md",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18242,7 +18242,7 @@
     },
     "var_696": {
       "id": "var_696",
-      "name": "safe_area/bottom/miuix_space_safe_area_bottom_lg",
+      "name": "safe_area/bottom/miuix_sys_space_safe_area_bottom_lg",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18262,7 +18262,7 @@
     },
     "var_697": {
       "id": "var_697",
-      "name": "safe_area/bottom/miuix_space_safe_area_bottom_xl",
+      "name": "safe_area/bottom/miuix_sys_space_safe_area_bottom_xl",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18282,7 +18282,7 @@
     },
     "var_698": {
       "id": "var_698",
-      "name": "height/vertical/miuix_height_vertical_0_7",
+      "name": "height/vertical/miuix_sys_height_vertical_0_7",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18301,7 +18301,7 @@
     },
     "var_699": {
       "id": "var_699",
-      "name": "height/vertical/miuix_height_vertical_10",
+      "name": "height/vertical/miuix_sys_height_vertical_10",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18320,7 +18320,7 @@
     },
     "var_700": {
       "id": "var_700",
-      "name": "height/vertical/miuix_height_vertical_16",
+      "name": "height/vertical/miuix_sys_height_vertical_16",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18339,7 +18339,7 @@
     },
     "var_701": {
       "id": "var_701",
-      "name": "height/vertical/miuix_height_vertical_20",
+      "name": "height/vertical/miuix_sys_height_vertical_20",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18358,7 +18358,7 @@
     },
     "var_702": {
       "id": "var_702",
-      "name": "height/vertical/miuix_height_vertical_24",
+      "name": "height/vertical/miuix_sys_height_vertical_24",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18377,7 +18377,7 @@
     },
     "var_703": {
       "id": "var_703",
-      "name": "height/vertical/miuix_height_vertical_28",
+      "name": "height/vertical/miuix_sys_height_vertical_28",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18396,7 +18396,7 @@
     },
     "var_704": {
       "id": "var_704",
-      "name": "height/vertical/miuix_height_vertical_32",
+      "name": "height/vertical/miuix_sys_height_vertical_32",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18415,7 +18415,7 @@
     },
     "var_705": {
       "id": "var_705",
-      "name": "height/vertical/miuix_height_vertical_36",
+      "name": "height/vertical/miuix_sys_height_vertical_36",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18434,7 +18434,7 @@
     },
     "var_706": {
       "id": "var_706",
-      "name": "height/vertical/miuix_height_vertical_40",
+      "name": "height/vertical/miuix_sys_height_vertical_40",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18453,7 +18453,7 @@
     },
     "var_707": {
       "id": "var_707",
-      "name": "height/vertical/miuix_height_vertical_44",
+      "name": "height/vertical/miuix_sys_height_vertical_44",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18472,7 +18472,7 @@
     },
     "var_708": {
       "id": "var_708",
-      "name": "height/vertical/miuix_height_vertical_50",
+      "name": "height/vertical/miuix_sys_height_vertical_50",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18491,7 +18491,7 @@
     },
     "var_709": {
       "id": "var_709",
-      "name": "height/vertical/miuix_height_vertical_56",
+      "name": "height/vertical/miuix_sys_height_vertical_56",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18510,7 +18510,7 @@
     },
     "var_710": {
       "id": "var_710",
-      "name": "height/vertical/miuix_height_vertical_70",
+      "name": "height/vertical/miuix_sys_height_vertical_70",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
@@ -18529,7 +18529,7 @@
     },
     "var_711": {
       "id": "var_711",
-      "name": "height/vertical/miuix_height_vertical_72",
+      "name": "height/vertical/miuix_sys_height_vertical_72",
       "type": "NUMBER",
       "valuesByMode": {
         "mode_light": {
