@@ -1,12 +1,34 @@
 import type { DesignToken, TokenType, TokenValue } from "@/types/token";
+import { stripCodeSyntaxPrefix } from "./utils";
 
 /**
  * Extract the leaf segment from a token name (last path segment).
- * e.g. "文字图标色/on_surface" -> "on_surface", "black/color-black-level1" -> "color-black-level1"
+ * e.g. "文字图标色/on_surface" -> "on_surface", "black/color-black-level1" -> "color_black_level1"
+ * A leading Chinese group prefix on the leaf (HyperOS: "文字_on_surface") is removed.
  */
 function getLeafName(name: string): string {
   const segments = name.split("/").filter(Boolean);
-  return (segments[segments.length - 1] ?? name).replace(/-/g, "_").replace(/\s+/g, "_").toLowerCase();
+  const leaf = (segments[segments.length - 1] ?? name).replace(/-/g, "_").replace(/\s+/g, "_").toLowerCase();
+  return stripCodeSyntaxPrefix(leaf);
+}
+
+/**
+ * codeSyntax.ANDROID is the resource name when present.
+ * Strip a leading Chinese group prefix; do not add another miuix_ prefix or mode suffix.
+ */
+function explicitAndroidName(token: DesignToken): string | undefined {
+  const raw = token.codeSyntax?.ANDROID?.trim();
+  if (!raw) return undefined;
+  const stripped = stripCodeSyntaxPrefix(raw).trim();
+  return stripped || undefined;
+}
+
+/**
+ * Token leaf is already a HyperOS Android resource name (miuix_color_…, miuix_white_…, miuix_space_…).
+ * Those names must not be wrapped in another miuix_default_{type}_ or miuix_{type}_ prefix.
+ */
+function isExplicitMiuixResourceName(leaf: string): boolean {
+  return leaf.startsWith("miuix_");
 }
 
 /**
@@ -33,24 +55,27 @@ function getMiuixTypeSegment(type: TokenType): string {
 
 /**
  * Generate HyperOS miuix Android resource name for a Feature Token (alias / 2nd-level).
- * Pattern: miuix_default_{type}_{leaf}_{modeSuffix}
- * e.g. "miuix_default_color_on_surface_light"
+ * Short leaves: miuix_default_{type}_{leaf}{modeSuffix}, e.g. "miuix_default_color_on_surface_light".
+ * Leaves that already start with miuix_ are the resource name; only the mode suffix is appended.
+ * e.g. "miuix_color_bg_layout_white_page" + mode_light -> "miuix_color_bg_layout_white_page_light".
  */
 export function getMiuixFeatureName(token: DesignToken, modeId: string): string {
   const typeSeg = getMiuixTypeSegment(token.type);
   const leaf = getLeafName(token.name);
   const suffix = getModeSuffix(modeId);
+  if (isExplicitMiuixResourceName(leaf)) return `${leaf}${suffix}`;
   return `miuix_default_${typeSeg}_${leaf}${suffix}`;
 }
 
 /**
  * Generate HyperOS miuix Android resource name for a Primitive Token (1st-level, no mode suffix).
- * Pattern: miuix_{type}_{leaf}
- * e.g. "miuix_color_black_level1"
+ * Short leaves: miuix_{type}_{leaf}, e.g. "miuix_color_black_level1".
+ * Leaves that already start with miuix_ are used as-is, e.g. "miuix_white_solid_level_1000".
  */
 export function getMiuixPrimitiveName(token: DesignToken): string {
   const typeSeg = getMiuixTypeSegment(token.type);
   const leaf = getLeafName(token.name);
+  if (isExplicitMiuixResourceName(leaf)) return leaf;
   return `miuix_${typeSeg}_${leaf}`;
 }
 
@@ -86,13 +111,11 @@ function getAndroidResourcePrefix(type: TokenType): string {
 
 /**
  * Get the Android resource name for a referenced (target) token.
- * Uses codeSyntax.ANDROID if available, otherwise generates HyperOS miuix primitive name.
+ * Uses codeSyntax.ANDROID (Chinese prefix stripped) when set, otherwise the
+ * target's primitive Android name — the name that token exports as itself.
  */
 function getReferenceName(targetToken: DesignToken): string {
-  if (targetToken.codeSyntax?.ANDROID) {
-    return targetToken.codeSyntax.ANDROID;
-  }
-  return getMiuixPrimitiveName(targetToken);
+  return explicitAndroidName(targetToken) ?? getMiuixPrimitiveName(targetToken);
 }
 
 /**
@@ -126,9 +149,10 @@ export function generateAndroidToken(
   if (!value) return "";
 
   // Determine the Android resource name for this token
+  const explicitName = explicitAndroidName(token);
   let name: string;
-  if (token.codeSyntax?.ANDROID) {
-    name = token.codeSyntax.ANDROID;
+  if (explicitName) {
+    name = explicitName;
   } else if (token.isAlias) {
     name = getMiuixFeatureName(token, resolvedModeId);
   } else {
@@ -186,7 +210,8 @@ export function generateAndroidBlock(
  * Returns codeSyntax.ANDROID if set, otherwise generates HyperOS miuix name.
  */
 export function getAndroidResourceName(token: DesignToken, modeId?: string): string {
-  if (token.codeSyntax?.ANDROID) return token.codeSyntax.ANDROID;
+  const explicitName = explicitAndroidName(token);
+  if (explicitName) return explicitName;
   const resolvedModeId = modeId ?? Object.keys(token.rawValues)[0];
   if (token.isAlias) return getMiuixFeatureName(token, resolvedModeId);
   return getMiuixPrimitiveName(token);
