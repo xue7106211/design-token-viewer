@@ -4,7 +4,7 @@ import type {
   DesignToken,
   TokenCollection,
   TokenTreeNode,
-  TokenValue,
+  ConcreteRawTokenValue,
   ViewMode,
   CodeFormat,
 } from "@/types/token";
@@ -75,7 +75,7 @@ interface TokenState {
   setInspectorOpen: (open: boolean) => void;
   setInspectorWidth: (width: number) => void;
   setEditingToken: (id: string | null, position?: { x: number; y: number }) => void;
-  updateTokenValue: (tokenId: string, modeId: string, value: TokenValue) => Promise<void>;
+  updateTokenValue: (tokenId: string, modeId: string, value: ConcreteRawTokenValue) => Promise<void>;
   updateTokenName: (tokenId: string, newName: string) => Promise<void>;
   updateTokenDescription: (tokenId: string, description: string) => Promise<void>;
   updateTokenCodeSyntax: (tokenId: string, codeSyntax: CodeSyntax) => Promise<void>;
@@ -402,7 +402,7 @@ export const useTokenStore = create<TokenState>()(
           });
         },
 
-        updateTokenValue: async (tokenId: string, modeId: string, value: TokenValue) => {
+        updateTokenValue: async (tokenId: string, modeId: string, value: ConcreteRawTokenValue) => {
           await commit(`/api/tokens/${encodeURIComponent(tokenId)}/value`, { modeId, value });
           set({ editingTokenId: null, editingPosition: null });
         },

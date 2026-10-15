@@ -8,13 +8,15 @@ import { colorToHex, colorToHexWithAlpha, colorToRGB, colorToHSL, contrastRatio,
 import { ColorSwatch } from "./color-swatch";
 import { NumberPreview } from "./number-preview";
 import { CodeOutput } from "./code-output";
+import { TypographyFieldList, TypographyPreview } from "./typography-preview";
+import { formatTypographySummary } from "@/lib/typography";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { X, Link2, Eye, GripVertical, ArrowDown, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { ColorValue } from "@/types/token";
+import type { ColorValue, TypographyValue } from "@/types/token";
 
 const INSPECTOR_WIDTH_MIN = 280;
 const INSPECTOR_WIDTH_MAX = 560;
@@ -175,6 +177,14 @@ export function TokenInspector() {
             {resolved?.type === "STRING" && (
               <p className="text-sm font-mono">{resolved.value}</p>
             )}
+            {resolved?.type === "TYPOGRAPHY" && (
+              <div className="min-w-0 space-y-3">
+                <div className="rounded-lg border bg-muted/20 p-3">
+                  <TypographyPreview value={resolved.value} />
+                </div>
+                <TypographyFieldList token={token} modeId={modeId} tokens={tokens} onSelect={selectToken} />
+              </div>
+            )}
             {resolved?.type === "BOOLEAN" && (
               <Badge variant={resolved.value ? "default" : "secondary"}>
                 {resolved.value ? "true" : "false"}
@@ -220,6 +230,9 @@ export function TokenInspector() {
                         )}
                         {modeResolved.type === "STRING" && (
                           <span className="min-w-0 truncate text-xs font-mono">{modeResolved.value}</span>
+                        )}
+                        {modeResolved.type === "TYPOGRAPHY" && (
+                          <span className="min-w-0 truncate text-xs font-mono">{formatTypographySummary(modeResolved.value)}</span>
                         )}
                       </div>
                     );
@@ -407,6 +420,9 @@ function formatResolvedValue(resolved: { type: string; value: unknown }) {
   }
   if (resolved.type === "NUMBER") {
     return `${resolved.value}px`;
+  }
+  if (resolved.type === "TYPOGRAPHY") {
+    return formatTypographySummary(resolved.value as TypographyValue);
   }
   return String(resolved.value);
 }

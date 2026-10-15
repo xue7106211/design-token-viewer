@@ -1,5 +1,6 @@
 import type { TokenCollection, DesignToken, RawTokenValue } from "@/types/token";
 import type { FigmaNativeJSON, FigmaCollection, FigmaVariable, FigmaValue } from "@/lib/parsers/types";
+import { cloneRawTypography } from "@/lib/typography";
 
 /**
  * Rebuild Figma Native JSON from internal token/collection state.
@@ -50,6 +51,8 @@ function rawValueToFigma(raw: RawTokenValue): FigmaValue {
     case "STRING":
     case "BOOLEAN":
       return { type: raw.type, value: raw.value };
+    case "TYPOGRAPHY":
+      return { type: "TYPOGRAPHY", value: cloneRawTypography(raw.value) };
     default:
       return raw as FigmaValue;
   }

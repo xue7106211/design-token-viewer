@@ -154,7 +154,31 @@
         "var_708",
         "var_709",
         "var_710",
-        "var_711"
+        "var_711",
+        "var_712",
+        "var_713",
+        "var_714",
+        "var_715",
+        "var_716",
+        "var_717",
+        "var_718",
+        "var_719",
+        "var_720",
+        "var_721",
+        "var_722",
+        "var_723",
+        "var_724",
+        "var_725",
+        "var_726",
+        "var_727",
+        "var_728",
+        "var_729",
+        "var_730",
+        "var_731",
+        "var_732",
+        "var_733",
+        "var_734",
+        "var_735"
       ]
     },
     {
@@ -18545,6 +18569,1278 @@
         "WIDTH_HEIGHT"
       ],
       "codeSyntax": {}
+    },
+    "var_712": {
+      "id": "var_712",
+      "name": "text_style/miuix_text_style_headline_large_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_595"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_605"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_595"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_605"
+            }
+          }
+        }
+      },
+      "description": "页面级大标题（未上滑）",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_headline_large_regular"
+      }
+    },
+    "var_713": {
+      "id": "var_713",
+      "name": "text_style/miuix_text_style_headline_large_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_595"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_605"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_595"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_605"
+            }
+          }
+        }
+      },
+      "description": "页面级大标题（未上滑）",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_headline_large_medium"
+      }
+    },
+    "var_714": {
+      "id": "var_714",
+      "name": "text_style/miuix_text_style_headline_medium_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_594"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_604"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_594"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_604"
+            }
+          }
+        }
+      },
+      "description": "内容文本的大标题",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_headline_medium_regular"
+      }
+    },
+    "var_715": {
+      "id": "var_715",
+      "name": "text_style/miuix_text_style_headline_medium_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_594"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_604"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_594"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_604"
+            }
+          }
+        }
+      },
+      "description": "内容文本的大标题",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_headline_medium_demibold"
+      }
+    },
+    "var_716": {
+      "id": "var_716",
+      "name": "text_style/miuix_text_style_title_large_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_593"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_603"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_593"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_603"
+            }
+          }
+        }
+      },
+      "description": "页面级标题（上滑后）",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_title_large_medium"
+      }
+    },
+    "var_717": {
+      "id": "var_717",
+      "name": "text_style/miuix_text_style_title_large_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_593"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_603"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_593"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_603"
+            }
+          }
+        }
+      },
+      "description": "页面级标题（上滑后）",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_title_large_demibold"
+      }
+    },
+    "var_718": {
+      "id": "var_718",
+      "name": "text_style/miuix_text_style_title_medium_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_592"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_602"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_592"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_602"
+            }
+          }
+        }
+      },
+      "description": "内容文本的小标题",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_title_medium_medium"
+      }
+    },
+    "var_719": {
+      "id": "var_719",
+      "name": "text_style/miuix_text_style_title_medium_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_592"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_602"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_592"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_602"
+            }
+          }
+        }
+      },
+      "description": "内容文本的小标题",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_title_medium_demibold"
+      }
+    },
+    "var_720": {
+      "id": "var_720",
+      "name": "text_style/miuix_text_style_title_small_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_591"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_601"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_591"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_601"
+            }
+          }
+        }
+      },
+      "description": "卡片、列表项的标题",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_title_small_medium"
+      }
+    },
+    "var_721": {
+      "id": "var_721",
+      "name": "text_style/miuix_text_style_title_small_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_591"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_601"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_591"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_601"
+            }
+          }
+        }
+      },
+      "description": "卡片、列表项的标题",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_title_small_demibold"
+      }
+    },
+    "var_722": {
+      "id": "var_722",
+      "name": "text_style/miuix_text_style_body_large_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_590"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_600"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_590"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_600"
+            }
+          }
+        }
+      },
+      "description": "大段落内容文本",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_body_large_regular"
+      }
+    },
+    "var_723": {
+      "id": "var_723",
+      "name": "text_style/miuix_text_style_body_large_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_590"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_600"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_590"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_600"
+            }
+          }
+        }
+      },
+      "description": "大段落内容文本",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_body_large_medium"
+      }
+    },
+    "var_724": {
+      "id": "var_724",
+      "name": "text_style/miuix_text_style_body_small_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        }
+      },
+      "description": "次要信息，通常辅助列表主文本出现",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_body_small_regular"
+      }
+    },
+    "var_725": {
+      "id": "var_725",
+      "name": "text_style/miuix_text_style_body_small_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        }
+      },
+      "description": "次要信息，通常辅助列表主文本出现",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_body_small_medium"
+      }
+    },
+    "var_726": {
+      "id": "var_726",
+      "name": "text_style/miuix_text_style_label_large_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        }
+      },
+      "description": "筛选器、分组名、胶囊等短词，用于点选或归类",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_label_large_regular"
+      }
+    },
+    "var_727": {
+      "id": "var_727",
+      "name": "text_style/miuix_text_style_label_large_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_589"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_599"
+            }
+          }
+        }
+      },
+      "description": "筛选器、分组名、胶囊等短词，用于点选或归类",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_label_large_demibold"
+      }
+    },
+    "var_728": {
+      "id": "var_728",
+      "name": "text_style/miuix_text_style_label_small_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        }
+      },
+      "description": "底部导航栏文本",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_label_small_medium"
+      }
+    },
+    "var_729": {
+      "id": "var_729",
+      "name": "text_style/miuix_text_style_label_small_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        }
+      },
+      "description": "底部导航栏文本",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_label_small_demibold"
+      }
+    },
+    "var_730": {
+      "id": "var_730",
+      "name": "text_style/miuix_text_style_caption_large_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_588"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_598"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_588"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_598"
+            }
+          }
+        }
+      },
+      "description": "时间注释、日期注释、文本说明注释",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_caption_large_regular"
+      }
+    },
+    "var_731": {
+      "id": "var_731",
+      "name": "text_style/miuix_text_style_caption_large_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_588"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_598"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_588"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_598"
+            }
+          }
+        }
+      },
+      "description": "时间注释、日期注释、文本说明注释",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_caption_large_medium"
+      }
+    },
+    "var_732": {
+      "id": "var_732",
+      "name": "text_style/miuix_text_style_caption_medium_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        }
+      },
+      "description": "极小信息注释",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_caption_medium_medium"
+      }
+    },
+    "var_733": {
+      "id": "var_733",
+      "name": "text_style/miuix_text_style_caption_medium_demibold",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_609"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_587"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_597"
+            }
+          }
+        }
+      },
+      "description": "极小信息注释",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_caption_medium_demibold"
+      }
+    },
+    "var_734": {
+      "id": "var_734",
+      "name": "text_style/miuix_text_style_caption_min_regular",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_586"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_596"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_607"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_586"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_596"
+            }
+          }
+        }
+      },
+      "description": "角标等极致受限场景",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_caption_min_regular"
+      }
+    },
+    "var_735": {
+      "id": "var_735",
+      "name": "text_style/miuix_text_style_caption_min_medium",
+      "type": "TYPOGRAPHY",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_586"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_596"
+            }
+          }
+        },
+        "mode_dark": {
+          "type": "TYPOGRAPHY",
+          "value": {
+            "fontFamily": {
+              "type": "ALIAS",
+              "id": "var_606"
+            },
+            "fontStyle": {
+              "type": "ALIAS",
+              "id": "var_608"
+            },
+            "fontSize": {
+              "type": "ALIAS",
+              "id": "var_586"
+            },
+            "lineHeight": {
+              "type": "ALIAS",
+              "id": "var_596"
+            }
+          }
+        }
+      },
+      "description": "角标等极致受限场景",
+      "codeSyntax": {
+        "ANDROID": "miuix_text_style_caption_min_medium"
+      }
     }
   }
 }

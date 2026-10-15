@@ -10,6 +10,7 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 - 多 Collection、多 Mode 切换
 - 颜色令牌：色块预览、HEX/RGB/HSL 值、WCAG 对比度检查
 - 数值 / 字符串 / 布尔令牌预览
+- 复合文字样式 Token（`TYPOGRAPHY`，一个 Figma Text Style = 一个 Token）：字段可分别引用 Reference Token，以 `Ag` + `32/42` + 字体/字重展示，导出为 CSS `font` 简写和 Android `<style>`
 - 别名引用链路可视化，反向引用查看
 - 保留并展示 Figma description；Token Inspector 在 description 之后、COLOR 对比度之前展示 Token Scope，支持 COLOR、NUMBER、STRING、BOOLEAN 四种 Token 类型、多个 scope Badge，无 scope 时显示“未设置”
 - 令牌编辑：值、名称、描述、Code Syntax、别名引用

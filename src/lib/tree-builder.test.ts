@@ -71,6 +71,7 @@ describe("buildTokenTree", () => {
       makeToken("t7", "mask/default", "Semantic Token"),
       makeToken("t8", "margin/default", "Semantic Token"),
       makeToken("t9", "stroke/border/default", "Semantic Token"),
+      makeToken("t10", "text_style/miuix_text_style_body_large_regular", "Semantic Token"),
     ];
 
     const tree = buildTokenTree(tokens, "Semantic Token");
@@ -85,6 +86,7 @@ describe("buildTokenTree", () => {
       "padding",
       "gap",
       "radius",
+      "text_style",
     ]);
   });
 });

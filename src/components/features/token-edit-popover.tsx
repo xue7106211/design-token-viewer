@@ -12,7 +12,8 @@ import { Input } from "@/components/ui/input";
 import { ColorSwatch } from "./color-swatch";
 import { cn } from "@/lib/utils";
 import { colord } from "colord";
-import type { TokenValue, ColorValue, DesignToken } from "@/types/token";
+import type { ConcreteRawTokenValue, ColorValue, DesignToken } from "@/types/token";
+import { TypographyFieldList } from "./typography-preview";
 import { ArrowRight, Link2, X, GripVertical } from "lucide-react";
 
 import { getAndroidResourceName } from "@/lib/code-generators/android";
@@ -334,8 +335,10 @@ export function TokenEditPopover() {
   const isAliasMode = raw?.type === "ALIAS";
   const modes = activeCollection?.modes ?? [];
   const hasMultipleModes = modes.length > 1;
+  const isTypography = token.type === "TYPOGRAPHY";
   const referenceOptions = Object.values(tokens)
-    .filter((t) => t.id !== token.id)
+    // A composite TYPOGRAPHY token can only alias another TYPOGRAPHY token (and vice versa).
+    .filter((t) => t.id !== token.id && (t.type === "TYPOGRAPHY") === isTypography)
     .map((t) => ({
       id: t.id,
       name: t.name,
@@ -430,12 +433,19 @@ export function TokenEditPopover() {
           {raw && !isAliasMode && (
             <PanelSection>
               <SectionLabel>当前值</SectionLabel>
-              <EditForm
-                ref={valueFormRef}
-                tokenId={token.id}
-                modeId={modeId}
-                raw={raw}
-              />
+              {raw.type === "TYPOGRAPHY" ? (
+                <div className="space-y-1.5">
+                  <TypographyFieldList token={token} modeId={modeId} tokens={tokens} />
+                  <p className="text-[10px] text-muted-foreground">复合文字样式的字段值暂不支持在此编辑。</p>
+                </div>
+              ) : (
+                <EditForm
+                  ref={valueFormRef}
+                  tokenId={token.id}
+                  modeId={modeId}
+                  raw={raw}
+                />
+              )}
             </PanelSection>
           )}
           {isAliasMode && raw?.type === "ALIAS" && (
@@ -481,7 +491,7 @@ export function TokenEditPopover() {
 }
 
 export interface ValueFormHandle {
-  getValue: () => TokenValue | null;
+  getValue: () => ConcreteRawTokenValue | null;
 }
 
 export interface TokenMetaFormHandle {
@@ -701,7 +711,7 @@ const EditForm = React.forwardRef<
   {
     tokenId: string;
     modeId: string;
-    raw: TokenValue;
+    raw: ConcreteRawTokenValue;
   }
 >(function EditForm({ raw }, ref) {
   if (raw.type === "COLOR") {

@@ -6,9 +6,10 @@ import { createExclusiveQueue } from "./exclusive";
 import { createStateRepository, type CollaborationState } from "./state-repository";
 import type {
   DesignToken,
+  ConcreteRawTokenValue,
   ParsedTokenData,
-  TokenValue,
 } from "@/types/token";
+import { toConcreteRawValue } from "@/lib/typography";
 import type { ChangeType, LogEntry } from "@/types/changelog";
 
 export const DEFAULT_DOCUMENT_ID = "default";
@@ -245,7 +246,7 @@ export function createTokenDocumentService(
     updateTokenValue(input: {
       tokenId: string;
       modeId: string;
-      value: TokenValue;
+      value: ConcreteRawTokenValue;
       revision: number;
       actor: Actor;
     }) {
@@ -335,9 +336,10 @@ export function createTokenDocumentService(
       return updateDocument(input.revision, input.actor, "set_alias", (data) => {
         const token = getTokenOrThrow(data.tokens, input.tokenId);
         const oldValue = token.rawValues[input.modeId];
+        const resolved = token.resolvedValues[input.modeId];
         const nextValue =
           input.targetTokenId == null
-            ? token.resolvedValues[input.modeId]
+            ? resolved && toConcreteRawValue(resolved)
             : { type: "ALIAS" as const, id: input.targetTokenId };
         if (!nextValue) throw new Error("No resolved value for this mode");
         token.rawValues = { ...token.rawValues, [input.modeId]: nextValue };

@@ -4,8 +4,10 @@ import type { DesignToken } from "@/types/token";
 import { useTokenStore } from "@/stores/token-store";
 import { ColorSwatch } from "./color-swatch";
 import { NumberPreview } from "./number-preview";
+import { TypographyPreview } from "./typography-preview";
+import { getTypographyFieldAliases } from "@/lib/typography";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Braces, Check, Hash, Link2, Palette, Type } from "lucide-react";
+import { ArrowRight, Braces, Check, Hash, Link2, Palette, Type, CaseSensitive } from "lucide-react";
 
 interface TokenCardProps {
   token: DesignToken;
@@ -33,7 +35,9 @@ export function TokenCard({ token }: TokenCardProps) {
     NUMBER: { label: "Number", icon: Hash, className: "text-violet-600 dark:text-violet-400" },
     STRING: { label: "String", icon: Type, className: "text-amber-600 dark:text-amber-400" },
     BOOLEAN: { label: "Boolean", icon: Check, className: "text-emerald-600 dark:text-emerald-400" },
+    TYPOGRAPHY: { label: "Text style", icon: CaseSensitive, className: "text-rose-600 dark:text-rose-400" },
   }[resolvedValue.type];
+  const fieldAliasCount = Object.keys(getTypographyFieldAliases(token.rawValues[modeId])).length;
   const TypeIcon = typeMeta.icon;
 
   return (
@@ -72,6 +76,11 @@ export function TokenCard({ token }: TokenCardProps) {
             <span className="truncate text-sm font-mono">{resolvedValue.value}</span>
           </div>
         )}
+        {resolvedValue.type === "TYPOGRAPHY" && (
+          <div className="w-full rounded-lg border bg-background/70 px-3 py-2">
+            <TypographyPreview value={resolvedValue.value} />
+          </div>
+        )}
         {resolvedValue.type === "BOOLEAN" && (
           <div className="flex w-full items-center justify-between rounded-lg border bg-background/70 px-3 py-2">
             <span className="text-xs font-medium text-muted-foreground">Boolean</span>
@@ -106,6 +115,11 @@ export function TokenCard({ token }: TokenCardProps) {
               <Link2 className="h-3 w-3 shrink-0" />
               <ArrowRight className="h-2.5 w-2.5 shrink-0" />
               <span className="truncate font-mono">{aliasTarget?.name ?? "alias"}</span>
+            </div>
+          ) : fieldAliasCount > 0 ? (
+            <div className="flex min-w-0 items-center gap-1.5 rounded-md bg-muted/55 px-1.5 py-1">
+              <Link2 className="h-3 w-3 shrink-0" />
+              <span className="truncate">{fieldAliasCount} field refs</span>
             </div>
           ) : (
             <span className="rounded-md bg-muted/45 px-1.5 py-1">Source token</span>

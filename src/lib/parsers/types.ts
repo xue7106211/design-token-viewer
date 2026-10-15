@@ -22,7 +22,25 @@ export interface FigmaAliasValue {
   id: string;
 }
 
-export type FigmaValue = FigmaConcreteValue | FigmaAliasValue;
+/**
+ * Extension (not produced by Figma itself): a composite Text Style value.
+ * Each field is a concrete STRING / NUMBER value or an ALIAS to another variable.
+ */
+export interface FigmaTypographyValue {
+  type: "TYPOGRAPHY";
+  value: {
+    fontFamily: { type: "STRING"; value: string } | FigmaAliasValue;
+    fontStyle: { type: "STRING"; value: string } | FigmaAliasValue;
+    fontSize: { type: "NUMBER"; value: number } | FigmaAliasValue;
+    lineHeight: { type: "NUMBER"; value: number } | FigmaAliasValue;
+    letterSpacing?: { type: "NUMBER"; value: number } | FigmaAliasValue;
+    paragraphSpacing?: { type: "NUMBER"; value: number } | FigmaAliasValue;
+  };
+}
+
+export type FigmaValue = FigmaConcreteValue | FigmaTypographyValue | FigmaAliasValue;
+
+export type FigmaVariableType = "COLOR" | "NUMBER" | "STRING" | "BOOLEAN" | "TYPOGRAPHY";
 
 /** Figma Plugin API: code syntax per platform (WEB, ANDROID, iOS) */
 export interface FigmaCodeSyntax {
@@ -35,7 +53,7 @@ export interface FigmaCodeSyntax {
 export interface FigmaVariable {
   id: string;
   name: string;
-  type: "COLOR" | "NUMBER" | "STRING" | "BOOLEAN";
+  type: FigmaVariableType;
   description?: string;
   /** Figma variable usage scopes */
   scopes?: string[];
@@ -45,7 +63,7 @@ export interface FigmaVariable {
   /** Collection this variable belongs to (Figma Plugin API) */
   variableCollectionId?: string;
   /** Resolved type (Figma Plugin API) */
-  resolvedType?: "COLOR" | "NUMBER" | "STRING" | "BOOLEAN";
+  resolvedType?: FigmaVariableType;
   /** Code syntax per platform (Figma Plugin API) */
   codeSyntax?: FigmaCodeSyntax;
 }

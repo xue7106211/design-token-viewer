@@ -1,5 +1,6 @@
-import type { ParsedTokenData, DesignToken, TokenCollection, RawTokenValue, TokenValue, TokenType } from "@/types/token";
+import type { ParsedTokenData, DesignToken, TokenCollection, RawTokenValue, ConcreteRawTokenValue, TokenType } from "@/types/token";
 import type { FigmaNativeJSON, FigmaValue, FigmaConcreteValue } from "./types";
+import { cloneRawTypography } from "@/lib/typography";
 
 /**
  * Parse Figma native Variables export JSON into unified token model.
@@ -76,7 +77,9 @@ function convertFigmaValue(fv: FigmaValue, tokenType: TokenType): RawTokenValue 
       return { type: "STRING", value: fv.value as string };
     case "BOOLEAN":
       return { type: "BOOLEAN", value: fv.value as boolean };
+    case "TYPOGRAPHY":
+      return { type: "TYPOGRAPHY", value: cloneRawTypography(fv.value) };
     default:
-      return { type: tokenType, value: (fv as FigmaConcreteValue).value } as TokenValue;
+      return { type: tokenType, value: (fv as FigmaConcreteValue).value } as ConcreteRawTokenValue;
   }
 }

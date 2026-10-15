@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { actorFromRequest, documentIdFromRequest, getTokenDocumentService, jsonError, readRevision } from "@/lib/collaboration/server";
-import type { TokenValue } from "@/types/token";
+import type { ConcreteRawTokenValue } from "@/types/token";
 
 export async function PATCH(
   request: NextRequest,
@@ -12,7 +12,7 @@ export async function PATCH(
     const document = await getTokenDocumentService(documentIdFromRequest(request)).updateTokenValue({
       tokenId,
       modeId: String((body as { modeId?: unknown }).modeId ?? ""),
-      value: (body as { value: TokenValue }).value,
+      value: (body as { value: ConcreteRawTokenValue }).value,
       revision: readRevision(body),
       actor: actorFromRequest(request, body),
     });

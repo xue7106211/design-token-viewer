@@ -1,5 +1,6 @@
-import type { DesignToken, TokenValue } from "@/types/token";
+import type { DesignToken, TokenValue, TypographyValue } from "@/types/token";
 import { colorToHex } from "@/lib/contrast";
+import { fontStyleToWeight, isItalicFontStyle } from "@/lib/typography";
 import { stripCodeSyntaxPrefix } from "./utils";
 
 /**
@@ -23,7 +24,19 @@ function formatCSSValue(value: TokenValue): string {
       return `"${value.value}"`;
     case "BOOLEAN":
       return value.value ? "1" : "0";
+    case "TYPOGRAPHY":
+      return formatCSSFont(value.value);
   }
+}
+
+/**
+ * TYPOGRAPHY → CSS `font` shorthand, usable as `font: var(--…)`.
+ * letterSpacing / paragraphSpacing have no place in the shorthand and are not emitted.
+ */
+function formatCSSFont(value: TypographyValue): string {
+  const italic = isItalicFontStyle(value.fontStyle) ? "italic " : "";
+  const weight = fontStyleToWeight(value.fontStyle);
+  return `${italic}${weight} ${value.fontSize}px/${value.lineHeight}px "${value.fontFamily}"`;
 }
 
 /**

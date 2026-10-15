@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { DesignToken, TokenType, TokenValue } from "@/types/token";
+import type { DesignToken, RawTokenValue, TokenType, TokenValue } from "@/types/token";
 import { TokenInspector } from "./token-inspector";
 
 vi.mock("@/stores/token-store", () => ({
@@ -52,7 +52,37 @@ const valuesByType: Record<TokenType, TokenValue> = {
   NUMBER: { type: "NUMBER", value: 16 },
   STRING: { type: "STRING", value: "value" },
   BOOLEAN: { type: "BOOLEAN", value: true },
+  TYPOGRAPHY: {
+    type: "TYPOGRAPHY",
+    value: { fontFamily: "MiSans", fontStyle: "Medium", fontSize: 32, lineHeight: 42 },
+  },
 };
+
+const fontSizeToken: DesignToken = {
+  id: "ref-size",
+  name: "number/font_size/miuix_ref_font_size_32",
+  path: ["number", "font_size", "miuix_ref_font_size_32"],
+  type: "NUMBER",
+  collection: "Reference Token",
+  group: "number/font_size",
+  rawValues: { light: { type: "NUMBER", value: 32 } },
+  resolvedValues: { light: { type: "NUMBER", value: 32 } },
+  isAlias: false,
+  referencedBy: ["token-1"],
+};
+
+function toRaw(type: TokenType, value: TokenValue): RawTokenValue {
+  if (value.type !== "TYPOGRAPHY") return value;
+  return {
+    type: "TYPOGRAPHY",
+    value: {
+      fontFamily: { type: "STRING", value: value.value.fontFamily },
+      fontStyle: { type: "STRING", value: value.value.fontStyle },
+      fontSize: { type: "ALIAS", id: fontSizeToken.id },
+      lineHeight: { type: "NUMBER", value: value.value.lineHeight },
+    },
+  };
+}
 
 function makeToken(type: TokenType = "COLOR", scopes?: string[]): DesignToken {
   const value = valuesByType[type];
@@ -64,7 +94,7 @@ function makeToken(type: TokenType = "COLOR", scopes?: string[]): DesignToken {
     type,
     collection: "Semantic Token",
     group: "text/default",
-    rawValues: { light: value },
+    rawValues: { light: toRaw(type, value) },
     resolvedValues: { light: value },
     isAlias: false,
     referencedBy: [],
@@ -76,7 +106,7 @@ function makeToken(type: TokenType = "COLOR", scopes?: string[]): DesignToken {
 function setupStore(token: DesignToken) {
   const state = {
     selectedTokenId: token.id,
-    tokens: { [token.id]: token },
+    tokens: { [token.id]: token, [fontSizeToken.id]: fontSizeToken },
     activeCollection: null,
     activeModeId: "light",
     selectToken: vi.fn(),
@@ -96,7 +126,7 @@ function expectBefore(first: HTMLElement, second: HTMLElement) {
   expect(first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 }
 
-const tokenTypes = ["COLOR", "NUMBER", "STRING", "BOOLEAN"] as const;
+const tokenTypes = ["COLOR", "NUMBER", "STRING", "BOOLEAN", "TYPOGRAPHY"] as const;
 const missingScopeCases = [
   { label: "undefined", scopes: undefined },
   { label: "empty array", scopes: [] },
@@ -140,5 +170,23 @@ describe("TokenInspector Token Scope", () => {
 
     expect(screen.getByText("Token Scope")).toBeInTheDocument();
     expect(screen.getByText("未设置")).toBeInTheDocument();
+  });
+});
+
+describe("TokenInspector TYPOGRAPHY", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("shows size/line-height, family/style and per-field references", () => {
+    setupStore(makeToken("TYPOGRAPHY"));
+
+    render(<TokenInspector />);
+
+    expect(screen.getByText("32/42")).toBeInTheDocument();
+    expect(screen.getByText("MiSans · Medium")).toBeInTheDocument();
+    expect(screen.getByText("Font size")).toBeInTheDocument();
+    expect(screen.getByText(fontSizeToken.name)).toBeInTheDocument();
+    expect(screen.getByText("42px")).toBeInTheDocument();
   });
 });

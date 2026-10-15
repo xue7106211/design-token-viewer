@@ -6,12 +6,14 @@
 
 /** Supported token value types */
 // 令牌支持的值类型。联合字面量类型 (union of string literals)：
-// 变量只能取这 4 个字符串之一，写错会被编译器拦截。
+// 变量只能取这几个字符串之一，写错会被编译器拦截。
+// TYPOGRAPHY 是复合类型：一个 Figma Text Style = 一个 Token，内部字段可分别引用 Reference Token。
 export type TokenType =
   | "COLOR"
   | "NUMBER"
   | "STRING"
-  | "BOOLEAN";
+  | "BOOLEAN"
+  | "TYPOGRAPHY";
 
 /** A resolved (final) color value */
 // 已解析的颜色值。r/g/b/a 均为 0-1 归一化浮点数（与 Figma 一致，而非 0-255）。
@@ -30,7 +32,8 @@ export type TokenValue =
   | { type: "COLOR"; value: ColorValue }
   | { type: "NUMBER"; value: number }
   | { type: "STRING"; value: string }
-  | { type: "BOOLEAN"; value: boolean };
+  | { type: "BOOLEAN"; value: boolean }
+  | { type: "TYPOGRAPHY"; value: TypographyValue };
 
 /** Alias reference — points to another token by id */
 // 别名引用：不直接存值，而是通过 id 指向另一个令牌（如「语义色」引用「基础色」）。
@@ -39,10 +42,42 @@ export interface AliasReference {
   id: string;
 }
 
+/** Resolved typography (Figma Text Style) value; sizes are PIXEL values */
+// 已解析的文字样式：所有字段都是最终值。fontSize / lineHeight 等为像素值。
+export interface TypographyValue {
+  fontFamily: string;
+  fontStyle: string;
+  fontSize: number;
+  lineHeight: number;
+  letterSpacing?: number;
+  paragraphSpacing?: number;
+}
+
+/** A typography string field: concrete STRING or alias to a STRING token */
+export type TypographyStringField = { type: "STRING"; value: string } | AliasReference;
+/** A typography number field: concrete NUMBER or alias to a NUMBER token */
+export type TypographyNumberField = { type: "NUMBER"; value: number } | AliasReference;
+
+/** Raw typography value; every field may independently alias another token */
+// 原始文字样式：每个字段都可以是具体值或别名（通常引用 Reference Token 的 font/number 变量）。
+export interface RawTypographyValue {
+  fontFamily: TypographyStringField;
+  fontStyle: TypographyStringField;
+  fontSize: TypographyNumberField;
+  lineHeight: TypographyNumberField;
+  letterSpacing?: TypographyNumberField;
+  paragraphSpacing?: TypographyNumberField;
+}
+
+/** A concrete (non-alias) raw value; TYPOGRAPHY keeps per-field aliases */
+export type ConcreteRawTokenValue =
+  | Exclude<TokenValue, { type: "TYPOGRAPHY" }>
+  | { type: "TYPOGRAPHY"; value: RawTypographyValue };
+
 /** A raw value entry that may be concrete or an alias */
 // 「原始值」= 具体值 或 别名引用。解析前每个 mode 的值都是这种联合类型；
-// resolveTokens 会把其中的 ALIAS 递归解析成最终的 TokenValue。
-export type RawTokenValue = TokenValue | AliasReference;
+// resolveTokens 会把其中的 ALIAS（包括 TYPOGRAPHY 字段内的 ALIAS）递归解析成最终的 TokenValue。
+export type RawTokenValue = ConcreteRawTokenValue | AliasReference;
 
 /** Represents one design token (unified internal model) */
 // 单个设计令牌的统一内部模型——无论来自哪种输入格式，最终都归一成这个结构。

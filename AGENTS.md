@@ -205,7 +205,8 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 - `DesignToken` — 统一令牌模型，包含 id, name, path, type, rawValues (per-mode), resolvedValues, description?, scopes?, isAlias, aliasOf, referencedBy, codeSyntax
 - `TokenCollection` — 集合 (id, name, modes, tokenIds)
 - `TokenTreeNode` — 树节点 (label, path, children, tokenId?, tokenType?, tokenCount)
-- `TokenType` — "COLOR" | "NUMBER" | "STRING" | "BOOLEAN"
+- `TokenType` — "COLOR" | "NUMBER" | "STRING" | "BOOLEAN" | "TYPOGRAPHY"
+- `RawTypographyValue` / `TypographyValue` — TYPOGRAPHY 的原始值（每字段可为具体值或 ALIAS）与解析值（fontFamily、fontStyle、fontSize、lineHeight，可选 letterSpacing、paragraphSpacing；尺寸为像素）。工具函数在 `src/lib/typography.ts`
 - `CodeFormat` — "css" | "android"
 - `ViewMode` — "grid" | "list"
 
@@ -265,6 +266,7 @@ UI：`changelog-dialog.tsx` 提供日志查看对话框（sidebar 底部入口�
 ## 支持的 JSON 格式
 
 1. **Figma Native** — `{ collections: [...], variables: { [id]: { valuesByMode, description?, scopes?, codeSyntax?, ... } } }`
+   - 扩展类型 `TYPOGRAPHY`（Figma 本身不导出）：一个 Figma Text Style = 一个 Token，不拆成多个变量。`valuesByMode[modeId]` 为整体 `ALIAS`（指向另一个 TYPOGRAPHY Token），或 `{ "type": "TYPOGRAPHY", "value": { "fontFamily": F, "fontStyle": F, "fontSize": F, "lineHeight": F, "letterSpacing"?: F, "paragraphSpacing"?: F } }`，其中每个 F 为 `{ "type": "STRING"|"NUMBER", "value": … }` 或 `{ "type": "ALIAS", "id": "var_…" }`
 2. **Variables2CSS** — `{ collections: [{ name, modes, variables: [{ name, type, values }] }] }`
 
 检测逻辑在 `format-detector.ts`，通过结构特征自动判断。Figma Native parser 与 `rebuildRawJSON` 保留 `description/scopes/codeSyntax`；Variables2CSS 不提供同等的别名与 Figma metadata 保真能力。
@@ -354,7 +356,9 @@ npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
 - 导出支持 Android XML、CSS、JSON；来源可选当前过滤结果、当前文档全部 Collection 或版本快照。“全部”JSON 使用 currentJson，“当前”JSON 由可见 Token 重建
 - 快照来源在导出对话框显示的 Token 数当前取自当前可见 Token，不代表快照内容的精确数量
 - 变更日志与快照保存在当前服务端文档中。读取日志按文档倒序分页，最多返回最新 500 条，并带总条数。ChangeLog Store 只缓存这一页，`clearData` 和切换文档都不会删除服务端记录。文档保存和对应日志写入在同一次 `transact` 中提交，日志写入失败时文档修改会回滚
-- Semantic Token 顶层树组固定为 `bg → fill → stroke → text → mask → margin → padding → gap → radius`；其他 Collection 和子组维持自然排序
+- TYPOGRAPHY 字段别名计入目标 Token 的 referencedBy；任一字段缺失、引用缺失或类型不符时整个 Token 解析为错误 STRING。`isAlias` 仅表示整体别名。导出：CSS 为 `font` 简写（`500 32px/42px "MiSans"`，不含 letterSpacing）；Android 为 `<style>`，字段别名暂输出解析后的字面值（textSize / lineHeight 用 sp，fontStyle → `android:textFontWeight`，letterSpacing px → em，不输出 paragraphSpacing），整体别名输出 `parent`。编辑弹窗暂不支持编辑 TYPOGRAPHY 字段值
+- HyperOS4 的 24 个 miuix Text Style 位于 Semantic Token 的 `text_style/miuix_text_style_*`，由 `scripts/merge-miuix-text-styles.mjs` 按 Reference Token 名称追加（输入 `scripts/data/miuix-text-styles.json`；支持 `--seed` / `--api` / `--out` / `--db`，幂等）。DTCG 转换脚本不生成这些 Token，重新执行 HyperOS4 DTCG 更新流程后需再运行此脚本
+- Semantic Token 顶层树组固定为 `bg → fill → stroke → text → mask → margin → padding → gap → radius → text_style`；其他 Collection 和子组维持自然排序
 
 
 ## 已知限制

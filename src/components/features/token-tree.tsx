@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ChevronRight, Palette, Hash, Type, ToggleLeft, Pencil } from "lucide-react";
+import { ChevronRight, Palette, Hash, Type, ToggleLeft, Pencil, CaseSensitive } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTokenStore } from "@/stores/token-store";
 import type { TokenTreeNode, TokenType } from "@/types/token";
@@ -32,6 +32,8 @@ function TokenTypeIcon({ type, className }: { type?: TokenType; className?: stri
       return <Type className={iconClass} />;
     case "BOOLEAN":
       return <ToggleLeft className={iconClass} />;
+    case "TYPOGRAPHY":
+      return <CaseSensitive className={iconClass} />;
     default:
       return null;
   }

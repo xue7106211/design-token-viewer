@@ -1,4 +1,5 @@
-import type { DesignToken, TokenType, TokenValue } from "@/types/token";
+import type { DesignToken, TokenType, TokenValue, TypographyValue } from "@/types/token";
+import { fontStyleToWeight, isItalicFontStyle } from "@/lib/typography";
 import { stripCodeSyntaxPrefix } from "./utils";
 
 /**
@@ -50,6 +51,7 @@ function getMiuixTypeSegment(type: TokenType): string {
     case "NUMBER": return "dimen";
     case "STRING": return "string";
     case "BOOLEAN": return "bool";
+    case "TYPOGRAPHY": return "text_style";
   }
 }
 
@@ -106,6 +108,8 @@ function getAndroidResourcePrefix(type: TokenType): string {
       return "string";
     case "BOOLEAN":
       return "bool";
+    case "TYPOGRAPHY":
+      return "style";
   }
 }
 
@@ -131,6 +135,8 @@ function getXmlTag(type: TokenType): string {
       return "string";
     case "BOOLEAN":
       return "bool";
+    case "TYPOGRAPHY":
+      return "style";
   }
 }
 
@@ -165,8 +171,12 @@ export function generateAndroidToken(
     if (rawValue && rawValue.type === "ALIAS") {
       const targetToken = tokens[rawValue.id];
       if (targetToken) {
-        const prefix = getAndroidResourcePrefix(token.type);
         const refName = getReferenceName(targetToken);
+        if (token.type === "TYPOGRAPHY") {
+          // A text style aliasing another text style inherits it as the parent style.
+          return `<style name="${name}" parent="${refName}" />`;
+        }
+        const prefix = getAndroidResourcePrefix(token.type);
         const tag = getXmlTag(token.type);
         return `<${tag} name="${name}">@${prefix}/${refName}</${tag}>`;
       }
@@ -174,6 +184,29 @@ export function generateAndroidToken(
   }
 
   return formatAndroidXML(name, value);
+}
+
+/**
+ * TYPOGRAPHY → `<style>` with resolved literal values.
+ * Interim behavior: per-field Reference aliases are emitted as their resolved values
+ * (sizes in sp) instead of `@dimen/…`, because NUMBER references export as dp dimens.
+ * fontStyle maps to android:textFontWeight (API 28+); letterSpacing px → em.
+ * paragraphSpacing has no TextView attribute and is not emitted.
+ */
+function formatAndroidTextStyle(name: string, value: TypographyValue): string {
+  const items: Array<[string, string]> = [
+    ["android:fontFamily", value.fontFamily],
+    ["android:textFontWeight", String(fontStyleToWeight(value.fontStyle))],
+  ];
+  if (isItalicFontStyle(value.fontStyle)) items.push(["android:textStyle", "italic"]);
+  items.push(["android:textSize", `${value.fontSize}sp`]);
+  items.push(["android:lineHeight", `${value.lineHeight}sp`]);
+  if (value.letterSpacing !== undefined && value.fontSize > 0) {
+    const em = Math.round((value.letterSpacing / value.fontSize) * 10000) / 10000;
+    items.push(["android:letterSpacing", String(em)]);
+  }
+  const body = items.map(([attr, v]) => `    <item name="${attr}">${v}</item>`).join("\n");
+  return `<style name="${name}">\n${body}\n</style>`;
 }
 
 function formatAndroidXML(name: string, value: TokenValue): string {
@@ -186,6 +219,8 @@ function formatAndroidXML(name: string, value: TokenValue): string {
       return `<string name="${name}">${value.value}</string>`;
     case "BOOLEAN":
       return `<bool name="${name}">${value.value}</bool>`;
+    case "TYPOGRAPHY":
+      return formatAndroidTextStyle(name, value.value);
   }
 }
 
@@ -200,6 +235,8 @@ export function generateAndroidBlock(
   const lines = tokenList
     .map((t) => generateAndroidToken(t, modeId, tokens))
     .filter(Boolean)
+    // Multi-line entries (e.g. <style>) are indented line by line.
+    .flatMap((entry) => entry.split("\n"))
     .map((line) => `    ${line}`);
 
   return `<?xml version="1.0" encoding="utf-8"?>\n<resources>\n${lines.join("\n")}\n</resources>`;

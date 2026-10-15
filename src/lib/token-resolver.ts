@@ -1,4 +1,12 @@
-import type { ParsedTokenData, DesignToken, TokenValue, RawTokenValue } from "@/types/token";
+import type {
+  ParsedTokenData,
+  DesignToken,
+  TokenValue,
+  RawTokenValue,
+  RawTypographyValue,
+  TypographyValue,
+} from "@/types/token";
+import { collectAliasIds, TYPOGRAPHY_FIELDS } from "@/lib/typography";
 
 /**
  * Resolve all alias references in the token data.
@@ -13,11 +21,11 @@ export function resolveTokens(data: ParsedTokenData): ParsedTokenData {
     token.resolvedValues = {};
   }
 
-  // Build reverse reference map
+  // Build reverse reference map (top-level aliases and per-field TYPOGRAPHY aliases)
   for (const token of Object.values(tokens)) {
     for (const rawValue of Object.values(token.rawValues)) {
-      if (rawValue.type === "ALIAS") {
-        const target = tokens[rawValue.id];
+      for (const targetId of collectAliasIds(rawValue)) {
+        const target = tokens[targetId];
         if (target && !target.referencedBy.includes(token.id)) {
           target.referencedBy.push(token.id);
         }
@@ -28,7 +36,7 @@ export function resolveTokens(data: ParsedTokenData): ParsedTokenData {
   // Resolve all values (with cycle detection)
   for (const token of Object.values(tokens)) {
     for (const [modeId, rawValue] of Object.entries(token.rawValues)) {
-      token.resolvedValues[modeId] = resolveValue(rawValue, modeId, tokens, new Set());
+      token.resolvedValues[modeId] = resolveValue(rawValue, modeId, tokens, new Set([token.id]));
     }
   }
 
@@ -44,8 +52,11 @@ function resolveValue(
   tokens: Record<string, DesignToken>,
   visited: Set<string>
 ): TokenValue {
+  if (rawValue.type === "TYPOGRAPHY") {
+    return resolveTypography(rawValue.value, modeId, tokens, visited);
+  }
   if (rawValue.type !== "ALIAS") {
-    return rawValue as TokenValue;
+    return rawValue;
   }
 
   // Cycle detection
@@ -66,6 +77,37 @@ function resolveValue(
   }
 
   return resolveValue(targetRaw, modeId, tokens, visited);
+}
+
+/**
+ * Resolve every TYPOGRAPHY field independently. Each field must end at a value of its
+ * declared kind (STRING / NUMBER); otherwise the whole token resolves to an error STRING,
+ * consistent with how broken top-level aliases are reported.
+ */
+function resolveTypography(
+  raw: RawTypographyValue,
+  modeId: string,
+  tokens: Record<string, DesignToken>,
+  visited: Set<string>
+): TokenValue {
+  const result: Partial<Record<keyof TypographyValue, string | number>> = {};
+
+  for (const { key, kind, required } of TYPOGRAPHY_FIELDS) {
+    const field = raw[key];
+    if (!field) {
+      if (required) return { type: "STRING", value: `[Missing Typography Field: ${key}]` };
+      continue;
+    }
+    // Each field follows its own chain, so sibling fields may share a target.
+    const resolved = resolveValue(field, modeId, tokens, new Set(visited));
+    if (resolved.type !== kind) {
+      if (resolved.type === "STRING" && resolved.value.startsWith("[")) return resolved;
+      return { type: "STRING", value: `[Invalid Typography Field: ${key}]` };
+    }
+    result[key] = resolved.value as string | number;
+  }
+
+  return { type: "TYPOGRAPHY", value: result as unknown as TypographyValue };
 }
 
 /**

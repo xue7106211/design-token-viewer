@@ -21,7 +21,10 @@ import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, Hash, Type, ToggleLeft, Link2 } from "lucide-react";
+import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, Hash, Type, ToggleLeft, Link2, CaseSensitive } from "lucide-react";
+import { formatTypographySize, formatTypographySummary, getTypographyFieldAliases } from "@/lib/typography";
+import { TypographySample } from "./typography-preview";
+import type { TypographyValue } from "@/types/token";
 import { useState, useCallback, useEffect, useMemo, useRef, Fragment } from "react";
 import {
   ContextMenu,
@@ -607,6 +610,7 @@ export function TokenList() {
                       code={code}
                       isAlias={token.isAlias}
                       aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
+                      fieldRefCount={Object.keys(getTypographyFieldAliases(token.rawValues[modeId])).length}
                       isSelected={selectedIds.has(id)}
                       stickyShadow={stickyShadow}
                       onSelect={(e) => handleRowSelect(id, e)}
@@ -764,6 +768,7 @@ function getValueCopyText(resolved: { type: string; value: unknown }): string {
     return colorToHex(color).toUpperCase();
   }
   if (resolved.type === "NUMBER") return String(resolved.value);
+  if (resolved.type === "TYPOGRAPHY") return formatTypographySummary(resolved.value as TypographyValue);
   return String(resolved.value);
 }
 
@@ -773,6 +778,7 @@ function TokenTypeBadge({ type }: { type: string }) {
     NUMBER: { label: "Number", icon: Hash, className: "text-violet-600 dark:text-violet-400" },
     STRING: { label: "String", icon: Type, className: "text-amber-600 dark:text-amber-400" },
     BOOLEAN: { label: "Boolean", icon: ToggleLeft, className: "text-emerald-600 dark:text-emerald-400" },
+    TYPOGRAPHY: { label: "Text style", icon: CaseSensitive, className: "text-rose-600 dark:text-rose-400" },
   }[type] ?? { label: type, icon: Code, className: "text-muted-foreground" };
   const Icon = meta.icon;
 
@@ -808,6 +814,7 @@ function TokenListRow({
   code,
   isAlias,
   aliasName,
+  fieldRefCount = 0,
   isSelected,
   stickyShadow,
   onSelect,
@@ -828,6 +835,7 @@ function TokenListRow({
   code: string;                   // 生成的代码片段（如 "var(--color-primary-500)"）
   isAlias: boolean;               // 是否为别名 Token
   aliasName?: string;             // 引用的原始 Token 名称
+  fieldRefCount?: number;         // TYPOGRAPHY 复合 Token 中引用其他 Token 的字段数
   isSelected: boolean;            // 当前行是否被选中
   stickyShadow: boolean;          // 是否显示粘性列阴影
   onSelect: (e: React.MouseEvent | React.KeyboardEvent) => void;  // 选择回调
@@ -896,6 +904,19 @@ function TokenListRow({
     }
     if (resolved.type === "NUMBER") {
       return <span className="rounded-md bg-muted/45 px-1.5 py-0.5 font-mono text-[11px]">{String(resolved.value)}</span>;
+    }
+    if (resolved.type === "TYPOGRAPHY") {
+      const typography = resolved.value as TypographyValue;
+      return (
+        <div className="flex min-w-0 items-center gap-2">
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded border bg-background">
+            <TypographySample value={typography} className="text-xs" />
+          </span>
+          <span className="truncate rounded-md bg-muted/45 px-1.5 py-0.5 font-mono text-[11px]" title={formatTypographySummary(typography)}>
+            {formatTypographySize(typography)} · {typography.fontFamily} {typography.fontStyle}
+          </span>
+        </div>
+      );
     }
     if (resolved.type === "BOOLEAN") {
       return (
@@ -1052,6 +1073,11 @@ function TokenListRow({
                   <ArrowRight className="h-3 w-3" />
                 </span>
                 <span className="truncate px-2 py-1 font-mono text-foreground/80">{aliasName}</span>
+              </span>
+            ) : fieldRefCount > 0 ? (
+              <span className="inline-flex items-center gap-1 rounded-md border bg-background px-1.5 py-1 text-[11px] text-muted-foreground">
+                <Link2 className="h-3 w-3" />
+                {fieldRefCount} field refs
               </span>
             ) : (
               <span className="inline-flex items-center rounded-md border border-dashed bg-muted/25 px-1.5 py-1 text-[11px] text-muted-foreground/75">
