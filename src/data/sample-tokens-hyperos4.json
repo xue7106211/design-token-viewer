@@ -783,7 +783,7 @@
     },
     "var_1": {
       "id": "var_1",
-      "name": "segment/miuix_comp_seg_color_fill_enabled",
+      "name": "segment/miuix_comp_segment_color_fill_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -821,7 +821,7 @@
     },
     "var_3": {
       "id": "var_3",
-      "name": "scroll/miuix_comp_scr_color_fill_enabled",
+      "name": "scroll/miuix_comp_scroll_color_fill_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -840,7 +840,7 @@
     },
     "var_4": {
       "id": "var_4",
-      "name": "scroll/miuix_comp_scr_color_fill_pressed",
+      "name": "scroll/miuix_comp_scroll_color_fill_pressed",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
@@ -859,7 +859,7 @@
     },
     "var_5": {
       "id": "var_5",
-      "name": "menu/miuix_comp_men_color_fill_mask",
+      "name": "menu/miuix_comp_menu_color_fill_mask",
       "type": "COLOR",
       "valuesByMode": {
         "mode_light": {
