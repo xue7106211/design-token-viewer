@@ -27,7 +27,7 @@
     }
   },
   "segment": {
-    "miuix_comp_seg_color_fill_enabled": {
+    "miuix_comp_segment_color_fill_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -81,7 +81,7 @@
     }
   },
   "scroll": {
-    "miuix_comp_scr_color_fill_enabled": {
+    "miuix_comp_scroll_color_fill_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -106,7 +106,7 @@
         }
       }
     },
-    "miuix_comp_scr_color_fill_pressed": {
+    "miuix_comp_scroll_color_fill_pressed": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -133,7 +133,7 @@
     }
   },
   "menu": {
-    "miuix_comp_men_color_fill_mask": {
+    "miuix_comp_menu_color_fill_mask": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
