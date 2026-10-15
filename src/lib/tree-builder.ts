@@ -10,6 +10,8 @@ const SEMANTIC_TOKEN_GROUP_ORDER = [
   "padding",
   "gap",
   "radius",
+  "height",
+  "safe_area",
   "text_style",
 ];
 
