@@ -147,6 +147,8 @@ scripts/                    # 辅助脚本
 ├── figma-flat-to-preset.mjs
 ├── figma-vars-to-sample.mjs
 ├── figma-dtcg-to-sample.mjs # W3C DTCG → Figma Native (合并多 Collection + 按名称解析别名)
+├── sync-figma-variables.mjs # 经 Figma MCP(use_figma) 增量同步 Variables → 种子 / 协作文档 API / PostgreSQL
+├── lib/figma-variables-sync.mjs (+ .test.mjs) # 同步核心：插件代码生成、增量还原与校验、Native 转换
 └── init-db.mjs              # 用迁移 SQL 初始化数据库
 
 docs/                       # 项目文档
@@ -296,7 +298,21 @@ UI：`changelog-dialog.tsx` 提供日志查看对话框（sidebar 底部入口�
 4. **同步已有文档**：读取当前 revision，导入前必须创建快照，再调用 `POST /api/token-document/import`。请求头必须包含 `x-document-id: hyperos4`，请求体必须为 `{ json, revision, actor: { actorName, actorClientId } }`，其中 `json` 是新种子对象。禁止直接删除或手改 `.data/collaboration-store.json`。
 5. **最终验收**：重新读取文档并调用 `/api/export?format=json`。接口返回 `{ format, code }`，应比较 `JSON.parse(code)` 与 `src/data/sample-tokens-hyperos4.json`，并确认 revision 已增加、总变量数及各 Collection 数量符合转换报告、无悬空别名、Light/Dark 模式值完整。
 
-只有第 5 步全部通过，才可对用户确认应用数据和导出结果已经更新。若无法访问正在使用的 repository（例如生产数据库），必须明确说明只更新了源和种子，不能声称线上或当前应用文档已同步。
+只有第 5 步全部通过，才可对用户确认应用数据和导出结果已经更新。
+
+### 通过 Figma MCP 同步 HyperOS4（替代第 1–2 步的 DTCG 导出）
+
+数据源：Figma 文件 `5gZYD8i6JqBvsaS7yvnO9c`（HyperOS-Design-Token）的本地 Variables。Figma 远程 MCP 只能由已 OAuth 的 AI 客户端调用（脚本无法自行注册客户端，插件沙箱无 fetch，`use_figma` 返回值上限约 20KB），因此流程为：
+
+1. `node scripts/sync-figma-variables.mjs plugin --part 0 --out /tmp/figma-export.js`，把文件内容原样交给 `use_figma` 执行（只读），返回 JSON 原样保存为 `/tmp/figma-delta/part-0.json`；按返回的 `pages` 依次用 `--part 1..pages` 生成、执行并保存。插件只回传与基线 `figma-token/figma-variables.json`（首次为种子推导）内容哈希不同的变量。
+2. `node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta --seed [--api <url>] [--db]`（先加 `DRY_RUN=1` 预览）。还原后整体校验和必须等于 Figma 端，且无未解析别名、Mode 完整，否则不写入；成功后更新基线。之后可省略 `--delta`，把基线推送到其他目标。
+3. `--api` / `--db` 写入前自动建快照、记录 `import_document` 日志，写入后重新读取（API 为 `/api/export?format=json`）深度比较；同时指定 `--seed` 时会提示目标文档与种子是否完全一致。
+
+行为约定：变量 id 按「Collection 名 + 变量名」复用目标文档已有 id，Figma 中改名视为删除 + 新增；同步以 Figma 为准，会覆盖应用内对同名变量的编辑和排序。
+
+Text Style：Figma 本地 Text Style 一并导出，一个样式 = Semantic Token 下一个 `text_style/<样式名>` TYPOGRAPHY Token（Light/Dark 同值，位于 Collection 末尾、按 Figma 顺序），新增 / 修改 / 删除均以 Figma 为准，id 按名称复用。字段绑定了 Variable 时写为字段别名（如 `fontSize → Reference Token/number/font_size/miuix_ref_font_size_32`），保留「Text Style → Variable」引用链，`referencedBy` 可反查；未绑定的字段写字面值（lineHeight / letterSpacing 为像素，PERCENT 按字号换算；letterSpacing / paragraphSpacing 为 0 时省略）。AUTO 行高、引用非本地变量或引用类型不符时整体中止。Figma Text Style 无 codeSyntax，沿用目标文档已有值，新增时默认 `{ ANDROID: 样式名 }`。非 `text_style/` 分组的 TYPOGRAPHY Token 原样保留。走此流程时无需再运行 `merge-miuix-text-styles.mjs`。
+
+`--db` 直接写 `DATABASE_URL` 指向的库（如 Neon 生产库），执行前须先 `DRY_RUN=1` 并获得用户确认。若无法访问正在使用的 repository（例如生产数据库），必须明确说明只更新了源和种子，不能声称线上或当前应用文档已同步。
 
 安全边界：导入 API 当前没有内建认证或授权；`actor` 是调用方可填写的审计标签，revision 只提供乐观并发控制。公开部署必须通过网络/网关限制接口访问，或补充真实鉴权，不能把 actor、revision 或 `x-document-id` 当作身份校验。
 
@@ -357,7 +373,7 @@ npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
 - 快照来源在导出对话框显示的 Token 数当前取自当前可见 Token，不代表快照内容的精确数量
 - 变更日志与快照保存在当前服务端文档中。读取日志按文档倒序分页，最多返回最新 500 条，并带总条数。ChangeLog Store 只缓存这一页，`clearData` 和切换文档都不会删除服务端记录。文档保存和对应日志写入在同一次 `transact` 中提交，日志写入失败时文档修改会回滚
 - TYPOGRAPHY 字段别名计入目标 Token 的 referencedBy；任一字段缺失、引用缺失或类型不符时整个 Token 解析为错误 STRING。`isAlias` 仅表示整体别名。导出：CSS 为 `font` 简写（`500 32px/42px "MiSans"`，不含 letterSpacing）；Android 为 `<style>`，字段别名暂输出解析后的字面值（textSize / lineHeight 用 sp，fontStyle → `android:textFontWeight`，letterSpacing px → em，不输出 paragraphSpacing），整体别名输出 `parent`。编辑弹窗暂不支持编辑 TYPOGRAPHY 字段值
-- HyperOS4 的 24 个 miuix Text Style 位于 Semantic Token 的 `text_style/miuix_text_style_*`，由 `scripts/merge-miuix-text-styles.mjs` 按 Reference Token 名称追加（输入 `scripts/data/miuix-text-styles.json`；支持 `--seed` / `--api` / `--out` / `--db`，幂等）。DTCG 转换脚本不生成这些 Token，重新执行 HyperOS4 DTCG 更新流程后需再运行此脚本
+- HyperOS4 的 24 个 miuix Text Style 位于 Semantic Token 的 `text_style/miuix_text_style_*`，由 `scripts/merge-miuix-text-styles.mjs` 按 Reference Token 名称追加（输入 `scripts/data/miuix-text-styles.json`；支持 `--seed` / `--api` / `--out` / `--db`，幂等）。DTCG 转换脚本不生成这些 Token，重新执行 HyperOS4 DTCG 更新流程后需再运行此脚本；经 Figma MCP 同步（`sync-figma-variables.mjs`）时 Text Style 直接取自 Figma，无需此脚本
 - Semantic Token 顶层树组固定为 `bg → fill → stroke → text → mask → margin → padding → gap → radius → text_style`；其他 Collection 和子组维持自然排序
 
 

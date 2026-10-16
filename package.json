@@ -13,7 +13,10 @@
     "test:e2e": "playwright test",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:init": "node scripts/init-db.mjs"
+    "db:init": "node scripts/init-db.mjs",
+    "figma:plugin": "node scripts/sync-figma-variables.mjs plugin",
+    "figma:apply": "node scripts/sync-figma-variables.mjs apply",
+    "figma:preview": "DRY_RUN=1 node scripts/sync-figma-variables.mjs apply"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

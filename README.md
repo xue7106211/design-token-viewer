@@ -124,7 +124,17 @@ e2e/                  # Playwright E2E 测试
 4. 读取当前 revision，创建导入前快照，再调用 `POST /api/token-document/import`。请求头包含 `x-document-id: hyperos4`，请求体为 `{ json, revision, actor: { actorName, actorClientId } }`，其中 `json` 是种子对象。禁止删除或手改 `.data/collaboration-store.json`。
 5. 重新读取文档并调用 `/api/export?format=json`。响应结构为 `{ format, code }`，需对 `JSON.parse(code)` 与种子做深度比较，同时核对 revision、总量、各 Collection、别名和 Light/Dark 完整性。
 
-详细约束见 `AGENTS.md` 的“HyperOS4 数据更新强制流程”。无法访问实际 repository 时，只能说明源和种子已更新，不能声称当前应用或线上数据已同步。
+也可以直接从 Figma 文件同步（需要已 OAuth 的 Figma MCP 客户端执行 `use_figma`）。同步范围包括本地 Variables 和 Text Styles；Text Style 写为 Semantic Token 下的 `text_style/*` TYPOGRAPHY Token，绑定的 Variable 保留为字段别名：
+
+```bash
+node scripts/sync-figma-variables.mjs plugin --part 0 --out /tmp/figma-export.js   # 交给 use_figma 执行，结果存为 /tmp/figma-delta/part-0.json，按 pages 继续 --part 1..N
+DRY_RUN=1 node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta --seed --api http://localhost:3000
+DATABASE_URL=... node scripts/sync-figma-variables.mjs apply --db                    # 用已校验的基线写 Neon/PostgreSQL
+```
+
+详细约束见 `AGENTS.md` 的“HyperOS4 数据更新强制流程”及“通过 Figma MCP 同步 HyperOS4”。
+
+在 Kiro CLI 中可直接一键执行：`/sync-figma-tokens`（默认只同步种子），或 `/sync-figma-tokens seed api=http://localhost:3000 db`。定义见 `.kiro/skills/sync-figma-tokens/SKILL.md`；写 Neon 或远程接口前会先预览并等待确认。npm 快捷命令：`figma:plugin` / `figma:preview` / `figma:apply`。无法访问实际 repository 时，只能说明源和种子已更新，不能声称当前应用或线上数据已同步。
 
 > 安全边界：导入路由当前没有内建认证或授权；`actor` 只是可由调用方填写的审计标签，revision 只提供乐观并发控制。公开部署必须在网络/网关层限制此接口，或补充真实鉴权后才能作为受信任的维护入口。
 
