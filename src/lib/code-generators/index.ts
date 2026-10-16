@@ -1,9 +1,9 @@
 import type { DesignToken, CodeFormat } from "@/types/token";
 import { generateCSSToken, generateCSSBlock } from "./css";
-import { generateAndroidToken, generateAndroidBlock } from "./android";
+import { generateAndroidToken, generateAndroidExportBlock } from "./android";
 
 export { generateCSSToken, generateCSSBlock } from "./css";
-export { generateAndroidToken, generateAndroidBlock } from "./android";
+export { generateAndroidToken, generateAndroidBlock, generateAndroidExportBlock } from "./android";
 
 /**
  * Generate code for a single token in the specified format
@@ -23,7 +23,8 @@ export function generateTokenCode(
 }
 
 /**
- * Generate code block for multiple tokens
+ * Generate code block for multiple tokens.
+ * Android export writes Light and Dark into one file. CSS stays on `modeId`.
  */
 export function generateTokenBlock(
   tokenList: DesignToken[],
@@ -35,6 +36,6 @@ export function generateTokenBlock(
     case "css":
       return generateCSSBlock(tokenList, modeId);
     case "android":
-      return generateAndroidBlock(tokenList, modeId, tokens);
+      return generateAndroidExportBlock(tokenList, tokens);
   }
 }

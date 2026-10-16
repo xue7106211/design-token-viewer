@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { generateAndroidToken, generateAndroidBlock } from "@/lib/code-generators/android";
+import { generateAndroidExportBlock, generateAndroidToken, generateAndroidBlock } from "@/lib/code-generators/android";
 import type { DesignToken, TokenType } from "@/types/token";
 
 /** Helper: create a DesignToken with sensible defaults, overridable via partial */
@@ -503,6 +503,161 @@ describe("generateAndroidToken — explicit miuix resource names", () => {
     const result = generateAndroidToken(alias, "mode_light", { var_497: target, var_610: alias });
     expect(result).toBe(
       '<color name="miuix_color_bg_layout_white_page_light">@color/miuix_white_solid_level_1000</color>'
+    );
+  });
+});
+
+describe("generateAndroidExportBlock — light and dark in one file", () => {
+  const blue = makeToken({
+    id: "blue",
+    name: "solid/blue/miuix_ref_blue_solid_level_1900",
+    type: "COLOR",
+    rawValues: {
+      mode_light: { type: "COLOR", value: { r: 0, g: 0, b: 1, a: 1 } },
+      mode_dark: { type: "COLOR", value: { r: 0, g: 0, b: 0.5, a: 1 } },
+    },
+    resolvedValues: {
+      mode_light: { type: "COLOR", value: { r: 0, g: 0, b: 1, a: 1 } },
+      mode_dark: { type: "COLOR", value: { r: 0, g: 0, b: 0.5, a: 1 } },
+    },
+  });
+  const onSurface = makeToken({
+    id: "on-surface",
+    name: "text/miuix_color_on_surface",
+    type: "COLOR",
+    isAlias: true,
+    aliasOf: "blue",
+    rawValues: {
+      mode_light: { type: "ALIAS", id: "blue" },
+      mode_dark: { type: "ALIAS", id: "blue" },
+    },
+    resolvedValues: {
+      mode_light: { type: "COLOR", value: { r: 0, g: 0, b: 1, a: 1 } },
+      mode_dark: { type: "COLOR", value: { r: 0, g: 0, b: 0.5, a: 1 } },
+    },
+  });
+  const space = makeToken({
+    id: "space-8",
+    name: "number/space/miuix_space_8",
+    type: "NUMBER",
+    rawValues: {
+      mode_light: { type: "NUMBER", value: 8 },
+      mode_dark: { type: "NUMBER", value: 8 },
+    },
+    resolvedValues: {
+      mode_light: { type: "NUMBER", value: 8 },
+      mode_dark: { type: "NUMBER", value: 8 },
+    },
+  });
+  const gap = makeToken({
+    id: "gap",
+    name: "gap/miuix_space_gap_default",
+    type: "NUMBER",
+    isAlias: true,
+    aliasOf: "space-8",
+    rawValues: {
+      mode_light: { type: "ALIAS", id: "space-8" },
+      mode_dark: { type: "ALIAS", id: "space-8" },
+    },
+    resolvedValues: {
+      mode_light: { type: "NUMBER", value: 8 },
+      mode_dark: { type: "NUMBER", value: 8 },
+    },
+  });
+  const font = makeToken({
+    id: "font",
+    name: "font/family/miuix_ref_font_family_misans",
+    type: "STRING",
+    rawValues: {
+      mode_light: { type: "STRING", value: "MiSans" },
+      mode_dark: { type: "STRING", value: "MiSans" },
+    },
+    resolvedValues: {
+      mode_light: { type: "STRING", value: "MiSans" },
+      mode_dark: { type: "STRING", value: "MiSans" },
+    },
+  });
+  const textStyle = makeToken({
+    id: "text-style",
+    name: "text_style/miuix_text_style_body_large_regular",
+    type: "TYPOGRAPHY",
+    codeSyntax: { ANDROID: "miuix_text_style_body_large_regular" },
+    rawValues: {
+      mode_light: {
+        type: "TYPOGRAPHY",
+        value: {
+          fontFamily: { type: "STRING", value: "MiSans" },
+          fontStyle: { type: "STRING", value: "Regular" },
+          fontSize: { type: "NUMBER", value: 16 },
+          lineHeight: { type: "NUMBER", value: 22 },
+        },
+      },
+      mode_dark: {
+        type: "TYPOGRAPHY",
+        value: {
+          fontFamily: { type: "STRING", value: "MiSans" },
+          fontStyle: { type: "STRING", value: "Regular" },
+          fontSize: { type: "NUMBER", value: 16 },
+          lineHeight: { type: "NUMBER", value: 22 },
+        },
+      },
+    },
+    resolvedValues: {
+      mode_light: {
+        type: "TYPOGRAPHY",
+        value: { fontFamily: "MiSans", fontStyle: "Regular", fontSize: 16, lineHeight: 22 },
+      },
+      mode_dark: {
+        type: "TYPOGRAPHY",
+        value: { fontFamily: "MiSans", fontStyle: "Regular", fontSize: 16, lineHeight: 22 },
+      },
+    },
+  });
+  const tokens = { blue, "on-surface": onSurface, "space-8": space, gap, font, "text-style": textStyle };
+
+  it("groups light colors before dark colors, including second-level aliases", () => {
+    const result = generateAndroidExportBlock([blue, onSurface, space], tokens);
+    const lightPrimitive = result.indexOf('<color name="miuix_ref_blue_solid_level_1900_light">#0000FF</color>');
+    const lightAlias = result.indexOf(
+      '<color name="miuix_color_on_surface_light">@color/miuix_ref_blue_solid_level_1900_light</color>'
+    );
+    const darkPrimitive = result.indexOf('<color name="miuix_ref_blue_solid_level_1900_dark">#000080</color>');
+    const darkAlias = result.indexOf(
+      '<color name="miuix_color_on_surface_dark">@color/miuix_ref_blue_solid_level_1900_dark</color>'
+    );
+    const dimen = result.indexOf('<dimen name="miuix_space_8">8dp</dimen>');
+
+    expect(result.indexOf("<!-- light -->")).toBeLessThan(lightPrimitive);
+    expect(lightPrimitive).toBeLessThan(lightAlias);
+    expect(lightAlias).toBeLessThan(result.indexOf("<!-- dark -->"));
+    expect(result.indexOf("<!-- dark -->")).toBeLessThan(darkPrimitive);
+    expect(darkPrimitive).toBeLessThan(darkAlias);
+    expect(darkAlias).toBeLessThan(dimen);
+    expect(result).not.toContain('name="miuix_ref_blue_solid_level_1900"');
+  });
+
+  it("emits dimen and string resources once, without a mode suffix", () => {
+    const result = generateAndroidExportBlock([space, gap, font], tokens);
+
+    expect(result.match(/<dimen name="miuix_space_8">/g)).toHaveLength(1);
+    expect(result).toContain('<dimen name="miuix_space_8">8dp</dimen>');
+    expect(result).toContain('<dimen name="miuix_space_gap_default">@dimen/miuix_space_8</dimen>');
+    expect(result).not.toContain("miuix_space_gap_default_light");
+    expect(result).not.toContain("miuix_space_gap_default_dark");
+    expect(result).not.toContain("<!-- light -->");
+    expect(result.match(/<string name="miuix_ref_font_family_misans">/g)).toHaveLength(1);
+    expect(result).toContain('<string name="miuix_ref_font_family_misans">MiSans</string>');
+  });
+
+  it("emits a codeSyntax text style once", () => {
+    const result = generateAndroidExportBlock([textStyle], tokens);
+    expect(result.match(/<style name="miuix_text_style_body_large_regular">/g)).toHaveLength(1);
+    expect(result).not.toContain("miuix_text_style_body_large_regular_light");
+  });
+
+  it("leaves single-mode preview names unsuffixed for first-level colors", () => {
+    expect(generateAndroidToken(blue, "mode_light", tokens)).toBe(
+      '<color name="miuix_ref_blue_solid_level_1900">#0000FF</color>'
     );
   });
 });

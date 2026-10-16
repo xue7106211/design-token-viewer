@@ -61,10 +61,14 @@ function getMiuixTypeSegment(type: TokenType): string {
  * Leaves that already start with miuix_ are the resource name; only the mode suffix is appended.
  * e.g. "miuix_color_bg_layout_white_page" + mode_light -> "miuix_color_bg_layout_white_page_light".
  */
-export function getMiuixFeatureName(token: DesignToken, modeId: string): string {
+export function getMiuixFeatureName(
+  token: DesignToken,
+  modeId: string,
+  withModeSuffix = true
+): string {
   const typeSeg = getMiuixTypeSegment(token.type);
   const leaf = getLeafName(token.name);
-  const suffix = getModeSuffix(modeId);
+  const suffix = withModeSuffix ? getModeSuffix(modeId) : "";
   if (isExplicitMiuixResourceName(leaf)) return `${leaf}${suffix}`;
   return `miuix_default_${typeSeg}_${leaf}${suffix}`;
 }
@@ -116,10 +120,29 @@ function getAndroidResourcePrefix(type: TokenType): string {
 /**
  * Get the Android resource name for a referenced (target) token.
  * Uses codeSyntax.ANDROID (Chinese prefix stripped) when set, otherwise the
- * target's primitive Android name — the name that token exports as itself.
+ * target's primitive Android name. Export of a first-level color appends
+ * `_light` / `_dark` at the call site.
  */
 function getReferenceName(targetToken: DesignToken): string {
   return explicitAndroidName(targetToken) ?? getMiuixPrimitiveName(targetToken);
+}
+
+/** Reference color with a generated name. Number, string, and codeSyntax names are excluded. */
+function isFirstLevelColor(token: DesignToken): boolean {
+  return token.type === "COLOR" && !token.isAlias && !explicitAndroidName(token);
+}
+
+function withFirstLevelColorSuffix(name: string, modeId: string): string {
+  const suffix = modeId === "mode_light" ? "_light" : modeId === "mode_dark" ? "_dark" : "";
+  if (!suffix || name.endsWith(suffix)) return name;
+  return `${name}${suffix}`;
+}
+
+interface AndroidTokenOptions {
+  /** Export-only. Append `_light` / `_dark` to first-level color names and to references that point at them. */
+  suffixFirstLevelColor?: boolean;
+  /** Export-only. Dimen, string, and other non-color aliases keep a single name without a mode suffix. */
+  colorOnlyModeSuffix?: boolean;
 }
 
 /**
@@ -148,7 +171,8 @@ function getXmlTag(type: TokenType): string {
 export function generateAndroidToken(
   token: DesignToken,
   modeId?: string,
-  tokens?: Record<string, DesignToken>
+  tokens?: Record<string, DesignToken>,
+  options?: AndroidTokenOptions
 ): string {
   const resolvedModeId = modeId ?? Object.keys(token.resolvedValues)[0];
   const value = token.resolvedValues[resolvedModeId];
@@ -160,9 +184,13 @@ export function generateAndroidToken(
   if (explicitName) {
     name = explicitName;
   } else if (token.isAlias) {
-    name = getMiuixFeatureName(token, resolvedModeId);
+    const withModeSuffix = token.type === "COLOR" || !options?.colorOnlyModeSuffix;
+    name = getMiuixFeatureName(token, resolvedModeId, withModeSuffix);
   } else {
     name = getMiuixPrimitiveName(token);
+  }
+  if (options?.suffixFirstLevelColor && isFirstLevelColor(token)) {
+    name = withFirstLevelColorSuffix(name, resolvedModeId);
   }
 
   // Check if this token is an alias in the current mode and tokens dict is available
@@ -171,7 +199,10 @@ export function generateAndroidToken(
     if (rawValue && rawValue.type === "ALIAS") {
       const targetToken = tokens[rawValue.id];
       if (targetToken) {
-        const refName = getReferenceName(targetToken);
+        let refName = getReferenceName(targetToken);
+        if (options?.suffixFirstLevelColor && isFirstLevelColor(targetToken)) {
+          refName = withFirstLevelColorSuffix(refName, resolvedModeId);
+        }
         if (token.type === "TYPOGRAPHY") {
           // A text style aliasing another text style inherits it as the parent style.
           return `<style name="${name}" parent="${refName}" />`;
@@ -224,22 +255,88 @@ function formatAndroidXML(name: string, value: TokenValue): string {
   }
 }
 
-/**
- * Generate full Android XML resource file
- */
-export function generateAndroidBlock(
-  tokenList: DesignToken[],
-  modeId?: string,
-  tokens?: Record<string, DesignToken>
-): string {
-  const lines = tokenList
-    .map((t) => generateAndroidToken(t, modeId, tokens))
+function wrapAndroidResources(entries: string[]): string {
+  const lines = entries
     .filter(Boolean)
     // Multi-line entries (e.g. <style>) are indented line by line.
     .flatMap((entry) => entry.split("\n"))
     .map((line) => `    ${line}`);
 
   return `<?xml version="1.0" encoding="utf-8"?>\n<resources>\n${lines.join("\n")}\n</resources>`;
+}
+
+function compareModeIds(a: string, b: string): number {
+  const rank = (id: string) => (id === "mode_light" ? 0 : id === "mode_dark" ? 1 : 2);
+  return rank(a) - rank(b) || a.localeCompare(b);
+}
+
+function availableModeIds(token: DesignToken): string[] {
+  return [...new Set([...Object.keys(token.resolvedValues), ...Object.keys(token.rawValues)])].sort(compareModeIds);
+}
+
+/** Colors are the only resources that differ between Light and Dark, so only they are split by mode. */
+function exportsBothColorModes(token: DesignToken): boolean {
+  return token.type === "COLOR" && !explicitAndroidName(token);
+}
+
+function singleExportModeId(token: DesignToken): string | undefined {
+  const available = availableModeIds(token);
+  return available.find((id) => id === "mode_light") ?? available[0];
+}
+
+/**
+ * Generate full Android XML resource file for one mode.
+ */
+export function generateAndroidBlock(
+  tokenList: DesignToken[],
+  modeId?: string,
+  tokens?: Record<string, DesignToken>
+): string {
+  return wrapAndroidResources(tokenList.map((token) => generateAndroidToken(token, modeId, tokens)));
+}
+
+/**
+ * Android export: Light colors, then Dark colors, then every non-color resource once.
+ * Only COLOR names and `@color/` references gain `_light` / `_dark`.
+ * Dimen, string, and text-style names stay unsuffixed. Their value comes from Light when that mode exists.
+ */
+export function generateAndroidExportBlock(
+  tokenList: DesignToken[],
+  tokens?: Record<string, DesignToken>
+): string {
+  const options: AndroidTokenOptions = { suffixFirstLevelColor: true, colorOnlyModeSuffix: true };
+  const light: string[] = [];
+  const dark: string[] = [];
+  const rest: string[] = [];
+
+  for (const token of tokenList) {
+    if (!exportsBothColorModes(token)) {
+      const modeId = singleExportModeId(token);
+      if (modeId) rest.push(generateAndroidToken(token, modeId, tokens, options));
+      continue;
+    }
+
+    const paired = availableModeIds(token).filter((id) => id === "mode_light" || id === "mode_dark");
+    if (paired.length === 0) {
+      const modeId = singleExportModeId(token);
+      if (modeId) rest.push(generateAndroidToken(token, modeId, tokens, options));
+      continue;
+    }
+
+    for (const modeId of paired) {
+      const entry = generateAndroidToken(token, modeId, tokens, options);
+      if (!entry) continue;
+      if (modeId === "mode_dark") dark.push(entry);
+      else light.push(entry);
+    }
+  }
+
+  const entries = [
+    ...(light.length > 0 ? ["<!-- light -->", ...light] : []),
+    ...(dark.length > 0 ? ["<!-- dark -->", ...dark] : []),
+    ...rest,
+  ];
+  return wrapAndroidResources(entries);
 }
 
 /**
