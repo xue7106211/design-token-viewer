@@ -41,7 +41,7 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     );
   });
 
-  it("shiki-wrapper should have [&_pre]:overflow-x-auto class for long code lines", () => {
+  it("shiki-wrapper should wrap long code lines", () => {
     // Mock useShikiHtml to return a long Android XML code line
     const longCodeHtml =
       '<pre class="shiki github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#1F2328">&lt;</span><span style="color:#1F6FEB">color</span> <span style="color:#0550AE">name</span>=<span style="color:#0A3069">"miuix_default_color_surface_container_light"</span><span style="color:#1F2328">&gt;</span>@color/ref_value<span style="color:#1F2328">&lt;/</span><span style="color:#1F6FEB">color</span><span style="color:#1F2328">&gt;</span></span></code></pre>';
@@ -55,8 +55,10 @@ describe("CodeOutput - Bug Condition Exploration", () => {
     const shikiWrapper = container.querySelector(".shiki-wrapper");
     expect(shikiWrapper).not.toBeNull();
 
-    // Assert: `.shiki-wrapper` className 应包含 [&_pre]:overflow-x-auto
-    expect(shikiWrapper!.className).toContain("[&_pre]:overflow-x-auto");
+    // Assert: `.shiki-wrapper` should hide overflow and wrap code
+    expect(shikiWrapper!.className).toContain("overflow-hidden");
+    expect(shikiWrapper!.className).toContain("[&_code]:whitespace-pre-wrap");
+    expect(shikiWrapper!.className).toContain("[&_code]:break-all");
   });
 
   it("shiki-wrapper should have [&_pre]:min-w-0 class for long code lines", () => {
@@ -109,7 +111,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
    * Property: 对于任意短代码字符串 (length < 40)，CodeOutput 能正常渲染且包含代码文本。
    * `.shiki-wrapper` 包含 `overflow-x-auto` 和 `min-w-0` 类。
    */
-  it("short code strings render without error and contain the code text", () => {
+  it("short code strings render with wrapping classes and contain the code text", () => {
     // 生成短代码字符串的 arbitrary（模拟 CSS 自定义属性）
     const shortCodeArb = fc
       .string({ minLength: 1, maxLength: 39 })
@@ -127,9 +129,10 @@ describe("CodeOutput - Preservation Property Tests", () => {
         const shikiWrapper = container.querySelector(".shiki-wrapper");
         expect(shikiWrapper).not.toBeNull();
 
-        // shiki-wrapper 应包含 overflow-x-auto 和 min-w-0 类
-        expect(shikiWrapper!.className).toContain("overflow-x-auto");
-        expect(shikiWrapper!.className).toContain("min-w-0");
+        // shiki-wrapper should hide overflow and wrap code
+        expect(shikiWrapper!.className).toContain("overflow-hidden");
+        expect(shikiWrapper!.className).toContain("[&_code]:whitespace-pre-wrap");
+        expect(shikiWrapper!.className).toContain("[&_code]:break-all");
 
         // 渲染内容应包含代码文本
         expect(shikiWrapper!.textContent).toContain(code);
@@ -217,7 +220,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
    * Property: 当 useShikiHtml 返回 null 时，fallback `<pre>` 元素
    * 渲染正确的类（overflow-x-auto, whitespace-pre-wrap, break-all）。
    */
-  it("fallback <pre> renders with correct classes when useShikiHtml returns null", () => {
+  it("fallback <pre> renders with wrapping classes when useShikiHtml returns null", () => {
     const codeArb = fc.string({ minLength: 1, maxLength: 100 }).filter((s) => s.trim().length > 0);
 
     fc.assert(
@@ -236,7 +239,7 @@ describe("CodeOutput - Preservation Property Tests", () => {
         expect(preElement).not.toBeNull();
 
         // 验证 fallback <pre> 的关键类
-        expect(preElement!.className).toContain("overflow-x-auto");
+        expect(preElement!.className).toContain("overflow-hidden");
         expect(preElement!.className).toContain("whitespace-pre-wrap");
         expect(preElement!.className).toContain("break-all");
 
