@@ -25,7 +25,7 @@ import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, H
 import { formatTypographySize, formatTypographySummary, getTypographyFieldAliases } from "@/lib/typography";
 import { TypographySample } from "./typography-preview";
 import type { TypographyValue } from "@/types/token";
-import { useState, useCallback, useEffect, useMemo, useRef, Fragment } from "react";
+import { useState, useCallback, useEffect, useLayoutEffect, useMemo, useRef, Fragment } from "react";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -44,6 +44,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TokenEditPopover } from "./token-edit-popover";
+import { HoldToConfirmMenuItem } from "@/components/ui/hold-to-confirm-menu-item";
+import { animateTokenRowReorder, captureTokenRowPositions, type TokenRowPositions } from "./token-list-motion";
 
 // --- 列宽相关常量 ---
 /** 四列的默认宽度：Token Name / Value / Code Syntax / Reference */
@@ -197,6 +199,10 @@ export function TokenList() {
 
   // ---- 滚动容器与粘性阴影 ----
   const scrollRef = useRef<HTMLDivElement>(null);                        // 表格外层滚动容器的 ref
+  const pendingReorderRef = useRef<{
+    previousPositions: TokenRowPositions;
+    expectedOrder: string[];
+  } | null>(null);
   const contextMenuPositionRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 }); // 右键菜单触发时的鼠标坐标
   const [stickyShadow, setStickyShadow] = useState(false);              // 是否显示粘性列的阴影（水平滚动时）
 
@@ -214,6 +220,28 @@ export function TokenList() {
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
   }, [onScroll, filteredTokenIds.length]);
+
+  const stageRowReorderAnimation = useCallback((expectedOrder: string[]) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    pendingReorderRef.current = {
+      previousPositions: captureTokenRowPositions(container),
+      expectedOrder,
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    const pending = pendingReorderRef.current;
+    if (!pending) return;
+    pendingReorderRef.current = null;
+
+    const orderMatches =
+      pending.expectedOrder.length === filteredTokenIds.length &&
+      pending.expectedOrder.every((id, index) => filteredTokenIds[index] === id);
+    if (!orderMatches || !scrollRef.current) return;
+
+    animateTokenRowReorder(scrollRef.current, pending.previousPositions);
+  }, [filteredTokenIds]);
 
   /**
    * 自动滚动到目标 Token 行：
@@ -278,11 +306,12 @@ export function TokenList() {
     const targetIndex = newIds.indexOf(dragOverId);
     const insertIndex = dropPosition === "before" ? targetIndex : targetIndex + 1;
     newIds.splice(insertIndex, 0, dragSourceId);
+    stageRowReorderAnimation(newIds);
     void reorderFilteredTokens(newIds);
     setDragSourceId(null);
     setDragOverId(null);
     setDragOverGroup(null);
-  }, [dragSourceId, dragOverId, dropPosition, filteredTokenIds, reorderFilteredTokens]);
+  }, [dragSourceId, dragOverId, dropPosition, filteredTokenIds, reorderFilteredTokens, stageRowReorderAnimation]);
 
   // ---- 分组级拖拽回调 ----
 
@@ -325,6 +354,7 @@ export function TokenList() {
       }
     }
     newIds.splice(insertIndex, 0, dragSourceId);
+    stageRowReorderAnimation(newIds);
     void moveTokensToGroup({
       tokenIds: [dragSourceId],
       targetGroup,
@@ -333,7 +363,7 @@ export function TokenList() {
     setDragSourceId(null);
     setDragOverId(null);
     setDragOverGroup(null);
-  }, [activeCollectionId, dragSourceId, tokens, filteredTokenIds, moveTokensToGroup]);
+  }, [activeCollectionId, dragSourceId, tokens, filteredTokenIds, moveTokensToGroup, stageRowReorderAnimation]);
 
   // ---- 选择状态同步 ----
 
@@ -1135,16 +1165,16 @@ function TokenListRow({
         </ContextMenuItem>
         <ContextMenuSeparator />
         {/* 删除 Token（危险操作，使用 destructive 样式） */}
-        <ContextMenuItem
-          variant="destructive"
-          className="cursor-pointer"
-          onSelect={() => {
+        <HoldToConfirmMenuItem
+          onConfirm={() => {
             void deleteToken(tokenId);
           }}
         >
-          <Trash2 className="h-3.5 w-3.5" />
-          删除 Token
-        </ContextMenuItem>
+          <span className="flex items-center gap-2">
+            <Trash2 className="h-3.5 w-3.5" />
+            删除 Token
+          </span>
+        </HoldToConfirmMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   );

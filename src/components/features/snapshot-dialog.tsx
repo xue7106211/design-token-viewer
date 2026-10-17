@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Download, RotateCcw, Save } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Download, RotateCcw, Save } from "lucide-react";
 import { saveAs } from "file-saver";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +22,10 @@ import {
   type SnapshotsResponse,
 } from "@/lib/collaboration/client";
 import type { SnapshotRecord, TokenDocumentView } from "@/lib/collaboration/service";
+import { cn } from "@/lib/utils";
+
+const SAVE_FEEDBACK_DURATION_MS = 1500;
+type SnapshotSaveStatus = "idle" | "saving" | "saved";
 
 export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
   const revision = useTokenStore((s) => s.revision);
@@ -31,6 +35,14 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<SnapshotSaveStatus>("idle");
+  const saveFeedbackTimerRef = useRef<number | null>(null);
+
+  useEffect(() => () => {
+    if (saveFeedbackTimerRef.current !== null) {
+      window.clearTimeout(saveFeedbackTimerRef.current);
+    }
+  }, []);
 
   const refresh = async () => {
     setIsLoading(true);
@@ -47,14 +59,28 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
   }, [open]);
 
   const createSnapshot = async () => {
-    if (!name.trim()) return;
-    await apiRequest<SnapshotRecord>("/api/snapshots", {
-      method: "POST",
-      body: JSON.stringify(withActor({ name, description })),
-    });
-    setName("");
-    setDescription("");
-    await refresh();
+    if (!name.trim() || saveStatus === "saving") return;
+    setSaveStatus("saving");
+    try {
+      const snapshot = await apiRequest<SnapshotRecord>("/api/snapshots", {
+        method: "POST",
+        body: JSON.stringify(withActor({ name, description })),
+      });
+      setSnapshots((current) => [snapshot, ...current.filter((item) => item.id !== snapshot.id)]);
+      setName("");
+      setDescription("");
+      setSaveStatus("saved");
+      if (saveFeedbackTimerRef.current !== null) {
+        window.clearTimeout(saveFeedbackTimerRef.current);
+      }
+      saveFeedbackTimerRef.current = window.setTimeout(() => {
+        saveFeedbackTimerRef.current = null;
+        setSaveStatus("idle");
+      }, SAVE_FEEDBACK_DURATION_MS);
+    } catch (error) {
+      setSaveStatus("idle");
+      window.alert(error instanceof Error ? error.message : "创建快照失败");
+    }
   };
 
   const restoreSnapshot = async (snapshotId: string) => {
@@ -81,8 +107,19 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
     saveAs(blob, `${snapshot.name || "snapshot"}.json`);
   };
 
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (!nextOpen) {
+      if (saveFeedbackTimerRef.current !== null) {
+        window.clearTimeout(saveFeedbackTimerRef.current);
+        saveFeedbackTimerRef.current = null;
+      }
+      setSaveStatus("idle");
+    }
+  };
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         {collapsed ? (
           <Button
@@ -125,9 +162,27 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
             onChange={(event) => setDescription(event.target.value)}
             placeholder="描述（可选）"
           />
-          <Button onClick={createSnapshot} disabled={!name.trim()}>
-            <Save className="h-3.5 w-3.5" />
-            保存
+          <Button
+            onClick={createSnapshot}
+            disabled={!name.trim() || saveStatus === "saving"}
+            aria-busy={saveStatus === "saving"}
+            aria-live="polite"
+          >
+            <span className="relative flex h-3.5 w-3.5 items-center justify-center" aria-hidden="true">
+              <Save
+                className={cn(
+                  "absolute h-3.5 w-3.5 transition-[transform,opacity] duration-150 ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:transform-none motion-reduce:transition-opacity",
+                  saveStatus === "saved" ? "scale-[0.96] opacity-0" : "scale-100 opacity-100"
+                )}
+              />
+              <Check
+                className={cn(
+                  "absolute h-3.5 w-3.5 text-green-500 transition-[transform,opacity] duration-150 ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:transform-none motion-reduce:transition-opacity",
+                  saveStatus === "saved" ? "scale-100 opacity-100" : "scale-[0.96] opacity-0"
+                )}
+              />
+            </span>
+            <span>{saveStatus === "saving" ? "保存中..." : saveStatus === "saved" ? "已保存" : "保存"}</span>
           </Button>
         </div>
 
