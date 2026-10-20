@@ -1,6 +1,11 @@
 # Figma Token 源文件
 
-## 当前 HyperOS4 流程：W3C DTCG 导出
+HyperOS4 有两条更新路径：
+
+- **Figma MCP 增量同步**（推荐）：`scripts/sync-figma-variables.mjs` 直接读取 Figma 文件的本地 Variables 与 Text Style，基线为 `figma-token/figma-variables.json`。步骤与约束见 `AGENTS.md` 的“通过 Figma MCP 同步 HyperOS4”。
+- **W3C DTCG 导出**：见下文。
+
+## HyperOS4 DTCG 流程
 
 HyperOS4 的权威源文件是 `figma-token/` 下三套 Collection 的 Light / Dark DTCG 导出：
 

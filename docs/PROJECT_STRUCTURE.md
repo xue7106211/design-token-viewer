@@ -9,7 +9,7 @@ design-token-viewer/
 ├── drizzle/              # PostgreSQL 迁移 SQL
 ├── e2e/                  # Playwright E2E 测试
 ├── docs/                 # 项目文档与历史计划
-├── figma-token/          # HyperOS4 DTCG 导出源
+├── figma-token/          # HyperOS4 DTCG 导出源与 Figma 增量同步基线
 ├── public/               # 静态资源
 ├── scripts/              # 本地转换/数据库脚本
 ├── src/                  # 应用源码
@@ -38,7 +38,7 @@ design-token-viewer/
 | `src/types/` | 共享 TypeScript 类型及第三方声明 |
 | `src/data/` | HyperOS3 / HyperOS4 Figma Native 种子 |
 
-单元测试与源码同目录，文件名为 `*.test.ts`、`*.test.tsx` 或 `*.spec.ts(x)`，由 Vitest 的 `src/**/*.{test,spec}.{ts,tsx}` 匹配。
+单元测试与源码同目录，文件名为 `*.test.ts`、`*.test.tsx` 或 `*.spec.ts(x)`，由 Vitest 的 `src/**/*.{test,spec}.{ts,tsx}` 匹配；脚本测试 `scripts/**/*.test.mjs` 也由 Vitest 运行。
 
 ### `e2e/` — E2E 测试
 
@@ -53,15 +53,20 @@ design-token-viewer/
 - `PROJECT_STRUCTURE.md`：本文件。
 - `superpowers/plans/`：历史实现计划，不是当前功能承诺。
 
-### `figma-token/` — HyperOS4 DTCG 源
+### `figma-token/` — HyperOS4 Figma 源
 
-包含 Component、Reference、Semantic 三个 Collection 的 Light/Dark 导出。`node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，按名称解析跨 Collection 别名，并保留受支持的 description/scopes 元数据。
+包含 Component、Reference、Semantic 三个 Collection 的 Light/Dark DTCG 导出。`node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，按名称解析跨 Collection 别名，并保留受支持的 description/scopes 元数据。
+
+`figma-variables.json` 是 Figma MCP 增量同步（`scripts/sync-figma-variables.mjs`）的基线，记录上次同步时 Figma 端的 Variables 与 Text Style；同步成功后由脚本更新，不要手改。
 
 ### `scripts/` — 脚本与脚本用数据
 
 这些脚本仅用于本地或 CI，不参与 Next 运行时：
 
-- `figma-dtcg-to-sample.mjs`：HyperOS4 正式同步脚本，输入 `figma-token/`，输出 `src/data/sample-tokens-hyperos4.json`。
+- `sync-figma-variables.mjs` + `lib/figma-variables-sync.mjs`：经 Figma MCP（`use_figma`）增量同步 HyperOS4 Variables 与 Text Style，目标可选 `--seed` / `--api <url>` / `--db`；npm 快捷命令为 `figma:plugin` / `figma:preview` / `figma:apply`。
+- `figma-dtcg-to-sample.mjs`：DTCG 同步脚本，输入 `figma-token/`，输出 `src/data/sample-tokens-hyperos4.json`。
+- `merge-miuix-text-styles.mjs`：读取 `scripts/data/miuix-text-styles.json`，把 24 个 miuix Text Style 按 Reference Token 名称追加到 HyperOS4（DTCG 流程之后使用；Figma MCP 流程无需）。
+- `rename-comp-token-abbreviations.mjs`：一次性迁移，展开已有协作文档中 Component Token 叶子名缩写；幂等，支持 `DRY_RUN=1`。
 - `figma-flat-to-preset.mjs`：读取未纳入仓库的 `scripts/figma-hyperos4-vars.json`，输出格式检查用 preset。
 - `figma-vars-to-sample.mjs`：读取相同扁平输入并覆盖 `src/data/sample-tokens.json`（HyperOS3 种子）。
 - `css-vars-to-sample.mjs`：读取脚本内嵌 `CSS_VARS_INPUT` 并覆盖 HyperOS3 种子；当前实现不读取 stdin。

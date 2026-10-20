@@ -57,6 +57,7 @@ src/
 │   │   ├── context-menu.tsx
 │   │   ├── dialog.tsx
 │   │   ├── dropdown-menu.tsx
+│   │   ├── hold-to-confirm-menu-item.tsx (+ .test.tsx) # 长按 2s 确认的右键菜单项（List 删除 Token）
 │   │   ├── input.tsx
 │   │   ├── scroll-area.tsx
 │   │   ├── separator.tsx
@@ -74,6 +75,7 @@ src/
 │       ├── token-tree.tsx          # 侧边栏树形导航
 │       ├── token-grid.tsx          # 网格视图
 │       ├── token-list.tsx          # 列表视图
+│       ├── token-list-motion.ts (+ .test.ts) # 列表行重排位移动画 (采集行位置后做 FLIP)
 │       ├── token-card.tsx          # 单个令牌卡片
 │       ├── token-inspector.tsx     # 右侧检查器面板 (可拖拽调宽；展示 description / Token Scope / 对比度)
 │       ├── token-inspector.test.tsx # Token Scope 类型、顺序与空值回退测试
@@ -84,9 +86,11 @@ src/
 │       ├── changelog-dialog.tsx    # 变更日志对话框 (前后值对比 / 颜色色块)
 │       ├── changelog-dialog.test.tsx
 │       ├── snapshot-dialog.tsx     # 创建、下载、恢复版本快照
+│       ├── snapshot-dialog.test.tsx
 │       ├── color-swatch.tsx        # 颜色色块
 │       ├── number-preview.tsx      # 数值预览
 │       ├── spacing-preview.tsx     # 间距预览
+│       ├── typography-preview.tsx  # TYPOGRAPHY 文字样式预览 (Ag + 字号/行高 + 字体/字重)
 │       ├── search-bar.tsx          # 搜索框
 │       ├── view-toggle.tsx         # Grid/List 切换
 │       ├── mode-switcher.tsx       # Mode 切换
@@ -112,6 +116,8 @@ src/
 │   ├── tree-builder.test.ts
 │   ├── token-rebuilder.ts         # 从内部模型重建 Figma Native JSON (用于导出和持久化)
 │   ├── token-rebuilder.test.ts    # 重建及 metadata 保真测试
+│   ├── typography.ts              # TYPOGRAPHY 值解析/格式化工具
+│   ├── typography.test.ts
 │   ├── contrast.ts                # WCAG 对比度计算, colorToHex/RGB/HSL
 │   ├── changelog.ts               # 变更日志工具: fetchClientIP / getChangeTypeLabel / formatTimestamp
 │   ├── changelog.test.ts
@@ -137,10 +143,11 @@ src/
 其他顶层目录：
 
 ```
-figma-token/                # HyperOS4 Figma DTCG 导出源 (3 Collection × Light/Dark)
-├── Component Token/{Light,Dark}.tokens.json
+figma-token/                # HyperOS4 Figma 源
+├── Component Token/{Light,Dark}.tokens.json   # DTCG 导出 (3 Collection × Light/Dark)
 ├── Reference Token/{Light,Dark}.tokens.json
-└── Semantic Token/{Light,Dark}.tokens.json
+├── Semantic Token/{Light,Dark}.tokens.json
+└── figma-variables.json     # Figma MCP 增量同步基线 (sync-figma-variables 写入)
 
 scripts/                    # 辅助脚本
 ├── css-vars-to-sample.mjs
@@ -149,6 +156,9 @@ scripts/                    # 辅助脚本
 ├── figma-dtcg-to-sample.mjs # W3C DTCG → Figma Native (合并多 Collection + 按名称解析别名)
 ├── sync-figma-variables.mjs # 经 Figma MCP(use_figma) 增量同步 Variables → 种子 / 协作文档 API / PostgreSQL
 ├── lib/figma-variables-sync.mjs (+ .test.mjs) # 同步核心：插件代码生成、增量还原与校验、Native 转换
+├── merge-miuix-text-styles.mjs # 按 Reference Token 名称追加 24 个 miuix Text Style (DTCG 流程后使用)
+├── data/miuix-text-styles.json # merge-miuix-text-styles 默认输入
+├── rename-comp-token-abbreviations.mjs # 一次性迁移：展开已有协作文档中 Component Token 叶子名缩写
 └── init-db.mjs              # 用迁移 SQL 初始化数据库
 
 docs/                       # 项目文档
@@ -332,12 +342,15 @@ npm run lint         # ESLint
 npm run db:generate  # 生成 Drizzle 迁移
 npm run db:migrate   # 执行 Drizzle 迁移（需要 DATABASE_URL）
 npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
+npm run figma:plugin  # = node scripts/sync-figma-variables.mjs plugin
+npm run figma:preview # = DRY_RUN=1 node scripts/sync-figma-variables.mjs apply
+npm run figma:apply   # = node scripts/sync-figma-variables.mjs apply
 ```
 
 ## 测试约定
 
-- 单元测试与源码同目录：`*.test.ts` / `*.test.tsx`
-- Vitest 配置：`vitest.config.ts`，环境 jsdom
+- 单元测试与源码同目录：`*.test.ts` / `*.test.tsx`；脚本测试为 `scripts/**/*.test.mjs`
+- Vitest 配置：`vitest.config.ts`，环境 jsdom，include 为 `src/**/*.{test,spec}.{ts,tsx}` 与 `scripts/**/*.test.mjs`
 - E2E 在 `e2e/` 目录，Playwright 配置在 `playwright.config.ts`
 - 属性测试使用 fast-check
 

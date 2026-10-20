@@ -66,7 +66,7 @@ npm run test:e2e
 - [ ] 搜索框可筛选 Token
 - [ ] Collection 与 Mode 可切换
 - [ ] HyperOS3 / HyperOS4 文档、编辑和日志互相隔离
-- [ ] Semantic Token 顶层组按 `bg → fill → stroke → text → mask → margin → padding → gap → radius` 排列
+- [ ] Semantic Token 顶层组按 `bg → fill → stroke → text → mask → margin → padding → gap → radius → text_style` 排列
 
 ### 4. Token 展示
 
@@ -99,7 +99,7 @@ npm run test:e2e
 - [ ] 日志包含 actor、IP、时间戳及必要的前后值
 - [ ] 可创建、下载和恢复当前文档的版本快照
 - [ ] 发生 revision 冲突时刷新到最新服务端文档
-- [ ] **待修复**：使用其他 `documentId` 的 `snapshotId` 恢复当前文档必须被拒绝；当前 `restoreSnapshot` 尚未校验快照归属
+- [ ] 使用其他 `documentId` 的 `snapshotId` 恢复当前文档返回 404，不修改文档、不写恢复日志
 
 ### 7. 主题
 

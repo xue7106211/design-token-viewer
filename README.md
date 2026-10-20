@@ -4,7 +4,7 @@ Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Varia
 
 ## 功能
 
-- 多套 Token 表切换：在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**；文档、编辑和日志按文档 ID 隔离，快照隔离限制见下文
+- 多套 Token 表切换：在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**；文档、编辑、日志、快照读取与恢复均按文档 ID 隔离
 - 服务端导入 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
 - 树形导航 + 搜索过滤，Grid / List 双视图
 - 多 Collection、多 Mode 切换
@@ -49,6 +49,9 @@ npm run dev
 | `npm run db:generate` | 生成 Drizzle 迁移 |
 | `npm run db:migrate` | 执行数据库迁移 |
 | `npm run db:init` | 初始化数据库 |
+| `npm run figma:plugin` | 生成 Figma MCP 只读导出插件代码（`sync-figma-variables.mjs plugin`） |
+| `npm run figma:preview` | 预览 Figma 增量同步结果，不写入（`DRY_RUN=1 … apply`） |
+| `npm run figma:apply` | 执行 Figma 增量同步到 `--seed` / `--api` / `--db` |
 
 ## 项目结构
 
@@ -77,14 +80,15 @@ src/
 │   ├── token-resolver.ts
 │   ├── tree-builder.ts
 │   ├── token-rebuilder.ts
+│   ├── typography.ts
 │   └── contrast.ts
 ├── stores/           # Zustand UI 状态与前端日志缓存
 ├── types/            # TypeScript 类型
 └── data/             # HyperOS3 / HyperOS4 种子
 
-figma-token/          # HyperOS4 DTCG 源（3 Collection × Light/Dark）
+figma-token/          # HyperOS4 DTCG 源（3 Collection × Light/Dark）+ figma-variables.json 增量同步基线
 drizzle/              # 数据库迁移 SQL
-scripts/              # 数据转换与数据库初始化脚本
+scripts/              # 数据转换、Figma 同步、Text Style 合并与数据库脚本
 docs/                 # 验收、Figma 数据源和结构说明；superpowers/plans 为历史计划
 e2e/                  # Playwright E2E 测试
 ```
@@ -110,7 +114,7 @@ e2e/                  # Playwright E2E 测试
 
 应用在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**。
 
-- 每套表对应一份服务端文档，编辑和变更日志按 `document_id` 隔离；快照列表、读取和导出也按文档隔离。
+- 每套表对应一份服务端文档，编辑和变更日志按 `document_id` 隔离；快照列表、读取、导出和恢复也按文档隔离，恢复其他文档的快照返回 404。
 - 注册表位于 `src/lib/collaboration/server.ts` 的 `DOCUMENTS`；种子分别为 `src/data/sample-tokens.json` 与 `src/data/sample-tokens-hyperos4.json`。
 - `src/lib/collaboration/client.ts` 统一通过 `x-document-id` 请求头标识当前文档。
 
@@ -140,8 +144,8 @@ DATABASE_URL=... node scripts/sync-figma-variables.mjs apply --db               
 
 ## 已知限制
 
-- 快照列表、读取和导出会校验当前文档；但当前 `restoreSnapshot` 尚未校验 `snapshot.documentId`，已知其他文档的 snapshot ID 时存在跨文档恢复风险。修复前不要把快照恢复描述为完全隔离，也不要使用来源不明的 snapshot ID。
 - 导出对话框请求快照失败时，当前实现会保留快照来源标签并回退到本地代码。修复为 fail-closed 前，必须确认快照请求成功后再复制或下载，不能仅凭界面标签认定文件来自该快照。
+- `move-to-group` 尚未严格拒绝缺失或非字符串的 `targetGroup`，也未校验目标名称冲突及 `tokenIds` 与可选 `collectionId` 的归属一致性。
 
 ## 路径别名
 
