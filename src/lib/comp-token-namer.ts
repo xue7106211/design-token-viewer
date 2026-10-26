@@ -37,16 +37,39 @@ export interface CompTokenNameParts {
   part?: string;
   type: CompTokenType | string;
   role: CompTokenRole | string;
+  /** 可选；单段 snake_case，如 primary / grouped；默认款留空 */
+  variant?: string;
   /** 必填；缺省视为空，由校验提示 */
   state?: string;
 }
+
+/** 变体中禁止出现的颜色词（只提示，不拦截） */
+export const COLOR_WORDS = [
+  "white",
+  "grey",
+  "gray",
+  "black",
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "orange",
+  "purple",
+  "pink",
+  "brown",
+  "cyan",
+  "magenta",
+  "gold",
+  "silver",
+] as const;
 
 export type CompTokenValidationCode =
   | "not_snake_case"
   | "missing_state"
   | "state_not_last"
   | "part_contains_role"
-  | "part_contains_state";
+  | "part_contains_state"
+  | "variant_contains_color_or_state";
 
 export interface CompTokenValidationIssue {
   code: CompTokenValidationCode;
@@ -56,6 +79,7 @@ export interface CompTokenValidationIssue {
 const SNAKE_CASE_RE = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
 const ROLE_SET = new Set<string>(TOKEN_ROLES);
 const STATE_SET = new Set<string>(TOKEN_STATES);
+const COLOR_SET = new Set<string>(COLOR_WORDS);
 
 /** 规范化单段输入：去首尾空白，空串视为未填 */
 export function normalizeSegment(value: string | undefined | null): string {
@@ -64,7 +88,7 @@ export function normalizeSegment(value: string | undefined | null): string {
 
 /**
  * 拼接组件 Token 名（不含分组前缀）。
- * 结构：miuix_comp_{组件}_{部件?}_{类型}_{角色}_{状态}
+ * 结构：miuix_comp_{组件}_{部件?}_{类型}_{角色}_{变体?}_{状态}
  * 缺字段时仍尽量拼接可见部分，便于实时预览；完整合法性由 validate 负责。
  */
 export function buildCompTokenName(parts: CompTokenNameParts): string {
@@ -72,6 +96,7 @@ export function buildCompTokenName(parts: CompTokenNameParts): string {
   const part = normalizeSegment(parts.part);
   const type = normalizeSegment(parts.type);
   const role = normalizeSegment(parts.role);
+  const variant = normalizeSegment(parts.variant);
   const state = normalizeSegment(parts.state);
 
   const segments = [COMP_TOKEN_PREFIX];
@@ -79,6 +104,7 @@ export function buildCompTokenName(parts: CompTokenNameParts): string {
   if (part) segments.push(part);
   if (type) segments.push(type);
   if (role) segments.push(role);
+  if (variant) segments.push(variant);
   if (state) segments.push(state);
 
   return segments.join("_");
@@ -113,6 +139,7 @@ function partSegmentTokens(part: string): string[] {
  * - 必须是小写 snake_case（含完整名与各字段）
  * - 状态必填且必须在最后（中间不得出现状态词）
  * - 部件里不能出现角色词或状态词
+ * - 变体里不能出现颜色词或状态词
  */
 export function validateCompTokenName(
   parts: CompTokenNameParts
@@ -122,12 +149,18 @@ export function validateCompTokenName(
   const part = normalizeSegment(parts.part);
   const type = normalizeSegment(parts.type);
   const role = normalizeSegment(parts.role);
+  const variant = normalizeSegment(parts.variant);
   const state = normalizeSegment(parts.state);
   const name = buildCompTokenName(parts);
 
-  const fieldSegments = [component, ...(part ? [part] : []), type, role, state].filter(
-    Boolean
-  );
+  const fieldSegments = [
+    component,
+    ...(part ? [part] : []),
+    type,
+    role,
+    ...(variant ? [variant] : []),
+    state,
+  ].filter(Boolean);
   const hasInvalidCase =
     fieldSegments.some((s) => !isSnakeCaseSegment(s)) ||
     (name.length > 0 && !isSnakeCaseSegment(name));
@@ -174,6 +207,20 @@ export function validateCompTokenName(
       issues.push({
         code: "part_contains_state",
         message: `部件里不能出现状态词（检测到：${stateHits.join(", ")}）`,
+      });
+    }
+  }
+
+  if (variant) {
+    const tokens = partSegmentTokens(variant);
+    const colorHits = tokens.filter((t) => COLOR_SET.has(t));
+    const stateHits = tokens.filter((t) => STATE_SET.has(t));
+    const hits = [...new Set([...colorHits, ...stateHits])];
+
+    if (hits.length > 0) {
+      issues.push({
+        code: "variant_contains_color_or_state",
+        message: `变体里不能出现颜色词或状态词（检测到：${hits.join(", ")}）`,
       });
     }
   }
