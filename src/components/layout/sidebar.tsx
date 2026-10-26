@@ -70,6 +70,7 @@ export function Sidebar() {
           <PanelLeftOpen className="h-4 w-4" />
         </Button>
         <div className="mt-auto">
+          <TokenNamerEntry collapsed />
           <SnapshotDialog collapsed />
           <ChangeLogDialog collapsed />
         </div>
@@ -170,8 +171,9 @@ export function Sidebar() {
         </div>
       </ScrollArea>
 
-      {/* 底部日志入口 */}
+      {/* 底部工具 / 快照 / 日志入口 */}
       <div className="shrink-0 space-y-1 border-t px-3 py-2">
+        <TokenNamerEntry />
         <SnapshotDialog />
         <ChangeLogDialog />
       </div>
