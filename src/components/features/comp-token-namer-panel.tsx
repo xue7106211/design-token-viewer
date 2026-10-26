@@ -38,21 +38,11 @@ import {
 } from "@/lib/comp-token-namer";
 import { ThemeToggle } from "@/components/features/theme-toggle";
 
-function FieldLabel({
-  children,
-  optional,
-}: {
-  children: ReactNode;
-  optional?: boolean;
-}) {
+function FieldLabel({ children }: { children: ReactNode }) {
   return (
     <div className="mb-1.5 flex items-baseline gap-1.5 text-xs font-medium text-foreground">
       <span>{children}</span>
-      {optional ? (
-        <span className="font-normal text-muted-foreground">可选</span>
-      ) : (
-        <span className="font-normal text-muted-foreground">必填</span>
-      )}
+      <span className="font-normal text-muted-foreground">必填</span>
     </div>
   );
 }
@@ -91,7 +81,8 @@ export function CompTokenNamerPanel() {
   const [component, setComponent] = useState("menu");
   const [componentQuery, setComponentQuery] = useState("");
   const [componentOpen, setComponentOpen] = useState(false);
-  const [part, setPart] = useState("secondary_tab");
+  // 部件字段暂时从 UI 隐藏；命名结构仍支持，固定为空以跳过该段
+  const part = "";
   const [type, setType] = useState<CompTokenType>("color");
   const [role, setRole] = useState<CompTokenRole>("fill");
   const [state, setState] = useState<CompTokenState>("enabled");
@@ -175,7 +166,7 @@ export function CompTokenNamerPanel() {
           <div className="min-w-0">
             <h1 className="truncate text-sm font-semibold">组件 Token 快速命名</h1>
             <p className="hidden text-xs text-muted-foreground sm:block">
-              miuix_comp_&#123;组件&#125;_&#123;部件?&#125;_&#123;类型&#125;_&#123;角色&#125;_&#123;状态&#125;
+              miuix_comp_&#123;组件&#125;_&#123;类型&#125;_&#123;角色&#125;_&#123;状态&#125;
             </p>
           </div>
         </div>
@@ -239,18 +230,6 @@ export function CompTokenNamerPanel() {
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
-          </div>
-
-          <div>
-            <FieldLabel optional>部件</FieldLabel>
-            <Input
-              value={part}
-              onChange={(e) => setPart(e.target.value)}
-              placeholder="secondary_tab / title"
-              className="font-mono text-sm"
-              spellCheck={false}
-              autoComplete="off"
-            />
           </div>
 
           <div>
