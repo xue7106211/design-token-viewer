@@ -7,7 +7,6 @@ import { ViewToggle } from "@/components/features/view-toggle";
 import { ModeSwitcher } from "@/components/features/mode-switcher";
 import { ExportDialog } from "@/components/features/export-dialog";
 import { ThemeToggle } from "@/components/features/theme-toggle";
-import { ToolsMenu } from "@/components/features/tools-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { FileJson } from "lucide-react";
 
