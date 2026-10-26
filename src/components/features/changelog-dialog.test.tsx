@@ -46,7 +46,7 @@ function setupStore(
   entries: LogEntry[] = [],
   extras: { total?: number; error?: string | null; isLoading?: boolean; documentId?: string } = {}
 ) {
-  (useChangeLogStore as ReturnType<typeof vi.fn>).mockImplementation(
+  (useChangeLogStore as unknown as ReturnType<typeof vi.fn>).mockImplementation(
     (selector: (s: {
       entries: LogEntry[];
       total: number;
@@ -62,7 +62,7 @@ function setupStore(
         error: extras.error ?? null,
       })
   );
-  (useTokenStore as ReturnType<typeof vi.fn>).mockImplementation(
+  (useTokenStore as unknown as ReturnType<typeof vi.fn>).mockImplementation(
     (selector: (s: {
       updatedAt?: number;
       updatedBy?: string;

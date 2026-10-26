@@ -6,12 +6,45 @@ import { TokenTree } from "@/components/features/token-tree";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp, RefreshCw } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp, RefreshCw, WholeWord } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChangeLogDialog } from "@/components/features/changelog-dialog";
 import { SnapshotDialog } from "@/components/features/snapshot-dialog";
 import { DocumentSwitcher } from "@/components/features/document-switcher";
 import { useState } from "react";
+
+function TokenNamerEntry({ collapsed = false }: { collapsed?: boolean }) {
+  if (collapsed) {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-7 w-7 text-muted-foreground cursor-pointer"
+        title="Token 命名工具"
+        asChild
+      >
+        <Link href="/tools/comp-token-namer">
+          <WholeWord className="h-4 w-4" />
+        </Link>
+      </Button>
+    );
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      size="sm"
+      className="w-full justify-start gap-2 cursor-pointer text-muted-foreground hover:text-foreground"
+      asChild
+    >
+      <Link href="/tools/comp-token-namer">
+        <WholeWord className="h-3.5 w-3.5" />
+        <span className="text-xs">Token 命名工具</span>
+      </Link>
+    </Button>
+  );
+}
 
 export function Sidebar() {
   const collections = useTokenStore((s) => s.collections);
@@ -37,6 +70,7 @@ export function Sidebar() {
           <PanelLeftOpen className="h-4 w-4" />
         </Button>
         <div className="mt-auto">
+          <TokenNamerEntry collapsed />
           <SnapshotDialog collapsed />
           <ChangeLogDialog collapsed />
         </div>
@@ -137,8 +171,9 @@ export function Sidebar() {
         </div>
       </ScrollArea>
 
-      {/* 底部日志入口 */}
+      {/* 底部工具 / 快照 / 日志入口 */}
       <div className="shrink-0 space-y-1 border-t px-3 py-2">
+        <TokenNamerEntry />
         <SnapshotDialog />
         <ChangeLogDialog />
       </div>
