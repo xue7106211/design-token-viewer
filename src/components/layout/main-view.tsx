@@ -36,7 +36,6 @@ export function MainView() {
         <div className="flex items-center gap-2">
           <ModeSwitcher />
           <ViewToggle />
-          <ToolsMenu />
           <ExportDialog />
           <ThemeToggle />
         </div>
