@@ -38,11 +38,19 @@ import {
 } from "@/lib/comp-token-namer";
 import { ThemeToggle } from "@/components/features/theme-toggle";
 
-function FieldLabel({ children }: { children: ReactNode }) {
+function FieldLabel({
+  children,
+  optional = false,
+}: {
+  children: ReactNode;
+  optional?: boolean;
+}) {
   return (
     <div className="mb-1.5 flex items-baseline gap-1.5 text-xs font-medium text-foreground">
       <span>{children}</span>
-      <span className="font-normal text-muted-foreground">必填</span>
+      <span className="font-normal text-muted-foreground">
+        {optional ? "可选" : "必填"}
+      </span>
     </div>
   );
 }
@@ -85,6 +93,7 @@ export function CompTokenNamerPanel() {
   const part = "";
   const [type, setType] = useState<CompTokenType>("color");
   const [role, setRole] = useState<CompTokenRole>("fill");
+  const [variant, setVariant] = useState("");
   const [state, setState] = useState<CompTokenState>("enabled");
   const [withGroupPrefix, setWithGroupPrefix] = useState(false);
   const [history, setHistory] = useState<CompTokenHistoryEntry[]>(() => {
@@ -100,8 +109,8 @@ export function CompTokenNamerPanel() {
   );
 
   const parts = useMemo(
-    () => ({ component, part, type, role, state }),
-    [component, part, type, role, state]
+    () => ({ component, part, type, role, variant, state }),
+    [component, part, type, role, variant, state]
   );
 
   const name = useMemo(() => buildCompTokenName(parts), [parts]);
@@ -166,7 +175,7 @@ export function CompTokenNamerPanel() {
           <div className="min-w-0">
             <h1 className="truncate text-sm font-semibold">组件 Token 快速命名</h1>
             <p className="hidden text-xs text-muted-foreground sm:block">
-              miuix_comp_&#123;组件&#125;_&#123;类型&#125;_&#123;角色&#125;_&#123;状态&#125;
+              miuix_comp_&#123;组件&#125;_&#123;类型&#125;_&#123;角色&#125;_&#123;变体?&#125;_&#123;状态&#125;
             </p>
           </div>
         </div>
@@ -240,6 +249,18 @@ export function CompTokenNamerPanel() {
           <div>
             <FieldLabel>角色</FieldLabel>
             <SegmentChips options={TOKEN_ROLES} value={role} onChange={setRole} />
+          </div>
+
+          <div>
+            <FieldLabel optional>变体</FieldLabel>
+            <Input
+              value={variant}
+              onChange={(e) => setVariant(e.target.value)}
+              placeholder="留空为默认款；如 primary / grouped"
+              className="font-mono text-sm"
+              spellCheck={false}
+              autoComplete="off"
+            />
           </div>
 
           <div>

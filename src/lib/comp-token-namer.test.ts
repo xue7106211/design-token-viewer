@@ -35,6 +35,36 @@ describe("buildCompTokenName", () => {
     ).toBe("miuix_comp_button_color_bg_enabled");
   });
 
+  it("正例：含变体 miuix_comp_button_color_fill_primary_enabled", () => {
+    expect(
+      buildCompTokenName({
+        component: "button",
+        type: "color",
+        role: "fill",
+        variant: "primary",
+        state: "enabled",
+      })
+    ).toBe("miuix_comp_button_color_fill_primary_enabled");
+  });
+
+  it("变体留空时与无变体结果一致", () => {
+    const withoutVariant = buildCompTokenName({
+      component: "button",
+      type: "color",
+      role: "fill",
+      state: "enabled",
+    });
+    const withEmptyVariant = buildCompTokenName({
+      component: "button",
+      type: "color",
+      role: "fill",
+      variant: "",
+      state: "enabled",
+    });
+    expect(withoutVariant).toBe("miuix_comp_button_color_fill_enabled");
+    expect(withEmptyVariant).toBe(withoutVariant);
+  });
+
   it("radius 可配任意角色", () => {
     expect(
       buildCompTokenName({
@@ -67,6 +97,46 @@ describe("buildCompTokenPath / formatCompTokenDisplay", () => {
 describe("validateCompTokenName", () => {
   it("正例通过，无提示", () => {
     expect(validateCompTokenName(validExample)).toEqual([]);
+  });
+
+  it("正例含变体 primary 通过，无提示", () => {
+    expect(
+      validateCompTokenName({
+        component: "button",
+        type: "color",
+        role: "fill",
+        variant: "primary",
+        state: "enabled",
+      })
+    ).toEqual([]);
+  });
+
+  it("变体含颜色词 white → variant_contains_color_or_state", () => {
+    const issues = validateCompTokenName({
+      component: "button",
+      type: "color",
+      role: "fill",
+      variant: "white",
+      state: "enabled",
+    });
+    expect(issues.map((i) => i.code)).toContain("variant_contains_color_or_state");
+    expect(
+      issues.find((i) => i.code === "variant_contains_color_or_state")?.message
+    ).toMatch(/white/);
+  });
+
+  it("变体含状态词 pressed → variant_contains_color_or_state", () => {
+    const issues = validateCompTokenName({
+      component: "button",
+      type: "color",
+      role: "fill",
+      variant: "pressed",
+      state: "enabled",
+    });
+    expect(issues.map((i) => i.code)).toContain("variant_contains_color_or_state");
+    expect(
+      issues.find((i) => i.code === "variant_contains_color_or_state")?.message
+    ).toMatch(/pressed/);
   });
 
   it("缺状态 → missing_state", () => {
