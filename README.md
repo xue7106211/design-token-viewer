@@ -1,17 +1,21 @@
 # Design Token Viewer
 
-Figma 设计令牌可视化工具，支持 Figma Variables 原生导出与 Variables2CSS 格式的 JSON 文件浏览、编辑和代码导出。
+个人用的 Design Token 可视化工具：浏览、对照、编辑并导出 Figma Variables JSON（原生导出与 Variables2CSS）。**不是** Figma 插件，也不在应用内直接读写 Figma 文件；与 Figma 的同步通过离线脚本 / MCP 辅助完成。
+
+面向 Xiaomi HyperOS 设计系统，当前为活跃维护的个人项目。
+
+## 相关链接
+
+- 生产站：[https://hyperostoken.netlify.app/](https://hyperostoken.netlify.app/)
+- Component Token 快速命名工具：[/tools/comp-token-namer](https://hyperostoken.netlify.app/tools/comp-token-namer)
 
 ## 功能
 
 - 多套 Token 表切换：在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**；文档、编辑、日志、快照读取与恢复均按文档 ID 隔离
+- 浏览与对照：树形导航 + 搜索过滤，Grid / List 双视图；多 Collection、多 Mode；颜色色块 / HEX·RGB·HSL / WCAG 对比度；数值·字符串·布尔预览；别名引用链路与反向引用
+- Component Token 快速命名工具入口：侧边栏可打开 `/tools/comp-token-namer`
 - 服务端导入 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
-- 树形导航 + 搜索过滤，Grid / List 双视图
-- 多 Collection、多 Mode 切换
-- 颜色令牌：色块预览、HEX/RGB/HSL 值、WCAG 对比度检查
-- 数值 / 字符串 / 布尔令牌预览
 - 复合文字样式 Token（`TYPOGRAPHY`，一个 Figma Text Style = 一个 Token）：字段可分别引用 Reference Token，以 `Ag` + `32/42` + 字体/字重展示，导出为 CSS `font` 简写和 Android `<style>`
-- 别名引用链路可视化，反向引用查看
 - 保留并展示 Figma description；Token Inspector 在 description 之后、COLOR 对比度之前展示 Token Scope，支持 COLOR、NUMBER、STRING、BOOLEAN 四种 Token 类型、多个 scope Badge，无 scope 时显示“未设置”
 - 令牌编辑：值、名称、描述、Code Syntax、别名引用
 - 令牌删除、批量移动分组、分组重命名、令牌重排序；拖放移动时可在同一次 revision 更新中同步重排序
@@ -27,12 +31,24 @@ Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · shadcn/ui · Zustand �
 
 ## 快速开始
 
+仓库未声明 `engines`；本地与 CI 使用 **Node.js 22**（与当前开发环境一致，Next.js 16 要求 Node ≥ 20.9）。
+
 ```bash
-npm install
+npm install   # 或 npm ci（CI / 干净安装）
 npm run dev
 ```
 
 打开 [http://localhost:3000](http://localhost:3000)，默认会加载服务端的 HyperOS 4 Token 文档。
+
+常用本地命令：
+
+| 命令 | 说明 |
+|------|------|
+| `npm install` / `npm ci` | 安装依赖 |
+| `npm run dev` | 开发服务器 |
+| `npm run build` | 生产构建 |
+| `npm run lint` | ESLint 检查 |
+| `npm run test` | 单元测试 (Vitest) |
 
 ## 命令
 
