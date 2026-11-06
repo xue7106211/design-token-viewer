@@ -25534,11 +25534,11 @@
       "valuesByMode": {
         "mode_light": {
           "type": "NUMBER",
-          "value": 0.699999988079071
+          "value": 0.7
         },
         "mode_dark": {
           "type": "NUMBER",
-          "value": 0.699999988079071
+          "value": 0.7
         }
       },
       "description": "组件高度基础数值（纵向）：0.7。胶囊型组件高度等于端部半圆直径。",

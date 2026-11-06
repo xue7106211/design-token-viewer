@@ -19,6 +19,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { f32 } from "./lib/figma-variables-sync.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -50,12 +51,21 @@ function walk(obj, path, cb) {
 function colorValue(tok) {
   const v = tok.$value;
   const [r, g, b] = v.components;
-  return { type: "COLOR", value: { r, g, b, a: v.alpha ?? 1 } };
+  // Figma stores channels as float32; sanitize to shortest matching decimal (e.g. 0.6999… → 0.7).
+  return {
+    type: "COLOR",
+    value: {
+      r: f32(r),
+      g: f32(g),
+      b: f32(b),
+      a: f32(v.alpha ?? 1),
+    },
+  };
 }
 
 function rawValue(tok) {
   if (tok.$type === "color") return colorValue(tok);
-  if (tok.$type === "number") return { type: "NUMBER", value: tok.$value };
+  if (tok.$type === "number") return { type: "NUMBER", value: f32(tok.$value) };
   // Fallback: treat anything else as string
   return { type: "STRING", value: String(tok.$value) };
 }

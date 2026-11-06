@@ -2050,7 +2050,7 @@
     "vertical": {
       "miuix_sys_height_vertical_0_7": {
         "$type": "number",
-        "$value": 0.699999988079071,
+        "$value": 0.7,
         "$extensions": {
           "com.figma.variableId": "VariableID:7895:5",
           "com.figma.scopes": [
