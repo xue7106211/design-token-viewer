@@ -6,13 +6,48 @@ import { TokenTree } from "@/components/features/token-tree";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp, RefreshCw, WholeWord } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen, ChevronsUpDown, ChevronsDownUp, RefreshCw, WholeWord, Figma } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChangeLogDialog } from "@/components/features/changelog-dialog";
 import { SnapshotDialog } from "@/components/features/snapshot-dialog";
 import { DocumentSwitcher } from "@/components/features/document-switcher";
 import { useState } from "react";
+
+const OS5_SPEC_URL =
+  "https://www.figma.com/design/YeNxagZUBbfuxxd4LuIlDX/OS5_%E8%AE%BE%E8%AE%A1%E6%A0%87%E5%87%86%E5%8C%96?node-id=3078-60823&t=qVhz6d8IiuNhCGNE-1";
+
+function Os5SpecEntry({ collapsed = false }: { collapsed?: boolean }) {
+  if (collapsed) {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        className="h-7 w-7 text-muted-foreground cursor-pointer"
+        title="OS5 新标准规范"
+        asChild
+      >
+        <a href={OS5_SPEC_URL} target="_blank" rel="noopener noreferrer">
+          <Figma className="h-4 w-4" />
+        </a>
+      </Button>
+    );
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      size="sm"
+      className="w-full justify-start gap-2 cursor-pointer text-muted-foreground hover:text-foreground"
+      asChild
+    >
+      <a href={OS5_SPEC_URL} target="_blank" rel="noopener noreferrer">
+        <Figma className="h-3.5 w-3.5" />
+        <span className="text-xs">OS5 新标准规范</span>
+      </a>
+    </Button>
+  );
+}
 
 function TokenNamerEntry({ collapsed = false }: { collapsed?: boolean }) {
   if (collapsed) {
@@ -70,6 +105,7 @@ export function Sidebar() {
           <PanelLeftOpen className="h-4 w-4" />
         </Button>
         <div className="mt-auto">
+          <Os5SpecEntry collapsed />
           <TokenNamerEntry collapsed />
           <SnapshotDialog collapsed />
           <ChangeLogDialog collapsed />
@@ -173,6 +209,7 @@ export function Sidebar() {
 
       {/* 底部工具 / 快照 / 日志入口 */}
       <div className="shrink-0 space-y-1 border-t px-3 py-2">
+        <Os5SpecEntry />
         <TokenNamerEntry />
         <SnapshotDialog />
         <ChangeLogDialog />
