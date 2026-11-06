@@ -14,13 +14,14 @@ files:
 
 所有修改服务端 Token 文档（`currentJson`）或快照的操作，都必须满足以下条件：
 
-1. **在一次 `repository.transact` 中完成**：读取文档 → `assertFreshRevision` → 保存（`revision + 1`）→ `addLog`。编辑类操作应复用 `service.ts` 中的 `updateDocument`；导入、快照创建/恢复等单独实现时也必须遵循同样顺序。不能在事务外写日志，也不能先写文档、再在另一个事务里写日志——AGENTS.md 约定日志写入失败时文档修改必须回滚。
-2. **每次写入只增加一次 revision、只记一条日志**。批量操作（如 `move-to-group` 同时改组和重排序）不得拆成多次 `updateDocument`。
-3. **有对应的 `ChangeType`**：新增操作时同时更新 `src/types/changelog.ts` 的 `ChangeType`、`src/lib/changelog.ts` 的中文标签，以及 `changelog-dialog.tsx` 中需要的展示分支；不得复用语义不符的已有类型。
-4. **Route Handler 透传 revision、actor 与文档 id**：使用 `readRevision(body)`、`actorFromRequest(request, body)` 和 `getTokenDocumentService(documentIdFromRequest(request))`，不得硬编码文档 id 或跳过 revision。前端 `token-store.ts` 的 action 必须携带当前 `revision` 与 actor，并用响应的 `TokenDocumentView` 更新状态。
-5. **按 `document_id` 隔离**：日志、快照的读取、导出与恢复只作用于当前文档；恢复快照时必须校验 `snapshot.documentId === document.id`，不匹配返回 404，且不改文档、不写日志。
+1. **改 `currentJson` 的操作在一次 `repository.transact` 中完成**：读取文档 → `assertFreshRevision` → 保存（`revision + 1`）→ `addLog`。编辑类操作应复用 `service.ts` 中的 `updateDocument`；导入、快照恢复等单独实现时也必须遵循同样顺序。不能在事务外写日志，也不能先写文档、再在另一个事务里写日志——AGENTS.md 约定日志写入失败时文档修改必须回滚。
+2. **每次改 `currentJson` 只增加一次 revision、只记一条日志**。批量操作（如 `move-to-group` 同时改组和重排序）不得拆成多次 `updateDocument`。
+3. **创建快照不改文档 revision**。`createSnapshot` 只把当前 `currentJson` 拷入 `snapshots`，并在同一事务里写一条 `create_snapshot` 日志；不得调用 `assertFreshRevision`，也不得 `revision + 1`。同步脚本（`sync-figma-variables.mjs` / `merge-miuix-text-styles.mjs`）会先建快照、再用读到的 revision 做 import；若建快照时 bump revision，后续 import 会误报冲突。
+4. **有对应的 `ChangeType`**：新增操作时同时更新 `src/types/changelog.ts` 的 `ChangeType`、`src/lib/changelog.ts` 的中文标签，以及 `changelog-dialog.tsx` 中需要的展示分支；不得复用语义不符的已有类型。
+5. **Route Handler 透传 revision、actor 与文档 id**：改 `currentJson` 的路由使用 `readRevision(body)`、`actorFromRequest(request, body)` 和 `getTokenDocumentService(documentIdFromRequest(request))`，不得硬编码文档 id 或跳过 revision。前端 `token-store.ts` 的 action 必须携带当前 `revision` 与 actor，并用响应的 `TokenDocumentView` 更新状态。创建快照的 POST 可不要求客户端 revision。
+6. **按 `document_id` 隔离**：日志、快照的读取、导出与恢复只作用于当前文档；恢复快照时必须校验 `snapshot.documentId === document.id`，不匹配返回 404，且不改文档、不写日志。
 
-违反这些条件会导致并发编辑互相覆盖、变更日志缺失或与文档不一致，或者 HyperOS3 / HyperOS4 的数据相互串改。修复提交 `1c5891d`（补齐 rename / reorder 日志）和 `b4a7470`（日志与保存同事务、校验快照归属）都源于此类问题。
+违反这些条件会导致并发编辑互相覆盖、变更日志缺失或与文档不一致、快照前置的导入流程失败，或者 HyperOS3 / HyperOS4 的数据相互串改。修复提交 `1c5891d`（补齐 rename / reorder 日志）和 `b4a7470`（日志与保存同事务、校验快照归属）都源于此类问题。
 
 ## 示例
 
@@ -48,4 +49,17 @@ renameCollection(input: { collectionId: string; name: string; revision: number; 
     return { oldValue: oldName, newValue: collection.name, meta: { collectionId: collection.id } };
   });
 },
+```
+
+正确——创建快照只写快照与日志，不 bump 文档 revision：
+
+```ts
+async createSnapshot(input: { name: string; description?: string; actor: Actor }) {
+  return repository.transact(async () => {
+    const document = await ensureDocument();
+    const snapshot = await repository.createSnapshot({ /* json: document.currentJson */ });
+    await repository.addLog({ changeType: "create_snapshot", /* ... */ });
+    return snapshot;
+  });
+}
 ```
