@@ -9,6 +9,9 @@
  *   - number $value: number
  *   - alias:  $extensions["com.figma.aliasData"].{targetVariableName, targetVariableSetName}
  *             (references another variable BY NAME within a collection)
+ *             Figma sometimes omits aliasData and leaves a DTCG reference string
+ *             ("{group.token}"); that form is resolved by path, preferring the
+ *             current collection.
  *
  * Output (figma-native):
  *   { collections:[{id,name,modes,variableIds}], variables:{ [id]:{id,name,type,valuesByMode,...} } }
@@ -68,6 +71,17 @@ function rawValue(tok) {
   if (tok.$type === "number") return { type: "NUMBER", value: f32(tok.$value) };
   // Fallback: treat anything else as string
   return { type: "STRING", value: String(tok.$value) };
+}
+
+/** DTCG alias string `{group.token}` → slash path. Null when the value is a concrete token. */
+function braceAliasPath(value) {
+  if (typeof value !== "string" || value.length < 3 || !value.startsWith("{") || !value.endsWith("}")) {
+    return null;
+  }
+  const inner = value.slice(1, -1);
+  if (!inner || /[{}]/.test(inner)) return null;
+  const path = inner.split(".").filter(Boolean).join("/");
+  return path || null;
 }
 
 // ---- Pass 1: read every collection/mode, collect token paths + per-mode raw token objects ----
@@ -142,6 +156,21 @@ for (const coll of COLLECTIONS) {
           `${coll.name}/${path} [${mode.file}] → ${targetColl}/${alias.targetVariableName}`
         );
         // fall through to raw resolved value
+      }
+      const bracePath = braceAliasPath(tok.$value);
+      if (bracePath) {
+        const targetId =
+          idForCollPath(coll.name, bracePath) ??
+          COLLECTIONS.map((other) => idForCollPath(other.name, bracePath)).find(Boolean);
+        if (targetId) {
+          valuesByMode[mode.modeId] = { type: "ALIAS", id: targetId };
+          aliasResolved++;
+          continue;
+        }
+        aliasUnresolved.push(
+          `${coll.name}/${path} [${mode.file}] → {${bracePath}} (no aliasData)`
+        );
+        continue;
       }
       valuesByMode[mode.modeId] = rawValue(tok);
     }

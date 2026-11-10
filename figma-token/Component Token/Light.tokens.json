@@ -1,5 +1,1181 @@
 {
+  "menu": {
+    "miuix_comp_menu_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的文字色（可用/默认）。使用于：.MenuItem。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8383:9940",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_text_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的文字色（禁用）。使用于：.MenuItem。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8383:9941",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_text_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：菜单的文字色（选中）。使用于：.MenuItem、.TrailingIcon。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8383:9942",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:191091320f1ae4e90caf365672d42fe25e087138/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_text_selected_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：菜单的选中状态下的禁用状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8383:9948",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:29c6c9722417d8f2aa712b68641065019f4a377e/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_text_list_title": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的文字色（分组标题）。使用于：.MenuItem。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8388:9951",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ec8c349cb3fae29a35dd7c27f66adacda52b89dd/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_list_title",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_divider": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的分割线色。使用于：.MenuItem。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8396:9952",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d2327a5ee0a80d9ead89a49f9ea1767eedb3d11b/-1:-1",
+          "targetVariableName": "stroke/divider/miuix_sys_color_stroke_divider",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_arrow_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的箭头图标默认色",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8396:9955",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:286850c18ad09dcba05b88a90039bb326c0f1abf/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_quaternary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_arrow_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的箭头图标禁用色",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8396:9956",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_fill_hovered": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的填充色（悬停）。使用于：.MenuItem。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8396:9953",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：菜单的填充色（按压）。使用于：.MenuItem。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8396:9954",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_fill_mask": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：菜单的蒙层填充（蒙层）。使用于：.DropdownMenu。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:4347:3503",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:766a65770f60ff71ea662cd9f7a223480696351b/-1:-1",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_menu_color_bg": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "整个菜单的容器背景色。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9975",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ae5e08816ecfda59d0c7f77a4bdc5d5d852a7ba3/-1:-1",
+          "targetVariableName": "bg/compoment/miuix_sys_color_bg_component",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "action_bar": {
+    "miuix_comp_action_bar_color_text_tittle_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的文字色（可用/默认、标题）。使用于：NavigationBar-ComponentSet、中间、中间导航状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8445:9952",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_subtitle_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的文字色（副标题、可用/默认）。使用于：NavigationBar-ComponentSet、中间。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8445:9955",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的文字色（可用/默认、图标）。使用于：NavigationBar-ComponentSet、FlatIconSet-Frame、FloatingIconSet-Frame、NavigationAtoms、中间、左侧。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8372:9935",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的文字色（按压态、图标）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8400:9943",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_fill_icon_base_plate_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的图标底片在悬浮状态下的按压状态色（按压态为叠加方式）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8400:9944",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_fill_flat_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：标题栏的填充色（可用/默认、平面）。使用于：IconPlateFloating-Container、icon背景材质、中间 平面&浮起、中间选择条材质、中间选择背景。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8404:9945",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+          "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_fill_icon_base_plate_hovered": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的填充色（底板、悬停、图标）。使用于：IconPlateFlat-Container、IconPlateFloating-Container。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8410:9947",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ffa31c19ad1f51e47a94d3f65c19d8505aca0327/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "标题栏组件的图标禁用色",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8413:9948",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "标题栏组件的图标激活状态色",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8413:9949",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:191091320f1ae4e90caf365672d42fe25e087138/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_activated_static_white": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "标题栏组件的图标在蓝底上的白色文字图标。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8418:9950",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_activated_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#3482FF"
+      },
+      "$description": "标题栏上的文字图标在激活状态下的禁用状态色。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8437:9951",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:29c6c9722417d8f2aa712b68641065019f4a377e/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_fill_overlay_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的填充色（激活/选中、遮罩）。使用于：中间、中间导航状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8555:9956",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:388784c87e22b4be63cd924649a5776a44e58727/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_selected",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_fill_overlay_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的填充色（按压、遮罩）。使用于：中间导航状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8556:9957",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_fill_overlay_hovered": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：标题栏的填充色（悬停、遮罩）。使用于：中间导航状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8556:9958",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_action_bar_color_text_icon_static_white_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#FFFFFF"
+      },
+      "$description": "标题栏的静态白色文字图标的禁用状态色。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9552:5",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:14f47a68f6e0b8187a63764820c156ac2d6abbc4/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "search_bar": {
+    "miuix_comp_search_color_fill_flat_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的背景填充（可用/默认、平面）。使用于：SearchBar-ComponentSet、pad 搜索框。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8661:14848",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_floating_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：搜索栏的填充色（浮起、可用/默认）。使用于：搜索条材质板子、Component 1。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8652:5",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+          "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的填充色（按压）。使用于：搜索标签。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8673:14849",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_hover": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的填充色（悬停）。使用于：搜索标签。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8673:14850",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_label_grey": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的填充色。使用于：搜索标签。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8675:14851",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_label_white": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：搜索栏的填充色。使用于：搜索标签。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8679:14852",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d30fa9c9cf8a6d16a7dbb5f01f2b0632be22d4c9/-1:-1",
+          "targetVariableName": "fill/list/miuix_sys_color_fill_list_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_clear_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的清除/关闭控件色（可用/默认、清除）。使用于：SearchBar-ComponentSet、pad 搜索框。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8680:14853",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ceee262ec21cbcc67fe12cfdf00b5c2dfd49f146/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_text_icon_search": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的文字色（图标）。使用于：SearchBar-ComponentSet、pad 搜索框。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8687:14854",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ceee262ec21cbcc67fe12cfdf00b5c2dfd49f146/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_text_prefab": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的占位文字色（占位）。使用于：SearchBar-ComponentSet、pad 搜索框。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8687:14856",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ceee262ec21cbcc67fe12cfdf00b5c2dfd49f146/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_text_terms": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的文字色（输入文字）。使用于：SearchBar-ComponentSet、搜索标签、pad 搜索框。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8690:14857",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_text_icon_closure": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：搜索栏的文字色（图标）。使用于：SearchBar-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8690:14858",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_search_color_fill_cursor": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：搜索栏的光标色（光标）。使用于：SearchBar-ComponentSet、pad 搜索框。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8695:14859",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
   "tabs": {
+    "miuix_comp_tabs_color_text_static_white_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：标签/筛选Chip的文字色（静态白、激活/选中）。使用于：ChipContent-SelectedExamples。说明：主要用于筛选 Chip。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8702:14860",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tabs_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：标签/筛选Chip的文字色（可用/默认）。使用于：ChipContent-UnselectedExamples。说明：主要用于筛选 Chip。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8722:14861",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tabs_color_fill_blue_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：标签/筛选Chip的填充色（激活/选中、蓝色）。使用于：IconPlateFloating-Container、SelectableChip-ComponentSet、ChipOption-MaterialStylePreview、ChipOption-VariantsPreview。说明：主要用于筛选 Chip。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8732:14862",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tabs_color_fill_green_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.11372549086809158,
+          0.8039215803146362,
+          0.22745098173618317
+        ],
+        "alpha": 1,
+        "hex": "#1DCD3A"
+      },
+      "$description": "用途：标签/筛选Chip的填充色（激活/选中、绿色）。使用于：SelectableChip-ComponentSet、ChipOption-MaterialStylePreview、ChipOption-VariantsPreview。说明：主要用于筛选 Chip。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8735:14864",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a9cea0a8785a89754bdb1ffc8efd24dc106b8511/-1:-1",
+          "targetVariableName": "fill/success/miuix_sys_color_fill_success_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tabs_color_fill_red_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：标签/筛选Chip的填充色（激活/选中、红色）。使用于：SelectableChip-ComponentSet、ChipOption-MaterialStylePreview、ChipOption-VariantsPreview。说明：主要用于筛选 Chip。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8735:14865",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:b47f730b877f64b60a2f1176ba4be0f10135a12d/-1:-1",
+          "targetVariableName": "fill/warning/miuix_sys_color_fill_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tabs_color_fill_yellow_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.7333333492279053,
+          0.05882352963089943
+        ],
+        "alpha": 1,
+        "hex": "#FFBB0F"
+      },
+      "$description": "用途：标签/筛选Chip的填充色（激活/选中、黄色）。使用于：SelectableChip-ComponentSet、ChipOption-MaterialStylePreview、ChipOption-VariantsPreview。说明：主要用于筛选 Chip。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8735:14866",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:eb6d3ff88df6d2721330440a4d00dafcbaef2743/-1:-1",
+          "targetVariableName": "fill/caution/miuix_sys_color_fill_caution_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
     "miuix_comp_tabs_color_fill_enabled": {
       "$type": "color",
       "$value": {
@@ -12,22 +1188,179 @@
         "alpha": 1,
         "hex": "#FFFFFF"
       },
+      "$description": "用途：标签/筛选Chip的填充色（可用/默认）。使用于：SelectableChip-ComponentSet、ChipOption-MaterialStylePreview、ChipOption-VariantsPreview。说明：主要用于筛选 Chip。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:4182:3738",
+        "com.figma.variableId": "VariableID:8735:14863",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
-          "targetVariableName": "solid/white/miuix_ref_white_solid_level_1000",
+          "targetVariableId": "VariableID:14bae7ea319ba6b6937678a4aa1ebee1cc35a361/-1:-1",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_1000",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
       }
     }
   },
-  "segment": {
-    "miuix_comp_segment_color_fill_enabled": {
+  "segmented": {
+    "miuix_comp_segmented_color_text_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：分段控件的文字色（激活/选中）。使用于：附属型状态、标题型状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8811:14868",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：分段控件的文字色（可用/默认）。使用于：附属型选项。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8811:14867",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_text_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：分段控件的文字色（按压）。使用于：附属型状态、标题型状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8826:14869",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5df4f09d6d6bc33491ee3c22aae2e0e2da0bbfea/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_fill_overlay_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：分段控件的填充色（激活/选中、遮罩）。使用于：附属型选项、附属型状态、标题型状态、Component 1。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8826:14870",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:388784c87e22b4be63cd924649a5776a44e58727/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_selected",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_fill_overlay_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：分段控件的填充色（按压、遮罩）。使用于：附属型状态、标题型状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8826:14871",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_fill_overlay_hover": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：分段控件的填充色（遮罩、悬停）。使用于：附属型状态、标题型状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8826:14872",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_fill_flat_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -39,49 +1372,21 @@
         "alpha": 1,
         "hex": "#FFFFFF"
       },
+      "$description": "用途：分段控件的填充色（可用/默认、平面）。使用于：SegmentedControls-ComponentSet、Component 1、SegmentedControls-ComponentSet/亮色模式/5/灰色背景、SegmentedControls-ComponentSet/亮色模式/5/白色背景、标题型选项板子、附属型选项。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:3616:43",
+        "com.figma.variableId": "VariableID:8836:14873",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
-          "targetVariableName": "solid/white/miuix_ref_white_solid_level_1000",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
+          "targetVariableId": "VariableID:d30fa9c9cf8a6d16a7dbb5f01f2b0632be22d4c9/-1:-1",
+          "targetVariableName": "fill/list/miuix_sys_color_fill_list_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
         }
       }
-    }
-  },
-  "sidebars": {
-    "miuix_comp_sidebar_color_text_yel_enabled": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          1,
-          0.73333335,
-          0.05882353
-        ],
-        "alpha": 1,
-        "hex": "#FFBB0F"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:4331:3502",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:6e30e39c63a22e66e1e089b3309d9bfbffe9b713/-1:-1",
-          "targetVariableName": "solid/yellow/miuix_ref_yellow_solid_level_1000",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    }
-  },
-  "scroll": {
-    "miuix_comp_scroll_color_fill_enabled": {
+    },
+    "miuix_comp_segmented_color_fill_flat_outline_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -90,50 +1395,234 @@
           0,
           0
         ],
-        "alpha": 0.1,
+        "alpha": 0.05999999865889549,
         "hex": "#000000"
       },
+      "$description": "用途：分段控件的描边色（可用/默认、平面）。使用于：SegmentedControls-ComponentSet、SegmentedControls-ComponentSet/亮色模式/5/白色背景、附属型选项、标题型选项板子。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:3616:55",
+        "com.figma.variableId": "VariableID:8847:14875",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:405c6b6f6ddd4570cd68312e0c20082c31889d32/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_100",
+          "targetVariableId": "VariableID:388784c87e22b4be63cd924649a5776a44e58727/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_selected",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_segmented_color_fill_floating_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：分段控件的填充色（浮起、可用/默认）。使用于：材质板子。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8836:14874",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+          "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "navigation_bar": {
+    "miuix_comp_navigation_bar_color_text_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部导航的文字色（选中）。使用于：TabItem-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8909:14876",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_navigation_bar_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部导航的文字色（可用/默认）。使用于：TabItem-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8909:15248",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_navigation_bar_color_text_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部导航的文字色（按压）。使用于：TabItem-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8913:15249",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5df4f09d6d6bc33491ee3c22aae2e0e2da0bbfea/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_navigation_bar_color_fill_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部导航的填充色（选中）。使用于：BottomTab-Showcase、BottomTab-Mini-Showcase、BottomTab-Horizontal-Showcase、TabItem-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8913:15250",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:388784c87e22b4be63cd924649a5776a44e58727/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_selected",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_navigation_bar_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部导航的填充色（按压）。使用于：TabItem-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8913:15251",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_navigation_bar_color_fill_hover": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部导航的填充色（悬停）。使用于：TabItem-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8913:15252",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_navigation_bar_color_fill_floating_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：底部导航的填充色（浮起、可用/默认）。使用于：TabMaterial-Showcase、TabMaterial-Mini-Showcase、TabMaterial-Horizontal-Showcase、FabMaterial-Showcase。说明：绑定在底部 Tab Bars，非顶部标题栏。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8920:15253",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+          "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
       }
     },
-    "miuix_comp_scroll_color_fill_pressed": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "alpha": 0.3,
-        "hex": "#000000"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3616:64",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:a003d59e18794036617328dbac5ca4ef425ab277/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_300",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    }
-  },
-  "menu": {
-    "miuix_comp_menu_color_fill_mask": {
+    "miuix_comp_navigation_bar_text_static_white_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -142,25 +1631,1229 @@
           1,
           1
         ],
-        "alpha": 0.4,
+        "alpha": 1,
         "hex": "#FFFFFF"
       },
+      "$description": "底部导航栏的 Fab 上的静态白文字图标色",
       "$extensions": {
-        "com.figma.variableId": "VariableID:4347:3503",
+        "com.figma.variableId": "VariableID:9247:4958",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "tool_bar": {
+    "miuix_comp_tool_bar_color_text_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的文字色（激活/选中）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8985:4950",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的文字色（可用/默认）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8986:4951",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_text_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的文字色（按压）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8986:4952",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5df4f09d6d6bc33491ee3c22aae2e0e2da0bbfea/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_text_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的文字色（禁用）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8986:4953",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_fill_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的填充色（激活/选中）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9003:4954",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:388784c87e22b4be63cd924649a5776a44e58727/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_selected",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_fill_hover": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的填充色（悬停）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9003:4955",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：底部工具栏的填充色（按压）。使用于：.组件状态变化。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9003:4956",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_tool_bar_color_fill_floating_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：底部工具栏的填充色（浮起、可用/默认）。使用于：.3个材质切换。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9009:4957",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+          "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "sidebar": {
+    "miuix_comp_sidebar_color_list_text_select_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：侧边导航的文字色（可用/默认）。使用于：MenuContentAtoms。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8963:376",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_sidebar_color_list_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：侧边导航的文字色（可用/默认）。使用于：MenuContentAtoms。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8964:379",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_sidebar_color_fill_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：侧边导航的填充色（选中）。使用于：一级导航-交互状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8964:380",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:388784c87e22b4be63cd924649a5776a44e58727/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_selected",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_sidebar_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：侧边导航的填充色（按压）。使用于：一级导航-交互状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8964:381",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_sidebar_color_fill_hover": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：侧边导航的填充色（悬停）。使用于：一级导航-交互状态。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8964:382",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "index": {
+    "miuix_comp_index_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：索引条的文字色（可用/默认）。使用于：Index-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8976:388",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:286850c18ad09dcba05b88a90039bb326c0f1abf/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_quaternary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_index_color_text_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：索引条的文字色（选中）。使用于：Index-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8976:390",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:191091320f1ae4e90caf365672d42fe25e087138/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_index_color_text_warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：索引条的文字色（警告）。使用于：Index-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8976:392",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4c29baebbd5151878cb275dfdf65837c947b1c7f/-1:-1",
+          "targetVariableName": "text/warning/miuix_sys_color_text_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_index_color_fill": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：索引条的填充色。使用于：Index-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8976:389",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ffa31c19ad1f51e47a94d3f65c19d8505aca0327/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_index_gap": {
+      "$type": "number",
+      "$value": 6,
+      "$description": "用途：索引条的项间距。使用于：Index-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8976:393",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a2794198f8c37a2ffd10b4e83ea2810818a5ed10/-1:-1",
+          "targetVariableName": "number/space/miuix_ref_space_6",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "button": {
+    "miuix_comp_button_color_fill_primary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：按钮的填充色（可用/默认、主色）。使用于：DefaultButtonGroup-ComponentSet、SmallButton-ComponentSet、Component 76、DefaultButton-ComponentSet、DialogButtonGroup-ComponentSet、LoadingButton-ComponentSet…。说明：亦用于：Component 76、DialogButtonGroup-ComponentSet、LoadingButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8409:9960",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_fill_primary_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：按钮的填充色（禁用、主色）。使用于：DefaultButton-ComponentSet、LoadingButton-ComponentSet。说明：亦用于：LoadingButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8171:115",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:409b65959f7af5963500822b9ed4a6312052bfd9/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_fill_secondary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：按钮的填充色（次要、可用/默认）。使用于：DefaultButtonGroup-ComponentSet、SmallButton-ComponentSet、ActionButton-ComponentSet、DefaultButton-ComponentSet、DialogButtonGroup-ComponentSet、LoadingButton-ComponentSet…。说明：亦用于：DialogButtonGroup-ComponentSet、LoadingButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8409:9957",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_fill_secondary_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：按钮的填充色（次要、禁用）。使用于：SmallButton-ComponentSet、MiniButton-ComponentSet、DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8409:9958",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_text_primary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：按钮的文字色（可用/默认、主色）。使用于：SmallButton-ComponentSet、MiniButton-ComponentSet、DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8409:9959",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_text_primary_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：按钮的文字色（禁用、主色）。使用于：LoadingButton-ComponentSet。说明：亦用于：LoadingButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8411:9961",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_text_secondary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：按钮的文字色（次要、可用/默认）。使用于：SmallButton-ComponentSet、MiniButton-ComponentSet、DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8411:9962",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_text_warning_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：按钮的文字色（可用/默认、警告）。使用于：SmallButton-ComponentSet、MiniButton-ComponentSet、DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8417:9967",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4c29baebbd5151878cb275dfdf65837c947b1c7f/-1:-1",
+          "targetVariableName": "text/warning/miuix_sys_color_text_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_text_warning_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：按钮的文字色（禁用、警告）。使用于：SmallButton-ComponentSet、MiniButton-ComponentSet、DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8417:9968",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:99512b32d7297f3bd0147fdcfeca55f3395234a0/-1:-1",
+          "targetVariableName": "text/warning/miuix_sys_color_text_warning_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_text_secondary_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：按钮的文字色（次要、禁用）。使用于：LoadingButton-ComponentSet。说明：亦用于：LoadingButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8411:9963",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_fill_hovered": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "按钮组件的填充颜色，状态为默认（可用）。对应原 MIUIX Token：miuix_appcompat_btn_bg_color_light; miuix_appcompat_btn_bg_color_dark。所属代码模块：appcompat · 按钮 · 选择控件。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8415:9964",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：按钮的填充色（按压）。使用于：DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8415:9965",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_button_color_fill_secondary_solid_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9019607901573181,
+          0.9019607901573181,
+          0.9019607901573181
+        ],
+        "alpha": 1,
+        "hex": "#E6E6E6"
+      },
+      "$description": "用途：按钮的填充色（次要、可用/默认、实心）。使用于：DefaultButton-ComponentSet、Component 76。说明：亦用于：Component 76。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8417:9966",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:fc68d70f7553cf1ed51891ae5b702cf6a354fe94/-1:-1",
+          "targetVariableName": "solid/black/basic/miuix_ref_black_solid_basic_level_100",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "bottom_sheet": {
+    "miuix_comp_bottom_sheet_color_bg": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：BottomSheet的填充色。使用于：高级材质_原子、_玻璃材质。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8375:22",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6fabd4febbeb2e6182558258e7e86a85658ceb74/-1:-1",
+          "targetVariableName": "bg/floating/miuix_sys_color_bg_floating_white_page",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_bottom_sheet_color_bg_grouped": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9529411792755127,
+          0.9529411792755127,
+          0.9529411792755127
+        ],
+        "alpha": 1,
+        "hex": "#F3F3F3"
+      },
+      "$description": "用途：BottomSheet的填充色（分组灰底）。使用于：高级材质_原子、_玻璃材质。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8386:23",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:96de6837f0718337d3b07a839e738ea4c9c6824e/-1:-1",
+          "targetVariableName": "bg/floating/miuix_sys_color_bg_floating_grey_page",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "floating_window": {
+    "miuix_comp_floating_window_color_bg": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：浮窗的填充色（浮起）。使用于：FloatingWindow-ComponentSet、GlassMaterial-Section。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8386:25",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6fabd4febbeb2e6182558258e7e86a85658ceb74/-1:-1",
+          "targetVariableName": "bg/floating/miuix_sys_color_bg_floating_white_page",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_floating_window_color_bg_grouped": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9529411792755127,
+          0.9529411792755127,
+          0.9529411792755127
+        ],
+        "alpha": 1,
+        "hex": "#F3F3F3"
+      },
+      "$description": "用途：浮窗的填充色（浮起、分组灰底）。使用于：FloatingWindow-ComponentSet、GlassMaterial-Section。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8386:29",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:96de6837f0718337d3b07a839e738ea4c9c6824e/-1:-1",
+          "targetVariableName": "bg/floating/miuix_sys_color_bg_floating_grey_page",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "page_indicator": {
+    "miuix_comp_page_indicator_fill_color_actived": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.800000011920929,
+        "hex": "#000000"
+      },
+      "$description": "用途：页面指示器的文字色（激活）。使用于：PageIndicator-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8405:31",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:1411d185d41ac4f85536dee8351e0ff824d5a166/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_800",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_page_indicator_fill_color_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：页面指示器的文字色（可用/默认）。使用于：PageIndicator-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8423:35",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a003d59e18794036617328dbac5ca4ef425ab277/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "seekbar": {
+    "miuix_comp_seekbar_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：滑动条的进度填充（可用/默认）。使用于：Slider-ComponentSet、Slider-CenterTrack、Slider-ContinuousTrack、Slider-OffsetTrack、Slider-SteppedTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8438:36",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_color_fill_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：滑动条的填充色（禁用）。使用于：Slider-ContinuousTrack、Slider-SteppedTrack、Slider-CenterTrack、Slider-OffsetTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8438:37",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e27a82dd655c36800a31e66d305cb9864b169865/-1:-1",
+          "targetVariableName": "opacity/black/kit/miuix_ref_black_opacity_kit_level_060",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_thumb_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：滑动条的滑块填充（可用/默认、滑块）。使用于：Slider-ContinuousTrack、Slider-SteppedTrack、Slider-CenterTrack、Slider-OffsetTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8438:38",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+          "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_scale_color_fill_primary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：滑动条的刻度填充（可用/默认、主色、刻度）。使用于：Slider-SteppedTrack、Slider-CenterTrack、Slider-OffsetTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8438:39",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
           "targetVariableId": "VariableID:766a65770f60ff71ea662cd9f7a223480696351b/-1:-1",
-          "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_400",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_400",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
       }
+    },
+    "miuix_comp_seekbar_scale_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.07999999821186066,
+        "hex": "#000000"
+      },
+      "$description": "用途：滑动条的刻度填充（可用/默认、刻度）。使用于：Slider-SteppedTrack、Slider-CenterTrack、Slider-OffsetTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8438:40",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7ca2e24c20677e94a6382dae1c49ed4a5c2d10e6/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_progress_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：滑动条的进度填充（进度、可用/默认）。使用于：Slider-ContinuousTrack、Slider-SteppedTrack、ProgressBar-Section、Slider-CenterTrack、Slider-OffsetTrack。说明：亦用于：ProgressBar-Section。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8447:5",
+        "com.figma.scopes": [
+          "ALL_FILLS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_progress_color_fill_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：滑动条的进度填充（禁用、进度）。使用于：Slider-ContinuousTrack、Slider-SteppedTrack、Slider-CenterTrack、Slider-OffsetTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8447:6",
+        "com.figma.scopes": [
+          "ALL_FILLS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:409b65959f7af5963500822b9ed4a6312052bfd9/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_thumb_color_fill_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.699999988079071,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：滑动条的滑块填充（禁用、滑块）。使用于：Slider-ContinuousTrack、Slider-SteppedTrack、Slider-CenterTrack、Slider-OffsetTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8447:7",
+        "com.figma.scopes": [
+          "ALL_FILLS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:bf9dbb7a8ef02327a44d20894dd30b32a1d7aec5/-1:-1",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_700",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_seekbar_scale_color_fill_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "用途：滑动条的刻度填充（禁用、刻度）。使用于：Slider-SteppedTrack、Slider-CenterTrack。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8447:8",
+        "com.figma.scopes": [
+          "ALL_FILLS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ffa31c19ad1f51e47a94d3f65c19d8505aca0327/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
     }
   },
-  "list": {
-    "miuix_comp_list_color_fill_enabled": {
+  "popupwindow": {
+    "miuix_comp_popupwindow_color_bg": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -172,20 +2865,21 @@
         "alpha": 1,
         "hex": "#FFFFFF"
       },
+      "$description": "滑动条轨道底色（正常）",
       "$extensions": {
-        "com.figma.variableId": "VariableID:3617:94",
+        "com.figma.variableId": "VariableID:8442:9970",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
-          "targetVariableName": "solid/white/miuix_ref_white_solid_level_1000",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
+          "targetVariableId": "VariableID:ae5e08816ecfda59d0c7f77a4bdc5d5d852a7ba3/-1:-1",
+          "targetVariableName": "bg/compoment/miuix_sys_color_bg_component",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
         }
       }
     },
-    "miuix_comp_list_color_fill_hover": {
+    "miuix_comp_popupwindow_color_text": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -194,263 +2888,278 @@
           0,
           0
         ],
-        "alpha": 0.06,
+        "alpha": 0.800000011920929,
         "hex": "#000000"
       },
+      "$description": "滑动条轨道底色（禁用）",
       "$extensions": {
-        "com.figma.variableId": "VariableID:3617:103",
+        "com.figma.variableId": "VariableID:8442:9971",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:e27a82dd655c36800a31e66d305cb9864b169865/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_060",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_list_color_fill_pressed": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "alpha": 0.12,
-        "hex": "#000000"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3623:5",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:060bd77c1c450c55ce6ae8267995c030dc65ba18/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_120",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_list_color_fill_disable": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "alpha": 0.06,
-        "hex": "#000000"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:4180:3726",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:e27a82dd655c36800a31e66d305cb9864b169865/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_060",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_list_color_text_right_icon_light": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "alpha": 0.3,
-        "hex": "#000000"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3617:97",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:a003d59e18794036617328dbac5ca4ef425ab277/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_300",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_list_color_fill_right_icon_light": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0,
-          0,
-          0
-        ],
-        "alpha": 0.05,
-        "hex": "#000000"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3617:100",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:8007fbef60ae223466d5a6ae6fd1598aa2b373b5/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_050",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_list_title_text_enabled": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.54901963,
-          0.61490196,
-          0.6901961
-        ],
-        "alpha": 1,
-        "hex": "#8C9DB0"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:4117:9",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:0cd5ab20b1f087fb142fd11a80e14b16941871ce/-1:-1",
-          "targetVariableName": "solid/grey/miuix_ref_grey_solid_level_1000",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
+          "targetVariableId": "VariableID:4f48c3331e9871d1956c17a47e8f40fd3f58181a/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
         }
       }
     }
   },
-  "notice": {
-    "miuix_comp_notice_color_text_brand": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.18431373,
-          0.45882353,
-          0.8980392
-        ],
-        "alpha": 1,
-        "hex": "#2F75E5"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:4201:3723",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:e818c1e9131f819c3b0b916773fdecc4f0ffb60b/-1:-1",
-          "targetVariableName": "solid/blue/miuix_ref_blue_solid_level_1100",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_notice_color_fill_brand": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.20392157,
-          0.50980395,
-          1
-        ],
-        "alpha": 0.1,
-        "hex": "#3482FF"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3623:8",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:fe6935be9c78c7e7d0198913af6527371135479c/-1:-1",
-          "targetVariableName": "opacity/blue/miuix_ref_blue_opacity_level_100",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_notice__color_text_caution": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.8980392,
-          0.56078434,
-          0.019607844
-        ],
-        "alpha": 1,
-        "hex": "#E58F05"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3623:24",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:fbce4e276213a8885955e2584997bba486e9bf55/-1:-1",
-          "targetVariableName": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1100",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    },
-    "miuix_comp_notice__color_fill_caution": {
+  "loading": {
+    "miuix_comp_loading_color_bg": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
         "components": [
           1,
-          0.62352943,
-          0.019607844
+          1,
+          1
         ],
-        "alpha": 0.1,
-        "hex": "#FF9F05"
+        "alpha": 1,
+        "hex": "#FFFFFF"
       },
+      "$description": "用途：加载的填充色。使用于：LoadingToast-ComponentSet。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:4201:3726",
+        "com.figma.variableId": "VariableID:8442:9976",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:ad602533e2290a2942338e2e298cc1e796c82b14/-1:-1",
-          "targetVariableName": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_100",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
+          "targetVariableId": "VariableID:ae5e08816ecfda59d0c7f77a4bdc5d5d852a7ba3/-1:-1",
+          "targetVariableName": "bg/compoment/miuix_sys_color_bg_component",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
         }
       }
     },
-    "miuix_comp_notice_color_text_warning": {
+    "miuix_comp_loading_color_fill_quaternary_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.88235295,
-          0.19607843,
-          0.16078432
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：加载的进度填充（四级、可用/默认）。使用于：ProgressBar-Section。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8644:47",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c529ff625b342b1782745b84d8253d3815499643/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_quaternary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_loading_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.800000011920929,
+        "hex": "#000000"
+      },
+      "$description": "用途：加载的文字色（可用/默认）。使用于：LoadingIcon-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9977",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4f48c3331e9871d1956c17a47e8f40fd3f58181a/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_loading_color_text_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：加载的文字色（禁用）。使用于：LoadingIcon-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9978",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "badge": {
+    "miuix_comp_badge_fill_warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：角标的填充色（警告）。使用于：BadgeDot-ComponentSet、BadgeNumber-ComponentSet、BadgeColor-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9979",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:b47f730b877f64b60a2f1176ba4be0f10135a12d/-1:-1",
+          "targetVariableName": "fill/warning/miuix_sys_color_fill_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_badge_fill_caution": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.7333333492279053,
+          0.05882352963089943
+        ],
+        "alpha": 1,
+        "hex": "#FFBB0F"
+      },
+      "$description": "用途：角标的角标色（注意）。使用于：BadgeColor-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9982",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:eb6d3ff88df6d2721330440a4d00dafcbaef2743/-1:-1",
+          "targetVariableName": "fill/caution/miuix_sys_color_fill_caution_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_badge_fill_brand": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：角标的角标色（品牌色）。使用于：BadgeColor-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9983",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_badge_fill_success": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.11372549086809158,
+          0.8039215803146362,
+          0.22745098173618317
+        ],
+        "alpha": 1,
+        "hex": "#1DCD3A"
+      },
+      "$description": "用途：角标的角标色（成功）。使用于：BadgeColor-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9984",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a9cea0a8785a89754bdb1ffc8efd24dc106b8511/-1:-1",
+          "targetVariableName": "fill/success/miuix_sys_color_fill_success_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_popupwindow_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：角标的文字色（可用/默认）。使用于：BadgeNumber-ComponentSet。说明：命名含popupwindow，实际绑在角标数字。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9980",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "notice": {
+    "miuix_comp_notice_text_warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8823529481887817,
+          0.19607843458652496,
+          0.16078431904315948
         ],
         "alpha": 1,
         "hex": "#E13229"
       },
+      "$description": "用途：信息提示条的文字色（警告）。使用于：NoticeBar-ComponentSet。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:3623:20",
+        "com.figma.variableId": "VariableID:8442:9985",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
@@ -462,20 +3171,99 @@
         }
       }
     },
-    "miuix_comp_notice_color_fill_warning": {
+    "miuix_comp_badge_text_caution": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
         "components": [
-          0.98039216,
-          0.21960784,
-          0.18039216
+          0.8980392217636108,
+          0.5607843399047852,
+          0.019607843831181526
         ],
-        "alpha": 0.1,
+        "alpha": 1,
+        "hex": "#E58F05"
+      },
+      "$description": "用途：信息提示条的文字色（注意）。使用于：NoticeBar-ComponentSet。说明：NoticeBar token 命名含 badge。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9986",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:fbce4e276213a8885955e2584997bba486e9bf55/-1:-1",
+          "targetVariableName": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1100",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_badge_text_brand": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.18431372940540314,
+          0.4588235318660736,
+          0.8980392217636108
+        ],
+        "alpha": 1,
+        "hex": "#2F75E5"
+      },
+      "$description": "用途：信息提示条的文字色（品牌色）。使用于：NoticeBar-ComponentSet。说明：NoticeBar token 命名含 badge。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9987",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e818c1e9131f819c3b0b916773fdecc4f0ffb60b/-1:-1",
+          "targetVariableName": "solid/blue/miuix_ref_blue_solid_level_1100",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_badge_text_default": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：信息提示条的文字色。使用于：NoticeBar-ComponentSet。说明：NoticeBar token 命名含 badge。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8442:9988",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_notice_fill_warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 0.10000000149011612,
         "hex": "#FA382E"
       },
+      "$description": "用途：信息提示条的填充色（警告）。使用于：NoticeBar-ComponentSet。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:3623:27",
+        "com.figma.variableId": "VariableID:8481:9990",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
@@ -486,10 +3274,165 @@
           "targetVariableSetName": "Reference Token"
         }
       }
+    },
+    "miuix_comp_badge_fill_caution": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.6235294342041016,
+          0.019607843831181526
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#FF9F05"
+      },
+      "$description": "用途：信息提示条的填充色（注意）。使用于：NoticeBar-ComponentSet。说明：NoticeBar token 命名含 badge。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9991",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ad602533e2290a2942338e2e298cc1e796c82b14/-1:-1",
+          "targetVariableName": "opacity/apricot/miuix_ref_apricot_orange_opacity_level_100",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_badge_fill_brand": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：信息提示条的填充色（品牌色）。使用于：NoticeBar-ComponentSet。说明：NoticeBar token 命名含 badge。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9992",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:fe6935be9c78c7e7d0198913af6527371135479c/-1:-1",
+          "targetVariableName": "opacity/blue/miuix_ref_blue_opacity_level_100",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_badge_fill_default": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：信息提示条的填充色。使用于：NoticeBar-ComponentSet。说明：NoticeBar token 命名含 badge。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9993",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
     }
   },
-  "search": {
-    "miuix_comp_search_tag_color_fill_enabled": {
+  "preference": {
+    "miuix_comp_preference_color_fill_right_icon_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：列表/偏好项的填充色（右侧图标、可用/默认）。使用于：TrailingArea-ComponentSet、ExpandCollapse-ComponentSet、DateTimeSegmentControl-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8496:6",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e27a82dd655c36800a31e66d305cb9864b169865/-1:-1",
+          "targetVariableName": "opacity/black/kit/miuix_ref_black_opacity_kit_level_060",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_text_right_icon_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：列表/偏好项的文字色（右侧图标、可用/默认）。使用于：MenuContentAtoms、TrailingArea-ComponentSet、ExpandCollapse-ComponentSet、Sort-ComponentSet。说明：亦出现在侧边/菜单内容原子。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8509:10",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ceee262ec21cbcc67fe12cfdf00b5c2dfd49f146/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_text_title": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8693:82",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_fill_enabled": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -501,74 +3444,47 @@
         "alpha": 1,
         "hex": "#FFFFFF"
       },
+      "$description": "用途：列表/偏好项的填充色（可用/默认）。使用于：IconList-ComponentSet、SpecialListNetwork-ComponentSet。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:4151:3727",
+        "com.figma.variableId": "VariableID:8715:83",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
-          "targetVariableName": "solid/white/miuix_ref_white_solid_level_1000",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    }
-  },
-  "slide": {
-    "miuix_comp_slide_circle_color_fill_disable": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          1,
-          1,
-          1
-        ],
-        "alpha": 0.7,
-        "hex": "#FFFFFF"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:3623:39",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:bf9dbb7a8ef02327a44d20894dd30b32a1d7aec5/-1:-1",
-          "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_700",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
-        }
-      }
-    }
-  },
-  "toggles": {
-    "miuix_comp_toggles_color_fill_enabled": {
-      "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          1,
-          1,
-          1
-        ],
-        "alpha": 0.7,
-        "hex": "#FFFFFF"
-      },
-      "$extensions": {
-        "com.figma.variableId": "VariableID:4141:8633",
-        "com.figma.scopes": [
-          "ALL_SCOPES"
-        ],
-        "com.figma.aliasData": {
-          "targetVariableId": "VariableID:bf9dbb7a8ef02327a44d20894dd30b32a1d7aec5/-1:-1",
-          "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_700",
-          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-          "targetVariableSetName": "Reference Token"
+          "targetVariableId": "VariableID:d30fa9c9cf8a6d16a7dbb5f01f2b0632be22d4c9/-1:-1",
+          "targetVariableName": "fill/list/miuix_sys_color_fill_list_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
         }
       }
     },
-    "miuix_comp_toggles_color_fill_noselected": {
+    "miuix_comp_preference_color_fill_brand_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：列表/偏好项的填充色（可用/默认、品牌色）。使用于：SpecialListNetwork-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8715:84",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_text_primary": {
       "$type": "color",
       "$value": {
         "colorSpace": "srgb",
@@ -577,17 +3493,1304 @@
           0,
           0
         ],
-        "alpha": 0.2,
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：列表/偏好项的文字色（主色）。使用于：IconList-ComponentSet、MultiSelectList-MultiSelectAtomRoot、SingleSelectList-ComponentSet、SpecialListNetwork-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8715:85",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_text_secondary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：列表/偏好项的文字色（次要）。使用于：MultiSelectList-MultiSelectAtomRoot、SpecialListNetwork-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8715:86",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_text_brand_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：列表/偏好项的文字色（可用/默认、品牌色）。使用于：ButtonList-ComponentRoot、SingleSelectList-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8755:87",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:191091320f1ae4e90caf365672d42fe25e087138/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_preference_color_text_warning_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：列表/偏好项的文字色（可用/默认、警告）。使用于：ButtonList-ComponentRoot。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8755:88",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4c29baebbd5151878cb275dfdf65837c947b1c7f/-1:-1",
+          "targetVariableName": "text/warning/miuix_sys_color_text_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "input": {
+    "miuix_comp_input_color_text_right_icon_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
         "hex": "#000000"
       },
       "$extensions": {
-        "com.figma.variableId": "VariableID:4354:3512",
+        "com.figma.variableId": "VariableID:8979:399",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ceee262ec21cbcc67fe12cfdf00b5c2dfd49f146/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_input_color_fill_brand_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：输入框的描边色（可用/默认、品牌色）。使用于：TextInput-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8979:398",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_input_color_fill_grey": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：输入框的背景填充。使用于：TextInput-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8979:402",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_input_color_text_primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：输入框的光标色（主色）。使用于：TextInput-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8979:400",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_input_color_text_prefab": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：输入框的占位文字色（占位）。使用于：TextInput-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8979:401",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:85b27f92dfd29253d95b8a3be4a1fc8f869f0ac2/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_octonary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "actionsheet": {
+    "miuix_comp_actionsheet_color_bg": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：行动菜单的填充色。使用于：Actionsheet-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9994",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6fabd4febbeb2e6182558258e7e86a85658ceb74/-1:-1",
+          "targetVariableName": "bg/floating/miuix_sys_color_bg_floating_white_page",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_actionsheet_color_text_primary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.800000011920929,
+        "hex": "#000000"
+      },
+      "$description": "用途：行动菜单的文字色（可用/默认、主色）。使用于：ActionButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9995",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4f48c3331e9871d1956c17a47e8f40fd3f58181a/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_actionsheet_color_text_primary_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：行动菜单的文字色（禁用、主色）。使用于：ActionButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9998",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:551b381bcb6c8a90efc004cdd893aee3cb7065e5/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_actionsheet_color_text_warning_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：行动菜单的文字色（可用/默认、警告）。使用于：ActionButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9999",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4c29baebbd5151878cb275dfdf65837c947b1c7f/-1:-1",
+          "targetVariableName": "text/warning/miuix_sys_color_text_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_actionsheet_color_text_warning_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#FA382E"
+      },
+      "$description": "用途：行动菜单的文字色（禁用、警告）。使用于：ActionButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:10000",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:99512b32d7297f3bd0147fdcfeca55f3395234a0/-1:-1",
+          "targetVariableName": "text/warning/miuix_sys_color_text_warning_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_actionsheet_color_text_tertiary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：行动菜单的文字色（三级）。使用于：ActionDescription-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8481:9996",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "fab": {
+    "miuix_comp_fab_color_fill_brand": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：悬浮按钮的填充色（品牌色）。使用于：Fab。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:7",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_fill_caution": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.6235294342041016,
+          0.019607843831181526
+        ],
+        "alpha": 1,
+        "hex": "#FF9F05"
+      },
+      "$description": "滑动条轨道底色（正常）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:6",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:aae9f39b5c5c0536976d149d31f34ec53bf88572/-1:-1",
+          "targetVariableName": "text/caution/miuix_sys_color_text_caution_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_fill_green": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.11372549086809158,
+          0.8039215803146362,
+          0.22745098173618317
+        ],
+        "alpha": 1,
+        "hex": "#1DCD3A"
+      },
+      "$description": "用途：悬浮按钮的填充色（绿色）。使用于：Fab。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:13",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a9cea0a8785a89754bdb1ffc8efd24dc106b8511/-1:-1",
+          "targetVariableName": "fill/success/miuix_sys_color_fill_success_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_fill_red": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9803921580314636,
+          0.21960784494876862,
+          0.18039216101169586
+        ],
+        "alpha": 1,
+        "hex": "#FA382E"
+      },
+      "$description": "滑动条轨道底色（正常）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:5",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:b47f730b877f64b60a2f1176ba4be0f10135a12d/-1:-1",
+          "targetVariableName": "fill/warning/miuix_sys_color_fill_warning_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_fill_neutra": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：悬浮按钮的填充色。使用于：Fab。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:8",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d8d706db8d25502cc4d4e440e33390668c7cfe71/-1:-1",
+          "targetVariableName": "fill/neutra/miuix_sys_color_bg_neutra_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_text_static_white_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "滑动条轨道底色（正常）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:14",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a2d6ae0ca62156bd9c6b49cbc77fd5a80e3f3c28/-1:-1",
+          "targetVariableName": "fill/static_white/miuix_sys_color_fill_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_text_primary_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "滑动条轨道底色（正常）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8512:15",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_fill_hovered": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.03999999910593033,
+        "hex": "#000000"
+      },
+      "$description": "按钮组件的填充颜色，状态为默认（可用）。对应原 MIUIX Token：miuix_appcompat_btn_bg_color_light; miuix_appcompat_btn_bg_color_dark。所属代码模块：appcompat · 按钮 · 选择控件。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9627:29337",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:40f34d9c33d4674fa8e3231cbb854f5df3738609/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_hover",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_fab_color_fill_pressed": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：按钮的填充色（按压）。使用于：DefaultButton-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9627:29341",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:90802b53c60854653b477a1cd5a81497da8d4b63/-1:-1",
+          "targetVariableName": "fill/status/miuix_sys_color_fill_status_pressed",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "dialog": {
+    "miuix_comp_actionsheet_color_bg": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "滑动条轨道底色（正常）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8581:40",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6fabd4febbeb2e6182558258e7e86a85658ceb74/-1:-1",
+          "targetVariableName": "bg/floating/miuix_sys_color_bg_floating_white_page",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_actionsheet_color_fill": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "滑动条轨道底色（正常）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8663:48",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_dialog_color_text_primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：弹窗的文字色（主色）。使用于：ProgressDialog-ComponentSet、A 标题区、C 辅助区、GuideDialog-ComponentSet、PermissionDialog-ComponentSet、SelectionDialog-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8581:41",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_dialog_color_text_tertiary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.6000000238418579,
+        "hex": "#000000"
+      },
+      "$description": "用途：弹窗的文字色（三级）。使用于：GuideDialog-ComponentSet、PermissionDialog-ComponentSet、B 内容区、C 辅助区、ConfirmDialog-ComponentSet、WarningDialog-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8581:46",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:811d88d90fc5db4ac7d18ec29e2e585bc829a607/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_tertiary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_dialog_color_text_quaternary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "滑动条轨道底色（禁用）",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8889:10605",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:286850c18ad09dcba05b88a90039bb326c0f1abf/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_quaternary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "date_picker": {
+    "miuix_comp_date_picker_color_text_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.07999999821186066,
+        "hex": "#000000"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8818:117",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:9eb464e8b3ec96ac1edc268c56cc68694f770dfb/-1:-1",
+          "targetVariableName": "opacity/black/kit/miuix_ref_black_opacity_kit_level_080",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "用途：日期选择器的文字色（可用/默认）。使用于：DatePicker-Day&Time-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9257:455",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a7c63e1bb78b75ec1ffc70eeafcbe269c85ab389/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_primary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_color_text_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：日期选择器的文字色（激活/选中）。使用于：DatePicker-Day&Time-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9257:459",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_capsule_color_fill_activated": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：日期选择器的填充色（激活/选中）。使用于：DatePicker-Day&Time-ComponentSet、DateTimeSegmentControl-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9257:447",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_capsule_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：日期选择器的填充色（可用/默认）。使用于：DatePicker-Day&Time-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9257:451",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_column_title_color_text": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.4000000059604645,
+        "hex": "#000000"
+      },
+      "$description": "用途：日期选择器的文字色。使用于：WheelPickerAtom-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9278:5",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:286850c18ad09dcba05b88a90039bb326c0f1abf/-1:-1",
+          "targetVariableName": "text/default/miuix_sys_color_text_quaternary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_wheel_color_text_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：日期选择器的文字色（选中）。使用于：WheelPickerAtom-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9278:6",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:191091320f1ae4e90caf365672d42fe25e087138/-1:-1",
+          "targetVariableName": "text/brand/miuix_sys_color_text_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_date_picker_day_color_fill_selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：日期选择器的填充色（选中）。使用于：MonthCalendar-ComponentSet、_月盘日期（原子组件）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9280:5",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "checkbox": {
+    "miuix_comp_checkbox_color_stroke_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#000000"
+      },
+      "$description": "用途：多选框的描边色（可用/默认）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:376",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:05091db2059c72de8d938626bf6d2642da54bb6a/-1:-1",
+          "targetVariableName": "stroke/border/miuix_sys_color_stroke_border_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_checkbox_color_stroke_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#000000"
+      },
+      "$description": "用途：多选框的描边色（禁用）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:377",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:2176f4d57dd51250e27997d2cf8d5e6f798f808a/-1:-1",
+          "targetVariableName": "stroke/border/miuix_sys_color_stroke_border_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_checkbox_color_text_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：多选框的文字色（可用/默认）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:378",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:44f7e3a08cd6bd177409ba81e4012f084ee1afed/-1:-1",
+          "targetVariableName": "text/static_white/miuix_sys_color_text_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_checkbox_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：多选框的填充色（可用/默认）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:379",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_checkbox_color_fill_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：多选框的填充色（禁用）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:380",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:409b65959f7af5963500822b9ed4a6312052bfd9/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_checkbox_color_fill_media_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.20000000298023224,
+        "hex": "#000000"
+      },
+      "$description": "用途：多选框的填充色（可用/默认、媒体态）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:381",
         "com.figma.scopes": [
           "ALL_SCOPES"
         ],
         "com.figma.aliasData": {
           "targetVariableId": "VariableID:8d41ae227e3961d92c0089c7fc1c307eebe29e97/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_200",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_200",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_checkbox_color_stroke_media_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：多选框的描边色（可用/默认、媒体态）。使用于：MultiSelectRadio-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9159:404",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a2d6ae0ca62156bd9c6b49cbc77fd5a80e3f3c28/-1:-1",
+          "targetVariableName": "fill/static_white/miuix_sys_color_fill_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    }
+  },
+  "switch": {
+    "miuix_comp_color_fill_open_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：开关的背景填充（可用/默认、开）。使用于：Switch-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:382",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:6eb6e52feac5d60745c6539159c50d3229ce9c49/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_color_fill_open_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.30000001192092896,
+        "hex": "#3482FF"
+      },
+      "$description": "用途：开关的背景填充（禁用、开）。使用于：Switch-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:390",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:409b65959f7af5963500822b9ed4a6312052bfd9/-1:-1",
+          "targetVariableName": "fill/brand/miuix_sys_color_fill_brand_disabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_color_fill_close_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.20000000298023224,
+        "hex": "#000000"
+      },
+      "$description": "用途：开关的背景填充（可用/默认、关）。使用于：Switch-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:386",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:8d41ae227e3961d92c0089c7fc1c307eebe29e97/-1:-1",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_200",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_comp_color_fill_close_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 0.05999999865889549,
+        "hex": "#000000"
+      },
+      "$description": "用途：开关的背景填充（禁用、关）。使用于：Switch-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:394",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5c207470b8f90b0b5ba55f8b17bedabe772d8e7f/-1:-1",
+          "targetVariableName": "fill/default/miuix_sys_color_fill_secondary_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_switch_thumb_color_fill_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "用途：开关的滑块填充（可用/默认、滑块）。使用于：Switch-ComponentSet。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:398",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a2d6ae0ca62156bd9c6b49cbc77fd5a80e3f3c28/-1:-1",
+          "targetVariableName": "fill/static_white/miuix_sys_color_fill_static_white_enabled",
+          "targetVariableSetId": "VariableCollectionId:e416b4437a59f1d4b19cd8a32c72453ca8e89b01/-1:-1",
+          "targetVariableSetName": "Semantic Token"
+        }
+      }
+    },
+    "miuix_comp_switch_thumb_color_fill_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.699999988079071,
+        "hex": "#FFFFFF"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8980:403",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:bf9dbb7a8ef02327a44d20894dd30b32a1d7aec5/-1:-1",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_700",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }

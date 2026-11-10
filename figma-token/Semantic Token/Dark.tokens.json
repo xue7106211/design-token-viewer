@@ -13,7 +13,7 @@
           "alpha": 1,
           "hex": "#000000"
         },
-        "$description": "用于白底页面的整体背景，随 Light / Dark 模式切换。",
+        "$description": "白底页面的整体背景。用于设置子页、详情页、表单页等内容直接平铺的页面。与 grey_page 二选一：内容直接铺在页面上用白底，内容用卡片分组时用灰底。不要用于卡片或组件容器，那种情况用 bg_component。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2691",
           "com.figma.scopes": [
@@ -22,7 +22,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:08af0a11d81a159a317227f02367fb0ed6f1ddcd/-1:-1",
-            "targetVariableName": "solid/black/miuix_ref_black_solid_level_1000",
+            "targetVariableName": "solid/black/kit/miuix_ref_black_solid_kit_level_1000",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -40,7 +40,7 @@
           "alpha": 1,
           "hex": "#000000"
         },
-        "$description": "用于灰底页面的整体背景，随 Light / Dark 模式切换。",
+        "$description": "灰底页面的整体背景。用于设置首页、个人中心等以卡片分组承载内容的页面。灰底用来衬托 bg_component 卡片，形成层次；Dark 模式下与 white_page 一样都是纯黑。不要和白底页面混用在同一层级。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2692",
           "com.figma.scopes": [
@@ -49,7 +49,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:08af0a11d81a159a317227f02367fb0ed6f1ddcd/-1:-1",
-            "targetVariableName": "solid/black/miuix_ref_black_solid_level_1000",
+            "targetVariableName": "solid/black/kit/miuix_ref_black_solid_kit_level_1000",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -62,14 +62,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.14117648,
-            0.14117648,
-            0.14117648
+            0.1411764770746231,
+            0.1411764770746231,
+            0.1411764770746231
           ],
           "alpha": 1,
           "hex": "#242424"
         },
-        "$description": "用于白底样式浮层的背景，随 Light / Dark 模式切换。",
+        "$description": "白底浮层的背景。用于弹窗、底部抽屉、下拉菜单、气泡等悬浮在页面之上的容器。Dark 模式下会提亮（白 14%），和页面背景拉开层级。不要用于页面背景或页面内的卡片。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2801",
           "com.figma.scopes": [
@@ -78,7 +78,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:50d19056e9bd9965056704b53ddd0af294a1c218/-1:-1",
-            "targetVariableName": "solid/white/miuix_ref_white_solid_level_700",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -89,14 +89,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.14117648,
-            0.14117648,
-            0.14117648
+            0.1411764770746231,
+            0.1411764770746231,
+            0.1411764770746231
           ],
           "alpha": 1,
           "hex": "#242424"
         },
-        "$description": "用于灰底样式浮层的背景，随 Light / Dark 模式切换。",
+        "$description": "灰底浮层的背景。用于内部还要再放白色卡片或分组列表的浮层，比如带分组的底部抽屉。浮层内需要卡片分组时用它，简单的单层浮层用 floating_white。不要用于页面背景。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2802",
           "com.figma.scopes": [
@@ -105,7 +105,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:50d19056e9bd9965056704b53ddd0af294a1c218/-1:-1",
-            "targetVariableName": "solid/white/miuix_ref_white_solid_level_700",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -118,14 +118,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.17254902,
-            0.17254902,
-            0.17254902
+            0.1725490242242813,
+            0.1725490242242813,
+            0.1725490242242813
           ],
           "alpha": 1,
           "hex": "#2C2C2C"
         },
-        "$description": "用于页面内组件容器的背景，随 Light / Dark 模式切换。",
+        "$description": "页面内组件容器的背景。用于卡片、列表分组、设置项分组。一般放在 grey_page 之上；Dark 模式下为黑 83%，比页面略亮。不要用于浮层（用 bg_floating）或页面背景。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2803",
           "com.figma.scopes": [
@@ -134,7 +134,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ca9d3ea01815364611af4d6b54bdad05eec4d82e/-1:-1",
-            "targetVariableName": "solid/black/miuix_ref_black_solid_level_800",
+            "targetVariableName": "solid/black/kit/miuix_ref_black_solid_kit_level_830",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -153,10 +153,10 @@
             1,
             1
           ],
-          "alpha": 0.95,
+          "alpha": 0.949999988079071,
           "hex": "#FFFFFF"
         },
-        "$description": "用于主要文字，如页面标题、正文和关键内容。",
+        "$description": "主要文字，层级最高。用于页面标题、列表主标题、正文、按钮文字等需要优先阅读的内容。Light 模式为纯黑，Dark 模式为白 95%。不要用于辅助信息，避免整页文字都是同一个权重。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2693",
           "com.figma.scopes": [
@@ -164,7 +164,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:9ba9f0c7fef76c0839b8f6a948056f867e4de4fd/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_950",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_950",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -179,10 +179,10 @@
             1,
             1
           ],
-          "alpha": 0.8,
+          "alpha": 0.800000011920929,
           "hex": "#FFFFFF"
         },
-        "$description": "用于次要文字，如辅助说明和次级内容，层级低于主要文字。",
+        "$description": "次要文字。用于副标题、列表项摘要、表单说明、正文里的补充描述。比 primary 弱一级，但仍然需要保证可读。禁用态不要用它，用 primary_disabled；可点击的文字用 link。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2694",
           "com.figma.scopes": [
@@ -190,7 +190,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:32d6f51bf751a912756d53224f8eac6eb9a5ebe4/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_800",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_800",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -208,7 +208,7 @@
           "alpha": 0.5,
           "hex": "#FFFFFF"
         },
-        "$description": "用于第三层级文字，弱化补充信息。",
+        "$description": "第三层级文字。用于时间戳、数量统计、列表右侧的状态值、分组标题。比 secondary 更弱，适合扫一眼就够的信息。不要用来承载较长的正文。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2695",
           "com.figma.scopes": [
@@ -216,7 +216,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d607098b4dcdfe2f2ea1758ae122ca8da13537ca/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_500",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_500",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -231,10 +231,10 @@
             1,
             1
           ],
-          "alpha": 0.4,
+          "alpha": 0.4000000059604645,
           "hex": "#FFFFFF"
         },
-        "$description": "用于第四层级文字，呈现更弱的辅助信息。",
+        "$description": "第四层级文字。用于输入框占位符、空状态提示、来源和版权说明等最弱的提示。只适合短文本。不要承载用户必须读懂的关键信息。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2696",
           "com.figma.scopes": [
@@ -242,7 +242,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:766a65770f60ff71ea662cd9f7a223480696351b/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_400",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_400",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -257,10 +257,10 @@
             1,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
-        "$description": "用于低强调层级的文字，具体适用场景以组件规范为准。",
+        "$description": "低强调文字（30%）。用于列表中不可操作的装饰性文字、分隔符号、极弱的提示。取值和 primary_disabled 相同，但它表达的是“弱化”，不是“不可用”。表达禁用时请用对应的 disabled。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2697",
           "com.figma.scopes": [
@@ -268,7 +268,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_300",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_300",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -283,10 +283,10 @@
             1,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
-        "$description": "用于主要文字的禁用状态，表示关联内容或操作不可用。",
+        "$description": "主要文字的禁用态。用于不可点击的按钮文字、不可选的列表项和设置项。它表达“不可用”。如果只是想把信息弱化，用 tertiary 或 quaternary。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3516:2698",
           "com.figma.scopes": [
@@ -294,7 +294,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_300",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_300",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -312,7 +312,7 @@
           "alpha": 0.5,
           "hex": "#FFFFFF"
         },
-        "$description": "用于主要文字的按下状态，反馈正在进行的按压操作。",
+        "$description": "主要文字的按下态。用于文字按钮、可点击标题等纯文字可交互元素被按下的瞬间。只在交互反馈时使用。取值和 tertiary 相同，但不要拿它当静态的文字层级。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4325:3501",
           "com.figma.scopes": [
@@ -320,7 +320,33 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d607098b4dcdfe2f2ea1758ae122ca8da13537ca/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_500",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_500",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_list_title": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.5,
+          "hex": "#FFFFFF"
+        },
+        "$description": "用于列表类的分组标题颜色，例如侧边栏、列表、菜单等场景。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:8388:9950",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:d607098b4dcdfe2f2ea1758ae122ca8da13537ca/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_500",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -333,14 +359,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.20392157,
-            0.50980395,
+            0.20392157137393951,
+            0.5098039507865906,
             1
           ],
           "alpha": 1,
           "hex": "#3482FF"
         },
-        "$description": "用于品牌强调文字，突出品牌相关内容或操作。",
+        "$description": "品牌强调文字。用于选中项文字、Tab 选中态、强调数据、文字型主操作。它和 link 同色，但不表示可以跳转。不要用于跳转链接（用 link）或大段正文。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5474",
           "com.figma.scopes": [
@@ -359,14 +385,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.20392157,
-            0.50980395,
+            0.20392157137393951,
+            0.5098039507865906,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#3482FF"
         },
-        "$description": "用于品牌强调文字的禁用状态。",
+        "$description": "品牌强调文字的禁用态。用于文字型主操作、选中态 Tab 不可用的情况。不要用于普通文字的禁用，那种情况用 primary_disabled。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5475",
           "com.figma.scopes": [
@@ -387,14 +413,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.20392157,
-            0.50980395,
+            0.20392157137393951,
+            0.5098039507865906,
             1
           ],
           "alpha": 1,
           "hex": "#3482FF"
         },
-        "$description": "用于可交互的链接文字，提示可跳转或查看关联内容。",
+        "$description": "链接文字，表示可以跳转。用于正文内的链接、“查看更多”“了解详情”、协议条款。和 brand 同色。不要用于不能交互的强调文字，那种情况用 brand。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2721",
           "com.figma.scopes": [
@@ -413,14 +439,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.20392157,
-            0.50980395,
+            0.20392157137393951,
+            0.5098039507865906,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#3482FF"
         },
-        "$description": "用于链接文字的禁用状态，表示链接当前不可用。",
+        "$description": "链接文字的禁用态。用于暂时不可跳转的链接，比如条件未满足时的“重新发送”。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2722",
           "com.figma.scopes": [
@@ -442,13 +468,13 @@
           "colorSpace": "srgb",
           "components": [
             1,
-            0.62352943,
-            0.019607844
+            0.6235294342041016,
+            0.019607843831181526
           ],
           "alpha": 1,
           "hex": "#FF9F05"
         },
-        "$description": "用于提醒用户注意的文字，表达 caution 提示语义。",
+        "$description": "提醒文字。用于需要用户留意但不算错误的信息，比如即将到期、存储空间不足、待处理。程度比 warning 低；色相是杏橙，和 fill_caution 的黄色不同。不要用于错误或危险操作，那种情况用 warning。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2730",
           "com.figma.scopes": [
@@ -468,13 +494,13 @@
           "colorSpace": "srgb",
           "components": [
             1,
-            0.62352943,
-            0.019607844
+            0.6235294342041016,
+            0.019607843831181526
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FF9F05"
         },
-        "$description": "用于 caution 提示文字的禁用状态。",
+        "$description": "提醒文字的禁用态。用于带 caution 语义的文字型操作不可用时。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2731",
           "com.figma.scopes": [
@@ -495,14 +521,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.98039216,
-            0.21960784,
-            0.18039216
+            0.9803921580314636,
+            0.21960784494876862,
+            0.18039216101169586
           ],
           "alpha": 1,
           "hex": "#FA382E"
         },
-        "$description": "用于警告或风险提示文字，表达 warning 语义。",
+        "$description": "警告文字，风险程度最高。用于错误提示、表单校验失败、删除和清空等危险操作的文字。不要用于一般提醒（用 caution），也不要当装饰性红色用。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5464",
           "com.figma.scopes": [
@@ -521,14 +547,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.98039216,
-            0.21960784,
-            0.18039216
+            0.9803921580314636,
+            0.21960784494876862,
+            0.18039216101169586
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FA382E"
         },
-        "$description": "用于 warning 警告文字的禁用状态。",
+        "$description": "警告文字的禁用态。用于危险操作按钮不可用时的文字。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5465",
           "com.figma.scopes": [
@@ -549,14 +575,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.11372549,
-            0.8039216,
-            0.22745098
+            0.11372549086809158,
+            0.8039215803146362,
+            0.22745098173618317
           ],
           "alpha": 1,
           "hex": "#1DCD3A"
         },
-        "$description": "用于成功状态的文字，表达操作成功或完成。",
+        "$description": "成功文字。用于操作完成的提示，以及已连接、已开启、已同步等正向状态。不要用于普通选中态，那种情况用 brand。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5462",
           "com.figma.scopes": [
@@ -575,14 +601,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.11372549,
-            0.8039216,
-            0.22745098
+            0.11372549086809158,
+            0.8039215803146362,
+            0.22745098173618317
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#1DCD3A"
         },
-        "$description": "用于成功语义文字的禁用状态。",
+        "$description": "成功文字的禁用态。用于正向状态项不可操作时。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5463",
           "com.figma.scopes": [
@@ -607,10 +633,10 @@
             1,
             1
           ],
-          "alpha": 0.08,
+          "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
-        "$description": "用于文字相关交互的悬停状态反馈，具体作用对象与使用方式以组件规范为准。",
+        "$description": "文字类交互元素的悬停反馈层。连接鼠标或触控板时，文字按钮、可点击文字行悬停时，叠加在元素背景上。它是叠加层，不是文字本身的颜色，取值和 fill_status_hover 相同。不要直接设成文字颜色。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3919:2",
           "com.figma.scopes": [
@@ -618,7 +644,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_080",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_080",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -633,10 +659,10 @@
             1,
             1
           ],
-          "alpha": 0.14,
+          "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
-        "$description": "用于文字相关交互的按下状态反馈，具体作用对象与使用方式以组件规范为准。",
+        "$description": "文字类交互元素的按下反馈层。文字按钮、可点击文字行被按下时，叠加在元素背景上。不要直接设成文字颜色。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3919:6",
           "com.figma.scopes": [
@@ -644,7 +670,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_140",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -659,10 +685,10 @@
             1,
             1
           ],
-          "alpha": 0.12,
+          "alpha": 0.11999999731779099,
           "hex": "#FFFFFF"
         },
-        "$description": "用于文字相关交互的选中状态反馈，具体作用对象与使用方式以组件规范为准。",
+        "$description": "文字类交互元素的选中反馈层。文字行或文字选项处于选中状态时，叠加在背景上。不要直接设成文字颜色；需要选中态文字颜色时用 brand。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3919:17",
           "com.figma.scopes": [
@@ -670,7 +696,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:340a7df8215e34cf6d94a13020fd2e15e6d1bd1a/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_120",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_120",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -690,7 +716,7 @@
           "alpha": 1,
           "hex": "#FFFFFF"
         },
-        "$description": "用于需要在 Light / Dark 模式下保持白色的文字。",
+        "$description": "固定白色文字，不随 Dark 模式变色。用于图片、视频、品牌色或深色填充上的文字，比如图片上的标题、品牌色按钮的文字。不要用于普通页面背景上的文字，Light 模式下会看不见。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5472",
           "com.figma.scopes": [
@@ -698,7 +724,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
-            "targetVariableName": "solid/white/miuix_ref_white_solid_level_1000",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -713,10 +739,10 @@
             1,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
-        "$description": "用于固定白色文字的禁用状态，通过降低不透明度弱化表现。",
+        "$description": "固定白色文字的禁用态。用于品牌色按钮不可用时的文字，或图片上不可点击的文字。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5473",
           "com.figma.scopes": [
@@ -724,7 +750,191 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_300",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_300",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      }
+    },
+    "vibrant": {
+      "miuix_sys_color_text_vibrant_white_primary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 1,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，白色主级（primary），白色 100%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:5",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_vibrant_white_secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.800000011920929,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，白色次级（secondary），白色 80%，深浅模式同值（规范中为括号项，待确认）",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:6",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:32d6f51bf751a912756d53224f8eac6eb9a5ebe4/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_800",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_vibrant_white_tertiary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.6000000238418579,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，白色三级（tertiary），白色 60%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:7",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:2ed6951cac67fafe83f7073758c121054742404d/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_600",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_vibrant_white_quaternary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.4000000059604645,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，白色四级（quaternary），白色 40%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:8",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:766a65770f60ff71ea662cd9f7a223480696351b/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_400",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_vibrant_white_disabled": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.30000001192092896,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，白色禁用态（disabled），白色 30%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:9",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_300",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_vibrant_black_primary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 1,
+          "hex": "#000000"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，黑色主级（primary），黑色 100%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:10",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:08af0a11d81a159a317227f02367fb0ed6f1ddcd/-1:-1",
+            "targetVariableName": "solid/black/kit/miuix_ref_black_solid_kit_level_1000",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_text_vibrant_black_secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.6000000238418579,
+          "hex": "#000000"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的文本与图标，黑色次级（secondary），黑色 60%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:11",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:e6b66350ea685ca140d57fe8ea0ab5e912e1a8de/-1:-1",
+            "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_600",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -743,10 +953,10 @@
             1,
             1
           ],
-          "alpha": 0.08,
+          "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
-        "$description": "用于默认中性填充的一级层级，随 Light / Dark 模式适配。",
+        "$description": "中性填充第一层，也是最浅的一层。用于直接放在页面或卡片上的控件底色，比如搜索框、输入框、次要按钮。四级中最浅。不要用作页面或卡片的背景，那种情况用 bg。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2751",
           "com.figma.scopes": [
@@ -755,7 +965,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_080",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_080",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -770,10 +980,10 @@
             1,
             1
           ],
-          "alpha": 0.14,
+          "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
-        "$description": "用于默认中性填充的二级层级，具体组件用法以组件规范为准。",
+        "$description": "中性填充第二层。用于在 primary 底色内还要再区分一层的情况，比如分段控件未选中的轨道、标签底色。比 primary 深一级。不要用作容器背景。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2764",
           "com.figma.scopes": [
@@ -782,7 +992,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_140",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -797,10 +1007,10 @@
             1,
             1
           ],
-          "alpha": 0.14,
+          "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
-        "$description": "用于默认中性填充的三级层级，具体组件用法以组件规范为准。",
+        "$description": "中性填充第三层。用于需要更明显中性底色的轨道类元素，比如滑块轨道、进度条底、开关关闭态。比 secondary 深一级；Dark 模式下和 secondary 同值。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2765",
           "com.figma.scopes": [
@@ -809,7 +1019,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_140",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -824,10 +1034,10 @@
             1,
             1
           ],
-          "alpha": 0.2,
+          "alpha": 0.20000000298023224,
           "hex": "#FFFFFF"
         },
-        "$description": "用于默认中性填充的四级层级，具体组件用法以组件规范为准。",
+        "$description": "中性填充第四层，也是最深的一层。用于图片或头像加载占位、骨架屏、图标底板。不要大面积铺满。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4168:8635",
           "com.figma.scopes": [
@@ -836,7 +1046,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_200",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_200",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -851,10 +1061,10 @@
             1,
             1
           ],
-          "alpha": 0.08,
+          "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
-        "$description": "用于默认中性四级填充的禁用状态。",
+        "$description": "第四层中性填充的禁用态。用于这类控件不可用时的底色。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4352:3509",
           "com.figma.scopes": [
@@ -863,7 +1073,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_080",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_080",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -876,14 +1086,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.20392157,
-            0.50980395,
+            0.20392157137393951,
+            0.5098039507865906,
             1
           ],
           "alpha": 1,
           "hex": "#3482FF"
         },
-        "$description": "用于品牌强调填充，突出品牌相关区域或主要操作。",
+        "$description": "品牌主操作的填充。用于主按钮、开关开启态、已选中的复选框和单选框、进度条已完成的部分。一个区域内只保留一个最主要的操作用它。不要用作大面积背景。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2752",
           "com.figma.scopes": [
@@ -903,14 +1113,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.20392157,
-            0.50980395,
+            0.20392157137393951,
+            0.5098039507865906,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#3482FF"
         },
-        "$description": "用于品牌强调填充的禁用状态。",
+        "$description": "品牌填充的禁用态。用于主按钮不可用、开关开启但不可操作的情况。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2753",
           "com.figma.scopes": [
@@ -933,13 +1143,13 @@
           "colorSpace": "srgb",
           "components": [
             1,
-            0.73333335,
-            0.05882353
+            0.7333333492279053,
+            0.05882352963089943
           ],
           "alpha": 1,
           "hex": "#FFBB0F"
         },
-        "$description": "用于提醒用户注意的区域或元素填充，表达 caution 提示语义。",
+        "$description": "提醒类填充。用于提醒徽标、待处理标签、提示条的强调块。程度比 warning 低。不要用于错误或危险操作。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2791",
           "com.figma.scopes": [
@@ -960,13 +1170,13 @@
           "colorSpace": "srgb",
           "components": [
             1,
-            0.73333335,
-            0.05882353
+            0.7333333492279053,
+            0.05882352963089943
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FFBB0F"
         },
-        "$description": "用于 caution 提示填充的禁用状态。",
+        "$description": "提醒类填充的禁用态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2792",
           "com.figma.scopes": [
@@ -988,14 +1198,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.98039216,
-            0.21960784,
-            0.18039216
+            0.9803921580314636,
+            0.21960784494876862,
+            0.18039216101169586
           ],
           "alpha": 1,
           "hex": "#FA382E"
         },
-        "$description": "用于警告或风险提示的填充，表达 warning 语义。",
+        "$description": "警告类填充。用于删除等危险操作的按钮、未读红点、错误徽标。不要用于一般提醒，那种情况用 caution。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3978:18",
           "com.figma.scopes": [
@@ -1015,14 +1225,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.98039216,
-            0.21960784,
-            0.18039216
+            0.9803921580314636,
+            0.21960784494876862,
+            0.18039216101169586
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FA382E"
         },
-        "$description": "用于 warning 警告填充的禁用状态。",
+        "$description": "警告类填充的禁用态。用于危险操作按钮不可用时。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3978:17",
           "com.figma.scopes": [
@@ -1044,14 +1254,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.11372549,
-            0.8039216,
-            0.22745098
+            0.11372549086809158,
+            0.8039215803146362,
+            0.22745098173618317
           ],
           "alpha": 1,
           "hex": "#1DCD3A"
         },
-        "$description": "用于成功状态的填充，表达操作成功或完成。",
+        "$description": "成功类填充。用于成功图标的底、已完成的徽标、正向状态的指示点。不要用于普通选中态，那种情况用 brand。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2797",
           "com.figma.scopes": [
@@ -1071,14 +1281,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.11372549,
-            0.8039216,
-            0.22745098
+            0.11372549086809158,
+            0.8039215803146362,
+            0.22745098173618317
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#1DCD3A"
         },
-        "$description": "用于成功语义填充的禁用状态。",
+        "$description": "成功类填充的禁用态。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2798",
           "com.figma.scopes": [
@@ -1104,10 +1314,10 @@
             1,
             1
           ],
-          "alpha": 0.08,
+          "alpha": 0.07999999821186066,
           "hex": "#FFFFFF"
         },
-        "$description": "用于填充区域的悬停状态反馈。",
+        "$description": "悬停反馈层。连接鼠标或触控板时，列表项、卡片、按钮悬停时叠加在原背景上。只在交互反馈时使用，不要用作静态底色。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5459",
           "com.figma.scopes": [
@@ -1116,7 +1326,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_080",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_080",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1131,10 +1341,10 @@
             1,
             1
           ],
-          "alpha": 0.14,
+          "alpha": 0.14000000059604645,
           "hex": "#FFFFFF"
         },
-        "$description": "用于填充区域的按下状态反馈。",
+        "$description": "按下反馈层。列表项、卡片、按钮被按下时叠加在原背景上。只在交互反馈时使用。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5460",
           "com.figma.scopes": [
@@ -1143,7 +1353,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_140",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1158,10 +1368,10 @@
             1,
             1
           ],
-          "alpha": 0.12,
+          "alpha": 0.11999999731779099,
           "hex": "#FFFFFF"
         },
-        "$description": "用于填充区域的选中状态反馈。",
+        "$description": "选中反馈层。列表项、选项、网格项处于选中状态时叠加在背景上。如果需要强调选中，配合 brand 文字或图标一起用。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3946:5461",
           "com.figma.scopes": [
@@ -1170,7 +1380,36 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:340a7df8215e34cf6d94a13020fd2e15e6d1bd1a/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_120",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_120",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      }
+    },
+    "neutra": {
+      "miuix_sys_color_bg_neutra_enabled": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1411764770746231,
+            0.1411764770746231,
+            0.1411764770746231
+          ],
+          "alpha": 1,
+          "hex": "#242424"
+        },
+        "$description": "白底浮层的背景。用于弹窗、底部抽屉、下拉菜单、气泡等悬浮在页面之上的容器。Dark 模式下会提亮（白 14%），和页面背景拉开层级。不要用于页面背景或页面内的卡片。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:8522:38",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:50d19056e9bd9965056704b53ddd0af294a1c218/-1:-1",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_140",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1190,7 +1429,7 @@
           "alpha": 1,
           "hex": "#FFFFFF"
         },
-        "$description": "用于需要在 Light / Dark 模式下保持白色的填充。",
+        "$description": "固定白色填充，不随 Dark 模式变色。用于图片或深色背景上的按钮底、分页指示点、开关的滑块。不要用于普通容器背景。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2756",
           "com.figma.scopes": [
@@ -1199,7 +1438,7 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
-            "targetVariableName": "solid/white/miuix_ref_white_solid_level_1000",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1214,10 +1453,10 @@
             1,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
-        "$description": "用于固定白色填充的禁用状态，通过降低不透明度弱化表现。",
+        "$description": "固定白色填充的禁用态。用于图片上的按钮、开关滑块不可用时。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3525:2761",
           "com.figma.scopes": [
@@ -1226,7 +1465,281 @@
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_300",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_300",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      }
+    },
+    "list": {
+      "miuix_sys_color_fill_list_enabled": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.14000000059604645,
+          "hex": "#FFFFFF"
+        },
+        "$description": "第四层中性填充的禁用态。用于这类控件不可用时的底色。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:8504:9",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:589a1fa7d48bb87b1763ac900f053fba45ba752c/-1:-1",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_140",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      }
+    },
+    "vibrant": {
+      "miuix_sys_color_fill_vibrant_white_primary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 1,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，白色主级（primary），白色 100%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:12",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:a61a16ba6909c0da77ab28be64960551570c830a/-1:-1",
+            "targetVariableName": "solid/white/kit/miuix_ref_white_solid_kit_level_1000",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_white_secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.800000011920929,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，白色次级（secondary），白色 80%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:13",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:32d6f51bf751a912756d53224f8eac6eb9a5ebe4/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_800",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_white_tertiary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.20000000298023224,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，白色三级（tertiary），白色 20%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:14",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_200",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_white_quaternary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.11999999731779099,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，白色四级（quaternary），白色 12%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:15",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:340a7df8215e34cf6d94a13020fd2e15e6d1bd1a/-1:-1",
+            "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_120",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_white_quinary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            1,
+            1
+          ],
+          "alpha": 0.10000000149011612,
+          "hex": "#FFFFFF"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，白色五级（quinary），白色 10%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:16",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:4ce684a49b2257312f4bf162a30470a15b0fa10f/-1:-1",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_100",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_black_primary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 1,
+          "hex": "#000000"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，黑色主级（primary），黑色 100%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:17",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:08af0a11d81a159a317227f02367fb0ed6f1ddcd/-1:-1",
+            "targetVariableName": "solid/black/kit/miuix_ref_black_solid_kit_level_1000",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_black_secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.8999999761581421,
+          "hex": "#000000"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，黑色次级（secondary），黑色 90%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:18",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:ce9f8a0f2527b05cb046bf387b91b24d028fbc0a/-1:-1",
+            "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_900",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_black_tertiary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.6000000238418579,
+          "hex": "#000000"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，黑色三级（tertiary），黑色 60%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:19",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:e6b66350ea685ca140d57fe8ea0ab5e912e1a8de/-1:-1",
+            "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_600",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_color_fill_vibrant_black_quaternary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0,
+            0
+          ],
+          "alpha": 0.4000000059604645,
+          "hex": "#000000"
+        },
+        "$description": "材质/多彩背景（控制中心、通知、锁屏）上的操作控件填充，黑色四级（quaternary），黑色 40%，深浅模式同值",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9597:20",
+          "com.figma.scopes": [
+            "ALL_FILLS",
+            "STROKE"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:ceee262ec21cbcc67fe12cfdf00b5c2dfd49f146/-1:-1",
+            "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_400",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1245,18 +1758,18 @@
             1,
             1
           ],
-          "alpha": 0.3,
+          "alpha": 0.30000001192092896,
           "hex": "#FFFFFF"
         },
-        "$description": "用于可用状态下的边框描边，界定元素或容器边界。",
+        "$description": "可用状态的边框。用于输入框、未选中的复选框和单选框、描边按钮。比 divider 更明显（30%，divider 是 10%）。不要用作分隔线。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3531:2689",
           "com.figma.scopes": [
-            "STROKE"
+            "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:140374673e6cc781a229b519aaf35aa765d8f87b/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_300",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_300",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1271,18 +1784,18 @@
             1,
             1
           ],
-          "alpha": 0.2,
+          "alpha": 0.20000000298023224,
           "hex": "#FFFFFF"
         },
-        "$description": "用于禁用状态下的边框描边，弱化不可用元素的边界。",
+        "$description": "禁用状态的边框。用于不可用的输入框、复选框、描边按钮。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3901:5",
           "com.figma.scopes": [
-            "STROKE"
+            "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_200",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_200",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1299,18 +1812,18 @@
             1,
             1
           ],
-          "alpha": 0.2,
+          "alpha": 0.20000000298023224,
           "hex": "#FFFFFF"
         },
-        "$description": "用于内容分隔线，区分相邻内容或分组。",
+        "$description": "分隔线。用于列表项之间、分组之间、区块之间。不要用作控件边框，那种情况用 border。",
         "$extensions": {
           "com.figma.variableId": "VariableID:3531:2693",
           "com.figma.scopes": [
-            "STROKE"
+            "ALL_SCOPES"
           ],
           "com.figma.aliasData": {
             "targetVariableId": "VariableID:d37802962d70aca5c328186aafea4fced656bfeb/-1:-1",
-            "targetVariableName": "opacity/white/miuix_ref_white_opacity_level_200",
+            "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_200",
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
@@ -1328,10 +1841,10 @@
           0,
           0
         ],
-        "alpha": 0.6,
+        "alpha": 0.6000000238418579,
         "hex": "#000000"
       },
-      "$description": "用于遮罩，弱化被覆盖的背景内容并突出前景层。",
+      "$description": "遮罩。弹窗、底部抽屉、全屏浮层打开时，覆盖在页面上，把视线引到前景。Dark 模式下更深（60%）。不要用作图片蒙层或卡片背景。",
       "$extensions": {
         "com.figma.variableId": "VariableID:3533:2696",
         "com.figma.scopes": [
@@ -1340,7 +1853,7 @@
         ],
         "com.figma.aliasData": {
           "targetVariableId": "VariableID:e6b66350ea685ca140d57fe8ea0ab5e912e1a8de/-1:-1",
-          "targetVariableName": "opacity/black/miuix_ref_black_opacity_level_600",
+          "targetVariableName": "opacity/black/basic/miuix_ref_black_opacity_basic_level_600",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
@@ -1352,8 +1865,26 @@
       "container": {
         "miuix_sys_space_container_padding_horizontal_sm": {
           "$type": "number",
+          "$value": 6,
+          "$description": "最紧凑容器的左右内边距（6）。",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8382:5",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:a2794198f8c37a2ffd10b4e83ea2810818a5ed10/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_6",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_container_padding_horizontal_md": {
+          "$type": "number",
           "$value": 12,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "紧凑容器的左右内边距（12）。用于小卡片、气泡、Tooltip。",
           "$extensions": {
             "com.figma.variableId": "VariableID:4251:3121",
             "com.figma.scopes": [
@@ -1368,10 +1899,10 @@
             }
           }
         },
-        "miuix_sys_space_container_padding_horizontal_md": {
+        "miuix_sys_space_container_padding_horizontal_lg": {
           "$type": "number",
           "$value": 16,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "常规容器的左右内边距（16）。用于普通卡片、列表分组卡片。最常用的一档。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8481",
             "com.figma.scopes": [
@@ -1386,10 +1917,10 @@
             }
           }
         },
-        "miuix_sys_space_container_padding_horizontal_lg": {
+        "miuix_sys_space_container_padding_horizontal_xl": {
           "$type": "number",
           "$value": 24,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "浮层容器的左右内边距（24）。用于弹窗、底部抽屉的内容区。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8485",
             "com.figma.scopes": [
@@ -1404,10 +1935,10 @@
             }
           }
         },
-        "miuix_sys_space_container_padding_horizontal_xl": {
+        "miuix_sys_space_container_padding_horizontal_xxl": {
           "$type": "number",
           "$value": 28,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "大尺寸容器的左右内边距（28）。用于大弹窗、全屏抽屉、宽屏下的卡片。",
           "$extensions": {
             "com.figma.variableId": "VariableID:7466:6594",
             "com.figma.scopes": [
@@ -1426,8 +1957,42 @@
       "control": {
         "miuix_sys_space_control_padding_horizontal_sm": {
           "$type": "number",
+          "$value": 3,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8592:6",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:89c3701ee8c9aec7992fbe702e5e94241116b5e0/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_3",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_control_padding_horizontal_md": {
+          "$type": "number",
+          "$value": 4,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8634:5",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:308c0042bbd84c5f0255df64ee43c4fc6032f67a/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_4",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_control_padding_horizontal_lg": {
+          "$type": "number",
           "$value": 12,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "紧凑控件的左右内边距（12）。用于小按钮、标签、紧凑输入框。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8497",
             "com.figma.scopes": [
@@ -1442,10 +2007,10 @@
             }
           }
         },
-        "miuix_sys_space_control_padding_horizontal_md": {
+        "miuix_sys_space_control_padding_horizontal_xl": {
           "$type": "number",
           "$value": 16,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "常规控件的左右内边距（16）。用于常规按钮、搜索栏、输入栏、列表项。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8498",
             "com.figma.scopes": [
@@ -1460,10 +2025,10 @@
             }
           }
         },
-        "miuix_sys_space_control_padding_horizontal_lg": {
+        "miuix_sys_space_control_padding_horizontal_xxl": {
           "$type": "number",
           "$value": 20,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "大控件的左右内边距（20）。用于大按钮、导航栏。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8499",
             "com.figma.scopes": [
@@ -1485,7 +2050,7 @@
         "miuix_sys_space_container_padding_vertical_sm": {
           "$type": "number",
           "$value": 6,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "容器上下的最小留白（6）。用于内部是列表的卡片，列表项本身已经带了上下内边距。不要用于纯文字卡片，会显得太挤。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8489",
             "com.figma.scopes": [
@@ -1502,8 +2067,59 @@
         },
         "miuix_sys_space_container_padding_vertical_md": {
           "$type": "number",
+          "$value": 8,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:9055:376",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:3e6ea4fa169840e743540d740d6694f1c97679f0/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_8",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_container_padding_vertical_lg": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8389:5",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:9bd0c0af885afcc07a0895bd22e43964b4f2f0a5/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_12",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_container_padding_vertical_xl": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:9059:376",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:69a447d88a710821b498ebee8c6977a07ca31864/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_16",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_container_padding_vertical_xxl": {
+          "$type": "number",
           "$value": 24,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "常规容器的上下内边距（24）。用于普通卡片、弹窗内容区。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8493",
             "com.figma.scopes": [
@@ -1518,10 +2134,10 @@
             }
           }
         },
-        "miuix_sys_space_container_padding_vertical_lg": {
+        "miuix_sys_space_container_padding_vertical_xxxl": {
           "$type": "number",
           "$value": 28,
-          "$description": "卡片、抽屉、弹出框类",
+          "$description": "大容器的上下内边距（28）。用于弹窗顶部、底部抽屉的首尾。",
           "$extensions": {
             "com.figma.variableId": "VariableID:7466:6595",
             "com.figma.scopes": [
@@ -1540,8 +2156,25 @@
       "control": {
         "miuix_sys_space_control_padding_vertical_xs": {
           "$type": "number",
+          "$value": 3,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8592:5",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:89c3701ee8c9aec7992fbe702e5e94241116b5e0/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_3",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_control_padding_vertical_sm": {
+          "$type": "number",
           "$value": 4,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "最小的上下内边距（4）。用于标签、徽标、Chip。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8503",
             "com.figma.scopes": [
@@ -1556,10 +2189,10 @@
             }
           }
         },
-        "miuix_sys_space_control_padding_vertical_sm": {
+        "miuix_sys_space_control_padding_vertical_md": {
           "$type": "number",
           "$value": 6,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "小控件的上下内边距（6）。用于小按钮、紧凑型输入框。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8507",
             "com.figma.scopes": [
@@ -1574,10 +2207,10 @@
             }
           }
         },
-        "miuix_sys_space_control_padding_vertical_md": {
+        "miuix_sys_space_control_padding_vertical_lg": {
           "$type": "number",
           "$value": 8,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "常规控件的上下内边距（8）。用于常规按钮、搜索栏。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8511",
             "com.figma.scopes": [
@@ -1592,10 +2225,44 @@
             }
           }
         },
-        "miuix_sys_space_control_padding_vertical_lg": {
+        "miuix_sys_space_control_padding_vertical_xl": {
+          "$type": "number",
+          "$value": 10,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8395:6",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:3dd47f770a6af2c86de535bc58ad89a13b878a18/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_10",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_control_padding_vertical_xxl": {
+          "$type": "number",
+          "$value": 12,
+          "$extensions": {
+            "com.figma.variableId": "VariableID:8389:6",
+            "com.figma.scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:9bd0c0af885afcc07a0895bd22e43964b4f2f0a5/-1:-1",
+              "targetVariableName": "number/space/miuix_ref_space_12",
+              "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+              "targetVariableSetName": "Reference Token"
+            }
+          }
+        },
+        "miuix_sys_space_control_padding_vertical_xxxl": {
           "$type": "number",
           "$value": 14,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "单行列表项的上下内边距（14）。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8515",
             "com.figma.scopes": [
@@ -1610,10 +2277,10 @@
             }
           }
         },
-        "miuix_sys_space_control_padding_vertical_xl": {
+        "miuix_sys_space_control_padding_vertical_xxxxl": {
           "$type": "number",
           "$value": 16,
-          "$description": "列表、按钮、导航栏类、所搜栏、输入栏等基础组件类",
+          "$description": "双行列表项或大按钮的上下内边距（16）。",
           "$extensions": {
             "com.figma.variableId": "VariableID:6975:8519",
             "com.figma.scopes": [
@@ -1635,7 +2302,7 @@
     "miuix_sys_space_margin_sm": {
       "$type": "number",
       "$value": 12,
-      "$description": "页面以及分栏区域左右边距",
+      "$description": "紧凑区域的左右边距（12）。用于分栏布局中较窄的一栏、浮层内的二级区域。",
       "$extensions": {
         "com.figma.variableId": "VariableID:4259:3103",
         "com.figma.scopes": [
@@ -1652,7 +2319,7 @@
     "miuix_sys_space_margin_md": {
       "$type": "number",
       "$value": 20,
-      "$description": "页面以及分栏区域左右边距",
+      "$description": "手机页面的标准左右边距（20）。默认用这一档。",
       "$extensions": {
         "com.figma.variableId": "VariableID:6975:8478",
         "com.figma.scopes": [
@@ -1669,7 +2336,7 @@
     "miuix_sys_space_margin_lg": {
       "$type": "number",
       "$value": 28,
-      "$description": "页面以及分栏区域左右边距",
+      "$description": "大屏的左右边距（28）。用于折叠屏展开态、平板竖屏。",
       "$extensions": {
         "com.figma.variableId": "VariableID:6975:8479",
         "com.figma.scopes": [
@@ -1686,7 +2353,7 @@
     "miuix_sys_space_margin_xl": {
       "$type": "number",
       "$value": 56,
-      "$description": "页面以及分栏区域左右边距",
+      "$description": "宽屏的左右边距（56）。用于平板横屏、PC 宽版布局，避免内容拉得过长。",
       "$extensions": {
         "com.figma.variableId": "VariableID:6975:8480",
         "com.figma.scopes": [
@@ -1702,11 +2369,130 @@
     }
   },
   "gap": {
+    "vertical": {
+      "miuix_sys_space_gap_vertical_xs": {
+        "$type": "number",
+        "$value": 4,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:8657:5",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:308c0042bbd84c5f0255df64ee43c4fc6032f67a/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_4",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_gap_vertical_sm": {
+        "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:8653:5",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:3e6ea4fa169840e743540d740d6694f1c97679f0/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_8",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_gap_vertical_md": {
+        "$type": "number",
+        "$value": 12,
+        "$description": "同组内纵向元素的间距（12）。用于标题和描述之间、表单项之间。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:4251:3103",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:9bd0c0af885afcc07a0895bd22e43964b4f2f0a5/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_12",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_gap_vertical_lg": {
+        "$type": "number",
+        "$value": 16,
+        "$description": "卡片之间的纵向间距（16）。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6975:17822",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:69a447d88a710821b498ebee8c6977a07ca31864/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_16",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_gap_vertical_xl": {
+        "$type": "number",
+        "$value": 24,
+        "$description": "分组之间的纵向间距（24）。用于设置页中不同的分组、内容区块之间。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6975:17826",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:e776360f3544f2882f51faadf711a3ca7e03ee49/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_24",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_gap_vertical_xxl": {
+        "$type": "number",
+        "$value": 32,
+        "$description": "大区块之间的纵向间距（32）。用于页面中不同功能区之间。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6975:17830",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:3ff40756d9cf79927d280f97c840328df7c9dce6/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_32",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_gap_vertical_xxxl": {
+        "$type": "number",
+        "$value": 48,
+        "$description": "页面级的大分区间距（48）。用于首屏头图和内容区之间、长页面的章节之间。",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:6975:17834",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:44b131de14dba8c386355d754cb34ad39d979461/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_48",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      }
+    },
     "horizontal": {
       "miuix_sys_space_gap_horizontal_xs": {
         "$type": "number",
         "$value": 4,
-        "$description": "图标与文本、内容分组、区块",
+        "$description": "最紧密的横向间距（4）。用于图标和文字之间、徽标和文字之间。",
         "$extensions": {
           "com.figma.variableId": "VariableID:4251:3099",
           "com.figma.scopes": [
@@ -1723,7 +2509,7 @@
       "miuix_sys_space_gap_horizontal_sm": {
         "$type": "number",
         "$value": 8,
-        "$description": "图标与文本、内容分组、区块",
+        "$description": "并列小元素的横向间距（8）。用于标签之间、小图标按钮之间。",
         "$extensions": {
           "com.figma.variableId": "VariableID:6975:17810",
           "com.figma.scopes": [
@@ -1740,7 +2526,7 @@
       "miuix_sys_space_gap_horizontal_md": {
         "$type": "number",
         "$value": 12,
-        "$description": "图标与文本、内容分组、区块",
+        "$description": "并列按钮的横向间距（12）。用于弹窗底部的按钮组、工具栏按钮之间。",
         "$extensions": {
           "com.figma.variableId": "VariableID:6975:17814",
           "com.figma.scopes": [
@@ -1757,7 +2543,7 @@
       "miuix_sys_space_gap_horizontal_lg": {
         "$type": "number",
         "$value": 16,
-        "$description": "图标与文本、内容分组、区块",
+        "$description": "横向区块之间的间距（16）。用于并排的卡片之间、宫格的列间距。",
         "$extensions": {
           "com.figma.variableId": "VariableID:6975:17818",
           "com.figma.scopes": [
@@ -1771,131 +2557,77 @@
           }
         }
       }
-    },
-    "vertical": {
-      "miuix_sys_space_gap_vertical_xs": {
-        "$type": "number",
-        "$value": 12,
-        "$description": "图标与文本、内容分组、区块",
-        "$extensions": {
-          "com.figma.variableId": "VariableID:4251:3103",
-          "com.figma.scopes": [
-            "GAP"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:9bd0c0af885afcc07a0895bd22e43964b4f2f0a5/-1:-1",
-            "targetVariableName": "number/space/miuix_ref_space_12",
-            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-            "targetVariableSetName": "Reference Token"
-          }
-        }
-      },
-      "miuix_sys_space_gap_vertical_sm": {
-        "$type": "number",
-        "$value": 16,
-        "$description": "图标与文本、内容分组、区块",
-        "$extensions": {
-          "com.figma.variableId": "VariableID:6975:17822",
-          "com.figma.scopes": [
-            "GAP"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:69a447d88a710821b498ebee8c6977a07ca31864/-1:-1",
-            "targetVariableName": "number/space/miuix_ref_space_16",
-            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-            "targetVariableSetName": "Reference Token"
-          }
-        }
-      },
-      "miuix_sys_space_gap_vertical_md": {
-        "$type": "number",
-        "$value": 24,
-        "$description": "图标与文本、内容分组、区块",
-        "$extensions": {
-          "com.figma.variableId": "VariableID:6975:17826",
-          "com.figma.scopes": [
-            "GAP"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:e776360f3544f2882f51faadf711a3ca7e03ee49/-1:-1",
-            "targetVariableName": "number/space/miuix_ref_space_24",
-            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-            "targetVariableSetName": "Reference Token"
-          }
-        }
-      },
-      "miuix_sys_space_gap_vertical_lg": {
-        "$type": "number",
-        "$value": 32,
-        "$description": "图标与文本、内容分组、区块",
-        "$extensions": {
-          "com.figma.variableId": "VariableID:6975:17830",
-          "com.figma.scopes": [
-            "GAP"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:3ff40756d9cf79927d280f97c840328df7c9dce6/-1:-1",
-            "targetVariableName": "number/space/miuix_ref_space_32",
-            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-            "targetVariableSetName": "Reference Token"
-          }
-        }
-      },
-      "miuix_sys_space_gap_vertical_xl": {
-        "$type": "number",
-        "$value": 48,
-        "$description": "图标与文本、内容分组、区块",
-        "$extensions": {
-          "com.figma.variableId": "VariableID:6975:17834",
-          "com.figma.scopes": [
-            "GAP"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:44b131de14dba8c386355d754cb34ad39d979461/-1:-1",
-            "targetVariableName": "number/space/miuix_ref_space_48",
-            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
-            "targetVariableSetName": "Reference Token"
-          }
-        }
-      }
     }
   },
   "radius": {
-    "miuix_sys_radius_none": {
+    "miuix_sys_radius_control_sm_smooth": {
       "$type": "number",
-      "$value": 0,
+      "$value": 12,
       "$extensions": {
-        "com.figma.variableId": "VariableID:4264:3172",
+        "com.figma.variableId": "VariableID:8447:9",
         "com.figma.scopes": [
           "CORNER_RADIUS"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:9646983f2bb8473f2457601bc51955e436af3ade/-1:-1",
-          "targetVariableName": "number/radius/miuix_ref_radius_0",
+          "targetVariableId": "VariableID:18faf4d109bc092ca69ae3d57bf535459cfd1244/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_12",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
       }
     },
-    "miuix_sys_radius_container": {
+    "miuix_sys_radius_control_md_smooth": {
       "$type": "number",
-      "$value": 20,
+      "$value": 14,
       "$extensions": {
-        "com.figma.variableId": "VariableID:7009:6592",
+        "com.figma.variableId": "VariableID:8831:5",
         "com.figma.scopes": [
           "CORNER_RADIUS"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:794bfb4bb7042eec8c5da78a604516667be66921/-1:-1",
-          "targetVariableName": "number/radius/miuix_ref_radius_20",
+          "targetVariableId": "VariableID:db89615c34bdc4579545924b256b6dbe01faf046/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_14",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
       }
     },
-    "miuix_sys_radius_control_sm": {
+    "miuix_sys_radius_control_lg_smooth": {
+      "$type": "number",
+      "$value": 16,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8447:10",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:eb6ef25717317dc2bd0d646f2708fc59bc66461c/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_16",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_control_xl_smooth": {
+      "$type": "number",
+      "$value": 18,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8831:6",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c33ae57fa92a2ad1b7a8ebc3e482a96ba81e3555/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_18",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_control_2xl_smooth": {
       "$type": "number",
       "$value": 20,
+      "$description": "小控件圆角（20）。用于小按钮、标签、紧凑输入框。",
       "$extensions": {
         "com.figma.variableId": "VariableID:7009:6604",
         "com.figma.scopes": [
@@ -1909,9 +2641,10 @@
         }
       }
     },
-    "miuix_sys_radius_control_md": {
+    "miuix_sys_radius_control_3xl_smooth": {
       "$type": "number",
       "$value": 22,
+      "$description": "常规控件圆角（22）。用于常规按钮、搜索栏、输入框。",
       "$extensions": {
         "com.figma.variableId": "VariableID:7009:6607",
         "com.figma.scopes": [
@@ -1925,9 +2658,42 @@
         }
       }
     },
-    "miuix_sys_radius_control_lg": {
+    "miuix_sys_radius_control_4xl_smooth": {
+      "$type": "number",
+      "$value": 24,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8831:7",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e929b4e67160768a604bd164c75fbfe9beb4d224/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_24",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_control_5xl_smooth": {
+      "$type": "number",
+      "$value": 26,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8831:8",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:03efccf542912a2706b94c211d6e11b924a0e0c6/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_26",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_control_6xl_smooth": {
       "$type": "number",
       "$value": 28,
+      "$description": "大控件圆角（28）。用于大按钮、底部主操作按钮。",
       "$extensions": {
         "com.figma.variableId": "VariableID:7009:6614",
         "com.figma.scopes": [
@@ -1941,9 +2707,59 @@
         }
       }
     },
-    "miuix_sys_radius_overlay": {
+    "miuix_sys_radius_control_7xl_smooth": {
+      "$type": "number",
+      "$value": 32,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8831:9",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a87d90df729071f598924f07afacc97a32de7d39/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_32",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_control_8xl_smooth": {
+      "$type": "number",
+      "$value": 56,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8831:10",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:0462372824de7b719112573505ade608d5df31ad/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_56",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_full_smooth": {
+      "$type": "number",
+      "$value": 999,
+      "$description": "全圆角（999），形成胶囊或正圆。用于胶囊按钮、标签、开关、头像、指示点。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:7009:6600",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:def421b6186bbc43e49b6e7447523b3344da1ad5/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_999",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_radius_overlay_smooth_dynamic": {
       "$type": "number",
       "$value": 36,
+      "$description": "【平滑圆角+动态圆角】浮层圆角（36）。用于弹窗、底部抽屉、全屏浮层的外轮廓。不要用于页面内的卡片。",
       "$extensions": {
         "com.figma.variableId": "VariableID:7009:6596",
         "com.figma.scopes": [
@@ -1957,17 +2773,18 @@
         }
       }
     },
-    "miuix_sys_radius_full": {
+    "miuix_sys_radius_container": {
       "$type": "number",
-      "$value": 999,
+      "$value": 20,
+      "$description": "容器圆角（20）。用于卡片、列表分组卡片。嵌套时内层圆角不要大于外层。",
       "$extensions": {
-        "com.figma.variableId": "VariableID:7009:6600",
+        "com.figma.variableId": "VariableID:7009:6592",
         "com.figma.scopes": [
           "CORNER_RADIUS"
         ],
         "com.figma.aliasData": {
-          "targetVariableId": "VariableID:def421b6186bbc43e49b6e7447523b3344da1ad5/-1:-1",
-          "targetVariableName": "number/radius/miuix_ref_radius_999",
+          "targetVariableId": "VariableID:794bfb4bb7042eec8c5da78a604516667be66921/-1:-1",
+          "targetVariableName": "number/radius/miuix_ref_radius_20",
           "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
           "targetVariableSetName": "Reference Token"
         }
@@ -1979,7 +2796,7 @@
       "miuix_sys_space_safe_area_bottom_sm": {
         "$type": "number",
         "$value": 24,
-        "$description": "页面底部安全间距（Safe Area），纵向。底部悬浮元素：底部导航栏、底部工具栏、弹出框容器类等。",
+        "$description": "底部悬浮元素到屏幕底边的距离（24）。用于底部导航栏、底部工具栏、弹出框容器。",
         "$extensions": {
           "com.figma.variableId": "VariableID:7469:8466",
           "com.figma.scopes": [
@@ -1995,8 +2812,24 @@
       },
       "miuix_sys_space_safe_area_bottom_md": {
         "$type": "number",
+        "$value": 28,
+        "$extensions": {
+          "com.figma.variableId": "VariableID:9289:5",
+          "com.figma.scopes": [
+            "GAP"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:f0e027d37687837d436b666920297c4cf5fff824/-1:-1",
+            "targetVariableName": "number/space/miuix_ref_space_28",
+            "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+            "targetVariableSetName": "Reference Token"
+          }
+        }
+      },
+      "miuix_sys_space_safe_area_bottom_lg": {
+        "$type": "number",
         "$value": 32,
-        "$description": "页面底部安全间距（Safe Area），纵向。录音按钮、独立性主操作按钮。",
+        "$description": "独立主操作到屏幕底边的距离（32）。用于录音按钮、单独悬浮的主操作按钮。",
         "$extensions": {
           "com.figma.variableId": "VariableID:7469:8467",
           "com.figma.scopes": [
@@ -2010,10 +2843,10 @@
           }
         }
       },
-      "miuix_sys_space_safe_area_bottom_lg": {
+      "miuix_sys_space_safe_area_bottom_xl": {
         "$type": "number",
         "$value": 48,
-        "$description": "页面底部安全间距（Safe Area），纵向。底部固定按钮、列表底部；底部悬浮元素与跟随按钮、列表底部之间距。",
+        "$description": "底部固定按钮、列表末尾到屏幕底边的距离（48）；也用于底部悬浮元素和跟随按钮、列表底部之间。",
         "$extensions": {
           "com.figma.variableId": "VariableID:7469:8468",
           "com.figma.scopes": [
@@ -2027,10 +2860,10 @@
           }
         }
       },
-      "miuix_sys_space_safe_area_bottom_xl": {
+      "miuix_sys_space_safe_area_bottom_xxl": {
         "$type": "number",
         "$value": 128,
-        "$description": "页面底部安全间距（Safe Area），纵向。系统 Toast。",
+        "$description": "系统 Toast 到屏幕底边的距离（128）。",
         "$extensions": {
           "com.figma.variableId": "VariableID:7469:8469",
           "com.figma.scopes": [
@@ -2050,7 +2883,7 @@
     "vertical": {
       "miuix_sys_height_vertical_0_7": {
         "$type": "number",
-        "$value": 0.7,
+        "$value": 0.699999988079071,
         "$extensions": {
           "com.figma.variableId": "VariableID:7895:5",
           "com.figma.scopes": [
@@ -2270,6 +3103,849 @@
             "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
             "targetVariableSetName": "Reference Token"
           }
+        }
+      }
+    }
+  },
+  "calendar": {
+    "miuix_sys_calendar_color_fill_holiday_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.20392157137393951,
+          0.5098039507865906,
+          1
+        ],
+        "alpha": 0.20000000298023224,
+        "hex": "#3482FF"
+      },
+      "$description": "场景：节假日底色（如日历节假日日期格）。Light 暂为裸值，待补 L1 8% 蓝。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8624:5",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:977decd8db1625a865afc4fa22e939481f8ad25e/-1:-1",
+          "targetVariableName": "opacity/blue/miuix_ref_blue_opacity_level_200",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_workday_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.11999999731779099,
+        "hex": "#FFFFFF"
+      },
+      "$description": "场景：补班日底色（如日历调休上班日期格）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8624:6",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:340a7df8215e34cf6d94a13020fd2e15e6d1bd1a/-1:-1",
+          "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_120",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_handle_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.1599999964237213,
+        "hex": "#FFFFFF"
+      },
+      "$description": "场景：拖拽条底色（如日历月盘小杆子）。Dark 暂为裸值，待补 L1 16% 白。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8626:5",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ]
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_red_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3921568691730499,
+          0.08627451211214066,
+          0.07058823853731155
+        ],
+        "alpha": 1,
+        "hex": "#641612"
+      },
+      "$description": "场景：日历日程标签底色（red）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:376",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e220ec7049e7d56eb0cd81bf6887de8aa9457f7d/-1:-1",
+          "targetVariableName": "solid/red/miuix_ref_red_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_red_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9921568632125854,
+          0.7647058963775635,
+          0.7529411911964417
+        ],
+        "alpha": 1,
+        "hex": "#FDC3C0"
+      },
+      "$description": "场景：日历日程标签文字默认色（red）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:377",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:3b742d5c9e603f7ca6837a5b7a5d5b0cb81e0ef4/-1:-1",
+          "targetVariableName": "solid/red/miuix_ref_red_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_red_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5882353186607361,
+          0.13333334028720856,
+          0.10980392247438431
+        ],
+        "alpha": 1,
+        "hex": "#96221C"
+      },
+      "$description": "场景：日历日程标签文字置灰色（red）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:378",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:935180828f344a2a19e95c477819ccde553210eb/-1:-1",
+          "targetVariableName": "solid/red/miuix_ref_red_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_orange_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4000000059604645,
+          0.250980406999588,
+          0.007843137718737125
+        ],
+        "alpha": 1,
+        "hex": "#664002"
+      },
+      "$description": "场景：日历日程标签底色（orange）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:379",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:dd95ac7db62f641f49ffe939d0af38009046f0e5/-1:-1",
+          "targetVariableName": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_orange_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.886274516582489,
+          0.7058823704719543
+        ],
+        "alpha": 1,
+        "hex": "#FFE2B4"
+      },
+      "$description": "场景：日历日程标签文字默认色（orange）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:380",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ed6123b7052bb1908a7eeb5e7b26fca9d840d4ec/-1:-1",
+          "targetVariableName": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_orange_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6000000238418579,
+          0.37254902720451355,
+          0.0117647061124444
+        ],
+        "alpha": 1,
+        "hex": "#995F03"
+      },
+      "$description": "场景：日历日程标签文字置灰色（orange）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:381",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:adb8abb3e354bc3783ffc8b22c9d197aa8e104e0/-1:-1",
+          "targetVariableName": "solid/apricot_orange/miuix_ref_apricot_orange_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_yellow_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4000000059604645,
+          0.29411765933036804,
+          0.0235294122248888
+        ],
+        "alpha": 1,
+        "hex": "#664B06"
+      },
+      "$description": "场景：日历日程标签底色（yellow）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:382",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e20356cc78d1217274b8bbac4b3a0e574071dd16/-1:-1",
+          "targetVariableName": "solid/yellow/miuix_ref_yellow_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_yellow_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          0.9215686321258545,
+          0.7176470756530762
+        ],
+        "alpha": 1,
+        "hex": "#FFEBB7"
+      },
+      "$description": "场景：日历日程标签文字默认色（yellow）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:383",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:59e78dcf3dfec116c035b4109ee782856366bb55/-1:-1",
+          "targetVariableName": "solid/yellow/miuix_ref_yellow_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_yellow_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6000000238418579,
+          0.43921568989753723,
+          0.03529411926865578
+        ],
+        "alpha": 1,
+        "hex": "#997009"
+      },
+      "$description": "场景：日历日程标签文字置灰色（yellow）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:384",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:892058ef5ec46aac434c0150b1f4b2a1b6ca100c/-1:-1",
+          "targetVariableName": "solid/yellow/miuix_ref_yellow_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_green_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0470588244497776,
+          0.32156863808631897,
+          0.09019608050584793
+        ],
+        "alpha": 1,
+        "hex": "#0C5217"
+      },
+      "$description": "场景：日历日程标签底色（green）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:385",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:fcf0c091e97aa34f5f2a3e6c789ea852a1534091/-1:-1",
+          "targetVariableName": "solid/green/miuix_ref_green_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_green_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7333333492279053,
+          0.9411764740943909,
+          0.7686274647712708
+        ],
+        "alpha": 1,
+        "hex": "#BBF0C4"
+      },
+      "$description": "场景：日历日程标签文字默认色（green）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:386",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:de6bde49f028d27a534772f118611573864930dd/-1:-1",
+          "targetVariableName": "solid/green/miuix_ref_green_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_green_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.06666667014360428,
+          0.48235294222831726,
+          0.13725490868091583
+        ],
+        "alpha": 1,
+        "hex": "#117B23"
+      },
+      "$description": "场景：日历日程标签文字置灰色（green）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:387",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:b1c3e476520c8c226d42e22a6cee89564050fa43/-1:-1",
+          "targetVariableName": "solid/green/miuix_ref_green_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_cyan_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0235294122248888,
+          0.3176470696926117,
+          0.3176470696926117
+        ],
+        "alpha": 1,
+        "hex": "#065151"
+      },
+      "$description": "场景：日历日程标签底色（cyan）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:388",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:55c2b76b263f6407028d0dbd6fb86a0da3259f1b/-1:-1",
+          "targetVariableName": "solid/cyan/miuix_ref_cyan_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_cyan_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7176470756530762,
+          0.9372549057006836,
+          0.9372549057006836
+        ],
+        "alpha": 1,
+        "hex": "#B7EFEF"
+      },
+      "$description": "场景：日历日程标签文字默认色（cyan）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:389",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:8a075a59b45fb7b0dcdef1787a97a18bcffa7234/-1:-1",
+          "targetVariableName": "solid/cyan/miuix_ref_cyan_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_cyan_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.03529411926865578,
+          0.4745098054409027,
+          0.4745098054409027
+        ],
+        "alpha": 1,
+        "hex": "#097979"
+      },
+      "$description": "场景：日历日程标签文字置灰色（cyan）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:390",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c5c3d547ab72d5f03e12d4f8acf59ab37291ea2f/-1:-1",
+          "targetVariableName": "solid/cyan/miuix_ref_cyan_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_blue_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.08235294371843338,
+          0.20392157137393951,
+          0.4000000059604645
+        ],
+        "alpha": 1,
+        "hex": "#153466"
+      },
+      "$description": "场景：日历日程标签底色（blue）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:391",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:68f15dca305a31a90b44f45ef3975a9befeb3d52/-1:-1",
+          "targetVariableName": "solid/blue/miuix_ref_blue_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_blue_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7607843279838562,
+          0.8509804010391235,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#C2D9FF"
+      },
+      "$description": "场景：日历日程标签文字默认色（blue）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:392",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:3b076130eaacc95bbfed7f1a122889624c9e32df/-1:-1",
+          "targetVariableName": "solid/blue/miuix_ref_blue_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_blue_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.12156862765550613,
+          0.30588236451148987,
+          0.6000000238418579
+        ],
+        "alpha": 1,
+        "hex": "#1F4E99"
+      },
+      "$description": "场景：日历日程标签文字置灰色（blue）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:393",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f77c331bbb5182235b37f3a4e159205857228502/-1:-1",
+          "targetVariableName": "solid/blue/miuix_ref_blue_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_purple_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.1882352977991104,
+          0.16078431904315948,
+          0.3921568691730499
+        ],
+        "alpha": 1,
+        "hex": "#302964"
+      },
+      "$description": "场景：日历日程标签底色（purple）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:394",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ca00e5808c50f88d0ffc8dd765b241ec4f04598a/-1:-1",
+          "targetVariableName": "solid/purple/miuix_ref_purple_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_purple_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8392156958580017,
+          0.8196078538894653,
+          0.9921568632125854
+        ],
+        "alpha": 1,
+        "hex": "#D6D1FD"
+      },
+      "$description": "场景：日历日程标签文字默认色（purple）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:395",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:05b3ef4795a8519a0861a25481b22794c3bbe723/-1:-1",
+          "targetVariableName": "solid/purple/miuix_ref_purple_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_purple_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.27843138575553894,
+          0.24313725531101227,
+          0.5843137502670288
+        ],
+        "alpha": 1,
+        "hex": "#473E95"
+      },
+      "$description": "场景：日历日程标签文字置灰色（purple）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:396",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c4fb1188a2be58fad3b1de923c0d68fad1f6ed47/-1:-1",
+          "targetVariableName": "solid/purple/miuix_ref_purple_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_grey_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.21960784494876862,
+          0.24705882370471954,
+          0.27450981736183167
+        ],
+        "alpha": 1,
+        "hex": "#383F46"
+      },
+      "$description": "场景：日历日程标签底色（grey）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:397",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:b3585740d06184cc395e0326ff0d2ee52763beb7/-1:-1",
+          "targetVariableName": "solid/grey/miuix_ref_grey_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_grey_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8627451062202454,
+          0.886274516582489,
+          0.9058823585510254
+        ],
+        "alpha": 1,
+        "hex": "#DCE2E7"
+      },
+      "$description": "场景：日历日程标签文字默认色（grey）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:398",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7861e902e65c850df3560372418fc65ddd208bcd/-1:-1",
+          "targetVariableName": "solid/grey/miuix_ref_grey_solid_level_300",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_text_eventlabel_grey_disabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3294117748737335,
+          0.3686274588108063,
+          0.4156862795352936
+        ],
+        "alpha": 1,
+        "hex": "#545E6A"
+      },
+      "$description": "场景：日历日程标签文字置灰色（grey）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8982:399",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:85865cdff14cdf2f8bc8a64027afa5586c46b15f/-1:-1",
+          "targetVariableName": "solid/grey/miuix_ref_grey_solid_level_1400",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_deep_orange_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.4000000059604645,
+          0.16470588743686676,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#662A00"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9090:376",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:871e3a8699488363f1bda0dcd91891a970618fec/-1:-1",
+          "targetVariableName": "solid/orange/miuix_ref_orange_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_calendar_color_fill_eventlabel_sky_blue_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.062745101749897,
+          0.2666666805744171,
+          0.4000000059604645
+        ],
+        "alpha": 1,
+        "hex": "#104466"
+      },
+      "$description": "场景：日历日程标签底色（sky_blue）。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9138:5",
+        "com.figma.scopes": [
+          "ALL_FILLS",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d4d00e7d760d580707c36b0564785c13492d3b1f/-1:-1",
+          "targetVariableName": "solid/sky_blue/miuix_ref_sky_blue_solid_level_1600",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "recorder": {
+    "miuix_sys_recorder_color_fill_process_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.5,
+        "hex": "#FFFFFF"
+      },
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8894:120",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d607098b4dcdfe2f2ea1758ae122ca8da13537ca/-1:-1",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_500",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    }
+  },
+  "clock": {
+    "miuix_sys_clock_color_fill_bottombutton_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.07999999821186066,
+        "hex": "#FFFFFF"
+      },
+      "$description": "场景：时钟底部按钮填充色。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9412:5",
+        "com.figma.scopes": [
+          "ALL_FILLS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ce1c039a9e5bb63cd1cdf0ad125545312117acb6/-1:-1",
+          "targetVariableName": "opacity/white/kit/miuix_ref_white_opacity_kit_level_080",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
+        }
+      }
+    },
+    "miuix_sys_clock_color_stroke_bottombutton_enabled": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 0.10000000149011612,
+        "hex": "#FFFFFF"
+      },
+      "$description": "场景：时钟底部按钮描边色。",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:9412:6",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4ce684a49b2257312f4bf162a30470a15b0fa10f/-1:-1",
+          "targetVariableName": "opacity/white/basic/miuix_ref_white_opacity_basic_level_100",
+          "targetVariableSetId": "VariableCollectionId:049439504634eb169b78cd9b290bce9799b0ce62/-1:-1",
+          "targetVariableSetName": "Reference Token"
         }
       }
     }
