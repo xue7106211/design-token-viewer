@@ -67,7 +67,7 @@ describe("SnapshotDialog save feedback", () => {
     });
     fireEvent.click(within(dialog).getByRole("button", { name: "保存" }));
 
-    expect(within(dialog).getByRole("button", { name: "保存中..." })).toBeDisabled();
+    expect(within(dialog).getByRole("button", { name: "保存中…" })).toBeDisabled();
 
     await act(async () => resolveCreate(createdSnapshot));
 

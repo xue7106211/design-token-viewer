@@ -554,7 +554,11 @@ export function createTokenDocumentService(
           actorClientId: input.actor.actorClientId,
           changeType: "restore_snapshot",
           oldValue: summarizeDocument(document.currentJson, "恢复前文档"),
-          newValue: { snapshotId: snapshot.id, name: snapshot.name },
+          newValue: {
+            ...summarizeDocument(snapshot.json, "快照"),
+            snapshotId: snapshot.id,
+            name: snapshot.name,
+          },
           meta: { snapshotId: snapshot.id, snapshotDocumentId: snapshot.documentId },
         });
         return toDocumentView(updated, seedTokens);

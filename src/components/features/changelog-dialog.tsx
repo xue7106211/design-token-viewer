@@ -12,13 +12,13 @@ import {
   DialogTrigger,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useChangeLogStore } from "@/stores/changelog-store";
 import { useTokenStore } from "@/stores/token-store";
 import { getChangeTypeLabel, formatTimestamp } from "@/lib/changelog";
 import { colorToHex } from "@/lib/contrast";
-import type { LogEntry, ChangeType } from "@/types/changelog";
+import type { LogEntry } from "@/types/changelog";
 import type { ColorValue } from "@/types/token";
+import { cn } from "@/lib/utils";
 
 const MAX_INLINE_VALUE_LENGTH = 160;
 
@@ -94,25 +94,26 @@ function compactValueToString(v: unknown, fallbackLabel: string): string {
     : value;
 }
 
-/** ChangeType 对应的 badge 颜色 */
-function typeBadgeClass(type: ChangeType): string {
-  switch (type) {
-    case "delete_token":
-      return "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
-    case "update_value":
-      return "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400";
-    case "update_name":
-    case "rename_group":
-    case "move_tokens_to_group":
-      return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
-    default:
-      return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400";
+function documentCounts(v: unknown): { collections: number; tokens: number } | null {
+  if (isRecord(v) && typeof v.collections === "number" && typeof v.tokens === "number") {
+    return { collections: v.collections, tokens: v.tokens };
   }
+  if (!isFullTokenDocument(v)) return null;
+  return { collections: v.collections.length, tokens: Object.keys(v.variables).length };
 }
 
-// ---------------------------------------------------------------------------
-// 颜色色块小组件
-// ---------------------------------------------------------------------------
+function snapshotName(v: unknown): string | null {
+  return isRecord(v) && typeof v.name === "string" ? v.name : null;
+}
+
+/** IPv4-mapped IPv6（::ffff:1.2.3.4）显示为 IPv4 */
+function displayIP(ip: string): string {
+  return ip.replace(/^::ffff:/i, "");
+}
+
+function signed(n: number): string {
+  return n > 0 ? `+${n}` : String(n);
+}
 
 function readMovePairs(oldValue: unknown, newValue: unknown) {
   if (!Array.isArray(oldValue)) return [];
@@ -122,6 +123,28 @@ function readMovePairs(oldValue: unknown, newValue: unknown) {
     const newName = isRecord(next) && typeof next.name === "string" ? next.name : item.name;
     return [{ tokenId: item.tokenId, oldName: item.name, newName }];
   });
+}
+
+// ---------------------------------------------------------------------------
+// 前后值展示：旧值弱化并加删除线，新值用正文色
+// ---------------------------------------------------------------------------
+
+const OLD_VALUE_CLASS =
+  "font-mono text-muted-foreground line-through decoration-muted-foreground/40 [overflow-wrap:anywhere]";
+const NEW_VALUE_CLASS = "font-mono text-foreground [overflow-wrap:anywhere]";
+
+function Arrow() {
+  return <span className="shrink-0 text-muted-foreground" aria-hidden="true">→</span>;
+}
+
+function OldNew({ oldText, newText }: { oldText: string; newText: string }) {
+  return (
+    <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+      <span className={OLD_VALUE_CLASS}>{oldText}</span>
+      <Arrow />
+      <span className={NEW_VALUE_CLASS}>{newText}</span>
+    </div>
+  );
 }
 
 function ModeLabel({ modeId }: { modeId?: string }) {
@@ -137,33 +160,16 @@ function ModeLabel({ modeId }: { modeId?: string }) {
   return <span className="text-xs text-muted-foreground">模式 {modeName}</span>;
 }
 
-function DiffSide({
-  value,
-  tone,
-  allowColor,
-}: {
-  value: unknown;
-  tone: "old" | "new";
-  allowColor: boolean;
-}) {
-  const color = allowColor ? tryResolveColor(value) : null;
-  const textClass =
-    tone === "old"
-      ? "rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400 break-words"
-      : "rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400 break-words";
+function DiffSide({ value, tone }: { value: unknown; tone: "old" | "new" }) {
+  const color = tryResolveColor(value);
+  const textClass = tone === "old" ? OLD_VALUE_CLASS : NEW_VALUE_CLASS;
   if (!color) {
     return <span className={textClass}>{compactValueToString(value, tone === "old" ? "修改前" : "修改后")}</span>;
   }
   return (
-    <span
-      className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 ${
-        tone === "old" ? "bg-red-50 dark:bg-red-900/20" : "bg-green-50 dark:bg-green-900/20"
-      }`}
-    >
+    <span className="inline-flex items-center gap-1.5">
       <MiniColorSwatch hex={color} />
-      <span className={`font-mono ${tone === "old" ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}>
-        {color.toUpperCase()}
-      </span>
+      <span className={textClass}>{color.toUpperCase()}</span>
     </span>
   );
 }
@@ -171,7 +177,7 @@ function DiffSide({
 function MiniColorSwatch({ hex }: { hex: string }) {
   return (
     <span
-      className="inline-block h-4 w-4 rounded border border-border/50 align-middle shrink-0"
+      className="inline-block h-3.5 w-3.5 shrink-0 rounded-[4px] border border-foreground/10 align-middle"
       style={{ backgroundColor: hex }}
     />
   );
@@ -184,22 +190,13 @@ function MiniColorSwatch({ hex }: { hex: string }) {
 function ValueDiff({ entry }: { entry: LogEntry }) {
   const { changeType, oldValue, newValue, meta } = entry;
 
-  // 删除操作：展示被删除 Token 的名称和类型
   if (changeType === "delete_token") {
     const tokenType = (meta?.type as string) ?? (oldValue as Record<string, unknown>)?.type;
-    return (
-      <div className="flex items-center gap-1.5 text-xs">
-        <span className="text-red-600 dark:text-red-400 line-through">
-          {entry.tokenName ?? "未知令牌"}
-        </span>
-        {tokenType && (
-          <span className="text-muted-foreground">({String(tokenType)})</span>
-        )}
-      </div>
-    );
+    return tokenType ? (
+      <span className="text-xs text-muted-foreground">类型 {String(tokenType)}</span>
+    ) : null;
   }
 
-  // 重排序：简要展示
   if (changeType === "reorder") {
     return (
       <span className="text-xs text-muted-foreground">
@@ -212,14 +209,10 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
 
   if (changeType === "rename_group") {
     return (
-      <div className="flex items-center gap-2 text-xs flex-wrap">
-        <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
-          {compactValueToString(oldValue, "原分组")}
-        </span>
-        <span className="text-muted-foreground">→</span>
-        <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
-          {compactValueToString(newValue, "新分组")}
-        </span>
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+        <span className={OLD_VALUE_CLASS}>{compactValueToString(oldValue, "原分组")}</span>
+        <Arrow />
+        <span className={NEW_VALUE_CLASS}>{compactValueToString(newValue, "新分组")}</span>
         {typeof meta?.count === "number" && (
           <span className="text-muted-foreground">影响 {meta.count} tokens</span>
         )}
@@ -231,128 +224,138 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
     const pairs = readMovePairs(oldValue, newValue);
     const visiblePairs = pairs.slice(0, 8);
     return (
-      <div className="space-y-1.5">
+      <div className="space-y-1">
         <span className="text-xs text-muted-foreground">
           已移动 {typeof meta?.count === "number" ? `${meta.count} 个 ` : ""}Token 至 {String(meta?.targetGroup ?? "(root)")}
         </span>
-        {visiblePairs.length > 0 && (
-          <div className="space-y-1">
-            {visiblePairs.map((pair) => (
-              <div key={pair.tokenId} className="flex items-center gap-2 text-xs flex-wrap">
-                <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
-                  {pair.oldName}
-                </span>
-                <span className="text-muted-foreground">→</span>
-                <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
-                  {pair.newName}
-                </span>
-              </div>
-            ))}
-            {pairs.length > visiblePairs.length && (
-              <span className="text-xs text-muted-foreground">另有 {pairs.length - visiblePairs.length} 个</span>
-            )}
-          </div>
+        {visiblePairs.map((pair) => (
+          <OldNew key={pair.tokenId} oldText={pair.oldName} newText={pair.newName} />
+        ))}
+        {pairs.length > visiblePairs.length && (
+          <span className="block text-xs text-muted-foreground">另有 {pairs.length - visiblePairs.length} 个</span>
         )}
       </div>
     );
   }
 
   if (changeType === "import_document") {
+    const before = documentCounts(oldValue);
+    const after = documentCounts(newValue);
+    if (!before || !after) {
+      return (
+        <OldNew
+          oldText={compactValueToString(oldValue, "原文档")}
+          newText={compactValueToString(newValue, "导入文档")}
+        />
+      );
+    }
+    const delta = after.tokens - before.tokens;
     return (
-      <div className="flex items-center gap-2 text-xs flex-wrap">
-        <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
-          {compactValueToString(oldValue, "原文档")}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs tabular-nums">
+        <span className="font-mono text-foreground">
+          {before.tokens} → {after.tokens} tokens
         </span>
-        <span className="text-muted-foreground">→</span>
-        <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
-          {compactValueToString(newValue, "导入文档")}
+        {delta !== 0 && <span className="font-mono text-muted-foreground">{signed(delta)}</span>}
+        <span className="text-muted-foreground">
+          {before.collections === after.collections
+            ? `${after.collections} collections`
+            : `${before.collections} → ${after.collections} collections`}
         </span>
       </div>
     );
   }
 
   if (changeType === "restore_snapshot" || changeType === "create_snapshot") {
+    const name = snapshotName(newValue);
+    const before = changeType === "restore_snapshot" ? documentCounts(oldValue) : null;
+    const after = changeType === "restore_snapshot" ? documentCounts(newValue) : null;
     return (
-      <div className="flex items-center gap-2 text-xs flex-wrap">
-        {oldValue !== undefined && (
-          <>
-            <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400">
-              {compactValueToString(oldValue, "恢复前文档")}
-            </span>
-            <span className="text-muted-foreground">→</span>
-          </>
-        )}
-        <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400">
-          {compactValueToString(newValue, "快照")}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+        <span className="text-foreground [overflow-wrap:anywhere]">
+          {name ?? compactValueToString(newValue, "快照")}
         </span>
+        {before && after ? (
+          <span className="font-mono tabular-nums text-muted-foreground">
+            {before.tokens} → {after.tokens} tokens
+          </span>
+        ) : before ? (
+          <span className="font-mono tabular-nums text-muted-foreground">
+            恢复前 {before.tokens} tokens
+          </span>
+        ) : null}
       </div>
     );
   }
 
   if (changeType === "update_value" || changeType === "set_alias") {
     return (
-      <div className="space-y-1.5">
+      <div className="space-y-1">
         <ModeLabel modeId={typeof meta?.modeId === "string" ? meta.modeId : undefined} />
-        <div className="flex items-center gap-2 text-xs flex-wrap">
-          <DiffSide value={oldValue} tone="old" allowColor />
-          <span className="text-muted-foreground">→</span>
-          <DiffSide value={newValue} tone="new" allowColor />
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+          <DiffSide value={oldValue} tone="old" />
+          <Arrow />
+          <DiffSide value={newValue} tone="new" />
         </div>
       </div>
     );
   }
 
-  const oldStr = compactValueToString(oldValue, "修改前");
-  const newStr = compactValueToString(newValue, "修改后");
-
   return (
-    <div className="flex items-center gap-2 text-xs flex-wrap">
-      <span className="rounded bg-red-50 px-1.5 py-0.5 font-mono text-red-600 dark:bg-red-900/20 dark:text-red-400 break-words">
-        {oldStr}
-      </span>
-      <span className="text-muted-foreground">→</span>
-      <span className="rounded bg-green-50 px-1.5 py-0.5 font-mono text-green-600 dark:bg-green-900/20 dark:text-green-400 break-words">
-        {newStr}
-      </span>
-    </div>
+    <OldNew
+      oldText={compactValueToString(oldValue, "修改前")}
+      newText={compactValueToString(newValue, "修改后")}
+    />
   );
 }
 
 // ---------------------------------------------------------------------------
-// 单条日志卡片
+// 单条日志
 // ---------------------------------------------------------------------------
 
-function LogEntryCard({ entry }: { entry: LogEntry }) {
+function LogEntryRow({ entry, time }: { entry: LogEntry; time: string }) {
+  const isDelete = entry.changeType === "delete_token";
+  const tokenLabel = entry.tokenName ?? (isDelete ? "未知令牌" : null);
   return (
-    <div className="rounded-lg border bg-card p-3 space-y-1.5">
-      {/* 头部：时间 + IP + 类型标签 */}
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs text-muted-foreground font-mono">
-          {formatTimestamp(entry.timestamp)}
-        </span>
-        <span className="text-xs text-muted-foreground">
-          IP: {entry.ip}
-        </span>
-        {entry.actorName && (
-          <span className="text-xs text-muted-foreground">
-            by {entry.actorName}
-          </span>
-        )}
-        <span
-          className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium ${typeBadgeClass(entry.changeType)}`}
-        >
-          {getChangeTypeLabel(entry.changeType)}
-        </span>
+    <li className="flex gap-4 px-4 py-3 transition-colors hover:bg-muted/40">
+      <time
+        className="w-16 shrink-0 pt-px font-mono text-[11px] tabular-nums text-muted-foreground"
+        dateTime={new Date(entry.timestamp).toISOString()}
+      >
+        {time}
+      </time>
+      <div className="min-w-0 flex-1 space-y-1">
+        <div className="flex items-baseline gap-3">
+          <div className="flex min-w-0 flex-1 items-baseline gap-2">
+            <span
+              className={cn(
+                "shrink-0 text-xs font-medium",
+                isDelete ? "text-destructive" : "text-foreground"
+              )}
+            >
+              {getChangeTypeLabel(entry.changeType)}
+            </span>
+            {tokenLabel && (
+              <span
+                className={cn(
+                  "truncate font-mono text-xs",
+                  isDelete ? "text-muted-foreground line-through" : "text-foreground"
+                )}
+                title={tokenLabel}
+              >
+                {tokenLabel}
+              </span>
+            )}
+          </div>
+          <div className="flex shrink-0 items-baseline gap-2 text-[11px] text-muted-foreground">
+            {entry.actorName && <span>{entry.actorName}</span>}
+            <span className="font-mono tabular-nums" title={`IP ${entry.ip}`}>
+              {displayIP(entry.ip)}
+            </span>
+          </div>
+        </div>
+        <ValueDiff entry={entry} />
       </div>
-
-      {/* Token 名称 */}
-      {entry.tokenName && (
-        <div className="text-sm font-medium truncate">{entry.tokenName}</div>
-      )}
-
-      {/* 值对比 */}
-      <ValueDiff entry={entry} />
-    </div>
+    </li>
   );
 }
 
@@ -376,14 +379,21 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
     void fetchEntries();
   }, [open, activeDocumentId, fetchEntries]);
 
-  // 按时间倒序（最新在前）
-  const sortedEntries = useMemo(
-    () => [...entries].sort((a, b) => b.timestamp - a.timestamp),
-    [entries]
-  );
+  // 按时间倒序（最新在前），再按日期分组
+  const groups = useMemo(() => {
+    const sorted = [...entries].sort((a, b) => b.timestamp - a.timestamp);
+    const result: { day: string; items: { entry: LogEntry; time: string }[] }[] = [];
+    for (const entry of sorted) {
+      const [day, time = ""] = formatTimestamp(entry.timestamp).split(" ");
+      const last = result.at(-1);
+      if (last?.day === day) last.items.push({ entry, time });
+      else result.push({ day, items: [{ entry, time }] });
+    }
+    return result;
+  }, [entries]);
 
   const countLabel = isLoading && entries.length === 0
-    ? "正在加载..."
+    ? "正在加载…"
     : total > entries.length
       ? `共 ${total} 条记录，显示最新 ${entries.length} 条`
       : `共 ${total} 条记录`;
@@ -411,28 +421,21 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
         )}
       </DialogTrigger>
 
-      <DialogContent className="flex h-[85dvh] max-h-[calc(100dvh-2rem)] flex-col overflow-hidden sm:max-w-4xl">
+      <DialogContent className="flex max-h-[min(85dvh,56rem)] flex-col overflow-hidden sm:max-w-4xl">
         <DialogHeader className="shrink-0">
           <DialogTitle>修改日志</DialogTitle>
-          <DialogDescription className="sr-only">
-            查看所有 Token 变更记录
+          <DialogDescription className="flex flex-wrap gap-x-1 text-xs">
+            <span>{countLabel}</span>
+            {updatedAt && (
+              <span className="tabular-nums">
+                · 最近更新 {formatTimestamp(updatedAt)}{updatedBy ? ` · ${updatedBy}` : ""}
+              </span>
+            )}
           </DialogDescription>
         </DialogHeader>
 
-        {/* 工具栏 */}
-        <div className="flex shrink-0 items-start justify-between gap-3">
-          <div className="space-y-0.5 text-xs text-muted-foreground">
-            <div>{countLabel}</div>
-            {updatedAt && (
-              <div className="text-[11px]">
-                最近更新：{formatTimestamp(updatedAt)}{updatedBy ? ` · ${updatedBy}` : ""}
-              </div>
-            )}
-          </div>
-        </div>
-
         {error && (
-          <div className="flex shrink-0 items-center justify-between gap-3 rounded-md border border-destructive/30 bg-destructive/5 px-3 py-2">
+          <div className="flex shrink-0 items-center justify-between gap-3 rounded-lg border border-destructive/30 bg-destructive/5 px-3 py-2">
             <p className="text-xs text-destructive">{error}</p>
             <Button variant="outline" size="sm" className="cursor-pointer" onClick={() => void fetchEntries()}>
               重试
@@ -440,18 +443,27 @@ export function ChangeLogDialog({ collapsed = false }: { collapsed?: boolean }) 
           </div>
         )}
 
-        {/* 日志列表 */}
-        {sortedEntries.length > 0 ? (
-          <ScrollArea data-testid="change-log-list" className="-mx-6 min-h-0 flex-1 px-6">
-            <div className="space-y-2 pb-2">
-              {sortedEntries.map((entry) => (
-                <LogEntryCard key={entry.id} entry={entry} />
-              ))}
-            </div>
-          </ScrollArea>
+        {groups.length > 0 ? (
+          <div
+            data-testid="change-log-list"
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-lg border"
+          >
+            {groups.map((group) => (
+              <section key={group.day}>
+                <h3 className="sticky top-0 z-10 border-b bg-muted px-4 py-1.5 font-mono text-[11px] font-medium tabular-nums text-muted-foreground">
+                  {group.day}
+                </h3>
+                <ul className="divide-y">
+                  {group.items.map(({ entry, time }) => (
+                    <LogEntryRow key={entry.id} entry={entry} time={time} />
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
         ) : error ? null : (
           <div className="flex min-h-0 flex-1 items-center justify-center py-16 text-sm text-muted-foreground">
-            {isLoading ? "正在加载..." : "暂无日志记录"}
+            {isLoading ? "正在加载…" : "暂无日志记录"}
           </div>
         )}
       </DialogContent>
