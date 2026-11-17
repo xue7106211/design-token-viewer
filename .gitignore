@@ -56,3 +56,8 @@ next-env.d.ts
 
 # Local sync scratch files
 /.tmp-sync/
+
+# Upstream Neon agent skills refresh locally and are not part of the app
+/.agents/skills/neon/
+/.agents/skills/neon-postgres/
+/skills-lock.json
