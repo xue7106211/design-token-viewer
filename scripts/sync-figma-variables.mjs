@@ -33,6 +33,7 @@ import { existsSync, statSync } from "fs";
 import { readdir, readFile, writeFile } from "fs/promises";
 import path from "path";
 import { isDeepStrictEqual } from "util";
+import { diffDocuments } from "../src/lib/document-diff.mjs";
 import {
   applyDelta,
   buildPluginCode,
@@ -213,7 +214,7 @@ async function syncDatabase(args, snapshot) {
         values (${randomUUID()}, ${row.id}, 'import_document',
                 ${tx.json({ label: "原文档", ...count(currentJson) })},
                 ${tx.json({ label: "Figma Variables 同步", ...count(next) })},
-                ${tx.json({ source: "figma-mcp", checksum: snapshot.checksum, ...diffNative(currentJson, next) })},
+                ${tx.json({ source: "figma-mcp", checksum: snapshot.checksum, changes: diffDocuments(currentJson, next) })},
                 ${ACTOR.actorName}, ${ACTOR.actorClientId}, 'script', ${now})`;
       expectedRevision = row.revision + 1;
     });

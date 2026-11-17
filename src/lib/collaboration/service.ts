@@ -2,6 +2,7 @@ import { CHANGE_LOG_PAGE_SIZE } from "@/lib/changelog";
 import { parseTokenJSON } from "@/lib/parsers";
 import { resolveTokens } from "@/lib/token-resolver";
 import { rebuildRawJSON } from "@/lib/token-rebuilder";
+import { diffDocuments } from "@/lib/document-diff.mjs";
 import { createExclusiveQueue } from "./exclusive";
 import { createStateRepository, type CollaborationState } from "./state-repository";
 import type {
@@ -238,6 +239,7 @@ export function createTokenDocumentService(
           changeType: "import_document",
           oldValue: summarizeDocument(document.currentJson, "原文档"),
           newValue: summarizeDocument(input.json, "导入文档"),
+          meta: { changes: diffDocuments(document.currentJson, input.json) },
         });
         return toDocumentView(updated, seedTokens);
       });
