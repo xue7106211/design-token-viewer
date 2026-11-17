@@ -152,9 +152,10 @@ describe("ChangeLogDialog", () => {
     fireEvent.click(screen.getByText("日志"));
 
     // 时间戳
-    expect(screen.getAllByText("2023-11-14 22:13:20").length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText("2023-11-14")).toBeInTheDocument();
+    expect(screen.getAllByText("22:13:20").length).toBeGreaterThanOrEqual(1);
     // IP
-    expect(screen.getAllByText("IP: 192.168.1.1").length).toBe(2);
+    expect(screen.getAllByText("192.168.1.1").length).toBe(2);
     // 类型标签
     expect(screen.getByText("修改值")).toBeInTheDocument();
     expect(screen.getByText("修改名称")).toBeInTheDocument();
@@ -168,7 +169,7 @@ describe("ChangeLogDialog", () => {
     render(<ChangeLogDialog />);
     fireEvent.click(screen.getByText("日志"));
 
-    expect(screen.getByRole("dialog")).toHaveClass("h-[85dvh]", "overflow-hidden");
+    expect(screen.getByRole("dialog")).toHaveClass("max-h-[min(85dvh,56rem)]", "overflow-hidden");
     expect(screen.getByTestId("change-log-list")).toHaveClass("min-h-0", "flex-1");
   });
 
@@ -302,8 +303,35 @@ describe("ChangeLogDialog", () => {
     render(<ChangeLogDialog />);
     fireEvent.click(screen.getByText("日志"));
 
-    expect(screen.getByText("原文档 · 2 collections · 3 tokens")).toBeInTheDocument();
-    expect(screen.getByText("导入文档 · 3 collections · 537 tokens")).toBeInTheDocument();
+    expect(screen.getByText("3 → 537 tokens")).toBeInTheDocument();
+    expect(screen.getByText("+534")).toBeInTheDocument();
+    expect(screen.getByText("2 → 3 collections")).toBeInTheDocument();
     expect(screen.queryByText(/"variables"/)).not.toBeInTheDocument();
+  });
+
+  it("shows token counts before and after a snapshot restore", () => {
+    setupStore([
+      makeEntry({
+        changeType: "restore_snapshot",
+        tokenName: undefined,
+        oldValue: { label: "恢复前文档", collections: 3, tokens: 1016 },
+        newValue: { label: "快照", collections: 3, tokens: 758, snapshotId: "s1", name: "同步前" },
+      }),
+    ]);
+
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("同步前")).toBeInTheDocument();
+    expect(screen.getByText("1016 → 758 tokens")).toBeInTheDocument();
+  });
+
+  it("falls back to a placeholder name for delete logs without tokenName", () => {
+    setupStore([makeEntry({ changeType: "delete_token", tokenName: undefined })]);
+
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("未知令牌")).toBeInTheDocument();
   });
 });

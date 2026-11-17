@@ -13,7 +13,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useTokenStore } from "@/stores/token-store";
 import { formatTimestamp } from "@/lib/changelog";
 import {
@@ -143,9 +142,16 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
         )}
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-3xl max-h-[85vh] flex flex-col">
+      <DialogContent className="flex max-h-[min(85dvh,48rem)] flex-col overflow-hidden sm:max-w-3xl">
         <DialogHeader>
-          <DialogTitle>版本快照</DialogTitle>
+          <DialogTitle className="flex items-baseline gap-2">
+            版本快照
+            {snapshots.length > 0 && (
+              <span className="text-xs font-normal tabular-nums text-muted-foreground">
+                {snapshots.length} 个
+              </span>
+            )}
+          </DialogTitle>
           <DialogDescription>
             保存当前共享 Token 表，或从历史快照恢复。
           </DialogDescription>
@@ -182,57 +188,68 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
                 )}
               />
             </span>
-            <span>{saveStatus === "saving" ? "保存中..." : saveStatus === "saved" ? "已保存" : "保存"}</span>
+            <span>{saveStatus === "saving" ? "保存中…" : saveStatus === "saved" ? "已保存" : "保存"}</span>
           </Button>
         </div>
 
-        {isLoading ? (
-          <div className="py-12 text-center text-sm text-muted-foreground">正在加载...</div>
-        ) : snapshots.length === 0 ? (
-          <div className="py-12 text-center text-sm text-muted-foreground">暂无快照</div>
-        ) : (
-          <ScrollArea className="flex-1 -mx-6 px-6" style={{ maxHeight: "calc(85vh - 210px)" }}>
-            <div className="space-y-2 pb-2">
+        <div
+          data-testid="snapshot-list"
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain rounded-lg border"
+        >
+          {isLoading ? (
+            <div className="py-12 text-center text-sm text-muted-foreground">正在加载…</div>
+          ) : snapshots.length === 0 ? (
+            <div className="py-12 text-center text-sm text-muted-foreground">暂无快照</div>
+          ) : (
+            <ul className="divide-y">
               {snapshots.map((snapshot) => (
-                <div key={snapshot.id} className="rounded-lg border bg-card p-3">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-medium">{snapshot.name}</div>
-                      <div className="mt-0.5 text-xs text-muted-foreground">
-                        {formatTimestamp(snapshot.createdAt)} · {snapshot.createdBy}
-                      </div>
-                      {snapshot.description && (
-                        <div className="mt-1 text-xs text-muted-foreground">
-                          {snapshot.description}
-                        </div>
-                      )}
+                <li
+                  key={snapshot.id}
+                  className="flex items-start gap-3 px-4 py-3 transition-colors hover:bg-muted/40"
+                >
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate text-sm font-medium" title={snapshot.name}>
+                      {snapshot.name}
                     </div>
-                    <div className="flex shrink-0 gap-1">
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="h-8 w-8"
-                        title="下载 JSON"
-                        onClick={() => downloadSnapshot(snapshot)}
-                      >
-                        <Download className="h-3.5 w-3.5" />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="h-8 w-8"
-                        title="恢复快照"
-                        onClick={() => restoreSnapshot(snapshot.id)}
-                      >
-                        <RotateCcw className="h-3.5 w-3.5" />
-                      </Button>
+                    <div className="mt-1 truncate font-mono text-[11px] tabular-nums text-muted-foreground">
+                      {formatTimestamp(snapshot.createdAt)} · {snapshot.createdBy}
                     </div>
+                    {snapshot.description && (
+                      <p
+                        className="mt-1 line-clamp-2 text-xs text-muted-foreground [overflow-wrap:anywhere]"
+                        title={snapshot.description}
+                      >
+                        {snapshot.description}
+                      </p>
+                    )}
                   </div>
-                </div>
+                  <div className="flex shrink-0 gap-1">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                      title="下载 JSON"
+                      aria-label={`下载 ${snapshot.name}`}
+                      onClick={() => downloadSnapshot(snapshot)}
+                    >
+                      <Download className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                      title="恢复快照"
+                      aria-label={`恢复 ${snapshot.name}`}
+                      onClick={() => restoreSnapshot(snapshot.id)}
+                    >
+                      <RotateCcw className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </li>
               ))}
-            </div>
-          </ScrollArea>
-        )}
+            </ul>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
