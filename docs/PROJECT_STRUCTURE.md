@@ -9,7 +9,7 @@ design-token-viewer/
 ├── drizzle/              # PostgreSQL 迁移 SQL
 ├── e2e/                  # Playwright E2E 测试
 ├── docs/                 # 项目文档与历史计划
-├── figma-token/          # HyperOS4 DTCG 导出源与 Figma 增量同步基线
+├── figma-token/          # HyperOS 5 DTCG 导出源与 Figma 增量同步基线
 ├── public/               # 静态资源
 ├── scripts/              # 本地转换/数据库脚本
 ├── src/                  # 应用源码
@@ -36,7 +36,7 @@ design-token-viewer/
 | `src/lib/db/` | PostgreSQL Drizzle 连接与 schema |
 | `src/stores/` | Zustand UI 状态；Token 正文从服务端加载 |
 | `src/types/` | 共享 TypeScript 类型及第三方声明 |
-| `src/data/` | HyperOS3 / HyperOS4 Figma Native 种子 |
+| `src/data/` | HyperOS 4 / HyperOS 5 Figma Native 种子 |
 
 单元测试与源码同目录，文件名为 `*.test.ts`、`*.test.tsx` 或 `*.spec.ts(x)`，由 Vitest 的 `src/**/*.{test,spec}.{ts,tsx}` 匹配；脚本测试 `scripts/**/*.test.mjs` 也由 Vitest 运行。
 
@@ -44,7 +44,7 @@ design-token-viewer/
 
 - 使用 Playwright，配置位于 `playwright.config.ts`。
 - `testDir: "./e2e"`，与单元测试分离。
-- 当前用例覆盖默认 HyperOS4/Semantic 加载，以及导出来源从“当前”切换到“全部”。
+- 当前用例覆盖默认 HyperOS 5/Semantic 加载，以及导出来源从“当前”切换到“全部”。
 
 ### `docs/` — 文档
 
@@ -53,7 +53,7 @@ design-token-viewer/
 - `PROJECT_STRUCTURE.md`：本文件。
 - `superpowers/plans/`：历史实现计划，不是当前功能承诺。
 
-### `figma-token/` — HyperOS4 Figma 源
+### `figma-token/` — HyperOS 5 Figma 源
 
 包含 Component、Reference、Semantic 三个 Collection 的 Light/Dark DTCG 导出。`node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，按名称解析跨 Collection 别名，并保留受支持的 description/scopes 元数据。
 
@@ -63,16 +63,17 @@ design-token-viewer/
 
 这些脚本仅用于本地或 CI，不参与 Next 运行时：
 
-- `sync-figma-variables.mjs` + `lib/figma-variables-sync.mjs`：经 Figma MCP（`use_figma`）增量同步 HyperOS4 Variables 与 Text Style，目标可选 `--seed` / `--api <url>` / `--db`；npm 快捷命令为 `figma:plugin` / `figma:preview` / `figma:apply`。
+- `sync-figma-variables.mjs` + `lib/figma-variables-sync.mjs`：经 Figma MCP（`use_figma`）增量同步 HyperOS 5 Variables 与 Text Style，目标可选 `--seed` / `--api <url>` / `--db`；npm 快捷命令为 `figma:plugin` / `figma:preview` / `figma:apply`。Text Style 的 `lineHeight` 固定为 `AUTO`。
+- `export-gitlab-csv.mjs`：只读规范快照，导出 GitLab OS5token 用的 CSV。`npm run token:preview` 先预览 Neon 再生成 CSV；`npm run token:sync` 写入 Neon 后生成 CSV。`exports/` 不提交。
 - `figma-dtcg-to-sample.mjs`：DTCG 同步脚本，输入 `figma-token/`，输出 `src/data/sample-tokens-hyperos4.json`。
-- `merge-miuix-text-styles.mjs`：读取 `scripts/data/miuix-text-styles.json`，把 24 个 miuix Text Style 按 Reference Token 名称追加到 HyperOS4（DTCG 流程之后使用；Figma MCP 流程无需）。
+- `merge-miuix-text-styles.mjs`：读取 `scripts/data/miuix-text-styles.json`，把 24 个 miuix Text Style 按 Reference Token 名称追加到 HyperOS 5（DTCG 流程之后使用；Figma MCP 流程无需）。
 - `rename-comp-token-abbreviations.mjs`：一次性迁移，展开已有协作文档中 Component Token 叶子名缩写；幂等，支持 `DRY_RUN=1`。
 - `figma-flat-to-preset.mjs`：读取未纳入仓库的 `scripts/figma-hyperos4-vars.json`，输出格式检查用 preset。
-- `figma-vars-to-sample.mjs`：读取相同扁平输入并覆盖 `src/data/sample-tokens.json`（HyperOS3 种子）。
-- `css-vars-to-sample.mjs`：读取脚本内嵌 `CSS_VARS_INPUT` 并覆盖 HyperOS3 种子；当前实现不读取 stdin。
+- `figma-vars-to-sample.mjs`：读取相同扁平输入并覆盖 `src/data/sample-tokens.json`（HyperOS 4 种子）。
+- `css-vars-to-sample.mjs`：读取脚本内嵌 `CSS_VARS_INPUT` 并覆盖 HyperOS 4 种子；当前实现不读取 stdin。
 - `init-db.mjs`：需要 `DATABASE_URL`，读取 `drizzle/0000_lightweight_collaboration.sql` 初始化数据库。
 
-运行兼容脚本前应确认输出目标，避免误覆盖 HyperOS3 种子。
+运行兼容脚本前应确认输出目标，避免误覆盖 HyperOS 4 种子。
 
 ### 数据持久化
 

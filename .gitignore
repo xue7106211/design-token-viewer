@@ -50,3 +50,9 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# GitLab CSV is copied into OS5token by hand
+/exports/
+
+# Local sync scratch files
+/.tmp-sync/

@@ -20,7 +20,8 @@
  *   [name, description, [[field, value], ...]]
  *   - field 按 TEXT_STYLE_FIELDS 顺序；letterSpacing / paragraphSpacing 仅在绑定变量或非 0 时出现
  *   - value：绑定了 Variable 时为别名 ["@", Collection 名, 变量名]（保留引用链），否则为字面值
- *     （fontFamily / fontStyle 字符串；fontSize / lineHeight / letterSpacing / paragraphSpacing 像素数值）
+ *     （fontFamily / fontStyle 字符串；fontSize / letterSpacing / paragraphSpacing 像素数值）
+ *   - lineHeight 固定为字符串 "AUTO"。定高、百分比和行高变量绑定都不读入，也不因此中止同步
  *   - 哈希 = cyrb53(JSON.stringify(["@textStyle", ...entry]))
  */
 
@@ -149,7 +150,8 @@ async function pluginBody() {
     }
     collections.push({ name: c.name, modes: c.modes.map((m) => m.name), hashes });
   }
-  // Text Style：绑定了 Variable 的字段输出别名（保留引用链），否则输出像素字面值
+  // Text Style：绑定了 Variable 的字段输出别名（保留引用链），否则输出像素字面值。
+  // lineHeight 一律 AUTO，不读取 Figma 的定高、百分比或变量绑定。
   const textStyles = [];
   for (const s of styles) {
     const bound = s.boundVariables || {};
@@ -164,7 +166,7 @@ async function pluginBody() {
       ["fontFamily", ref("fontFamily") ?? s.fontName.family],
       ["fontStyle", ref("fontStyle") ?? s.fontName.style],
       ["fontSize", ref("fontSize") ?? f32(s.fontSize)],
-      ["lineHeight", ref("lineHeight") ?? px(s.lineHeight, "lineHeight")],
+      ["lineHeight", "AUTO"],
     ];
     const letterSpacing = ref("letterSpacing") ?? px(s.letterSpacing, "letterSpacing");
     if (Array.isArray(letterSpacing) || letterSpacing) fields.push(["letterSpacing", letterSpacing]);
@@ -356,7 +358,8 @@ export function nativeToCanonical(json) {
       if (!isManagedTextStyle(v)) continue;
       const raw = v.valuesByMode[c.modes[0]?.modeId];
       if (raw?.type !== "TYPOGRAPHY") continue;
-      const fields = TEXT_STYLE_FIELDS.filter((field) => raw.value[field]).map((field) => {
+      const fields = TEXT_STYLE_FIELDS.filter((field) => field === "lineHeight" || raw.value[field]).map((field) => {
+        if (field === "lineHeight") return [field, "AUTO"];
         const f = raw.value[field];
         return [field, f.type === "ALIAS" ? aliasOf(f.id) : f.type === "NUMBER" ? f32(f.value) : f.value];
       });
@@ -504,6 +507,13 @@ export function canonicalToNative(snapshot, target) {
         const id = textStyleIds.get(fullName);
         const value = {};
         for (const [field, fieldValue] of fields) {
+          if (field === "lineHeight") {
+            if (fieldValue !== "AUTO") {
+              throw new Error(`Text Style ${name}.lineHeight 必须为 AUTO，实际为 ${JSON.stringify(fieldValue)}`);
+            }
+            value.lineHeight = { type: "AUTO" };
+            continue;
+          }
           if (isAlias(fieldValue)) {
             const refId = resolveAlias(`Text Style ${name}.${field}`, fieldValue);
             if (refId) value[field] = { type: "ALIAS", id: refId };
@@ -565,6 +575,7 @@ const TYPOGRAPHY_FIELD_TYPES = {
   fontFamily: "STRING",
   fontStyle: "STRING",
   fontSize: "NUMBER",
+  // 字段别名仍须指向 NUMBER。Text Style 同步结果本身是 { type: "AUTO" }，不走别名。
   lineHeight: "NUMBER",
   letterSpacing: "NUMBER",
   paragraphSpacing: "NUMBER",
@@ -584,6 +595,7 @@ function validateTypography(json) {
         if (!raw.value?.[field]) errors.push(`${v.name} [${modeId}] 缺少字段 ${field}`);
       }
       for (const [field, fieldValue] of Object.entries(raw.value ?? {})) {
+        if (field === "lineHeight" && fieldValue?.type === "AUTO") continue;
         if (fieldValue?.type !== "ALIAS") continue;
         const ref = json.variables[fieldValue.id];
         const expected = TYPOGRAPHY_FIELD_TYPES[field];

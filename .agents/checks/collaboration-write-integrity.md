@@ -21,7 +21,7 @@ files:
 5. **Route Handler 透传 revision、actor 与文档 id**：改 `currentJson` 的路由使用 `readRevision(body)`、`actorFromRequest(request, body)` 和 `getTokenDocumentService(documentIdFromRequest(request))`，不得硬编码文档 id 或跳过 revision。前端 `token-store.ts` 的 action 必须携带当前 `revision` 与 actor，并用响应的 `TokenDocumentView` 更新状态。创建快照的 POST 可不要求客户端 revision。
 6. **按 `document_id` 隔离**：日志、快照的读取、导出与恢复只作用于当前文档；恢复快照时必须校验 `snapshot.documentId === document.id`，不匹配返回 404，且不改文档、不写日志。
 
-违反这些条件会导致并发编辑互相覆盖、变更日志缺失或与文档不一致、快照前置的导入流程失败，或者 HyperOS3 / HyperOS4 的数据相互串改。修复提交 `1c5891d`（补齐 rename / reorder 日志）和 `b4a7470`（日志与保存同事务、校验快照归属）都源于此类问题。
+违反这些条件会导致并发编辑互相覆盖、变更日志缺失或与文档不一致、快照前置的导入流程失败，或者 HyperOS 4 / HyperOS 5 的数据相互串改。修复提交 `1c5891d`（补齐 rename / reorder 日志）和 `b4a7470`（日志与保存同事务、校验快照归属）都源于此类问题。
 
 ## 示例
 

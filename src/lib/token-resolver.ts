@@ -98,6 +98,11 @@ function resolveTypography(
       if (required) return { type: "STRING", value: `[Missing Typography Field: ${key}]` };
       continue;
     }
+    if (field.type === "AUTO") {
+      if (key !== "lineHeight") return { type: "STRING", value: `[Invalid Typography Field: ${key}]` };
+      result.lineHeight = "AUTO";
+      continue;
+    }
     // Each field follows its own chain, so sibling fields may share a target.
     const resolved = resolveValue(field, modeId, tokens, new Set(visited));
     if (resolved.type !== kind) {

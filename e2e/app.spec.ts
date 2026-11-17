@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Design Token Viewer", () => {
-  test("loads the default HyperOS 4 token document", async ({ page }) => {
+  test("loads the default HyperOS 5 token document", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("button", { name: "HyperOS 4" })).toBeVisible({ timeout: 5000 });
+    await expect(page.getByRole("button", { name: "HyperOS 5" })).toBeVisible({ timeout: 5000 });
     await expect(page.getByRole("button", { name: "Semantic Token" })).toBeVisible();
 
     await page.getByRole("button", { name: "导出" }).click();

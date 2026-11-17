@@ -55,6 +55,7 @@ export function TypographyPreview({ value, className }: { value: TypographyValue
 
 function formatFieldValue(value: string | number | undefined, kind: "STRING" | "NUMBER") {
   if (value === undefined) return "—";
+  if (value === "AUTO") return "Auto";
   return kind === "NUMBER" ? `${value}px` : String(value);
 }
 

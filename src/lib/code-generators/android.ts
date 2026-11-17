@@ -231,7 +231,7 @@ function formatAndroidTextStyle(name: string, value: TypographyValue): string {
   ];
   if (isItalicFontStyle(value.fontStyle)) items.push(["android:textStyle", "italic"]);
   items.push(["android:textSize", `${value.fontSize}sp`]);
-  items.push(["android:lineHeight", `${value.lineHeight}sp`]);
+  if (value.lineHeight !== "AUTO") items.push(["android:lineHeight", `${value.lineHeight}sp`]);
   if (value.letterSpacing !== undefined && value.fontSize > 0) {
     const em = Math.round((value.letterSpacing / value.fontSize) * 10000) / 10000;
     items.push(["android:letterSpacing", String(em)]);

@@ -1,13 +1,18 @@
 # Figma Token 源文件
 
-HyperOS4 有两条更新路径：
+HyperOS 5 的主路径是一次 Figma 读取、同时更新 Neon 和 GitLab CSV：
 
-- **Figma MCP 增量同步**（推荐）：`scripts/sync-figma-variables.mjs` 直接读取 Figma 文件的本地 Variables 与 Text Style，基线为 `figma-token/figma-variables.json`。步骤与约束见 `AGENTS.md` 的“通过 Figma MCP 同步 HyperOS4”。
-- **W3C DTCG 导出**：见下文。
+1. `npm run figma:plugin` 生成只读插件，由 `use_figma` 执行，增量包存到 `/tmp/figma-delta`。
+2. `npm run token:preview` 预览 Neon 差异，并按增量包生成 `exports/HyperOS_Design_Token_YYYYMMDD.csv`（不写库）。
+3. 确认后 `npm run token:sync` 写入 Neon，并生成当天 CSV。CSV 不提交，由人工放进 GitLab OS5token。
 
-## HyperOS4 DTCG 流程
+规范快照 `figma-token/figma-variables.json` 是唯一数据源。Text Style 的 `lineHeight` 一律是 `AUTO`：不读取 Figma 里的定高、百分比或行高变量绑定，也不修改 Figma。变量表里的 `miuix_ref_line_height_*` 保留。
 
-HyperOS4 的权威源文件是 `figma-token/` 下三套 Collection 的 Light / Dark DTCG 导出：
+`scripts/sync-figma-variables.mjs` 仍可单独写入种子、API 或数据库。步骤与约束见 `AGENTS.md` 的“通过 Figma MCP 同步 HyperOS 5”。W3C DTCG 导出保留为备用，见下文，不是主流程。
+
+## HyperOS 5 DTCG 流程
+
+HyperOS 5 的权威源文件是 `figma-token/` 下三套 Collection 的 Light / Dark DTCG 导出：
 
 - `Component Token/{Light,Dark}.tokens.json`
 - `Reference Token/{Light,Dark}.tokens.json`
@@ -39,14 +44,14 @@ node scripts/figma-dtcg-to-sample.mjs
 
 ### 种子不等于运行数据
 
-`sample-tokens-hyperos4.json` 只在 HyperOS4 文档首次创建时灌入。已有文档必须按 `AGENTS.md` 的“HyperOS4 数据更新强制流程”创建快照，再调用 `POST /api/token-document/import`：请求头为 `x-document-id: hyperos4`，请求体为 `{ json, revision, actor: { actorName, actorClientId } }`。随后调用 `/api/export?format=json`，从 `{ format, code }` 响应中取 `JSON.parse(code)` 与种子深度比较。只生成种子不会覆盖 repository 中的 `hyperos4.currentJson`。
+`sample-tokens-hyperos4.json` 只在 HyperOS 5 文档首次创建时灌入。已有文档必须按 `AGENTS.md` 的“HyperOS 5 数据更新强制流程”创建快照，再调用 `POST /api/token-document/import`：请求头为 `x-document-id: hyperos4`，请求体为 `{ json, revision, actor: { actorName, actorClientId } }`。随后调用 `/api/export?format=json`，从 `{ format, code }` 响应中取 `JSON.parse(code)` 与种子深度比较。只生成种子不会覆盖 repository 中的 `hyperos4.currentJson`。
 
 ## 兼容旧脚本
 
-这些脚本不是 HyperOS4 DTCG 正式同步流程：
+这些脚本不是 HyperOS 5 DTCG 正式同步流程：
 
 - `figma-flat-to-preset.mjs`：读取手动提供的 `scripts/figma-hyperos4-vars.json`，输出 `scripts/figma-hyperos4-preset.json` 做格式检查；当前仓库未提供输入或输出预设。
-- `figma-vars-to-sample.mjs`：读取相同的扁平变量输入并覆盖 `src/data/sample-tokens.json`（HyperOS3 种子）。
+- `figma-vars-to-sample.mjs`：读取相同的扁平变量输入并覆盖 `src/data/sample-tokens.json`（HyperOS 4 种子）。
 - `css-vars-to-sample.mjs`：读取脚本内嵌的 `CSS_VARS_INPUT` 并覆盖 `src/data/sample-tokens.json`；当前实现不读取 stdin。
 
-运行任何兼容脚本前都应确认输出目标，避免误覆盖 HyperOS3 种子。
+运行任何兼容脚本前都应确认输出目标，避免误覆盖 HyperOS 4 种子。

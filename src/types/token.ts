@@ -42,13 +42,13 @@ export interface AliasReference {
   id: string;
 }
 
-/** Resolved typography (Figma Text Style) value; sizes are PIXEL values */
-// 已解析的文字样式：所有字段都是最终值。fontSize / lineHeight 等为像素值。
+/** Resolved typography (Figma Text Style) value. fontSize is pixels; lineHeight may be AUTO. */
+// 已解析的文字样式：fontSize 等为像素。lineHeight 为像素，或 "AUTO"（不使用定高）。
 export interface TypographyValue {
   fontFamily: string;
   fontStyle: string;
   fontSize: number;
-  lineHeight: number;
+  lineHeight: number | "AUTO";
   letterSpacing?: number;
   paragraphSpacing?: number;
 }
@@ -57,6 +57,8 @@ export interface TypographyValue {
 export type TypographyStringField = { type: "STRING"; value: string } | AliasReference;
 /** A typography number field: concrete NUMBER or alias to a NUMBER token */
 export type TypographyNumberField = { type: "NUMBER"; value: number } | AliasReference;
+/** Text Style line height is fixed to AUTO and is not a numeric token. */
+export type TypographyAutoField = { type: "AUTO" };
 
 /** Raw typography value; every field may independently alias another token */
 // 原始文字样式：每个字段都可以是具体值或别名（通常引用 Reference Token 的 font/number 变量）。
@@ -64,7 +66,7 @@ export interface RawTypographyValue {
   fontFamily: TypographyStringField;
   fontStyle: TypographyStringField;
   fontSize: TypographyNumberField;
-  lineHeight: TypographyNumberField;
+  lineHeight: TypographyNumberField | TypographyAutoField;
   letterSpacing?: TypographyNumberField;
   paragraphSpacing?: TypographyNumberField;
 }

@@ -25,6 +25,7 @@ export interface FigmaAliasValue {
 /**
  * Extension (not produced by Figma itself): a composite Text Style value.
  * Each field is a concrete STRING / NUMBER value or an ALIAS to another variable.
+ * lineHeight may instead be { type: "AUTO" }: Text Styles do not store a fixed line height.
  */
 export interface FigmaTypographyValue {
   type: "TYPOGRAPHY";
@@ -32,7 +33,7 @@ export interface FigmaTypographyValue {
     fontFamily: { type: "STRING"; value: string } | FigmaAliasValue;
     fontStyle: { type: "STRING"; value: string } | FigmaAliasValue;
     fontSize: { type: "NUMBER"; value: number } | FigmaAliasValue;
-    lineHeight: { type: "NUMBER"; value: number } | FigmaAliasValue;
+    lineHeight: { type: "NUMBER"; value: number } | FigmaAliasValue | { type: "AUTO" };
     letterSpacing?: { type: "NUMBER"; value: number } | FigmaAliasValue;
     paragraphSpacing?: { type: "NUMBER"; value: number } | FigmaAliasValue;
   };

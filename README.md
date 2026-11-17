@@ -11,7 +11,7 @@
 
 ## 功能
 
-- 多套 Token 表切换：在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**；文档、编辑、日志、快照读取与恢复均按文档 ID 隔离
+- 多套 Token 表切换：在侧边栏顶部切换 **HyperOS 4 / HyperOS 5**；文档、编辑、日志、快照读取与恢复均按文档 ID 隔离
 - 浏览与对照：树形导航 + 搜索过滤，Grid / List 双视图；多 Collection、多 Mode；颜色色块 / HEX·RGB·HSL / WCAG 对比度；数值·字符串·布尔预览；别名引用链路与反向引用
 - Component Token 快速命名工具入口：侧边栏可打开 `/tools/comp-token-namer`
 - 服务端导入 Figma Variables JSON，自动检测格式（Figma Native / Variables2CSS）
@@ -38,7 +38,7 @@ npm install   # 或 npm ci（CI / 干净安装）
 npm run dev
 ```
 
-打开 [http://localhost:3000](http://localhost:3000)，默认会加载服务端的 HyperOS 4 Token 文档。
+打开 [http://localhost:3000](http://localhost:3000)，默认会加载服务端的 HyperOS 5 Token 文档。
 
 常用本地命令：
 
@@ -83,7 +83,7 @@ src/
 │       ├── groups/rename/       # PATCH 分组重命名
 │       ├── client-ip/           # GET 请求来源 IP
 │       ├── export/              # GET JSON/CSS/Android，可选 snapshotId/modeId
-│       └── save-sample-tokens/  # DEV-only，写回 HyperOS3 示例数据
+│       └── save-sample-tokens/  # DEV-only，写回 HyperOS 4 示例数据
 ├── components/
 │   ├── ui/           # shadcn/ui 基础组件
 │   ├── layout/       # AppShell、Sidebar、MainView
@@ -100,9 +100,9 @@ src/
 │   └── contrast.ts
 ├── stores/           # Zustand UI 状态与前端日志缓存
 ├── types/            # TypeScript 类型
-└── data/             # HyperOS3 / HyperOS4 种子
+└── data/             # HyperOS 4 / HyperOS 5 种子
 
-figma-token/          # HyperOS4 DTCG 源（3 Collection × Light/Dark）+ figma-variables.json 增量同步基线
+figma-token/          # HyperOS 5 DTCG 源（3 Collection × Light/Dark）+ figma-variables.json 增量同步基线
 drizzle/              # 数据库迁移 SQL
 scripts/              # 数据转换、Figma 同步、Text Style 合并与数据库脚本
 docs/                 # 验收、Figma 数据源和结构说明；superpowers/plans 为历史计划
@@ -126,15 +126,16 @@ e2e/                  # Playwright E2E 测试
 - 生产环境必须设置 PostgreSQL `DATABASE_URL` 并先执行 `npm run db:migrate`，否则共享文档接口返回配置错误。
 - localStorage 保存当前文档、Collection/Mode、搜索、树展开状态、视图、代码格式、检查器宽度和轻量 actor 标识；不保存 Token 正文、日志或快照。
 
-## 多套 Token 表（HyperOS3 / HyperOS4）
+## 多套 Token 表（HyperOS 4 / HyperOS 5）
 
-应用在侧边栏顶部切换 **HyperOS 3 / HyperOS 4**。
+应用在侧边栏顶部切换 **HyperOS 4 / HyperOS 5**。
 
+- 显示名 HyperOS 4 对应文档 id `hyperos3`，HyperOS 5 对应 `hyperos4`。文档 id、种子文件名和脚本参数沿用旧编号。
 - 每套表对应一份服务端文档，编辑和变更日志按 `document_id` 隔离；快照列表、读取、导出和恢复也按文档隔离，恢复其他文档的快照返回 404。
 - 注册表位于 `src/lib/collaboration/server.ts` 的 `DOCUMENTS`；种子分别为 `src/data/sample-tokens.json` 与 `src/data/sample-tokens-hyperos4.json`。
 - `src/lib/collaboration/client.ts` 统一通过 `x-document-id` 请求头标识当前文档。
 
-### 更新 HyperOS4 数据
+### 更新 HyperOS 5 数据
 
 必须完整执行以下流程，不能在只替换源文件或只生成种子后报告完成：
 
@@ -152,7 +153,7 @@ DRY_RUN=1 node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta -
 DATABASE_URL=... node scripts/sync-figma-variables.mjs apply --db                    # 用已校验的基线写 Neon/PostgreSQL
 ```
 
-详细约束见 `AGENTS.md` 的“HyperOS4 数据更新强制流程”及“通过 Figma MCP 同步 HyperOS4”。
+详细约束见 `AGENTS.md` 的“HyperOS 5 数据更新强制流程”及“通过 Figma MCP 同步 HyperOS 5”。
 
 在 Kiro CLI 中可直接一键执行：`/sync-figma-tokens`（默认只同步种子），或 `/sync-figma-tokens seed api=http://localhost:3000 db`。定义见 `.kiro/skills/sync-figma-tokens/SKILL.md`；写 Neon 或远程接口前会先预览并等待确认。npm 快捷命令：`figma:plugin` / `figma:preview` / `figma:apply`。无法访问实际 repository 时，只能说明源和种子已更新，不能声称当前应用或线上数据已同步。
 

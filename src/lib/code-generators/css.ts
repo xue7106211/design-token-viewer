@@ -36,7 +36,8 @@ function formatCSSValue(value: TokenValue): string {
 function formatCSSFont(value: TypographyValue): string {
   const italic = isItalicFontStyle(value.fontStyle) ? "italic " : "";
   const weight = fontStyleToWeight(value.fontStyle);
-  return `${italic}${weight} ${value.fontSize}px/${value.lineHeight}px "${value.fontFamily}"`;
+  const lineHeight = value.lineHeight === "AUTO" ? "normal" : `${value.lineHeight}px`;
+  return `${italic}${weight} ${value.fontSize}px/${lineHeight} "${value.fontFamily}"`;
 }
 
 /**

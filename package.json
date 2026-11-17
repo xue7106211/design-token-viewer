@@ -16,7 +16,9 @@
     "db:init": "node scripts/init-db.mjs",
     "figma:plugin": "node scripts/sync-figma-variables.mjs plugin",
     "figma:apply": "node scripts/sync-figma-variables.mjs apply",
-    "figma:preview": "DRY_RUN=1 node scripts/sync-figma-variables.mjs apply"
+    "figma:preview": "DRY_RUN=1 node scripts/sync-figma-variables.mjs apply",
+    "token:preview": "DRY_RUN=1 node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta --document hyperos4 --db && node scripts/export-gitlab-csv.mjs --delta /tmp/figma-delta",
+    "token:sync": "node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta --document hyperos4 --db && node scripts/export-gitlab-csv.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

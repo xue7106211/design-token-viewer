@@ -13,8 +13,8 @@ import { getCollaborationRepository } from "./repository";
 // 文档注册表：每套 Token 表对应一个种子和显示名。
 // id 必须与 client.ts 的 TOKEN_DOCUMENTS 保持一致。
 const DOCUMENTS: Record<string, { name: string; seed: unknown }> = {
-  hyperos3: { name: "HyperOS 3 Tokens", seed: sampleHyperOS3 },
-  hyperos4: { name: "HyperOS 4 Tokens", seed: sampleHyperOS4 },
+  hyperos3: { name: "HyperOS 4 Tokens", seed: sampleHyperOS3 },
+  hyperos4: { name: "HyperOS 5 Tokens", seed: sampleHyperOS4 },
 };
 
 const DEFAULT_DOCUMENT_ID = "hyperos4";

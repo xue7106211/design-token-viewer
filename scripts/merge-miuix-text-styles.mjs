@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 将 miuix Text Style（复合 TYPOGRAPHY Token）追加到 HyperOS4 Semantic Token。
+ * 将 miuix Text Style（复合 TYPOGRAPHY Token）追加到 HyperOS 5 Semantic Token。
  *
  * 一个 Figma Text Style = 一个 TYPOGRAPHY Token，名称为 `text_style/<style name>`；
  * fontFamily / fontStyle / fontSize / lineHeight 四个字段分别按名称别名到 Reference Token

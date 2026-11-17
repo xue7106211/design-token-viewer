@@ -79,7 +79,10 @@ function toRaw(type: TokenType, value: TokenValue): RawTokenValue {
       fontFamily: { type: "STRING", value: value.value.fontFamily },
       fontStyle: { type: "STRING", value: value.value.fontStyle },
       fontSize: { type: "ALIAS", id: fontSizeToken.id },
-      lineHeight: { type: "NUMBER", value: value.value.lineHeight },
+      lineHeight:
+        value.value.lineHeight === "AUTO"
+          ? { type: "AUTO" }
+          : { type: "NUMBER", value: value.value.lineHeight },
     },
   };
 }
@@ -188,5 +191,29 @@ describe("TokenInspector TYPOGRAPHY", () => {
     expect(screen.getByText("Font size")).toBeInTheDocument();
     expect(screen.getByText(fontSizeToken.name)).toBeInTheDocument();
     expect(screen.getByText("42px")).toBeInTheDocument();
+  });
+
+  it("shows Auto for an AUTO line height and does not show a pixel line height", () => {
+    const token = makeToken("TYPOGRAPHY");
+    token.resolvedValues.light = {
+      type: "TYPOGRAPHY",
+      value: { fontFamily: "MiSans", fontStyle: "Medium", fontSize: 32, lineHeight: "AUTO" },
+    };
+    token.rawValues.light = {
+      type: "TYPOGRAPHY",
+      value: {
+        fontFamily: { type: "STRING", value: "MiSans" },
+        fontStyle: { type: "STRING", value: "Medium" },
+        fontSize: { type: "NUMBER", value: 32 },
+        lineHeight: { type: "AUTO" },
+      },
+    };
+    setupStore(token);
+
+    render(<TokenInspector />);
+
+    expect(screen.getByText("32/Auto")).toBeInTheDocument();
+    expect(screen.getByText("Auto")).toBeInTheDocument();
+    expect(screen.queryByText("42px")).not.toBeInTheDocument();
   });
 });

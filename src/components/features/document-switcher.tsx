@@ -5,7 +5,7 @@ import { TOKEN_DOCUMENTS } from "@/lib/collaboration/client";
 import { cn } from "@/lib/utils";
 
 /**
- * 顶部 Token 表切换器：在 HyperOS3 / HyperOS4 两套独立的 Token 表之间切换。
+ * 顶部 Token 表切换器：在 HyperOS 4 / HyperOS 5 两套独立的 Token 表之间切换。
  * 切换会触发 token-store.setActiveDocument，重新从服务端加载对应文档。
  */
 export function DocumentSwitcher({ className }: { className?: string }) {

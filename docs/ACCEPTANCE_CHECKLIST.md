@@ -35,7 +35,7 @@ npx playwright install
 npm run test:e2e
 ```
 
-- [ ] 首页自动加载默认 HyperOS4 文档并显示 Semantic Token
+- [ ] 首页自动加载默认 HyperOS 5 文档并显示 Semantic Token
 - [ ] 导出弹窗从“当前”切换到“全部”后，来源标签和 Token 数发生对应变化
 
 ---
@@ -65,7 +65,7 @@ npm run test:e2e
 - [ ] Token 树可展开/收起
 - [ ] 搜索框可筛选 Token
 - [ ] Collection 与 Mode 可切换
-- [ ] HyperOS3 / HyperOS4 文档、编辑和日志互相隔离
+- [ ] HyperOS 4 / HyperOS 5 文档、编辑和日志互相隔离
 - [ ] Semantic Token 顶层组按 `bg → fill → stroke → text → mask → margin → padding → gap → radius → text_style` 排列
 
 ### 4. Token 展示
@@ -88,7 +88,7 @@ npm run test:e2e
 - [ ] 检查器宽度可调整
 - [ ] CSS、Android XML 和 JSON 格式可导出
 - [ ] 导出来源支持当前过滤结果、当前文档全部 Collection；版本快照仅在远端请求成功后可复制或下载
-- [ ] “当前”来源随搜索过滤变化；“全部”只包含当前 HyperOS 文档，不跨 HyperOS3/4
+- [ ] “当前”来源随搜索过滤变化；“全部”只包含当前 HyperOS 文档，不跨 HyperOS 4 / HyperOS 5
 - [ ] JSON 导出接口的 `{ format, code }` 响应可通过 `JSON.parse(code)` 还原源 JSON
 - [ ] **待修复**：快照导出请求失败时应禁止复制/下载并显示错误；当前实现会保留快照标签并回退本地代码
 

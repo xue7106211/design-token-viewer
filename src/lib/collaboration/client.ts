@@ -6,8 +6,8 @@ const ACTOR_SOURCE_KEY = "design-token-actor-source";
 
 // 可切换的 Token 表（文档）。id 必须与 server.ts 的 DOCUMENTS 注册表保持一致。
 export const TOKEN_DOCUMENTS = [
-  { id: "hyperos3", label: "HyperOS 3" },
-  { id: "hyperos4", label: "HyperOS 4" },
+  { id: "hyperos3", label: "HyperOS 4" },
+  { id: "hyperos4", label: "HyperOS 5" },
 ] as const;
 
 export const DEFAULT_DOCUMENT_ID = "hyperos4";

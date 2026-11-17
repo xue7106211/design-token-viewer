@@ -60,7 +60,7 @@ export function toConcreteRawValue(value: TokenValue): ConcreteRawTokenValue {
     fontFamily: { type: "STRING", value: v.fontFamily },
     fontStyle: { type: "STRING", value: v.fontStyle },
     fontSize: { type: "NUMBER", value: v.fontSize },
-    lineHeight: { type: "NUMBER", value: v.lineHeight },
+    lineHeight: v.lineHeight === "AUTO" ? { type: "AUTO" } : { type: "NUMBER", value: v.lineHeight },
   };
   if (v.letterSpacing !== undefined) raw.letterSpacing = { type: "NUMBER", value: v.letterSpacing };
   if (v.paragraphSpacing !== undefined) raw.paragraphSpacing = { type: "NUMBER", value: v.paragraphSpacing };
@@ -78,9 +78,10 @@ export function cloneRawTypography(value: RawTypographyValue): RawTypographyValu
   return result as RawTypographyValue;
 }
 
-/** "32/42" — Figma-like size/line-height summary */
+/** "32/42" or "32/Auto" — Figma-like size/line-height summary */
 export function formatTypographySize(value: TypographyValue): string {
-  return `${formatNumber(value.fontSize)}/${formatNumber(value.lineHeight)}`;
+  const lineHeight = value.lineHeight === "AUTO" ? "Auto" : formatNumber(value.lineHeight);
+  return `${formatNumber(value.fontSize)}/${lineHeight}`;
 }
 
 /** "MiSans Medium · 32/42" */

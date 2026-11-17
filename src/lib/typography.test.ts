@@ -165,6 +165,38 @@ describe("TYPOGRAPHY tokens", () => {
       '--text_style-miuix_text_style_headline_large_medium: 500 32px/42px "MiSans";'
     );
   });
+
+  it("resolves AUTO line height as Auto, not a number or an error", () => {
+    const json = makeDocument();
+    const auto = {
+      ...typographyValue,
+      value: { ...typographyValue.value, lineHeight: { type: "AUTO" as const } },
+    };
+    json.variables.ts_1.valuesByMode = both(auto);
+    const { collections, tokens } = load(json);
+    const resolved = tokens.ts_1.resolvedValues.mode_light;
+    expect(resolved).toEqual({
+      type: "TYPOGRAPHY",
+      value: { fontFamily: "MiSans", fontStyle: "Medium", fontSize: 32, lineHeight: "AUTO" },
+    });
+    if (resolved.type !== "TYPOGRAPHY") throw new Error("expected typography");
+    expect(formatTypographySummary(resolved.value)).toBe("MiSans Medium · 32/Auto");
+    expect(generateCSSToken(tokens.ts_1, "mode_light")).toBe(
+      '--text_style-miuix_text_style_headline_large_medium: 500 32px/normal "MiSans";'
+    );
+    expect(generateAndroidToken(tokens.ts_1, "mode_light", tokens)).not.toContain("lineHeight");
+    const rebuilt = rebuildRawJSON(collections, tokens);
+    expect(rebuilt.variables.ts_1.valuesByMode.mode_light).toEqual({ type: "TYPOGRAPHY", value: auto.value });
+    expect(toConcreteRawValue(resolved)).toEqual({
+      type: "TYPOGRAPHY",
+      value: {
+        fontFamily: { type: "STRING", value: "MiSans" },
+        fontStyle: { type: "STRING", value: "Medium" },
+        fontSize: { type: "NUMBER", value: 32 },
+        lineHeight: { type: "AUTO" },
+      },
+    });
+  });
 });
 
 describe("typography helpers", () => {

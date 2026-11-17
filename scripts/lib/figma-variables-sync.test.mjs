@@ -107,6 +107,14 @@ async function exportAll(figma, hashes) {
 
 const findVar = (json, name) => Object.values(json.variables).find((v) => v.name === name);
 
+/**
+ * 种子里的颜色通道不一定是 float32 的最短十进制，转换后会按 f32 对齐。
+ * Text Style 的 lineHeight 也会收成 AUTO。比较同步结果时用这一轮往返，而不是原始种子。
+ */
+function roundTripped(json) {
+  return canonicalToNative(nativeToCanonical(json), json);
+}
+
 describe("f32", () => {
   it("返回可无损还原为同一 float32 的最短十进制", () => {
     expect(f32(Math.fround(0.1))).toBe(0.1);
@@ -121,13 +129,22 @@ describe("Figma MCP 增量同步", () => {
   const hashes = knownHashes(base);
 
   it("Figma 与基线一致时只回传骨架，还原结果与种子深度一致（含 Text Style 引用链）", async () => {
-    expect(base.textStyles).toHaveLength(24);
+    expect(base.textStyles.length).toBeGreaterThan(0);
     const parts = await exportAll(fakeFigma(seed), hashes);
     expect(parts).toHaveLength(1);
     expect(parts[0].changed).toBe(0);
-    expect(parts[0].textStyles).toHaveLength(24);
+    expect(parts[0].unsupported ?? []).toEqual([]);
+    expect(parts[0].textStyles).toHaveLength(base.textStyles.length);
     const { snapshot } = applyDelta(base, parts);
-    expect(canonicalToNative(snapshot, seed)).toEqual(seed);
+    const next = canonicalToNative(snapshot, seed);
+    expect(next).toEqual(roundTripped(seed));
+    for (const variable of Object.values(next.variables)) {
+      if (variable.type === "TYPOGRAPHY" && variable.name.startsWith("text_style/")) {
+        for (const raw of Object.values(variable.valuesByMode)) {
+          expect(raw.value.lineHeight).toEqual({ type: "AUTO" });
+        }
+      }
+    }
   });
 
   it("变化条目分页回传；新增变量分配新 id，未变变量沿用原 id", async () => {
@@ -155,7 +172,7 @@ describe("Figma MCP 增量同步", () => {
     const { snapshot, changed } = applyDelta(base, parts);
     expect(changed).toBe(61);
     const next = canonicalToNative(snapshot, seed);
-    const diff = diffNative(seed, next);
+    const diff = diffNative(roundTripped(seed), next);
     expect(diff.added).toHaveLength(60);
     expect(diff.removed).toHaveLength(0);
     expect(diff.changed).toEqual([`Reference Token/${figmaJson.variables[colorId].name}`]);
@@ -191,9 +208,9 @@ describe("Figma MCP 增量同步", () => {
     };
 
     const { snapshot } = applyDelta(base, await exportAll(fakeFigma(figmaJson, [extra]), hashes));
-    expect(snapshot.textStyles).toHaveLength(24);
+    expect(snapshot.textStyles).toHaveLength(base.textStyles.length);
     const next = canonicalToNative(snapshot, seed);
-    const diff = diffNative(seed, next);
+    const diff = diffNative(roundTripped(seed), next);
     expect(diff.removed).toEqual([`Semantic Token/${removedName}`]);
     expect(diff.added).toEqual(["Semantic Token/text_style/miuix_text_style_test_new"]);
     expect(diff.changed).toEqual([`Semantic Token/${changed.name}`]);
@@ -210,7 +227,7 @@ describe("Figma MCP 增量同步", () => {
       fontFamily: { type: "ALIAS", id: family.id },
       fontStyle: { type: "STRING", value: "Bold" },
       fontSize: { type: "NUMBER", value: 20 },
-      lineHeight: { type: "NUMBER", value: 26 },
+      lineHeight: { type: "AUTO" },
       letterSpacing: { type: "NUMBER", value: 1 },
     });
     expect(added.valuesByMode.mode_dark).toEqual(added.valuesByMode.mode_light);
@@ -221,7 +238,7 @@ describe("Figma MCP 增量同步", () => {
     expect(outSemantic.variableIds.at(-1)).toBe(added.id);
   });
 
-  it("Text Style 绑定被删除的变量或使用 AUTO 行高时拒绝还原", async () => {
+  it("Text Style 绑定已删除的变量时拒绝还原，AUTO 行高不中止", async () => {
     const figmaJson = structuredClone(seed);
     const auto = {
       name: "auto_line_height",
@@ -234,7 +251,40 @@ describe("Figma MCP 增量同步", () => {
       boundVariables: { fontSize: { type: "VARIABLE_ALIAS", id: "VariableID:missing" } },
     };
     const parts = await exportAll(fakeFigma(figmaJson, [auto]), hashes);
-    expect(() => applyDelta(base, parts)).toThrow(/auto_line_height\.fontSize[\s\S]*auto_line_height\.lineHeight = AUTO/);
+    expect(parts[0].unsupported ?? []).not.toEqual(expect.arrayContaining([expect.stringMatching(/lineHeight/)]));
+    expect(() => applyDelta(base, parts)).toThrow(/auto_line_height\.fontSize/);
+  });
+
+  it("定高、百分比、AUTO 和行高变量绑定都输出 AUTO", async () => {
+    const figmaJson = structuredClone(seed);
+    const lineHeightVar = findVar(figmaJson, "number/line_height/miuix_ref_line_height_21");
+    const extras = [
+      ["lh_pixels", { unit: "PIXELS", value: 26 }, {}],
+      ["lh_percent", { unit: "PERCENT", value: 140 }, {}],
+      ["lh_auto", { unit: "AUTO" }, {}],
+      ["lh_bound", { unit: "PIXELS", value: 21 }, { lineHeight: { type: "VARIABLE_ALIAS", id: toFigmaId(lineHeightVar.id) } }],
+    ].map(([name, lineHeight, boundVariables]) => ({
+      name,
+      description: "",
+      fontName: { family: "MiSans", style: "Regular" },
+      fontSize: 16,
+      lineHeight,
+      letterSpacing: { unit: "PIXELS", value: 0 },
+      paragraphSpacing: 0,
+      boundVariables,
+    }));
+
+    const parts = await exportAll(fakeFigma(figmaJson, extras), hashes);
+    expect(parts[0].unsupported ?? []).toEqual([]);
+    const { snapshot } = applyDelta(base, parts);
+    const next = canonicalToNative(snapshot, seed);
+    for (const style of extras) {
+      const entry = snapshot.textStyles.find(([styleName]) => styleName === style.name);
+      expect(entry[2].find(([field]) => field === "lineHeight")[1]).toBe("AUTO");
+      expect(findVar(next, `text_style/${style.name}`).valuesByMode.mode_light.value.lineHeight).toEqual({ type: "AUTO" });
+    }
+    const bound = snapshot.textStyles.find(([styleName]) => styleName === "lh_bound");
+    expect(bound[2].some(([, value]) => Array.isArray(value) && value[2]?.includes("line_height"))).toBe(false);
   });
 
   it("缺页、抄写错误或基线不匹配时拒绝还原", async () => {
@@ -264,7 +314,12 @@ describe("Figma MCP 增量同步", () => {
     const legacy = structuredClone(base);
     delete legacy.textStyles;
 
-    expect(canonicalToNative(legacy, seed)).toEqual(seed);
+    const preserved = canonicalToNative(legacy, seed);
+    for (const [id, variable] of Object.entries(seed.variables)) {
+      if (variable.type !== "TYPOGRAPHY") continue;
+      expect(preserved.variables[id]).toEqual(variable);
+    }
+    expect(Object.keys(preserved.variables)).toHaveLength(Object.keys(seed.variables).length);
 
     const shrunk = structuredClone(legacy);
     const refName = seed.variables[refId].name;

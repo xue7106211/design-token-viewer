@@ -35,7 +35,7 @@ interface TokenState {
   isSaving: boolean;
   error: string | null;
 
-  // Active token document (HyperOS3 / HyperOS4)
+  // Active token document (HyperOS 4 / HyperOS 5)
   activeDocumentId: string;
 
   // UI state
