@@ -10,7 +10,7 @@ files:
 
 # HyperOS 5 源、种子与已有文档保持一致
 
-HyperOS 5 数据有多层：权威输入可以是 **DTCG 导出**（`figma-token/<Collection>/{Light,Dark}.tokens.json`）或 **Figma MCP 基线**（`figma-token/figma-variables.json`）；`src/data/sample-tokens-hyperos4.json` 是由脚本生成的 Figma Native 种子；repository 中已存在的 `hyperos4` 文档 `currentJson` 才是应用实际读取与导出的数据。改动这些数据或生成它们的脚本时，必须满足：
+HyperOS 5 数据有多层：权威输入可以是 **DTCG 导出**（`figma-token/<Collection>/{Light,Dark}.tokens.json`，仓库不再保存，仅在走备用流程时临时放入）或 **Figma MCP 基线**（`figma-token/figma-variables.json`，主流程）；`src/data/sample-tokens-hyperos4.json` 是由脚本生成的 Figma Native 种子；repository 中已存在的 `hyperos4` 文档 `currentJson` 才是应用实际读取与导出的数据。改动这些数据或生成它们的脚本时，必须满足：
 
 1. **种子与本次使用的权威输入在同一个 PR 中同步**。两条受支持的工作流二选一，不可混用要求：
    - **DTCG 流程**：改 `figma-token/<Collection>/{Light,Dark}.tokens.json` 时，种子须由 `scripts/figma-dtcg-to-sample.mjs`（必要时再跑 `merge-miuix-text-styles.mjs`）重新生成；不得只手改源或只手改种子。

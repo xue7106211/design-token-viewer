@@ -102,7 +102,7 @@ src/
 ├── types/            # TypeScript 类型
 └── data/             # HyperOS 4 / HyperOS 5 种子
 
-figma-token/          # HyperOS 5 DTCG 源（3 Collection × Light/Dark）+ figma-variables.json 增量同步基线
+figma-token/          # figma-variables.json：Figma MCP 增量同步基线（DTCG 导出不再入库）
 drizzle/              # 数据库迁移 SQL
 scripts/              # 数据转换、Figma 同步、Text Style 合并与数据库脚本
 docs/                 # 验收、Figma 数据源和结构说明；superpowers/plans 为历史计划

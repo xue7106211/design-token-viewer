@@ -55,7 +55,7 @@ design-token-viewer/
 
 ### `figma-token/` — HyperOS 5 Figma 源
 
-包含 Component、Reference、Semantic 三个 Collection 的 Light/Dark DTCG 导出。`node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，按名称解析跨 Collection 别名，并保留受支持的 description/scopes 元数据。
+仓库只保存 `figma-variables.json`。DTCG 导出不再入库；走备用流程时，把 Component、Reference、Semantic 三个 Collection 的 Light/Dark 导出临时放到 `figma-token/<Collection>/`，`node scripts/figma-dtcg-to-sample.mjs` 将它们合并为 `src/data/sample-tokens-hyperos4.json`，按名称解析跨 Collection 别名，并保留受支持的 description/scopes 元数据。
 
 `figma-variables.json` 是 Figma MCP 增量同步（`scripts/sync-figma-variables.mjs`）的基线，记录上次同步时 Figma 端的 Variables 与 Text Style；同步成功后由脚本更新，不要手改。
 

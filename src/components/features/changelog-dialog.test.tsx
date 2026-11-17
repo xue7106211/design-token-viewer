@@ -326,6 +326,42 @@ describe("ChangeLogDialog", () => {
     expect(screen.getByText("1016 → 758 tokens")).toBeInTheDocument();
   });
 
+  it("shows import change details from meta, folded by default", () => {
+    setupStore([
+      makeEntry({
+        changeType: "import_document",
+        tokenName: undefined,
+        oldValue: { label: "原文档", collections: 3, tokens: 2 },
+        newValue: { label: "导入文档", collections: 3, tokens: 3 },
+        meta: {
+          changes: {
+            counts: { added: 1, removed: 0, changed: 1 },
+            added: ["Semantic Token/fill/new"],
+            removed: [],
+            changed: [
+              {
+                name: "Semantic Token/fill/primary",
+                values: [{ mode: "Light", before: "#FF0000", after: "#0000FF" }],
+                fields: ["description"],
+              },
+            ],
+          },
+        },
+      }),
+    ]);
+
+    render(<ChangeLogDialog />);
+    fireEvent.click(screen.getByText("日志"));
+
+    expect(screen.getByText("新增")).toBeInTheDocument();
+    expect(screen.getByText("修改")).toBeInTheDocument();
+    expect(screen.queryByText("删除")).not.toBeInTheDocument();
+    expect(screen.getByText("Semantic Token/fill/new").closest("details")).not.toHaveAttribute("open");
+    expect(screen.getByText("Semantic Token/fill/primary")).toBeInTheDocument();
+    expect(screen.getByText("#0000FF")).toBeInTheDocument();
+    expect(screen.getByText("描述 有变化")).toBeInTheDocument();
+  });
+
   it("falls back to a placeholder name for delete logs without tokenName", () => {
     setupStore([makeEntry({ changeType: "delete_token", tokenName: undefined })]);
 

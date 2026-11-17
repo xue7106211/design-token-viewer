@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { History } from "lucide-react";
+import { ChevronRight, History } from "lucide-react";
 import { colord } from "colord";
 import { Button } from "@/components/ui/button";
 import {
@@ -78,8 +78,10 @@ function documentSummary(v: unknown, fallbackLabel: string): string | null {
 }
 
 function aliasLabel(v: unknown): string | null {
-  if (!isRecord(v) || v.type !== "ALIAS" || typeof v.id !== "string") return null;
-  return `别名 ${v.id}`;
+  if (!isRecord(v) || v.type !== "ALIAS") return null;
+  if (typeof v.name === "string") return `→ ${v.name}`;
+  if (typeof v.id === "string") return `别名 ${v.id}`;
+  return null;
 }
 
 function compactValueToString(v: unknown, fallbackLabel: string): string {
@@ -110,6 +112,39 @@ function snapshotName(v: unknown): string | null {
 function displayIP(ip: string): string {
   return ip.replace(/^::ffff:/i, "");
 }
+
+interface ImportChanges {
+  counts: { added: number; removed: number; changed: number };
+  added: string[];
+  removed: string[];
+  changed: { name: string; values: { mode: string; before: unknown; after: unknown }[]; fields: string[] }[];
+}
+
+function readImportChanges(meta: Record<string, unknown> | undefined): ImportChanges | null {
+  const c = meta?.changes;
+  if (isRecord(c) && isRecord(c.counts) && Array.isArray(c.added) && Array.isArray(c.removed) && Array.isArray(c.changed)) {
+    return c as unknown as ImportChanges;
+  }
+  // 旧版 --db 同步只在 meta 顶层存了三组名称
+  const names = (v: unknown) => (Array.isArray(v) && v.every((x) => typeof x === "string") ? (v as string[]) : null);
+  const added = names(meta?.added);
+  const removed = names(meta?.removed);
+  const changed = names(meta?.changed);
+  if (!added || !removed || !changed) return null;
+  return {
+    counts: { added: added.length, removed: removed.length, changed: changed.length },
+    added,
+    removed,
+    changed: changed.map((name) => ({ name, values: [], fields: [] })),
+  };
+}
+
+const FIELD_LABELS: Record<string, string> = {
+  type: "类型",
+  description: "描述",
+  scopes: "Scope",
+  codeSyntax: "codeSyntax",
+};
 
 function signed(n: number): string {
   return n > 0 ? `+${n}` : String(n);
@@ -184,6 +219,79 @@ function MiniColorSwatch({ hex }: { hex: string }) {
 }
 
 // ---------------------------------------------------------------------------
+// 导入明细：新增 / 删除 / 修改，默认折叠
+// ---------------------------------------------------------------------------
+
+function ChangeGroup({
+  label,
+  count,
+  shown,
+  children,
+}: {
+  label: string;
+  count: number;
+  shown: number;
+  children: React.ReactNode;
+}) {
+  if (count === 0) return null;
+  return (
+    <details className="group">
+      <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+        <ChevronRight className="h-3 w-3 transition-transform group-open:rotate-90" aria-hidden="true" />
+        {label} <span className="font-mono tabular-nums">{count}</span>
+      </summary>
+      <div className="mt-1 max-h-64 space-y-1 overflow-y-auto border-l pl-3">
+        {children}
+        {count > shown && (
+          <span className="block text-muted-foreground">另有 {count - shown} 个未记录明细</span>
+        )}
+      </div>
+    </details>
+  );
+}
+
+function ImportChangeList({ changes }: { changes: ImportChanges }) {
+  const { counts } = changes;
+  if (counts.added + counts.removed + counts.changed === 0) {
+    return <span className="text-xs text-muted-foreground">没有 Token 变化</span>;
+  }
+  return (
+    <div className="flex flex-col gap-1 text-xs">
+      <ChangeGroup label="新增" count={counts.added} shown={changes.added.length}>
+        {changes.added.map((name) => (
+          <span key={name} className={cn("block", NEW_VALUE_CLASS)}>{name}</span>
+        ))}
+      </ChangeGroup>
+      <ChangeGroup label="删除" count={counts.removed} shown={changes.removed.length}>
+        {changes.removed.map((name) => (
+          <span key={name} className={cn("block", OLD_VALUE_CLASS)}>{name}</span>
+        ))}
+      </ChangeGroup>
+      <ChangeGroup label="修改" count={counts.changed} shown={changes.changed.length}>
+        {changes.changed.map((item) => (
+          <div key={item.name} className="space-y-0.5">
+            <span className="block font-mono text-foreground [overflow-wrap:anywhere]">{item.name}</span>
+            {item.values.map((v) => (
+              <div key={v.mode} className="flex flex-wrap items-center gap-x-2 gap-y-1 pl-3">
+                <span className="text-muted-foreground">{v.mode}</span>
+                <DiffSide value={v.before} tone="old" />
+                <Arrow />
+                <DiffSide value={v.after} tone="new" />
+              </div>
+            ))}
+            {item.fields.length > 0 && (
+              <span className="block pl-3 text-muted-foreground">
+                {item.fields.map((f) => FIELD_LABELS[f] ?? f).join("、")} 有变化
+              </span>
+            )}
+          </div>
+        ))}
+      </ChangeGroup>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // ValueDiff — 前后对比渲染
 // ---------------------------------------------------------------------------
 
@@ -250,17 +358,21 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
       );
     }
     const delta = after.tokens - before.tokens;
+    const changes = readImportChanges(meta);
     return (
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs tabular-nums">
-        <span className="font-mono text-foreground">
-          {before.tokens} → {after.tokens} tokens
-        </span>
-        {delta !== 0 && <span className="font-mono text-muted-foreground">{signed(delta)}</span>}
-        <span className="text-muted-foreground">
-          {before.collections === after.collections
-            ? `${after.collections} collections`
-            : `${before.collections} → ${after.collections} collections`}
-        </span>
+      <div className="space-y-1">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs tabular-nums">
+          <span className="font-mono text-foreground">
+            {before.tokens} → {after.tokens} tokens
+          </span>
+          {delta !== 0 && <span className="font-mono text-muted-foreground">{signed(delta)}</span>}
+          <span className="text-muted-foreground">
+            {before.collections === after.collections
+              ? `${after.collections} collections`
+              : `${before.collections} → ${after.collections} collections`}
+          </span>
+        </div>
+        {changes && <ImportChangeList changes={changes} />}
       </div>
     );
   }

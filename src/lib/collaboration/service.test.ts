@@ -94,6 +94,32 @@ describe("token document collaboration service", () => {
     });
   });
 
+  it("records per-token change details when importing a document", async () => {
+    const repo = createMemoryCollaborationRepository();
+    const service = createTokenDocumentService(repo, sampleData);
+    const document = await service.getDocument();
+    const next = structuredClone(sampleData) as typeof sampleData;
+    const [firstId, secondId] = next.collections[0].variableIds;
+    const variables = next.variables as Record<string, { name: string; description?: string }>;
+    variables[firstId].description = "imported description";
+    next.collections[0].variableIds = next.collections[0].variableIds.filter((id) => id !== secondId);
+    delete variables[secondId];
+
+    await service.importDocument({ json: next, revision: document.revision, actor });
+
+    const logs = await service.getChangeLogs();
+    const changes = logs.entries[0].meta?.changes as {
+      counts: Record<string, number>;
+      removed: string[];
+      changed: { name: string; fields: string[] }[];
+    };
+    const collectionName = next.collections[0].name;
+    expect(logs.entries[0].changeType).toBe("import_document");
+    expect(changes.counts).toEqual({ added: 0, removed: 1, changed: 1 });
+    expect(changes.removed).toEqual([`${collectionName}/${(sampleData.variables as Record<string, { name: string }>)[secondId].name}`]);
+    expect(changes.changed[0]).toMatchObject({ name: `${collectionName}/${variables[firstId].name}`, fields: ["description"] });
+  });
+
   it("reorders collection tokens with a reorder audit log", async () => {
     const repo = createMemoryCollaborationRepository();
     const service = createTokenDocumentService(repo, sampleData);

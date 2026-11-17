@@ -12,7 +12,7 @@ HyperOS 5 的主路径是一次 Figma 读取、同时更新 Neon 和 GitLab CSV�
 
 ## HyperOS 5 DTCG 流程
 
-HyperOS 5 的权威源文件是 `figma-token/` 下三套 Collection 的 Light / Dark DTCG 导出：
+仓库不再保存 DTCG 导出，`figma-token/` 里只有 Figma MCP 同步基线 `figma-variables.json`。要走这条备用流程，先从 Figma 重新导出三套 Collection 的 Light / Dark 文件，放到 `figma-token/` 下：
 
 - `Component Token/{Light,Dark}.tokens.json`
 - `Reference Token/{Light,Dark}.tokens.json`
