@@ -144,10 +144,7 @@ src/
 
 ```
 figma-token/                # HyperOS 5 Figma 源
-├── Component Token/{Light,Dark}.tokens.json   # DTCG 导出 (3 Collection × Light/Dark)
-├── Reference Token/{Light,Dark}.tokens.json
-├── Semantic Token/{Light,Dark}.tokens.json
-└── figma-variables.json     # Figma MCP 增量同步基线 (sync-figma-variables 写入)
+└── figma-variables.json     # Figma MCP 增量同步基线 (sync-figma-variables 写入)；DTCG 导出不再入库，走备用流程时临时放到 figma-token/<Collection>/{Light,Dark}.tokens.json
 
 scripts/                    # 辅助脚本
 ├── css-vars-to-sample.mjs
