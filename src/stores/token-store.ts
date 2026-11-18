@@ -59,8 +59,6 @@ interface TokenState {
   // Actions
   setActiveDocument: (documentId: string) => void;
   loadRemoteDocument: () => Promise<void>;
-  loadJSON: (json: unknown) => Promise<boolean>;
-  clearData: () => void;
   setActiveCollection: (id: string) => void;
   setActiveMode: (modeId: string) => void;
   selectToken: (id: string | null) => void;
@@ -90,8 +88,6 @@ interface TokenState {
   }) => Promise<void>;
   renameGroup: (oldPath: string, newPath: string) => Promise<void>;
   exportRawJSON: () => string;
-  getTokensByGroup: (group: string) => DesignToken[];
-  getVisibleTokens: () => DesignToken[];
 }
 
 type PersistedTokenState = Partial<
@@ -116,10 +112,6 @@ const DEFAULT_COLLECTION_BY_DOCUMENT: Record<string, string> = {
 
 const COLLECTION_ORDER_BY_DOCUMENT: Record<string, string[]> = {
   hyperos4: ["col_component", "col_semantic", "col_reference"],
-};
-
-const LEGACY_DEFAULT_COLLECTION_BY_DOCUMENT: Record<string, string> = {
-  hyperos4: "col_reference",
 };
 
 export const useTokenStore = create<TokenState>()(
@@ -267,49 +259,6 @@ export const useTokenStore = create<TokenState>()(
           void get().loadRemoteDocument();
         },
 
-        loadJSON: async (json: unknown) => {
-          const revision = get().revision;
-          if (revision == null) return false;
-          set({ isSaving: true, error: null });
-          try {
-            const document = await apiRequest<TokenDocumentResponse>("/api/token-document/import", {
-              method: "POST",
-              body: JSON.stringify(withActor({ json, revision })),
-            });
-            applyDocument(document);
-            return true;
-          } catch (error) {
-            await handleMutationError(error, get().loadRemoteDocument);
-            set({ error: error instanceof Error ? error.message : "导入失败" });
-            return false;
-          } finally {
-            set({ isSaving: false });
-          }
-        },
-
-        clearData: () => {
-          set({
-            rawJSON: null,
-            revision: null,
-            updatedAt: null,
-            updatedBy: undefined,
-            collections: [],
-            tokens: {},
-            tree: [],
-            activeCollectionId: null,
-            activeModeId: null,
-            selectedTokenId: null,
-            scrollToTokenId: null,
-            expandedPaths: new Set<string>(),
-            searchQuery: "",
-            inspectorOpen: false,
-            editingTokenId: null,
-            editingPosition: null,
-            filteredTokenIds: [],
-            activeCollection: null,
-          });
-        },
-
         setActiveCollection: (id: string) => {
           const { collections, tokens, searchQuery } = get();
           const collection = collections.find((c) => c.id === id) ?? null;
@@ -448,19 +397,6 @@ export const useTokenStore = create<TokenState>()(
           return JSON.stringify(json, null, 2);
         },
 
-        getTokensByGroup: (group: string) => {
-          const { filteredTokenIds, tokens } = get();
-          return filteredTokenIds
-            .map((id) => tokens[id])
-            .filter((t): t is DesignToken => t !== undefined && t.group === group);
-        },
-
-        getVisibleTokens: () => {
-          const { filteredTokenIds, tokens } = get();
-          return filteredTokenIds
-            .map((id) => tokens[id])
-            .filter((t): t is DesignToken => t !== undefined);
-        },
       };
     },
     {
@@ -538,12 +474,7 @@ export function getHydratedCollectionId(
   documentId: string,
   persistedCollectionId: string | null | undefined
 ) {
-  const legacyDefault = LEGACY_DEFAULT_COLLECTION_BY_DOCUMENT[documentId];
-  if (persistedCollectionId != null && persistedCollectionId !== legacyDefault) {
-    return persistedCollectionId;
-  }
-
-  return DEFAULT_COLLECTION_BY_DOCUMENT[documentId] ?? persistedCollectionId ?? null;
+  return persistedCollectionId ?? DEFAULT_COLLECTION_BY_DOCUMENT[documentId] ?? null;
 }
 
 async function handleMutationError(error: unknown, refresh: () => Promise<void>) {

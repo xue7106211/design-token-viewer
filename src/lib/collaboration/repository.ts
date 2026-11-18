@@ -53,7 +53,7 @@ export function getCollaborationRepository(): CollaborationRepository {
 export function createMissingDatabaseRepository(): CollaborationRepository {
   const error = () => {
     throw new Error(
-      "线上共享 Token 表需要配置 PostgreSQL DATABASE_URL。请在 Netlify 环境变量中配置 DATABASE_URL，并先执行 npm run db:migrate 初始化数据表。"
+      "线上共享 Token 表需要配置 PostgreSQL DATABASE_URL。请在 Netlify 环境变量中配置 DATABASE_URL，并先执行 npm run db:init 初始化数据表。"
     );
   };
   return {

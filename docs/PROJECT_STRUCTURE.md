@@ -6,14 +6,13 @@ Design Token Viewer 的目录约定与职责说明，便于新人上手和日常
 
 ```text
 design-token-viewer/
-├── drizzle/              # PostgreSQL 迁移 SQL
+├── drizzle/              # PostgreSQL 建表 SQL（由 npm run db:init 执行）
 ├── e2e/                  # Playwright E2E 测试
 ├── docs/                 # 项目文档与历史计划
-├── figma-token/          # HyperOS 5 DTCG 导出源与 Figma 增量同步基线
+├── figma-token/          # Figma 增量同步基线
 ├── public/               # 静态资源
 ├── scripts/              # 本地转换/数据库脚本
 ├── src/                  # 应用源码
-├── drizzle.config.ts     # Drizzle Kit 配置
 ├── next.config.ts
 ├── playwright.config.ts
 ├── vitest.config.ts
@@ -49,7 +48,7 @@ design-token-viewer/
 ### `docs/` — 文档
 
 - `ACCEPTANCE_CHECKLIST.md`：功能与测试验收清单。
-- `FIGMA_PRESET_VARIABLES.md`：Figma DTCG 与兼容脚本说明。
+- `FIGMA_PRESET_VARIABLES.md`：Figma DTCG 数据源说明。
 - `PROJECT_STRUCTURE.md`：本文件。
 - `superpowers/plans/`：历史实现计划，不是当前功能承诺。
 
@@ -66,24 +65,17 @@ design-token-viewer/
 - `sync-figma-variables.mjs` + `lib/figma-variables-sync.mjs`：经 Figma MCP（`use_figma`）增量同步 HyperOS 5 Variables 与 Text Style，目标可选 `--seed` / `--api <url>` / `--db`；npm 快捷命令为 `figma:plugin` / `figma:preview` / `figma:apply`。Text Style 的 `lineHeight` 固定为 `AUTO`。
 - `export-gitlab-csv.mjs`：只读规范快照，导出 GitLab OS5token 用的 CSV。`npm run token:preview` 先预览 Neon 再生成 CSV；`npm run token:sync` 写入 Neon 后生成 CSV。`exports/` 不提交。
 - `figma-dtcg-to-sample.mjs`：DTCG 同步脚本，输入 `figma-token/`，输出 `src/data/sample-tokens-hyperos4.json`。
-- `merge-miuix-text-styles.mjs`：读取 `scripts/data/miuix-text-styles.json`，把 24 个 miuix Text Style 按 Reference Token 名称追加到 HyperOS 5（DTCG 流程之后使用；Figma MCP 流程无需）。
-- `rename-comp-token-abbreviations.mjs`：一次性迁移，展开已有协作文档中 Component Token 叶子名缩写；幂等，支持 `DRY_RUN=1`。
-- `figma-flat-to-preset.mjs`：读取未纳入仓库的 `scripts/figma-hyperos4-vars.json`，输出格式检查用 preset。
-- `figma-vars-to-sample.mjs`：读取相同扁平输入并覆盖 `src/data/sample-tokens.json`（HyperOS 4 种子）。
-- `css-vars-to-sample.mjs`：读取脚本内嵌 `CSS_VARS_INPUT` 并覆盖 HyperOS 4 种子；当前实现不读取 stdin。
 - `init-db.mjs`：需要 `DATABASE_URL`，读取 `drizzle/0000_lightweight_collaboration.sql` 初始化数据库。
-
-运行兼容脚本前应确认输出目标，避免误覆盖 HyperOS 4 种子。
 
 ### 数据持久化
 
 - 非 production 环境没有 `DATABASE_URL` 时，协作数据写入 Git 忽略的 `.data/collaboration-store.json`。
-- 生产环境必须设置 PostgreSQL `DATABASE_URL`；先执行 `npm run db:migrate`，再运行应用。
+- 生产环境必须设置 PostgreSQL `DATABASE_URL`；先执行 `npm run db:init` 建表，再运行应用。
 - localStorage 只保存 UI 偏好和轻量 actor 标识，不保存 Token 正文、日志或快照。
 
 ### `public/` — 静态资源
 
-Next 从根路径提供此处资源，例如 `/file.svg`。
+Next 从根路径提供此处资源，例如 `/hyperos-logo.png`。
 
 ## 路径别名
 

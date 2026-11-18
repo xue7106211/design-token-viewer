@@ -36,27 +36,6 @@ const CHANGE_TYPE_LABELS: Record<ChangeType, string> = {
 };
 
 /**
- * 获取客户端公网 IP 地址。
- * 调用 https://api.ipify.org?format=json，5 秒超时，失败返回 "unknown"。
- */
-export async function fetchClientIP(): Promise<string> {
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
-
-    const response = await fetch('https://api.ipify.org?format=json', {
-      signal: controller.signal,
-    });
-    clearTimeout(timeoutId);
-
-    const data = await response.json();
-    return data.ip ?? 'unknown';
-  } catch {
-    return 'unknown';
-  }
-}
-
-/**
  * 获取 ChangeType 对应的中文标签。
  */
 export function getChangeTypeLabel(type: ChangeType): string {

@@ -46,12 +46,12 @@ describe("token-store collection defaults", () => {
     expect(getDefaultCollectionId("hyperos4")).toBe("col_semantic");
   });
 
-  it("migrates the old HyperOS 5 Reference default to Semantic", () => {
-    expect(getHydratedCollectionId("hyperos4", "col_reference")).toBe("col_semantic");
+  it("keeps a persisted Reference Token selection", () => {
+    expect(getHydratedCollectionId("hyperos4", "col_reference")).toBe("col_reference");
   });
 
-  it("keeps an explicit non-legacy collection selection", () => {
-    expect(getHydratedCollectionId("hyperos4", "col_component")).toBe("col_component");
+  it("falls back to the document default when nothing is persisted", () => {
+    expect(getHydratedCollectionId("hyperos4", undefined)).toBe("col_semantic");
   });
 
   it("clears the changelog cache when the active document changes", () => {

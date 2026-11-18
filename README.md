@@ -62,9 +62,7 @@ npm run dev
 | `npm run test:watch` | 单元测试 watch 模式 |
 | `npm run test:coverage` | 测试覆盖率 |
 | `npm run test:e2e` | E2E 测试 (Playwright，首次需 `npx playwright install`) |
-| `npm run db:generate` | 生成 Drizzle 迁移 |
-| `npm run db:migrate` | 执行数据库迁移 |
-| `npm run db:init` | 初始化数据库 |
+| `npm run db:init` | 执行 `drizzle/` 下的 SQL 建表（需要 `DATABASE_URL`） |
 | `npm run figma:plugin` | 生成 Figma MCP 只读导出插件代码（`sync-figma-variables.mjs plugin`） |
 | `npm run figma:preview` | 预览 Figma 增量同步结果，不写入（`DRY_RUN=1 … apply`） |
 | `npm run figma:apply` | 执行 Figma 增量同步到 `--seed` / `--api` / `--db` |
@@ -82,8 +80,7 @@ src/
 │       ├── change-logs/         # GET 变更日志
 │       ├── groups/rename/       # PATCH 分组重命名
 │       ├── client-ip/           # GET 请求来源 IP
-│       ├── export/              # GET JSON/CSS/Android，可选 snapshotId/modeId
-│       └── save-sample-tokens/  # DEV-only，写回 HyperOS 4 示例数据
+│       └── export/              # GET JSON/CSS/Android，可选 snapshotId/modeId
 ├── components/
 │   ├── ui/           # shadcn/ui 基础组件
 │   ├── layout/       # AppShell、Sidebar、MainView
@@ -103,8 +100,8 @@ src/
 └── data/             # HyperOS 4 / HyperOS 5 种子
 
 figma-token/          # figma-variables.json：Figma MCP 增量同步基线（DTCG 导出不再入库）
-drizzle/              # 数据库迁移 SQL
-scripts/              # 数据转换、Figma 同步、Text Style 合并与数据库脚本
+drizzle/              # 建表 SQL（由 db:init 执行）
+scripts/              # Figma 同步、CSV 导出、DTCG 转换与数据库脚本
 docs/                 # 验收、Figma 数据源和结构说明；superpowers/plans 为历史计划
 e2e/                  # Playwright E2E 测试
 ```
@@ -123,7 +120,7 @@ e2e/                  # Playwright E2E 测试
 ## 数据持久化与数据库
 
 - 非 production 环境未设置 `DATABASE_URL` 时，服务端把 Token 文档、日志和快照写入 Git 忽略的 `.data/collaboration-store.json`。
-- 生产环境必须设置 PostgreSQL `DATABASE_URL` 并先执行 `npm run db:migrate`，否则共享文档接口返回配置错误。
+- 生产环境必须设置 PostgreSQL `DATABASE_URL` 并先执行 `npm run db:init`，否则共享文档接口返回配置错误。
 - localStorage 保存当前文档、Collection/Mode、搜索、树展开状态、视图、代码格式、检查器宽度和轻量 actor 标识；不保存 Token 正文、日志或快照。
 
 ## 多套 Token 表（HyperOS 4 / HyperOS 5）

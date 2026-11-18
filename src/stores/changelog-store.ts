@@ -1,43 +1,24 @@
 import { create } from "zustand";
 import type { LogEntry } from "@/types/changelog";
-import { CHANGE_LOG_PAGE_SIZE, fetchClientIP } from "@/lib/changelog";
 import { apiRequest, getActiveDocumentId, type ChangeLogsResponse } from "@/lib/collaboration/client";
 
 export interface ChangeLogState {
   entries: LogEntry[];
   total: number;
-  clientIP: string;
   isLoading: boolean;
   error: string | null;
   epoch: number;
 
-  addLogEntry: (entry: Omit<LogEntry, "id" | "timestamp" | "ip">) => void;
   fetchEntries: () => Promise<void>;
   resetForDocument: () => void;
-  setClientIP: (ip: string) => void;
-  fetchAndCacheIP: () => Promise<void>;
 }
 
 export const useChangeLogStore = create<ChangeLogState>()((set, get) => ({
   entries: [],
   total: 0,
-  clientIP: "unknown",
   isLoading: false,
   error: null,
   epoch: 0,
-
-  addLogEntry: (entry) => {
-    const logEntry: LogEntry = {
-      ...entry,
-      id: crypto.randomUUID(),
-      timestamp: Date.now(),
-      ip: get().clientIP,
-    };
-
-    set((state) => ({
-      entries: [...state.entries, logEntry].slice(-CHANGE_LOG_PAGE_SIZE),
-    }));
-  },
 
   fetchEntries: async () => {
     const epoch = get().epoch;
@@ -65,14 +46,5 @@ export const useChangeLogStore = create<ChangeLogState>()((set, get) => ({
       error: null,
       isLoading: false,
     }));
-  },
-
-  setClientIP: (ip: string) => {
-    set({ clientIP: ip });
-  },
-
-  fetchAndCacheIP: async () => {
-    const ip = await fetchClientIP();
-    set({ clientIP: ip });
   },
 }));

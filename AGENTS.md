@@ -47,13 +47,11 @@ src/
 │       ├── snapshots/            # GET/POST 列表与创建；[snapshotId]/restore 恢复
 │       ├── change-logs/          # 变更日志读取
 │       ├── client-ip/            # 请求来源 IP
-│       ├── export/               # 服务端导出
-│       └── save-sample-tokens/   # DEV-only: 写回 HyperOS 4 示例种子
+│       └── export/               # 服务端导出
 ├── components/
 │   ├── ui/                 # shadcn/ui 基础组件 (无业务逻辑)
 │   │   ├── badge.tsx
 │   │   ├── button.tsx
-│   │   ├── collapsible.tsx
 │   │   ├── context-menu.tsx
 │   │   ├── dialog.tsx
 │   │   ├── dropdown-menu.tsx
@@ -61,8 +59,6 @@ src/
 │   │   ├── input.tsx
 │   │   ├── scroll-area.tsx
 │   │   ├── separator.tsx
-│   │   ├── sheet.tsx
-│   │   ├── tabs.tsx
 │   │   └── tooltip.tsx
 │   ├── layout/
 │   │   ├── app-shell.tsx   # 主布局容器
@@ -89,7 +85,6 @@ src/
 │       ├── snapshot-dialog.test.tsx
 │       ├── color-swatch.tsx        # 颜色色块
 │       ├── number-preview.tsx      # 数值预览
-│       ├── spacing-preview.tsx     # 间距预览
 │       ├── typography-preview.tsx  # TYPOGRAPHY 文字样式预览 (Ag + 字号/行高 + 字体/字重)
 │       ├── search-bar.tsx          # 搜索框
 │       ├── view-toggle.tsx         # Grid/List 切换
@@ -119,10 +114,9 @@ src/
 │   ├── typography.ts              # TYPOGRAPHY 值解析/格式化工具
 │   ├── typography.test.ts
 │   ├── contrast.ts                # WCAG 对比度计算, colorToHex/RGB/HSL
-│   ├── changelog.ts               # 变更日志工具: fetchClientIP / getChangeTypeLabel / formatTimestamp
+│   ├── changelog.ts               # 变更日志工具: getChangeTypeLabel / formatTimestamp / pageByNewest
 │   ├── changelog.test.ts
 │   ├── use-shiki.ts               # Shiki 语法高亮 hook (懒加载单例)
-│   ├── sync-sample-tokens.ts      # DEV: POST 到 /api/save-sample-tokens
 │   ├── collaboration/              # 文档、日志、快照的 client / server / service / repository
 │   ├── db/                         # Drizzle PostgreSQL 连接和 schema
 │   └── utils.ts                   # cn() (clsx + tailwind-merge)
@@ -147,15 +141,9 @@ figma-token/                # HyperOS 5 Figma 源
 └── figma-variables.json     # Figma MCP 增量同步基线 (sync-figma-variables 写入)；DTCG 导出不再入库，走备用流程时临时放到 figma-token/<Collection>/{Light,Dark}.tokens.json
 
 scripts/                    # 辅助脚本
-├── css-vars-to-sample.mjs
-├── figma-flat-to-preset.mjs
-├── figma-vars-to-sample.mjs
 ├── figma-dtcg-to-sample.mjs # W3C DTCG → Figma Native (合并多 Collection + 按名称解析别名)
 ├── sync-figma-variables.mjs # 经 Figma MCP(use_figma) 增量同步 Variables → 种子 / 协作文档 API / PostgreSQL
 ├── lib/figma-variables-sync.mjs (+ .test.mjs) # 同步核心：插件代码生成、增量还原与校验、Native 转换
-├── merge-miuix-text-styles.mjs # 按 Reference Token 名称追加 24 个 miuix Text Style (DTCG 流程后使用)
-├── data/miuix-text-styles.json # merge-miuix-text-styles 默认输入
-├── rename-comp-token-abbreviations.mjs # 一次性迁移：展开已有协作文档中 Component Token 叶子名缩写
 └── init-db.mjs              # 用迁移 SQL 初始化数据库
 
 docs/                       # 项目文档
@@ -168,8 +156,7 @@ e2e/                        # Playwright E2E 测试
 └── app.spec.ts
 
 public/                     # 静态资源
-├── hyperos-logo.png
-├── file.svg / globe.svg / next.svg / vercel.svg / window.svg
+└── hyperos-logo.png
 ```
 
 ## 数据流
@@ -235,7 +222,6 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 - `viewMode` / `codeFormat` / `inspectorWidth` / `inspectorOpen` — UI 偏好
 
 关键 Actions：
-- `loadJSON` / `clearData` — 数据加载与清除
 - `selectToken` / `scrollToGroup` — 导航
 - `updateTokenValue` / `updateTokenName` / `updateTokenDescription` / `updateTokenCodeSyntax` — 编辑
 - `setTokenAlias` — 设置/取消别名引用
@@ -244,7 +230,6 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 - `moveTokensToGroup` — 批量移动 Token 到目标分组；拖放时可同时提交 Collection 新顺序
 - `renameGroup` — 重命名分组
 - `exportRawJSON` — 导出原始 JSON
-- `getTokensByGroup` / `getVisibleTokens` — 查询
 
 浏览器持久化字段：activeDocumentId、activeCollectionId、activeModeId、expandedPaths、searchQuery、viewMode、codeFormat、inspectorWidth。Token 正文、日志和快照不写入 localStorage。
 
@@ -254,19 +239,16 @@ repository 在配置 `DATABASE_URL` 时使用 PostgreSQL；非 production 且未
 
 关键状态：
 - `entries` / `total` — 当前文档最新一页日志，以及服务端总条数。接口按时间倒序最多返回 500 条；`total` 大于 `entries.length` 时界面标明只显示最新一页
-- `clientIP` — 兼容本地日志工具的 IP 缓存；实际服务端 actor 在 `providers.tsx` 通过 `/api/client-ip` 初始化
 
 关键 Actions：
 - `fetchEntries` — 从当前文档的服务端日志加载条目
 - `resetForDocument` — 切换文档时清空当前前端缓存并作废进行中的请求；不删除服务端日志
-- `setClientIP` / `fetchAndCacheIP` — 设置 / 获取兼容本地日志工具的 IP 缓存
 
 类型 (types/changelog.ts)：
 - `LogEntry` — id, timestamp, ip, actorName, actorClientId, changeType, tokenId?, tokenName?, oldValue?, newValue?, meta?
 - `ChangeType` — update_value | update_name | update_description | update_code_syntax | set_alias | delete_token | rename_group | move_tokens_to_group | reorder | restore_snapshot | create_snapshot | import_document
 
 工具 (lib/changelog.ts)：
-- `fetchClientIP` — 调用 api.ipify.org 获取公网 IP (5s 超时，失败返回 "unknown")
 - `getChangeTypeLabel` — ChangeType → 中文标签
 - `formatTimestamp` — Unix 毫秒 → `YYYY-MM-DD HH:mm:ss`
 
@@ -318,7 +300,7 @@ UI：`changelog-dialog.tsx` 提供日志查看对话框（sidebar 底部入口�
 
 行为约定：变量 id 按「Collection 名 + 变量名」复用目标文档已有 id，Figma 中改名视为删除 + 新增；同步以 Figma 为准，会覆盖应用内对同名变量的编辑和排序。
 
-Text Style：Figma 本地 Text Style 一并导出，一个样式 = Semantic Token 下一个 `text_style/<样式名>` TYPOGRAPHY Token（Light/Dark 同值，位于 Collection 末尾、按 Figma 顺序），新增 / 修改 / 删除均以 Figma 为准，id 按名称复用。字段绑定了 Variable 时写为字段别名（如 `fontSize → Reference Token/number/font_size/miuix_ref_font_size_32`），保留「Text Style → Variable」引用链，`referencedBy` 可反查；未绑定的字段写字面值（letterSpacing 为像素，PERCENT 按字号换算；letterSpacing / paragraphSpacing 为 0 时省略）。`lineHeight` 一律写成 `AUTO`：不读取 Figma 里的定高、百分比或行高变量绑定，也不因此中止同步。变量表里的行高数值 Token（如 `miuix_ref_line_height_*`）保留，不删除也不修改。引用非本地变量或引用类型不符时整体中止。Figma Text Style 无 codeSyntax，沿用目标文档已有值，新增时默认 `{ ANDROID: 样式名 }`。非 `text_style/` 分组的 TYPOGRAPHY Token 原样保留。走此流程时无需再运行 `merge-miuix-text-styles.mjs`。
+Text Style：Figma 本地 Text Style 一并导出，一个样式 = Semantic Token 下一个 `text_style/<样式名>` TYPOGRAPHY Token（Light/Dark 同值，位于 Collection 末尾、按 Figma 顺序），新增 / 修改 / 删除均以 Figma 为准，id 按名称复用。字段绑定了 Variable 时写为字段别名（如 `fontSize → Reference Token/number/font_size/miuix_ref_font_size_32`），保留「Text Style → Variable」引用链，`referencedBy` 可反查；未绑定的字段写字面值（letterSpacing 为像素，PERCENT 按字号换算；letterSpacing / paragraphSpacing 为 0 时省略）。`lineHeight` 一律写成 `AUTO`：不读取 Figma 里的定高、百分比或行高变量绑定，也不因此中止同步。变量表里的行高数值 Token（如 `miuix_ref_line_height_*`）保留，不删除也不修改。引用非本地变量或引用类型不符时整体中止。Figma Text Style 无 codeSyntax，沿用目标文档已有值，新增时默认 `{ ANDROID: 样式名 }`。非 `text_style/` 分组的 TYPOGRAPHY Token 原样保留。
 
 日常同步用一条命令：先 `npm run figma:plugin` 把增量包存到 `/tmp/figma-delta`，再 `npm run token:preview` 看 Neon 差异和当天 CSV，确认后 `npm run token:sync` 写入 Neon 并生成 `exports/HyperOS_Design_Token_YYYYMMDD.csv`。CSV 不进 Git，由人工放进 GitLab OS5token。`figma-dtcg-to-sample.mjs` 保留为备用，不是主流程。
 
@@ -332,7 +314,7 @@ neon connection-string --project-id silent-credit-67315295
 
 安全边界：导入 API 当前没有内建认证或授权；`actor` 是调用方可填写的审计标签，revision 只提供乐观并发控制。公开部署必须通过网络/网关限制接口访问，或补充真实鉴权，不能把 actor、revision 或 `x-document-id` 当作身份校验。
 
-存储策略：非 production 环境未设置 `DATABASE_URL` 时使用 Git 忽略的 `.data/collaboration-store.json`；生产环境必须设置 PostgreSQL `DATABASE_URL` 并运行 `npm run db:migrate`。
+存储策略：非 production 环境未设置 `DATABASE_URL` 时使用 Git 忽略的 `.data/collaboration-store.json`；生产环境必须设置 PostgreSQL `DATABASE_URL` 并运行 `npm run db:init` 建表（SQL 可重复执行）。
 
 ## 命令
 
@@ -345,9 +327,7 @@ npm run test:watch   # Vitest watch 模式
 npm run test:coverage # 测试覆盖率
 npm run test:e2e     # Playwright E2E (需先 npx playwright install)
 npm run lint         # ESLint
-npm run db:generate  # 生成 Drizzle 迁移
-npm run db:migrate   # 执行 Drizzle 迁移（需要 DATABASE_URL）
-npm run db:init      # 直接执行初始 SQL（需要 DATABASE_URL）
+npm run db:init      # 执行 drizzle/0000_lightweight_collaboration.sql 建表（需要 DATABASE_URL）
 npm run figma:plugin  # = node scripts/sync-figma-variables.mjs plugin
 npm run figma:preview # = DRY_RUN=1 node scripts/sync-figma-variables.mjs apply
 npm run figma:apply   # = node scripts/sync-figma-variables.mjs apply
@@ -374,7 +354,6 @@ npm run token:sync    # 把增量包写入 Neon，并生成 exports/HyperOS_Desi
 - 新代码导出格式 → `src/lib/code-generators/` 新增 generator + 更新 index.ts + `CodeFormat` 类型
 - 新 UI 组件 → `src/components/features/` (业务) 或 `ui/` (通用)
 - 新纯逻辑 → `src/lib/` + 同目录 `*.test.ts`
-- `syncSampleTokensToFile()` 是仅写回 HyperOS 4 种子的未接线开发辅助函数；不得把它当作共享文档持久化机制
 - 新增服务端 Token 编辑操作时，应在 `src/lib/collaboration/service.ts` 中记录对应 ChangeType 和日志；前端 action 需要携带 revision 与 actor
 - Shiki 高亮新增语言 → 更新 `use-shiki.ts` 的 `FORMAT_LANG` 映射和 `langs` 数组
 - shadcn/ui 组件通过 `npx shadcn@latest add <component>` 添加到 `src/components/ui/`
@@ -392,9 +371,9 @@ npm run token:sync    # 把增量包写入 Neon，并生成 exports/HyperOS_Desi
 - service 仅对 id/name/type 均匹配的旧 Token 从 seed 补齐缺失 metadata；GET 只影响返回视图、不改 currentJson，后续编辑 rebuild 时可能写回
 - 导出支持 Android XML、CSS、JSON；来源可选当前过滤结果、当前文档全部 Collection 或版本快照。“全部”JSON 使用 currentJson，“当前”JSON 由可见 Token 重建
 - 快照来源在导出对话框显示的 Token 数当前取自当前可见 Token，不代表快照内容的精确数量
-- 变更日志与快照保存在当前服务端文档中。读取日志按文档倒序分页，最多返回最新 500 条，并带总条数。ChangeLog Store 只缓存这一页，`clearData` 和切换文档都不会删除服务端记录。文档保存和对应日志写入在同一次 `transact` 中提交，日志写入失败时文档修改会回滚
+- 变更日志与快照保存在当前服务端文档中。读取日志按文档倒序分页，最多返回最新 500 条，并带总条数。ChangeLog Store 只缓存这一页，切换文档不会删除服务端记录。文档保存和对应日志写入在同一次 `transact` 中提交，日志写入失败时文档修改会回滚
 - TYPOGRAPHY 字段别名计入目标 Token 的 referencedBy；任一字段缺失、引用缺失或类型不符时整个 Token 解析为错误 STRING。`lineHeight` 为 `{ type: "AUTO" }` 时解析为 `"AUTO"`，不报错。`isAlias` 仅表示整体别名。导出：CSS 为 `font` 简写（定高 `500 32px/42px "MiSans"`，AUTO 为 `500 32px/normal "MiSans"`，不含 letterSpacing）；Android 为 `<style>`，字段别名暂输出解析后的字面值（textSize 用 sp，定高 lineHeight 用 sp，AUTO 不输出 `android:lineHeight`，fontStyle → `android:textFontWeight`，letterSpacing px → em，不输出 paragraphSpacing），整体别名输出 `parent`。界面把 AUTO 显示为 `Auto`。编辑弹窗暂不支持编辑 TYPOGRAPHY 字段值
-- HyperOS 5 的 24 个 miuix Text Style 位于 Semantic Token 的 `text_style/miuix_text_style_*`，由 `scripts/merge-miuix-text-styles.mjs` 按 Reference Token 名称追加（输入 `scripts/data/miuix-text-styles.json`；支持 `--seed` / `--api` / `--out` / `--db`，幂等）。DTCG 转换脚本不生成这些 Token，重新执行 HyperOS 5 DTCG 更新流程后需再运行此脚本；经 Figma MCP 同步（`sync-figma-variables.mjs`）时 Text Style 直接取自 Figma，无需此脚本
+- HyperOS 5 的 Text Style 位于 Semantic Token 的 `text_style/` 分组，只由 Figma MCP 同步（`sync-figma-variables.mjs`）从 Figma 写入。DTCG 转换脚本不生成 Text Style，走 DTCG 备用流程后需要再跑一次 Figma MCP 同步补齐
 - Semantic Token 顶层树组固定为 `bg → fill → stroke → text → mask → margin → padding → gap → radius → text_style`；其他 Collection 和子组维持自然排序
 
 

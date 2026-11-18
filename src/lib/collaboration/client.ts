@@ -47,21 +47,6 @@ export function getStoredActor(): ClientActor | null {
   return { actorName, actorClientId };
 }
 
-export function setStoredActorName(actorName: string): ClientActor {
-  if (typeof window === "undefined") {
-    return { actorName, actorClientId: "server" };
-  }
-  const trimmed = actorName.trim() || "Anonymous";
-  let actorClientId = localStorage.getItem(ACTOR_CLIENT_ID_KEY);
-  if (!actorClientId) {
-    actorClientId = crypto.randomUUID();
-    localStorage.setItem(ACTOR_CLIENT_ID_KEY, actorClientId);
-  }
-  localStorage.setItem(ACTOR_NAME_KEY, trimmed);
-  localStorage.setItem(ACTOR_SOURCE_KEY, "manual");
-  return { actorName: trimmed, actorClientId };
-}
-
 export function setStoredActorFromIP(ip: string): ClientActor {
   if (typeof window === "undefined") {
     return { actorName: ip, actorClientId: "server" };

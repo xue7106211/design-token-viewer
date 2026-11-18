@@ -45,13 +45,3 @@ node scripts/figma-dtcg-to-sample.mjs
 ### 种子不等于运行数据
 
 `sample-tokens-hyperos4.json` 只在 HyperOS 5 文档首次创建时灌入。已有文档必须按 `AGENTS.md` 的“HyperOS 5 数据更新强制流程”创建快照，再调用 `POST /api/token-document/import`：请求头为 `x-document-id: hyperos4`，请求体为 `{ json, revision, actor: { actorName, actorClientId } }`。随后调用 `/api/export?format=json`，从 `{ format, code }` 响应中取 `JSON.parse(code)` 与种子深度比较。只生成种子不会覆盖 repository 中的 `hyperos4.currentJson`。
-
-## 兼容旧脚本
-
-这些脚本不是 HyperOS 5 DTCG 正式同步流程：
-
-- `figma-flat-to-preset.mjs`：读取手动提供的 `scripts/figma-hyperos4-vars.json`，输出 `scripts/figma-hyperos4-preset.json` 做格式检查；当前仓库未提供输入或输出预设。
-- `figma-vars-to-sample.mjs`：读取相同的扁平变量输入并覆盖 `src/data/sample-tokens.json`（HyperOS 4 种子）。
-- `css-vars-to-sample.mjs`：读取脚本内嵌的 `CSS_VARS_INPUT` 并覆盖 `src/data/sample-tokens.json`；当前实现不读取 stdin。
-
-运行任何兼容脚本前都应确认输出目标，避免误覆盖 HyperOS 4 种子。
