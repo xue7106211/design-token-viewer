@@ -22,6 +22,7 @@ import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
+import { GroupLabel } from "./group-label";
 import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, Hash, Type, ToggleLeft, Link2, CaseSensitive } from "lucide-react";
 import { formatTypographySize, formatTypographySummary, getTypographyFieldAliases } from "@/lib/typography";
 import { TypographySample } from "./typography-preview";
@@ -596,7 +597,7 @@ export function TokenList() {
                   <td
                     colSpan={4}
                     className={cn(
-                      "h-8 border-b border-border bg-muted/45 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground",
+                      "h-8 border-b border-border bg-muted/45 px-3 text-[11px] font-medium text-muted-foreground",
                       dragOverGroup === groupName && "bg-primary/10"
                     )}
                     onDragOver={(e) => handleGroupDragOver(e, groupName)}
@@ -604,8 +605,8 @@ export function TokenList() {
                     onDrop={(e) => { e.preventDefault(); handleGroupDrop(groupName); }}
                   >
                     <div className="sticky left-3 z-10 flex w-fit items-center gap-2">
-                      <span className="truncate">{groupName}</span>
-                      <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums normal-case tracking-normal">
+                      <GroupLabel group={groupName} />
+                      <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums">
                         {tokenIds.length}
                       </span>
                     </div>
@@ -723,7 +724,7 @@ export function TokenList() {
                         key={g}
                         type="button"
                         className={cn(
-                          "w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent cursor-pointer",
+                          "flex w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent cursor-pointer",
                           editGroupValue === g && "bg-accent"
                         )}
                         onMouseDown={(e) => e.preventDefault()}
@@ -732,7 +733,7 @@ export function TokenList() {
                           setEditGroupDropdownOpen(false);
                         }}
                       >
-                        {g}
+                        <GroupLabel group={g} />
                       </button>
                     ))}
                   </div>
