@@ -118,10 +118,6 @@ const COLLECTION_ORDER_BY_DOCUMENT: Record<string, string[]> = {
   hyperos4: ["col_component", "col_semantic", "col_reference"],
 };
 
-const LEGACY_DEFAULT_COLLECTION_BY_DOCUMENT: Record<string, string> = {
-  hyperos4: "col_reference",
-};
-
 export const useTokenStore = create<TokenState>()(
   persist(
     (set, get) => {
@@ -538,12 +534,7 @@ export function getHydratedCollectionId(
   documentId: string,
   persistedCollectionId: string | null | undefined
 ) {
-  const legacyDefault = LEGACY_DEFAULT_COLLECTION_BY_DOCUMENT[documentId];
-  if (persistedCollectionId != null && persistedCollectionId !== legacyDefault) {
-    return persistedCollectionId;
-  }
-
-  return DEFAULT_COLLECTION_BY_DOCUMENT[documentId] ?? persistedCollectionId ?? null;
+  return persistedCollectionId ?? DEFAULT_COLLECTION_BY_DOCUMENT[documentId] ?? null;
 }
 
 async function handleMutationError(error: unknown, refresh: () => Promise<void>) {
