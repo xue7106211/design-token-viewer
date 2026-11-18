@@ -17,10 +17,12 @@
 // ============================================================================
 
 import { useTokenStore } from "@/stores/token-store";
+import { orderTokenIdsByTree } from "@/lib/tree-builder";
 import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
 import { cn } from "@/lib/utils";
+import { GroupLabel } from "./group-label";
 import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, Hash, Type, ToggleLeft, Link2, CaseSensitive } from "lucide-react";
 import { formatTypographySize, formatTypographySummary, getTypographyFieldAliases } from "@/lib/typography";
 import { TypographySample } from "./typography-preview";
@@ -98,6 +100,7 @@ export function TokenList() {
   // ---- 从全局 store 中订阅所需状态与操作 ----
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);  // 经过搜索/筛选后的 Token ID 列表
   const tokens = useTokenStore((s) => s.tokens);                      // 所有 Token 的字典 { id -> token }
+  const tree = useTokenStore((s) => s.tree);                          // 侧边栏树，决定列表的分组与行顺序
   const activeCollectionId = useTokenStore((s) => s.activeCollectionId); // 当前集合，用于原子移动并重排序
   const activeModeId = useTokenStore((s) => s.activeModeId);          // 当前激活的模式 ID（如 light/dark）
   const selectToken = useTokenStore((s) => s.selectToken);            // 选中某个 Token 的 action
@@ -403,28 +406,19 @@ export function TokenList() {
   // ---- 分组计算 ----
 
   /**
-   * 将筛选后的 Token 按分组（group）归类。
-   * 当允许拖拽排序时保持原顺序；搜索模式下再做组内排序。
+   * 将筛选后的 Token 按分组（group）归类，分组和组内顺序都与侧边栏一致。
    */
   const groupedEntries = useMemo(() => {
     const groups = new Map<string, string[]>();
-    for (const id of filteredTokenIds) {
+    for (const id of orderTokenIdsByTree(tree, filteredTokenIds)) {
       const token = tokens[id];
       if (!token) continue;
       const group = token.group || "(root)";
       if (!groups.has(group)) groups.set(group, []);
       groups.get(group)!.push(id);
     }
-    if (!isDragEnabled) {
-      // 搜索模式：组内按名称自然排序（numeric: true 使 "color-2" 排在 "color-10" 前面）
-      for (const ids of groups.values()) {
-        ids.sort((a, b) =>
-          (tokens[a]?.name ?? "").localeCompare(tokens[b]?.name ?? "", undefined, { numeric: true })
-        );
-      }
-    }
     return Array.from(groups.entries());
-  }, [filteredTokenIds, tokens, isDragEnabled]);
+  }, [filteredTokenIds, tokens, tree]);
 
   /** 扁平化的可见 Token ID 列表，用于 Shift 多选时计算范围 */
   const visibleIds = useMemo(
@@ -603,7 +597,7 @@ export function TokenList() {
                   <td
                     colSpan={4}
                     className={cn(
-                      "h-8 border-b border-border bg-muted/45 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground",
+                      "h-8 border-b border-border bg-muted/45 px-3 text-[11px] font-medium text-muted-foreground",
                       dragOverGroup === groupName && "bg-primary/10"
                     )}
                     onDragOver={(e) => handleGroupDragOver(e, groupName)}
@@ -611,8 +605,8 @@ export function TokenList() {
                     onDrop={(e) => { e.preventDefault(); handleGroupDrop(groupName); }}
                   >
                     <div className="sticky left-3 z-10 flex w-fit items-center gap-2">
-                      <span className="truncate">{groupName}</span>
-                      <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums normal-case tracking-normal">
+                      <GroupLabel group={groupName} />
+                      <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums">
                         {tokenIds.length}
                       </span>
                     </div>
@@ -730,7 +724,7 @@ export function TokenList() {
                         key={g}
                         type="button"
                         className={cn(
-                          "w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent cursor-pointer",
+                          "flex w-full px-3 py-2 text-left text-xs font-mono hover:bg-accent cursor-pointer",
                           editGroupValue === g && "bg-accent"
                         )}
                         onMouseDown={(e) => e.preventDefault()}
@@ -739,7 +733,7 @@ export function TokenList() {
                           setEditGroupDropdownOpen(false);
                         }}
                       >
-                        {g}
+                        <GroupLabel group={g} />
                       </button>
                     ))}
                   </div>

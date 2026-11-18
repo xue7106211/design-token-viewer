@@ -375,6 +375,8 @@ npm run token:sync    # 把增量包写入 Neon，并生成 exports/HyperOS_Desi
 - TYPOGRAPHY 字段别名计入目标 Token 的 referencedBy；任一字段缺失、引用缺失或类型不符时整个 Token 解析为错误 STRING。`lineHeight` 为 `{ type: "AUTO" }` 时解析为 `"AUTO"`，不报错。`isAlias` 仅表示整体别名。导出：CSS 为 `font` 简写（定高 `500 32px/42px "MiSans"`，AUTO 为 `500 32px/normal "MiSans"`，不含 letterSpacing）；Android 为 `<style>`，字段别名暂输出解析后的字面值（textSize 用 sp，定高 lineHeight 用 sp，AUTO 不输出 `android:lineHeight`，fontStyle → `android:textFontWeight`，letterSpacing px → em，不输出 paragraphSpacing），整体别名输出 `parent`。界面把 AUTO 显示为 `Auto`。编辑弹窗暂不支持编辑 TYPOGRAPHY 字段值
 - HyperOS 5 的 Text Style 位于 Semantic Token 的 `text_style/` 分组，只由 Figma MCP 同步（`sync-figma-variables.mjs`）从 Figma 写入。DTCG 转换脚本不生成 Text Style，走 DTCG 备用流程后需要再跑一次 Figma MCP 同步补齐
 - Semantic Token 顶层树组固定为 `bg → fill → stroke → text → mask → margin → padding → gap → radius → text_style`；其他 Collection 和子组维持自然排序
+- 分组名显示统一使用 `src/components/features/group-label.tsx`：保留原始名称，不做大小写或下划线转换；父级路径为浅色，末段为正文色。表格、网格、别名选择器和“编辑分组”下拉都用它；侧边栏树每级只显示本级原始名称。搜索、复制、重命名、导出和日志一律使用原始名称，不得引入第二套“显示名”
+- Token 顺序以 Collection 中的存储顺序为准：表格、网格和侧边栏组内都按此顺序排列，分组顺序跟随侧边栏树。HyperOS 5 的顺序来自 Figma，每次 Figma MCP 同步都会覆盖应用内的拖拽排序和移动分组
 
 
 ## 已知限制

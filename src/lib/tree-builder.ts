@@ -20,7 +20,8 @@ const SEMANTIC_TOKEN_GROUP_ORDER = [
  */
 export function buildTokenTree(
   tokens: DesignToken[],
-  collectionName?: string
+  collectionName?: string,
+  tokenOrder?: string[]
 ): TokenTreeNode[] {
   const filtered = collectionName
     ? tokens.filter((t) => t.collection === collectionName)
@@ -66,10 +67,13 @@ export function buildTokenTree(
   // Calculate token counts
   calculateTokenCounts(root);
 
-  // Semantic Token 的一级组按设计系统层级展示，其余节点保持自然排序。
+  // Semantic Token 的一级组按设计系统层级展示，其余分组按名称自然排序。
+  // 同一分组内的 Token 按 Collection 顺序（即列表拖拽排序的结果）排列。
+  const leafRank = tokenOrder ? new Map(tokenOrder.map((id, index) => [id, index])) : undefined;
   sortTree(
     root,
-    collectionName === "Semantic Token" ? SEMANTIC_TOKEN_GROUP_ORDER : undefined
+    collectionName === "Semantic Token" ? SEMANTIC_TOKEN_GROUP_ORDER : undefined,
+    leafRank
   );
 
   return root.children;
@@ -88,12 +92,24 @@ function calculateTokenCounts(node: TokenTreeNode): number {
   return count;
 }
 
-function sortTree(node: TokenTreeNode, rootGroupOrder?: string[]): void {
+function sortTree(
+  node: TokenTreeNode,
+  rootGroupOrder?: string[],
+  leafRank?: Map<string, number>
+): void {
   node.children.sort((a, b) => {
     // Groups before leaves
     const aIsGroup = a.children.length > 0;
     const bIsGroup = b.children.length > 0;
     if (aIsGroup !== bIsGroup) return aIsGroup ? -1 : 1;
+
+    if (!aIsGroup && leafRank) {
+      const aRank = a.tokenId != null ? leafRank.get(a.tokenId) : undefined;
+      const bRank = b.tokenId != null ? leafRank.get(b.tokenId) : undefined;
+      if (aRank !== undefined && bRank !== undefined) return aRank - bRank;
+      if (aRank !== undefined) return -1;
+      if (bRank !== undefined) return 1;
+    }
 
     if (node.path === "" && rootGroupOrder) {
       const aIndex = rootGroupOrder.indexOf(a.label);
@@ -108,6 +124,25 @@ function sortTree(node: TokenTreeNode, rootGroupOrder?: string[]): void {
     return a.label.localeCompare(b.label, undefined, { numeric: true });
   });
   for (const child of node.children) {
-    sortTree(child, rootGroupOrder);
+    sortTree(child, rootGroupOrder, leafRank);
   }
+}
+
+/**
+ * 按侧边栏树的展示顺序（深度优先）排列 Token id，让列表与侧边栏一致。
+ * 不在树中的 id 保持原相对顺序，排在最后。
+ */
+export function orderTokenIdsByTree(tree: TokenTreeNode[], ids: string[]): string[] {
+  const rank = new Map<string, number>();
+  const visit = (nodes: TokenTreeNode[]) => {
+    for (const node of nodes) {
+      if (node.tokenId != null && !rank.has(node.tokenId)) rank.set(node.tokenId, rank.size);
+      visit(node.children);
+    }
+  };
+  visit(tree);
+  return ids
+    .map((id, index) => ({ id, index, rank: rank.get(id) ?? Number.POSITIVE_INFINITY }))
+    .sort((a, b) => a.rank - b.rank || a.index - b.index)
+    .map(({ id }) => id);
 }

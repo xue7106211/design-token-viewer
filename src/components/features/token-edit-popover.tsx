@@ -19,6 +19,7 @@ import { ArrowRight, Link2, X, GripVertical } from "lucide-react";
 import { getAndroidResourceName } from "@/lib/code-generators/android";
 import { toCSSVarName } from "@/lib/code-generators/css";
 import { stripCodeSyntaxPrefix } from "@/lib/code-generators/utils";
+import { GroupLabel } from "./group-label";
 
 const POPOVER_TRANSITION = { duration: 0.25, ease: [0.165, 0.84, 0.44, 1] as const };
 
@@ -571,13 +572,14 @@ const TokenMetaForm = React.forwardRef<
   });
 
   const groupedReferences = (() => {
-    const groups = new Map<string, typeof filteredReferences>();
+    const groups = new Map<string, { collection: string; group: string; opts: typeof filteredReferences }>();
     for (const opt of filteredReferences) {
-      const groupKey = `${opt.collection} / ${opt.group || "(root)"}`;
-      if (!groups.has(groupKey)) groups.set(groupKey, []);
-      groups.get(groupKey)!.push(opt);
+      const group = opt.group || "(root)";
+      const groupKey = `${opt.collection}\u0000${group}`;
+      if (!groups.has(groupKey)) groups.set(groupKey, { collection: opt.collection, group, opts: [] });
+      groups.get(groupKey)!.opts.push(opt);
     }
-    for (const opts of groups.values()) {
+    for (const { opts } of groups.values()) {
       opts.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
     }
     return Array.from(groups.entries()).sort((a, b) => a[0].localeCompare(b[0]));
@@ -673,10 +675,11 @@ const TokenMetaForm = React.forwardRef<
             {groupedReferences.length === 0 ? (
               <div className="px-3 py-2 text-xs text-muted-foreground">没有匹配的 Token</div>
             ) : (
-              groupedReferences.map(([groupName, opts]) => (
-                <div key={groupName} className="border-t border-border/60 first:border-t-0">
-                  <div className="sticky top-0 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground bg-muted/80 backdrop-blur">
-                    {groupName}
+              groupedReferences.map(([groupKey, { collection, group, opts }]) => (
+                <div key={groupKey} className="border-t border-border/60 first:border-t-0">
+                  <div className="sticky top-0 flex items-center gap-2 px-3 py-1 text-[11px] bg-muted/80 backdrop-blur">
+                    <GroupLabel group={group} className="min-w-0" />
+                    <span className="ml-auto shrink-0 text-[10px] text-muted-foreground">{collection}</span>
                   </div>
                   {opts.map((opt) => (
                     <button
