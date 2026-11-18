@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { fetchClientIP, getChangeTypeLabel, formatTimestamp } from '@/lib/changelog';
+import { describe, it, expect } from 'vitest';
+import { getChangeTypeLabel, formatTimestamp } from '@/lib/changelog';
 import type { ChangeType } from '@/types/changelog';
 
 // ---------------------------------------------------------------------------
@@ -51,50 +51,5 @@ describe('formatTimestamp', () => {
     const result = formatTimestamp(ts);
     // 验证格式 YYYY-MM-DD HH:mm:ss
     expect(result).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/);
-  });
-});
-
-// ---------------------------------------------------------------------------
-// 3. fetchClientIP — 成功和失败场景
-// ---------------------------------------------------------------------------
-describe('fetchClientIP', () => {
-  const originalFetch = globalThis.fetch;
-
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-
-  afterEach(() => {
-    globalThis.fetch = originalFetch;
-    vi.useRealTimers();
-  });
-
-  it('成功获取 IP', async () => {
-    globalThis.fetch = vi.fn().mockResolvedValue({
-      json: () => Promise.resolve({ ip: '203.0.113.1' }),
-    });
-
-    const ip = await fetchClientIP();
-    expect(ip).toBe('203.0.113.1');
-    expect(globalThis.fetch).toHaveBeenCalledWith(
-      'https://api.ipify.org?format=json',
-      expect.objectContaining({ signal: expect.any(AbortSignal) }),
-    );
-  });
-
-  it('fetch 抛出异常时返回 "unknown"', async () => {
-    globalThis.fetch = vi.fn().mockRejectedValue(new Error('Network error'));
-
-    const ip = await fetchClientIP();
-    expect(ip).toBe('unknown');
-  });
-
-  it('响应中无 ip 字段时返回 "unknown"', async () => {
-    globalThis.fetch = vi.fn().mockResolvedValue({
-      json: () => Promise.resolve({}),
-    });
-
-    const ip = await fetchClientIP();
-    expect(ip).toBe('unknown');
   });
 });
