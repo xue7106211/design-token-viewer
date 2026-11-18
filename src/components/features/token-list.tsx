@@ -17,6 +17,7 @@
 // ============================================================================
 
 import { useTokenStore } from "@/stores/token-store";
+import { orderTokenIdsByTree } from "@/lib/tree-builder";
 import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
 import { generateTokenCode } from "@/lib/code-generators";
@@ -98,6 +99,7 @@ export function TokenList() {
   // ---- 从全局 store 中订阅所需状态与操作 ----
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);  // 经过搜索/筛选后的 Token ID 列表
   const tokens = useTokenStore((s) => s.tokens);                      // 所有 Token 的字典 { id -> token }
+  const tree = useTokenStore((s) => s.tree);                          // 侧边栏树，决定列表的分组与行顺序
   const activeCollectionId = useTokenStore((s) => s.activeCollectionId); // 当前集合，用于原子移动并重排序
   const activeModeId = useTokenStore((s) => s.activeModeId);          // 当前激活的模式 ID（如 light/dark）
   const selectToken = useTokenStore((s) => s.selectToken);            // 选中某个 Token 的 action
@@ -403,28 +405,19 @@ export function TokenList() {
   // ---- 分组计算 ----
 
   /**
-   * 将筛选后的 Token 按分组（group）归类。
-   * 当允许拖拽排序时保持原顺序；搜索模式下再做组内排序。
+   * 将筛选后的 Token 按分组（group）归类，分组和组内顺序都与侧边栏一致。
    */
   const groupedEntries = useMemo(() => {
     const groups = new Map<string, string[]>();
-    for (const id of filteredTokenIds) {
+    for (const id of orderTokenIdsByTree(tree, filteredTokenIds)) {
       const token = tokens[id];
       if (!token) continue;
       const group = token.group || "(root)";
       if (!groups.has(group)) groups.set(group, []);
       groups.get(group)!.push(id);
     }
-    if (!isDragEnabled) {
-      // 搜索模式：组内按名称自然排序（numeric: true 使 "color-2" 排在 "color-10" 前面）
-      for (const ids of groups.values()) {
-        ids.sort((a, b) =>
-          (tokens[a]?.name ?? "").localeCompare(tokens[b]?.name ?? "", undefined, { numeric: true })
-        );
-      }
-    }
     return Array.from(groups.entries());
-  }, [filteredTokenIds, tokens, isDragEnabled]);
+  }, [filteredTokenIds, tokens, tree]);
 
   /** 扁平化的可见 Token ID 列表，用于 Shift 多选时计算范围 */
   const visibleIds = useMemo(

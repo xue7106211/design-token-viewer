@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildTokenTree } from "./tree-builder";
+import { buildTokenTree, orderTokenIdsByTree } from "./tree-builder";
 import type { DesignToken } from "@/types/token";
 
 function makeToken(
@@ -88,5 +88,35 @@ describe("buildTokenTree", () => {
       "radius",
       "text_style",
     ]);
+  });
+
+  it("orders leaves inside a group by the collection order", () => {
+    const tokens: DesignToken[] = [
+      makeToken("t1", "menu/color_arrow", "Test"),
+      makeToken("t2", "menu/color_text", "Test"),
+      makeToken("t3", "menu/color_bg", "Test"),
+    ];
+    const tree = buildTokenTree(tokens, "Test", ["t2", "t3", "t1"]);
+    expect(tree[0].children.map((node) => node.tokenId)).toEqual(["t2", "t3", "t1"]);
+  });
+});
+
+describe("orderTokenIdsByTree", () => {
+  it("puts list rows in the same order as the sidebar", () => {
+    const tokens: DesignToken[] = [
+      makeToken("m1", "menu/text", "Test"),
+      makeToken("m2", "menu/bg", "Test"),
+      makeToken("a1", "action_bar/title", "Test"),
+      makeToken("b1", "badge/fill", "Test"),
+    ];
+    const collectionOrder = ["m1", "m2", "a1", "b1"];
+    const tree = buildTokenTree(tokens, "Test", collectionOrder);
+
+    expect(orderTokenIdsByTree(tree, collectionOrder)).toEqual(["a1", "b1", "m1", "m2"]);
+  });
+
+  it("keeps ids missing from the tree at the end in their original order", () => {
+    const tree = buildTokenTree([makeToken("t1", "a/x", "Test")], "Test");
+    expect(orderTokenIdsByTree(tree, ["ghost2", "t1", "ghost1"])).toEqual(["t1", "ghost2", "ghost1"]);
   });
 });

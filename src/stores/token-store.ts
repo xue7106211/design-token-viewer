@@ -142,7 +142,11 @@ export const useTokenStore = create<TokenState>()(
           activeCollection?.modes.find((mode) => mode.modeId === preferredModeId) ??
           activeCollection?.modes[0] ??
           null;
-        const tree = buildTokenTree(Object.values(document.tokens), activeCollection?.name);
+        const tree = buildTokenTree(
+          Object.values(document.tokens),
+          activeCollection?.name,
+          activeCollection?.tokenIds
+        );
         const filteredTokenIds = filterTokenIds(
           activeCollection,
           document.tokens,
@@ -314,7 +318,7 @@ export const useTokenStore = create<TokenState>()(
           const { collections, tokens, searchQuery } = get();
           const collection = collections.find((c) => c.id === id) ?? null;
           const firstMode = collection?.modes[0] ?? null;
-          const tree = buildTokenTree(Object.values(tokens), collection?.name);
+          const tree = buildTokenTree(Object.values(tokens), collection?.name, collection?.tokenIds);
           set({
             activeCollectionId: id,
             activeModeId: firstMode?.modeId ?? null,

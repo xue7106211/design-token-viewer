@@ -2,10 +2,12 @@
 
 import { useTokenStore } from "@/stores/token-store";
 import { TokenCard } from "./token-card";
+import { orderTokenIdsByTree } from "@/lib/tree-builder";
 
 export function TokenGrid() {
   const filteredTokenIds = useTokenStore((s) => s.filteredTokenIds);
   const tokens = useTokenStore((s) => s.tokens);
+  const tree = useTokenStore((s) => s.tree);
 
   if (filteredTokenIds.length === 0) {
     return (
@@ -17,7 +19,7 @@ export function TokenGrid() {
 
   // Group tokens by their group path
   const groups = new Map<string, string[]>();
-  for (const id of filteredTokenIds) {
+  for (const id of orderTokenIdsByTree(tree, filteredTokenIds)) {
     const token = tokens[id];
     if (!token) continue;
     const group = token.group || "(root)";
