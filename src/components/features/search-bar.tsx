@@ -16,7 +16,7 @@ export function SearchBar() {
       <Input
         id={SEARCH_INPUT_ID}
         aria-label="搜索 Design Token（快捷键 / 或 ⌘K）"
-        placeholder="搜索DesignToken..."
+        placeholder="搜索 Token…"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="h-8 pl-8 pr-8 text-xs placeholder:text-[12px]"

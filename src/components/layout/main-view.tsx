@@ -28,7 +28,7 @@ export function MainView() {
             </h2>
           </div>
           <span className="text-xs text-muted-foreground tabular-nums">
-            {filteredTokenIds.length} 个令牌
+            {filteredTokenIds.length} 个 Token
             {searchQuery && " (已过滤)"}
           </span>
         </div>

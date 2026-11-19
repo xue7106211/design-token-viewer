@@ -363,7 +363,7 @@ function InspectorContent({ token }: { token: DesignToken }) {
                       <span className="h-6 w-6 rounded-md border bg-muted" />
                     )}
                     <div className="min-w-0 flex-1 overflow-hidden">
-                      <div className="text-[10px] font-medium text-muted-foreground">Resolved value</div>
+                      <div className="text-[10px] font-medium text-muted-foreground">最终值</div>
                       <div className="truncate text-xs font-mono text-foreground">{formatResolvedValue(resolved)}</div>
                     </div>
                   </div>
