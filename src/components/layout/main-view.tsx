@@ -17,7 +17,7 @@ export function MainView() {
   const searchQuery = useTokenStore((s) => s.searchQuery);
 
   return (
-    <div className="flex flex-1 flex-col min-w-0">
+    <main className="flex flex-1 flex-col min-w-0">
       {/* Toolbar */}
       <div className="flex h-14 shrink-0 items-center justify-between border-b px-4 py-2.5">
         <div className="flex items-center gap-3">
@@ -49,6 +49,6 @@ export function MainView() {
       ) : (
         <TokenList />
       )}
-    </div>
+    </main>
   );
 }

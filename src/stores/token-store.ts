@@ -49,6 +49,7 @@ interface TokenState {
   codeFormat: CodeFormat;
   inspectorOpen: boolean;
   inspectorWidth: number;
+  sidebarCollapsed: boolean;
   editingTokenId: string | null;
   editingPosition: { x: number; y: number } | null;
 
@@ -72,6 +73,7 @@ interface TokenState {
   setCodeFormat: (format: CodeFormat) => void;
   setInspectorOpen: (open: boolean) => void;
   setInspectorWidth: (width: number) => void;
+  setSidebarCollapsed: (collapsed: boolean) => void;
   setEditingToken: (id: string | null, position?: { x: number; y: number }) => void;
   updateTokenValue: (tokenId: string, modeId: string, value: ConcreteRawTokenValue) => Promise<void>;
   updateTokenName: (tokenId: string, newName: string) => Promise<void>;
@@ -100,6 +102,7 @@ type PersistedTokenState = Partial<
     | "viewMode"
     | "codeFormat"
     | "inspectorWidth"
+    | "sidebarCollapsed"
   >
 > & {
   expandedPaths?: string[];
@@ -214,6 +217,7 @@ export const useTokenStore = create<TokenState>()(
         codeFormat: "android" as CodeFormat,
         inspectorOpen: false,
         inspectorWidth: 320,
+        sidebarCollapsed: false,
         editingTokenId: null,
         editingPosition: null,
 
@@ -347,6 +351,7 @@ export const useTokenStore = create<TokenState>()(
         setInspectorOpen: (open: boolean) => set({ inspectorOpen: open }),
         setInspectorWidth: (width: number) =>
           set({ inspectorWidth: Math.min(560, Math.max(280, width)) }),
+        setSidebarCollapsed: (collapsed: boolean) => set({ sidebarCollapsed: collapsed }),
 
         setEditingToken: (id: string | null, position?: { x: number; y: number }) => {
           set({
@@ -415,6 +420,7 @@ export const useTokenStore = create<TokenState>()(
           viewMode: state.viewMode,
           codeFormat: state.codeFormat,
           inspectorWidth: state.inspectorWidth,
+          sidebarCollapsed: state.sidebarCollapsed,
         }) as PersistedTokenState,
       merge: (persisted, current) => {
         const state = persisted as PersistedTokenState;

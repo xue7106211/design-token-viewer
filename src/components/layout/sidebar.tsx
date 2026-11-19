@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { ChangeLogDialog } from "@/components/features/changelog-dialog";
 import { SnapshotDialog } from "@/components/features/snapshot-dialog";
 import { DocumentSwitcher } from "@/components/features/document-switcher";
-import { useState } from "react";
+import { useEffect } from "react";
 
 const OS5_SPEC_URL =
   "https://www.figma.com/design/YeNxagZUBbfuxxd4LuIlDX/OS5_%E8%AE%BE%E8%AE%A1%E6%A0%87%E5%87%86%E5%8C%96?node-id=3078-60823&t=qVhz6d8IiuNhCGNE-1";
@@ -89,18 +89,31 @@ export function Sidebar() {
   const expandedPaths = useTokenStore((s) => s.expandedPaths);
   const expandAll = useTokenStore((s) => s.expandAll);
   const collapseAll = useTokenStore((s) => s.collapseAll);
-  const [collapsed, setCollapsed] = useState(false);
+  const collapsed = useTokenStore((s) => s.sidebarCollapsed);
+  const setCollapsed = useTokenStore((s) => s.setSidebarCollapsed);
   const isAllExpanded = expandedPaths.size > 0;
+
+  // 窄屏（< 768px）进入或打开页面时自动收起，避免主区被挤到不可用
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 767px)");
+    if (query.matches) setCollapsed(true);
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setCollapsed(true);
+    };
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, [setCollapsed]);
 
   if (collapsed) {
     return (
-      <div className="flex h-full w-10 flex-col items-center border-r bg-sidebar py-2.5">
+      <nav aria-label="Token 导航" className="flex h-full w-10 shrink-0 flex-col items-center border-r bg-sidebar py-2.5">
         <Button
           variant="ghost"
           size="icon"
           className="h-7 w-7 text-muted-foreground cursor-pointer"
           onClick={() => setCollapsed(false)}
-          title="展开侧边栏"
+          aria-label="展开侧边栏"
+          title="展开侧边栏 (⌘\)"
         >
           <PanelLeftOpen className="h-4 w-4" />
         </Button>
@@ -110,12 +123,12 @@ export function Sidebar() {
           <SnapshotDialog collapsed />
           <ChangeLogDialog collapsed />
         </div>
-      </div>
+      </nav>
     );
   }
 
   return (
-    <div className="flex h-full w-64 flex-col border-r bg-sidebar">
+    <nav aria-label="Token 导航" className="flex h-full w-64 shrink-0 flex-col border-r bg-sidebar">
       {/* Header */}
       <div className="flex h-14 shrink-0 items-center justify-between border-b px-3 py-2.5">
         <div className="flex items-center h-4 w-[132px] min-w-0 shrink-0 overflow-hidden">
@@ -131,7 +144,8 @@ export function Sidebar() {
             size="icon"
             className="h-7 w-7 text-muted-foreground hover:text-foreground cursor-pointer"
             onClick={() => setCollapsed(true)}
-            title="收起侧边栏"
+            aria-label="收起侧边栏"
+            title="收起侧边栏 (⌘\)"
           >
             <PanelLeftClose className="h-3.5 w-3.5" />
           </Button>
@@ -140,6 +154,7 @@ export function Sidebar() {
             size="icon"
             className="h-7 w-7 text-muted-foreground hover:text-foreground cursor-pointer"
             onClick={() => void loadRemoteDocument()}
+            aria-label="刷新共享数据"
             title="刷新共享数据"
           >
             <RefreshCw className="h-3.5 w-3.5" />
@@ -214,6 +229,6 @@ export function Sidebar() {
         <SnapshotDialog />
         <ChangeLogDialog />
       </div>
-    </div>
+    </nav>
   );
 }

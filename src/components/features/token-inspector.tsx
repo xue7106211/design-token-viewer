@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useTokenStore } from "@/stores/token-store";
 import { getAliasChain } from "@/lib/token-resolver";
 import { generateTokenCode } from "@/lib/code-generators";
@@ -16,7 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { X, Link2, Eye, GripVertical, ArrowDown, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { ColorValue, TypographyValue } from "@/types/token";
+import type { ColorValue, DesignToken, TypographyValue } from "@/types/token";
 
 const INSPECTOR_WIDTH_MIN = 280;
 const INSPECTOR_WIDTH_MAX = 560;
@@ -25,17 +26,16 @@ const INSPECTOR_VIEWPORT_GUTTER = 48;
 const WHITE: ColorValue = { r: 1, g: 1, b: 1, a: 1 };
 const BLACK: ColorValue = { r: 0, g: 0, b: 0, a: 1 };
 
+const INSPECTOR_RESIZE_STEP = 16;
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
+
 export function TokenInspector() {
   const selectedTokenId = useTokenStore((s) => s.selectedTokenId);
   const tokens = useTokenStore((s) => s.tokens);
-  const activeCollection = useTokenStore((s) => s.activeCollection);
-  const activeModeId = useTokenStore((s) => s.activeModeId);
-  const selectToken = useTokenStore((s) => s.selectToken);
   const inspectorOpen = useTokenStore((s) => s.inspectorOpen);
-  const setInspectorOpen = useTokenStore((s) => s.setInspectorOpen);
-  const codeFormat = useTokenStore((s) => s.codeFormat);
   const inspectorWidth = useTokenStore((s) => s.inspectorWidth);
   const setInspectorWidth = useTokenStore((s) => s.setInspectorWidth);
+  const reduceMotion = useReducedMotion();
 
   const [isResizing, setIsResizing] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(() =>
@@ -50,12 +50,33 @@ export function TokenInspector() {
   const effectiveInspectorWidth = Math.min(inspectorWidth, maxUsableInspectorWidth);
 
   const handleResizeStart = useCallback(
-    (e: React.MouseEvent) => {
+    (e: React.PointerEvent) => {
+      if (e.button !== 0) return;
       e.preventDefault();
       resizeStartRef.current = { x: e.clientX, width: effectiveInspectorWidth };
       setIsResizing(true);
     },
     [effectiveInspectorWidth]
+  );
+
+  // 面板在右侧：← 变宽，→ 变窄，与拖拽方向一致
+  const handleResizeKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      const next =
+        e.key === "ArrowLeft"
+          ? effectiveInspectorWidth + INSPECTOR_RESIZE_STEP
+          : e.key === "ArrowRight"
+            ? effectiveInspectorWidth - INSPECTOR_RESIZE_STEP
+            : e.key === "Home"
+              ? INSPECTOR_WIDTH_MIN
+              : e.key === "End"
+                ? maxUsableInspectorWidth
+                : null;
+      if (next == null) return;
+      e.preventDefault();
+      setInspectorWidth(Math.min(maxUsableInspectorWidth, Math.max(INSPECTOR_WIDTH_MIN, next)));
+    },
+    [effectiveInspectorWidth, maxUsableInspectorWidth, setInspectorWidth]
   );
 
   useEffect(() => {
@@ -67,7 +88,7 @@ export function TokenInspector() {
 
   useEffect(() => {
     if (!isResizing) return;
-    const onMove = (e: MouseEvent) => {
+    const onMove = (e: PointerEvent) => {
       const { x, width } = resizeStartRef.current;
       const delta = x - e.clientX;
       const next = Math.min(maxUsableInspectorWidth, Math.max(INSPECTOR_WIDTH_MIN, width + delta));
@@ -76,20 +97,78 @@ export function TokenInspector() {
     const onEnd = () => setIsResizing(false);
     document.body.classList.add("select-none");
     document.body.style.cursor = "col-resize";
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onEnd);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onEnd);
+    window.addEventListener("pointercancel", onEnd);
     return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseup", onEnd);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onEnd);
+      window.removeEventListener("pointercancel", onEnd);
       document.body.classList.remove("select-none");
       document.body.style.cursor = "";
     };
   }, [isResizing, maxUsableInspectorWidth, setInspectorWidth]);
 
-  if (!inspectorOpen || !selectedTokenId) return null;
+  const token = inspectorOpen && selectedTokenId ? tokens[selectedTokenId] : undefined;
 
-  const token = tokens[selectedTokenId];
-  if (!token) return null;
+  return (
+    <AnimatePresence initial={false}>
+      {token && (
+        <motion.aside
+          key="token-inspector"
+          aria-label="Token 详情"
+          className="relative h-full shrink-0 overflow-hidden border-l bg-background"
+          initial={{ width: 0 }}
+          animate={{ width: effectiveInspectorWidth }}
+          exit={{ width: 0 }}
+          transition={isResizing || reduceMotion ? { duration: 0 } : { duration: 0.2, ease: EASE_OUT }}
+        >
+          {/* 内层固定宽度，展开/收起动画期间内容不重排 */}
+          <div className="relative flex h-full flex-col" style={{ width: effectiveInspectorWidth }}>
+            {/* 左侧拖拽条：向左拖变宽，向右拖变窄 */}
+            <div
+              role="separator"
+              tabIndex={0}
+              aria-label="调整 Token 详情宽度"
+              aria-orientation="vertical"
+              aria-valuenow={effectiveInspectorWidth}
+              aria-valuemin={INSPECTOR_WIDTH_MIN}
+              aria-valuemax={maxUsableInspectorWidth}
+              onPointerDown={handleResizeStart}
+              onKeyDown={handleResizeKeyDown}
+              className={cn(
+                "absolute left-0 top-0 z-10 h-full w-2 -translate-x-1/2 cursor-col-resize",
+                "flex items-center justify-center select-none",
+                "transition-[background,width] duration-150 ease-out",
+                "hover:bg-primary/20 active:bg-primary/30",
+                isResizing && "w-3 bg-primary/25",
+                "focus-visible:outline-none focus-visible:bg-primary/25"
+              )}
+              style={{ touchAction: "none" }}
+            >
+              <GripVertical className={cn("h-3 w-3 text-muted-foreground/50 pointer-events-none", isResizing && "text-primary")} />
+              {isResizing && (
+                <span className="absolute left-2 top-3 rounded-md border bg-popover px-1.5 py-0.5 text-[10px] font-mono text-popover-foreground shadow-sm">
+                  {effectiveInspectorWidth}px
+                </span>
+              )}
+            </div>
+
+            <InspectorContent token={token} />
+          </div>
+        </motion.aside>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function InspectorContent({ token }: { token: DesignToken }) {
+  const tokens = useTokenStore((s) => s.tokens);
+  const activeCollection = useTokenStore((s) => s.activeCollection);
+  const activeModeId = useTokenStore((s) => s.activeModeId);
+  const selectToken = useTokenStore((s) => s.selectToken);
+  const setInspectorOpen = useTokenStore((s) => s.setInspectorOpen);
+  const codeFormat = useTokenStore((s) => s.codeFormat);
 
   const modeId = activeModeId ?? Object.keys(token.resolvedValues)[0];
   const resolved = token.resolvedValues[modeId];
@@ -106,36 +185,7 @@ export function TokenInspector() {
     .filter(Boolean);
 
   return (
-    <div
-      className={cn(
-        "relative flex h-full flex-col border-l bg-background shrink-0 overflow-hidden",
-        isResizing && "shadow-[-8px_0_24px_-18px_hsl(var(--foreground))]"
-      )}
-      style={{ width: effectiveInspectorWidth, minWidth: effectiveInspectorWidth, maxWidth: effectiveInspectorWidth }}
-    >
-      {/* 左侧拖拽条：向左拖变宽，向右拖变窄 */}
-      <div
-        role="separator"
-        aria-label="调整 Inspector 宽度"
-        onMouseDown={handleResizeStart}
-        className={cn(
-          "absolute left-0 top-0 z-10 h-full w-2 -translate-x-1/2 cursor-col-resize",
-          "flex items-center justify-center select-none",
-          "transition-[background,width] duration-150 ease-out",
-          "hover:bg-primary/20 active:bg-primary/30",
-          isResizing && "w-3 bg-primary/25",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        )}
-        style={{ touchAction: "none" }}
-      >
-        <GripVertical className={cn("h-3 w-3 text-muted-foreground/50 pointer-events-none", isResizing && "text-primary")} />
-        {isResizing && (
-          <span className="absolute left-2 top-3 rounded-md border bg-popover px-1.5 py-0.5 text-[10px] font-mono text-popover-foreground shadow-sm">
-            {effectiveInspectorWidth}px
-          </span>
-        )}
-      </div>
-
+    <>
       {/* Header */}
       <div className="flex h-14 shrink-0 items-center justify-between gap-2 border-b px-3 py-2.5">
         <div className="flex-1 min-w-0">
@@ -146,6 +196,8 @@ export function TokenInspector() {
           variant="ghost"
           size="icon"
           className="h-7 w-7 shrink-0 cursor-pointer"
+          aria-label="关闭 Token 详情"
+          title="关闭 (Esc)"
           onClick={() => {
             setInspectorOpen(false);
             selectToken(null);
@@ -155,7 +207,7 @@ export function TokenInspector() {
         </Button>
       </div>
 
-      <ScrollArea className="min-h-0 min-w-0 flex-1 w-full" viewportClassName="!overflow-x-hidden">
+      <ScrollArea className="min-h-0 min-w-0 flex-1 w-full" viewportClassName="!overflow-x-hidden [&>div]:!block">
         <div className="min-w-0 w-full space-y-4 overflow-hidden p-3">
           {/* Current Value Preview */}
           <Section title="当前值">
@@ -349,7 +401,7 @@ export function TokenInspector() {
           </Section>
         </div>
       </ScrollArea>
-    </div>
+    </>
   );
 }
 
