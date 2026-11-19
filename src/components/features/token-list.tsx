@@ -915,7 +915,7 @@ function TokenListRow({
       return (
         <div className="flex items-center gap-2 min-w-0">
           <ColorSwatch color={color} size="sm" className="shrink-0" />
-          <span className="inline-flex max-w-full items-center overflow-hidden rounded-md border bg-background font-mono text-[11px] shadow-[inset_0_0_0_1px_hsl(var(--muted))]">
+          <span className="inline-flex max-w-full items-center overflow-hidden rounded-md border bg-background font-mono text-[11px]">
             <span className="truncate px-1.5 py-0.5 text-foreground">{hex}</span>
             {alpha && (
               <span className="border-l bg-muted/55 px-1.5 py-0.5 text-muted-foreground tabular-nums">
@@ -1089,7 +1089,7 @@ function TokenListRow({
             className={cn(cellClass, "text-xs text-muted-foreground truncate border-r-0")}
           >
             {isAlias && aliasName ? (
-              <span className="inline-grid max-w-full grid-cols-[auto_auto_minmax(0,1fr)] items-center overflow-hidden rounded-md border bg-background text-[11px] shadow-[inset_2px_0_0_hsl(var(--primary))]">
+              <span className="inline-grid max-w-full grid-cols-[auto_auto_minmax(0,1fr)] items-center overflow-hidden rounded-md border bg-background text-[11px]">
                 <span className="flex h-full items-center border-r bg-muted/45 px-1.5 text-muted-foreground">
                   <Link2 className="h-3 w-3" />
                 </span>
