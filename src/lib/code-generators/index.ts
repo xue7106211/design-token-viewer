@@ -23,6 +23,16 @@ export function generateTokenCode(
 }
 
 /**
+ * Pull the identifier out of a single-token snippet, for compact display:
+ * Android `<color name="x">…` → `x`; CSS `--x: …;` → `--x`.
+ * Falls back to the whole snippet when no identifier is found.
+ */
+export function getTokenCodeIdentifier(code: string, format: CodeFormat): string {
+  const match = format === "android" ? code.match(/\bname="([^"]+)"/) : code.match(/^\s*(--[^:\s]+)\s*:/);
+  return match?.[1] ?? code;
+}
+
+/**
  * Generate code block for multiple tokens.
  * Android export writes Light and Dark into one file. CSS stays on `modeId`.
  */

@@ -111,7 +111,7 @@ describe("ChangeLogDialog", () => {
         const map: Record<string, string> = {
           update_value: "修改值",
           update_name: "修改名称",
-          delete_token: "删除令牌",
+          delete_token: "删除 Token",
           import_document: "导入数据",
         };
         return map[type] ?? type;
@@ -368,6 +368,6 @@ describe("ChangeLogDialog", () => {
     render(<ChangeLogDialog />);
     fireEvent.click(screen.getByText("日志"));
 
-    expect(screen.getByText("未知令牌")).toBeInTheDocument();
+    expect(screen.getByText("未知 Token")).toBeInTheDocument();
   });
 });

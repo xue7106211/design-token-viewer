@@ -3,10 +3,10 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 
 // ============================================================================
-// TokenList 组件 — 设计令牌（Design Token）的表格列表视图
+// TokenList 组件 — Design Token 的表格列表视图
 //
 // 功能概览：
-// 1. 以分组表格形式展示所有筛选后的设计令牌
+// 1. 以分组表格形式展示所有筛选后的 Design Token
 // 2. 支持列宽拖拽调整，并持久化到 localStorage
 // 3. 支持行拖拽排序（Drag & Drop），可在行间或分组间移动
 // 4. 支持单选 / Shift 多选
@@ -20,10 +20,11 @@ import { useTokenStore } from "@/stores/token-store";
 import { orderTokenIdsByTree } from "@/lib/tree-builder";
 import { ColorSwatch } from "./color-swatch";
 import { colorToHex } from "@/lib/contrast";
-import { generateTokenCode } from "@/lib/code-generators";
+import { generateTokenCode, getTokenCodeIdentifier } from "@/lib/code-generators";
+import { TokenTypeBadge, getUniformTokenType } from "./token-type-badge";
 import { cn } from "@/lib/utils";
 import { GroupLabel } from "./group-label";
-import { ArrowRight, Copy, Check, GripVertical, Pencil, Palette, Code, Trash2, Hash, Type, ToggleLeft, Link2, CaseSensitive } from "lucide-react";
+import { ArrowRight, Copy, Check, Code, GripVertical, Pencil, Palette, Trash2, Link2 } from "lucide-react";
 import { formatTypographySize, formatTypographySummary, getTypographyFieldAliases } from "@/lib/typography";
 import { TypographySample } from "./typography-preview";
 import type { TypographyValue } from "@/types/token";
@@ -51,11 +52,12 @@ import { animateTokenRowReorder, captureTokenRowPositions, type TokenRowPosition
 
 // --- 列宽相关常量 ---
 /** 四列的默认宽度：Token Name / Value / Code Syntax / Reference */
-const DEFAULT_COLUMN_WIDTHS = [200, 120, 320, 180];
+const DEFAULT_COLUMN_WIDTHS = [280, 140, 300, 300];
 /** 列的最小宽度，防止拖拽时列被压缩到不可见 */
 const MIN_COLUMN_WIDTH = 60;
 /** localStorage 中保存列宽配置的键名 */
-const STORAGE_KEY = "token-list-column-widths";
+// v2：默认列宽调整后，旧的列宽配置不再沿用
+const STORAGE_KEY = "token-list-column-widths-v2";
 
 /**
  * 从 localStorage 加载用户之前保存的列宽配置。
@@ -420,6 +422,12 @@ export function TokenList() {
     return Array.from(groups.entries());
   }, [filteredTokenIds, tokens, tree]);
 
+  /** 每个分组的统一类型；混合类型的分组为 null，此时类型显示在每一行 */
+  const groupTypes = useMemo(
+    () => new Map(groupedEntries.map(([group, ids]) => [group, getUniformTokenType(ids.map((id) => tokens[id]?.type))])),
+    [groupedEntries, tokens]
+  );
+
   /** 扁平化的可见 Token ID 列表，用于 Shift 多选时计算范围 */
   const visibleIds = useMemo(
     () => groupedEntries.flatMap(([, ids]) => ids),
@@ -522,7 +530,7 @@ export function TokenList() {
   if (filteredTokenIds.length === 0) {
     return (
       <div className="flex min-h-0 min-w-0 flex-1 flex-col items-center justify-center p-4 text-center">
-        <p className="text-sm text-muted-foreground">没有匹配的令牌</p>
+        <p className="text-sm text-muted-foreground">没有匹配的 Token</p>
       </div>
     );
   }
@@ -609,6 +617,7 @@ export function TokenList() {
                       <span className="rounded-full border bg-background/70 px-1.5 py-0.5 text-[10px] tabular-nums">
                         {tokenIds.length}
                       </span>
+                      {groupTypes.get(groupName) && <TokenTypeBadge type={groupTypes.get(groupName)!} />}
                     </div>
                   </td>
                 </tr>
@@ -632,6 +641,8 @@ export function TokenList() {
                       tokenName={token.name}
                       resolved={resolved}
                       code={code}
+                      codeIdentifier={getTokenCodeIdentifier(code, codeFormat)}
+                      showType={!groupTypes.get(groupName)}
                       isAlias={token.isAlias}
                       aliasName={token.aliasOf ? tokens[token.aliasOf]?.name : undefined}
                       fieldRefCount={Object.keys(getTypographyFieldAliases(token.rawValues[modeId])).length}
@@ -796,24 +807,6 @@ function getValueCopyText(resolved: { type: string; value: unknown }): string {
   return String(resolved.value);
 }
 
-function TokenTypeBadge({ type }: { type: string }) {
-  const meta = {
-    COLOR: { label: "Color", icon: Palette, className: "text-sky-600 dark:text-sky-400" },
-    NUMBER: { label: "Number", icon: Hash, className: "text-violet-600 dark:text-violet-400" },
-    STRING: { label: "String", icon: Type, className: "text-amber-600 dark:text-amber-400" },
-    BOOLEAN: { label: "Boolean", icon: ToggleLeft, className: "text-emerald-600 dark:text-emerald-400" },
-    TYPOGRAPHY: { label: "Text style", icon: CaseSensitive, className: "text-rose-600 dark:text-rose-400" },
-  }[type] ?? { label: type, icon: Code, className: "text-muted-foreground" };
-  const Icon = meta.icon;
-
-  return (
-    <span className={cn("inline-flex items-center gap-1 rounded-md border bg-background px-1.5 py-0.5 text-[10px] font-medium", meta.className)}>
-      <Icon className="h-3 w-3" />
-      {meta.label}
-    </span>
-  );
-}
-
 function formatColorParts(color: { r: number; g: number; b: number; a: number }) {
   const hex = colorToHex(color).toUpperCase();
   const alpha = color.a < 1 ? `${Math.round(color.a * 100)}%` : null;
@@ -836,6 +829,8 @@ function TokenListRow({
   tokenName,
   resolved,
   code,
+  codeIdentifier,
+  showType,
   isAlias,
   aliasName,
   fieldRefCount = 0,
@@ -857,6 +852,8 @@ function TokenListRow({
   tokenName: string;              // Token 完整名称（含路径，如 "color/primary/500"）
   resolved: { type: string; value: unknown }; // 解析后的值（含类型信息）
   code: string;                   // 生成的代码片段（如 "var(--color-primary-500)"）
+  codeIdentifier: string;         // 代码片段中的标识符，列表中只显示它
+  showType: boolean;              // 分组类型不统一时才在行内显示类型徽标
   isAlias: boolean;               // 是否为别名 Token
   aliasName?: string;             // 引用的原始 Token 名称
   fieldRefCount?: number;         // TYPOGRAPHY 复合 Token 中引用其他 Token 的字段数
@@ -895,11 +892,11 @@ function TokenListRow({
   const handleCopy = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation(); // 阻止冒泡，避免触发行选择
-      navigator.clipboard.writeText(code);
+      navigator.clipboard.writeText(codeIdentifier);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     },
-    [code]
+    [codeIdentifier]
   );
 
   /**
@@ -915,7 +912,7 @@ function TokenListRow({
       return (
         <div className="flex items-center gap-2 min-w-0">
           <ColorSwatch color={color} size="sm" className="shrink-0" />
-          <span className="inline-flex max-w-full items-center overflow-hidden rounded-md border bg-background font-mono text-[11px] shadow-[inset_0_0_0_1px_hsl(var(--muted))]">
+          <span className="inline-flex max-w-full items-center overflow-hidden rounded-md border bg-background font-mono text-[11px]">
             <span className="truncate px-1.5 py-0.5 text-foreground">{hex}</span>
             {alpha && (
               <span className="border-l bg-muted/55 px-1.5 py-0.5 text-muted-foreground tabular-nums">
@@ -1049,8 +1046,8 @@ function TokenListRow({
                 </span>
               )}
               {/* 仅显示叶子名称，完整路径通过分组标题体现 */}
-              <span className={cn("truncate font-mono", isSelected && "font-semibold text-foreground")}>{displayName}</span>
-              <TokenTypeBadge type={resolved.type} />
+              <span className={cn("truncate font-mono", isSelected && "font-semibold text-foreground")} title={tokenName}>{displayName}</span>
+              {showType && <TokenTypeBadge type={resolved.type} />}
             </div>
           </td>
 
@@ -1064,16 +1061,14 @@ function TokenListRow({
             className={cn(cellClass, "group/code")}
           >
             <div className="flex items-center gap-1.5">
-              <code className="text-[11px] font-mono text-muted-foreground truncate min-w-0 flex-1">
-                <span title={code}>
-                {code}
-                </span>
+              <code className="text-[11px] font-mono text-muted-foreground truncate min-w-0 flex-1" title={code}>
+                {codeIdentifier}
               </code>
               <button
                 type="button"
                 onClick={handleCopy}
                 className="shrink-0 rounded-md opacity-0 group-hover/code:opacity-100 transition-opacity cursor-pointer p-1 hover:bg-accent active:scale-95"
-                aria-label="复制代码"
+                aria-label="复制代码名称"
               >
                 {copied ? (
                   <Check className="h-3 w-3 text-green-500" />
@@ -1089,23 +1084,23 @@ function TokenListRow({
             className={cn(cellClass, "text-xs text-muted-foreground truncate border-r-0")}
           >
             {isAlias && aliasName ? (
-              <span className="inline-grid max-w-full grid-cols-[auto_auto_minmax(0,1fr)] items-center overflow-hidden rounded-md border bg-background text-[11px] shadow-[inset_2px_0_0_hsl(var(--primary))]">
+              <span className="inline-grid max-w-full grid-cols-[auto_auto_minmax(0,1fr)] items-center overflow-hidden rounded-md border bg-background text-[11px]">
                 <span className="flex h-full items-center border-r bg-muted/45 px-1.5 text-muted-foreground">
                   <Link2 className="h-3 w-3" />
                 </span>
                 <span className="flex h-full items-center border-r px-1 text-muted-foreground">
                   <ArrowRight className="h-3 w-3" />
                 </span>
-                <span className="truncate px-2 py-1 font-mono text-foreground/80">{aliasName}</span>
+                <span className="truncate px-2 py-1 font-mono text-foreground/80" title={aliasName}>{aliasName.split("/").filter(Boolean).pop() ?? aliasName}</span>
               </span>
             ) : fieldRefCount > 0 ? (
               <span className="inline-flex items-center gap-1 rounded-md border bg-background px-1.5 py-1 text-[11px] text-muted-foreground">
                 <Link2 className="h-3 w-3" />
-                {fieldRefCount} field refs
+                {fieldRefCount} 个字段引用
               </span>
             ) : (
               <span className="inline-flex items-center rounded-md border border-dashed bg-muted/25 px-1.5 py-1 text-[11px] text-muted-foreground/75">
-                Source token
+                源 Token
               </span>
             )}
           </td>
