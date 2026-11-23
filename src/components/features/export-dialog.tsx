@@ -163,7 +163,7 @@ export function ExportDialog() {
       </DialogTrigger>
       <DialogContent className="flex h-[calc(100dvh-1rem)] w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] flex-col gap-0 overflow-hidden p-0 sm:h-[min(90dvh,54rem)] sm:max-w-5xl">
         <DialogHeader className="shrink-0 border-b px-5 py-4 sm:px-6">
-          <DialogTitle className="pr-8">导出设计令牌</DialogTitle>
+          <DialogTitle className="pr-8">导出 Design Token</DialogTitle>
         </DialogHeader>
 
         <div className="flex min-h-0 flex-1 flex-col gap-4 p-5 sm:p-6">
@@ -236,7 +236,7 @@ export function ExportDialog() {
                 <span className="text-xs text-muted-foreground">正在生成...</span>
               )}
               <span className="whitespace-nowrap rounded-md bg-background px-2 py-1 text-xs font-mono tabular-nums text-muted-foreground" data-testid="export-token-count">
-                {sourceTokens.length} 个令牌
+                {sourceTokens.length} 个 Token
               </span>
             </div>
           </div>

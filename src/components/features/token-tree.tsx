@@ -159,7 +159,7 @@ export function TokenTree() {
   if (tree.length === 0) {
     return (
       <div className="px-3 py-6 text-center text-xs text-muted-foreground">
-        没有找到令牌
+        没有找到 Token
       </div>
     );
   }

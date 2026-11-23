@@ -22,7 +22,7 @@ export function DocumentSwitcher({ className }: { className?: string }) {
           disabled={isLoading}
           className={cn(
             "h-7 flex-1 rounded-md px-3 text-xs font-medium cursor-pointer",
-            "transition-all duration-200 ease disabled:cursor-not-allowed disabled:opacity-60",
+            "transition-[color,background-color,box-shadow,opacity] duration-200 ease disabled:cursor-not-allowed disabled:opacity-60",
             activeDocumentId === doc.id
               ? "bg-background text-foreground shadow-sm"
               : "text-muted-foreground hover:text-foreground"

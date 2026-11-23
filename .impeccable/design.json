@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T09:55:00+08:00",
+  "title": "Design System: Design Token Viewer",
+  "extensions": {
+    "colorMeta": {
+      "background": { "role": "neutral", "displayName": "Paper（纸白）", "canonical": "oklch(1 0 0)", "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.205 0 0)", "oklch(0.269 0 0)", "oklch(0.439 0 0)", "oklch(0.556 0 0)", "oklch(0.708 0 0)", "oklch(0.922 0 0)", "oklch(0.97 0 0)"] },
+      "foreground": { "role": "neutral", "displayName": "Graphite（石墨）", "canonical": "oklch(0.145 0 0)", "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.205 0 0)", "oklch(0.269 0 0)", "oklch(0.439 0 0)", "oklch(0.556 0 0)", "oklch(0.708 0 0)", "oklch(0.922 0 0)", "oklch(0.97 0 0)"] },
+      "primary": { "role": "primary", "displayName": "Ink（墨黑）", "canonical": "oklch(0.205 0 0)", "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.205 0 0)", "oklch(0.269 0 0)", "oklch(0.439 0 0)", "oklch(0.556 0 0)", "oklch(0.708 0 0)", "oklch(0.922 0 0)", "oklch(0.97 0 0)"] },
+      "muted": { "role": "neutral", "displayName": "Mist（雾灰）", "canonical": "oklch(0.97 0 0)" },
+      "muted-foreground": { "role": "neutral", "displayName": "Pencil（铅笔灰）", "canonical": "oklch(0.556 0 0)" },
+      "border": { "role": "neutral", "displayName": "Hairline（发丝线）", "canonical": "oklch(0.922 0 0)" },
+      "ring": { "role": "neutral", "displayName": "Focus Grey", "canonical": "oklch(0.708 0 0)" },
+      "sidebar": { "role": "neutral", "displayName": "Sidebar Wash", "canonical": "oklch(0.985 0 0)" },
+      "destructive": { "role": "error", "displayName": "Destructive Red", "canonical": "oklch(0.577 0.245 27.325)", "tonalRamp": ["oklch(0.258 0.092 26.042)", "oklch(0.396 0.141 25.723)", "oklch(0.505 0.213 27.518)", "oklch(0.577 0.245 27.325)", "oklch(0.637 0.237 25.331)", "oklch(0.704 0.191 22.216)", "oklch(0.808 0.114 19.571)", "oklch(0.936 0.032 17.717)"] },
+      "type-color": { "role": "tertiary", "displayName": "Type · Color (sky-600)", "canonical": "oklch(0.588 0.158 241.966)" },
+      "type-number": { "role": "tertiary", "displayName": "Type · Number (violet-600)", "canonical": "oklch(0.541 0.281 293.009)" },
+      "type-string": { "role": "tertiary", "displayName": "Type · String (amber-600)", "canonical": "oklch(0.666 0.179 58.318)" },
+      "type-boolean": { "role": "tertiary", "displayName": "Type · Boolean (emerald-600)", "canonical": "oklch(0.596 0.145 163.225)" },
+      "type-typography": { "role": "tertiary", "displayName": "Type · Text style (rose-600)", "canonical": "oklch(0.586 0.253 17.585)" }
+    },
+    "typographyMeta": {
+      "title": { "displayName": "Title", "purpose": "工具条 Collection 名、Inspector Token 短名。" },
+      "body": { "displayName": "Body", "purpose": "树节点、列表、搜索框、分段控件等绝大多数正文。" },
+      "body-strong": { "displayName": "Body Strong", "purpose": "卡片中的 Token 短名。" },
+      "label": { "displayName": "Label", "purpose": "大写区块标题与表头。" },
+      "mono-value": { "displayName": "Mono Value", "purpose": "HEX、数值、字符串取值。" },
+      "mono-meta": { "displayName": "Mono Meta", "purpose": "完整 Token 路径、计数、宽度提示。" }
+    },
+    "shadows": [
+      { "name": "elevation-raised", "value": "0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 3px rgb(0 0 0 / 0.05), 0 4px 10px -4px rgb(0 0 0 / 0.05)", "purpose": "浮起的面板；暗色为 0 0 0 1px rgb(255 255 255 / 0.09)。" },
+      { "name": "elevation-dialog", "value": "0 0 0 1px rgb(0 0 0 / 0.06), 0 12px 32px -12px rgb(0 0 0 / 0.2)", "purpose": "对话框；暗色为 0 0 0 1px rgb(255 255 255 / 0.12)。" }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "按钮与常规状态过渡，150ms。" },
+      { "name": "ease-segmented", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "编辑弹窗分段控件滑动指示器，200ms。" }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "对话框里的确认操作。",
+      "html": "<button class=\"ds-btn-primary\">确认导入</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; height:36px; padding:8px 16px; border:none; border-radius:8px; background:var(--primary); color:var(--primary-foreground); font-size:14px; font-weight:500; cursor:pointer; transition:background-color 150ms cubic-bezier(0.23,1,0.32,1), transform 150ms cubic-bezier(0.23,1,0.32,1); } .ds-btn-primary:hover { background:color-mix(in oklch, var(--primary) 90%, transparent); } .ds-btn-primary:active { transform:scale(0.98); } .ds-btn-primary:focus-visible { outline:none; box-shadow:0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); }"
+    },
+    {
+      "name": "Ghost Icon Button",
+      "kind": "button",
+      "refersTo": "button-ghost-icon",
+      "description": "工具条与侧边栏的图标操作。",
+      "html": "<button class=\"ds-btn-ghost-icon\" aria-label=\"刷新共享数据\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8\"/><path d=\"M21 3v5h-5\"/><path d=\"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16\"/><path d=\"M8 16H3v5\"/></svg></button>",
+      "css": ".ds-btn-ghost-icon { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border:none; border-radius:8px; background:transparent; color:var(--muted-foreground); cursor:pointer; transition:color 150ms, background-color 150ms, transform 150ms; } .ds-btn-ghost-icon:hover { background:var(--accent); color:var(--foreground); } .ds-btn-ghost-icon:active { transform:scale(0.98); } .ds-btn-ghost-icon:focus-visible { outline:none; box-shadow:0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "侧边栏 Token 搜索。",
+      "html": "<div class=\"ds-search\"><svg class=\"ds-search-icon\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input class=\"ds-search-input\" placeholder=\"搜索DesignToken...\"></div>",
+      "css": ".ds-search { position:relative; width:240px; } .ds-search-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--muted-foreground); } .ds-search-input { width:100%; height:32px; padding:0 32px; border:1px solid var(--input); border-radius:8px; background:transparent; color:var(--foreground); font-size:12px; box-shadow:0 1px 2px rgb(0 0 0 / 0.05); outline:none; transition:border-color 150ms, box-shadow 150ms; } .ds-search-input::placeholder { color:var(--muted-foreground); } .ds-search-input:focus-visible { border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); }"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "nav",
+      "refersTo": "segmented-control",
+      "description": "Light/Dark Mode 与 Grid/List 视图切换。",
+      "html": "<div class=\"ds-seg\"><button class=\"ds-seg-item ds-seg-active\">Light</button><button class=\"ds-seg-item\">Dark</button></div>",
+      "css": ".ds-seg { display:inline-flex; gap:4px; height:32px; padding:2px; border:1px solid var(--border); border-radius:10px; background:color-mix(in oklch, var(--muted) 50%, transparent); } .ds-seg-item { height:28px; padding:0 12px; border:none; border-radius:8px; background:transparent; color:var(--muted-foreground); font-size:12px; font-weight:500; cursor:pointer; transition:color 200ms, background-color 200ms, box-shadow 200ms; } .ds-seg-item:hover { color:var(--foreground); } .ds-seg-active { background:var(--background); color:var(--foreground); box-shadow:0 1px 2px rgb(0 0 0 / 0.08); } .ds-seg-item:focus-visible { outline:none; box-shadow:0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent); }"
+    },
+    {
+      "name": "Tree Row",
+      "kind": "nav",
+      "refersTo": "tree-row",
+      "description": "侧边栏树形导航的分组行与叶子行。",
+      "html": "<div class=\"ds-tree\"><button class=\"ds-tree-row\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" style=\"transform:rotate(90deg)\"><path d=\"m9 18 6-6-6-6\"/></svg><span class=\"ds-tree-label\">bg</span><span class=\"ds-tree-count\">24</span></button><button class=\"ds-tree-row ds-tree-selected\" style=\"padding-left:20px\"><span class=\"ds-tree-label\">bg_primary</span></button></div>",
+      "css": ".ds-tree { width:240px; } .ds-tree-row { display:flex; width:100%; align-items:center; gap:6px; padding:4px 8px; border:none; border-radius:8px; background:transparent; color:color-mix(in oklch, var(--foreground) 80%, transparent); font-size:12px; text-align:left; cursor:pointer; transition:background-color 200ms; } .ds-tree-row svg { color:var(--muted-foreground); } .ds-tree-row:hover { background:var(--accent); } .ds-tree-selected { background:var(--accent); color:var(--accent-foreground); font-weight:500; } .ds-tree-label { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; } .ds-tree-count { font-size:10px; color:var(--muted-foreground); font-variant-numeric:tabular-nums; }"
+    },
+    {
+      "name": "Type Badge",
+      "kind": "chip",
+      "refersTo": "type-badge",
+      "description": "Token 类型徽标，色相只用于类型标识。",
+      "html": "<span class=\"ds-type-badge\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><line x1=\"4\" x2=\"20\" y1=\"9\" y2=\"9\"/><line x1=\"4\" x2=\"20\" y1=\"15\" y2=\"15\"/><line x1=\"10\" x2=\"8\" y1=\"3\" y2=\"21\"/><line x1=\"16\" x2=\"14\" y1=\"3\" y2=\"21\"/></svg>Number</span>",
+      "css": ".ds-type-badge { display:inline-flex; align-items:center; gap:4px; padding:2px 6px; border:1px solid var(--border); border-radius:6px; background:var(--background); color:oklch(0.541 0.281 293.009); font-size:10px; font-weight:500; }"
+    },
+    {
+      "name": "Token Card",
+      "kind": "card",
+      "refersTo": "token-card",
+      "description": "Grid 视图中的单个 Token：上部预览，下部名称与引用信息。",
+      "html": "<button class=\"ds-card\"><div class=\"ds-card-preview\"><div class=\"ds-card-swatch\" style=\"background:#3482FF\">#3482FF</div></div><div class=\"ds-card-body\"><p class=\"ds-card-name\">bg_primary</p><p class=\"ds-card-path\">bg/bg_primary</p><span class=\"ds-card-meta\">Source token</span></div></button>",
+      "css": ".ds-card { display:flex; flex-direction:column; width:220px; min-height:172px; padding:0; overflow:hidden; border:1px solid color-mix(in oklch, var(--border) 60%, transparent); border-radius:14px; background:var(--card); text-align:left; cursor:pointer; transition:border-color 150ms, box-shadow 150ms, transform 150ms; } .ds-card:hover { transform:translateY(-2px); border-color:color-mix(in oklch, var(--foreground) 15%, transparent); box-shadow:0 1px 3px rgb(0 0 0 / 0.1); } .ds-card:active { transform:scale(0.99); } .ds-card:focus-visible { outline:none; box-shadow:0 0 0 2px var(--ring); } .ds-card-preview { display:flex; height:96px; align-items:center; padding:12px; border-bottom:1px solid var(--border); background:color-mix(in oklch, var(--muted) 25%, transparent); } .ds-card-swatch { display:flex; width:80px; height:80px; align-items:center; justify-content:center; border-radius:14px; color:#fff; font-family:ui-monospace,monospace; font-size:10px; box-shadow:inset 0 0 0 1px rgb(0 0 0 / 0.05); } .ds-card-body { display:flex; flex:1; flex-direction:column; gap:4px; padding:12px; } .ds-card-name { margin:0; font-size:12px; font-weight:600; line-height:1; } .ds-card-path { margin:0; font-family:ui-monospace,monospace; font-size:10px; color:var(--muted-foreground); } .ds-card-meta { margin-top:auto; width:fit-content; padding:4px 6px; border-radius:6px; background:color-mix(in oklch, var(--muted) 45%, transparent); font-size:10px; color:var(--muted-foreground); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Spec Sheet（规格对照表）",
+    "overview": "这是一张放在 Figma 旁边的对照表。界面本身几乎没有颜色：纯中性灰阶（色度为 0 的 OKLCH）承担全部结构，让被查阅的 Token 色块、数值和字样成为屏幕上唯一的色彩来源。信息密度高，正文基准是 12px，元信息降到 10–11px，Token 名称和取值一律用等宽字体，便于逐字核对 Figma 源。\n\n布局是桌面三栏工作台：左侧 256px 侧边栏（文档切换、Collection、搜索、树形导航），中间可滚动的 Grid / List 内容区，右侧可拖拽调宽的 Inspector（280–560px）。三栏顶部共享 56px 的工具条高度，形成一条连续的水平基线。亮色与暗色主题等权，暗色不是事后补的。\n\n动效克制且有功能：按压缩放 0.98、卡片悬停上浮 2px、列表重排 FLIP、分段控件滑块，全部使用同一条减速曲线，并在 `prefers-reduced-motion` 下缩短。",
+    "keyCharacteristics": [
+      "零色度的中性外壳，色彩只属于数据",
+      "12px 正文、10px 大写标签、等宽取值的高密度层级",
+      "56px 工具条基线贯穿三栏",
+      "以 1px 边框和极轻的环形阴影分层，而非投影",
+      "五种 Token 类型各有固定色相，仅用于类型图标和类型徽标",
+      "原始命名优先：分组路径父级浅色、末段正文色，不做任何改写"
+    ],
+    "rules": [
+      { "name": "The Data Owns Color Rule", "body": "外壳不引入任何品牌色或装饰色。屏幕上的饱和色只能来自 Token 自身的取值、类型标识或 `destructive`。", "section": "colors" },
+      { "name": "The Destructive Is Rare Rule", "body": "`destructive` 只出现在删除与校验错误上，删除 Token 还需要长按 2 秒确认。", "section": "colors" },
+      { "name": "The Mono For Truth Rule", "body": "任何可能被复制到代码或拿去和 Figma 比对的字符串（Token 名、路径、取值、codeSyntax）都用等宽字体显示。", "section": "typography" },
+      { "name": "The Tabular Count Rule", "body": "所有计数和数值使用 `tabular-nums`，避免列表滚动时数字抖动。", "section": "typography" },
+      { "name": "The Hairline First Rule", "body": "先用边框分层；只有当元素真正脱离文档流（对话框、弹窗、拖拽中的面板）时才加阴影。", "section": "elevation" },
+      { "name": "The Hover Lift Rule", "body": "卡片静止时没有阴影，悬停时上浮 2px 并加一层 `shadow-sm`，按下时回落并缩放到 0.99。", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** 让外壳保持零色度的 OKLCH 灰阶，新增颜色先加到 `globals.css` 的 `:root` 与 `.dark` 两处。",
+      "**Do** 所有 Token 名、路径和取值使用 Geist Mono，计数使用 `tabular-nums`。",
+      "**Do** 分组名统一通过 `GroupLabel` 显示原始名称：父级浅色、末段正文色。",
+      "**Do** 交互过渡使用 `--ease-out`（`cubic-bezier(0.23, 1, 0.32, 1)`），时长 150–200ms，并提供 `motion-reduce` 变体。",
+      "**Do** 新的顶部栏保持 56px 高，与三栏基线对齐。",
+      "**Do** 嵌套圆角遵循外大内小（14 → 10 → 8px）。"
+    ],
+    "donts": [
+      "**Don't** 给外壳加品牌色、渐变或彩色背景，它会和被查阅的 Token 颜色混淆。",
+      "**Don't** 把类型色相用在类型标识以外的地方。",
+      "**Don't** 对分组名或 Token 名做大小写、下划线转换或另起显示名。",
+      "**Don't** 用 `hsl(var(--…))` 引用主题变量；变量值是 OKLCH，应直接写 `var(--…)`。",
+      "**Don't** 在静止的卡片或面板上加投影；浮层以外的层级用发丝线和明度差表达。",
+      "**Don't** 用 `transition-all`；明确列出要过渡的属性。"
+    ]
+  }
+}

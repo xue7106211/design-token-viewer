@@ -7,13 +7,16 @@ import { NumberPreview } from "./number-preview";
 import { TypographyPreview } from "./typography-preview";
 import { getTypographyFieldAliases } from "@/lib/typography";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Braces, Check, Hash, Link2, Palette, Type, CaseSensitive } from "lucide-react";
+import { ArrowRight, Braces, Link2 } from "lucide-react";
+import { TokenTypeBadge } from "./token-type-badge";
 
 interface TokenCardProps {
   token: DesignToken;
+  /** 分组类型不统一时才在卡片上显示类型徽标 */
+  showType?: boolean;
 }
 
-export function TokenCard({ token }: TokenCardProps) {
+export function TokenCard({ token, showType = true }: TokenCardProps) {
   const activeModeId = useTokenStore((s) => s.activeModeId);
   const activeCollection = useTokenStore((s) => s.activeCollection);
   const tokens = useTokenStore((s) => s.tokens);
@@ -30,15 +33,7 @@ export function TokenCard({ token }: TokenCardProps) {
   const aliasTarget = token.aliasOf ? tokens[token.aliasOf] : undefined;
   const modeCount = Object.keys(token.resolvedValues).length;
 
-  const typeMeta = {
-    COLOR: { label: "Color", icon: Palette, className: "text-sky-600 dark:text-sky-400" },
-    NUMBER: { label: "Number", icon: Hash, className: "text-violet-600 dark:text-violet-400" },
-    STRING: { label: "String", icon: Type, className: "text-amber-600 dark:text-amber-400" },
-    BOOLEAN: { label: "Boolean", icon: Check, className: "text-emerald-600 dark:text-emerald-400" },
-    TYPOGRAPHY: { label: "Text style", icon: CaseSensitive, className: "text-rose-600 dark:text-rose-400" },
-  }[resolvedValue.type];
   const fieldAliasCount = Object.keys(getTypographyFieldAliases(token.rawValues[modeId])).length;
-  const TypeIcon = typeMeta.icon;
 
   return (
     <button
@@ -60,7 +55,7 @@ export function TokenCard({ token }: TokenCardProps) {
             <div className="min-w-0 flex-1 space-y-1 text-left">
               <div className="h-2 rounded-full bg-[linear-gradient(90deg,var(--border)_1px,transparent_1px),linear-gradient(var(--border)_1px,transparent_1px)] bg-[size:8px_8px] opacity-50" />
               <p className="truncate font-mono text-[11px] text-muted-foreground">
-                {resolvedValue.value.a < 1 ? `${Math.round(resolvedValue.value.a * 100)}% alpha` : "solid color"}
+                {resolvedValue.value.a < 1 ? `${Math.round(resolvedValue.value.a * 100)}% 不透明度` : "不透明"}
               </p>
             </div>
           </div>
@@ -103,10 +98,7 @@ export function TokenCard({ token }: TokenCardProps) {
             <p className="truncate text-xs font-semibold leading-none">{shortName}</p>
             <p className="truncate font-mono text-[10px] text-muted-foreground">{token.name}</p>
           </div>
-          <span className={cn("inline-flex shrink-0 items-center gap-1 rounded-md border bg-background px-1.5 py-0.5 text-[10px] font-medium", typeMeta.className)}>
-            <TypeIcon className="h-3 w-3" />
-            {typeMeta.label}
-          </span>
+          {showType && <TokenTypeBadge type={resolvedValue.type} />}
         </div>
 
         <div className="mt-auto flex min-w-0 items-center justify-between gap-2 text-[10px] text-muted-foreground">
@@ -119,14 +111,14 @@ export function TokenCard({ token }: TokenCardProps) {
           ) : fieldAliasCount > 0 ? (
             <div className="flex min-w-0 items-center gap-1.5 rounded-md bg-muted/55 px-1.5 py-1">
               <Link2 className="h-3 w-3 shrink-0" />
-              <span className="truncate">{fieldAliasCount} field refs</span>
+              <span className="truncate">{fieldAliasCount} 个字段引用</span>
             </div>
           ) : (
-            <span className="rounded-md bg-muted/45 px-1.5 py-1">Source token</span>
+            <span className="rounded-md bg-muted/45 px-1.5 py-1">源 Token</span>
           )}
           {activeCollection && activeCollection.modes.length > 1 && (
             <span className="shrink-0 rounded-md border bg-background px-1.5 py-1 tabular-nums">
-              {modeCount}/{activeCollection.modes.length} modes
+              {modeCount}/{activeCollection.modes.length} 个模式
             </span>
           )}
         </div>

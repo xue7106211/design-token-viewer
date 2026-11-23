@@ -308,7 +308,7 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
   if (changeType === "reorder") {
     return (
       <span className="text-xs text-muted-foreground">
-        令牌顺序已调整
+        Token 顺序已调整
         {typeof meta?.collectionName === "string" ? ` · ${meta.collectionName}` : ""}
         {typeof meta?.count === "number" ? ` · ${meta.count} tokens` : ""}
       </span>
@@ -426,7 +426,7 @@ function ValueDiff({ entry }: { entry: LogEntry }) {
 
 function LogEntryRow({ entry, time }: { entry: LogEntry; time: string }) {
   const isDelete = entry.changeType === "delete_token";
-  const tokenLabel = entry.tokenName ?? (isDelete ? "未知令牌" : null);
+  const tokenLabel = entry.tokenName ?? (isDelete ? "未知 Token" : null);
   return (
     <li className="flex gap-4 px-4 py-3 transition-colors hover:bg-muted/40">
       <time

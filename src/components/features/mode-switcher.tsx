@@ -20,7 +20,7 @@ export function ModeSwitcher() {
           onClick={() => setActiveMode(mode.modeId)}
           className={cn(
             "h-7 rounded-md px-3 text-xs font-medium cursor-pointer",
-            "transition-all duration-200 ease",
+            "transition-[color,background-color,box-shadow] duration-200 ease",
             activeModeId === mode.modeId
               ? "bg-background text-foreground shadow-sm"
               : "text-muted-foreground hover:text-foreground"

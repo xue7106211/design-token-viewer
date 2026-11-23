@@ -17,7 +17,7 @@ export function MainView() {
   const searchQuery = useTokenStore((s) => s.searchQuery);
 
   return (
-    <div className="flex flex-1 flex-col min-w-0">
+    <main className="flex flex-1 flex-col min-w-0">
       {/* Toolbar */}
       <div className="flex h-14 shrink-0 items-center justify-between border-b px-4 py-2.5">
         <div className="flex items-center gap-3">
@@ -28,7 +28,7 @@ export function MainView() {
             </h2>
           </div>
           <span className="text-xs text-muted-foreground tabular-nums">
-            {filteredTokenIds.length} 个令牌
+            {filteredTokenIds.length} 个 Token
             {searchQuery && " (已过滤)"}
           </span>
         </div>
@@ -49,6 +49,6 @@ export function MainView() {
       ) : (
         <TokenList />
       )}
-    </div>
+    </main>
   );
 }
