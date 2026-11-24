@@ -75,4 +75,15 @@ describe("SnapshotDialog save feedback", () => {
     expect(within(dialog).getByText("发布前")).toBeInTheDocument();
     expect(apiRequest).toHaveBeenCalledTimes(2);
   });
+
+  it("shows the live document revision apart from the snapshot count", async () => {
+    (apiRequest as ReturnType<typeof vi.fn>).mockResolvedValue({ snapshots: [createdSnapshot] });
+
+    render(<SnapshotDialog />);
+    fireEvent.click(screen.getByRole("button", { name: "版本快照" }));
+    const dialog = await screen.findByRole("dialog");
+
+    expect(within(dialog).getByText("当前 r3")).toBeInTheDocument();
+    expect(await within(dialog).findByText("1 个")).toBeInTheDocument();
+  });
 });
