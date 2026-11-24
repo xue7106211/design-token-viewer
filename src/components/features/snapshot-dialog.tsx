@@ -146,6 +146,11 @@ export function SnapshotDialog({ collapsed = false }: { collapsed?: boolean }) {
         <DialogHeader>
           <DialogTitle className="flex items-baseline gap-2">
             版本快照
+            {revision != null && (
+              <span className="font-mono text-xs font-normal tabular-nums text-foreground">
+                当前 r{revision}
+              </span>
+            )}
             {snapshots.length > 0 && (
               <span className="text-xs font-normal tabular-nums text-muted-foreground">
                 {snapshots.length} 个
