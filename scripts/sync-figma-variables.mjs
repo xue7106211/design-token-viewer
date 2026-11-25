@@ -17,6 +17,7 @@
  *        node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta --api http://localhost:3000
  *        DATABASE_URL=... node scripts/sync-figma-variables.mjs apply --delta /tmp/figma-delta --db
  *      - 还原后整体校验和必须与 Figma 端一致，无未解析别名、Mode 值完整，否则不写入任何数据；
+ *      - 写入前先做规范检查（空白、Figma 重名后缀、非 snake_case、名称中的已知错误词）。未通过则不写种子、快照、数据库或基线；描述中的已知错误词只提醒，不阻止写入；
  *      - 成功后更新基线 figma-token/figma-variables.json（下次增量导出以它为准）；
  *        之后可省略 --delta，直接把基线推送到其他目标（如先 --seed，确认后再 --db）；
  *      - 变量 id 按「Collection 名 + 变量名」复用目标文档已有 id，新增变量分配新的 var_N；
@@ -44,6 +45,7 @@ import {
   summarize,
   verifySnapshot,
 } from "./lib/figma-variables-sync.mjs";
+import { assertTokenLint } from "./lib/token-lint.mjs";
 
 const SEED_PATH = path.join(process.cwd(), "src", "data", "sample-tokens-hyperos4.json");
 const BASELINE_PATH = path.join(process.cwd(), "figma-token", "figma-variables.json");
@@ -259,6 +261,8 @@ async function runApply(args) {
   } else {
     console.log("  - Text Style: 基线未包含，保留目标文档中已有的 TYPOGRAPHY Token");
   }
+
+  assertTokenLint(snapshot);
 
   // 基线最后写入：任一目标失败时保留旧基线，修复后可用同一增量包重试；之后也可省略 --delta 把基线推送到其他目标
   const results = {};

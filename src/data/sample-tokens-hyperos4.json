@@ -14,7 +14,6 @@
         }
       ],
       "variableIds": [
-        "var_1060",
         "var_1573",
         "var_1063",
         "var_1574",
@@ -29,7 +28,7 @@
         "var_9",
         "var_10",
         "var_11",
-        "var_12",
+        "var_1590",
         "var_13",
         "var_14",
         "var_15",
@@ -111,8 +110,7 @@
         "var_90",
         "var_91",
         "var_92",
-        "var_93",
-        "var_1017",
+        "var_1594",
         "var_94",
         "var_95",
         "var_96",
@@ -204,6 +202,18 @@
         "var_180",
         "var_181",
         "var_182",
+        "var_1586",
+        "var_1587",
+        "var_1576",
+        "var_1578",
+        "var_1577",
+        "var_1580",
+        "var_1581",
+        "var_1582",
+        "var_1588",
+        "var_1589",
+        "var_1591",
+        "var_1592",
         "var_1066",
         "var_1067",
         "var_1068",
@@ -632,7 +642,7 @@
         "var_1447",
         "var_1448",
         "var_1449",
-        "var_1450",
+        "var_1593",
         "var_1451",
         "var_1452",
         "var_1453",
@@ -699,18 +709,7 @@
         "var_1557",
         "var_1560",
         "var_1561",
-        "var_1562",
-        "var_1575",
-        "var_1576",
-        "var_1577",
-        "var_1578",
-        "var_1579",
-        "var_1580",
-        "var_1581",
-        "var_1582",
-        "var_1583",
-        "var_1584",
-        "var_1585"
+        "var_1562"
       ]
     },
     {
@@ -909,6 +908,8 @@
         "var_1029",
         "var_1030",
         "var_1031",
+        "var_1595",
+        "var_1596",
         "var_964",
         "var_965",
         "var_966",
@@ -1603,38 +1604,18 @@
     }
   ],
   "variables": {
-    "var_1060": {
-      "id": "var_1060",
-      "name": "miuix_comp_empty_color_text_enabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_dark": {
-          "id": "var_337",
-          "type": "ALIAS"
-        },
-        "mode_light": {
-          "id": "var_356",
-          "type": "ALIAS"
-        }
-      },
-      "description": "用于空状态插图的填充色；",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
     "var_1573": {
       "id": "var_1573",
       "name": "menu/miuix_comp_menu_color_text_primary_enabled",
       "type": "COLOR",
       "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_797"
-        },
         "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_797"
+          "id": "var_797",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_797",
+          "type": "ALIAS"
         }
       },
       "description": "用途：菜单的文字色（可用/默认）。使用于：.MenuItem。",
@@ -1668,13 +1649,13 @@
       "name": "menu/miuix_comp_menu_color_text_secondary_enabled",
       "type": "COLOR",
       "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_800"
-        },
         "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_800"
+          "id": "var_800",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_800",
+          "type": "ALIAS"
         }
       },
       "description": "用途：菜单的文字色（可用/默认）。使用于：.MenuItem。",
@@ -1903,9 +1884,9 @@
       ],
       "codeSyntax": {}
     },
-    "var_12": {
-      "id": "var_12",
-      "name": "action_bar/miuix_comp_action_bar_color_text_tittle_enabled",
+    "var_1590": {
+      "id": "var_1590",
+      "name": "action_bar/miuix_comp_action_bar_color_text_title_enabled",
       "type": "COLOR",
       "valuesByMode": {
         "mode_dark": {
@@ -3543,41 +3524,21 @@
       ],
       "codeSyntax": {}
     },
-    "var_93": {
-      "id": "var_93",
-      "name": "button/miuix_comp_button_color_fill_secondary_solid_enabled",
+    "var_1594": {
+      "id": "var_1594",
+      "name": "button/miuix_comp_button_color_fill_floating_enabled",
       "type": "COLOR",
       "valuesByMode": {
-        "mode_dark": {
-          "id": "var_687",
-          "type": "ALIAS"
-        },
         "mode_light": {
-          "id": "var_680",
-          "type": "ALIAS"
+          "type": "ALIAS",
+          "id": "var_680"
+        },
+        "mode_dark": {
+          "type": "ALIAS",
+          "id": "var_687"
         }
       },
-      "description": "用途：按钮的填充色（次要、可用/默认、实心）。使用于：DefaultButton-ComponentSet、Component 76。说明：亦用于：Component 76。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1017": {
-      "id": "var_1017",
-      "name": "button/miuix_comp_button_color_fill_secondary_solid_disable",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_dark": {
-          "id": "var_687",
-          "type": "ALIAS"
-        },
-        "mode_light": {
-          "id": "var_680",
-          "type": "ALIAS"
-        }
-      },
-      "description": "用途：按钮的填充色（次要、可用/默认、实心）。使用于：DefaultButton-ComponentSet、Component 76。说明：亦用于：Component 76。",
+      "description": "用途：白色按钮的背景色",
       "scopes": [
         "ALL_SCOPES"
       ],
@@ -5395,6 +5356,246 @@
           "type": "ALIAS"
         }
       },
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1586": {
+      "id": "var_1586",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_text_title_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_797",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_797",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于底部白色悬浮组件的主体正文文字，色彩为纯黑色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1587": {
+      "id": "var_1587",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_text_title_disabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_800",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_800",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于底部白色悬浮组件的主体正文文字的禁用模式颜色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1576": {
+      "id": "var_1576",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_text_subtitle_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_800",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_800",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于底部白色悬浮组件的辅助文字色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1578": {
+      "id": "var_1578",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_overlay_hovered",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_840",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_840",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：系统通用悬浮这招色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1577": {
+      "id": "var_1577",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_overlay_pressed",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_841",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_841",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：系统通用按压遮罩色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1580": {
+      "id": "var_1580",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_white_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_677",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_659",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于新增的底部悬浮组合组件的背景色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1581": {
+      "id": "var_1581",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_blue_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_805",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_805",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于底部悬浮工具组中的蓝色按钮背景色",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1582": {
+      "id": "var_1582",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_blue_disabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_578",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_590",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于底部悬浮工具组中的蓝色按钮背景色的禁用色，且均为实色，避免这招场景穿透问题",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1588": {
+      "id": "var_1588",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_text_static_white",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_818",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_818",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：蓝色按钮可用状态下的白色文字",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1589": {
+      "id": "var_1589",
+      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_text_static_white_disabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_819",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_818",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：蓝色按钮禁用模式下的白色文字",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1591": {
+      "id": "var_1591",
+      "name": "empty/miuix_comp_empty_color_text_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_337",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_356",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用于空状态插图的填充色；",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1592": {
+      "id": "var_1592",
+      "name": "cloud_sync/miuix_comp_cloud_sync_color_text_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_dark": {
+          "id": "var_799",
+          "type": "ALIAS"
+        },
+        "mode_light": {
+          "id": "var_799",
+          "type": "ALIAS"
+        }
+      },
+      "description": "用途：用于云同步刷新组件的字体颜色",
       "scopes": [
         "ALL_SCOPES"
       ],
@@ -14700,9 +14901,9 @@
       ],
       "codeSyntax": {}
     },
-    "var_1450": {
-      "id": "var_1450",
-      "name": "miuix_legacy/cloud/miuix_comp_cloud_sync_color_text_enabled",
+    "var_1593": {
+      "id": "var_1593",
+      "name": "miuix_legacy/cloud/miuix_comp_cloud_sync_color_text_enabled_legacy",
       "type": "COLOR",
       "valuesByMode": {
         "mode_dark": {
@@ -16215,226 +16416,6 @@
         }
       },
       "description": "旧资源：miuix_appcompat_water_box_water_color ｜ 模块：28 waterbox ｜ 迁移：1:1 ｜ 状态：L1 无规范值 ｜ 待办：待补 Token：Light #330084FF 无规范值；Dark #FF1A344F 无规范值",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1575": {
-      "id": "var_1575",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_text_tittle_enabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_797"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_797"
-        }
-      },
-      "description": "用途：标题栏的文字色（可用/默认、标题）。使用于：NavigationBar-ComponentSet、中间、中间导航状态。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1576": {
-      "id": "var_1576",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_text_subtitle_enabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_800"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_800"
-        }
-      },
-      "description": "用途：标题栏的文字色（副标题、可用/默认）。使用于：NavigationBar-ComponentSet、中间。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1577": {
-      "id": "var_1577",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_overlay_pressed",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_841"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_841"
-        }
-      },
-      "description": "用途：标题栏的填充色（按压、遮罩）。使用于：中间导航状态。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1578": {
-      "id": "var_1578",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_overlay_hovered",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_840"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_840"
-        }
-      },
-      "description": "用途：标题栏的填充色（悬停、遮罩）。使用于：中间导航状态。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1579": {
-      "id": "var_1579",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_overlay_activated",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_842"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_842"
-        }
-      },
-      "description": "用途：标题栏的填充色（激活/选中、遮罩）。使用于：中间、中间导航状态。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1580": {
-      "id": "var_1580",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_white_enabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_659"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_677"
-        }
-      },
-      "description": "用途：标题栏的填充色（可用/默认、平面）。使用于：IconPlateFloating-Container、icon背景材质、中间 平面&浮起、中间选择条材质、中间选择背景。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1581": {
-      "id": "var_1581",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_blue_enabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_805"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_805"
-        }
-      },
-      "description": "标题栏组件的图标激活状态色",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1582": {
-      "id": "var_1582",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_fill_blue_disabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_590"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_576"
-        }
-      },
-      "description": "标题栏组件的图标激活状态色",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1583": {
-      "id": "var_1583",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_text_activated_static_white",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_818"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_818"
-        }
-      },
-      "description": "标题栏组件的图标在蓝底上的白色文字图标。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1584": {
-      "id": "var_1584",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_text_activated_static_white 2",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_818"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_818"
-        }
-      },
-      "description": "标题栏组件的图标在蓝底上的白色文字图标。",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "codeSyntax": {}
-    },
-    "var_1585": {
-      "id": "var_1585",
-      "name": "bottomselectionbar/miuix_comp_bottomselection_bar_color_text_icon_activated_disabled",
-      "type": "COLOR",
-      "valuesByMode": {
-        "mode_light": {
-          "type": "ALIAS",
-          "id": "var_806"
-        },
-        "mode_dark": {
-          "type": "ALIAS",
-          "id": "var_806"
-        }
-      },
-      "description": "标题栏上的文字图标在激活状态下的禁用状态色。",
       "scopes": [
         "ALL_SCOPES"
       ],
@@ -20140,6 +20121,57 @@
       },
       "description": "场景：纯图片背景上的缩略图描边（白 60%，不区分 Light/Dark），如大图浏览底部胶片条。",
       "scopes": [
+        "STROKE"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1595": {
+      "id": "var_1595",
+      "name": "freeform/miuix_sys_freeform_color_stroke_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_340"
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.20000000298023224,
+            "g": 0.20000000298023224,
+            "b": 0.20000000298023224,
+            "a": 0.800000011920929
+          }
+        }
+      },
+      "description": "场景：小窗/迷你窗描边。Light #FFFFFF 50% → white_opacity_basic_level_500；Dark #333333 80%，无对应 L1，暂用裸值。",
+      "scopes": [
+        "STROKE"
+      ],
+      "codeSyntax": {}
+    },
+    "var_1596": {
+      "id": "var_1596",
+      "name": "freeform/miuix_sys_freeform_color_fill_handle_enabled",
+      "type": "COLOR",
+      "valuesByMode": {
+        "mode_light": {
+          "type": "ALIAS",
+          "id": "var_669"
+        },
+        "mode_dark": {
+          "type": "COLOR",
+          "value": {
+            "r": 0.5607843399047852,
+            "g": 0.5607843399047852,
+            "b": 0.5607843399047852,
+            "a": 1
+          }
+        }
+      },
+      "description": "场景：小窗/迷你窗缩放角拖拽手柄。Light #FFFFFF → white_solid_basic_level_1000；Dark #8F8F8F，无对应 L1，暂用裸值。缩放角是弧线，scope 同时开放描边和填充。",
+      "scopes": [
+        "ALL_FILLS",
         "STROKE"
       ],
       "codeSyntax": {}
