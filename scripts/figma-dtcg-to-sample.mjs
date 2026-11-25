@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { f32 } from "./lib/figma-variables-sync.mjs";
+import { assertTokenLint } from "./lib/token-lint.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -201,6 +202,13 @@ const DISPLAY_ORDER = ["col_component", "col_semantic", "col_reference"];
 output.collections.sort(
   (a, b) => DISPLAY_ORDER.indexOf(a.id) - DISPLAY_ORDER.indexOf(b.id)
 );
+
+try {
+  assertTokenLint(output);
+} catch (error) {
+  console.error(error instanceof Error ? error.message : String(error));
+  process.exit(1);
+}
 
 writeFileSync(outPath, JSON.stringify(output, null, 2), "utf-8");
 
